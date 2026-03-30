@@ -1,0 +1,12 @@
+<svg width="960" height="820" viewBox="0 0 960 820" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="820" rx="34" fill="#F2ECE3"/>
+  <rect x="88" y="96" width="784" height="584" rx="32" fill="#E2E8E3"/>
+  <rect x="140" y="148" width="680" height="480" rx="24" fill="#657A7D"/>
+  <rect x="194" y="204" width="572" height="368" rx="20" fill="#F5F0E9"/>
+  <rect x="238" y="248" width="220" height="280" rx="18" fill="#D2D8D3"/>
+  <rect x="502" y="248" width="220" height="280" rx="18" fill="#D2D8D3"/>
+  <rect x="420" y="706" width="120" height="22" rx="11" fill="#CEC5BA"/>
+  <text x="158" y="760" fill="#5C7276" font-family="Source Sans 3, sans-serif" font-size="28" font-weight="600">
+    Duo Pod image placeholder
+  </text>
+</svg>

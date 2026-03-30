@@ -1,0 +1,21 @@
+<svg width="960" height="820" viewBox="0 0 960 820" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="solo-bg" x1="188" y1="102" x2="716" y2="698" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2EBDD"/>
+      <stop offset="1" stop-color="#E2D9CC"/>
+    </linearGradient>
+    <linearGradient id="solo-glass" x1="298" y1="190" x2="602" y2="584" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5E7D5"/>
+      <stop offset="1" stop-color="#9C9286"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="820" fill="url(#solo-bg)"/>
+  <ellipse cx="500" cy="702" rx="214" ry="42" fill="#D0C3B2"/>
+  <rect x="274" y="122" width="396" height="566" rx="38" fill="#202523"/>
+  <rect x="298" y="146" width="348" height="518" rx="28" fill="#2A302D"/>
+  <rect x="330" y="182" width="284" height="446" rx="22" fill="url(#solo-glass)"/>
+  <rect x="364" y="214" width="216" height="382" rx="16" fill="#D9D0C3"/>
+  <rect x="428" y="268" width="88" height="182" rx="44" fill="#F8F3EC"/>
+  <rect x="438" y="440" width="68" height="112" rx="24" fill="#869892"/>
+  <rect x="392" y="612" width="160" height="16" rx="8" fill="#747D78"/>
+</svg>
