@@ -597,7 +597,7 @@ export default function App() {
 
         <section className="border-t border-[#f0f0f0] bg-[#efefef] px-5 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-[1200px] rounded-[16px] bg-[#e6e6e6] px-6 py-12 text-center md:px-12 md:py-16">
-            <h2 className="mx-auto max-w-none whitespace-nowrap text-[42px] font-bold leading-[0.98] tracking-tight text-[#111111] md:text-[56px]">
+            <h2 className="mx-auto max-w-none whitespace-nowrap text-[36px] font-bold leading-[0.98] tracking-tight text-[#111111] md:text-[48px]">
               Choose AcePods
             </h2>
 
