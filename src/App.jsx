@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  AlertCircle,
-  ArrowLeftRight,
-  ArrowRight,
   Bike,
   CheckCircle2,
   ChevronDown,
@@ -11,25 +8,27 @@ import {
   Globe,
   Hammer,
   Instagram,
-  Layout,
   Linkedin,
-  MapPin,
   Maximize2,
   Menu,
-  PhoneIncoming,
-  RefreshCw,
   Route,
   Search,
-  Target,
   Ticket,
   Twitter,
   User,
-  X,
-  Zap
+  X
 } from 'lucide-react';
 import acePodsLogo from '../Logos/ace pods logo.png';
 import acePodsHero from '../assets/hero-pods mirror.png';
 import openOfficeImage from '../assets/open-office.png';
+import comparePriceImage from '../assets/E105DYKK.avif';
+import podsInstallationImage from '../assets/pods-installation.png';
+import deliveryPodsImage from '../assets/delivery-pods.png';
+import menuAceSolo from '../assets/ace-solo-cutout.png';
+import menuAceSoloPlus from '../assets/ace-solo-plus-cutout.png';
+import menuAceDuo from '../assets/ace-duo-cutout.png';
+import menuAceMeeting from '../assets/ace-meeting.png';
+import menuAceMeetingXL from '../assets/ace-meeting-XL-cutout.png';
 import { products } from './data/products';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
@@ -41,7 +40,7 @@ const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder'
   </div>
 );
 
-const navLinks = ['Smart pods', 'Smart office', 'Explore', 'Professionals', 'About'];
+const navLinks = ['Smart Pods', 'Smart office', 'Explore', 'Professionals', 'About'];
 
 const renovationPoints = [
   {
@@ -63,17 +62,14 @@ const renovationPoints = [
 
 const privacyPoints = [
   {
-    icon: <PhoneIncoming size={32} className="mb-4 text-[#00855a]" />,
     title: 'Calls need more privacy than open offices allow.',
     desc: 'Routine conversations become office-wide interruptions when shared space is doing too many jobs at once.'
   },
   {
-    icon: <Target size={32} className="mb-4 text-[#00855a]" />,
     title: 'Some work needs fewer interruptions.',
     desc: 'Even short blocks of focused work are harder to protect when noise and movement are built into the day.'
   },
   {
-    icon: <AlertCircle size={32} className="mb-4 text-[#00855a]" />,
     title: 'Small space problems spread across the office.',
     desc: 'When there is nowhere suitable for calls or quiet work, the effect reaches nearby teams.'
   }
@@ -81,24 +77,79 @@ const privacyPoints = [
 
 const reassuranceItems = [
   {
-    num: '01',
-    title: 'Local installation and after-sales support',
+    icon: Hammer,
+    label: 'Local install and support',
     desc: 'Support stays close from planning through post-installation.'
   },
   {
-    num: '02',
-    title: 'A clearer path from quote to installation',
+    icon: Route,
+    label: 'Easy quote to install',
     desc: 'Buyers follow a clearer path from quote to setup.'
   },
   {
-    num: '03',
-    title: 'Comfortable for real daily use',
+    icon: CheckCircle2,
+    label: 'Comfortable for daily use',
     desc: 'Designed for practical everyday use, not showroom-only appeal.'
   },
   {
-    num: '04',
-    title: 'Easier to fit into the workspace',
+    icon: Maximize2,
+    label: 'Fits workspace instantly',
     desc: 'Fits more easily around circulation, team needs, and layout realities.'
+  }
+];
+
+const compareItems = [
+  {
+    title: 'We show you the complete price upfront.',
+    desc: 'You can compare properly when you see more than just the headline number.',
+    image: comparePriceImage,
+    imageAlt: 'Office pod detail'
+  },
+  {
+    title: 'Installation shapes the real buying experience.',
+    desc: 'Access, placement, and coordination all affect how straightforward the project feels.',
+    image: podsInstallationImage,
+    imageAlt: 'Office pod installation detail'
+  },
+  {
+    title: 'Support still matters after delivery.',
+    desc: 'When something needs adjusting or servicing, clear support makes the pod easier to manage.',
+    image: deliveryPodsImage,
+    imageAlt: 'Office pod in workplace context',
+    imageClassName: 'object-[center_70%]'
+  }
+];
+
+const smartPodsMenuItems = [
+  {
+    title: 'Ace Solo',
+    description: 'Designed for individuals who need a quiet, private workspace.',
+    image: menuAceSolo,
+    to: '/pods/ace-solo'
+  },
+  {
+    title: 'Ace Solo Plus',
+    description: 'The perfect quiet workspace for two-person collaborations.',
+    image: menuAceSoloPlus,
+    to: '/pods/ace-solo-plus'
+  },
+  {
+    title: 'Ace Duo',
+    description: 'Private pod for one-to-one collaboration and focused conversations.',
+    image: menuAceDuo,
+    to: '/pods/ace-duo'
+  },
+  {
+    title: 'Ace Meeting',
+    description: 'Sound-contained environment tailored for small team meetings.',
+    image: menuAceMeeting,
+    to: '/pods/ace-meeting'
+  },
+  {
+    title: 'Ace Meeting XL',
+    description: 'Provides ample space for larger team meetings and collaboration.',
+    image: menuAceMeetingXL,
+    to: '/pods/ace-meeting'
   }
 ];
 
@@ -116,7 +167,10 @@ const trustedLogos = [
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSmartPodsDesktopOpen, setIsSmartPodsDesktopOpen] = useState(false);
+  const [isSmartPodsMobileOpen, setIsSmartPodsMobileOpen] = useState(false);
   const carouselRef = useRef(null);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -134,6 +188,23 @@ export default function App() {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (!isMenuOpen) {
+      setIsSmartPodsMobileOpen(false);
+    }
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isSmartPodsDesktopOpen) return;
+    const handleOutsideClick = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsSmartPodsDesktopOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [isSmartPodsDesktopOpen]);
+
   const scrollNext = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' });
@@ -142,19 +213,43 @@ export default function App() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
-      <nav className={`fixed top-0 z-50 h-[64px] w-full transition-all duration-300 md:h-[80px] ${scrolled ? 'h-[60px] bg-white shadow-sm md:h-[70px]' : 'bg-white'}`}>
+      <nav
+        ref={navRef}
+        className={`fixed top-0 z-50 h-[64px] w-full transition-all duration-300 md:h-[80px] ${scrolled ? 'h-[60px] bg-white shadow-sm md:h-[70px]' : 'bg-white'}`}
+      >
         <div className="mx-auto flex h-full max-w-[1600px] items-center justify-between px-5 md:px-12">
           <div className="flex items-center gap-8 lg:gap-16">
             <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto cursor-pointer md:h-12" />
             <div className="hidden items-center gap-9 lg:flex">
-              {navLinks.map((link) => (
-                <div key={link} className="group flex cursor-pointer items-center gap-1.5">
-                  <a href="#" className="text-[16px] font-medium text-[#111111] transition-colors group-hover:text-[#00855a]">
-                    {link}
-                  </a>
-                  <ChevronDown size={16} strokeWidth={2} className="mt-0.5 text-[#00855a]" />
-                </div>
-              ))}
+              {navLinks.map((link) => {
+                const isSmartPods = link === 'Smart Pods';
+                if (isSmartPods) {
+                  return (
+                    <div key={link} className="group flex cursor-pointer items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)}
+                        className="text-[16px] font-medium text-[#111111] transition-colors group-hover:text-[#00855a]"
+                      >
+                        {link}
+                      </button>
+                      <ChevronDown
+                        size={16}
+                        strokeWidth={2}
+                        className={`mt-0.5 text-[#00855a] transition-transform ${isSmartPodsDesktopOpen ? 'rotate-180' : ''}`}
+                      />
+                    </div>
+                  );
+                }
+                return (
+                  <div key={link} className="group flex cursor-pointer items-center gap-1.5">
+                    <a href="#" className="text-[16px] font-medium text-[#111111] transition-colors group-hover:text-[#00855a]">
+                      {link}
+                    </a>
+                    <ChevronDown size={16} strokeWidth={2} className="mt-0.5 text-[#00855a]" />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -187,6 +282,29 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        {isSmartPodsDesktopOpen && (
+          <div className="absolute left-0 top-full hidden w-full border-t border-[#d9d9d9] bg-[#efefef] lg:block">
+            <div className="mx-auto max-w-[1600px] px-12 py-10">
+              <div className="grid grid-cols-5 gap-8">
+                {smartPodsMenuItems.map((item) => (
+                  <Link
+                    key={item.title}
+                    to={item.to}
+                    onClick={() => setIsSmartPodsDesktopOpen(false)}
+                    className="flex flex-col items-center text-center"
+                  >
+                    <div className="flex h-[180px] w-full items-center justify-center">
+                      <img src={item.image} alt={item.title} className="h-full w-auto object-contain" />
+                    </div>
+                    <h3 className="mt-5 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{item.title}</h3>
+                    <p className="mt-3 text-[14px] leading-[1.5] text-[#666666]">{item.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       <div
@@ -199,12 +317,50 @@ export default function App() {
           </button>
         </div>
         <div className="h-[calc(100vh-80px)] space-y-8 overflow-y-auto p-8">
-          {navLinks.map((link) => (
-            <div key={link} className="group flex items-center justify-between">
-              <span className="text-2xl font-bold tracking-tight">{link}</span>
-              <ChevronRight className="text-[#00855a]" />
-            </div>
-          ))}
+          {navLinks.map((link) => {
+            const isSmartPods = link === 'Smart Pods';
+            if (isSmartPods) {
+              return (
+                <div key={link} className="space-y-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsSmartPodsMobileOpen((prev) => !prev)}
+                    className="group flex w-full items-center justify-between"
+                  >
+                    <span className="text-2xl font-bold tracking-tight">{link}</span>
+                    <ChevronDown className={`text-[#00855a] transition-transform ${isSmartPodsMobileOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isSmartPodsMobileOpen && (
+                    <div className="space-y-10 border-t border-[#d9d9d9] pt-6">
+                      {smartPodsMenuItems.map((item) => (
+                        <Link
+                          key={item.title}
+                          to={item.to}
+                          onClick={() => {
+                            setIsMenuOpen(false);
+                            setIsSmartPodsMobileOpen(false);
+                          }}
+                          className="block text-center"
+                        >
+                          <div className="mx-auto h-[260px] w-full max-w-[230px]">
+                            <img src={item.image} alt={item.title} className="h-full w-full object-contain" />
+                          </div>
+                          <h3 className="mt-4 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{item.title}</h3>
+                          <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#666666]">{item.description}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+            return (
+              <div key={link} className="group flex items-center justify-between">
+                <span className="text-2xl font-bold tracking-tight">{link}</span>
+                <ChevronRight className="text-[#00855a]" />
+              </div>
+            );
+          })}
           <div className="space-y-6 border-t border-gray-100 pt-8">
             <div className="flex items-center gap-4 text-xl font-bold text-[#111111]">
               <User size={24} /> Login
@@ -222,7 +378,7 @@ export default function App() {
             <img
               src={acePodsHero}
               alt="Office Pods"
-              className="h-full w-full object-cover object-[41%_10%] sm:object-[39%_12%] md:object-center"
+              className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22"></div>
           </div>
@@ -260,9 +416,6 @@ export default function App() {
                 <span className="font-semibold text-[#626262]">Ace workplace pods.</span> <br className="md:hidden" />{' '}
                 <span className="font-semibold text-[#222222]">For calls, focus, and meetings.</span>
               </h2>
-              <button aria-label="Compare products" className="flex items-center gap-2 border-b border-transparent pb-1 text-[14px] font-bold text-[#444444] transition-colors hover:text-[#111111]">
-                <ArrowLeftRight size={18} strokeWidth={2} />
-              </button>
             </div>
 
             <div className="absolute right-4 top-1/2 z-10 lg:hidden">
@@ -369,7 +522,6 @@ export default function App() {
                     key={item.title}
                     className="rounded-[20px] border border-[#eceae0] bg-white p-8 text-left shadow-sm md:rounded-none md:border-0 md:border-b md:border-[#e2dfd5] md:bg-transparent md:px-0 md:py-6 md:shadow-none"
                   >
-                    <div className="md:hidden">{item.icon}</div>
                     <h3 className="mb-2 text-[19px] font-bold leading-tight tracking-tight text-[#111111] md:mb-3 md:text-[22px]">{item.title}</h3>
                     <p className="text-[15px] leading-[1.6] text-[#555555] md:text-[16px]">{item.desc}</p>
                   </div>
@@ -381,38 +533,30 @@ export default function App() {
         </section>
 
         <section className="bg-[#F6F5F0] px-5 py-16 md:px-12 md:py-32">
-          <div className="mx-auto flex max-w-[1440px] flex-col gap-12 text-left md:gap-16 lg:flex-row lg:gap-28">
-            <div className="relative max-w-[600px] flex-1">
-              <div className="relative z-10">
-                <span className="mb-4 block text-[13px] font-bold tracking-wide text-[#62727b] md:mb-6 md:text-[14px]">Compare properly</span>
-                <h2 className="mb-6 text-[28px] font-extrabold leading-[1.1] tracking-tight text-[#111111] sm:text-[38px] md:mb-8 md:text-[52px]">
-                  What buyers often overlook when comparing office pods
-                </h2>
-                <p className="text-[16px] leading-[1.6] text-[#444444] md:text-[17px]">
-                  We show you the complete price upfront. You can compare more confidently when installation, support, and after-sales are
-                  clear too.
-                </p>
-              </div>
+          <div className="mx-auto max-w-[1240px]">
+            <div className="max-w-[860px] text-left">
+              <span className="mb-4 block text-[13px] font-bold tracking-wide text-[#62727b] md:mb-6 md:text-[14px]">Compare properly</span>
+              <h2 className="mb-6 text-[38px] font-extrabold leading-[1.08] tracking-tight text-[#111111] sm:text-[46px] md:mb-8 md:text-[62px]">
+                What buyers often overlook when comparing office pods
+              </h2>
+              <p className="max-w-[44ch] text-[16px] leading-[1.65] text-[#444444] md:text-[19px]">
+                We show you the complete price upfront. You can compare more confidently when installation, support, and after-sales are clear too.
+              </p>
             </div>
-            <div className="flex flex-1 flex-col pt-4 md:pt-0">
-              {[
-                {
-                  title: 'We show you the complete price upfront.',
-                  desc: 'You can compare properly when you see more than just the headline number.'
-                },
-                {
-                  title: 'Installation shapes the real buying experience.',
-                  desc: 'Access, placement, and coordination all affect how straightforward the project feels.'
-                },
-                {
-                  title: 'Support still matters after delivery.',
-                  desc: 'When something needs adjusting or servicing, clear support makes the pod easier to manage.'
-                }
-              ].map((item, idx, arr) => (
-                <div key={item.title} className={`border-[#e2dfd5] py-6 md:py-8 ${idx === 0 ? 'border-t' : ''} ${idx === arr.length - 1 ? 'border-y' : 'border-t'}`}>
-                  <h3 className="mb-3 text-[18px] font-bold tracking-tight text-[#111111] md:text-[22px]">{item.title}</h3>
-                  <p className="text-[15px] leading-[1.6] text-[#555555] md:text-[16px]">{item.desc}</p>
-                </div>
+
+            <div className="mt-14 space-y-12 md:mt-20 md:space-y-16">
+              {compareItems.map((item, idx) => (
+                <article key={item.title} className="grid items-center gap-6 md:gap-10 lg:grid-cols-2 lg:gap-16">
+                  <div className={`${idx % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} text-left`}>
+                    <h3 className="text-[29px] font-bold leading-[1.16] tracking-tight text-[#111111] sm:text-[32px] md:text-[44px] lg:text-[48px]">{item.title}</h3>
+                    <p className="mt-4 max-w-[44ch] text-[17px] leading-[1.7] text-[#5a5a5a] md:text-[19px]">{item.desc}</p>
+                  </div>
+                  <div className={`${idx % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} overflow-hidden rounded-[10px] bg-[#e7e3dc]`}>
+                    <div className="aspect-[4/3] w-full">
+                      <img src={item.image} alt={item.imageAlt} className={`h-full w-full object-cover ${item.imageClassName || ''}`} />
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
@@ -451,97 +595,27 @@ export default function App() {
           </div>
         </section>
 
-        <section className="border-t border-[#f0f0f0] bg-white px-5 py-16 md:px-12 md:py-32">
-          <div className="mx-auto max-w-[1440px]">
-            <div className="mb-12 text-left md:mb-14">
-              <span className="mb-4 block text-[12px] font-bold uppercase tracking-wide text-[#62727b] md:text-[13px]">
-                Why Ace Workplace Solutions
-              </span>
-              <h2 className="max-w-[980px] text-[26px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[44px] lg:text-[46px]">
-                A practical premium office pod partner for Malaysian workplaces
-              </h2>
+        <section className="border-t border-[#f0f0f0] bg-[#efefef] px-5 py-12 md:px-12 md:py-16">
+          <div className="mx-auto max-w-[1200px] rounded-[16px] bg-[#e6e6e6] px-6 py-12 text-center md:px-12 md:py-16">
+            <h2 className="mx-auto max-w-none whitespace-nowrap text-[42px] font-bold leading-[0.98] tracking-tight text-[#111111] md:text-[56px]">
+              Choose AcePods
+            </h2>
 
-              <p className="mt-6 max-w-[820px] text-[16px] leading-[1.7] text-[#555555] md:text-[18px]">
-                Ace Workplace Solutions helps businesses create quieter, more functional office space with pod solutions that are easier to
-                plan, install, and manage.
-              </p>
-            </div>
-
-            <div className="flex flex-col divide-y divide-[#e4dfd4] border-y border-[#e4dfd4] md:hidden">
+            <div className="mt-14 flex flex-col items-center gap-14 md:mt-14 md:grid md:grid-cols-4 md:gap-7">
               {reassuranceItems.map((item) => (
-                <article key={item.num} className="py-5">
-                  <span className="mb-3 block text-[12px] font-semibold tracking-[0.18em] text-[#0b7a57]">{item.num}</span>
-                  <h3 className="text-[18px] font-semibold leading-[1.28] tracking-tight text-[#111111]">{item.title}</h3>
-                  <p className="mt-2 text-[15px] leading-[1.65] text-[#5a5a5a]">{item.desc}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="hidden md:flex md:border-y md:border-[#e4dfd4]">
-              {reassuranceItems.map((item, index) => (
-                <article
-                  key={item.num}
-                  className={`min-w-0 flex-1 py-8 ${index !== 0 ? 'border-l border-[#e4dfd4] pl-8 lg:pl-10' : 'pr-8 lg:pr-10'} ${index !== reassuranceItems.length - 1 ? 'pr-8 lg:pr-10' : ''}`}
-                >
-                  <span className="mb-4 block text-[12px] font-semibold tracking-[0.18em] text-[#0b7a57]">{item.num}</span>
-                  <h3 className="max-w-[16ch] text-[19px] font-semibold leading-[1.28] tracking-tight text-[#111111] lg:text-[20px]">
-                    {item.title}
+                <article key={item.label} className="flex max-w-[230px] flex-col items-center text-center md:max-w-[200px]">
+                  <item.icon size={52} strokeWidth={1.6} className="text-[#1f2328]" />
+                  <h3 className="mt-6 text-[19px] font-semibold leading-[1.35] tracking-tight text-[#111111] md:text-[17px]">
+                    {item.label}
                   </h3>
-                  <p className="mt-3 max-w-[23ch] text-[15px] leading-[1.65] text-[#5a5a5a]">{item.desc}</p>
+                  <span className="sr-only">{item.desc}</span>
                 </article>
               ))}
             </div>
-          </div>
-        </section>
 
-        <section className="bg-[#F8F8F8] px-5 py-16 md:px-12 md:py-24">
-          <div className="mx-auto flex max-w-[1200px] flex-col items-center overflow-hidden rounded-[24px] border border-gray-100 bg-white px-0 pb-0 pt-16 text-center shadow-sm md:rounded-[32px] md:pt-24">
-            <div className="max-w-[700px] px-8">
-              <h2 className="mb-8 text-[32px] font-extrabold leading-[1.1] tracking-tight text-[#111111] md:text-[48px]">Get a quote</h2>
-              <p className="mx-auto mb-12 max-w-[580px] text-[17px] leading-[1.6] text-[#555555] md:text-[20px]">
-                Find your nearest representative to hear about pricing and get a quote for your project.
-              </p>
-
-              <div className="mb-16 flex justify-center md:mb-24">
-                <button className="inline-flex items-center gap-4 rounded-[12px] border border-[#dcdcdc] bg-[#F2F2F2] px-8 py-4 text-[16px] font-bold text-[#111111] transition-all hover:bg-[#ebebeb] md:px-10">
-                  <ArrowRight size={20} strokeWidth={2.5} />
-                  Get a quote
-                </button>
-              </div>
-            </div>
-
-            <div className="-mb-1 w-full max-w-[900px] px-4">
-              <div className="relative mx-auto">
-                <div className="relative rounded-t-[14px] border-x border-t border-[#333] bg-[#000] p-[10px] pb-0">
-                  <div className="aspect-[16/10] w-full overflow-hidden rounded-t-[4px] border border-[#222] bg-white">
-                    <div className="flex items-center justify-between border-b border-gray-100 bg-white p-4">
-                      <img src={acePodsLogo} alt="Ace Pods" className="h-4 w-auto" />
-                      <div className="flex gap-4">
-                        <div className="h-1 w-8 rounded bg-gray-100"></div>
-                        <div className="h-1 w-8 rounded bg-gray-100"></div>
-                      </div>
-                    </div>
-                    <div className="h-full bg-[#FAFAFA] p-8 text-center">
-                      <div className="mb-4 text-[14px] font-bold">Get a quote</div>
-                      <div className="mx-auto max-w-[280px] space-y-3">
-                        {[1, 2, 3].map((i) => (
-                          <div key={i} className="flex items-center gap-3 rounded-[4px] border border-gray-200 bg-white p-3">
-                            <div className="h-8 w-8 rounded bg-gray-100"></div>
-                            <div className="flex-1 space-y-1">
-                              <div className="h-2 w-1/2 bg-gray-100"></div>
-                              <div className="h-1 w-3/4 bg-gray-50"></div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative h-[12px] w-[105%] -translate-x-[2.5%] rounded-b-[6px] bg-[#222]">
-                  <div className="absolute left-1/2 top-0 mt-1 h-1 w-20 -translate-x-1/2 rounded-full bg-[#444]"></div>
-                </div>
-              </div>
-            </div>
+            <button className="mt-14 inline-flex items-center rounded-full bg-[#4a9078] px-10 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#3f7e69] md:mt-16 md:px-14 md:py-4 md:text-[17px]">
+              Contact us
+            </button>
           </div>
         </section>
 
