@@ -29,7 +29,10 @@ import menuAceSoloPlus from '../assets/ace-solo-plus-cutout.png';
 import menuAceDuo from '../assets/ace-duo-cutout.png';
 import menuAceMeeting from '../assets/ace-meeting.png';
 import menuAceMeetingXL from '../assets/ace-meeting-XL-cutout.png';
+import SeoMeta from './components/SeoMeta';
 import { products } from './data/products';
+import { HOME_FAQ_ITEMS } from './seo/constants';
+import { buildCanonical, createFaqSchema, organizationSchema, websiteSchema } from './seo/schema';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
   <div
@@ -60,6 +63,24 @@ const renovationPoints = [
   }
 ];
 
+const seoRenovationPoints = [
+  {
+    num: '01',
+    title: 'Keep noise and disruption away from the rest of the office',
+    desc: 'Add privacy where it is needed without interrupting teams working around the pod area.'
+  },
+  {
+    num: '02',
+    title: 'Add private space without construction work',
+    desc: 'Office pods create enclosed space for calls, focused work, and meetings without building fixed rooms.'
+  },
+  {
+    num: '03',
+    title: 'Move or expand your setup as your office changes',
+    desc: 'You can adjust pod placement as team size, floor plans, or workspace needs evolve over time.'
+  }
+];
+
 const privacyPoints = [
   {
     title: 'Calls need more privacy than open offices allow.',
@@ -72,6 +93,21 @@ const privacyPoints = [
   {
     title: 'Small space problems spread across the office.',
     desc: 'When there is nowhere suitable for calls or quiet work, the effect reaches nearby teams.'
+  }
+];
+
+const seoPrivacyPoints = [
+  {
+    title: 'Calls need more privacy than open offices allow',
+    desc: 'Conversations that should stay private often carry across the office when there is no enclosed space.'
+  },
+  {
+    title: 'Focused work needs fewer interruptions',
+    desc: 'Noise and movement in open offices make concentration harder to protect throughout the day.'
+  },
+  {
+    title: 'When private space is missing, the whole office feels it',
+    desc: 'Lack of quiet zones affects nearby teams, shared focus, and day-to-day workplace flow.'
   }
 ];
 
@@ -98,6 +134,29 @@ const reassuranceItems = [
   }
 ];
 
+const seoReassuranceItems = [
+  {
+    icon: Hammer,
+    label: 'Local installation and support',
+    desc: 'Support stays close from planning through post-installation use.'
+  },
+  {
+    icon: Route,
+    label: 'From quote to installation, made simple',
+    desc: 'Buyers get a clearer path from quote to setup.'
+  },
+  {
+    icon: CheckCircle2,
+    label: 'Comfortable for daily use',
+    desc: 'Designed for practical everyday office use.'
+  },
+  {
+    icon: Maximize2,
+    label: 'Designed to fit modern workplaces',
+    desc: 'Pods fit circulation needs, team workflows, and existing layouts.'
+  }
+];
+
 const compareItems = [
   {
     title: 'We show you the complete price upfront.',
@@ -116,6 +175,28 @@ const compareItems = [
     desc: 'When something needs adjusting or servicing, clear support makes the pod easier to manage.',
     image: deliveryPodsImage,
     imageAlt: 'Office pod in workplace context',
+    imageClassName: 'object-[center_70%]'
+  }
+];
+
+const seoCompareItems = [
+  {
+    title: 'See the full project price upfront',
+    desc: 'You can compare properly when you see more than just the headline number.',
+    image: comparePriceImage,
+    imageAlt: 'Office pod pricing and commercial detail'
+  },
+  {
+    title: 'Installation matters more than most buyers expect',
+    desc: 'Access, placement, and coordination all affect how straightforward the project feels.',
+    image: podsInstallationImage,
+    imageAlt: 'Office pod installation and site setup'
+  },
+  {
+    title: 'Delivery is not the end of the buying experience',
+    desc: 'When something needs adjusting or servicing, clear support makes the pod easier to manage.',
+    image: deliveryPodsImage,
+    imageAlt: 'Office pod support and post-delivery use',
     imageClassName: 'object-[center_70%]'
   }
 ];
@@ -164,11 +245,43 @@ const trustedLogos = [
   { name: 'M-Files', type: 'text' }
 ];
 
-export default function App() {
+const footerLinkGroups = [
+  {
+    key: 'products',
+    title: 'Products',
+    links: [
+      { label: 'Ace Solo', to: '/pods/ace-solo' },
+      { label: 'Ace Solo Plus', to: '/pods/ace-solo-plus' },
+      { label: 'Ace Duo', to: '/pods/ace-duo' },
+      { label: 'Ace Meeting', to: '/pods/ace-meeting' }
+    ]
+  },
+  {
+    key: 'company',
+    title: 'Company',
+    links: [
+      { label: 'About', href: '#' },
+      { label: 'Explore', href: '#' },
+      { label: 'Professionals', href: '#' }
+    ]
+  },
+  {
+    key: 'support',
+    title: 'Support',
+    links: [
+      { label: 'Contact us', href: '#' },
+      { label: 'Installation & delivery', href: '#' },
+      { label: 'After-sales support', href: '#' }
+    ]
+  }
+];
+
+export default function App({ seoMode = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSmartPodsDesktopOpen, setIsSmartPodsDesktopOpen] = useState(false);
   const [isSmartPodsMobileOpen, setIsSmartPodsMobileOpen] = useState(false);
+  const [openFooterGroup, setOpenFooterGroup] = useState('products');
   const carouselRef = useRef(null);
   const navRef = useRef(null);
 
@@ -211,8 +324,44 @@ export default function App() {
     }
   };
 
+  const activeRenovationPoints = seoMode ? seoRenovationPoints : renovationPoints;
+  const activePrivacyPoints = seoMode ? seoPrivacyPoints : privacyPoints;
+  const activeCompareItems = seoMode ? seoCompareItems : compareItems;
+  const activeReassuranceItems = seoMode ? seoReassuranceItems : reassuranceItems;
+
+  const heroHeadline = seoMode ? 'Office pods for calls, focus, and meetings' : 'Create a quieter, more functional workplace';
+  const heroSupportingText = seoMode
+    ? 'Add private space for calls, focused work, and meetings without building new rooms.'
+    : 'For calls, focused work, and private meetings — without the cost and disruption of renovation.';
+  const heroTrustLine = seoMode
+    ? 'A practical alternative to building new rooms'
+    : 'Practical privacy solutions for modern workplaces';
+  const productIntroHeading = seoMode ? 'Choose the right office pod for calls, focus, or meetings' : null;
+  const privateSpaceHeading = seoMode
+    ? 'Add private space without building new rooms'
+    : 'Private space without the cost and disruption of rebuilding';
+  const compareSupportingLine = seoMode
+    ? 'Compare more confidently when pricing, installation, and support are clear upfront.'
+    : 'We show you the complete price upfront. You can compare more confidently when installation, support, and after-sales are clear too.';
+  const trustSectionHeading = seoMode
+    ? 'Trusted by teams in leading companies worldwide'
+    : 'Trusted by over 70% of Forbes Top 100 companies';
+  const whyHeading = seoMode ? 'Why teams choose AcePods' : 'Choose AcePods';
+  const footerBrandLine = seoMode
+    ? 'Acoustic office pods for calls, focus, and meetings'
+    : 'Premium workplace pods for calls, focus, and meetings.';
+  const seoSchemas = seoMode ? [organizationSchema, websiteSchema, createFaqSchema('/seo', HOME_FAQ_ITEMS)] : [];
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
+      {seoMode && (
+        <SeoMeta
+          title="Office Pods for Calls, Focus and Meetings | AcePods"
+          description="Explore office pods for calls, focused work, and meetings. Add private space without major renovation, with clear pricing, installation, and support from AcePods."
+          canonical={buildCanonical('/seo')}
+          schemas={seoSchemas}
+        />
+      )}
       <nav
         ref={navRef}
         className={`fixed top-0 z-50 h-[64px] w-full transition-all duration-300 md:h-[80px] ${scrolled ? 'h-[60px] bg-white shadow-sm md:h-[70px]' : 'bg-white'}`}
@@ -377,23 +526,23 @@ export default function App() {
           <div className="absolute inset-0 z-0">
             <img
               src={acePodsHero}
-              alt="Office Pods"
+              alt={seoMode ? 'Acoustic office pods for calls and focused work in an open office' : 'Office Pods'}
               className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22"></div>
           </div>
 
           <div className="relative z-10 w-full max-w-[1440px] px-4 md:mx-auto md:px-12">
-            <div className="mr-auto w-full max-w-none px-6 py-0 text-left text-white sm:px-6 lg:mr-0 lg:max-w-[640px] lg:bg-black/50 lg:px-8 lg:py-10">
+            <div className="w-full max-w-none px-6 py-0 text-left text-white sm:px-6 lg:ml-auto lg:max-w-[640px] lg:bg-black/50 lg:px-8 lg:py-10">
               <div className="max-w-none md:max-w-[520px]">
                 <h1 className="mb-4 max-w-[16ch] text-[35px] font-bold leading-[1.03] tracking-[-0.03em] sm:max-w-[18ch] sm:text-[39px] md:mb-6 md:max-w-none md:text-[65px]">
-                  Create a quieter, more functional workplace
+                  {heroHeadline}
                 </h1>
                 <p className="mb-5 max-w-[32ch] text-[18px] font-semibold leading-[1.5] text-white/92 sm:max-w-[36ch] sm:text-[20px] md:mb-4 md:max-w-lg md:text-[28px]">
-                  For calls, focused work, and private meetings — without the cost and disruption of renovation.
+                  {heroSupportingText}
                 </p>
                 <p className="mb-7 max-w-none whitespace-nowrap text-[12px] font-semibold leading-[1.4] tracking-[0.01em] text-white/78 sm:text-[13px] md:mb-8 md:text-[17px]">
-                  Practical privacy solutions for modern workplaces
+                  {heroTrustLine}
                 </p>
 
                 <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
@@ -412,10 +561,16 @@ export default function App() {
         <section className="relative overflow-hidden bg-white px-5 py-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-8 flex flex-col items-start justify-between gap-6 md:mb-10 md:flex-row md:items-end">
-              <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight sm:text-[30px] md:text-[38px]">
-                <span className="font-semibold text-[#626262]">Ace workplace pods.</span> <br className="md:hidden" />{' '}
-                <span className="font-semibold text-[#222222]">For calls, focus, and meetings.</span>
-              </h2>
+              {seoMode ? (
+                <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight text-[#222222] sm:text-[30px] md:text-[38px]">
+                  {productIntroHeading}
+                </h2>
+              ) : (
+                <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight sm:text-[30px] md:text-[38px]">
+                  <span className="font-semibold text-[#626262]">Ace workplace pods.</span> <br className="md:hidden" />{' '}
+                  <span className="font-semibold text-[#222222]">For calls, focus, and meetings.</span>
+                </h2>
+              )}
             </div>
 
             <div className="absolute right-4 top-1/2 z-10 lg:hidden">
@@ -474,7 +629,7 @@ export default function App() {
                 Pods instead of renovation
               </span>
               <h2 className="mb-6 text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[56px]">
-                Private space without the cost and disruption of rebuilding
+                {privateSpaceHeading}
               </h2>
               <p className="max-w-[600px] text-[16px] leading-[1.6] text-[#555555] md:text-[20px]">
                 A more practical way to create quiet, usable office space for calls, focus, and meetings.
@@ -482,7 +637,7 @@ export default function App() {
             </div>
 
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12 lg:gap-20">
-              {renovationPoints.map((item) => (
+              {activeRenovationPoints.map((item) => (
                 <div key={item.num} className="flex flex-col border-t-[1.5px] border-[#111111] pt-5 md:pt-8">
                   <span className="mb-3 text-[12px] font-extrabold tracking-widest text-[#00855a] md:mb-5 md:text-[13px]">
                     {item.num}
@@ -511,13 +666,17 @@ export default function App() {
             <div className="flex flex-col items-center gap-12 md:gap-16 lg:flex-row lg:gap-24">
             <div className="hidden w-full flex-1 lg:block">
               <div className="aspect-[4/3] w-full overflow-hidden rounded-[24px] bg-[#e8e6df]">
-                <img src={openOfficeImage} alt="Open Office Graphic" className="h-full w-full object-cover" />
+                <img
+                  src={openOfficeImage}
+                  alt={seoMode ? 'Open office area where private calls and meetings can disrupt nearby teams' : 'Open Office Graphic'}
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
 
             <div className="w-full max-w-[650px] flex-1">
               <div className="flex flex-col gap-6 md:gap-0">
-                {privacyPoints.map((item) => (
+                {activePrivacyPoints.map((item) => (
                   <div
                     key={item.title}
                     className="rounded-[20px] border border-[#eceae0] bg-white p-8 text-left shadow-sm md:rounded-none md:border-0 md:border-b md:border-[#e2dfd5] md:bg-transparent md:px-0 md:py-6 md:shadow-none"
@@ -540,12 +699,12 @@ export default function App() {
                 What buyers often overlook when comparing office pods
               </h2>
               <p className="max-w-[44ch] text-[16px] leading-[1.65] text-[#444444] md:text-[19px]">
-                We show you the complete price upfront. You can compare more confidently when installation, support, and after-sales are clear too.
+                {compareSupportingLine}
               </p>
             </div>
 
             <div className="mt-14 space-y-12 md:mt-20 md:space-y-16">
-              {compareItems.map((item, idx) => (
+              {activeCompareItems.map((item, idx) => (
                 <article key={item.title} className="grid items-center gap-6 md:gap-10 lg:grid-cols-2 lg:gap-16">
                   <div className={`${idx % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} text-left`}>
                     <h3 className="text-[29px] font-bold leading-[1.16] tracking-tight text-[#111111] sm:text-[32px] md:text-[44px] lg:text-[48px]">{item.title}</h3>
@@ -562,9 +721,57 @@ export default function App() {
           </div>
         </section>
 
+        {seoMode && (
+          <section className="bg-white px-5 py-14 md:px-12 md:py-20">
+            <div className="mx-auto max-w-[1240px]">
+              <div className="mb-10 rounded-[10px] border border-[#e8e4db] bg-[#f8f7f3] p-6 md:p-8">
+                <h2 className="text-[28px] font-bold tracking-tight text-[#14181c] md:text-[38px]">Office pod FAQ</h2>
+                <p className="mt-3 max-w-[70ch] text-[16px] leading-[1.65] text-[#49505a]">
+                  Direct answers to common buyer questions about office pods, pricing, installation, and support.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-[15px] font-semibold text-[#145b5f]">
+                  <Link to="/seo/office-pods" className="underline-offset-4 hover:underline">
+                    View office pods
+                  </Link>
+                  <Link to="/seo/compare-office-pods" className="underline-offset-4 hover:underline">
+                    Compare office pods
+                  </Link>
+                  <Link to="/seo/pricing" className="underline-offset-4 hover:underline">
+                    View office pod pricing
+                  </Link>
+                  <Link to="/seo/installation-support" className="underline-offset-4 hover:underline">
+                    Learn about installation and support
+                  </Link>
+                  <Link to="/seo/faq" className="underline-offset-4 hover:underline">
+                    Read common questions about office pods
+                  </Link>
+                  <Link to="/seo/installation-support#book-viewing" className="underline-offset-4 hover:underline">
+                    Book a viewing with our team
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {HOME_FAQ_ITEMS.map((item) => (
+                  <article key={item.question} className="rounded-[8px] border border-[#e7e3da] bg-[#fcfcfa] p-5">
+                    <h3 className="text-[20px] font-semibold tracking-tight text-[#1a1f26]">{item.question}</h3>
+                    <p className="mt-2 text-[15px] leading-[1.65] text-[#4b535c]">{item.answer}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="overflow-hidden bg-white py-16 md:py-24">
           <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#111111] md:mb-12 md:text-[32px]">
-            Trusted by over 70% of <br /> Forbes Top 100 companies
+            {seoMode ? (
+              trustSectionHeading
+            ) : (
+              <>
+                Trusted by over 70% of <br /> Forbes Top 100 companies
+              </>
+            )}
           </h2>
           <div className="hide-scrollbar flex w-full justify-start gap-3 overflow-x-auto px-5 pb-6 lg:justify-center md:gap-4">
             {trustedLogos.map((logo, idx) => (
@@ -598,11 +805,11 @@ export default function App() {
         <section className="border-t border-[#f0f0f0] bg-[#efefef] px-5 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-[1200px] rounded-[16px] bg-[#e6e6e6] px-6 py-12 text-center md:px-12 md:py-16">
             <h2 className="mx-auto max-w-none whitespace-nowrap text-[36px] font-bold leading-[0.98] tracking-tight text-[#111111] md:text-[48px]">
-              Choose AcePods
+              {whyHeading}
             </h2>
 
             <div className="mt-14 flex flex-col items-center gap-14 md:mt-14 md:grid md:grid-cols-4 md:gap-7">
-              {reassuranceItems.map((item) => (
+              {activeReassuranceItems.map((item) => (
                 <article key={item.label} className="flex max-w-[230px] flex-col items-center text-center md:max-w-[200px]">
                   <item.icon size={52} strokeWidth={1.6} className="text-[#1f2328]" />
                   <h3 className="mt-6 text-[19px] font-semibold leading-[1.35] tracking-tight text-[#111111] md:text-[17px]">
@@ -619,46 +826,107 @@ export default function App() {
           </div>
         </section>
 
-        <footer className="bg-[#121212] px-5 pb-12 pt-16 text-left text-white md:px-12 md:pt-24">
+        <footer className="bg-[#121212] px-5 pb-12 pt-14 text-left text-white md:px-12 md:pt-20">
           <div className="mx-auto max-w-[1440px]">
-            <div className="mb-16 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 md:mb-20">
-              <div className="space-y-8">
+            <div className="space-y-6 md:hidden">
+              <div className="space-y-4">
+                <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
+                  <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
+                </div>
+                <p className="max-w-xs text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
+                <div className="flex gap-3">
+                  {[Instagram, Linkedin, Twitter].map((Icon, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:text-white"
+                    >
+                      <Icon size={18} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="divide-y divide-white/10 border-y border-white/10">
+                {footerLinkGroups.map((group) => {
+                  const isOpen = openFooterGroup === group.key;
+                  return (
+                    <div key={group.key}>
+                      <button
+                        type="button"
+                        onClick={() => setOpenFooterGroup(isOpen ? '' : group.key)}
+                        className="flex min-h-[48px] w-full items-center justify-between py-3 text-left"
+                      >
+                        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-300">{group.title}</span>
+                        <ChevronDown size={18} className={`text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {isOpen && (
+                        <ul className="space-y-2 pb-4">
+                          {group.links.map((link) => (
+                            <li key={link.label}>
+                              {link.to ? (
+                                <Link to={link.to} className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white">
+                                  {link.label}
+                                </Link>
+                              ) : (
+                                <a href={link.href} className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white">
+                                  {link.label}
+                                </a>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="mb-14 hidden grid-cols-4 gap-10 md:grid">
+              <div className="space-y-6">
                 <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
                   <img src={acePodsLogo} alt="Ace Pods" className="h-9 w-auto" />
                 </div>
-                <p className="max-w-xs text-sm leading-relaxed text-gray-500">The world leader in acoustic office solutions.</p>
-                <div className="flex gap-4">
-                  <Instagram size={20} className="text-gray-400" />
-                  <Linkedin size={20} className="text-gray-400" />
-                  <Twitter size={20} className="text-gray-400" />
+                <p className="max-w-xs text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
+                <div className="flex gap-3">
+                  {[Instagram, Linkedin, Twitter].map((Icon, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:text-white"
+                    >
+                      <Icon size={18} />
+                    </button>
+                  ))}
                 </div>
               </div>
-              {['Products', 'Company', 'Support'].map((cat) => (
-                <div key={cat} className="space-y-4 md:space-y-6">
-                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{cat}</h4>
-                  <ul className="space-y-3 text-sm font-medium text-gray-500 md:space-y-4">
-                    <li>
-                      <a href="#" className="transition-colors hover:text-white">
-                        Products
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="transition-colors hover:text-white">
-                        Services
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="transition-colors hover:text-white">
-                        Contact
-                      </a>
-                    </li>
+
+              {footerLinkGroups.map((group) => (
+                <div key={group.key} className="space-y-5">
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-gray-400">{group.title}</h4>
+                  <ul className="space-y-3">
+                    {group.links.map((link) => (
+                      <li key={link.label}>
+                        {link.to ? (
+                          <Link to={link.to} className="text-[15px] text-gray-400 transition-colors hover:text-white">
+                            {link.label}
+                          </Link>
+                        ) : (
+                          <a href={link.href} className="text-[15px] text-gray-400 transition-colors hover:text-white">
+                            {link.label}
+                          </a>
+                        )}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center justify-between gap-6 border-t border-white/5 pt-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-600 md:flex-row">
-              <div>© 2025 FRAMERY. ALL RIGHTS RESERVED.</div>
-              <div className="flex items-center gap-2">
+
+            <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-600 md:flex-row">
+              <div>© 2026 ACE PODS. ALL RIGHTS RESERVED.</div>
+              <div className="flex items-center gap-2 text-gray-500">
                 <Globe size={14} /> GLOBAL EN <ChevronDown size={14} />
               </div>
             </div>
