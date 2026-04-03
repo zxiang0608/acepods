@@ -2,10 +2,12 @@ import aceSoloCutout from '../../assets/ace-solo-cutout.png';
 import aceSoloPlusCutout from '../../assets/ace-solo-plus-cutout.png';
 import aceDuoCutout from '../../assets/ace-duo-cutout.png';
 import aceMeetingCutout from '../../assets/ace-meeting-XL-cutout.png';
+import aceMeetingXLCutout from '../../assets/ace-meeting-XL-cutout.png';
 import aceSoloHero from '../../assets/ace-solo.png';
 import aceSoloPlusHero from '../../assets/ace-solo-plus.png';
 import aceDuoHero from '../../assets/ace-duo.png';
 import aceMeetingHero from '../../assets/ace-meeting.png';
+import aceMeetingXLHero from '../../assets/ace-meeting-XL.png';
 import aceSolo2d from '../../assets/ace-solo-2d.png';
 import aceSoloPlus2d from '../../assets/ace-solo-plus-2d.png';
 import aceDuo2d from '../../assets/ace-duo-2d.png';
@@ -145,14 +147,13 @@ export const products = [
     drawing2dImage: aceMeeting2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
-    cardSupport: 'For 4–6 people and hybrid calls',
-    cardNote: '(Available in Ace Meeting and Meeting XL)',
+    cardSupport: 'For 4 people and hybrid calls',
     pricing: {
       amount: 'From RM22,800 - RM40,200',
       note: 'Range includes Ace Meeting and Meeting XL configurations.'
     },
     specs: [
-      { label: 'Capacity', value: '4 to 6 people' },
+      { label: 'Capacity', value: '4 people' },
       { label: 'Best for', value: 'Small team meetings and hybrid calls' },
       { label: 'Ventilation', value: 'Continuous airflow for group sessions' },
       { label: 'Power', value: 'Integrated lighting + power access' }
@@ -175,6 +176,47 @@ export const products = [
     faq: [
       { q: 'What is the difference between Meeting and Meeting XL?', a: 'Meeting XL adds more internal room for larger group sessions.' },
       { q: 'Is it suitable for longer team discussions?', a: 'Yes. It is designed for practical daily team use with acoustic control.' }
+    ]
+  },
+  {
+    slug: 'ace-meeting-xl',
+    name: 'Ace Meeting XL',
+    breadcrumbLabel: 'Ace Pods',
+    shortDesc: 'Meeting pod for larger team discussions',
+    heroImage: aceMeetingXLHero,
+    thumbImage: aceMeetingXLCutout,
+    drawing2dImage: aceMeeting2d,
+    imageScale: 'scale-[1.40]',
+    hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
+    cardSupport: 'For 6 people and hybrid calls',
+    pricing: {
+      amount: 'From RM36,700 - RM40,200',
+      note: 'Indicative pricing, final quote depends on finish and site conditions.'
+    },
+    specs: [
+      { label: 'Capacity', value: '6 people' },
+      { label: 'Best for', value: 'Larger team meetings and hybrid calls' },
+      { label: 'Ventilation', value: 'Continuous airflow for extended group use' },
+      { label: 'Power', value: 'Integrated lighting + power access' }
+    ],
+    useCases: ['Project workshops', 'Extended team sessions', 'Group discussions'],
+    exteriorColors: [
+      { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
+      { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
+      { id: 'ext-green', label: 'Forest', hex: '#145a5d' },
+      { id: 'ext-sand', label: 'Sand', hex: '#cdb89e' }
+    ],
+    interiorColors: [
+      { id: 'int-grey', label: 'Light Grey', hex: '#c7cbd1' },
+      { id: 'int-charcoal', label: 'Charcoal', hex: '#6d7178' },
+      { id: 'int-clay', label: 'Clay', hex: '#c98b70' },
+      { id: 'int-olive', label: 'Olive', hex: '#8c8a61' }
+    ],
+    defaultExterior: 'ext-white',
+    defaultInterior: 'int-grey',
+    faq: [
+      { q: 'How is Ace Meeting XL different from Ace Meeting?', a: 'Ace Meeting XL provides more internal space for larger group sessions.' },
+      { q: 'Is Ace Meeting XL suitable for daily hybrid meetings?', a: 'Yes. It is designed for regular team use and longer hybrid calls.' }
     ]
   }
 ];

@@ -224,13 +224,15 @@ const smartPodsMenuItems = [
     title: 'Ace Meeting',
     description: 'Sound-contained environment tailored for small team meetings.',
     image: menuAceMeeting,
+    imageClassName: 'scale-[1.14] mix-blend-multiply',
     to: '/pods/ace-meeting'
   },
   {
     title: 'Ace Meeting XL',
     description: 'Provides ample space for larger team meetings and collaboration.',
     image: menuAceMeetingXL,
-    to: '/pods/ace-meeting'
+    imageClassName: 'mix-blend-multiply',
+    to: '/pods/ace-meeting-xl'
   }
 ];
 
@@ -249,12 +251,13 @@ const footerLinkGroups = [
   {
     key: 'products',
     title: 'Products',
-    links: [
-      { label: 'Ace Solo', to: '/pods/ace-solo' },
-      { label: 'Ace Solo Plus', to: '/pods/ace-solo-plus' },
-      { label: 'Ace Duo', to: '/pods/ace-duo' },
-      { label: 'Ace Meeting', to: '/pods/ace-meeting' }
-    ]
+      links: [
+        { label: 'Ace Solo', to: '/pods/ace-solo' },
+        { label: 'Ace Solo Plus', to: '/pods/ace-solo-plus' },
+        { label: 'Ace Duo', to: '/pods/ace-duo' },
+        { label: 'Ace Meeting', to: '/pods/ace-meeting' },
+        { label: 'Ace Meeting XL', to: '/pods/ace-meeting-xl' }
+      ]
   },
   {
     key: 'company',
@@ -328,6 +331,8 @@ export default function App({ seoMode = false }) {
   const activePrivacyPoints = seoMode ? seoPrivacyPoints : privacyPoints;
   const activeCompareItems = seoMode ? seoCompareItems : compareItems;
   const activeReassuranceItems = seoMode ? seoReassuranceItems : reassuranceItems;
+  const desktopTopPodCards = products.slice(0, 3);
+  const desktopBottomPodCards = products.slice(3, 5);
 
   const heroHeadline = seoMode ? 'Office pods for calls, focus, and meetings' : 'Create a quieter, more functional workplace';
   const heroSupportingText = seoMode
@@ -351,6 +356,45 @@ export default function App({ seoMode = false }) {
     ? 'Acoustic office pods for calls, focus, and meetings'
     : 'Premium workplace pods for calls, focus, and meetings.';
   const seoSchemas = seoMode ? [organizationSchema, websiteSchema, createFaqSchema('/seo', HOME_FAQ_ITEMS)] : [];
+
+  const renderPodCard = (pod, extraClass = '') => (
+    <Link
+      key={pod.slug}
+      to={`/pods/${pod.slug}`}
+      className={`group relative min-h-[400px] overflow-hidden rounded-[16px] bg-[#EAEAEA] md:h-[500px] md:rounded-[8px] ${extraClass}`}
+    >
+      <div className="absolute inset-0 z-0 opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100">
+        <img src={pod.hoverImg} alt={pod.name} className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
+      <div className="relative z-10 flex h-full flex-col items-center px-6 pb-8 pt-8 transition-all duration-500 md:pt-10 md:group-hover:-translate-y-2">
+        <h3 className="relative -top-1 mb-8 whitespace-pre-line text-center text-[15px] font-semibold tracking-wide text-white transition-colors duration-300 md:text-[15px] md:text-[#505050] md:group-hover:text-white">
+          {pod.name}
+        </h3>
+        <div className="mb-10 flex w-full items-center justify-center px-2 transition-opacity duration-300 group-hover:opacity-0">
+          <div className="aspect-square w-full max-w-[180px] md:max-w-[200px]">
+            <img src={pod.thumbImage} alt={pod.name} className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`} />
+          </div>
+        </div>
+        <p className="mb-5 max-w-[13ch] whitespace-pre-line text-center text-[19px] font-semibold leading-[1.3] text-[#3c3c3c] transition-opacity duration-300 group-hover:opacity-0 md:text-[20px]">
+          {pod.shortDesc}
+        </p>
+        <p className="mb-2 min-h-[18px] text-center text-[12px] font-medium text-[#7a7a7a] transition-opacity duration-300 group-hover:opacity-0 md:text-[12px]">
+          {pod.cardSupport}
+        </p>
+        {pod.cardNote && (
+          <p className="mb-6 min-h-[16px] text-center text-[11px] font-medium text-[#999999] transition-opacity duration-300 group-hover:opacity-0">
+            {pod.cardNote}
+          </p>
+        )}
+        <div className="absolute bottom-8 left-0 flex w-full translate-y-0 justify-center opacity-100 transition-all duration-500 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+          <span className="rounded-[4px] bg-[#00855a] px-7 py-3 text-[15px] font-bold text-white transition-colors hover:bg-[#006e4a] md:py-2.5">
+            Explore
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
@@ -444,7 +488,7 @@ export default function App({ seoMode = false }) {
                     className="flex flex-col items-center text-center"
                   >
                     <div className="flex h-[180px] w-full items-center justify-center">
-                      <img src={item.image} alt={item.title} className="h-full w-auto object-contain" />
+                      <img src={item.image} alt={item.title} className={`h-full w-full object-contain ${item.imageClassName || ''}`} />
                     </div>
                     <h3 className="mt-5 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{item.title}</h3>
                     <p className="mt-3 text-[14px] leading-[1.5] text-[#666666]">{item.description}</p>
@@ -492,7 +536,7 @@ export default function App({ seoMode = false }) {
                           className="block text-center"
                         >
                           <div className="mx-auto h-[260px] w-full max-w-[230px]">
-                            <img src={item.image} alt={item.title} className="h-full w-full object-contain" />
+                            <img src={item.image} alt={item.title} className={`h-full w-full object-contain ${item.imageClassName || ''}`} />
                           </div>
                           <h3 className="mt-4 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{item.title}</h3>
                           <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#666666]">{item.description}</p>
@@ -579,45 +623,17 @@ export default function App({ seoMode = false }) {
               </button>
             </div>
 
-            <div ref={carouselRef} className="hide-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-4">
-              {products.map((pod) => (
-                <Link
-                  key={pod.slug}
-                  to={`/pods/${pod.slug}`}
-                  className="group relative min-h-[400px] w-[85%] flex-shrink-0 snap-center overflow-hidden rounded-[16px] bg-[#EAEAEA] md:h-[500px] md:w-full md:rounded-[8px]"
-                >
-                  <div className="absolute inset-0 z-0 opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100">
-                    <img src={pod.hoverImg} alt={pod.name} className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-black/30"></div>
-                  </div>
-                  <div className="relative z-10 flex h-full flex-col items-center px-6 pb-8 pt-8 transition-all duration-500 md:pt-10 md:group-hover:-translate-y-2">
-                    <h3 className="relative -top-1 mb-8 whitespace-pre-line text-center text-[15px] font-semibold tracking-wide text-white transition-colors duration-300 md:text-[15px] md:text-[#505050] md:group-hover:text-white">
-                      {pod.name}
-                    </h3>
-                    <div className="mb-10 flex w-full items-center justify-center px-2 transition-opacity duration-300 group-hover:opacity-0">
-                      <div className="aspect-square w-full max-w-[180px] md:max-w-[200px]">
-                        <img src={pod.thumbImage} alt={pod.name} className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`} />
-                      </div>
-                    </div>
-                    <p className="mb-5 max-w-[13ch] whitespace-pre-line text-center text-[19px] font-semibold leading-[1.3] text-[#3c3c3c] transition-opacity duration-300 group-hover:opacity-0 md:text-[20px]">
-                      {pod.shortDesc}
-                    </p>
-                    <p className="mb-2 min-h-[18px] text-center text-[12px] font-medium text-[#7a7a7a] transition-opacity duration-300 group-hover:opacity-0 md:text-[12px]">
-                      {pod.cardSupport}
-                    </p>
-                    {pod.cardNote && (
-                      <p className="mb-6 min-h-[16px] text-center text-[11px] font-medium text-[#999999] transition-opacity duration-300 group-hover:opacity-0">
-                        {pod.cardNote}
-                      </p>
-                    )}
-                    <div className="absolute bottom-8 left-0 flex w-full translate-y-0 justify-center opacity-100 transition-all duration-500 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                      <span className="rounded-[4px] bg-[#00855a] px-7 py-3 text-[15px] font-bold text-white transition-colors hover:bg-[#006e4a] md:py-2.5">
-                        Explore
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+            <div ref={carouselRef} className="hide-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto md:grid md:grid-cols-2 md:overflow-visible lg:hidden">
+              {products.map((pod) => renderPodCard(pod, 'w-[85%] flex-shrink-0 snap-center md:w-full'))}
+            </div>
+
+            <div className="hidden lg:block">
+              <div className="grid grid-cols-3 gap-4">
+                {desktopTopPodCards.map((pod) => renderPodCard(pod, 'w-full'))}
+              </div>
+              <div className="mt-4 flex justify-center gap-4">
+                {desktopBottomPodCards.map((pod) => renderPodCard(pod, 'w-[calc((100%-2rem)/3)]'))}
+              </div>
             </div>
           </div>
         </section>

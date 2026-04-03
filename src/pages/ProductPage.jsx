@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Check } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
@@ -28,18 +28,66 @@ const SwatchGroup = ({ label, options, selectedId, onSelect }) => (
   </div>
 );
 
+const defaultPricingBreakdown = {
+  installation: 800,
+  delivery: 300,
+  sst: 600
+};
+
+const addonOptions = [
+  { id: 'office-chairs', label: 'Office Chairs', amount: 300 },
+  { id: 'privacy-glass', label: 'Privacy Glass', amount: 500 },
+  { id: 'monitor-arm', label: 'Monitor Arm', amount: 250 },
+  { id: 'wireless-charger', label: 'Wireless Charger', amount: 180 }
+];
+
 export default function ProductPage() {
   const { slug } = useParams();
   const product = useMemo(() => getProductBySlug(slug), [slug]);
 
   const [selectedExterior, setSelectedExterior] = useState('');
   const [selectedInterior, setSelectedInterior] = useState('');
+  const [selectedAddons, setSelectedAddons] = useState([]);
+  const [isAddonMenuOpen, setIsAddonMenuOpen] = useState(false);
+  const [isContactChooserOpen, setIsContactChooserOpen] = useState(false);
+  const chooserRef = useRef(null);
+  const addonMenuRef = useRef(null);
 
   useEffect(() => {
     if (!product) return;
     setSelectedExterior(product.defaultExterior);
     setSelectedInterior(product.defaultInterior);
+    setSelectedAddons([]);
+    setIsAddonMenuOpen(false);
+    setIsContactChooserOpen(false);
   }, [product]);
+
+  useEffect(() => {
+    if (!isContactChooserOpen && !isAddonMenuOpen) return;
+
+    const handleOutsideClick = (event) => {
+      if (chooserRef.current && !chooserRef.current.contains(event.target)) {
+        setIsContactChooserOpen(false);
+      }
+      if (addonMenuRef.current && !addonMenuRef.current.contains(event.target)) {
+        setIsAddonMenuOpen(false);
+      }
+    };
+
+    const handleEsc = (event) => {
+      if (event.key === 'Escape') {
+        setIsContactChooserOpen(false);
+        setIsAddonMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('keydown', handleEsc);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('keydown', handleEsc);
+    };
+  }, [isAddonMenuOpen, isContactChooserOpen]);
 
   if (!product) {
     return (
@@ -59,6 +107,30 @@ export default function ProductPage() {
     );
   }
 
+  const whatsappHref = `https://wa.me/600000000000?text=${encodeURIComponent(`Hi AcePods, I'm interested in pricing for ${product.name}`)}`;
+  const emailHref = `mailto:hello@acepods.my?subject=${encodeURIComponent(`AcePods enquiry - ${product.name}`)}`;
+  const selectedAddonsAmount = addonOptions.filter((addon) => selectedAddons.includes(addon.id)).reduce((sum, addon) => sum + addon.amount, 0);
+  const startingPriceMatch = product.pricing.amount.match(/\d[\d,]*/);
+  const totalAmount = startingPriceMatch ? Number.parseInt(startingPriceMatch[0].replace(/,/g, ''), 10) : 0;
+  const baselineAmount = Math.max(totalAmount - (defaultPricingBreakdown.installation + defaultPricingBreakdown.delivery + defaultPricingBreakdown.sst), 0);
+  const computedTotal = baselineAmount + defaultPricingBreakdown.installation + defaultPricingBreakdown.delivery + selectedAddonsAmount + defaultPricingBreakdown.sst;
+
+  const pricingRows = [
+    { label: 'Baseline', amount: baselineAmount },
+    { label: 'Installation', amount: defaultPricingBreakdown.installation },
+    { label: 'Delivery', amount: defaultPricingBreakdown.delivery },
+    { label: 'Add-ons', amount: selectedAddonsAmount },
+    { label: 'SST', amount: defaultPricingBreakdown.sst }
+  ];
+
+  const formatRM = (amount) => `RM${amount.toLocaleString('en-MY')}`;
+  const toggleAddon = (id) => {
+    setSelectedAddons((current) => (current.includes(id) ? current.filter((addonId) => addonId !== id) : [...current, id]));
+  };
+  const selectedAddonLabels = addonOptions
+    .filter((addon) => selectedAddons.includes(addon.id))
+    .map((addon) => addon.label);
+
   return (
     <main className="min-h-screen bg-[#efefef] text-[#1e2227]">
       <header className="bg-[#efefef]">
@@ -71,11 +143,15 @@ export default function ProductPage() {
       </header>
 
       <section className="px-5 pb-8 pt-2 md:px-8 md:pb-12 md:pt-4">
-        <div className="mx-auto w-full max-w-[1280px] space-y-8 lg:space-y-10">
+        <div className="mx-auto w-full max-w-[1280px] space-y-12 lg:space-y-14">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,52fr)_minmax(0,48fr)] lg:gap-12">
-            <div className="min-w-0">
-              <div className="overflow-hidden rounded-[8px] bg-[#efefef] p-1.5 md:p-2">
-                <img src={product.heroImage} alt={product.name} className="h-auto w-full object-contain" />
+            <div className="min-w-0 flex items-end">
+              <div className="w-full rounded-[8px]">
+                <img
+                  src={product.thumbImage || product.heroImage}
+                  alt={product.name}
+                  className="mx-auto h-auto w-full object-contain md:origin-bottom md:scale-[1.2] md:translate-y-[10%]"
+                />
               </div>
             </div>
 
@@ -88,20 +164,119 @@ export default function ProductPage() {
               </h1>
               <p className="mt-5 max-w-[42ch] text-[17px] leading-[1.5] text-[#2e3136]">{product.shortDesc}</p>
 
-              <div className="mt-8 border-y border-[#d0d0d0] py-6">
-                <SwatchGroup label="Exterior Color" options={product.exteriorColors} selectedId={selectedExterior} onSelect={setSelectedExterior} />
-                <div className="mt-6 border-t border-[#d8d8d8] pt-6">
-                  <SwatchGroup label="Interior Color" options={product.interiorColors} selectedId={selectedInterior} onSelect={setSelectedInterior} />
+              <div className="mt-8 border-y border-[#d0d0d0] py-6 md:py-7">
+                <div className="grid gap-6 md:grid-cols-2 md:items-stretch md:gap-8">
+                  <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
+                    <SwatchGroup label="Exterior Color" options={product.exteriorColors} selectedId={selectedExterior} onSelect={setSelectedExterior} />
+                    <div className="mt-6 border-t border-[#d8d8d8] pt-6">
+                      <SwatchGroup label="Interior Color" options={product.interiorColors} selectedId={selectedInterior} onSelect={setSelectedInterior} />
+                    </div>
+                    <div className="relative mt-6 border-t border-[#d8d8d8] pt-6" ref={addonMenuRef}>
+                      <h3 className="mb-3 text-[16px] font-semibold text-[#1e2227]">Add-ons</h3>
+                      <button
+                        type="button"
+                        onClick={() => setIsAddonMenuOpen((prev) => !prev)}
+                        aria-expanded={isAddonMenuOpen}
+                        aria-controls="addons-menu"
+                        className="flex w-full items-center justify-between rounded-[6px] border border-[#d8d8d8] bg-[#fbfbfb] px-3 py-2.5 text-left text-[13px] font-medium text-[#333941] transition-colors hover:bg-white"
+                      >
+                        <span>{selectedAddons.length > 0 ? `${selectedAddons.length} add-on${selectedAddons.length > 1 ? 's' : ''} selected` : 'Select add-ons'}</span>
+                        <span className="text-[12px] text-[#67707a]">{isAddonMenuOpen ? '▲' : '▼'}</span>
+                      </button>
+                      {selectedAddonLabels.length > 0 && (
+                        <p className="mt-2 line-clamp-2 text-[12px] leading-[1.4] text-[#5d6670]">{selectedAddonLabels.join(', ')}</p>
+                      )}
+
+                      {isAddonMenuOpen && (
+                        <div
+                          id="addons-menu"
+                          className="absolute left-0 top-full z-20 mt-2 w-full rounded-[8px] border border-[#d8d8d8] bg-white p-2.5 shadow-lg"
+                        >
+                          <div className="grid gap-1.5">
+                            {addonOptions.map((addon) => {
+                              const checked = selectedAddons.includes(addon.id);
+                              return (
+                                <label
+                                  key={addon.id}
+                                  className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f9fafb]"
+                                >
+                                  <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
+                                    <input
+                                      type="checkbox"
+                                      checked={checked}
+                                      onChange={() => toggleAddon(addon.id)}
+                                      className="h-4 w-4 accent-[#145b5f]"
+                                    />
+                                    {addon.label}
+                                  </span>
+                                  <span className="text-[12px] font-semibold tabular-nums text-[#59606a]">{formatRM(addon.amount)}</span>
+                                </label>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
+                    <p className="text-[16px] font-semibold leading-tight text-[#1e2227]">Pricing overview</p>
+                    <dl className="mt-3 text-[14px]">
+                      <div className="space-y-0">
+                        {pricingRows.map((row) => (
+                          <div key={row.label} className="grid grid-cols-[1fr_auto] items-center border-b border-[#e8eaed] py-2.5">
+                            <dt className="font-medium text-[#414850]">{row.label}</dt>
+                            <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{formatRM(row.amount)}</dd>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3 border-t border-[#d3d9df] pt-3">
+                        <div className="grid grid-cols-[1fr_auto] items-center">
+                          <dt className="text-[16px] font-semibold text-[#1f232a]">Total</dt>
+                          <dd className="text-right text-[18px] font-bold tabular-nums text-[#1f232a]">{formatRM(computedTotal)}</dd>
+                        </div>
+                      </div>
+                    </dl>
+                    <p className="mt-3 text-[11px] font-medium leading-[1.4] text-[#626a73]">
+                      Indicative pricing, final quote depends on finish and site conditions.
+                    </p>
+
+                    <div className="relative mt-4" ref={chooserRef}>
+                      <button
+                        type="button"
+                        onClick={() => setIsContactChooserOpen((prev) => !prev)}
+                        aria-expanded={isContactChooserOpen}
+                        aria-controls="contact-chooser"
+                        className="w-full rounded-[4px] border border-[#145b5f] bg-white px-4 py-3 text-[15px] font-semibold text-[#145b5f] transition-colors hover:bg-[#f1f6f6]"
+                      >
+                        Contact Us
+                      </button>
+
+                      {isContactChooserOpen && (
+                        <div
+                          id="contact-chooser"
+                          className="absolute right-0 top-full z-20 mt-2 w-full min-w-[220px] rounded-[8px] border border-[#d7d7d7] bg-white p-3 shadow-lg md:w-[240px]"
+                        >
+                          <a
+                            href={whatsappHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block rounded-[6px] bg-[#145b5f] px-3 py-2.5 text-center text-[14px] font-semibold text-white hover:bg-[#0f4b4e]"
+                          >
+                            WhatsApp
+                          </a>
+                          <a
+                            href={emailHref}
+                            className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center text-[14px] font-semibold text-[#1e2227] hover:bg-[#f5f6f7]"
+                          >
+                            Email
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <button className="mt-6 w-full rounded-[4px] bg-[#145b5f] px-5 py-4 text-white transition-colors hover:bg-[#0f4b4e]">
-                <span className="block text-[20px] font-semibold leading-tight">Get Pricing</span>
-                <span className="mt-1 block text-[26px] font-semibold leading-tight tracking-tight">{product.pricing.amount}</span>
-                <span className="mt-2 block text-[11px] font-medium leading-[1.4] text-white/80">
-                  Indicative pricing, final quote depends on finish and site conditions.
-                </span>
-              </button>
             </div>
           </div>
 
