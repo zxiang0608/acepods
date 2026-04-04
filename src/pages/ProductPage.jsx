@@ -28,25 +28,13 @@ const SwatchGroup = ({ label, options, selectedId, onSelect }) => (
   </div>
 );
 
-const defaultPricingBreakdown = {
-  installation: 800,
-  delivery: 300,
-  sst: 600
-};
-
-const addonOptions = [
-  { id: 'office-chairs', label: 'Office Chairs', amount: 300 },
-  { id: 'privacy-glass', label: 'Privacy Glass', amount: 500 },
-  { id: 'monitor-arm', label: 'Monitor Arm', amount: 250 },
-  { id: 'wireless-charger', label: 'Wireless Charger', amount: 180 }
-];
-
 export default function ProductPage() {
   const { slug } = useParams();
   const product = useMemo(() => getProductBySlug(slug), [slug]);
 
   const [selectedExterior, setSelectedExterior] = useState('');
   const [selectedInterior, setSelectedInterior] = useState('');
+  const [selectedConfigurationOptions, setSelectedConfigurationOptions] = useState([]);
   const [selectedAddons, setSelectedAddons] = useState([]);
   const [isAddonMenuOpen, setIsAddonMenuOpen] = useState(false);
   const [isContactChooserOpen, setIsContactChooserOpen] = useState(false);
@@ -57,6 +45,7 @@ export default function ProductPage() {
     if (!product) return;
     setSelectedExterior(product.defaultExterior);
     setSelectedInterior(product.defaultInterior);
+    setSelectedConfigurationOptions([]);
     setSelectedAddons([]);
     setIsAddonMenuOpen(false);
     setIsContactChooserOpen(false);
@@ -109,27 +98,58 @@ export default function ProductPage() {
 
   const whatsappHref = `https://wa.me/600000000000?text=${encodeURIComponent(`Hi AcePods, I'm interested in pricing for ${product.name}`)}`;
   const emailHref = `mailto:hello@acepods.my?subject=${encodeURIComponent(`AcePods enquiry - ${product.name}`)}`;
-  const selectedAddonsAmount = addonOptions.filter((addon) => selectedAddons.includes(addon.id)).reduce((sum, addon) => sum + addon.amount, 0);
-  const startingPriceMatch = product.pricing.amount.match(/\d[\d,]*/);
-  const totalAmount = startingPriceMatch ? Number.parseInt(startingPriceMatch[0].replace(/,/g, ''), 10) : 0;
-  const baselineAmount = Math.max(totalAmount - (defaultPricingBreakdown.installation + defaultPricingBreakdown.delivery + defaultPricingBreakdown.sst), 0);
-  const computedTotal = baselineAmount + defaultPricingBreakdown.installation + defaultPricingBreakdown.delivery + selectedAddonsAmount + defaultPricingBreakdown.sst;
+  const pdpPricing = product.pdpPricing || {};
+  const baseConfigurations = [...(pdpPricing.baseConfigurations || [])].sort((a, b) => a.price - b.price);
+  const baseUnit = baseConfigurations[0];
+  const configurationOptions = [...(pdpPricing.configurationOptions || [])].sort((a, b) => a.amount - b.amount);
+  const selectedConfigurationAmount = configurationOptions
+    .filter((configuration) => selectedConfigurationOptions.includes(configuration.id))
+    .reduce((sum, configuration) => sum + configuration.amount, 0);
+  const availableAddons = pdpPricing.addOnOptions || [];
+  const selectedAddonsAmount = availableAddons
+    .filter((addon) => selectedAddons.includes(addon.id))
+    .reduce((sum, addon) => sum + addon.amount, 0);
+  const installationAmount = pdpPricing.installationPerUnit || 0;
+  const deliveryAmount = pdpPricing.delivery?.default || 0;
+  const computedTotal = (baseUnit?.price || 0) + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
 
   const pricingRows = [
-    { label: 'Baseline', amount: baselineAmount },
-    { label: 'Installation', amount: defaultPricingBreakdown.installation },
-    { label: 'Delivery', amount: defaultPricingBreakdown.delivery },
-    { label: 'Add-ons', amount: selectedAddonsAmount },
-    { label: 'SST', amount: defaultPricingBreakdown.sst }
+    { label: 'Base unit price', amount: baseUnit?.price || 0 },
+    { label: 'Add-on', amount: selectedConfigurationAmount },
+    { label: 'Installation', amount: installationAmount },
+    { label: 'Delivery (Klang Valley)', amount: deliveryAmount },
+    { label: 'Add-ons subtotal', amount: selectedAddonsAmount }
   ];
 
   const formatRM = (amount) => `RM${amount.toLocaleString('en-MY')}`;
+  const toggleConfigurationOption = (id) => {
+    setSelectedConfigurationOptions((current) => (current.includes(id) ? current.filter((optionId) => optionId !== id) : [...current, id]));
+  };
   const toggleAddon = (id) => {
     setSelectedAddons((current) => (current.includes(id) ? current.filter((addonId) => addonId !== id) : [...current, id]));
   };
-  const selectedAddonLabels = addonOptions
+  const selectedConfigurationLabels = configurationOptions
+    .filter((configuration) => selectedConfigurationOptions.includes(configuration.id))
+    .map((configuration) => configuration.label);
+  const selectedAddonLabels = availableAddons
     .filter((addon) => selectedAddons.includes(addon.id))
     .map((addon) => addon.label);
+  const selectedOptionLabels = [...selectedConfigurationLabels, ...selectedAddonLabels];
+  const technicalSpecifications = product.technicalSpecifications || {};
+  const technicalSpecRows = [
+    { label: 'Capacity', value: technicalSpecifications.capacity },
+    { label: 'External dimensions', value: technicalSpecifications.externalDimensions },
+    { label: 'Internal dimensions', value: technicalSpecifications.internalDimensions },
+    { label: 'Internal height', value: technicalSpecifications.internalHeight },
+    {
+      label: 'External height',
+      value:
+        technicalSpecifications.externalHeight && technicalSpecifications.roomHeightRequirement
+          ? `${technicalSpecifications.externalHeight} (room height required: ${technicalSpecifications.roomHeightRequirement})`
+          : technicalSpecifications.externalHeight
+    },
+    { label: 'Weight', value: technicalSpecifications.weight }
+  ].filter((row) => row.value);
 
   return (
     <main className="min-h-screen bg-[#efefef] text-[#1e2227]">
@@ -180,11 +200,15 @@ export default function ProductPage() {
                         aria-controls="addons-menu"
                         className="flex w-full items-center justify-between rounded-[6px] border border-[#d8d8d8] bg-[#fbfbfb] px-3 py-2.5 text-left text-[13px] font-medium text-[#333941] transition-colors hover:bg-white"
                       >
-                        <span>{selectedAddons.length > 0 ? `${selectedAddons.length} add-on${selectedAddons.length > 1 ? 's' : ''} selected` : 'Select add-ons'}</span>
+                        <span>
+                          {selectedOptionLabels.length > 0
+                            ? `${selectedOptionLabels.length} option${selectedOptionLabels.length > 1 ? 's' : ''} selected`
+                            : 'Select add-ons'}
+                        </span>
                         <span className="text-[12px] text-[#67707a]">{isAddonMenuOpen ? '▲' : '▼'}</span>
                       </button>
-                      {selectedAddonLabels.length > 0 && (
-                        <p className="mt-2 line-clamp-2 text-[12px] leading-[1.4] text-[#5d6670]">{selectedAddonLabels.join(', ')}</p>
+                      {selectedOptionLabels.length > 0 && (
+                        <p className="mt-2 line-clamp-2 text-[12px] leading-[1.4] text-[#5d6670]">{selectedOptionLabels.join(', ')}</p>
                       )}
 
                       {isAddonMenuOpen && (
@@ -192,27 +216,66 @@ export default function ProductPage() {
                           id="addons-menu"
                           className="absolute left-0 top-full z-20 mt-2 w-full rounded-[8px] border border-[#d8d8d8] bg-white p-2.5 shadow-lg"
                         >
-                          <div className="grid gap-1.5">
-                            {addonOptions.map((addon) => {
-                              const checked = selectedAddons.includes(addon.id);
-                              return (
-                                <label
-                                  key={addon.id}
-                                  className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f9fafb]"
-                                >
-                                  <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
-                                    <input
-                                      type="checkbox"
-                                      checked={checked}
-                                      onChange={() => toggleAddon(addon.id)}
-                                      className="h-4 w-4 accent-[#145b5f]"
-                                    />
-                                    {addon.label}
-                                  </span>
-                                  <span className="text-[12px] font-semibold tabular-nums text-[#59606a]">{formatRM(addon.amount)}</span>
-                                </label>
-                              );
-                            })}
+                          <div className="grid gap-2.5">
+                            <div>
+                              <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#66707a]">Configuration options</p>
+                              <div className="grid gap-1.5">
+                                {configurationOptions.length > 0 ? (
+                                  configurationOptions.map((configuration) => {
+                                    const checked = selectedConfigurationOptions.includes(configuration.id);
+                                    return (
+                                      <label
+                                        key={configuration.id}
+                                        className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f9fafb]"
+                                      >
+                                        <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
+                                          <input
+                                            type="checkbox"
+                                            checked={checked}
+                                            onChange={() => toggleConfigurationOption(configuration.id)}
+                                            className="h-4 w-4 accent-[#145b5f]"
+                                          />
+                                          {configuration.label}
+                                        </span>
+                                        <span className="text-[12px] font-semibold tabular-nums text-[#59606a]">{formatRM(configuration.amount)}</span>
+                                      </label>
+                                    );
+                                  })
+                                ) : (
+                                  <p className="px-2 py-1.5 text-[12px] text-[#6b727b]">No configuration upgrades for this pod.</p>
+                                )}
+                              </div>
+                            </div>
+
+                            <div className="border-t border-[#e4e7eb] pt-2.5">
+                              <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#66707a]">Other add-ons</p>
+                              <div className="grid gap-1.5">
+                                {availableAddons.length > 0 ? (
+                                  availableAddons.map((addon) => {
+                                    const checked = selectedAddons.includes(addon.id);
+                                    return (
+                                      <label
+                                        key={addon.id}
+                                        className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f9fafb]"
+                                      >
+                                        <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
+                                          <input
+                                            type="checkbox"
+                                            checked={checked}
+                                            onChange={() => toggleAddon(addon.id)}
+                                            className="h-4 w-4 accent-[#145b5f]"
+                                          />
+                                          {addon.label}
+                                        </span>
+                                        <span className="text-[12px] font-semibold tabular-nums text-[#59606a]">{formatRM(addon.amount)}</span>
+                                      </label>
+                                    );
+                                  })
+                                ) : (
+                                  <p className="px-2 py-1.5 text-[12px] text-[#6b727b]">No additional add-ons for this pod.</p>
+                                )}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       )}
@@ -238,6 +301,9 @@ export default function ProductPage() {
                       </div>
                     </dl>
                     <p className="mt-3 text-[11px] font-medium leading-[1.4] text-[#626a73]">
+                      {pdpPricing.delivery?.outstationNote || 'Outstation: please email'}
+                    </p>
+                    <p className="mt-2 text-[11px] font-medium leading-[1.4] text-[#626a73]">
                       Indicative pricing, final quote depends on finish and site conditions.
                     </p>
 
@@ -280,35 +346,16 @@ export default function ProductPage() {
             </div>
           </div>
 
-          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,52fr)_minmax(0,48fr)] lg:gap-12">
+          <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,56fr)_minmax(0,44fr)] lg:gap-12">
             <div className="min-w-0">
-              <div className="rounded-[8px] border border-[#d8d8d8] bg-white p-4 md:p-5">
-                <h2 className="text-[18px] font-semibold tracking-tight text-[#1e2227]">2D Drawing</h2>
-                <div className="mt-3 aspect-square w-full overflow-hidden rounded-[6px] border border-[#e8e8e8] bg-[#f3f3f3] p-1.5">
-                  {product.drawing2dImage ? (
-                    <img
-                      src={product.drawing2dImage}
-                      alt={`${product.name} 2D drawing`}
-                      className="h-full w-full object-contain [image-rendering:-webkit-optimize-contrast]"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center text-center text-[13px] font-medium text-[#6e737a]">
-                      2D drawing will be added soon
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="min-w-0 self-start">
-              <div className="space-y-5 rounded-[8px] border border-[#d8d8d8] bg-white p-5">
+              <div className="h-full space-y-5">
                 <div>
-                  <h2 className="text-[24px] font-semibold tracking-tight">Key Specs</h2>
+                  <h2 className="text-[24px] font-semibold tracking-tight">Technical Specifications</h2>
                   <dl className="mt-3 grid gap-y-2">
-                    {product.specs.map((spec) => (
-                      <div key={spec.label} className="flex items-start justify-between gap-4 border-b border-[#ececec] pb-2 text-[14px]">
+                    {technicalSpecRows.map((spec) => (
+                      <div key={spec.label} className="flex items-start justify-between gap-4 border-b border-[#d9d9d9] pb-2 text-[14px]">
                         <dt className="font-medium text-[#4e535a]">{spec.label}</dt>
-                        <dd className="text-right font-semibold text-[#1f232a]">{spec.value}</dd>
+                        <dd className="max-w-[70%] text-right font-semibold text-[#1f232a]">{spec.value}</dd>
                       </div>
                     ))}
                   </dl>
@@ -323,20 +370,39 @@ export default function ProductPage() {
                   </ul>
                 </div>
               </div>
+            </div>
 
-              <div className="mt-8 rounded-[8px] border border-[#d8d8d8] bg-white p-5">
-                <h2 className="text-[24px] font-semibold tracking-tight">FAQ</h2>
-                <div className="mt-4 space-y-4">
-                  {product.faq.map((item) => (
-                    <div key={item.q} className="border-t border-[#ececec] pt-3">
-                      <h3 className="text-[15px] font-semibold text-[#1f232a]">{item.q}</h3>
-                      <p className="mt-1 text-[14px] leading-[1.5] text-[#4b5058]">{item.a}</p>
+            <div className="min-w-0">
+              <div className="h-full">
+                <h2 className="text-[18px] font-semibold tracking-tight text-[#1e2227]">2D Drawing</h2>
+                <div className="mt-3 h-[250px] w-full overflow-hidden rounded-[6px] border border-[#d9d9d9] bg-[#f3f3f3] p-1.5 md:h-[320px] lg:h-[360px]">
+                  {product.drawing2dImage ? (
+                    <img
+                      src={product.drawing2dImage}
+                      alt={`${product.name} 2D drawing`}
+                      className="h-full w-full object-contain [image-rendering:-webkit-optimize-contrast]"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-center text-[13px] font-medium text-[#6e737a]">
+                      2D drawing will be added soon
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
           </div>
+
+          <section className="mx-auto w-full max-w-[980px] border-t border-[#d0d0d0] pt-8">
+            <h2 className="text-center text-[24px] font-semibold tracking-tight">FAQ</h2>
+            <div className="mt-4">
+              {product.faq.map((item) => (
+                <article key={item.q} className="border-b border-[#d9d9d9] py-4 text-center">
+                  <h3 className="text-[16px] font-semibold text-[#1f232a]">{item.q}</h3>
+                  <p className="mx-auto mt-1.5 max-w-[90ch] text-[14px] leading-[1.55] text-[#4b5058]">{item.a}</p>
+                </article>
+              ))}
+            </div>
+          </section>
         </div>
       </section>
     </main>

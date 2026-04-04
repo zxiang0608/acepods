@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Bike,
   CheckCircle2,
   ChevronDown,
+  ChevronLeft,
   ChevronRight,
   Globe,
   Hammer,
@@ -13,7 +13,6 @@ import {
   Menu,
   Route,
   Search,
-  Ticket,
   Twitter,
   User,
   X
@@ -21,7 +20,7 @@ import {
 import acePodsLogo from '../Logos/ace pods logo.png';
 import acePodsHero from '../assets/hero-pods mirror.png';
 import openOfficeImage from '../assets/open-office.png';
-import comparePriceImage from '../assets/E105DYKK.avif';
+import comparePriceImage from '../assets/quotation.jpg';
 import podsInstallationImage from '../assets/pods-installation.png';
 import deliveryPodsImage from '../assets/delivery-pods.png';
 import menuAceSolo from '../assets/ace-solo-cutout.png';
@@ -29,6 +28,13 @@ import menuAceSoloPlus from '../assets/ace-solo-plus-cutout.png';
 import menuAceDuo from '../assets/ace-duo-cutout.png';
 import menuAceMeeting from '../assets/ace-meeting.png';
 import menuAceMeetingXL from '../assets/ace-meeting-XL-cutout.png';
+import parkerLogo from '../assets/parker-logo.png';
+import cmacgmLogo from '../assets/cmacgm-logo.svg';
+import alphabetLogo from '../assets/alphabet-logo.png';
+import rightwillLogo from '../assets/rightwill-logo.png';
+import matradeLogo from '../assets/matrade-logo.png';
+import amorePacificLogo from '../assets/amorepacific.jpg';
+import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
 import SeoMeta from './components/SeoMeta';
 import { products } from './data/products';
 import { HOME_FAQ_ITEMS } from './seo/constants';
@@ -237,14 +243,18 @@ const smartPodsMenuItems = [
 ];
 
 const trustedLogos = [
-  { name: "L'Oreal", type: 'text' },
-  { name: 'ticketswap', type: 'icon', icon: Ticket },
-  { name: 'M', type: 'text', style: { fontFamily: 'Georgia, serif' } },
-  { name: 'Postmates', type: 'icon', icon: Bike },
-  { name: 'BCG', type: 'text' },
-  { name: 'Linked', type: 'special' },
-  { name: 'GE', type: 'special-ge' },
-  { name: 'M-Files', type: 'text' }
+  { name: 'Parker Hanifin', image: parkerLogo, fitClass: 'scale-[0.92]', logoStageClass: 'max-h-[52px] max-w-[168px]' },
+  { name: 'CMA CGM Shipping', image: cmacgmLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
+  { name: 'Alphabet Capital Sdn Bhd', image: alphabetLogo, fitClass: 'scale-[0.94]', logoStageClass: 'max-h-[50px] max-w-[176px]' },
+  { name: 'Rightwill Sdn Bhd', image: rightwillLogo, fitClass: 'scale-[0.88] -translate-y-[1px]', logoStageClass: 'max-h-[52px] max-w-[170px]' },
+  {
+    name: 'Malaysia External Trade Development Corporation (MATRADE)',
+    image: matradeLogo,
+    fitClass: 'scale-[0.96]',
+    logoStageClass: 'max-h-[48px] max-w-[176px]'
+  },
+  { name: 'Amore Pacific', image: amorePacificLogo, fitClass: 'scale-[1.16]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
+  { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', logoStageClass: 'max-h-[52px] max-w-[172px]' }
 ];
 
 const footerLinkGroups = [
@@ -285,7 +295,8 @@ export default function App({ seoMode = false }) {
   const [isSmartPodsDesktopOpen, setIsSmartPodsDesktopOpen] = useState(false);
   const [isSmartPodsMobileOpen, setIsSmartPodsMobileOpen] = useState(false);
   const [openFooterGroup, setOpenFooterGroup] = useState('products');
-  const carouselRef = useRef(null);
+  const [openHomepageFaq, setOpenHomepageFaq] = useState(0);
+  const [activePodIndex, setActivePodIndex] = useState(0);
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -321,10 +332,12 @@ export default function App({ seoMode = false }) {
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, [isSmartPodsDesktopOpen]);
 
-  const scrollNext = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-    }
+  const goToPrevPod = () => {
+    setActivePodIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  const goToNextPod = () => {
+    setActivePodIndex((prev) => Math.min(prev + 1, products.length - 1));
   };
 
   const activeRenovationPoints = seoMode ? seoRenovationPoints : renovationPoints;
@@ -348,9 +361,7 @@ export default function App({ seoMode = false }) {
   const compareSupportingLine = seoMode
     ? 'Compare more confidently when pricing, installation, and support are clear upfront.'
     : 'We show you the complete price upfront. You can compare more confidently when installation, support, and after-sales are clear too.';
-  const trustSectionHeading = seoMode
-    ? 'Trusted by teams in leading companies worldwide'
-    : 'Trusted by over 70% of Forbes Top 100 companies';
+  const trustSectionHeading = 'Trusted by teams across Malaysia';
   const whyHeading = seoMode ? 'Why teams choose AcePods' : 'Choose AcePods';
   const footerBrandLine = seoMode
     ? 'Acoustic office pods for calls, focus, and meetings'
@@ -391,6 +402,32 @@ export default function App({ seoMode = false }) {
           <span className="rounded-[4px] bg-[#00855a] px-7 py-3 text-[15px] font-bold text-white transition-colors hover:bg-[#006e4a] md:py-2.5">
             Explore
           </span>
+        </div>
+      </div>
+    </Link>
+  );
+
+  const renderMobilePodCard = (pod) => (
+    <Link
+      key={`mobile-${pod.slug}`}
+      to={`/pods/${pod.slug}`}
+      className="relative block min-h-[660px] overflow-hidden rounded-[22px] bg-[#EAEAEA] px-6 pb-8 pt-10"
+    >
+      <div className="relative z-10 flex h-full flex-col items-center text-center">
+        <div className="max-w-[300px]">
+          <h3 className="text-[16px] font-semibold tracking-[0.01em] text-[#636a74]">{pod.name}</h3>
+          <p className="mt-4 text-[22px] font-semibold leading-[1.22] tracking-tight text-[#3d434b]">{pod.shortDesc}</p>
+          <p className="mt-3 text-[15px] font-medium leading-[1.4] text-[#6d7580]">{pod.cardSupport}</p>
+          {pod.cardNote && <p className="mt-2 text-[13px] font-medium leading-[1.4] text-[#7f8792]">{pod.cardNote}</p>}
+        </div>
+
+        <div className="mt-auto w-full pt-8">
+          <div className="mx-auto aspect-square w-full max-w-[288px]">
+            <img src={pod.thumbImage} alt={pod.name} className={`h-full w-full object-contain ${pod.imageScale}`} />
+          </div>
+          <div className="mt-7 flex justify-center">
+            <span className="rounded-[6px] bg-[#00855a] px-9 py-3.5 text-[16px] font-bold text-white">Explore</span>
+          </div>
         </div>
       </div>
     </Link>
@@ -617,14 +654,58 @@ export default function App({ seoMode = false }) {
               )}
             </div>
 
-            <div className="absolute right-4 top-1/2 z-10 lg:hidden">
-              <button onClick={scrollNext} className="rounded-full bg-gray-100/80 p-3 text-gray-800 shadow-lg backdrop-blur-sm">
+            <div className="relative md:hidden">
+              <div className="overflow-hidden">
+                <div
+                  className="flex transition-transform duration-300 ease-out"
+                  style={{ transform: `translateX(-${activePodIndex * 100}%)` }}
+                >
+                  {products.map((pod) => (
+                    <div key={`slide-${pod.slug}`} className="w-full shrink-0">
+                      {renderMobilePodCard(pod)}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                aria-label="Previous pod"
+                onClick={goToPrevPod}
+                disabled={activePodIndex === 0}
+                className={`absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#d9d9d9]/90 p-3 text-[#4f555d] transition ${
+                  activePodIndex === 0 ? 'pointer-events-none opacity-45' : 'hover:bg-[#d2d2d2]'
+                }`}
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                type="button"
+                aria-label="Next pod"
+                onClick={goToNextPod}
+                disabled={activePodIndex === products.length - 1}
+                className={`absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#d9d9d9]/90 p-3 text-[#4f555d] transition ${
+                  activePodIndex === products.length - 1 ? 'pointer-events-none opacity-45' : 'hover:bg-[#d2d2d2]'
+                }`}
+              >
                 <ChevronRight size={24} />
               </button>
+
+              <div className="mt-5 flex items-center justify-center gap-2.5">
+                {products.map((pod, idx) => (
+                  <button
+                    key={`dot-${pod.slug}`}
+                    type="button"
+                    aria-label={`Go to ${pod.name}`}
+                    onClick={() => setActivePodIndex(idx)}
+                    className={`h-2.5 rounded-full transition-all ${idx === activePodIndex ? 'w-7 bg-[#555b64]' : 'w-2.5 bg-[#c3c8cf]'}`}
+                  />
+                ))}
+              </div>
             </div>
 
-            <div ref={carouselRef} className="hide-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto md:grid md:grid-cols-2 md:overflow-visible lg:hidden">
-              {products.map((pod) => renderPodCard(pod, 'w-[85%] flex-shrink-0 snap-center md:w-full'))}
+            <div className="hidden md:grid md:grid-cols-2 md:gap-4 lg:hidden">
+              {products.map((pod) => renderPodCard(pod, 'w-full'))}
             </div>
 
             <div className="hidden lg:block">
@@ -737,82 +818,19 @@ export default function App({ seoMode = false }) {
           </div>
         </section>
 
-        {seoMode && (
-          <section className="bg-white px-5 py-14 md:px-12 md:py-20">
-            <div className="mx-auto max-w-[1240px]">
-              <div className="mb-10 rounded-[10px] border border-[#e8e4db] bg-[#f8f7f3] p-6 md:p-8">
-                <h2 className="text-[28px] font-bold tracking-tight text-[#14181c] md:text-[38px]">Office pod FAQ</h2>
-                <p className="mt-3 max-w-[70ch] text-[16px] leading-[1.65] text-[#49505a]">
-                  Direct answers to common buyer questions about office pods, pricing, installation, and support.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-[15px] font-semibold text-[#145b5f]">
-                  <Link to="/seo/office-pods" className="underline-offset-4 hover:underline">
-                    View office pods
-                  </Link>
-                  <Link to="/seo/compare-office-pods" className="underline-offset-4 hover:underline">
-                    Compare office pods
-                  </Link>
-                  <Link to="/seo/pricing" className="underline-offset-4 hover:underline">
-                    View office pod pricing
-                  </Link>
-                  <Link to="/seo/installation-support" className="underline-offset-4 hover:underline">
-                    Learn about installation and support
-                  </Link>
-                  <Link to="/seo/faq" className="underline-offset-4 hover:underline">
-                    Read common questions about office pods
-                  </Link>
-                  <Link to="/seo/installation-support#book-viewing" className="underline-offset-4 hover:underline">
-                    Book a viewing with our team
-                  </Link>
-                </div>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                {HOME_FAQ_ITEMS.map((item) => (
-                  <article key={item.question} className="rounded-[8px] border border-[#e7e3da] bg-[#fcfcfa] p-5">
-                    <h3 className="text-[20px] font-semibold tracking-tight text-[#1a1f26]">{item.question}</h3>
-                    <p className="mt-2 text-[15px] leading-[1.65] text-[#4b535c]">{item.answer}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
         <section className="overflow-hidden bg-white py-16 md:py-24">
           <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#111111] md:mb-12 md:text-[32px]">
-            {seoMode ? (
-              trustSectionHeading
-            ) : (
-              <>
-                Trusted by over 70% of <br /> Forbes Top 100 companies
-              </>
-            )}
+            {trustSectionHeading}
           </h2>
           <div className="hide-scrollbar flex w-full justify-start gap-3 overflow-x-auto px-5 pb-6 lg:justify-center md:gap-4">
             {trustedLogos.map((logo, idx) => (
               <div
                 key={`${logo.name}-${idx}`}
-                className="flex aspect-square min-w-[140px] items-center justify-center rounded-[6px] bg-[#FAFAFA] text-[#777777] md:min-w-[190px]"
-                style={logo.style}
+                className="flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#FAFAFA] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
               >
-                {logo.type === 'text' && <span className="text-lg font-bold md:text-xl">{logo.name}</span>}
-                {logo.type === 'icon' && (
-                  <div className="flex items-center gap-1.5">
-                    <logo.icon size={18} />
-                    <span className="text-sm font-bold md:text-base">{logo.name}</span>
-                  </div>
-                )}
-                {logo.type === 'special' && (
-                  <span className="text-sm font-bold md:text-base">
-                    Linked<span className="ml-0.5 rounded-sm bg-[#777777] px-0.5 text-[#FAFAFA]">in</span>
-                  </span>
-                )}
-                {logo.type === 'special-ge' && (
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#777777] font-serif text-xs font-bold italic md:h-10 md:w-10">
-                    GE
-                  </div>
-                )}
+                <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
+                  <img src={logo.image} alt={logo.name} className={`h-full w-full object-contain ${logo.fitClass || ''}`} />
+                </div>
               </div>
             ))}
           </div>
@@ -839,6 +857,68 @@ export default function App({ seoMode = false }) {
             <button className="mt-14 inline-flex items-center rounded-full bg-[#4a9078] px-10 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#3f7e69] md:mt-16 md:px-14 md:py-4 md:text-[17px]">
               Contact us
             </button>
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-14 md:px-12 md:py-20">
+          <div className="mx-auto max-w-[1240px]">
+            <div className="mx-auto max-w-[780px] text-center">
+              <h2 className="text-[30px] font-bold tracking-tight text-[#15191d] md:text-[42px]">Common questions about office pods</h2>
+              <p className="mt-3 text-[16px] leading-[1.65] text-[#505964] md:text-[17px]">
+                A few things buyers usually want to clarify before choosing a pod.
+              </p>
+              {seoMode && (
+                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[14px] font-medium text-[#145b5f] md:text-[15px]">
+                  <Link to="/seo/office-pods" className="underline-offset-4 hover:underline">
+                    View office pods
+                  </Link>
+                  <Link to="/seo/compare-office-pods" className="underline-offset-4 hover:underline">
+                    Compare office pods
+                  </Link>
+                  <Link to="/seo/pricing" className="underline-offset-4 hover:underline">
+                    View office pod pricing
+                  </Link>
+                  <Link to="/seo/installation-support" className="underline-offset-4 hover:underline">
+                    Learn about installation and support
+                  </Link>
+                  <Link to="/seo/faq" className="underline-offset-4 hover:underline">
+                    Read common questions about office pods
+                  </Link>
+                  <Link to="/seo/installation-support#book-viewing" className="underline-offset-4 hover:underline">
+                    Book a viewing with our team
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-8 border-t border-[#e3e3e3] md:mt-10">
+              {HOME_FAQ_ITEMS.map((item, idx) => {
+                const isOpen = openHomepageFaq === idx;
+                const answerId = `homepage-faq-answer-${idx}`;
+                return (
+                  <article key={item.question} className="border-b border-[#e3e3e3]">
+                    <h3>
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls={answerId}
+                        onClick={() => setOpenHomepageFaq(isOpen ? null : idx)}
+                        className="flex w-full items-center justify-between gap-4 py-5 text-left md:py-6"
+                      >
+                        <span className="text-[19px] font-semibold leading-[1.35] tracking-tight text-[#171b20] md:text-[24px]">{item.question}</span>
+                        <ChevronDown
+                          size={20}
+                          className={`mt-1 shrink-0 text-[#4a545f] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                    </h3>
+                    <div id={answerId} className={`${isOpen ? 'pb-5 md:pb-6' : 'hidden'}`}>
+                      <p className="max-w-[85ch] pr-8 text-[15px] leading-[1.7] text-[#4f5862] md:text-[17px]">{item.answer}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </section>
 
