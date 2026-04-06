@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
-import SeoPageShell from '../components/SeoPageShell';
+import PageShell from '../components/PageShell';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
-  { name: 'Home', path: '/seo' },
-  { name: 'Installation and Support', path: '/seo/installation-support' }
+  { name: 'Home', path: '/' },
+  { name: 'Installation and Support', path: '/installation-support' }
 ];
 
-export default function SeoInstallationSupportPage() {
+export default function InstallationSupportPage() {
   return (
-    <SeoPageShell>
+    <PageShell>
       <SeoMeta
         title="Office Pod Installation and Support | AcePods"
         description="Understand delivery, installation, and after-sales support for office pods so your project is clear from quote to ongoing use."
-        canonical={buildCanonical('/seo/installation-support')}
+        canonical={buildCanonical('/installation-support')}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
         <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/seo" className="hover:text-[#145b5f]">
+          <Link to="/" className="hover:text-[#145b5f]">
             Home
           </Link>{' '}
           / <span>Installation and Support</span>
@@ -57,6 +57,6 @@ export default function SeoInstallationSupportPage() {
           Book a Viewing
         </a>
       </section>
-    </SeoPageShell>
+    </PageShell>
   );
 }

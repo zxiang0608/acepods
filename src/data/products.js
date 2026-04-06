@@ -83,7 +83,11 @@ export const products = [
       { label: 'Ventilation', value: 'Continuous airflow for daily use' },
       { label: 'Power', value: 'Integrated lighting + power access' }
     ],
-    useCases: ['Client calls', 'Quick check-ins', 'Private concentration blocks'],
+    useCases: [
+      'Private calls and video meetings in open-plan offices (Malaysia)',
+      'Focused work without distractions in busy workplaces',
+      'Corporate offices and SMEs needing instant privacy for one person'
+    ],
     exteriorColors: [
       { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
       { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
@@ -142,7 +146,11 @@ export const products = [
       { label: 'Ventilation', value: 'Continuous airflow for extended occupancy' },
       { label: 'Power', value: 'Integrated lighting + power access' }
     ],
-    useCases: ['Deep work', 'Daily confidential calls', 'Private virtual meetings'],
+    useCases: [
+      'Private calls and longer video meetings in open-plan offices (Malaysia)',
+      'Focused work without distractions in busy workplaces',
+      'Improving office productivity with quiet, dedicated solo workspaces'
+    ],
     exteriorColors: [
       { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
       { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
@@ -204,7 +212,11 @@ export const products = [
       { label: 'Ventilation', value: 'Continuous airflow for two-person occupancy' },
       { label: 'Power', value: 'Integrated lighting + power access' }
     ],
-    useCases: ['Interviews', '1:1 meetings', 'Private collaboration'],
+    useCases: [
+      'Quick discussions and short check-ins without booking meeting rooms',
+      'Private one-to-one calls and interviews in open-plan offices',
+      'Corporate offices and SMEs needing instant privacy for two people'
+    ],
     exteriorColors: [
       { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
       { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
@@ -269,7 +281,11 @@ export const products = [
       { label: 'Ventilation', value: 'Continuous airflow for group sessions' },
       { label: 'Power', value: 'Integrated lighting + power access' }
     ],
-    useCases: ['Team syncs', 'Hybrid stand-ups', 'Internal project reviews'],
+    useCases: [
+      'Quick discussions and short check-ins without booking meeting rooms',
+      'Small team meetings and hybrid calls in open-plan offices',
+      'Improving office productivity with quiet, dedicated collaboration spaces'
+    ],
     exteriorColors: [
       { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
       { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
@@ -333,7 +349,11 @@ export const products = [
       { label: 'Ventilation', value: 'Continuous airflow for extended group use' },
       { label: 'Power', value: 'Integrated lighting + power access' }
     ],
-    useCases: ['Project workshops', 'Extended team sessions', 'Group discussions'],
+    useCases: [
+      'Team meetings and longer hybrid sessions for up to 6 people',
+      'Improving office productivity with quiet, dedicated collaboration spaces',
+      'Corporate offices, SMEs, and teams needing instant privacy solutions'
+    ],
     exteriorColors: [
       { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
       { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },

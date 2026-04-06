@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://acepods.my/seo</loc>
+    <loc>https://acepods.my/</loc>
   </url>
   <url>
-    <loc>https://acepods.my/seo/office-pods</loc>
+    <loc>https://acepods.my/office-pods</loc>
   </url>
   <url>
-    <loc>https://acepods.my/seo/compare-office-pods</loc>
+    <loc>https://acepods.my/compare-office-pods</loc>
   </url>
   <url>
-    <loc>https://acepods.my/seo/pricing</loc>
+    <loc>https://acepods.my/pricing</loc>
   </url>
   <url>
-    <loc>https://acepods.my/seo/faq</loc>
+    <loc>https://acepods.my/faq</loc>
   </url>
   <url>
-    <loc>https://acepods.my/seo/installation-support</loc>
+    <loc>https://acepods.my/installation-support</loc>
+  </url>
+  <url>
+    <loc>https://acepods.my/pods/ace-solo</loc>
+  </url>
+  <url>
+    <loc>https://acepods.my/pods/ace-solo-plus</loc>
+  </url>
+  <url>
+    <loc>https://acepods.my/pods/ace-duo</loc>
+  </url>
+  <url>
+    <loc>https://acepods.my/pods/ace-meeting</loc>
+  </url>
+  <url>
+    <loc>https://acepods.my/pods/ace-meeting-xl</loc>
   </url>
 </urlset>

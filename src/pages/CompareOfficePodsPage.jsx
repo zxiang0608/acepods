@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
-import SeoPageShell from '../components/SeoPageShell';
+import PageShell from '../components/PageShell';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
-  { name: 'Home', path: '/seo' },
-  { name: 'Compare Office Pods', path: '/seo/compare-office-pods' }
+  { name: 'Home', path: '/' },
+  { name: 'Compare Office Pods', path: '/compare-office-pods' }
 ];
 
-export default function SeoCompareOfficePodsPage() {
+export default function CompareOfficePodsPage() {
   return (
-    <SeoPageShell>
+    <PageShell>
       <SeoMeta
         title="Compare Office Pods by Price, Installation and Support | AcePods"
         description="Compare office pods beyond headline price. Review installation, support, warranty coverage, and office-fit considerations before buying."
-        canonical={buildCanonical('/seo/compare-office-pods')}
+        canonical={buildCanonical('/compare-office-pods')}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
         <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/seo" className="hover:text-[#145b5f]">
+          <Link to="/" className="hover:text-[#145b5f]">
             Home
           </Link>{' '}
           / <span>Compare Office Pods</span>
@@ -67,16 +67,16 @@ export default function SeoCompareOfficePodsPage() {
       </section>
 
       <section className="mx-auto mt-10 flex w-full max-w-[1100px] flex-wrap gap-5 px-5 text-[15px] font-semibold text-[#145b5f] md:px-8">
-        <Link to="/seo/office-pods" className="underline-offset-4 hover:underline">
+        <Link to="/office-pods" className="underline-offset-4 hover:underline">
           View office pod types
         </Link>
-        <Link to="/seo/pricing" className="underline-offset-4 hover:underline">
+        <Link to="/pricing" className="underline-offset-4 hover:underline">
           View office pod pricing
         </Link>
-        <Link to="/seo/installation-support" className="underline-offset-4 hover:underline">
+        <Link to="/installation-support" className="underline-offset-4 hover:underline">
           Learn about installation and support
         </Link>
       </section>
-    </SeoPageShell>
+    </PageShell>
   );
 }

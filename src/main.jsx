@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
+import CompareOfficePodsPage from './pages/CompareOfficePodsPage';
+import FaqPage from './pages/FaqPage';
+import InstallationSupportPage from './pages/InstallationSupportPage';
 import NotFoundPage from './pages/NotFoundPage';
+import OfficeChairsPage from './pages/OfficeChairsPage';
+import OfficePodsPage from './pages/OfficePodsPage';
+import PricingPage from './pages/PricingPage';
 import ProductPage from './pages/ProductPage';
-import SeoCompareOfficePodsPage from './pages/SeoCompareOfficePodsPage';
-import SeoFaqPage from './pages/SeoFaqPage';
-import SeoInstallationSupportPage from './pages/SeoInstallationSupportPage';
-import SeoOfficePodsPage from './pages/SeoOfficePodsPage';
-import SeoPricingPage from './pages/SeoPricingPage';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -16,13 +17,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/seo" element={<App seoMode />} />
-        <Route path="/seo/office-pods" element={<SeoOfficePodsPage />} />
-        <Route path="/seo/compare-office-pods" element={<SeoCompareOfficePodsPage />} />
-        <Route path="/seo/pricing" element={<SeoPricingPage />} />
-        <Route path="/seo/faq" element={<SeoFaqPage />} />
-        <Route path="/seo/installation-support" element={<SeoInstallationSupportPage />} />
+        <Route path="/office-chairs" element={<OfficeChairsPage />} />
+        <Route path="/office-pods" element={<OfficePodsPage />} />
+        <Route path="/compare-office-pods" element={<CompareOfficePodsPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/faq" element={<FaqPage />} />
+        <Route path="/installation-support" element={<InstallationSupportPage />} />
         <Route path="/pods/:slug" element={<ProductPage />} />
+        <Route path="/seo/*" element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

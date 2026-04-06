@@ -34,7 +34,7 @@ export default function ProductPage() {
 
   const [selectedExterior, setSelectedExterior] = useState('');
   const [selectedInterior, setSelectedInterior] = useState('');
-  const [selectedConfigurationOptions, setSelectedConfigurationOptions] = useState([]);
+  const [selectedConfigurationOptionId, setSelectedConfigurationOptionId] = useState(null);
   const [selectedAddons, setSelectedAddons] = useState([]);
   const [isAddonMenuOpen, setIsAddonMenuOpen] = useState(false);
   const [isContactChooserOpen, setIsContactChooserOpen] = useState(false);
@@ -45,7 +45,7 @@ export default function ProductPage() {
     if (!product) return;
     setSelectedExterior(product.defaultExterior);
     setSelectedInterior(product.defaultInterior);
-    setSelectedConfigurationOptions([]);
+    setSelectedConfigurationOptionId(null);
     setSelectedAddons([]);
     setIsAddonMenuOpen(false);
     setIsContactChooserOpen(false);
@@ -102,9 +102,8 @@ export default function ProductPage() {
   const baseConfigurations = [...(pdpPricing.baseConfigurations || [])].sort((a, b) => a.price - b.price);
   const baseUnit = baseConfigurations[0];
   const configurationOptions = [...(pdpPricing.configurationOptions || [])].sort((a, b) => a.amount - b.amount);
-  const selectedConfigurationAmount = configurationOptions
-    .filter((configuration) => selectedConfigurationOptions.includes(configuration.id))
-    .reduce((sum, configuration) => sum + configuration.amount, 0);
+  const selectedConfigurationOption = configurationOptions.find((configuration) => configuration.id === selectedConfigurationOptionId) || null;
+  const selectedConfigurationAmount = selectedConfigurationOption?.amount || 0;
   const availableAddons = pdpPricing.addOnOptions || [];
   const selectedAddonsAmount = availableAddons
     .filter((addon) => selectedAddons.includes(addon.id))
@@ -123,14 +122,12 @@ export default function ProductPage() {
 
   const formatRM = (amount) => `RM${amount.toLocaleString('en-MY')}`;
   const toggleConfigurationOption = (id) => {
-    setSelectedConfigurationOptions((current) => (current.includes(id) ? current.filter((optionId) => optionId !== id) : [...current, id]));
+    setSelectedConfigurationOptionId((current) => (current === id ? null : id));
   };
   const toggleAddon = (id) => {
     setSelectedAddons((current) => (current.includes(id) ? current.filter((addonId) => addonId !== id) : [...current, id]));
   };
-  const selectedConfigurationLabels = configurationOptions
-    .filter((configuration) => selectedConfigurationOptions.includes(configuration.id))
-    .map((configuration) => configuration.label);
+  const selectedConfigurationLabels = selectedConfigurationOption ? [selectedConfigurationOption.label] : [];
   const selectedAddonLabels = availableAddons
     .filter((addon) => selectedAddons.includes(addon.id))
     .map((addon) => addon.label);
@@ -156,7 +153,7 @@ export default function ProductPage() {
       <header className="bg-[#efefef]">
         <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between px-5 md:px-8">
           <Link to="/">
-            <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
+            <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto md:h-12" />
           </Link>
           <div className="h-8 w-8" />
         </div>
@@ -222,7 +219,7 @@ export default function ProductPage() {
                               <div className="grid gap-1.5">
                                 {configurationOptions.length > 0 ? (
                                   configurationOptions.map((configuration) => {
-                                    const checked = selectedConfigurationOptions.includes(configuration.id);
+                                    const checked = selectedConfigurationOptionId === configuration.id;
                                     return (
                                       <label
                                         key={configuration.id}
@@ -230,7 +227,8 @@ export default function ProductPage() {
                                       >
                                         <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
                                           <input
-                                            type="checkbox"
+                                            type="radio"
+                                            name={`configuration-option-${product.slug}`}
                                             checked={checked}
                                             onChange={() => toggleConfigurationOption(configuration.id)}
                                             className="h-4 w-4 accent-[#145b5f]"

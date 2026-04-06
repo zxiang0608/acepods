@@ -12,9 +12,7 @@ import {
   Maximize2,
   Menu,
   Route,
-  Search,
   Twitter,
-  User,
   X
 } from 'lucide-react';
 import acePodsLogo from '../Logos/ace pods logo.png';
@@ -49,7 +47,14 @@ const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder'
   </div>
 );
 
-const navLinks = ['Smart Pods', 'Smart office', 'Explore', 'Professionals', 'About'];
+const navItems = [
+  { label: 'Smart Pods', type: 'smart-pods' },
+  { label: 'Office Chairs', to: '/office-chairs' },
+  { label: 'Pod buying guide', to: '/compare-office-pods' },
+  { label: 'Pricing', to: '/pricing' },
+  { label: 'Installation & Support', to: '/installation-support' },
+  { label: 'FAQ', to: '/faq' }
+];
 
 const renovationPoints = [
   {
@@ -289,7 +294,7 @@ const footerLinkGroups = [
   }
 ];
 
-export default function App({ seoMode = false }) {
+export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSmartPodsDesktopOpen, setIsSmartPodsDesktopOpen] = useState(false);
@@ -298,6 +303,8 @@ export default function App({ seoMode = false }) {
   const [openHomepageFaq, setOpenHomepageFaq] = useState(0);
   const [activePodIndex, setActivePodIndex] = useState(0);
   const navRef = useRef(null);
+  const podTouchStartXRef = useRef(null);
+  const podTouchDeltaXRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -340,33 +347,45 @@ export default function App({ seoMode = false }) {
     setActivePodIndex((prev) => Math.min(prev + 1, products.length - 1));
   };
 
-  const activeRenovationPoints = seoMode ? seoRenovationPoints : renovationPoints;
-  const activePrivacyPoints = seoMode ? seoPrivacyPoints : privacyPoints;
-  const activeCompareItems = seoMode ? seoCompareItems : compareItems;
-  const activeReassuranceItems = seoMode ? seoReassuranceItems : reassuranceItems;
+  const handlePodTouchStart = (event) => {
+    podTouchStartXRef.current = event.touches[0].clientX;
+    podTouchDeltaXRef.current = 0;
+  };
+
+  const handlePodTouchMove = (event) => {
+    if (podTouchStartXRef.current === null) return;
+    podTouchDeltaXRef.current = event.touches[0].clientX - podTouchStartXRef.current;
+  };
+
+  const handlePodTouchEnd = () => {
+    if (podTouchStartXRef.current === null) return;
+    const swipeThreshold = 50;
+    if (podTouchDeltaXRef.current <= -swipeThreshold) {
+      goToNextPod();
+    } else if (podTouchDeltaXRef.current >= swipeThreshold) {
+      goToPrevPod();
+    }
+    podTouchStartXRef.current = null;
+    podTouchDeltaXRef.current = 0;
+  };
+
+  const activeRenovationPoints = seoRenovationPoints;
+  const activePrivacyPoints = seoPrivacyPoints;
+  const activeCompareItems = seoCompareItems;
+  const activeReassuranceItems = seoReassuranceItems;
   const desktopTopPodCards = products.slice(0, 3);
   const desktopBottomPodCards = products.slice(3, 5);
 
-  const heroHeadline = seoMode ? 'Office pods for calls, focus, and meetings' : 'Create a quieter, more functional workplace';
-  const heroSupportingText = seoMode
-    ? 'Add private space for calls, focused work, and meetings without building new rooms.'
-    : 'For calls, focused work, and private meetings — without the cost and disruption of renovation.';
-  const heroTrustLine = seoMode
-    ? 'A practical alternative to building new rooms'
-    : 'Practical privacy solutions for modern workplaces';
-  const productIntroHeading = seoMode ? 'Choose the right office pod for calls, focus, or meetings' : null;
-  const privateSpaceHeading = seoMode
-    ? 'Add private space without building new rooms'
-    : 'Private space without the cost and disruption of rebuilding';
-  const compareSupportingLine = seoMode
-    ? 'Compare more confidently when pricing, installation, and support are clear upfront.'
-    : 'We show you the complete price upfront. You can compare more confidently when installation, support, and after-sales are clear too.';
-  const trustSectionHeading = 'Trusted by teams across Malaysia';
-  const whyHeading = seoMode ? 'Why teams choose AcePods' : 'Choose AcePods';
-  const footerBrandLine = seoMode
-    ? 'Acoustic office pods for calls, focus, and meetings'
-    : 'Premium workplace pods for calls, focus, and meetings.';
-  const seoSchemas = seoMode ? [organizationSchema, websiteSchema, createFaqSchema('/seo', HOME_FAQ_ITEMS)] : [];
+  const heroHeadline = 'Office pods for calls, focus, and meetings';
+  const heroSupportingText = 'Add private space for calls, focused work, and meetings without building new rooms.';
+  const heroTrustLine = 'A practical alternative to building new rooms';
+  const productIntroHeading = 'Choose the right office pod for calls, focus, or meetings';
+  const privateSpaceHeading = 'Add private space without building new rooms';
+  const compareSupportingLine = 'Compare more confidently when pricing, installation, and support are clear upfront.';
+  const trustSectionHeading = 'Trusted by local and international companies';
+  const whyHeading = 'Why teams choose AcePods';
+  const footerBrandLine = 'Acoustic office pods for calls, focus, and meetings';
+  const homepageSchemas = [organizationSchema, websiteSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
 
   const renderPodCard = (pod, extraClass = '') => (
     <Link
@@ -408,11 +427,7 @@ export default function App({ seoMode = false }) {
   );
 
   const renderMobilePodCard = (pod) => (
-    <Link
-      key={`mobile-${pod.slug}`}
-      to={`/pods/${pod.slug}`}
-      className="relative block min-h-[660px] overflow-hidden rounded-[22px] bg-[#EAEAEA] px-6 pb-8 pt-10"
-    >
+    <div key={`mobile-${pod.slug}`} className="relative min-h-[660px] overflow-hidden rounded-[22px] bg-[#EAEAEA] px-6 pb-8 pt-10">
       <div className="relative z-10 flex h-full flex-col items-center text-center">
         <div className="max-w-[300px]">
           <h3 className="text-[16px] font-semibold tracking-[0.01em] text-[#636a74]">{pod.name}</h3>
@@ -426,23 +441,23 @@ export default function App({ seoMode = false }) {
             <img src={pod.thumbImage} alt={pod.name} className={`h-full w-full object-contain ${pod.imageScale}`} />
           </div>
           <div className="mt-7 flex justify-center">
-            <span className="rounded-[6px] bg-[#00855a] px-9 py-3.5 text-[16px] font-bold text-white">Explore</span>
+            <Link to={`/pods/${pod.slug}`} className="rounded-[6px] bg-[#00855a] px-9 py-3.5 text-[16px] font-bold text-white">
+              Explore
+            </Link>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
-      {seoMode && (
-        <SeoMeta
-          title="Office Pods for Calls, Focus and Meetings | AcePods"
-          description="Explore office pods for calls, focused work, and meetings. Add private space without major renovation, with clear pricing, installation, and support from AcePods."
-          canonical={buildCanonical('/seo')}
-          schemas={seoSchemas}
-        />
-      )}
+      <SeoMeta
+        title="Office Pods for Calls, Focus and Meetings | AcePods"
+        description="Explore office pods for calls, focused work, and meetings. Add private space without major renovation, with clear pricing, installation, and support from AcePods."
+        canonical={buildCanonical('/')}
+        schemas={homepageSchemas}
+      />
       <nav
         ref={navRef}
         className={`fixed top-0 z-50 h-[64px] w-full transition-all duration-300 md:h-[80px] ${scrolled ? 'h-[60px] bg-white shadow-sm md:h-[70px]' : 'bg-white'}`}
@@ -451,17 +466,17 @@ export default function App({ seoMode = false }) {
           <div className="flex items-center gap-8 lg:gap-16">
             <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto cursor-pointer md:h-12" />
             <div className="hidden items-center gap-9 lg:flex">
-              {navLinks.map((link) => {
-                const isSmartPods = link === 'Smart Pods';
+              {navItems.map((item) => {
+                const isSmartPods = item.type === 'smart-pods';
                 if (isSmartPods) {
                   return (
-                    <div key={link} className="group flex cursor-pointer items-center gap-1.5">
+                    <div key={item.label} className="group flex cursor-pointer items-center gap-1.5">
                       <button
                         type="button"
                         onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)}
                         className="text-[16px] font-medium text-[#111111] transition-colors group-hover:text-[#00855a]"
                       >
-                        {link}
+                        {item.label}
                       </button>
                       <ChevronDown
                         size={16}
@@ -472,40 +487,28 @@ export default function App({ seoMode = false }) {
                   );
                 }
                 return (
-                  <div key={link} className="group flex cursor-pointer items-center gap-1.5">
-                    <a href="#" className="text-[16px] font-medium text-[#111111] transition-colors group-hover:text-[#00855a]">
-                      {link}
-                    </a>
-                    <ChevronDown size={16} strokeWidth={2} className="mt-0.5 text-[#00855a]" />
-                  </div>
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={() => setIsSmartPodsDesktopOpen(false)}
+                    className="text-[16px] font-medium text-[#111111] transition-colors hover:text-[#00855a]"
+                  >
+                    {item.label}
+                  </Link>
                 );
               })}
             </div>
           </div>
 
-          <div className="flex items-center gap-4 md:gap-8">
-            <div className="hidden items-center gap-8 lg:flex">
-              <div className="flex cursor-pointer items-center gap-2.5 text-[#111111] transition-colors hover:text-[#00855a]">
-                <User size={22} strokeWidth={1.5} />
-                <span className="text-[16px] font-medium">Login</span>
-              </div>
-              <button className="text-[#111111] transition-colors hover:text-[#00855a]">
-                <Search size={22} strokeWidth={1.5} />
-              </button>
-              <div className="group flex cursor-pointer items-center gap-1.5 text-[#111111]">
-                <span className="text-[16px] font-medium transition-colors group-hover:text-[#00855a]">EN</span>
-                <ChevronDown size={16} strokeWidth={2} className="mt-0.5 text-[#00855a]" />
-              </div>
-            </div>
-
-            <button className="hidden rounded-[4px] bg-[#00855a] px-6 py-2.5 text-[16px] font-semibold text-white transition-all hover:bg-[#006e4a] sm:block">
-              Design your pod
-            </button>
+          <div className="flex items-center gap-4 md:gap-6">
+            <Link
+              to="/installation-support#book-viewing"
+              className="hidden rounded-[4px] bg-[#00855a] px-6 py-2.5 text-[15px] font-semibold text-white transition-all hover:bg-[#006e4a] sm:inline-flex"
+            >
+              Contact us
+            </Link>
 
             <div className="flex items-center gap-4 lg:hidden">
-              <button className="text-[#111111]">
-                <Search size={24} strokeWidth={1.5} />
-              </button>
               <button className="p-1 text-[#111111]" onClick={() => setIsMenuOpen(true)}>
                 <Menu size={27} />
               </button>
@@ -547,17 +550,17 @@ export default function App({ seoMode = false }) {
           </button>
         </div>
         <div className="h-[calc(100vh-80px)] space-y-8 overflow-y-auto p-8">
-          {navLinks.map((link) => {
-            const isSmartPods = link === 'Smart Pods';
+          {navItems.map((item) => {
+            const isSmartPods = item.type === 'smart-pods';
             if (isSmartPods) {
               return (
-                <div key={link} className="space-y-4">
+                <div key={item.label} className="space-y-4">
                   <button
                     type="button"
                     onClick={() => setIsSmartPodsMobileOpen((prev) => !prev)}
                     className="group flex w-full items-center justify-between"
                   >
-                    <span className="text-2xl font-bold tracking-tight">{link}</span>
+                    <span className="text-2xl font-bold tracking-tight">{item.label}</span>
                     <ChevronDown className={`text-[#00855a] transition-transform ${isSmartPodsMobileOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isSmartPodsMobileOpen && (
@@ -585,20 +588,12 @@ export default function App({ seoMode = false }) {
               );
             }
             return (
-              <div key={link} className="group flex items-center justify-between">
-                <span className="text-2xl font-bold tracking-tight">{link}</span>
+              <Link key={item.label} to={item.to} onClick={() => setIsMenuOpen(false)} className="group flex items-center justify-between">
+                <span className="text-2xl font-bold tracking-tight">{item.label}</span>
                 <ChevronRight className="text-[#00855a]" />
-              </div>
+              </Link>
             );
           })}
-          <div className="space-y-6 border-t border-gray-100 pt-8">
-            <div className="flex items-center gap-4 text-xl font-bold text-[#111111]">
-              <User size={24} /> Login
-            </div>
-            <div className="flex items-center gap-4 text-xl font-bold text-[#111111]">
-              <Globe size={24} /> EN (Global)
-            </div>
-          </div>
         </div>
       </div>
 
@@ -607,7 +602,7 @@ export default function App({ seoMode = false }) {
           <div className="absolute inset-0 z-0">
             <img
               src={acePodsHero}
-              alt={seoMode ? 'Acoustic office pods for calls and focused work in an open office' : 'Office Pods'}
+              alt="Acoustic office pods for calls and focused work in an open office"
               className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22"></div>
@@ -642,20 +637,13 @@ export default function App({ seoMode = false }) {
         <section className="relative overflow-hidden bg-white px-5 py-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-8 flex flex-col items-start justify-between gap-6 md:mb-10 md:flex-row md:items-end">
-              {seoMode ? (
-                <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight text-[#222222] sm:text-[30px] md:text-[38px]">
-                  {productIntroHeading}
-                </h2>
-              ) : (
-                <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight sm:text-[30px] md:text-[38px]">
-                  <span className="font-semibold text-[#626262]">Ace workplace pods.</span> <br className="md:hidden" />{' '}
-                  <span className="font-semibold text-[#222222]">For calls, focus, and meetings.</span>
-                </h2>
-              )}
+              <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight text-[#222222] sm:text-[30px] md:text-[38px]">
+                {productIntroHeading}
+              </h2>
             </div>
 
             <div className="relative md:hidden">
-              <div className="overflow-hidden">
+              <div className="overflow-hidden" onTouchStart={handlePodTouchStart} onTouchMove={handlePodTouchMove} onTouchEnd={handlePodTouchEnd}>
                 <div
                   className="flex transition-transform duration-300 ease-out"
                   style={{ transform: `translateX(-${activePodIndex * 100}%)` }}
@@ -721,14 +709,14 @@ export default function App({ seoMode = false }) {
 
         <section className="hidden border-b border-[#f0f0f0] bg-white px-5 py-16 md:block md:px-12 md:py-32">
           <div className="mx-auto max-w-[1440px]">
-            <div className="mb-12 max-w-[850px] md:mb-24">
+            <div className="mb-12 max-w-none md:mb-24">
               <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#666666] md:mb-6 md:text-[11px]">
                 Pods instead of renovation
               </span>
-              <h2 className="mb-6 text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[56px]">
+              <h2 className="mb-6 text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px] xl:whitespace-nowrap">
                 {privateSpaceHeading}
               </h2>
-              <p className="max-w-[600px] text-[16px] leading-[1.6] text-[#555555] md:text-[20px]">
+              <p className="max-w-none text-[16px] leading-[1.6] text-[#555555] md:text-[20px] xl:whitespace-nowrap">
                 A more practical way to create quiet, usable office space for calls, focus, and meetings.
               </p>
             </div>
@@ -765,7 +753,7 @@ export default function App({ seoMode = false }) {
               <div className="aspect-[4/3] w-full overflow-hidden rounded-[24px] bg-[#e8e6df]">
                 <img
                   src={openOfficeImage}
-                  alt={seoMode ? 'Open office area where private calls and meetings can disrupt nearby teams' : 'Open Office Graphic'}
+                  alt="Open office area where private calls and meetings can disrupt nearby teams"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -790,12 +778,12 @@ export default function App({ seoMode = false }) {
 
         <section className="bg-[#F6F5F0] px-5 py-16 md:px-12 md:py-32">
           <div className="mx-auto max-w-[1240px]">
-            <div className="max-w-[860px] text-left">
+            <div className="max-w-none text-left">
               <span className="mb-4 block text-[13px] font-bold tracking-wide text-[#62727b] md:mb-6 md:text-[14px]">Compare properly</span>
-              <h2 className="mb-6 text-[38px] font-extrabold leading-[1.08] tracking-tight text-[#111111] sm:text-[46px] md:mb-8 md:text-[62px]">
+              <h2 className="mb-6 text-[38px] font-extrabold leading-[1.08] tracking-tight text-[#111111] sm:text-[46px] md:mb-8 md:text-[44px] xl:whitespace-nowrap">
                 What buyers often overlook when comparing office pods
               </h2>
-              <p className="max-w-[44ch] text-[16px] leading-[1.65] text-[#444444] md:text-[19px]">
+              <p className="max-w-none text-[16px] leading-[1.65] text-[#444444] md:text-[19px] xl:whitespace-nowrap">
                 {compareSupportingLine}
               </p>
             </div>
@@ -861,34 +849,32 @@ export default function App({ seoMode = false }) {
         </section>
 
         <section className="bg-white px-5 py-14 md:px-12 md:py-20">
-          <div className="mx-auto max-w-[1240px]">
+          <div className="mx-auto max-w-[1360px]">
             <div className="mx-auto max-w-[780px] text-center">
               <h2 className="text-[30px] font-bold tracking-tight text-[#15191d] md:text-[42px]">Common questions about office pods</h2>
               <p className="mt-3 text-[16px] leading-[1.65] text-[#505964] md:text-[17px]">
                 A few things buyers usually want to clarify before choosing a pod.
               </p>
-              {seoMode && (
-                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[14px] font-medium text-[#145b5f] md:text-[15px]">
-                  <Link to="/seo/office-pods" className="underline-offset-4 hover:underline">
-                    View office pods
-                  </Link>
-                  <Link to="/seo/compare-office-pods" className="underline-offset-4 hover:underline">
-                    Compare office pods
-                  </Link>
-                  <Link to="/seo/pricing" className="underline-offset-4 hover:underline">
-                    View office pod pricing
-                  </Link>
-                  <Link to="/seo/installation-support" className="underline-offset-4 hover:underline">
-                    Learn about installation and support
-                  </Link>
-                  <Link to="/seo/faq" className="underline-offset-4 hover:underline">
-                    Read common questions about office pods
-                  </Link>
-                  <Link to="/seo/installation-support#book-viewing" className="underline-offset-4 hover:underline">
-                    Book a viewing with our team
-                  </Link>
-                </div>
-              )}
+              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[14px] font-medium text-[#145b5f] md:text-[15px]">
+                <Link to="/office-pods" className="underline-offset-4 hover:underline">
+                  View office pods
+                </Link>
+                <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">
+                  Compare office pods
+                </Link>
+                <Link to="/pricing" className="underline-offset-4 hover:underline">
+                  View office pod pricing
+                </Link>
+                <Link to="/installation-support" className="underline-offset-4 hover:underline">
+                  Learn about installation and support
+                </Link>
+                <Link to="/faq" className="underline-offset-4 hover:underline">
+                  Read common questions about office pods
+                </Link>
+                <Link to="/installation-support#book-viewing" className="underline-offset-4 hover:underline">
+                  Book a viewing with our team
+                </Link>
+              </div>
             </div>
 
             <div className="mt-8 border-t border-[#e3e3e3] md:mt-10">
@@ -913,11 +899,20 @@ export default function App({ seoMode = false }) {
                       </button>
                     </h3>
                     <div id={answerId} className={`${isOpen ? 'pb-5 md:pb-6' : 'hidden'}`}>
-                      <p className="max-w-[85ch] pr-8 text-[15px] leading-[1.7] text-[#4f5862] md:text-[17px]">{item.answer}</p>
+                      <p className="w-full text-[15px] leading-[1.7] text-[#4f5862] md:text-[17px]">{item.answer}</p>
                     </div>
                   </article>
                 );
               })}
+            </div>
+
+            <div className="mt-8 flex justify-center md:mt-10">
+              <Link
+                to="/installation-support#book-viewing"
+                className="inline-flex items-center rounded-[8px] bg-[#145b5f] px-8 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#104c4f]"
+              >
+                Contact us
+              </Link>
             </div>
           </div>
         </section>

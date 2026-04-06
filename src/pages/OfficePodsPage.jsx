@@ -1,28 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
-import SeoPageShell from '../components/SeoPageShell';
+import PageShell from '../components/PageShell';
 import { products } from '../data/products';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
-  { name: 'Home', path: '/seo' },
-  { name: 'Office Pods', path: '/seo/office-pods' }
+  { name: 'Home', path: '/' },
+  { name: 'Office Pods', path: '/office-pods' }
 ];
 
-export default function SeoOfficePodsPage() {
+export default function OfficePodsPage() {
   return (
-    <SeoPageShell>
+    <PageShell>
       <SeoMeta
         title="Office Pods Malaysia for Calls, Focus and Meetings | AcePods"
         description="Explore acoustic office pods for calls, focused work, and team meetings. Compare pod types by use case and choose the right fit for your office."
-        canonical={buildCanonical('/seo/office-pods')}
+        canonical={buildCanonical('/office-pods')}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
         <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/seo" className="hover:text-[#145b5f]">
+          <Link to="/" className="hover:text-[#145b5f]">
             Home
           </Link>{' '}
           / <span>Office Pods</span>
@@ -57,17 +57,17 @@ export default function SeoOfficePodsPage() {
           Compare office pods by use case first: calls, focused work, or meetings. Then review installation, support, and final project pricing before you decide.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-[15px] font-semibold text-[#145b5f]">
-          <Link to="/seo/compare-office-pods" className="underline-offset-4 hover:underline">
+          <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">
             Compare office pods
           </Link>
-          <Link to="/seo/pricing" className="underline-offset-4 hover:underline">
+          <Link to="/pricing" className="underline-offset-4 hover:underline">
             View office pod pricing
           </Link>
-          <Link to="/seo/installation-support" className="underline-offset-4 hover:underline">
+          <Link to="/installation-support" className="underline-offset-4 hover:underline">
             Learn about installation and support
           </Link>
         </div>
       </section>
-    </SeoPageShell>
+    </PageShell>
   );
 }
