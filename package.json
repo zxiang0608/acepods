@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:spa": "vite build",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "build": "npm run sitemap && npm run build:spa && npm run prerender",
     "preview": "vite preview"
   },
   "dependencies": {
