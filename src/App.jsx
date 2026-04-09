@@ -21,11 +21,6 @@ import openOfficeImage from '../assets/open-office.png';
 import comparePriceImage from '../assets/quotation.jpg';
 import podsInstallationImage from '../assets/pods-installation.png';
 import deliveryPodsImage from '../assets/delivery-pods.png';
-import menuAceSolo from '../assets/ace-solo-cutout.png';
-import menuAceSoloPlus from '../assets/ace-solo-plus-cutout.png';
-import menuAceDuo from '../assets/ace-duo-cutout.png';
-import menuAceMeeting from '../assets/ace-meeting.png';
-import menuAceMeetingXL from '../assets/ace-meeting-XL-cutout.png';
 import parkerLogo from '../assets/parker-logo.png';
 import cmacgmLogo from '../assets/cmacgm-logo.svg';
 import alphabetLogo from '../assets/alphabet-logo.png';
@@ -34,6 +29,8 @@ import matradeLogo from '../assets/matrade-logo.png';
 import amorePacificLogo from '../assets/amorepacific.jpg';
 import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
 import SeoMeta from './components/SeoMeta';
+import SmartPodsBanner from './components/SmartPodsBanner';
+import { smartPodsMenuItems } from './components/smartPodsMenuData';
 import { products } from './data/products';
 import { HOME_FAQ_ITEMS } from './seo/constants';
 import { buildCanonical, createFaqSchema, organizationSchema, websiteSchema } from './seo/schema';
@@ -50,7 +47,6 @@ const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder'
 const navItems = [
   { label: 'Smart Pods', type: 'smart-pods' },
   { label: 'Office Chairs', to: '/office-chairs' },
-  { label: 'Pod buying guide', to: '/compare-office-pods' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Installation & Support', to: '/installation-support' },
   { label: 'FAQ', to: '/faq' }
@@ -212,41 +208,6 @@ const seoCompareItems = [
   }
 ];
 
-const smartPodsMenuItems = [
-  {
-    title: 'Ace Solo',
-    description: 'Designed for individuals who need a quiet, private workspace.',
-    image: menuAceSolo,
-    to: '/pods/ace-solo'
-  },
-  {
-    title: 'Ace Solo Plus',
-    description: 'The perfect quiet workspace for two-person collaborations.',
-    image: menuAceSoloPlus,
-    to: '/pods/ace-solo-plus'
-  },
-  {
-    title: 'Ace Duo',
-    description: 'Private pod for one-to-one collaboration and focused conversations.',
-    image: menuAceDuo,
-    to: '/pods/ace-duo'
-  },
-  {
-    title: 'Ace Meeting',
-    description: 'Sound-contained environment tailored for small team meetings.',
-    image: menuAceMeeting,
-    imageClassName: 'scale-[1.14] mix-blend-multiply',
-    to: '/pods/ace-meeting'
-  },
-  {
-    title: 'Ace Meeting XL',
-    description: 'Provides ample space for larger team meetings and collaboration.',
-    image: menuAceMeetingXL,
-    imageClassName: 'mix-blend-multiply',
-    to: '/pods/ace-meeting-xl'
-  }
-];
-
 const trustedLogos = [
   { name: 'Parker Hanifin', image: parkerLogo, fitClass: 'scale-[0.92]', logoStageClass: 'max-h-[52px] max-w-[168px]' },
   { name: 'CMA CGM Shipping', image: cmacgmLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
@@ -269,7 +230,7 @@ const footerLinkGroups = [
       links: [
         { label: 'Ace Solo', to: '/pods/ace-solo' },
         { label: 'Ace Solo Plus', to: '/pods/ace-solo-plus' },
-        { label: 'Ace Duo', to: '/pods/ace-duo' },
+        { label: 'Ace Solo Pro', to: '/pods/ace-duo' },
         { label: 'Ace Meeting', to: '/pods/ace-meeting' },
         { label: 'Ace Meeting XL', to: '/pods/ace-meeting-xl' }
       ]
@@ -383,7 +344,7 @@ export default function App() {
   const privateSpaceHeading = 'Add private space without building new rooms';
   const compareSupportingLine = 'Compare more confidently when pricing, installation, and support are clear upfront.';
   const trustSectionHeading = 'Trusted by local and international companies';
-  const whyHeading = 'Why teams choose AcePods';
+  const whyHeading = 'Choose AcePods';
   const footerBrandLine = 'Acoustic office pods for calls, focus, and meetings';
   const homepageSchemas = [organizationSchema, websiteSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
 
@@ -393,27 +354,23 @@ export default function App() {
       to={`/pods/${pod.slug}`}
       className={`group relative min-h-[400px] overflow-hidden rounded-[16px] bg-[#EAEAEA] md:h-[500px] md:rounded-[8px] ${extraClass}`}
     >
-      <div className="absolute inset-0 z-0 opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100">
-        <img src={pod.hoverImg} alt={pod.name} className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-black/30"></div>
-      </div>
-      <div className="relative z-10 flex h-full flex-col items-center px-6 pb-8 pt-8 transition-all duration-500 md:pt-10 md:group-hover:-translate-y-2">
-        <h3 className="relative -top-1 mb-8 whitespace-pre-line text-center text-[15px] font-semibold tracking-wide text-white transition-colors duration-300 md:text-[15px] md:text-[#505050] md:group-hover:text-white">
+      <div className="relative z-10 flex h-full flex-col items-center px-6 pb-8 pt-8 md:pt-10">
+        <h3 className="relative -top-1 mb-8 whitespace-pre-line text-center text-[15px] font-semibold tracking-wide text-[#505050] md:text-[15px]">
           {pod.name}
         </h3>
-        <div className="mb-10 flex w-full items-center justify-center px-2 transition-opacity duration-300 group-hover:opacity-0">
+        <div className="mb-10 flex w-full items-center justify-center px-2">
           <div className="aspect-square w-full max-w-[180px] md:max-w-[200px]">
             <img src={pod.thumbImage} alt={pod.name} className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`} />
           </div>
         </div>
-        <p className="mb-5 max-w-[13ch] whitespace-pre-line text-center text-[19px] font-semibold leading-[1.3] text-[#3c3c3c] transition-opacity duration-300 group-hover:opacity-0 md:text-[20px]">
+        <p className="mb-5 max-w-[13ch] whitespace-pre-line text-center text-[19px] font-semibold leading-[1.3] text-[#3c3c3c] md:text-[20px]">
           {pod.shortDesc}
         </p>
-        <p className="mb-2 min-h-[18px] text-center text-[12px] font-medium text-[#7a7a7a] transition-opacity duration-300 group-hover:opacity-0 md:text-[12px]">
+        <p className="mb-2 min-h-[18px] text-center text-[12px] font-medium text-[#7a7a7a] md:text-[12px]">
           {pod.cardSupport}
         </p>
         {pod.cardNote && (
-          <p className="mb-6 min-h-[16px] text-center text-[11px] font-medium text-[#999999] transition-opacity duration-300 group-hover:opacity-0">
+          <p className="mb-6 min-h-[16px] text-center text-[11px] font-medium text-[#999999]">
             {pod.cardNote}
           </p>
         )}
@@ -440,7 +397,7 @@ export default function App() {
           <div className="mx-auto aspect-square w-full max-w-[288px]">
             <img src={pod.thumbImage} alt={pod.name} className={`h-full w-full object-contain ${pod.imageScale}`} />
           </div>
-          <div className="mt-7 flex justify-center">
+          <div className="mt-[84px] flex justify-center">
             <Link to={`/pods/${pod.slug}`} className="rounded-[6px] bg-[#00855a] px-9 py-3.5 text-[16px] font-bold text-white">
               Explore
             </Link>
@@ -516,35 +473,14 @@ export default function App() {
           </div>
         </div>
 
-        {isSmartPodsDesktopOpen && (
-          <div className="absolute left-0 top-full hidden w-full border-t border-[#d9d9d9] bg-[#efefef] lg:block">
-            <div className="mx-auto max-w-[1600px] px-12 py-10">
-              <div className="grid grid-cols-5 gap-8">
-                {smartPodsMenuItems.map((item) => (
-                  <Link
-                    key={item.title}
-                    to={item.to}
-                    onClick={() => setIsSmartPodsDesktopOpen(false)}
-                    className="flex flex-col items-center text-center"
-                  >
-                    <div className="flex h-[180px] w-full items-center justify-center">
-                      <img src={item.image} alt={item.title} className={`h-full w-full object-contain ${item.imageClassName || ''}`} />
-                    </div>
-                    <h3 className="mt-5 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{item.title}</h3>
-                    <p className="mt-3 text-[14px] leading-[1.5] text-[#666666]">{item.description}</p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+        {isSmartPodsDesktopOpen && <SmartPodsBanner items={smartPodsMenuItems} onItemClick={() => setIsSmartPodsDesktopOpen(false)} />}
       </nav>
 
       <div
         className={`fixed inset-0 z-[100] transform bg-white transition-transform duration-500 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-between border-b border-gray-100 p-6">
-          <img src={acePodsLogo} alt="Ace Pods" className="h-10 w-auto" />
+          <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto" />
           <button onClick={() => setIsMenuOpen(false)} className="p-2">
             <X size={32} />
           </button>
@@ -826,7 +762,7 @@ export default function App() {
 
         <section className="border-t border-[#f0f0f0] bg-[#efefef] px-5 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-[1200px] rounded-[16px] bg-[#e6e6e6] px-6 py-12 text-center md:px-12 md:py-16">
-            <h2 className="mx-auto max-w-none whitespace-nowrap text-[36px] font-bold leading-[0.98] tracking-tight text-[#111111] md:text-[48px]">
+            <h2 className="mx-auto max-w-[15ch] text-[36px] font-bold leading-[0.98] tracking-tight text-[#111111] md:max-w-none md:text-[48px] md:whitespace-nowrap">
               {whyHeading}
             </h2>
 
@@ -922,7 +858,7 @@ export default function App() {
             <div className="space-y-6 md:hidden">
               <div className="space-y-4">
                 <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
-                  <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
+                  <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto" />
                 </div>
                 <p className="max-w-xs text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
                 <div className="flex gap-3">
@@ -977,7 +913,7 @@ export default function App() {
             <div className="mb-14 hidden grid-cols-4 gap-10 md:grid">
               <div className="space-y-6">
                 <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
-                  <img src={acePodsLogo} alt="Ace Pods" className="h-9 w-auto" />
+                  <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto md:h-12" />
                 </div>
                 <p className="max-w-xs text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
                 <div className="flex gap-3">

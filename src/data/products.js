@@ -12,16 +12,62 @@ import aceSolo2d from '../../assets/ace-solo-2d.png';
 import aceSoloPlus2d from '../../assets/ace-solo-plus-2d.png';
 import aceDuo2d from '../../assets/ace-duo-2d.png';
 import aceMeeting2d from '../../assets/ace-meeting-2d.png';
+import podsInstallation from '../../assets/pods-installation.png';
+import deliveryPods from '../../assets/delivery-pods.png';
+import openOffice from '../../assets/open-office.png';
+import barStoolBlack from '../../assets/bar-stool-black.png';
+import barStoolWhite from '../../assets/bar-stool-white.png';
+import aceSoloShimoAshImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ss-04-03.webp';
+import aceSoloCrossMetalImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/ss-04-01.webp';
+import aceSoloLarixPearlImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/ss-04-02.webp';
+import aceSoloShimoAshBlueImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-blue.png';
+import aceSoloShimoAshMoonlightGreyImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-dark grey.png';
+import aceSoloShimoAshTangerineImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/shimo ash - orange.png';
+import aceSoloShimoAshLightPlumImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-plum.png';
+import aceSoloShimoAshVividRedImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-red.png';
+import aceSoloShimoAshCreamyWhiteImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-white.png';
+import aceSoloShimoAshSesameBlackImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-black.png';
+import aceSoloCrossMetalSkyBlueImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-blue.png';
+import aceSoloCrossMetalMoonlightGreyImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-midnight grey.png';
+import aceSoloCrossMetalTangerineImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-orange.png';
+import aceSoloCrossMetalLightPlumImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-plum.png';
+import aceSoloCrossMetalCreamyWhiteImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-creamywhite.png';
+import aceSoloCrossMetalSesameBlackImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-black.png';
+import aceSoloLarixPearlSkyBlueImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-sky blue.png';
+import aceSoloLarixPearlMoonlightGreyImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-dark grey.png';
+import aceSoloLarixPearlTangerineImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-orange.png';
+import aceSoloLarixPearlLightPlumImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-plum.png';
+import aceSoloLarixPearlCreamyWhiteImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-creamywhite.png';
+import aceSoloLarixPearlSesameBlackImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-black.png';
+import aceSoloPlusOrangeSquashImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/orange squash.png';
+import aceSoloPlusMustardYellowImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/mustard yellow.webp';
+import aceSoloPlusGreenMossImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/green.webp';
+import aceSoloPlusOceanBlueImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/ocean blue.webp';
+import aceSoloPlusGreyAshImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/grey.webp';
+import aceSoloPlusCharcoalGreyImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/charcoal grey.webp';
+import aceSoloProOrangeSquashImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/s pod+ empty.png';
+import aceSoloProMustardYellowImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/yellow s pod+.png';
+import aceSoloProGreenMossImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/green s pod+.png';
+import aceSoloProOceanBlueImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/ocean blue s pod+.png';
+import aceSoloProGreyAshImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/grey s pod+.png';
+import aceSoloProCharcoalGreyImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/charcoal grey s pod+.png';
+import aceMeetingBlackExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/team pod front angle.png';
+import aceMeetingGreenExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/green moss.png';
+import aceMeetingSandExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/mustard yellow.png';
+import aceMeetingWhiteExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/ocean blue.png';
+import aceMeetingXLDarkExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/team pod 6.png';
+import aceMeetingXLFallbackExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/xl fallback normalized.png';
 
 const deliveryDefaults = {
   default: 350,
-  outstationNote: 'Outstation: please email'
+  outstationNote: 'Outstation: WhatsApp Us'
 };
 
 const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290 };
 const meetingSofaAddon = { id: 'meeting-sofa-set', label: '1 set sofa (Ace Meeting only)', amount: 1250 };
 const meetingXLSofaAddon = { id: 'meeting-xl-sofa-set', label: '1 set sofa (Ace Meeting XL only)', amount: 1400 };
 const meetingXLLShapeSofaAddon = { id: 'meeting-xl-l-shape-sofa', label: 'L-shape sofa (Ace Meeting XL only)', amount: 2650 };
+const defaultCustomerPhotos = [podsInstallation, deliveryPods, openOffice, barStoolBlack, barStoolWhite];
 const sharedFeatureStripItems = [
   { title: 'Motion sensor for energy saving', desc: 'Systems activate on entry and turn off after inactivity.' },
   { title: 'Efficient air flow system', desc: 'Fresh air is circulated to preserve acoustic comfort.' },
@@ -42,6 +88,40 @@ const sharedFeatureStripItems = [
   { title: 'Furnishing sofa', desc: 'High-density sofa cushioning supports longer sessions.' }
 ];
 
+const standardInteriorColors = [
+  { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
+  { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
+  { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
+  { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
+  { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
+  { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
+  { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
+  { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
+];
+
+const standardInteriorIds = standardInteriorColors.map((color) => color.id);
+
+const createExteriorInteriorPairMap = (exteriorImageMap) =>
+  Object.fromEntries(
+    Object.entries(exteriorImageMap).flatMap(([exteriorId, image]) =>
+      standardInteriorIds.map((interiorId) => [`${exteriorId}|${interiorId}`, image])
+    )
+  );
+
+const meetingExteriorImageMap = {
+  'ext-black': aceMeetingBlackExteriorImage,
+  'ext-green': aceMeetingGreenExteriorImage,
+  'ext-sand': aceMeetingSandExteriorImage,
+  'ext-white': aceMeetingWhiteExteriorImage
+};
+
+const meetingXLExteriorImageMap = {
+  'ext-black': aceMeetingXLDarkExteriorImage,
+  'ext-green': aceMeetingXLFallbackExteriorImage,
+  'ext-sand': aceMeetingXLFallbackExteriorImage,
+  'ext-white': aceMeetingXLFallbackExteriorImage
+};
+
 export const products = [
   {
     slug: 'ace-solo',
@@ -50,6 +130,7 @@ export const products = [
     shortDesc: 'Private pod for calls and quick focused work',
     heroImage: aceSoloHero,
     thumbImage: aceSoloCutout,
+    customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceSolo2d,
     imageScale: 'scale-[1.30]',
     hoverImg: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop',
@@ -65,6 +146,51 @@ export const products = [
       delivery: deliveryDefaults,
       addOnOptions: [highBarStoolAddon]
     },
+    colorImageMap: {
+      default: aceSoloShimoAshImage,
+      byExterior: {
+        'finish-shimo-ash': aceSoloShimoAshImage,
+        'finish-cross-metal': aceSoloCrossMetalImage,
+        'finish-larix-pearl': aceSoloLarixPearlImage
+      },
+      byInterior: {
+        'int-shimo-ash': aceSoloShimoAshImage,
+        'int-sky-blue': aceSoloShimoAshBlueImage,
+        'int-moonlight-grey': aceSoloShimoAshMoonlightGreyImage,
+        'int-tangerine': aceSoloShimoAshTangerineImage,
+        'int-light-plum': aceSoloShimoAshLightPlumImage,
+        'int-vivid-red': aceSoloShimoAshVividRedImage,
+        'int-creamy-white': aceSoloShimoAshCreamyWhiteImage,
+        'int-sesame-black': aceSoloShimoAshSesameBlackImage
+      },
+      byPair: {
+        'finish-shimo-ash|int-shimo-ash': aceSoloShimoAshImage,
+        'finish-shimo-ash|int-sky-blue': aceSoloShimoAshBlueImage,
+        'finish-shimo-ash|int-moonlight-grey': aceSoloShimoAshMoonlightGreyImage,
+        'finish-shimo-ash|int-tangerine': aceSoloShimoAshTangerineImage,
+        'finish-shimo-ash|int-light-plum': aceSoloShimoAshLightPlumImage,
+        'finish-shimo-ash|int-vivid-red': aceSoloShimoAshVividRedImage,
+        'finish-shimo-ash|int-creamy-white': aceSoloShimoAshCreamyWhiteImage,
+        'finish-shimo-ash|int-sesame-black': aceSoloShimoAshSesameBlackImage,
+        'finish-cross-metal|int-shimo-ash': aceSoloCrossMetalImage,
+        'finish-cross-metal|int-sky-blue': aceSoloCrossMetalSkyBlueImage,
+        'finish-cross-metal|int-moonlight-grey': aceSoloCrossMetalMoonlightGreyImage,
+        'finish-cross-metal|int-tangerine': aceSoloCrossMetalTangerineImage,
+        'finish-cross-metal|int-light-plum': aceSoloCrossMetalLightPlumImage,
+        'finish-cross-metal|int-vivid-red': aceSoloCrossMetalMoonlightGreyImage,
+        'finish-cross-metal|int-creamy-white': aceSoloCrossMetalCreamyWhiteImage,
+        'finish-cross-metal|int-sesame-black': aceSoloCrossMetalSesameBlackImage,
+        'finish-larix-pearl|int-shimo-ash': aceSoloLarixPearlImage,
+        'finish-larix-pearl|int-sky-blue': aceSoloLarixPearlSkyBlueImage,
+        'finish-larix-pearl|int-moonlight-grey': aceSoloLarixPearlMoonlightGreyImage,
+        'finish-larix-pearl|int-tangerine': aceSoloLarixPearlTangerineImage,
+        'finish-larix-pearl|int-light-plum': aceSoloLarixPearlLightPlumImage,
+        'finish-larix-pearl|int-vivid-red': aceSoloLarixPearlMoonlightGreyImage,
+        'finish-larix-pearl|int-creamy-white': aceSoloLarixPearlCreamyWhiteImage,
+        'finish-larix-pearl|int-sesame-black': aceSoloLarixPearlSesameBlackImage
+      }
+    },
+    hideThumbnailsOnColorMode: true,
     technicalSpecifications: {
       capacity: '1 person',
       externalDimensions: '1200mm × 1000mm (47.24" × 39.37")',
@@ -89,19 +215,22 @@ export const products = [
       'Corporate offices and SMEs needing instant privacy for one person'
     ],
     exteriorColors: [
-      { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
-      { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
-      { id: 'ext-green', label: 'Forest', hex: '#145a5d' },
-      { id: 'ext-sand', label: 'Sand', hex: '#cdb89e' }
+      { id: 'finish-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
+      { id: 'finish-cross-metal', label: 'Cross Metal', hex: '#7d838b' },
+      { id: 'finish-larix-pearl', label: 'Larix Pearl', hex: '#cbbca7' }
     ],
     interiorColors: [
-      { id: 'int-grey', label: 'Light Grey', hex: '#c7cbd1' },
-      { id: 'int-charcoal', label: 'Charcoal', hex: '#6d7178' },
-      { id: 'int-clay', label: 'Clay', hex: '#c98b70' },
-      { id: 'int-olive', label: 'Olive', hex: '#8c8a61' }
+      { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
+      { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
+      { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
+      { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
+      { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
+      { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
+      { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
+      { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
     ],
-    defaultExterior: 'ext-white',
-    defaultInterior: 'int-grey',
+    defaultExterior: 'finish-shimo-ash',
+    defaultInterior: 'int-shimo-ash',
     faq: [
       { q: 'How fast can Ace Solo be installed?', a: 'Typical projects are scheduled after a site review and final confirmation.' },
       { q: 'Can it be moved later?', a: 'Yes. The unit can be relocated with proper handling and planning.' }
@@ -114,6 +243,7 @@ export const products = [
     shortDesc: 'More spacious pod for longer solo sessions',
     heroImage: aceSoloPlusHero,
     thumbImage: aceSoloPlusCutout,
+    customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceSoloPlus2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop',
@@ -129,6 +259,68 @@ export const products = [
       delivery: deliveryDefaults,
       addOnOptions: [highBarStoolAddon]
     },
+    colorImageMap: {
+      default: aceSoloPlusGreyAshImage,
+      byExterior: {
+        'finish-orange-squash': aceSoloPlusOrangeSquashImage,
+        'finish-mustard-yellow': aceSoloPlusMustardYellowImage,
+        'finish-green-moss': aceSoloPlusGreenMossImage,
+        'finish-ocean-blue': aceSoloPlusOceanBlueImage,
+        'finish-grey-ash': aceSoloPlusGreyAshImage,
+        'finish-charcoal-grey': aceSoloPlusCharcoalGreyImage
+      },
+      byPair: {
+        'finish-orange-squash|int-shimo-ash': aceSoloPlusOrangeSquashImage,
+        'finish-orange-squash|int-sky-blue': aceSoloPlusOrangeSquashImage,
+        'finish-orange-squash|int-moonlight-grey': aceSoloPlusOrangeSquashImage,
+        'finish-orange-squash|int-tangerine': aceSoloPlusOrangeSquashImage,
+        'finish-orange-squash|int-light-plum': aceSoloPlusOrangeSquashImage,
+        'finish-orange-squash|int-vivid-red': aceSoloPlusOrangeSquashImage,
+        'finish-orange-squash|int-creamy-white': aceSoloPlusOrangeSquashImage,
+        'finish-orange-squash|int-sesame-black': aceSoloPlusOrangeSquashImage,
+        'finish-mustard-yellow|int-shimo-ash': aceSoloPlusMustardYellowImage,
+        'finish-mustard-yellow|int-sky-blue': aceSoloPlusMustardYellowImage,
+        'finish-mustard-yellow|int-moonlight-grey': aceSoloPlusMustardYellowImage,
+        'finish-mustard-yellow|int-tangerine': aceSoloPlusMustardYellowImage,
+        'finish-mustard-yellow|int-light-plum': aceSoloPlusMustardYellowImage,
+        'finish-mustard-yellow|int-vivid-red': aceSoloPlusMustardYellowImage,
+        'finish-mustard-yellow|int-creamy-white': aceSoloPlusMustardYellowImage,
+        'finish-mustard-yellow|int-sesame-black': aceSoloPlusMustardYellowImage,
+        'finish-green-moss|int-shimo-ash': aceSoloPlusGreenMossImage,
+        'finish-green-moss|int-sky-blue': aceSoloPlusGreenMossImage,
+        'finish-green-moss|int-moonlight-grey': aceSoloPlusGreenMossImage,
+        'finish-green-moss|int-tangerine': aceSoloPlusGreenMossImage,
+        'finish-green-moss|int-light-plum': aceSoloPlusGreenMossImage,
+        'finish-green-moss|int-vivid-red': aceSoloPlusGreenMossImage,
+        'finish-green-moss|int-creamy-white': aceSoloPlusGreenMossImage,
+        'finish-green-moss|int-sesame-black': aceSoloPlusGreenMossImage,
+        'finish-ocean-blue|int-shimo-ash': aceSoloPlusOceanBlueImage,
+        'finish-ocean-blue|int-sky-blue': aceSoloPlusOceanBlueImage,
+        'finish-ocean-blue|int-moonlight-grey': aceSoloPlusOceanBlueImage,
+        'finish-ocean-blue|int-tangerine': aceSoloPlusOceanBlueImage,
+        'finish-ocean-blue|int-light-plum': aceSoloPlusOceanBlueImage,
+        'finish-ocean-blue|int-vivid-red': aceSoloPlusOceanBlueImage,
+        'finish-ocean-blue|int-creamy-white': aceSoloPlusOceanBlueImage,
+        'finish-ocean-blue|int-sesame-black': aceSoloPlusOceanBlueImage,
+        'finish-grey-ash|int-shimo-ash': aceSoloPlusGreyAshImage,
+        'finish-grey-ash|int-sky-blue': aceSoloPlusGreyAshImage,
+        'finish-grey-ash|int-moonlight-grey': aceSoloPlusGreyAshImage,
+        'finish-grey-ash|int-tangerine': aceSoloPlusGreyAshImage,
+        'finish-grey-ash|int-light-plum': aceSoloPlusGreyAshImage,
+        'finish-grey-ash|int-vivid-red': aceSoloPlusGreyAshImage,
+        'finish-grey-ash|int-creamy-white': aceSoloPlusGreyAshImage,
+        'finish-grey-ash|int-sesame-black': aceSoloPlusGreyAshImage,
+        'finish-charcoal-grey|int-shimo-ash': aceSoloPlusCharcoalGreyImage,
+        'finish-charcoal-grey|int-sky-blue': aceSoloPlusCharcoalGreyImage,
+        'finish-charcoal-grey|int-moonlight-grey': aceSoloPlusCharcoalGreyImage,
+        'finish-charcoal-grey|int-tangerine': aceSoloPlusCharcoalGreyImage,
+        'finish-charcoal-grey|int-light-plum': aceSoloPlusCharcoalGreyImage,
+        'finish-charcoal-grey|int-vivid-red': aceSoloPlusCharcoalGreyImage,
+        'finish-charcoal-grey|int-creamy-white': aceSoloPlusCharcoalGreyImage,
+        'finish-charcoal-grey|int-sesame-black': aceSoloPlusCharcoalGreyImage
+      }
+    },
+    hideThumbnailsOnColorMode: true,
     technicalSpecifications: {
       capacity: '1 person',
       externalDimensions: '1000mm × 1000mm (39.37" × 39.37")',
@@ -152,19 +344,25 @@ export const products = [
       'Improving office productivity with quiet, dedicated solo workspaces'
     ],
     exteriorColors: [
-      { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
-      { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
-      { id: 'ext-green', label: 'Forest', hex: '#145a5d' },
-      { id: 'ext-sand', label: 'Sand', hex: '#cdb89e' }
+      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
+      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
+      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
+      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
+      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
+      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
     ],
     interiorColors: [
-      { id: 'int-grey', label: 'Light Grey', hex: '#c7cbd1' },
-      { id: 'int-charcoal', label: 'Charcoal', hex: '#6d7178' },
-      { id: 'int-clay', label: 'Clay', hex: '#c98b70' },
-      { id: 'int-olive', label: 'Olive', hex: '#8c8a61' }
+      { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
+      { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
+      { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
+      { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
+      { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
+      { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
+      { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
+      { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
     ],
-    defaultExterior: 'ext-white',
-    defaultInterior: 'int-grey',
+    defaultExterior: 'finish-grey-ash',
+    defaultInterior: 'int-shimo-ash',
     faq: [
       { q: 'Is Ace Solo Plus suitable for all-day use?', a: 'Yes. It is designed for repeated daily use with comfort-focused interior space.' },
       { q: 'Can we match office finishes?', a: 'Yes. Exterior and interior finishes can be selected during specification.' }
@@ -172,15 +370,16 @@ export const products = [
   },
   {
     slug: 'ace-duo',
-    name: 'Ace Duo',
+    name: 'Ace Solo Pro',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: 'Private pod for one-to-one conversations',
+    shortDesc: 'Enhanced workspace and comfort',
     heroImage: aceDuoHero,
     thumbImage: aceDuoCutout,
+    customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceDuo2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
-    cardSupport: 'For interviews and shared work',
+    cardSupport: 'Spacious private pod for focused work',
     pricing: {
       amount: 'From RM19,900',
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
@@ -195,6 +394,68 @@ export const products = [
       delivery: deliveryDefaults,
       addOnOptions: [highBarStoolAddon]
     },
+    colorImageMap: {
+      default: aceSoloProGreyAshImage,
+      byExterior: {
+        'finish-orange-squash': aceSoloProOrangeSquashImage,
+        'finish-mustard-yellow': aceSoloProMustardYellowImage,
+        'finish-green-moss': aceSoloProGreenMossImage,
+        'finish-ocean-blue': aceSoloProOceanBlueImage,
+        'finish-grey-ash': aceSoloProGreyAshImage,
+        'finish-charcoal-grey': aceSoloProCharcoalGreyImage
+      },
+      byPair: {
+        'finish-orange-squash|int-shimo-ash': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-sky-blue': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-moonlight-grey': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-tangerine': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-light-plum': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-vivid-red': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-creamy-white': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-sesame-black': aceSoloProOrangeSquashImage,
+        'finish-mustard-yellow|int-shimo-ash': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-sky-blue': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-moonlight-grey': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-tangerine': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-light-plum': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-vivid-red': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-creamy-white': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-sesame-black': aceSoloProMustardYellowImage,
+        'finish-green-moss|int-shimo-ash': aceSoloProGreenMossImage,
+        'finish-green-moss|int-sky-blue': aceSoloProGreenMossImage,
+        'finish-green-moss|int-moonlight-grey': aceSoloProGreenMossImage,
+        'finish-green-moss|int-tangerine': aceSoloProGreenMossImage,
+        'finish-green-moss|int-light-plum': aceSoloProGreenMossImage,
+        'finish-green-moss|int-vivid-red': aceSoloProGreenMossImage,
+        'finish-green-moss|int-creamy-white': aceSoloProGreenMossImage,
+        'finish-green-moss|int-sesame-black': aceSoloProGreenMossImage,
+        'finish-ocean-blue|int-shimo-ash': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-sky-blue': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-moonlight-grey': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-tangerine': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-light-plum': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-vivid-red': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-creamy-white': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-sesame-black': aceSoloProOceanBlueImage,
+        'finish-grey-ash|int-shimo-ash': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-sky-blue': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-moonlight-grey': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-tangerine': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-light-plum': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-vivid-red': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-creamy-white': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-sesame-black': aceSoloProGreyAshImage,
+        'finish-charcoal-grey|int-shimo-ash': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-sky-blue': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-moonlight-grey': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-tangerine': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-light-plum': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-vivid-red': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-creamy-white': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-sesame-black': aceSoloProCharcoalGreyImage
+      }
+    },
+    hideThumbnailsOnColorMode: true,
     technicalSpecifications: {
       capacity: '1 person',
       externalDimensions: '1600mm × 1200mm (62.99" × 47.24")',
@@ -218,22 +479,28 @@ export const products = [
       'Corporate offices and SMEs needing instant privacy for two people'
     ],
     exteriorColors: [
-      { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
-      { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
-      { id: 'ext-green', label: 'Forest', hex: '#145a5d' },
-      { id: 'ext-sand', label: 'Sand', hex: '#cdb89e' }
+      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
+      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
+      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
+      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
+      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
+      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
     ],
     interiorColors: [
-      { id: 'int-grey', label: 'Light Grey', hex: '#c7cbd1' },
-      { id: 'int-charcoal', label: 'Charcoal', hex: '#6d7178' },
-      { id: 'int-clay', label: 'Clay', hex: '#c98b70' },
-      { id: 'int-olive', label: 'Olive', hex: '#8c8a61' }
+      { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
+      { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
+      { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
+      { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
+      { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
+      { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
+      { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
+      { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
     ],
-    defaultExterior: 'ext-white',
-    defaultInterior: 'int-grey',
+    defaultExterior: 'finish-grey-ash',
+    defaultInterior: 'int-shimo-ash',
     faq: [
-      { q: 'Does Ace Duo support hybrid calls?', a: 'Yes. It works well for private calls and small hybrid discussions.' },
-      { q: 'Can it replace small meeting rooms?', a: 'For short two-person sessions, Ace Duo is a practical alternative.' }
+      { q: 'Does Ace Solo Pro support hybrid calls?', a: 'Yes. It works well for private calls and small hybrid discussions.' },
+      { q: 'Can it replace small meeting rooms?', a: 'For short two-person sessions, Ace Solo Pro is a practical alternative.' }
     ]
   },
   {
@@ -243,6 +510,7 @@ export const products = [
     shortDesc: 'Meeting pod for small team discussions',
     heroImage: aceMeetingHero,
     thumbImage: aceMeetingCutout,
+    customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceMeeting2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
@@ -264,6 +532,12 @@ export const products = [
       delivery: deliveryDefaults,
       addOnOptions: [highBarStoolAddon, meetingSofaAddon]
     },
+    colorImageMap: {
+      default: meetingExteriorImageMap['ext-black'],
+      byExterior: meetingExteriorImageMap,
+      byPair: createExteriorInteriorPairMap(meetingExteriorImageMap)
+    },
+    hideThumbnailsOnColorMode: true,
     technicalSpecifications: {
       capacity: '2–4 people',
       externalDimensions: '2200mm × 1200mm (86.61" × 47.24")',
@@ -292,14 +566,9 @@ export const products = [
       { id: 'ext-green', label: 'Forest', hex: '#145a5d' },
       { id: 'ext-sand', label: 'Sand', hex: '#cdb89e' }
     ],
-    interiorColors: [
-      { id: 'int-grey', label: 'Light Grey', hex: '#c7cbd1' },
-      { id: 'int-charcoal', label: 'Charcoal', hex: '#6d7178' },
-      { id: 'int-clay', label: 'Clay', hex: '#c98b70' },
-      { id: 'int-olive', label: 'Olive', hex: '#8c8a61' }
-    ],
+    interiorColors: standardInteriorColors,
     defaultExterior: 'ext-white',
-    defaultInterior: 'int-grey',
+    defaultInterior: 'int-shimo-ash',
     faq: [
       { q: 'What is the difference between Meeting and Meeting XL?', a: 'Meeting XL adds more internal room for larger group sessions.' },
       { q: 'Is it suitable for longer team discussions?', a: 'Yes. It is designed for practical daily team use with acoustic control.' }
@@ -312,6 +581,7 @@ export const products = [
     shortDesc: 'Meeting pod for larger team discussions',
     heroImage: aceMeetingXLHero,
     thumbImage: aceMeetingXLCutout,
+    customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceMeeting2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
@@ -332,6 +602,12 @@ export const products = [
       delivery: deliveryDefaults,
       addOnOptions: [highBarStoolAddon, meetingXLSofaAddon, meetingXLLShapeSofaAddon]
     },
+    colorImageMap: {
+      default: meetingXLExteriorImageMap['ext-white'],
+      byExterior: meetingXLExteriorImageMap,
+      byPair: createExteriorInteriorPairMap(meetingXLExteriorImageMap)
+    },
+    hideThumbnailsOnColorMode: true,
     technicalSpecifications: {
       capacity: 'Up to 6 people',
       externalDimensions: '2200mm × 1500mm (86.61" × 59.05")',
@@ -360,14 +636,9 @@ export const products = [
       { id: 'ext-green', label: 'Forest', hex: '#145a5d' },
       { id: 'ext-sand', label: 'Sand', hex: '#cdb89e' }
     ],
-    interiorColors: [
-      { id: 'int-grey', label: 'Light Grey', hex: '#c7cbd1' },
-      { id: 'int-charcoal', label: 'Charcoal', hex: '#6d7178' },
-      { id: 'int-clay', label: 'Clay', hex: '#c98b70' },
-      { id: 'int-olive', label: 'Olive', hex: '#8c8a61' }
-    ],
+    interiorColors: standardInteriorColors,
     defaultExterior: 'ext-white',
-    defaultInterior: 'int-grey',
+    defaultInterior: 'int-shimo-ash',
     faq: [
       { q: 'How is Ace Meeting XL different from Ace Meeting?', a: 'Ace Meeting XL provides more internal space for larger group sessions.' },
       { q: 'Is Ace Meeting XL suitable for daily hybrid meetings?', a: 'Yes. It is designed for regular team use and longer hybrid calls.' }
