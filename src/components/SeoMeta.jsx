@@ -25,13 +25,13 @@ const upsertCanonical = (href) => {
   linkTag.setAttribute('href', href);
 };
 
-export default function SeoMeta({ title, description, canonical, ogImage = DEFAULT_OG_IMAGE, schemas = [] }) {
+export default function SeoMeta({ title, description, canonical, ogImage = DEFAULT_OG_IMAGE, robots = 'index, follow', schemas = [] }) {
   const schemaSignature = JSON.stringify(schemas);
 
   useEffect(() => {
     document.title = title;
     upsertMetaTag('name', 'description', description);
-    upsertMetaTag('name', 'robots', 'index, follow');
+    upsertMetaTag('name', 'robots', robots);
     upsertMetaTag('property', 'og:type', 'website');
     upsertMetaTag('property', 'og:title', title);
     upsertMetaTag('property', 'og:description', description);
@@ -59,7 +59,7 @@ export default function SeoMeta({ title, description, canonical, ogImage = DEFAU
       const cleanupSchemaTags = document.head.querySelectorAll('script[data-seo-schema="true"]');
       cleanupSchemaTags.forEach((tag) => tag.remove());
     };
-  }, [canonical, description, ogImage, schemaSignature, title]);
+  }, [canonical, description, ogImage, robots, schemaSignature, title]);
 
   return null;
 }

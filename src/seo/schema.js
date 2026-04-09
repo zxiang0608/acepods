@@ -1,6 +1,11 @@
 import { SEO_BASE_URL } from './constants';
 
 export const buildCanonical = (path) => `${SEO_BASE_URL}${path}`;
+export const buildAbsoluteUrl = (value) => {
+  if (!value) return undefined;
+  if (/^https?:\/\//i.test(value)) return value;
+  return `${SEO_BASE_URL}${value.startsWith('/') ? value : `/${value}`}`;
+};
 
 export const organizationSchema = {
   '@context': 'https://schema.org',
@@ -40,4 +45,28 @@ export const createBreadcrumbSchema = (items) => ({
     name: item.name,
     item: buildCanonical(item.path)
   }))
+});
+
+export const createProductSchema = ({ path, name, description, image, price, priceCurrency = 'MYR', category = 'Office pods' }) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name,
+  description,
+  ...(image ? { image: [buildAbsoluteUrl(image)] } : {}),
+  brand: {
+    '@type': 'Brand',
+    name: 'AcePods'
+  },
+  category,
+  url: buildCanonical(path),
+  ...(typeof price === 'number'
+    ? {
+        offers: {
+          '@type': 'Offer',
+          url: buildCanonical(path),
+          priceCurrency,
+          price: String(price)
+        }
+      }
+    : {})
 });

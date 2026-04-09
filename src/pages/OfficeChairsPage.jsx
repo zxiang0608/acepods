@@ -16,6 +16,7 @@ export default function OfficeChairsPage() {
         title="Office Chairs | AcePods"
         description="Office chair collection from AcePods is coming soon. Contact our team for updates and early project support."
         canonical={buildCanonical('/office-chairs')}
+        robots="noindex, follow"
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
