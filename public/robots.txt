@@ -19,4 +19,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://acepods.my/sitemap.xml
+Sitemap: https://aceofficepods.com/sitemap.xml

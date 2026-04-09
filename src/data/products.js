@@ -1,7 +1,6 @@
 import aceSoloCutout from '../../assets/ace-solo-cutout.png';
 import aceSoloPlusCutout from '../../assets/ace-solo-plus-cutout.png';
 import aceDuoCutout from '../../assets/ace-duo-cutout.png';
-import aceMeetingCutout from '../../assets/ace-meeting-XL-cutout.png';
 import aceMeetingXLCutout from '../../assets/ace-meeting-XL-cutout.png';
 import aceSoloHero from '../../assets/ace-solo.png';
 import aceSoloPlusHero from '../../assets/ace-solo-plus.png';
@@ -509,7 +508,7 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: 'Meeting pod for small team discussions',
     heroImage: aceMeetingHero,
-    thumbImage: aceMeetingCutout,
+    thumbImage: aceMeetingWhiteExteriorImage,
     customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceMeeting2d,
     imageScale: 'scale-[1.40]',

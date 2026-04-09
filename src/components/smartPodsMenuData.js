@@ -1,7 +1,7 @@
 import menuAceSolo from '../../assets/ace-solo-cutout.png';
 import menuAceSoloPlus from '../../assets/ace-solo-plus-cutout.png';
 import menuAceDuo from '../../assets/ace-duo-cutout.png';
-import menuAceMeeting from '../../assets/ace-meeting.png';
+import menuAceMeeting from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/ocean blue.png';
 import menuAceMeetingXL from '../../assets/ace-meeting-XL-cutout.png';
 
 export const smartPodsMenuItems = [

@@ -1,4 +1,4 @@
-export const SEO_BASE_URL = 'https://acepods.my';
+export const SEO_BASE_URL = 'https://aceofficepods.com';
 
 export const HOME_FAQ_ITEMS = [
   {
