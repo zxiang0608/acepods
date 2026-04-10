@@ -230,7 +230,7 @@ const footerLinkGroups = [
       links: [
         { label: 'Ace Solo', to: '/pods/ace-solo' },
         { label: 'Ace Solo Plus', to: '/pods/ace-solo-plus' },
-        { label: 'Ace Solo Pro', to: '/pods/ace-duo' },
+        { label: 'Ace Solo Pro', to: '/pods/ace-solo-pro' },
         { label: 'Ace Meeting', to: '/pods/ace-meeting' },
         { label: 'Ace Meeting XL', to: '/pods/ace-meeting-xl' }
       ]
@@ -435,11 +435,18 @@ export default function App() {
                       >
                         {item.label}
                       </button>
-                      <ChevronDown
-                        size={16}
-                        strokeWidth={2}
-                        className={`mt-0.5 text-[#00855a] transition-transform ${isSmartPodsDesktopOpen ? 'rotate-180' : ''}`}
-                      />
+                      <button
+                        type="button"
+                        aria-label={`${isSmartPodsDesktopOpen ? 'Close' : 'Open'} Smart Pods menu`}
+                        onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)}
+                        className="inline-flex items-center text-[#00855a]"
+                      >
+                        <ChevronDown
+                          size={16}
+                          strokeWidth={2}
+                          className={`mt-0.5 transition-transform ${isSmartPodsDesktopOpen ? 'rotate-180' : ''}`}
+                        />
+                      </button>
                     </div>
                   );
                 }

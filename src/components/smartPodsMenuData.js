@@ -21,7 +21,7 @@ export const smartPodsMenuItems = [
     title: 'Ace Solo Pro',
     description: 'Enhanced workspace and comfort',
     image: menuAceDuo,
-    to: '/pods/ace-duo'
+    to: '/pods/ace-solo-pro'
   },
   {
     title: 'Ace Meeting',

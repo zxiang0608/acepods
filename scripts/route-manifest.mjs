@@ -1,4 +1,4 @@
-const POD_SLUGS = ['ace-solo', 'ace-solo-plus', 'ace-duo', 'ace-meeting', 'ace-meeting-xl'];
+const POD_SLUGS = ['ace-solo', 'ace-solo-plus', 'ace-solo-pro', 'ace-meeting', 'ace-meeting-xl'];
 
 const STATIC_PUBLIC_ROUTES = [
   '/',

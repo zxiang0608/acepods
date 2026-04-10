@@ -125,7 +125,7 @@ const INSTALLATION_FAQ_ITEMS = [
 export default function InstallationSupportPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const whatsappHref = 'https://wa.me/600000000000?text=Hi%20AcePods%2C%20I%20want%20to%20discuss%20an%20office%20pod%20installation%20project.';
-  const emailHref = 'mailto:hello@acepods.my?subject=AcePods%20installation%20project%20consultation';
+  const emailHref = 'mailto:sales@aceofficepods.com?subject=AcePods%20installation%20project%20consultation';
 
   return (
     <PageShell>

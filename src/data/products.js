@@ -99,6 +99,16 @@ const standardInteriorColors = [
 ];
 
 const standardInteriorIds = standardInteriorColors.map((color) => color.id);
+const mdfInteriorOptionIds = ['int-shimo-ash'];
+const petInteriorOptionIds = standardInteriorIds.filter((id) => id !== 'int-shimo-ash');
+const splitInteriorMaterialSections = {
+  mdf: {
+    optionIds: mdfInteriorOptionIds
+  },
+  pet: {
+    optionIds: petInteriorOptionIds
+  }
+};
 
 const createExteriorInteriorPairMap = (exteriorImageMap) =>
   Object.fromEntries(
@@ -320,6 +330,9 @@ export const products = [
       }
     },
     hideThumbnailsOnColorMode: true,
+    exteriorLabel: 'Fabric Exterior Colour Options',
+    interiorMaterialSections: splitInteriorMaterialSections,
+    approximatePetTintOverlay: true,
     technicalSpecifications: {
       capacity: '1 person',
       externalDimensions: '1000mm × 1000mm (39.37" × 39.37")',
@@ -368,7 +381,7 @@ export const products = [
     ]
   },
   {
-    slug: 'ace-duo',
+    slug: 'ace-solo-pro',
     name: 'Ace Solo Pro',
     breadcrumbLabel: 'Ace Pods',
     shortDesc: 'Enhanced workspace and comfort',
@@ -455,6 +468,9 @@ export const products = [
       }
     },
     hideThumbnailsOnColorMode: true,
+    exteriorLabel: 'Fabric Exterior Colour Options',
+    interiorMaterialSections: splitInteriorMaterialSections,
+    approximatePetTintOverlay: true,
     technicalSpecifications: {
       capacity: '1 person',
       externalDimensions: '1600mm × 1200mm (62.99" × 47.24")',
@@ -537,6 +553,9 @@ export const products = [
       byPair: createExteriorInteriorPairMap(meetingExteriorImageMap)
     },
     hideThumbnailsOnColorMode: true,
+    exteriorLabel: 'Fabric Exterior Colour Options',
+    interiorMaterialSections: splitInteriorMaterialSections,
+    approximatePetTintOverlay: true,
     technicalSpecifications: {
       capacity: '2–4 people',
       externalDimensions: '2200mm × 1200mm (86.61" × 47.24")',
@@ -607,6 +626,9 @@ export const products = [
       byPair: createExteriorInteriorPairMap(meetingXLExteriorImageMap)
     },
     hideThumbnailsOnColorMode: true,
+    exteriorLabel: 'Fabric Exterior Colour Options',
+    interiorMaterialSections: splitInteriorMaterialSections,
+    approximatePetTintOverlay: true,
     technicalSpecifications: {
       capacity: 'Up to 6 people',
       externalDimensions: '2200mm × 1500mm (86.61" × 59.05")',

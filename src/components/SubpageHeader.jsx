@@ -48,7 +48,14 @@ export default function SubpageHeader() {
                     <button type="button" onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)} className="transition-colors group-hover:text-[#145b5f]">
                       {item.label}
                     </button>
-                    <ChevronDown className={`text-[#00855a] transition-transform ${isSmartPodsDesktopOpen ? 'rotate-180' : ''}`} size={16} />
+                    <button
+                      type="button"
+                      aria-label={`${isSmartPodsDesktopOpen ? 'Close' : 'Open'} Smart Pods menu`}
+                      onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)}
+                      className="inline-flex items-center text-[#00855a]"
+                    >
+                      <ChevronDown className={`transition-transform ${isSmartPodsDesktopOpen ? 'rotate-180' : ''}`} size={16} />
+                    </button>
                   </div>
                 );
               }

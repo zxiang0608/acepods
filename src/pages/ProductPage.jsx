@@ -6,9 +6,9 @@ import SubpageHeader from '../components/SubpageHeader';
 import { getProductBySlug } from '../data/products';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema } from '../seo/schema';
 
-const SwatchGroup = ({ label, options, selectedId, onSelect }) => (
+const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false }) => (
   <div>
-    <h3 className="mb-3 text-[16px] font-semibold text-[#1e2227]">{label}</h3>
+    {!hideHeading && <h3 className="mb-3 text-[16px] font-semibold text-[#1e2227]">{label}</h3>}
     <div className="flex flex-wrap gap-2">
       {options.map((color) => {
         const selected = color.id === selectedId;
@@ -109,7 +109,7 @@ export default function ProductPage() {
 
   const canonicalPath = `/pods/${product.slug}`;
   const whatsappHref = `https://wa.me/600000000000?text=${encodeURIComponent(`Hi AcePods, I'm interested in pricing for ${product.name}`)}`;
-  const emailHref = `mailto:hello@acepods.my?subject=${encodeURIComponent(`AcePods enquiry - ${product.name}`)}`;
+  const emailHref = `mailto:sales@aceofficepods.com?subject=${encodeURIComponent(`AcePods enquiry - ${product.name}`)}`;
   const pdpPricing = product.pdpPricing || {};
   const baseConfigurations = [...(pdpPricing.baseConfigurations || [])].sort((a, b) => a.price - b.price);
   const baseUnit = baseConfigurations[0];
@@ -170,6 +170,15 @@ export default function ProductPage() {
   const customerPhotos = product.customerPhotos || [];
   const podPrimaryImage = product.thumbImage || product.heroImage;
   const mainImage = mappedImage || selectedImage || podPrimaryImage;
+  const exteriorLabel = product.exteriorLabel || 'Exterior Color';
+  const interiorMaterialSections = product.interiorMaterialSections || null;
+  const mdfInteriorOptions = (interiorMaterialSections?.mdf?.optionIds || [])
+    .map((optionId) => product.interiorColors.find((color) => color.id === optionId))
+    .filter(Boolean);
+  const petInteriorOptions = (interiorMaterialSections?.pet?.optionIds || [])
+    .map((optionId) => product.interiorColors.find((color) => color.id === optionId))
+    .filter(Boolean);
+  const hasSplitInteriorSections = mdfInteriorOptions.length > 0 && petInteriorOptions.length > 0;
   const seoTitle = `${product.displayTitle || product.name} Office Pod Pricing, Specs and Colors | AcePods`;
   const seoDescription = `${product.displayTitle || product.name}: ${product.shortDesc}. ${product.pricing.amount} in Malaysia. View colors, add-ons, installation (Klang Valley), and delivery details.`;
   const seoSchemas = [
@@ -225,15 +234,17 @@ export default function ProductPage() {
                     isMainChairImage ? 'flex items-center justify-center' : ''
                   }`}
                 >
-                  <img
-                    src={mainImage}
-                    alt={product.name}
-                    className={
-                      isMainChairImage
-                        ? 'mx-auto block h-[60%] w-[60%] object-contain object-center'
-                        : 'mx-auto h-full w-full object-contain object-bottom mix-blend-multiply md:origin-bottom md:scale-[1.12] md:translate-y-[3%]'
-                    }
-                  />
+                  {isMainChairImage ? (
+                    <img src={mainImage} alt={product.name} className="mx-auto block h-[60%] w-[60%] object-contain object-center" />
+                  ) : (
+                    <div className="relative h-full w-full">
+                      <img
+                        src={mainImage}
+                        alt={product.name}
+                        className="relative z-[1] mx-auto h-full w-full object-contain object-bottom mix-blend-multiply md:origin-bottom md:scale-[1.12] md:translate-y-[3%]"
+                      />
+                    </div>
+                  )}
                 </div>
                 {shouldShowThumbnails && (
                   <div className="mt-auto w-full overflow-x-auto pb-1">
@@ -273,11 +284,42 @@ export default function ProductPage() {
                 <div className="mt-8 border-y border-[#d0d0d0] py-6 md:py-7">
                   <div className="grid gap-6 md:grid-cols-2 md:items-stretch md:gap-8">
                     <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
-                      <SwatchGroup label="Exterior Color" options={product.exteriorColors} selectedId={selectedExterior} onSelect={handleExteriorSelect} />
+                      <SwatchGroup label={exteriorLabel} options={product.exteriorColors} selectedId={selectedExterior} onSelect={handleExteriorSelect} />
                       <div className="mt-6 border-t border-[#d8d8d8] pt-6">
-                        <SwatchGroup label="Interior Color" options={product.interiorColors} selectedId={selectedInterior} onSelect={handleInteriorSelect} />
+                        {hasSplitInteriorSections ? (
+                          <div className="space-y-6">
+                            <div>
+                              <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#1e2227]">
+                                Interior Wall Colour Options (Melamine Faced Chipboard / MDF)
+                              </h3>
+                              <SwatchGroup
+                                hideHeading
+                                label="Interior Wall Colour Options (Melamine Faced Chipboard / MDF)"
+                                options={mdfInteriorOptions}
+                                selectedId={selectedInterior}
+                                onSelect={handleInteriorSelect}
+                              />
+                            </div>
+
+                            <div className="border-t border-[#e4e7eb] pt-4">
+                              <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#1e2227]">PET Fabric Interior Wall Colour</h3>
+                              <SwatchGroup
+                                hideHeading
+                                label="PET Fabric Interior Wall Colour"
+                                options={petInteriorOptions}
+                                selectedId={selectedInterior}
+                                onSelect={handleInteriorSelect}
+                              />
+                            </div>
+                          </div>
+                        ) : (
+                          <SwatchGroup label="Interior Color" options={product.interiorColors} selectedId={selectedInterior} onSelect={handleInteriorSelect} />
+                        )}
                       </div>
-                      <div className="relative mt-6 border-t border-[#d8d8d8] pt-6" ref={addonMenuRef}>
+                    </div>
+
+                    <div className="flex h-full flex-col gap-4">
+                      <div className="relative rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6" ref={addonMenuRef}>
                         <h3 className="mb-3 text-[16px] font-semibold text-[#1e2227]">Add-ons</h3>
                         <button
                           type="button"
@@ -367,62 +409,62 @@ export default function ProductPage() {
                           </div>
                         )}
                       </div>
-                    </div>
 
-                    <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
-                      <p className="text-[16px] font-semibold leading-tight text-[#1e2227]">Pricing overview</p>
-                      <dl className="mt-3 text-[14px]">
-                        <div className="space-y-0">
-                          {pricingRows.map((row) => (
-                            <div key={row.label} className="grid grid-cols-[1fr_auto] items-center border-b border-[#e8eaed] py-2.5">
-                              <dt className="font-medium text-[#414850]">{row.label}</dt>
-                              <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{formatRM(row.amount)}</dd>
+                      <div className="rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
+                        <p className="text-[16px] font-semibold leading-tight text-[#1e2227]">Pricing overview</p>
+                        <dl className="mt-3 text-[14px]">
+                          <div className="space-y-0">
+                            {pricingRows.map((row) => (
+                              <div key={row.label} className="grid grid-cols-[1fr_auto] items-center border-b border-[#e8eaed] py-2.5">
+                                <dt className="font-medium text-[#414850]">{row.label}</dt>
+                                <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{formatRM(row.amount)}</dd>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-3 border-t border-[#d3d9df] pt-3">
+                            <div className="grid grid-cols-[1fr_auto] items-center">
+                              <dt className="text-[16px] font-semibold text-[#1f232a]">Total</dt>
+                              <dd className="text-right text-[18px] font-bold tabular-nums text-[#1f232a]">{formatRM(computedTotal)}</dd>
                             </div>
-                          ))}
-                        </div>
-                        <div className="mt-3 border-t border-[#d3d9df] pt-3">
-                          <div className="grid grid-cols-[1fr_auto] items-center">
-                            <dt className="text-[16px] font-semibold text-[#1f232a]">Total</dt>
-                            <dd className="text-right text-[18px] font-bold tabular-nums text-[#1f232a]">{formatRM(computedTotal)}</dd>
                           </div>
-                        </div>
-                      </dl>
-                      <p className="mt-3 text-[11px] font-medium leading-[1.4] text-[#626a73]">
-                        {pdpPricing.delivery?.outstationNote || 'Outstation: WhatsApp Us'}
-                      </p>
+                        </dl>
+                        <p className="mt-3 text-[11px] font-medium leading-[1.4] text-[#626a73]">
+                          {pdpPricing.delivery?.outstationNote || 'Outstation: WhatsApp Us'}
+                        </p>
 
-                      <div className="relative mt-4" ref={chooserRef}>
-                        <button
-                          type="button"
-                          onClick={() => setIsContactChooserOpen((prev) => !prev)}
-                          aria-expanded={isContactChooserOpen}
-                          aria-controls="contact-chooser"
-                          className="w-full rounded-[4px] border border-[#145b5f] bg-white px-4 py-3 text-[15px] font-semibold text-[#145b5f] transition-colors hover:bg-[#f1f6f6]"
-                        >
-                          Contact Us
-                        </button>
-
-                        {isContactChooserOpen && (
-                          <div
-                            id="contact-chooser"
-                            className="absolute right-0 top-full z-20 mt-2 w-full min-w-[220px] rounded-[8px] border border-[#d7d7d7] bg-white p-3 shadow-lg md:w-[240px]"
+                        <div className="relative mt-4" ref={chooserRef}>
+                          <button
+                            type="button"
+                            onClick={() => setIsContactChooserOpen((prev) => !prev)}
+                            aria-expanded={isContactChooserOpen}
+                            aria-controls="contact-chooser"
+                            className="w-full rounded-[4px] border border-[#145b5f] bg-white px-4 py-3 text-[15px] font-semibold text-[#145b5f] transition-colors hover:bg-[#f1f6f6]"
                           >
-                            <a
-                              href={whatsappHref}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="block rounded-[6px] bg-[#145b5f] px-3 py-2.5 text-center text-[14px] font-semibold text-white hover:bg-[#0f4b4e]"
+                            Contact Us
+                          </button>
+
+                          {isContactChooserOpen && (
+                            <div
+                              id="contact-chooser"
+                              className="absolute right-0 top-full z-20 mt-2 w-full min-w-[220px] rounded-[8px] border border-[#d7d7d7] bg-white p-3 shadow-lg md:w-[240px]"
                             >
-                              WhatsApp Us
-                            </a>
-                            <a
-                              href={emailHref}
-                              className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center text-[14px] font-semibold text-[#1e2227] hover:bg-[#f5f6f7]"
-                            >
-                              Email Us
-                            </a>
-                          </div>
-                        )}
+                              <a
+                                href={whatsappHref}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block rounded-[6px] bg-[#145b5f] px-3 py-2.5 text-center text-[14px] font-semibold text-white hover:bg-[#0f4b4e]"
+                              >
+                                WhatsApp Us
+                              </a>
+                              <a
+                                href={emailHref}
+                                className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center text-[14px] font-semibold text-[#1e2227] hover:bg-[#f5f6f7]"
+                              >
+                                Email Us
+                              </a>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
