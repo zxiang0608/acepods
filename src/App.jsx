@@ -26,7 +26,6 @@ import cmacgmLogo from '../assets/cmacgm-logo.svg';
 import alphabetLogo from '../assets/alphabet-logo.png';
 import rightwillLogo from '../assets/rightwill-logo.png';
 import matradeLogo from '../assets/matrade-logo.png';
-import amorePacificLogo from '../assets/amorepacific.jpg';
 import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
 import SeoMeta from './components/SeoMeta';
 import SmartPodsBanner from './components/SmartPodsBanner';
@@ -219,7 +218,6 @@ const trustedLogos = [
     fitClass: 'scale-[0.96]',
     logoStageClass: 'max-h-[48px] max-w-[176px]'
   },
-  { name: 'Amore Pacific', image: amorePacificLogo, fitClass: 'scale-[1.16]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
   { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', logoStageClass: 'max-h-[52px] max-w-[172px]' }
 ];
 
