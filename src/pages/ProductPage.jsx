@@ -108,7 +108,7 @@ export default function ProductPage() {
   }
 
   const canonicalPath = `/pods/${product.slug}`;
-  const whatsappHref = `https://wa.me/600000000000?text=${encodeURIComponent(`Hi AcePods, I'm interested in pricing for ${product.name}`)}`;
+  const whatsappHref = 'https://wa.link/9umr4q';
   const emailHref = `mailto:sales@aceofficepods.com?subject=${encodeURIComponent(`AcePods enquiry - ${product.name}`)}`;
   const pdpPricing = product.pdpPricing || {};
   const baseConfigurations = [...(pdpPricing.baseConfigurations || [])].sort((a, b) => a.price - b.price);
@@ -458,9 +458,10 @@ export default function ProductPage() {
                               </a>
                               <a
                                 href={emailHref}
-                                className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center text-[14px] font-semibold text-[#1e2227] hover:bg-[#f5f6f7]"
+                                className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center hover:bg-[#f5f6f7]"
                               >
-                                Email Us
+                                <span className="block text-[14px] font-semibold text-[#1e2227]">Email Us</span>
+                                <span className="mt-0.5 block text-[12px] font-medium text-[#5d6670]">sales@aceofficepods.com</span>
                               </a>
                             </div>
                           )}

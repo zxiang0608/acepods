@@ -51,6 +51,8 @@ const navItems = [
   { label: 'FAQ', to: '/faq' }
 ];
 
+const WHATSAPP_LINK = 'https://wa.link/9umr4q';
+
 const renovationPoints = [
   {
     num: '01',
@@ -563,12 +565,22 @@ export default function App() {
                 </p>
 
                 <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
-                  <button className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-4 md:text-[18px]">
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-4 md:text-[18px]"
+                  >
                     Get Pricing
-                  </button>
-                  <button className="min-w-0 flex-1 rounded-[6px] border border-white/90 bg-transparent px-3.5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-4 md:text-[18px]">
+                  </a>
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="min-w-0 flex-1 rounded-[6px] border border-white/90 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-4 md:text-[18px]"
+                  >
                     Book Viewing
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
