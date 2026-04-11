@@ -188,6 +188,7 @@ export default function ProductPage() {
       description: product.shortDesc,
       image: podPrimaryImage || mainImage,
       price: baseUnit?.price,
+      availability: 'https://schema.org/InStock',
       category: 'Office pods'
     }),
     createBreadcrumbSchema([
@@ -279,6 +280,9 @@ export default function ProductPage() {
                 <h1 className="max-w-[12ch] text-[46px] font-semibold leading-[1.03] tracking-tight md:text-[64px]">
                   {product.displayTitle || product.name}
                 </h1>
+                <p className="mt-3 text-[16px] font-semibold leading-tight text-[#145b5f] md:text-[20px]">
+                  Starting from {formatRM(baseUnit?.price || 0)}
+                </p>
                 <p className="mt-5 max-w-[42ch] text-[17px] leading-[1.5] text-[#2e3136]">{product.shortDesc}</p>
 
                 <div className="mt-8 border-y border-[#d0d0d0] py-6 md:py-7">

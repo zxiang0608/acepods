@@ -47,7 +47,16 @@ export const createBreadcrumbSchema = (items) => ({
   }))
 });
 
-export const createProductSchema = ({ path, name, description, image, price, priceCurrency = 'MYR', category = 'Office pods' }) => ({
+export const createProductSchema = ({
+  path,
+  name,
+  description,
+  image,
+  price,
+  priceCurrency = 'MYR',
+  availability = 'https://schema.org/InStock',
+  category = 'Office pods'
+}) => ({
   '@context': 'https://schema.org',
   '@type': 'Product',
   name,
@@ -65,7 +74,8 @@ export const createProductSchema = ({ path, name, description, image, price, pri
           '@type': 'Offer',
           url: buildCanonical(path),
           priceCurrency,
-          price: String(price)
+          price: String(price),
+          availability
         }
       }
     : {})

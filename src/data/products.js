@@ -53,7 +53,7 @@ import aceSoloProCharcoalGreyImage from '../../assets/POD images/S POD + - Ace S
 import aceMeetingBlackExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/team pod front angle.png';
 import aceMeetingGreenExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/green moss.png';
 import aceMeetingSandExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/mustard yellow.png';
-import aceMeetingWhiteExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/ocean blue.png';
+import aceMeetingWhiteExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/ocean-blue-cutout.png';
 import aceMeetingXLDarkExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/team pod 6.png';
 import aceMeetingXLFallbackExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/xl fallback normalized.png';
 
@@ -548,7 +548,7 @@ export const products = [
       addOnOptions: [highBarStoolAddon, meetingSofaAddon]
     },
     colorImageMap: {
-      default: meetingExteriorImageMap['ext-black'],
+      default: aceMeetingWhiteExteriorImage,
       byExterior: meetingExteriorImageMap,
       byPair: createExteriorInteriorPairMap(meetingExteriorImageMap)
     },
