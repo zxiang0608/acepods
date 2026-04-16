@@ -11,23 +11,23 @@ const PRODUCT_PRERENDER_META = {
     description: 'Private pod for calls and quick focused work',
     startingPrice: 12500
   },
-  '/pods/ace-solo-plus': {
-    name: 'Ace Solo Plus',
+  '/pods/ace-plus': {
+    name: 'Ace Plus',
     description: 'The perfect quiet workspace for two-person collaborations.',
     startingPrice: 14400
   },
-  '/pods/ace-solo-pro': {
-    name: 'Ace Solo Pro',
+  '/pods/ace-flex': {
+    name: 'Ace Flex',
     description: 'Enhanced workspace and comfort',
     startingPrice: 19900
   },
-  '/pods/ace-meeting': {
-    name: 'Ace Meeting',
+  '/pods/ace-meet': {
+    name: 'Ace Meet',
     description: 'Meeting pod for small team discussions',
     startingPrice: 22200
   },
-  '/pods/ace-meeting-xl': {
-    name: 'Ace Meeting XL',
+  '/pods/ace-hub': {
+    name: 'Ace Hub',
     description: 'Meeting pod for larger team discussions',
     startingPrice: 27800
   }
@@ -79,7 +79,7 @@ const STATIC_PRERENDER_META = {
     h1: 'How much does an office pod cost?',
     body: [
       'Office pod pricing depends on model, size, selected features, delivery, installation conditions, and any add-ons.',
-      'Starting from RM12,500 (Ace Solo), RM14,400 (Ace Solo Plus), RM19,900 (Ace Solo Pro), RM22,200 (Ace Meeting), and RM27,800 (Ace Meeting XL).'
+      'Starting from RM12,500 (Ace Solo), RM14,400 (Ace Plus), RM19,900 (Ace Flex), RM22,200 (Ace Meet), and RM27,800 (Ace Hub).'
     ],
     schemas: (canonical) => [
       {

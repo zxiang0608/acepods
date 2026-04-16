@@ -16,7 +16,7 @@ import {
   X
 } from 'lucide-react';
 import acePodsLogo from '../Logos/ace pods logo.png';
-import acePodsHero from '../assets/hero-pods mirror.png';
+import acePodsHero from '../assets/pods-hero-v2.png';
 import openOfficeImage from '../assets/open-office.png';
 import comparePriceImage from '../assets/quotation.jpg';
 import podsInstallationImage from '../assets/pods-installation.png';
@@ -229,10 +229,10 @@ const footerLinkGroups = [
     title: 'Products',
       links: [
         { label: 'Ace Solo', to: '/pods/ace-solo' },
-        { label: 'Ace Solo Plus', to: '/pods/ace-solo-plus' },
-        { label: 'Ace Solo Pro', to: '/pods/ace-solo-pro' },
-        { label: 'Ace Meeting', to: '/pods/ace-meeting' },
-        { label: 'Ace Meeting XL', to: '/pods/ace-meeting-xl' }
+        { label: 'Ace Plus', to: '/pods/ace-plus' },
+        { label: 'Ace Flex', to: '/pods/ace-flex' },
+        { label: 'Ace Meet', to: '/pods/ace-meet' },
+        { label: 'Ace Hub', to: '/pods/ace-hub' }
       ]
   },
   {
@@ -541,14 +541,14 @@ export default function App() {
       </div>
 
       <div className="pt-[64px] md:pt-[80px]">
-        <section className="relative flex h-[76vh] min-h-[560px] items-end justify-start pb-8 sm:h-[78vh] sm:min-h-[600px] sm:pb-8 lg:h-[calc(100vh-80px)] lg:items-center lg:justify-end lg:pb-0">
+        <section className="relative flex h-[560px] items-end justify-start pb-8 sm:h-[620px] sm:pb-8 lg:h-[600px] lg:items-center lg:justify-end lg:pb-0">
           <div className="absolute inset-0 z-0">
             <img
               src={acePodsHero}
               alt="Acoustic office pods for calls and focused work in an open office"
               className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22 lg:bg-black/18"></div>
           </div>
 
           <div className="relative z-10 w-full max-w-[1440px] px-4 md:mx-auto md:px-12">
@@ -587,7 +587,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-white px-5 py-16 md:px-12 md:py-24">
+        <section className="relative overflow-hidden bg-white px-5 pt-8 pb-16 md:px-12 md:pt-12 md:pb-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-8 flex flex-col items-start justify-between gap-6 md:mb-10 md:flex-row md:items-end">
               <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight text-[#222222] sm:text-[30px] md:text-[38px]">
@@ -969,7 +969,12 @@ export default function App() {
             </div>
 
             <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-600 md:flex-row">
-              <div>© 2026 ACE PODS. ALL RIGHTS RESERVED.</div>
+              <div className="flex flex-col items-center gap-2 md:items-start">
+                <div>© 2026 ACE PODS. ALL RIGHTS RESERVED.</div>
+                <div className="text-[11px] font-medium normal-case tracking-normal text-gray-500">
+                  Owned by Ace Workplace Solutions (202403171118)
+                </div>
+              </div>
               <div className="flex items-center gap-2 text-gray-500">
                 <Globe size={14} /> GLOBAL EN <ChevronDown size={14} />
               </div>

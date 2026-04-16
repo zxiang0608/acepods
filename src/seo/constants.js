@@ -14,7 +14,7 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'Which office pod is suitable for calls, focused work, or meetings?',
     answer:
-      'Ace Solo and Ace Solo Plus are best for private calls, video meetings, and focused individual work. Ace Solo Pro is suitable for one-to-one discussions, while Ace Meeting and Ace Meeting XL are built for team meetings and collaboration. We recommend based on your real daily usage and team flow.'
+      'Ace Solo and Ace Plus are best for private calls, video meetings, and focused individual work. Ace Flex is suitable for one-to-one discussions, while Ace Meet and Ace Hub are built for team meetings and collaboration. We recommend based on your real daily usage and team flow.'
   },
   {
     question: 'How soundproof are office pods in real working environments?',
@@ -47,7 +47,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'Which office pod is suitable for calls, focused work, or meetings?',
     answer:
-      'Ace Solo and Ace Solo Plus are suited for calls, Zoom meetings, and focused solo work. Ace Solo Pro supports one-to-one discussions and shared focused tasks. Ace Meeting and Ace Meeting XL are designed for small team meetings and collaboration.'
+      'Ace Solo and Ace Plus are suited for calls, Zoom meetings, and focused solo work. Ace Flex supports one-to-one discussions and shared focused tasks. Ace Meet and Ace Hub are designed for small team meetings and collaboration.'
   },
   {
     question: 'How soundproof are office pods in real working environments?',

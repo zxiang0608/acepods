@@ -12,29 +12,29 @@ export const smartPodsMenuItems = [
     to: '/pods/ace-solo'
   },
   {
-    title: 'Ace Solo Plus',
+    title: 'Ace Plus',
     description: 'The perfect quiet workspace for two-person collaborations.',
     image: menuAceSoloPlus,
-    to: '/pods/ace-solo-plus'
+    to: '/pods/ace-plus'
   },
   {
-    title: 'Ace Solo Pro',
+    title: 'Ace Flex',
     description: 'Enhanced workspace and comfort',
     image: menuAceDuo,
-    to: '/pods/ace-solo-pro'
+    to: '/pods/ace-flex'
   },
   {
-    title: 'Ace Meeting',
+    title: 'Ace Meet',
     description: 'Sound-contained environment tailored for small team meetings.',
     image: menuAceMeeting,
     imageClassName: 'scale-[1.14] mix-blend-multiply',
-    to: '/pods/ace-meeting'
+    to: '/pods/ace-meet'
   },
   {
-    title: 'Ace Meeting XL',
+    title: 'Ace Hub',
     description: 'Provides ample space for larger team meetings and collaboration.',
     image: menuAceMeetingXL,
     imageClassName: 'mix-blend-multiply',
-    to: '/pods/ace-meeting-xl'
+    to: '/pods/ace-hub'
   }
 ];

@@ -7,10 +7,11 @@ import aceSoloPlusHero from '../../assets/ace-solo-plus.png';
 import aceDuoHero from '../../assets/ace-duo.png';
 import aceMeetingHero from '../../assets/ace-meeting.png';
 import aceMeetingXLHero from '../../assets/ace-meeting-XL.png';
-import aceSolo2d from '../../assets/ace-solo-2d.png';
-import aceSoloPlus2d from '../../assets/ace-solo-plus-2d.png';
-import aceDuo2d from '../../assets/ace-duo-2d.png';
-import aceMeeting2d from '../../assets/ace-meeting-2d.png';
+import aceSolo2d from '../../assets/2D images/1. Ace Solo.png';
+import aceSoloPlus2d from '../../assets/2D images/2. Ace Plus.png';
+import aceDuo2d from '../../assets/2D images/3. Ace Flex.png';
+import aceMeeting2d from '../../assets/2D images/4. Ace Meet with Sofa and Table.png';
+import aceMeetingXL2d from '../../assets/2D images/8. Ace Hub with Table and Sofa.png';
 import podsInstallation from '../../assets/pods-installation.png';
 import deliveryPods from '../../assets/delivery-pods.png';
 import openOffice from '../../assets/open-office.png';
@@ -50,12 +51,20 @@ import aceSoloProGreenMossImage from '../../assets/POD images/S POD + - Ace Solo
 import aceSoloProOceanBlueImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/ocean blue s pod+.png';
 import aceSoloProGreyAshImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/grey s pod+.png';
 import aceSoloProCharcoalGreyImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/charcoal grey s pod+.png';
-import aceMeetingBlackExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/team pod front angle.png';
+import aceMeetingOrangeSquashImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/orange squash.png';
+import aceMeetingMustardYellowImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/mustard yellow.png';
 import aceMeetingGreenExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/green moss.png';
-import aceMeetingSandExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/mustard yellow.png';
-import aceMeetingWhiteExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/ocean-blue-cutout.png';
-import aceMeetingXLDarkExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/team pod 6.png';
+import aceMeetingOceanBlueImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/ocean blue.png';
+import aceMeetingGreyAshImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/Grey ash.png';
+import aceMeetingCharcoalGreyImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/charcoal grey.png';
+import aceMeetingXLDarkExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/6 pods.png';
 import aceMeetingXLFallbackExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/xl fallback normalized.png';
+import aceMeetingXLOrangeSquashImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/orange squash.png';
+import aceMeetingXLMustardYellowImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/mustard yellow.png';
+import aceMeetingXLGreenMossImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/Moss green.png';
+import aceMeetingXLOceanBlueImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/ocean blue.jpg';
+import aceMeetingXLGreyAshImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/Grey ash-01.png';
+import aceMeetingXLCharcoalGreyImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/charcoal grey.png';
 
 const deliveryDefaults = {
   default: 350,
@@ -63,9 +72,9 @@ const deliveryDefaults = {
 };
 
 const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290 };
-const meetingSofaAddon = { id: 'meeting-sofa-set', label: '1 set sofa (Ace Meeting only)', amount: 1250 };
-const meetingXLSofaAddon = { id: 'meeting-xl-sofa-set', label: '1 set sofa (Ace Meeting XL only)', amount: 1400 };
-const meetingXLLShapeSofaAddon = { id: 'meeting-xl-l-shape-sofa', label: 'L-shape sofa (Ace Meeting XL only)', amount: 2650 };
+const meetingSofaAddon = { id: 'meeting-sofa-set', label: '1 set sofa (Ace Meet only)', amount: 1250 };
+const meetingXLSofaAddon = { id: 'meeting-xl-sofa-set', label: '1 set sofa (Ace Hub only)', amount: 1400 };
+const meetingXLLShapeSofaAddon = { id: 'meeting-xl-l-shape-sofa', label: 'L-shape sofa (Ace Hub only)', amount: 2650 };
 const defaultCustomerPhotos = [podsInstallation, deliveryPods, openOffice, barStoolBlack, barStoolWhite];
 const sharedFeatureStripItems = [
   { title: 'Motion sensor for energy saving', desc: 'Systems activate on entry and turn off after inactivity.' },
@@ -118,17 +127,21 @@ const createExteriorInteriorPairMap = (exteriorImageMap) =>
   );
 
 const meetingExteriorImageMap = {
-  'ext-black': aceMeetingBlackExteriorImage,
-  'ext-green': aceMeetingGreenExteriorImage,
-  'ext-sand': aceMeetingSandExteriorImage,
-  'ext-white': aceMeetingWhiteExteriorImage
+  'finish-orange-squash': aceMeetingOrangeSquashImage,
+  'finish-mustard-yellow': aceMeetingMustardYellowImage,
+  'finish-green-moss': aceMeetingGreenExteriorImage,
+  'finish-ocean-blue': aceMeetingOceanBlueImage,
+  'finish-grey-ash': aceMeetingGreyAshImage,
+  'finish-charcoal-grey': aceMeetingCharcoalGreyImage
 };
 
 const meetingXLExteriorImageMap = {
-  'ext-black': aceMeetingXLDarkExteriorImage,
-  'ext-green': aceMeetingXLFallbackExteriorImage,
-  'ext-sand': aceMeetingXLFallbackExteriorImage,
-  'ext-white': aceMeetingXLFallbackExteriorImage
+  'finish-orange-squash': aceMeetingXLOrangeSquashImage,
+  'finish-mustard-yellow': aceMeetingXLMustardYellowImage,
+  'finish-green-moss': aceMeetingXLGreenMossImage,
+  'finish-ocean-blue': aceMeetingXLOceanBlueImage,
+  'finish-grey-ash': aceMeetingXLGreyAshImage,
+  'finish-charcoal-grey': aceMeetingXLCharcoalGreyImage
 };
 
 export const products = [
@@ -246,8 +259,8 @@ export const products = [
     ]
   },
   {
-    slug: 'ace-solo-plus',
-    name: 'Ace Solo Plus',
+    slug: 'ace-plus',
+    name: 'Ace Plus',
     breadcrumbLabel: 'Ace Pods',
     shortDesc: 'More spacious pod for longer solo sessions',
     heroImage: aceSoloPlusHero,
@@ -376,13 +389,13 @@ export const products = [
     defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
     faq: [
-      { q: 'Is Ace Solo Plus suitable for all-day use?', a: 'Yes. It is designed for repeated daily use with comfort-focused interior space.' },
+      { q: 'Is Ace Plus suitable for all-day use?', a: 'Yes. It is designed for repeated daily use with comfort-focused interior space.' },
       { q: 'Can we match office finishes?', a: 'Yes. Exterior and interior finishes can be selected during specification.' }
     ]
   },
   {
-    slug: 'ace-solo-pro',
-    name: 'Ace Solo Pro',
+    slug: 'ace-flex',
+    name: 'Ace Flex',
     breadcrumbLabel: 'Ace Pods',
     shortDesc: 'Enhanced workspace and comfort',
     heroImage: aceDuoHero,
@@ -514,17 +527,17 @@ export const products = [
     defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
     faq: [
-      { q: 'Does Ace Solo Pro support hybrid calls?', a: 'Yes. It works well for private calls and small hybrid discussions.' },
-      { q: 'Can it replace small meeting rooms?', a: 'For short two-person sessions, Ace Solo Pro is a practical alternative.' }
+      { q: 'Does Ace Flex support hybrid calls?', a: 'Yes. It works well for private calls and small hybrid discussions.' },
+      { q: 'Can it replace small meeting rooms?', a: 'For short two-person sessions, Ace Flex is a practical alternative.' }
     ]
   },
   {
-    slug: 'ace-meeting',
-    name: 'Ace Meeting',
+    slug: 'ace-meet',
+    name: 'Ace Meet',
     breadcrumbLabel: 'Ace Pods',
     shortDesc: 'Meeting pod for small team discussions',
     heroImage: aceMeetingHero,
-    thumbImage: aceMeetingWhiteExteriorImage,
+    thumbImage: aceMeetingOceanBlueImage,
     customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceMeeting2d,
     imageScale: 'scale-[1.40]',
@@ -548,7 +561,7 @@ export const products = [
       addOnOptions: [highBarStoolAddon, meetingSofaAddon]
     },
     colorImageMap: {
-      default: aceMeetingWhiteExteriorImage,
+      default: aceMeetingGreyAshImage,
       byExterior: meetingExteriorImageMap,
       byPair: createExteriorInteriorPairMap(meetingExteriorImageMap)
     },
@@ -579,28 +592,30 @@ export const products = [
       'Improving office productivity with quiet, dedicated collaboration spaces'
     ],
     exteriorColors: [
-      { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
-      { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
-      { id: 'ext-green', label: 'Forest', hex: '#145a5d' },
-      { id: 'ext-sand', label: 'Sand', hex: '#cdb89e' }
+      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
+      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
+      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
+      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
+      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
+      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
     ],
     interiorColors: standardInteriorColors,
-    defaultExterior: 'ext-white',
+    defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
     faq: [
-      { q: 'What is the difference between Meeting and Meeting XL?', a: 'Meeting XL adds more internal room for larger group sessions.' },
+      { q: 'What is the difference between Ace Meet and Ace Hub?', a: 'Ace Hub adds more internal room for larger group sessions.' },
       { q: 'Is it suitable for longer team discussions?', a: 'Yes. It is designed for practical daily team use with acoustic control.' }
     ]
   },
   {
-    slug: 'ace-meeting-xl',
-    name: 'Ace Meeting XL',
+    slug: 'ace-hub',
+    name: 'Ace Hub',
     breadcrumbLabel: 'Ace Pods',
     shortDesc: 'Meeting pod for larger team discussions',
     heroImage: aceMeetingXLHero,
     thumbImage: aceMeetingXLCutout,
     customerPhotos: defaultCustomerPhotos,
-    drawing2dImage: aceMeeting2d,
+    drawing2dImage: aceMeetingXL2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 6 people and hybrid calls',
@@ -621,7 +636,7 @@ export const products = [
       addOnOptions: [highBarStoolAddon, meetingXLSofaAddon, meetingXLLShapeSofaAddon]
     },
     colorImageMap: {
-      default: meetingXLExteriorImageMap['ext-white'],
+      default: meetingXLExteriorImageMap['finish-grey-ash'],
       byExterior: meetingXLExteriorImageMap,
       byPair: createExteriorInteriorPairMap(meetingXLExteriorImageMap)
     },
@@ -652,17 +667,19 @@ export const products = [
       'Corporate offices, SMEs, and teams needing instant privacy solutions'
     ],
     exteriorColors: [
-      { id: 'ext-white', label: 'Cloud White', hex: '#ececec' },
-      { id: 'ext-black', label: 'Graphite', hex: '#1f1f1f' },
-      { id: 'ext-green', label: 'Forest', hex: '#145a5d' },
-      { id: 'ext-sand', label: 'Sand', hex: '#cdb89e' }
+      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
+      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
+      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
+      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
+      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
+      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
     ],
     interiorColors: standardInteriorColors,
-    defaultExterior: 'ext-white',
+    defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
     faq: [
-      { q: 'How is Ace Meeting XL different from Ace Meeting?', a: 'Ace Meeting XL provides more internal space for larger group sessions.' },
-      { q: 'Is Ace Meeting XL suitable for daily hybrid meetings?', a: 'Yes. It is designed for regular team use and longer hybrid calls.' }
+      { q: 'How is Ace Hub different from Ace Meet?', a: 'Ace Hub provides more internal space for larger group sessions.' },
+      { q: 'Is Ace Hub suitable for daily hybrid meetings?', a: 'Yes. It is designed for regular team use and longer hybrid calls.' }
     ]
   }
 ];

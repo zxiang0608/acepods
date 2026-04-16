@@ -41,6 +41,7 @@ export default function ProductPage() {
   const [selectedAddons, setSelectedAddons] = useState([]);
   const [isAddonMenuOpen, setIsAddonMenuOpen] = useState(false);
   const [isContactChooserOpen, setIsContactChooserOpen] = useState(false);
+  const [isDimensionsModalOpen, setIsDimensionsModalOpen] = useState(false);
   const chooserRef = useRef(null);
   const addonMenuRef = useRef(null);
 
@@ -53,6 +54,7 @@ export default function ProductPage() {
     setSelectedAddons([]);
     setIsAddonMenuOpen(false);
     setIsContactChooserOpen(false);
+    setIsDimensionsModalOpen(false);
   }, [product]);
 
   useEffect(() => {
@@ -81,6 +83,21 @@ export default function ProductPage() {
       document.removeEventListener('keydown', handleEsc);
     };
   }, [isAddonMenuOpen, isContactChooserOpen]);
+
+  useEffect(() => {
+    if (!isDimensionsModalOpen) return;
+
+    const handleEsc = (event) => {
+      if (event.key === 'Escape') {
+        setIsDimensionsModalOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEsc);
+    return () => {
+      document.removeEventListener('keydown', handleEsc);
+    };
+  }, [isDimensionsModalOpen]);
 
   if (!product) {
     return (
@@ -227,12 +244,12 @@ export default function ProductPage() {
 
       <section className="px-5 pb-8 pt-2 md:px-8 md:pb-12 md:pt-4">
         <div className="mx-auto w-full max-w-[1280px] space-y-12 lg:space-y-14">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,52fr)_minmax(0,48fr)] lg:items-stretch lg:gap-12">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,52fr)_minmax(0,48fr)] lg:items-start lg:gap-12">
             <div className="min-w-0">
-              <div className="flex h-full flex-col gap-4 rounded-[8px]">
+              <div className="flex flex-col gap-4 rounded-[8px]">
                 <div
                   className={`flex-1 w-full min-h-[340px] sm:min-h-[380px] md:min-h-[500px] lg:min-h-0 ${
-                    isMainChairImage ? 'flex items-center justify-center' : ''
+                    isMainChairImage ? 'flex items-center justify-center lg:items-start' : ''
                   }`}
                 >
                   {isMainChairImage ? (
@@ -242,7 +259,7 @@ export default function ProductPage() {
                       <img
                         src={mainImage}
                         alt={product.name}
-                        className="relative z-[1] mx-auto h-full w-full object-contain object-bottom mix-blend-multiply md:origin-bottom md:scale-[1.12] md:translate-y-[3%]"
+                        className="relative z-[1] mx-auto h-full w-full object-contain object-bottom mix-blend-multiply md:origin-bottom md:scale-[1.12] md:translate-y-[3%] lg:origin-top lg:scale-100 lg:translate-y-0 lg:object-top"
                       />
                     </div>
                   )}
@@ -273,7 +290,7 @@ export default function ProductPage() {
             </div>
 
             <div className="min-w-0">
-              <div className="flex h-full flex-col">
+              <div className="flex flex-col">
                 <p className="mb-4 text-[13px] font-medium text-[#1c6e72]">
                   Home / {product.breadcrumbLabel || 'Ace Pods'} / {product.displayTitle || product.name}
                 </p>
@@ -506,17 +523,24 @@ export default function ProductPage() {
 
             <div className="min-w-0">
               <div className="h-full">
-                <h2 className="text-[18px] font-semibold tracking-tight text-[#1e2227]">2D Drawing</h2>
-                <div className="mt-3 h-[250px] w-full overflow-hidden rounded-[6px] border border-[#d9d9d9] bg-[#f3f3f3] p-1.5 md:h-[320px] lg:h-[360px]">
+                <h2 className="text-[18px] font-semibold tracking-tight text-[#1e2227]">Dimensions</h2>
+                <div className="mt-3 w-full">
                   {product.drawing2dImage ? (
-                    <img
-                      src={product.drawing2dImage}
-                      alt={`${product.name} 2D drawing`}
-                      className="h-full w-full object-contain [image-rendering:-webkit-optimize-contrast]"
-                    />
+                    <button
+                      type="button"
+                      onClick={() => setIsDimensionsModalOpen(true)}
+                      className="inline-flex max-w-full items-center justify-center overflow-hidden rounded-[6px] border border-[#d9d9d9] bg-[#f3f3f3] p-0.5 text-left transition-colors hover:border-[#b8bec5]"
+                      aria-label={`View detailed dimensions for ${product.name}`}
+                    >
+                      <img
+                        src={product.drawing2dImage}
+                        alt={`${product.name} dimensions`}
+                        className="block h-auto max-w-full w-auto [image-rendering:-webkit-optimize-contrast]"
+                      />
+                    </button>
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center text-center text-[13px] font-medium text-[#6e737a]">
-                      2D drawing will be added soon
+                    <div className="flex min-h-[180px] w-full items-center justify-center rounded-[6px] border border-[#d9d9d9] bg-[#f3f3f3] text-center text-[13px] font-medium text-[#6e737a]">
+                      Dimensions will be added soon
                     </div>
                   )}
                 </div>
@@ -536,6 +560,32 @@ export default function ProductPage() {
           </section>
         </div>
       </section>
+
+      {product.drawing2dImage && isDimensionsModalOpen && (
+        <div
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/70 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${product.name} dimensions detailed view`}
+          onClick={() => setIsDimensionsModalOpen(false)}
+        >
+          <div className="relative max-h-[88vh] max-w-[92vw]" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setIsDimensionsModalOpen(false)}
+              className="absolute right-2 top-2 z-10 rounded-[6px] bg-black/70 px-2 py-1 text-[12px] font-semibold text-white hover:bg-black"
+              aria-label="Close dimensions viewer"
+            >
+              Close
+            </button>
+            <img
+              src={product.drawing2dImage}
+              alt={`${product.name} dimensions detailed view`}
+              className="max-h-[88vh] max-w-[92vw] rounded-[8px] border border-[#d9d9d9] bg-white object-contain"
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
