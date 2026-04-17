@@ -45,6 +45,7 @@ const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder'
 
 const navItems = [
   { label: 'Smart Pods', type: 'smart-pods' },
+  { label: 'Portfolio', to: '/portfolio' },
   { label: 'Office Chairs', to: '/office-chairs' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Installation & Support', to: '/installation-support' },
@@ -360,7 +361,11 @@ export default function App() {
         </h3>
         <div className="mb-10 flex w-full items-center justify-center px-2">
           <div className="aspect-square w-full max-w-[180px] md:max-w-[200px]">
-            <img src={pod.thumbImage} alt={pod.name} className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`} />
+            <img
+              src={pod.thumbImage}
+              alt={pod.name}
+              className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`}
+            />
           </div>
         </div>
         <p className="mb-5 max-w-[13ch] whitespace-pre-line text-center text-[19px] font-semibold leading-[1.3] text-[#3c3c3c] md:text-[20px]">
@@ -395,7 +400,11 @@ export default function App() {
 
         <div className="mt-auto w-full pt-8">
           <div className="mx-auto aspect-square w-full max-w-[288px]">
-            <img src={pod.thumbImage} alt={pod.name} className={`h-full w-full object-contain ${pod.imageScale}`} />
+            <img
+              src={pod.thumbImage}
+              alt={pod.name}
+              className={`h-full w-full object-contain ${pod.imageScale}`}
+            />
           </div>
           <div className="mt-[84px] flex justify-center">
             <Link to={`/pods/${pod.slug}`} className="rounded-[6px] bg-[#00855a] px-9 py-3.5 text-[16px] font-bold text-white">
@@ -421,7 +430,7 @@ export default function App() {
       >
         <div className="mx-auto flex h-full max-w-[1600px] items-center justify-between px-5 md:px-12">
           <div className="flex items-center gap-8 lg:gap-16">
-            <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto cursor-pointer md:h-12" />
+            <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto cursor-pointer md:h-14" />
             <div className="hidden items-center gap-9 lg:flex">
               {navItems.map((item) => {
                 const isSmartPods = item.type === 'smart-pods';
@@ -487,7 +496,7 @@ export default function App() {
         className={`fixed inset-0 z-[100] transform bg-white transition-transform duration-500 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-between border-b border-gray-100 p-6">
-          <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto" />
+          <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
           <button onClick={() => setIsMenuOpen(false)} className="p-2">
             <X size={32} />
           </button>
@@ -875,7 +884,7 @@ export default function App() {
             <div className="space-y-6 md:hidden">
               <div className="space-y-4">
                 <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
-                  <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto" />
+                  <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
                 </div>
                 <p className="max-w-xs text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
                 <div className="flex gap-3">
@@ -930,7 +939,7 @@ export default function App() {
             <div className="mb-14 hidden grid-cols-4 gap-10 md:grid">
               <div className="space-y-6">
                 <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
-                  <img src={acePodsLogo} alt="Ace Pods" className="h-7 w-auto md:h-12" />
+                  <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto md:h-14" />
                 </div>
                 <p className="max-w-xs text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
                 <div className="flex gap-3">
@@ -971,9 +980,14 @@ export default function App() {
             <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-600 md:flex-row">
               <div className="flex flex-col items-center gap-2 md:items-start">
                 <div>© 2026 ACE PODS. ALL RIGHTS RESERVED.</div>
-                <div className="text-[11px] font-medium normal-case tracking-normal text-gray-500">
-                  Owned by Ace Workplace Solutions (202403171118)
-                </div>
+                <a
+                  href="https://aceofficepods.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-medium normal-case tracking-normal text-gray-500 transition-colors hover:text-white"
+                >
+                  Owned by Ace Workplace Solutions (CA0387243-P)
+                </a>
               </div>
               <div className="flex items-center gap-2 text-gray-500">
                 <Globe size={14} /> GLOBAL EN <ChevronDown size={14} />

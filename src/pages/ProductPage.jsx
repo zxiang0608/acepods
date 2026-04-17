@@ -148,6 +148,10 @@ export default function ProductPage() {
     { label: 'Delivery (Klang Valley)', amount: deliveryAmount },
     { label: 'Add-ons subtotal', amount: selectedAddonsAmount }
   ];
+  const outstationNote =
+    pdpPricing.delivery?.outstationNote ||
+    'Other areas outside of Klang Valley will be subject to different delivery and installation charges. If items need to be carried via staircase, additional handling charges will apply.';
+  const outstationNoteLines = outstationNote.match(/[^.?!]+[.?!]/g)?.map((line) => line.trim()) || [outstationNote];
 
   const formatRM = (amount) => `RM${amount.toLocaleString('en-MY')}`;
   const toggleConfigurationOption = (id) => {
@@ -182,6 +186,7 @@ export default function ProductPage() {
           ? `${technicalSpecifications.externalHeight} (room height required: ${technicalSpecifications.roomHeightRequirement})`
           : technicalSpecifications.externalHeight
     },
+    { label: 'Certified tested dBA (A-weighted decibels)', value: technicalSpecifications.certifiedTestedDba },
     { label: 'Weight', value: technicalSpecifications.weight }
   ].filter((row) => row.value);
   const customerPhotos = product.customerPhotos || [];
@@ -449,9 +454,11 @@ export default function ProductPage() {
                             </div>
                           </div>
                         </dl>
-                        <p className="mt-3 text-[11px] font-medium leading-[1.4] text-[#626a73]">
-                          {pdpPricing.delivery?.outstationNote || 'Outstation: WhatsApp Us'}
-                        </p>
+                        <div className="mt-3 space-y-1 text-[11px] font-medium leading-[1.4] text-[#626a73]">
+                          {outstationNoteLines.map((line) => (
+                            <p key={line}>{line}</p>
+                          ))}
+                        </div>
 
                         <div className="relative mt-4" ref={chooserRef}>
                           <button

@@ -8,6 +8,7 @@ import InstallationSupportPage from './pages/InstallationSupportPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OfficeChairsPage from './pages/OfficeChairsPage';
 import OfficePodsPage from './pages/OfficePodsPage';
+import PortfolioPage from './pages/PortfolioPage';
 import PricingPage from './pages/PricingPage';
 import ProductPage from './pages/ProductPage';
 import './index.css';
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/office-chairs" element={<OfficeChairsPage />} />
         <Route path="/office-pods" element={<OfficePodsPage />} />
         <Route path="/compare-office-pods" element={<CompareOfficePodsPage />} />

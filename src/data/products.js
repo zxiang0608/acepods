@@ -1,6 +1,7 @@
 import aceSoloCutout from '../../assets/ace-solo-cutout.png';
 import aceSoloPlusCutout from '../../assets/ace-solo-plus-cutout.png';
 import aceDuoCutout from '../../assets/ace-duo-cutout.png';
+import aceMeetingCutout from '../../assets/ace-meeting-cutout.png';
 import aceMeetingXLCutout from '../../assets/ace-meeting-XL-cutout.png';
 import aceSoloHero from '../../assets/ace-solo.png';
 import aceSoloPlusHero from '../../assets/ace-solo-plus.png';
@@ -68,7 +69,8 @@ import aceMeetingXLCharcoalGreyImage from '../../assets/POD images/TEAM POD 6 Se
 
 const deliveryDefaults = {
   default: 350,
-  outstationNote: 'Outstation: WhatsApp Us'
+  outstationNote:
+    'Other areas outside of Klang Valley will be subject to different delivery and installation charges. If items need to be carried via staircase, additional handling charges will apply.'
 };
 
 const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290 };
@@ -262,14 +264,14 @@ export const products = [
     slug: 'ace-plus',
     name: 'Ace Plus',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: 'More spacious pod for longer solo sessions',
+    shortDesc: 'Single-person quiet pod with automatic light, fan, and power-on when door opens.',
     heroImage: aceSoloPlusHero,
     thumbImage: aceSoloPlusCutout,
     customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceSoloPlus2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop',
-    cardSupport: 'For repeated daily use',
+    cardSupport: 'Single-person pod with automatic comfort controls',
     pricing: {
       amount: 'From RM14,400',
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
@@ -353,20 +355,21 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
+      certifiedTestedDba: '24 dBA',
       weight: '335kg',
       boothFacilities: ['Standing height table', 'Whiteboard panel', 'Netbox power']
     },
     featureStripItems: sharedFeatureStripItems,
     specs: [
       { label: 'Capacity', value: '1 person' },
-      { label: 'Best for', value: 'Longer solo sessions and focused work' },
-      { label: 'Ventilation', value: 'Continuous airflow for extended occupancy' },
-      { label: 'Power', value: 'Integrated lighting + power access' }
+      { label: 'Best for', value: 'Single-person calls and focused work with automatic comfort activation' },
+      { label: 'Ventilation', value: 'Automatic fan activation when the door opens' },
+      { label: 'Power', value: 'Automatic power and lighting activation when the door opens' }
     ],
     useCases: [
-      'Private calls and longer video meetings in open-plan offices (Malaysia)',
-      'Focused work without distractions in busy workplaces',
-      'Improving office productivity with quiet, dedicated solo workspaces'
+      'Private calls and video meetings in open-plan offices (Malaysia)',
+      'Focused single-person work without distractions in busy workplaces',
+      'Quick entry workflow with automatic lights, fan, and power activation when the door opens'
     ],
     exteriorColors: [
       { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
@@ -389,7 +392,10 @@ export const products = [
     defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
     faq: [
-      { q: 'Is Ace Plus suitable for all-day use?', a: 'Yes. It is designed for repeated daily use with comfort-focused interior space.' },
+      {
+        q: 'Is Ace Plus suitable for all-day use?',
+        a: 'Yes. It is designed for repeated single-person use with automatic light, fan, and power activation when the door opens.'
+      },
       { q: 'Can we match office finishes?', a: 'Yes. Exterior and interior finishes can be selected during specification.' }
     ]
   },
@@ -491,6 +497,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
+      certifiedTestedDba: '24 dBA',
       weight: '523kg',
       boothFacilities: ['Standing height table', 'Netbox power', 'Optional: height adjustable table', 'Optional: Netbox power (different ports)']
     },
@@ -537,7 +544,7 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: 'Meeting pod for small team discussions',
     heroImage: aceMeetingHero,
-    thumbImage: aceMeetingOceanBlueImage,
+    thumbImage: aceMeetingCutout,
     customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceMeeting2d,
     imageScale: 'scale-[1.40]',
@@ -576,6 +583,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
+      certifiedTestedDba: '24 dBA',
       weight: '651kg ±',
       boothFacilities: ['Fixed center table', 'White board center panel', 'Full fabric panel', '2 units of sofa (2-seater)']
     },
@@ -651,6 +659,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
+      certifiedTestedDba: '24 dBA',
       weight: '651kg ±',
       boothFacilities: ['Fixed center table', 'White board center panel', 'Full fabric panel', '2 units of sofa (2-seater)', 'Netbox power']
     },

@@ -7,6 +7,7 @@ import { smartPodsMenuItems } from './smartPodsMenuData';
 
 const navItems = [
   { label: 'Smart Pods', type: 'smart-pods' },
+  { label: 'Portfolio', to: '/portfolio' },
   { label: 'Office Chairs', to: '/office-chairs' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'FAQ', to: '/faq' },
@@ -37,7 +38,7 @@ export default function SubpageHeader() {
       <header ref={navRef} className="relative z-40 border-b border-[#e2e0d7] bg-white">
         <div className="mx-auto flex h-[72px] w-full max-w-[1200px] items-center justify-between px-5 md:h-[80px] md:px-8">
           <Link to="/" className="inline-flex items-center">
-            <img src={acePodsLogo} alt="AcePods" className="h-7 w-auto md:h-12" />
+            <img src={acePodsLogo} alt="AcePods" className="h-8 w-auto md:h-14" />
           </Link>
 
           <nav aria-label="Commercial navigation" className="hidden items-center gap-6 text-[14px] font-semibold text-[#2f353b] lg:flex">
@@ -85,7 +86,7 @@ export default function SubpageHeader() {
 
       <div className={`fixed inset-0 z-[100] transform bg-white transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center justify-between border-b border-[#ececec] p-6">
-          <img src={acePodsLogo} alt="AcePods" className="h-7 w-auto" />
+          <img src={acePodsLogo} alt="AcePods" className="h-8 w-auto" />
           <button type="button" onClick={() => setIsMenuOpen(false)} className="p-1" aria-label="Close menu">
             <X size={30} />
           </button>
