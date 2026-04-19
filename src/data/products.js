@@ -264,14 +264,14 @@ export const products = [
     slug: 'ace-plus',
     name: 'Ace Plus',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: 'Single-person quiet pod with automatic light, fan, and power-on when door opens.',
+    shortDesc: 'Quiet pod with automatic comfort controls',
     heroImage: aceSoloPlusHero,
     thumbImage: aceSoloPlusCutout,
     customerPhotos: defaultCustomerPhotos,
     drawing2dImage: aceSoloPlus2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop',
-    cardSupport: 'Single-person pod with automatic comfort controls',
+    cardSupport: 'Single-person space for focused work',
     pricing: {
       amount: 'From RM14,400',
       note: 'Indicative pricing, final quote depends on finish and site conditions.'

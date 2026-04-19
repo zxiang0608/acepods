@@ -14,7 +14,10 @@ const portfolioImageModules = import.meta.glob('../../assets/Portfolio/*.{jpg,jp
   import: 'default'
 });
 
+const excludedPortfolioBasenames = new Set(['20250624_150024']);
+
 const portfolioImages = Object.entries(portfolioImageModules)
+  .filter(([path]) => !excludedPortfolioBasenames.has(path.split('/').pop().replace(/\.[^.]+$/, '')))
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
 
