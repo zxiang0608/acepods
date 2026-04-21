@@ -212,7 +212,7 @@ const escapeHtml = (value) =>
 
 const buildFallbackBody = ({ h1, body = [] }) => {
   const paragraphs = body.map((line) => `<p>${escapeHtml(line)}</p>`).join('');
-  return `<div id="root"><main><section><h1>${escapeHtml(h1)}</h1>${paragraphs}</section></main></div>`;
+  return `<main><section><h1>${escapeHtml(h1)}</h1>${paragraphs}</section></main>`;
 };
 
 const injectSeoHtml = (html, route, meta) => {
@@ -232,7 +232,7 @@ const injectSeoHtml = (html, route, meta) => {
       '  </head>'
   );
 
-  output = output.replace('<div id="root"></div>', buildFallbackBody(meta));
+  output = output.replace('</body>', `    <noscript>${buildFallbackBody(meta)}</noscript>\n  </body>`);
 
   return output;
 };
