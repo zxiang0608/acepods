@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
+  Brain,
   CheckCircle2,
   ChevronDown,
   ChevronLeft,
@@ -8,16 +9,22 @@ import {
   Globe,
   Hammer,
   Instagram,
+  LayoutGrid,
+  LockKeyhole,
+  MessageSquare,
   Linkedin,
   Maximize2,
   Menu,
   Route,
-  Twitter,
+  TrendingUp,
+  VolumeX,
   X
 } from 'lucide-react';
 import acePodsLogo from '../Logos/ace pods logo.png';
 import acePodsHero from '../assets/pods-hero-v2.png';
-import openOfficeImage from '../assets/open-office.png';
+import officeOneImage from '../assets/Office-1.png';
+import officeTwoImage from '../assets/office-2.png';
+import officeThreeImage from '../assets/office-3.png';
 import comparePriceImage from '../assets/quotation.jpg';
 import podsInstallationImage from '../assets/pods-installation.png';
 import deliveryPodsImage from '../assets/delivery-pods.png';
@@ -27,6 +34,9 @@ import alphabetLogo from '../assets/alphabet-logo.png';
 import rightwillLogo from '../assets/rightwill-logo.png';
 import matradeLogo from '../assets/matrade-logo.png';
 import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
+import jyEliteLogo from '../assets/jy-elite.jpg';
+import wsConstructionLogo from '../assets/ws-construction.png';
+import idCandyLogo from '../assets/id-candy.jpg';
 import SeoMeta from './components/SeoMeta';
 import SmartPodsBanner from './components/SmartPodsBanner';
 import { smartPodsMenuItems } from './components/smartPodsMenuData';
@@ -53,6 +63,14 @@ const navItems = [
 ];
 
 const WHATSAPP_LINK = 'https://wa.link/9umr4q';
+const footerSocialLinks = [
+  { label: 'Instagram', href: 'https://www.instagram.com/acepodsmy/', Icon: Instagram },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/?viewAsMember=true',
+    Icon: Linkedin
+  }
+];
 
 const renovationPoints = [
   {
@@ -76,47 +94,56 @@ const seoRenovationPoints = [
   {
     num: '01',
     title: 'Keep noise and disruption away from the rest of the office',
-    desc: 'Add privacy where it is needed without interrupting teams working around the pod area.'
+    desc: 'Add privacy where it is needed without interrupting teams working around the pod area.',
+    image: officeOneImage,
+    imageAlt: 'Single office pod in an open workspace'
   },
   {
     num: '02',
     title: 'Add private space without construction work',
-    desc: 'Office pods create enclosed space for calls, focused work, and meetings without building fixed rooms.'
+    desc: 'Office pods create enclosed space for calls, focused work, and meetings without building fixed rooms.',
+    image: officeTwoImage,
+    imageAlt: 'Meeting pod added to an office floor without renovation'
   },
   {
     num: '03',
     title: 'Move or expand your setup as your office changes',
-    desc: 'You can adjust pod placement as team size, floor plans, or workspace needs evolve over time.'
+    desc: 'You can adjust pod placement as team size, floor plans, or workspace needs evolve over time.',
+    image: officeThreeImage,
+    imageAlt: 'Larger office pod setup for changing team requirements'
   }
 ];
 
-const privacyPoints = [
+const officeSenseItems = [
   {
-    title: 'Calls need more privacy than open offices allow.',
-    desc: 'Routine conversations become office-wide interruptions when shared space is doing too many jobs at once.'
+    icon: VolumeX,
+    title: 'Noise Reduction',
+    desc: 'Reduce open-office noise so calls, meetings, and focused work are easier to manage.'
   },
   {
-    title: 'Some work needs fewer interruptions.',
-    desc: 'Even short blocks of focused work are harder to protect when noise and movement are built into the day.'
+    icon: LockKeyhole,
+    title: 'Privacy & Confidentiality',
+    desc: 'Create enclosed spaces for client calls, HR discussions, interviews, and sensitive conversations.'
   },
   {
-    title: 'Small space problems spread across the office.',
-    desc: 'When there is nowhere suitable for calls or quiet work, the effect reaches nearby teams.'
-  }
-];
-
-const seoPrivacyPoints = [
-  {
-    title: 'Calls need more privacy than open offices allow',
-    desc: 'Conversations that should stay private often carry across the office when there is no enclosed space.'
+    icon: TrendingUp,
+    title: 'Better Focus',
+    desc: 'Give employees a place to step away from movement, interruptions, and background conversations.'
   },
   {
-    title: 'Focused work needs fewer interruptions',
-    desc: 'Noise and movement in open offices make concentration harder to protect throughout the day.'
+    icon: MessageSquare,
+    title: 'Clearer Communication',
+    desc: 'Make phone calls and small meetings easier to hear without disturbing nearby teams.'
   },
   {
-    title: 'When private space is missing, the whole office feels it',
-    desc: 'Lack of quiet zones affects nearby teams, shared focus, and day-to-day workplace flow.'
+    icon: LayoutGrid,
+    title: 'Flexible Layout',
+    desc: 'Add enclosed rooms without fixed construction, then adapt your layout as your team changes.'
+  },
+  {
+    icon: Brain,
+    title: 'Employee Reset Space',
+    desc: 'Offer a quieter place for short breaks, decompression, or heads-down work during busy days.'
   }
 ];
 
@@ -214,6 +241,9 @@ const trustedLogos = [
   { name: 'Parker Hanifin', image: parkerLogo, fitClass: 'scale-[0.92]', logoStageClass: 'max-h-[52px] max-w-[168px]' },
   { name: 'CMA CGM Shipping', image: cmacgmLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
   { name: 'Alphabet Capital Sdn Bhd', image: alphabetLogo, fitClass: 'scale-[0.94]', logoStageClass: 'max-h-[50px] max-w-[176px]' },
+  { name: 'JY Elite', image: jyEliteLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
+  { name: 'WS Construction', image: wsConstructionLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
+  { name: 'ID Candy', image: idCandyLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
   { name: 'Rightwill Sdn Bhd', image: rightwillLogo, fitClass: 'scale-[0.88] -translate-y-[1px]', logoStageClass: 'max-h-[52px] max-w-[170px]' },
   {
     name: 'Malaysia External Trade Development Corporation (MATRADE)',
@@ -332,7 +362,7 @@ export default function App() {
   };
 
   const activeRenovationPoints = seoRenovationPoints;
-  const activePrivacyPoints = seoPrivacyPoints;
+  const activeOfficeSenseItems = officeSenseItems;
   const activeCompareItems = seoCompareItems;
   const activeReassuranceItems = seoReassuranceItems;
   const desktopTopPodCards = products.slice(0, 3);
@@ -574,14 +604,12 @@ export default function App() {
                 </p>
 
                 <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to="/pricing#all-pod-prices"
                     className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-4 md:text-[18px]"
                   >
                     Get Pricing
-                  </a>
+                  </Link>
                   <a
                     href={WHATSAPP_LINK}
                     target="_blank"
@@ -683,84 +711,70 @@ export default function App() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-12 lg:gap-20">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-10 lg:gap-14">
               {activeRenovationPoints.map((item) => (
-                <div key={item.num} className="flex flex-col border-t-[1.5px] border-[#111111] pt-5 md:pt-8">
-                  <span className="mb-3 text-[12px] font-extrabold tracking-widest text-[#00855a] md:mb-5 md:text-[13px]">
-                    {item.num}
-                  </span>
-                  <h3 className="mb-3 text-[20px] font-bold leading-[1.25] tracking-tight text-[#111111] md:mb-4 md:text-[26px]">
-                    {item.title}
-                  </h3>
-                  <p className="text-[15px] leading-[1.6] text-[#555555] md:text-[16px]">{item.desc}</p>
-                </div>
+                <article key={item.num} className="flex flex-col">
+                  <div className="aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#eceae3]">
+                    <img src={item.image} alt={item.imageAlt} className="h-full w-full object-cover" loading="lazy" />
+                  </div>
+                  <div className="mt-6 border-t border-[#717171] pt-6 md:mt-7 md:pt-7">
+                    <span className="mb-3 block text-[12px] font-extrabold tracking-widest text-[#00855a] md:mb-5 md:text-[13px]">{item.num}</span>
+                    <h3 className="mb-3 text-[20px] font-bold leading-[1.25] tracking-tight text-[#111111] md:mb-4 md:text-[26px]">{item.title}</h3>
+                    <p className="text-[15px] leading-[1.65] text-[#555555] md:text-[16px]">{item.desc}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#F6F5F0] px-5 py-16 md:px-12 md:py-24">
+          <div className="mx-auto max-w-[1240px]">
+            <div className="mx-auto max-w-[900px] text-center">
+              <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#62727b] md:text-[12px]">WHY OFFICE PODS MAKE SENSE</span>
+              <h2 className="text-[36px] font-extrabold leading-[1.08] tracking-tight text-[#111111] sm:text-[44px] md:text-[56px]">
+                Add Quiet, Private Space
+                <br className="hidden md:block" />
+                Without Renovating Your Office
+              </h2>
+              <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-[1.65] text-[#4f5660] md:text-[20px]">
+                Ace Pods help teams take calls, focus, meet, and recharge inside busy open offices - without permanent construction or major disruption.
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {activeOfficeSenseItems.map((item) => (
+                <article key={item.title} className="rounded-[8px] border border-[#dddddd] bg-[#f8f8f8] p-6">
+                  <div className="flex items-start gap-4">
+                    <item.icon size={36} strokeWidth={1.8} className="mt-0.5 shrink-0 text-[#2a3138]" />
+                    <div className="text-left">
+                      <h3 className="text-[24px] font-bold leading-[1.12] tracking-tight text-[#111111] md:text-[26px]">{item.title}</h3>
+                      <p className="mt-2 text-[16px] leading-[1.6] text-[#4f5660] md:text-[17px]">{item.desc}</p>
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         <section className="bg-[#F6F5F0] px-5 py-16 md:px-12 md:py-32">
-          <div className="mx-auto max-w-[1440px]">
-            <div className="mb-10 max-w-[1240px] text-center md:mb-14">
-              <span className="mb-3 block text-[12px] font-bold uppercase tracking-wide text-[#62727b] md:mb-4 md:text-[13px]">
-                Why private space matters
-              </span>
-              <h2 className="text-[28px] font-extrabold leading-[1.1] tracking-tight text-[#111111] sm:text-[38px] md:text-[46px] lg:whitespace-nowrap lg:text-[48px]">
-                Not every task belongs in an open office
-              </h2>
-            </div>
-
-            <div className="flex flex-col items-center gap-12 md:gap-16 lg:flex-row lg:gap-24">
-            <div className="hidden w-full flex-1 lg:block">
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-[24px] bg-[#e8e6df]">
-                <img
-                  src={openOfficeImage}
-                  alt="Open office area where private calls and meetings can disrupt nearby teams"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="w-full max-w-[650px] flex-1">
-              <div className="flex flex-col gap-6 md:gap-0">
-                {activePrivacyPoints.map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-[20px] border border-[#eceae0] bg-white p-8 text-left shadow-sm md:rounded-none md:border-0 md:border-b md:border-[#e2dfd5] md:bg-transparent md:px-0 md:py-6 md:shadow-none"
-                  >
-                    <h3 className="mb-2 text-[19px] font-bold leading-tight tracking-tight text-[#111111] md:mb-3 md:text-[22px]">{item.title}</h3>
-                    <p className="text-[15px] leading-[1.6] text-[#555555] md:text-[16px]">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          </div>
-        </section>
-
-        <section className="bg-[#F6F5F0] px-5 py-16 md:px-12 md:py-32">
           <div className="mx-auto max-w-[1240px]">
-            <div className="max-w-none text-left">
-              <span className="mb-4 block text-[13px] font-bold tracking-wide text-[#62727b] md:mb-6 md:text-[14px]">Compare properly</span>
-              <h2 className="mb-6 text-[38px] font-extrabold leading-[1.08] tracking-tight text-[#111111] sm:text-[46px] md:mb-8 md:text-[44px] xl:whitespace-nowrap">
-                What buyers often overlook when comparing office pods
-              </h2>
-              <p className="max-w-none text-[16px] leading-[1.65] text-[#444444] md:text-[19px] xl:whitespace-nowrap">
-                {compareSupportingLine}
-              </p>
+            <div className="mx-auto max-w-[960px] text-center">
+              <span className="mb-4 block text-[12px] font-bold uppercase tracking-[0.24em] text-[#757d86] md:mb-5 md:text-[13px]">BEYOND THE PRODUCT</span>
+              <h2 className="text-[36px] font-extrabold leading-[1.08] tracking-tight text-[#111111] sm:text-[44px] md:text-[52px]">Why Choose AcePods</h2>
+              <p className="mx-auto mt-5 max-w-[70ch] text-[16px] leading-[1.65] text-[#4c545d] md:text-[19px]">{compareSupportingLine}</p>
             </div>
 
-            <div className="mt-14 space-y-12 md:mt-20 md:space-y-16">
-              {activeCompareItems.map((item, idx) => (
-                <article key={item.title} className="grid items-center gap-6 md:gap-10 lg:grid-cols-2 lg:gap-16">
-                  <div className={`${idx % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} text-left`}>
-                    <h3 className="text-[29px] font-bold leading-[1.16] tracking-tight text-[#111111] sm:text-[32px] md:text-[44px] lg:text-[48px]">{item.title}</h3>
-                    <p className="mt-4 max-w-[44ch] text-[17px] leading-[1.7] text-[#5a5a5a] md:text-[19px]">{item.desc}</p>
+            <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
+              {activeCompareItems.map((item) => (
+                <article key={item.title} className="overflow-hidden rounded-[22px] border border-[#e5e5e2] bg-[#f2f2f0] shadow-[0_6px_18px_rgba(0,0,0,0.06)]">
+                  <div className="aspect-[5/3] w-full">
+                    <img src={item.image} alt={item.imageAlt} className={`h-full w-full object-cover ${item.imageClassName || ''}`} />
                   </div>
-                  <div className={`${idx % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} overflow-hidden rounded-[10px] bg-[#e7e3dc]`}>
-                    <div className="aspect-[4/3] w-full">
-                      <img src={item.image} alt={item.imageAlt} className={`h-full w-full object-cover ${item.imageClassName || ''}`} />
-                    </div>
+                  <div className="px-6 pb-8 pt-5 text-left">
+                    <h3 className="text-[33px] font-bold leading-[1.12] tracking-tight text-[#111111] md:text-[30px]">{item.title}</h3>
+                    <p className="mt-3 text-[17px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
                   </div>
                 </article>
               ))}
@@ -772,17 +786,19 @@ export default function App() {
           <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#111111] md:mb-12 md:text-[32px]">
             {trustSectionHeading}
           </h2>
-          <div className="hide-scrollbar flex w-full justify-start gap-3 overflow-x-auto px-5 pb-6 lg:justify-center md:gap-4">
-            {trustedLogos.map((logo, idx) => (
-              <div
-                key={`${logo.name}-${idx}`}
-                className="flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#FAFAFA] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
-              >
-                <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
-                  <img src={logo.image} alt={logo.name} className={`h-full w-full object-contain ${logo.fitClass || ''}`} />
+          <div className="logo-marquee px-5 pb-6">
+            <div className="logo-marquee-track">
+              {[...trustedLogos, ...trustedLogos].map((logo, idx) => (
+                <div
+                  key={`${logo.name}-${idx}`}
+                  className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#FAFAFA] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
+                >
+                  <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
+                    <img src={logo.image} alt={logo.name} className={`h-full w-full object-contain ${logo.fitClass || ''}`} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
@@ -888,14 +904,17 @@ export default function App() {
                 </div>
                 <p className="max-w-xs text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
                 <div className="flex gap-3">
-                  {[Instagram, Linkedin, Twitter].map((Icon, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
+                  {footerSocialLinks.map(({ label, href, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
                       className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:text-white"
                     >
                       <Icon size={18} />
-                    </button>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -943,14 +962,17 @@ export default function App() {
                 </div>
                 <p className="max-w-xs text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
                 <div className="flex gap-3">
-                  {[Instagram, Linkedin, Twitter].map((Icon, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
+                  {footerSocialLinks.map(({ label, href, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
                       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:text-white"
                     >
                       <Icon size={18} />
-                    </button>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -986,7 +1008,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="text-[11px] font-medium normal-case tracking-normal text-gray-500 transition-colors hover:text-white"
                 >
-                  Owned by Ace Workplace Solutions (CA0387243-P)
+                  Owned by Ace Workplace Solutions (Ace Office Pods Malaysia) - 202403171118
                 </a>
               </div>
               <div className="flex items-center gap-2 text-gray-500">

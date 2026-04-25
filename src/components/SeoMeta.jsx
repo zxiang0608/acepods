@@ -25,23 +25,41 @@ const upsertCanonical = (href) => {
   linkTag.setAttribute('href', href);
 };
 
+const removeDemoPrefixFromCanonical = (href) => {
+  if (!href) return href;
+  try {
+    const url = new URL(href);
+    if (url.pathname === '/demo') {
+      url.pathname = '/';
+    } else if (url.pathname.startsWith('/demo/')) {
+      url.pathname = url.pathname.replace(/^\/demo/, '');
+    }
+    return url.toString();
+  } catch {
+    return href;
+  }
+};
+
 export default function SeoMeta({ title, description, canonical, ogImage = DEFAULT_OG_IMAGE, robots = 'index, follow', schemas = [] }) {
   const schemaSignature = JSON.stringify(schemas);
+  const isDemoPath = window.location.pathname === '/demo' || window.location.pathname.startsWith('/demo/');
+  const effectiveCanonical = isDemoPath ? removeDemoPrefixFromCanonical(canonical) : canonical;
+  const effectiveRobots = isDemoPath ? 'noindex, follow' : robots;
 
   useEffect(() => {
     document.title = title;
     upsertMetaTag('name', 'description', description);
-    upsertMetaTag('name', 'robots', robots);
+    upsertMetaTag('name', 'robots', effectiveRobots);
     upsertMetaTag('property', 'og:type', 'website');
     upsertMetaTag('property', 'og:title', title);
     upsertMetaTag('property', 'og:description', description);
-    upsertMetaTag('property', 'og:url', canonical);
+    upsertMetaTag('property', 'og:url', effectiveCanonical);
     upsertMetaTag('property', 'og:image', ogImage);
     upsertMetaTag('name', 'twitter:card', 'summary_large_image');
     upsertMetaTag('name', 'twitter:title', title);
     upsertMetaTag('name', 'twitter:description', description);
     upsertMetaTag('name', 'twitter:image', ogImage);
-    upsertCanonical(canonical);
+    upsertCanonical(effectiveCanonical);
 
     const oldSchemaTags = document.head.querySelectorAll('script[data-seo-schema="true"]');
     oldSchemaTags.forEach((tag) => tag.remove());
@@ -59,7 +77,7 @@ export default function SeoMeta({ title, description, canonical, ogImage = DEFAU
       const cleanupSchemaTags = document.head.querySelectorAll('script[data-seo-schema="true"]');
       cleanupSchemaTags.forEach((tag) => tag.remove());
     };
-  }, [canonical, description, ogImage, robots, schemaSignature, title]);
+  }, [description, effectiveCanonical, effectiveRobots, ogImage, schemaSignature, title]);
 
   return null;
 }

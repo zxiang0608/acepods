@@ -11,6 +11,8 @@ export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'AcePods',
+  legalName: 'Ace Workplace Solutions (Ace Office Pods Malaysia)',
+  identifier: '202403171118',
   url: SEO_BASE_URL,
   description: 'Acoustic office pods for calls, focus, and meetings.'
 };

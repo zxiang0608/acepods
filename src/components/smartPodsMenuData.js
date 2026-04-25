@@ -3,6 +3,7 @@ import menuAceSoloPlus from '../../assets/ace-solo-plus-cutout.png';
 import menuAceDuo from '../../assets/ace-duo-cutout.png';
 import menuAceMeeting from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/ocean-blue-cutout.png';
 import menuAceMeetingXL from '../../assets/ace-meeting-XL-cutout.png';
+import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
 
 export const smartPodsMenuItems = [
   {
@@ -13,7 +14,7 @@ export const smartPodsMenuItems = [
   },
   {
     title: 'Ace Plus',
-    description: 'The perfect quiet workspace for two-person collaborations.',
+    description: POD_SEO_BY_SLUG['ace-plus'].shortDesc,
     image: menuAceSoloPlus,
     to: '/pods/ace-plus'
   },

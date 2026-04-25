@@ -19,7 +19,7 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'How soundproof are office pods in real working environments?',
     answer:
-      'Our office pods achieve approximately 24 dBA noise reduction in practical office conditions. This significantly reduces surrounding noise for calls and meetings. They are highly effective for privacy, although no pod is completely 100% soundproof.'
+      'Our office pods achieve approximately 27 dBA noise reduction in practical office conditions. This significantly reduces surrounding noise for calls and meetings. They are highly effective for privacy, although no pod is completely 100% soundproof.'
   },
   {
     question: 'What happens if we need help after delivery?',
@@ -52,7 +52,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'How soundproof are office pods in real working environments?',
     answer:
-      'Our office pods achieve approximately 24 dBA noise reduction in real office use. This reduces surrounding noise significantly and improves privacy for calls and meetings. They are highly effective, but not completely 100% soundproof.'
+      'Our office pods achieve approximately 27 dBA noise reduction in real office use. This reduces surrounding noise significantly and improves privacy for calls and meetings. They are highly effective, but not completely 100% soundproof.'
   },
   {
     question: 'Are office pods suitable for Malaysia office environments (heat and ventilation)?',

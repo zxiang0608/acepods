@@ -2,36 +2,9 @@ import path from 'node:path';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { getRouteManifest } from './route-manifest.mjs';
 import { FAQ_PAGE_ITEMS, HOME_FAQ_ITEMS, SEO_BASE_URL } from '../src/seo/constants.js';
+import { POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
 
 const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.png`;
-
-const PRODUCT_PRERENDER_META = {
-  '/pods/ace-solo': {
-    name: 'Ace Solo',
-    description: 'Private pod for calls and quick focused work',
-    startingPrice: 12500
-  },
-  '/pods/ace-plus': {
-    name: 'Ace Plus',
-    description: 'The perfect quiet workspace for two-person collaborations.',
-    startingPrice: 14400
-  },
-  '/pods/ace-flex': {
-    name: 'Ace Flex',
-    description: 'Enhanced workspace and comfort',
-    startingPrice: 19900
-  },
-  '/pods/ace-meet': {
-    name: 'Ace Meet',
-    description: 'Meeting pod for small team discussions',
-    startingPrice: 22200
-  },
-  '/pods/ace-hub': {
-    name: 'Ace Hub',
-    description: 'Meeting pod for larger team discussions',
-    startingPrice: 27800
-  }
-};
 
 const STATIC_PRERENDER_META = {
   '/': {
@@ -48,6 +21,8 @@ const STATIC_PRERENDER_META = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'AcePods',
+        legalName: 'Ace Workplace Solutions (Ace Office Pods Malaysia)',
+        identifier: '202403171118',
         url: SEO_BASE_URL,
         description: 'Acoustic office pods for calls, focus, and meetings.'
       },
@@ -190,6 +165,128 @@ const STATIC_PRERENDER_META = {
         ]
       }
     ]
+  },
+  '/portfolio': {
+    title: 'Office Pod Portfolio Malaysia | Past Installations and Project Work | AcePods',
+    description:
+      'Explore AcePods portfolio projects across Malaysia. See past office pod installations for calls, focused work, and meetings with practical commercial outcomes.',
+    h1: 'Past office pod projects across Malaysia',
+    body: [
+      'View real office pod projects completed across Malaysia.',
+      'Explore installation examples for calls, focused work, and team meetings.'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Office Pod Portfolio Malaysia',
+        url: canonical,
+        description:
+          'Explore AcePods portfolio projects across Malaysia. See past office pod installations for calls, focused work, and meetings with practical commercial outcomes.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Portfolio',
+            item: canonical
+          }
+        ]
+      }
+    ]
+  },
+  '/compare-office-pods': {
+    title: 'Compare Office Pods by Price, Installation and Support | AcePods',
+    description:
+      'Compare office pods beyond headline price. Review installation, support, warranty coverage, and office-fit considerations before buying.',
+    h1: 'Compare office pods by price, installation, and support',
+    body: [
+      'Compare models beyond headline pricing with practical buying factors in one view.',
+      'Review installation, support, and office fit before making a final decision.'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Compare Office Pods by Price, Installation and Support',
+        url: canonical,
+        description:
+          'Compare office pods beyond headline price. Review installation, support, warranty coverage, and office-fit considerations before buying.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Compare Office Pods',
+            item: canonical
+          }
+        ]
+      }
+    ]
+  },
+  '/installation-support': {
+    title: 'Office Pod Delivery, Installation and Support | AcePods',
+    description:
+      'See what to expect from site review to handover with clear lead times, installation planning, and after-sales support for office pod projects.',
+    h1: 'Office pod delivery, installation, and support',
+    body: [
+      'Understand each project stage from needs review and site check to final handover.',
+      'Plan with clear lead times, installation coordination, and after-sales support.'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Office Pod Delivery, Installation and Support',
+        url: canonical,
+        description:
+          'See what to expect from site review to handover with clear lead times, installation planning, and after-sales support for office pod projects.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Installation & Support',
+            item: canonical
+          }
+        ]
+      }
+    ]
+  },
+  '/office-chairs': {
+    title: 'Office Chairs | AcePods',
+    description: 'Office chair collection from AcePods is coming soon. Contact our team for updates and early project support.',
+    robots: 'noindex, follow',
+    h1: 'Office chairs',
+    body: ['Office chair collection from AcePods is coming soon.', 'Contact our team for updates and early project support.'],
+    schemas: []
   }
 };
 
@@ -217,6 +314,7 @@ const buildFallbackBody = ({ h1, body = [] }) => {
 
 const injectSeoHtml = (html, route, meta) => {
   const canonical = `${SEO_BASE_URL}${route}`;
+  const robots = meta.robots || 'index, follow';
   const schemas = typeof meta.schemas === 'function' ? meta.schemas(canonical) : meta.schemas || [];
   const schemaScripts = schemas
     .map((schemaObject) => `    <script type="application/ld+json" data-seo-schema="true">${JSON.stringify(schemaObject)}</script>`)
@@ -226,7 +324,7 @@ const injectSeoHtml = (html, route, meta) => {
   output = output.replace(
     '</head>',
     `    <meta name="description" content="${escapeHtml(meta.description)}" />\n` +
-      `    <meta name="robots" content="index, follow" />\n` +
+      `    <meta name="robots" content="${escapeHtml(robots)}" />\n` +
       `    <link rel="canonical" href="${canonical}" />\n` +
       `${schemaScripts ? `${schemaScripts}\n` : ''}` +
       '  </head>'
@@ -239,9 +337,9 @@ const injectSeoHtml = (html, route, meta) => {
 
 const buildProductPrerenderMeta = (route, productMeta) => ({
   title: `${productMeta.name} Office Pod Pricing, Specs and Colors | AcePods`,
-  description: `${productMeta.name}: ${productMeta.description}. Starting from ${formatRM(productMeta.startingPrice)} in Malaysia.`,
+  description: `${productMeta.name}: ${productMeta.shortDesc}. Starting from ${formatRM(productMeta.startingPrice)} in Malaysia.`,
   h1: productMeta.name,
-  body: [`Starting from ${formatRM(productMeta.startingPrice)}`, productMeta.description],
+  body: [`Starting from ${formatRM(productMeta.startingPrice)}`, productMeta.shortDesc],
   schemas: (canonical) => [
     {
       '@context': 'https://schema.org',
@@ -251,7 +349,7 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
         '@type': 'Brand',
         name: 'AcePods'
       },
-      description: productMeta.description,
+      description: productMeta.shortDesc,
       image: [DEFAULT_OG_IMAGE],
       url: canonical,
       offers: {
@@ -272,7 +370,11 @@ const run = async () => {
 
   for (const route of PUBLIC_ROUTES) {
     const staticRouteMeta = STATIC_PRERENDER_META[route];
-    const productRouteMeta = PRODUCT_PRERENDER_META[route];
+    const productSlug = route.startsWith('/pods/') ? route.split('/').pop() : null;
+    const productRouteMeta = productSlug ? POD_SEO_BY_SLUG[productSlug] : null;
+    if (productSlug && !productRouteMeta) {
+      throw new Error(`Missing SEO catalog data for pod route: ${route}`);
+    }
     const resolvedMeta = staticRouteMeta || (productRouteMeta ? buildProductPrerenderMeta(route, productRouteMeta) : null);
     const routeHtml = resolvedMeta ? injectSeoHtml(baseHtml, route, resolvedMeta) : baseHtml;
     const outputPath = resolveOutputPath(route);

@@ -17,3 +17,33 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@keyframes logoMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-marquee {
+  overflow: hidden;
+}
+
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0.75rem;
+  animation: logoMarquee 32s linear infinite;
+}
+
+.logo-marquee-card {
+  flex: 0 0 auto;
+}
+
+@media (min-width: 768px) {
+  .logo-marquee-track {
+    gap: 1rem;
+  }
+}

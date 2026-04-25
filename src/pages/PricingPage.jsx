@@ -43,7 +43,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-8 grid w-full max-w-[1100px] gap-4 px-5 md:grid-cols-2 md:px-8">
+      <section id="all-pod-prices" className="mx-auto mt-8 grid w-full max-w-[1100px] gap-4 px-5 md:grid-cols-2 md:px-8">
         {products.map((product) => (
           <article key={product.slug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
             <h3 className="text-[24px] font-semibold tracking-tight text-[#1d232a]">{product.name}</h3>

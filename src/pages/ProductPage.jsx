@@ -1,10 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, Check } from 'lucide-react';
+import { ArrowLeft, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import SeoMeta from '../components/SeoMeta';
+import SiteFooter from '../components/SiteFooter';
 import SubpageHeader from '../components/SubpageHeader';
 import { getProductBySlug } from '../data/products';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema } from '../seo/schema';
+import highResPodCert from '../../assets/high-res-pod-cert.png';
 
 const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false }) => (
   <div>
@@ -49,7 +51,7 @@ export default function ProductPage() {
     if (!product) return;
     setSelectedExterior(product.defaultExterior);
     setSelectedInterior(product.defaultInterior);
-    setSelectedImage(product.thumbImage || product.heroImage);
+    setSelectedImage('');
     setSelectedConfigurationOptionIds([]);
     setSelectedAddons([]);
     setIsAddonMenuOpen(false);
@@ -142,8 +144,9 @@ export default function ProductPage() {
   const deliveryAmount = pdpPricing.delivery?.default || 0;
   const computedTotal = (baseUnit?.price || 0) + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
 
+  const isFlexAndAbove = ['ace-flex', 'ace-meet', 'ace-hub'].includes(product.slug);
   const pricingRows = [
-    { label: 'Base unit price', amount: baseUnit?.price || 0 },
+    { label: isFlexAndAbove ? 'Base unit (pod only)' : 'Base unit price', amount: baseUnit?.price || 0 },
     { label: 'Add-on', amount: selectedConfigurationAmount },
     { label: 'Installation (Klang Valley)', amount: installationAmount },
     { label: 'Delivery (Klang Valley)', amount: deliveryAmount },
@@ -196,7 +199,55 @@ export default function ProductPage() {
   ].filter((row) => row.value);
   const customerPhotos = product.customerPhotos || [];
   const podPrimaryImage = product.thumbImage || product.heroImage;
-  const mainImage = mappedImage || selectedImage || podPrimaryImage;
+  const primaryGalleryImage = mappedImage || podPrimaryImage;
+  const galleryItems = (() => {
+    const items = [];
+    const seenImages = new Set();
+
+    Object.entries(colorImageMap?.byPair || {}).forEach(([pair, image]) => {
+      if (!image || seenImages.has(image)) return;
+      const [exteriorId, interiorId] = pair.split('|');
+      if (!exteriorId || !interiorId) return;
+      seenImages.add(image);
+      items.push({
+        type: 'color',
+        image,
+        label: `${exteriorId} + ${interiorId}`,
+        exteriorId,
+        interiorId
+      });
+    });
+
+    if (primaryGalleryImage && !seenImages.has(primaryGalleryImage)) {
+      seenImages.add(primaryGalleryImage);
+      items.unshift({
+        type: 'color',
+        image: primaryGalleryImage,
+        label: `${selectedExterior} + ${selectedInterior}`,
+        exteriorId: selectedExterior,
+        interiorId: selectedInterior
+      });
+    }
+
+    customerPhotos.forEach((image, index) => {
+      if (!image || seenImages.has(image)) return;
+      seenImages.add(image);
+      items.push({
+        type: 'photo',
+        image,
+        label: `Customer photo ${index + 1}`
+      });
+    });
+
+    return items;
+  })();
+  const colorGalleryItems = galleryItems.filter((item) => item.type === 'color');
+  const photoGalleryItems = galleryItems.filter((item) => item.type === 'photo');
+  const orderedGalleryItems = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-hub'].includes(product.slug)
+    ? photoGalleryItems
+    : [...colorGalleryItems, ...photoGalleryItems];
+  const mainImage = selectedImage || primaryGalleryImage;
+  const activeGalleryIndex = Math.max(orderedGalleryItems.findIndex((item) => item.image === mainImage), 0);
   const exteriorLabel = product.exteriorLabel || 'Exterior Color';
   const interiorMaterialSections = product.interiorMaterialSections || null;
   const mdfInteriorOptions = (interiorMaterialSections?.mdf?.optionIds || [])
@@ -224,11 +275,13 @@ export default function ProductPage() {
       { name: product.displayTitle || product.name, path: canonicalPath }
     ])
   ];
-  const shouldShowThumbnails = customerPhotos.length > 0 && !product.hideThumbnailsOnColorMode;
-  const isMainChairImage = typeof mainImage === 'string' && mainImage.includes('bar-stool');
+  const shouldShowThumbnails = orderedGalleryItems.length > 0;
+  const isChairImage = typeof mainImage === 'string' && mainImage.includes('bar-stool');
+  const shouldUseMultiplyBlend = product.slug !== 'ace-plus' || isChairImage;
 
   const handleExteriorSelect = (id) => {
     setSelectedExterior(id);
+    setSelectedImage('');
     if (product.syncExteriorInteriorSelection) {
       setSelectedInterior(id);
     }
@@ -236,9 +289,58 @@ export default function ProductPage() {
 
   const handleInteriorSelect = (id) => {
     setSelectedInterior(id);
+    setSelectedImage('');
     if (product.syncExteriorInteriorSelection) {
       setSelectedExterior(id);
     }
+  };
+
+  const goToPrevImage = () => {
+    if (orderedGalleryItems.length < 2) return;
+    const nextIndex = (activeGalleryIndex - 1 + orderedGalleryItems.length) % orderedGalleryItems.length;
+    setSelectedImage(orderedGalleryItems[nextIndex].image);
+  };
+
+  const goToNextImage = () => {
+    if (orderedGalleryItems.length < 2) return;
+    const nextIndex = (activeGalleryIndex + 1) % orderedGalleryItems.length;
+    setSelectedImage(orderedGalleryItems[nextIndex].image);
+  };
+
+  useEffect(() => {
+    if (orderedGalleryItems.length < 2) return;
+
+    const handleGalleryKeydown = (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      if (isDimensionsModalOpen || isAddonMenuOpen || isContactChooserOpen) return;
+
+      const target = event.target;
+      if (target instanceof HTMLElement) {
+        const tagName = target.tagName.toLowerCase();
+        const isTypingField = ['input', 'textarea', 'select'].includes(tagName) || target.isContentEditable;
+        if (isTypingField) return;
+      }
+
+      event.preventDefault();
+      if (event.key === 'ArrowLeft') {
+        goToPrevImage();
+        return;
+      }
+      goToNextImage();
+    };
+
+    document.addEventListener('keydown', handleGalleryKeydown);
+    return () => {
+      document.removeEventListener('keydown', handleGalleryKeydown);
+    };
+  }, [orderedGalleryItems, isDimensionsModalOpen, isAddonMenuOpen, isContactChooserOpen, activeGalleryIndex]);
+
+  const handleThumbnailSelect = (item) => {
+    if (item.type === 'color') {
+      setSelectedExterior(item.exteriorId);
+      setSelectedInterior(item.interiorId);
+    }
+    setSelectedImage(item.image);
   };
 
   return (
@@ -253,105 +355,118 @@ export default function ProductPage() {
       <SubpageHeader />
 
       <section className="px-5 pb-8 pt-2 md:px-8 md:pb-12 md:pt-4">
-        <div className="mx-auto w-full max-w-[1280px] space-y-12 lg:space-y-14">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,52fr)_minmax(0,48fr)] lg:items-start lg:gap-12">
+        <div className="mx-auto w-full max-w-[1280px] space-y-16 lg:space-y-20">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,56fr)_minmax(0,44fr)] lg:items-stretch lg:gap-10">
             <div className="min-w-0">
-              <div className="flex flex-col gap-4 rounded-[8px]">
-                <div
-                  className={`flex-1 w-full min-h-[340px] sm:min-h-[380px] md:min-h-[500px] lg:min-h-0 ${
-                    isMainChairImage ? 'flex items-center justify-center lg:items-start' : ''
-                  }`}
-                >
-                  {isMainChairImage ? (
-                    <img src={mainImage} alt={product.name} className="mx-auto block h-[60%] w-[60%] object-contain object-center" />
-                  ) : (
-                    <div className="relative h-full w-full">
-                      <img
-                        src={mainImage}
-                        alt={product.name}
-                        className="relative z-[1] mx-auto h-full w-full object-contain object-bottom mix-blend-multiply md:origin-bottom md:scale-[1.12] md:translate-y-[3%] lg:origin-top lg:scale-100 lg:translate-y-0 lg:object-top"
-                      />
-                    </div>
-                  )}
-                </div>
-                {shouldShowThumbnails && (
-                  <div className="mt-auto w-full overflow-x-auto pb-1">
-                    <div className="mx-auto flex w-max snap-x snap-mandatory justify-center gap-2 px-5 md:snap-none md:gap-3 md:px-0">
-                      {customerPhotos.map((photo, index) => {
-                        const isActive = mainImage === photo;
-                        return (
-                          <button
-                            key={`${product.slug}-customer-photo-${index}`}
-                            type="button"
-                            onClick={() => setSelectedImage(photo)}
-                            className={`flex h-8 w-8 shrink-0 snap-start items-center justify-center overflow-hidden rounded-[6px] border bg-white transition md:h-[44px] md:w-[44px] ${
-                              isActive ? 'border-[#145b5f] ring-1 ring-[#145b5f]/40' : 'border-[#d0d3d7] hover:border-[#98a2ac]'
-                            }`}
-                            aria-label={`View customer photo ${index + 1} for ${product.name}`}
-                          >
-                            <img src={photo} alt={`${product.name} customer installation ${index + 1}`} className="h-full w-full object-cover" />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="min-w-0">
-              <div className="flex flex-col">
-                <p className="mb-4 text-[13px] font-medium text-[#1c6e72]">
+              <div className="lg:hidden">
+                <p className="mb-3 text-[13px] font-medium text-[#1c6e72]">
                   Home / {product.breadcrumbLabel || 'Ace Pods'} / {product.displayTitle || product.name}
                 </p>
-                <h1 className="max-w-[12ch] text-[46px] font-semibold leading-[1.03] tracking-tight md:text-[64px]">
+                <h1 className="max-w-[12ch] text-[42px] font-semibold leading-[1.03] tracking-tight md:text-[56px]">
                   {product.displayTitle || product.name}
                 </h1>
                 <p className="mt-3 text-[16px] font-semibold leading-tight text-[#145b5f] md:text-[20px]">
                   Starting from {formatRM(baseUnit?.price || 0)}
                 </p>
-                <p className="mt-5 max-w-[42ch] text-[17px] leading-[1.5] text-[#2e3136]">{product.shortDesc}</p>
+                <p className="mt-4 max-w-[42ch] text-[17px] leading-[1.5] text-[#2e3136]">{product.shortDesc}</p>
+              </div>
+              <div className="relative mt-6 h-[380px] w-full sm:h-[460px] md:h-[620px] lg:mt-[106px] lg:h-[644px]">
+                {orderedGalleryItems.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={goToPrevImage}
+                    aria-label={`Previous image for ${product.name}`}
+                    className="absolute left-0 top-1/2 z-[2] -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/85 p-1.5 text-[#2f3439] shadow-sm backdrop-blur-sm transition-colors hover:bg-white md:left-1"
+                  >
+                    <ChevronLeft size={26} strokeWidth={2.25} />
+                  </button>
+                )}
 
-                <div className="mt-8 border-y border-[#d0d0d0] py-6 md:py-7">
-                  <div className="grid gap-6 md:grid-cols-2 md:items-stretch md:gap-8">
-                    <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
-                      <SwatchGroup label={exteriorLabel} options={product.exteriorColors} selectedId={selectedExterior} onSelect={handleExteriorSelect} />
-                      <div className="mt-6 border-t border-[#d8d8d8] pt-6">
-                        {hasSplitInteriorSections ? (
-                          <div className="space-y-6">
-                            <div>
-                              <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#1e2227]">
-                                Interior Wall Colour Options (Melamine Faced Chipboard / MDF)
-                              </h3>
-                              <SwatchGroup
-                                hideHeading
-                                label="Interior Wall Colour Options (Melamine Faced Chipboard / MDF)"
-                                options={mdfInteriorOptions}
-                                selectedId={selectedInterior}
-                                onSelect={handleInteriorSelect}
-                              />
-                            </div>
+                <div
+                  className={`relative flex h-full w-full justify-center overflow-hidden ${
+                    isChairImage ? 'items-center' : 'items-stretch'
+                  }`}
+                >
+                  <img
+                    src={mainImage}
+                    alt={product.name}
+                    className={`relative z-[1] object-contain object-center ${shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''} ${
+                      isChairImage ? 'h-full w-full' : 'h-full w-auto max-w-none'
+                    }`}
+                  />
+                </div>
 
-                            <div className="border-t border-[#e4e7eb] pt-4">
-                              <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#1e2227]">PET Fabric Interior Wall Colour</h3>
-                              <SwatchGroup
-                                hideHeading
-                                label="PET Fabric Interior Wall Colour"
-                                options={petInteriorOptions}
-                                selectedId={selectedInterior}
-                                onSelect={handleInteriorSelect}
-                              />
-                            </div>
+                {orderedGalleryItems.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={goToNextImage}
+                    aria-label={`Next image for ${product.name}`}
+                    className="absolute right-0 top-1/2 z-[2] -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/85 p-1.5 text-[#2f3439] shadow-sm backdrop-blur-sm transition-colors hover:bg-white md:right-1"
+                  >
+                    <ChevronRight size={26} strokeWidth={2.25} />
+                  </button>
+                )}
+              </div>
+              <div className="mt-4 hidden lg:block">
+                <div className="h-[106px] w-full">
+                  <div className="flex h-full w-full items-center justify-center overflow-hidden">
+                    <img src={highResPodCert} alt="AcePods certifications" className="h-[140%] w-auto max-w-none object-contain" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="min-w-0 lg:flex lg:h-[760px] lg:flex-col">
+              <div className="hidden lg:block text-left">
+                <p className="mb-3 text-[13px] font-medium text-[#1c6e72]">
+                  Home / {product.breadcrumbLabel || 'Ace Pods'} / {product.displayTitle || product.name}
+                </p>
+                <h1 className="text-[56px] font-semibold leading-[1.03] tracking-tight">{product.displayTitle || product.name}</h1>
+                <p className="mt-2 text-[22px] leading-tight text-[#2e3136]">{product.shortDesc}</p>
+                <p className="mt-2 text-[24px] font-semibold leading-tight text-[#145b5f]">Starting from {formatRM(baseUnit?.price || 0)}</p>
+              </div>
+
+              <div className="mt-6 py-6 md:py-7 lg:flex-1">
+                <div className="grid gap-6 md:grid-cols-2 md:items-stretch md:gap-8">
+                  <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
+                    <SwatchGroup label={exteriorLabel} options={product.exteriorColors} selectedId={selectedExterior} onSelect={handleExteriorSelect} />
+                    <div className="mt-6 border-t border-[#d8d8d8] pt-6">
+                      {hasSplitInteriorSections ? (
+                        <div className="space-y-6">
+                          <div>
+                            <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#1e2227]">
+                              Interior Wall Colour Options (Melamine Faced Chipboard / MDF)
+                            </h3>
+                            <SwatchGroup
+                              hideHeading
+                              label="Interior Wall Colour Options (Melamine Faced Chipboard / MDF)"
+                              options={mdfInteriorOptions}
+                              selectedId={selectedInterior}
+                              onSelect={handleInteriorSelect}
+                            />
                           </div>
-                        ) : (
-                          <SwatchGroup label="Interior Color" options={product.interiorColors} selectedId={selectedInterior} onSelect={handleInteriorSelect} />
-                        )}
-                      </div>
-                    </div>
 
-                    <div className="flex h-full flex-col gap-4">
-                      <div className="relative rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6" ref={addonMenuRef}>
-                        <h3 className="mb-3 text-[16px] font-semibold text-[#1e2227]">Add-ons</h3>
+                          <div className="border-t border-[#e4e7eb] pt-4">
+                            <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#1e2227]">PET Fabric Interior Wall Colour</h3>
+                            <SwatchGroup
+                              hideHeading
+                              label="PET Fabric Interior Wall Colour"
+                              options={petInteriorOptions}
+                              selectedId={selectedInterior}
+                              onSelect={handleInteriorSelect}
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        <SwatchGroup label="Interior Color" options={product.interiorColors} selectedId={selectedInterior} onSelect={handleInteriorSelect} />
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex h-full flex-col gap-4">
+                    <div className="rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
+                      <div className="relative mb-4 border-b border-[#e8eaed] pb-4" ref={addonMenuRef}>
+                        <h3 className="mb-2 text-[15px] font-semibold text-[#1e2227]">Add-ons</h3>
                         <button
                           type="button"
                           onClick={() => setIsAddonMenuOpen((prev) => !prev)}
@@ -439,72 +554,99 @@ export default function ProductPage() {
                           </div>
                         )}
                       </div>
-
-                      <div className="rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
-                        <p className="text-[16px] font-semibold leading-tight text-[#1e2227]">Pricing overview</p>
-                        <dl className="mt-3 text-[14px]">
-                          <div className="space-y-0">
-                            {pricingRows.map((row) => (
-                              <div key={row.label} className="grid grid-cols-[1fr_auto] items-center border-b border-[#e8eaed] py-2.5">
-                                <dt className="font-medium text-[#414850]">{row.label}</dt>
-                                <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{formatRM(row.amount)}</dd>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="mt-3 border-t border-[#d3d9df] pt-3">
-                            <div className="grid grid-cols-[1fr_auto] items-center">
-                              <dt className="text-[16px] font-semibold text-[#1f232a]">Total</dt>
-                              <dd className="text-right text-[18px] font-bold tabular-nums text-[#1f232a]">{formatRM(computedTotal)}</dd>
+                      <p className="text-[16px] font-semibold leading-tight text-[#1e2227]">Pricing overview</p>
+                      <dl className="mt-3 text-[14px]">
+                        <div className="space-y-0">
+                          {pricingRows.map((row) => (
+                            <div key={row.label} className="grid grid-cols-[1fr_auto] items-center border-b border-[#e8eaed] py-2.5">
+                              <dt className="font-medium text-[#414850]">{row.label}</dt>
+                              <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{formatRM(row.amount)}</dd>
                             </div>
-                          </div>
-                        </dl>
-                        <div className="mt-3 space-y-1 text-[11px] font-medium leading-[1.4] text-[#626a73]">
-                          {outstationNoteLines.map((line) => (
-                            <p key={line}>{line}</p>
                           ))}
                         </div>
-
-                        <div className="relative mt-4" ref={chooserRef}>
-                          <button
-                            type="button"
-                            onClick={() => setIsContactChooserOpen((prev) => !prev)}
-                            aria-expanded={isContactChooserOpen}
-                            aria-controls="contact-chooser"
-                            className="w-full rounded-[4px] border border-[#145b5f] bg-white px-4 py-3 text-[15px] font-semibold text-[#145b5f] transition-colors hover:bg-[#f1f6f6]"
-                          >
-                            Contact Us
-                          </button>
-
-                          {isContactChooserOpen && (
-                            <div
-                              id="contact-chooser"
-                              className="absolute right-0 top-full z-20 mt-2 w-full min-w-[220px] rounded-[8px] border border-[#d7d7d7] bg-white p-3 shadow-lg md:w-[240px]"
-                            >
-                              <a
-                                href={whatsappHref}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block rounded-[6px] bg-[#145b5f] px-3 py-2.5 text-center text-[14px] font-semibold text-white hover:bg-[#0f4b4e]"
-                              >
-                                WhatsApp Us
-                              </a>
-                              <a
-                                href={emailHref}
-                                className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center hover:bg-[#f5f6f7]"
-                              >
-                                <span className="block text-[14px] font-semibold text-[#1e2227]">Email Us</span>
-                                <span className="mt-0.5 block text-[12px] font-medium text-[#5d6670]">sales@aceofficepods.com</span>
-                              </a>
-                            </div>
-                          )}
+                        <div className="mt-3 border-t border-[#d3d9df] pt-3">
+                          <div className="grid grid-cols-[1fr_auto] items-center">
+                            <dt className="text-[16px] font-semibold text-[#1f232a]">Total</dt>
+                            <dd className="text-right text-[18px] font-bold tabular-nums text-[#1f232a]">{formatRM(computedTotal)}</dd>
+                          </div>
                         </div>
+                      </dl>
+                      <div className="mt-3 space-y-1 text-[11px] font-medium leading-[1.4] text-[#626a73]">
+                        {outstationNoteLines.map((line) => (
+                          <p key={line}>{line}</p>
+                        ))}
+                      </div>
+
+                      <div className="relative mt-4" ref={chooserRef}>
+                        <button
+                          type="button"
+                          onClick={() => setIsContactChooserOpen((prev) => !prev)}
+                          aria-expanded={isContactChooserOpen}
+                          aria-controls="contact-chooser"
+                          className="w-full rounded-[4px] border border-[#145b5f] bg-white px-4 py-3 text-[15px] font-semibold text-[#145b5f] transition-colors hover:bg-[#f1f6f6]"
+                        >
+                          Contact Us
+                        </button>
+
+                        {isContactChooserOpen && (
+                          <div
+                            id="contact-chooser"
+                            className="absolute right-0 top-full z-20 mt-2 w-full min-w-[220px] rounded-[8px] border border-[#d7d7d7] bg-white p-3 shadow-lg md:w-[240px]"
+                          >
+                            <a
+                              href={whatsappHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block rounded-[6px] bg-[#145b5f] px-3 py-2.5 text-center text-[14px] font-semibold text-white hover:bg-[#0f4b4e]"
+                            >
+                              WhatsApp Us
+                            </a>
+                            <a
+                              href={emailHref}
+                              className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center hover:bg-[#f5f6f7]"
+                            >
+                              <span className="block text-[14px] font-semibold text-[#1e2227]">Email Us</span>
+                              <span className="mt-0.5 block text-[12px] font-medium text-[#5d6670]">sales@aceofficepods.com</span>
+                            </a>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
+
+          {shouldShowThumbnails && (
+            <div className="w-full pt-8">
+              <div className="w-full overflow-x-auto pb-1">
+                <div className="flex w-max min-w-full justify-center gap-3 sm:gap-4">
+                  {orderedGalleryItems.map((item, index) => {
+                    const isActive = mainImage === item.image;
+                    return (
+                      <button
+                        key={`${product.slug}-${item.type}-thumb-unified-${index}`}
+                        type="button"
+                        onClick={() => handleThumbnailSelect(item)}
+                        className={`flex h-[56px] w-[56px] shrink-0 items-center justify-center overflow-hidden rounded-[8px] border bg-white transition sm:h-[66px] sm:w-[66px] ${
+                          isActive ? 'border-[#145b5f] ring-1 ring-[#145b5f]/40' : 'border-[#d0d3d7] hover:border-[#98a2ac]'
+                        }`}
+                        aria-label={`View ${item.type === 'color' ? item.label : `photo ${index + 1}`} for ${product.name}`}
+                      >
+                        <img
+                          src={item.image}
+                          alt={`${product.name} ${item.type === 'color' ? item.label : `photo ${index + 1}`}`}
+                          className="h-full w-full object-cover"
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,56fr)_minmax(0,44fr)] lg:gap-12">
             <div className="min-w-0">
@@ -571,6 +713,7 @@ export default function ProductPage() {
           </section>
         </div>
       </section>
+      <SiteFooter className="mt-0" />
 
       {product.drawing2dImage && isDimensionsModalOpen && (
         <div

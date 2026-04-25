@@ -2,6 +2,7 @@ const POD_SLUGS = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-meet', 'ace-hub'];
 
 const STATIC_PUBLIC_ROUTES = [
   '/',
+  '/portfolio',
   '/office-pods',
   '/compare-office-pods',
   '/pricing',

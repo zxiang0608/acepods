@@ -40,12 +40,12 @@ import aceSoloLarixPearlTangerineImage from '../../assets/POD images/ECO POD - A
 import aceSoloLarixPearlLightPlumImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-plum.png';
 import aceSoloLarixPearlCreamyWhiteImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-creamywhite.png';
 import aceSoloLarixPearlSesameBlackImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-black.png';
-import aceSoloPlusOrangeSquashImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/orange squash.png';
-import aceSoloPlusMustardYellowImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/mustard yellow.webp';
-import aceSoloPlusGreenMossImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/green.webp';
-import aceSoloPlusOceanBlueImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/ocean blue.webp';
-import aceSoloPlusGreyAshImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/grey.webp';
-import aceSoloPlusCharcoalGreyImage from '../../assets/POD images/S Pods - Ace Solo Plus/all colours/charcoal grey.webp';
+import aceSoloPlusOrangeSquashImage from '../../assets/ace-plus-cutouts/ace-plus-orange-squash.png';
+import aceSoloPlusMustardYellowImage from '../../assets/ace-plus-cutouts/ace-plus-mustard-yellow.png';
+import aceSoloPlusGreenMossImage from '../../assets/ace-plus-cutouts/ace-plus-green-moss.png';
+import aceSoloPlusOceanBlueImage from '../../assets/ace-plus-cutouts/ace-plus-ocean-blue.png';
+import aceSoloPlusGreyAshImage from '../../assets/ace-plus-cutouts/ace-plus-grey-ash.png';
+import aceSoloPlusCharcoalGreyImage from '../../assets/ace-plus-cutouts/ace-plus-charcoal-grey.png';
 import aceSoloProOrangeSquashImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/s pod+ empty.png';
 import aceSoloProMustardYellowImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/yellow s pod+.png';
 import aceSoloProGreenMossImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/green s pod+.png';
@@ -66,6 +66,46 @@ import aceMeetingXLGreenMossImage from '../../assets/POD images/TEAM POD 6 Seate
 import aceMeetingXLOceanBlueImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/ocean blue.jpg';
 import aceMeetingXLGreyAshImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/Grey ash-01.png';
 import aceMeetingXLCharcoalGreyImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/charcoal grey.png';
+import portfolioAlphabet01 from '../../assets/Portfolio/Alphabet Capital/20250619_132036.jpg';
+import portfolioAlphabet02 from '../../assets/Portfolio/Alphabet Capital/20250619_140819.jpg';
+import portfolioAlphabet03 from '../../assets/Portfolio/Alphabet Capital/20250619_141013.jpg';
+import portfolioAlphabet04 from '../../assets/Portfolio/Alphabet Capital/ace-duo-2.jpg';
+import portfolioAlphabet05 from '../../assets/Portfolio/Alphabet Capital/ace-duo-4.jpg';
+import portfolioAlphabet06 from '../../assets/Portfolio/Alphabet Capital/handle.jpg';
+import portfolioAlphabet07 from '../../assets/Portfolio/Alphabet Capital/knob.jpg';
+import portfolioAlphabet08 from '../../assets/Portfolio/Alphabet Capital/wall-inside-2.jpg';
+import portfolioCma01 from '../../assets/Portfolio/CMA CGM/20250703_111306.jpg';
+import portfolioCma02 from '../../assets/Portfolio/CMA CGM/20250703_114411.jpg';
+import portfolioCma03 from '../../assets/Portfolio/CMA CGM/20250703_120131.jpg';
+import portfolioTaylorPods from "../../assets/Portfolio/Taylor's College/20260209_143054.jpg";
+import portfolioTaylorFeature from "../../assets/Portfolio/Taylor's College/20260224_102358.jpg";
+import portfolioTaylorInstallation from "../../assets/Portfolio/Taylor's College/20260224_102416.jpg";
+import portfolioTaylorAddons from "../../assets/Portfolio/Taylor's College/20260224_102417.jpg";
+import portfolioOthers01 from '../../assets/Portfolio/Others/IMG-20250604-WA0022.jpg';
+import portfolioOthers02 from '../../assets/Portfolio/Others/IMG-20250604-WA0023.jpg';
+import portfolioOthers03 from '../../assets/Portfolio/Others/IMG-20250604-WA0024(1).jpg';
+import portfolioOthers04 from '../../assets/Portfolio/Others/IMG-20250818-WA0001.jpg';
+import portfolioOthers05 from '../../assets/Portfolio/Others/IMG-20250818-WA0002.jpg';
+import portfolioOthers06 from '../../assets/Portfolio/Others/IMG-20250818-WA0007.jpg';
+import portfolioOthers07 from '../../assets/Portfolio/Others/IMG-20250818-WA0008.jpg';
+import portfolioOthers08 from '../../assets/Portfolio/Others/IMG-20250818-WA0011.jpg';
+import portfolioOthers09 from '../../assets/Portfolio/Others/IMG-20250818-WA0014.jpg';
+import portfolioOthers10 from '../../assets/Portfolio/Others/IMG-20250818-WA0015.jpg';
+import portfolioOthers11 from '../../assets/Portfolio/Others/IMG-20250818-WA0016.jpg';
+import portfolioOthers12 from '../../assets/Portfolio/Others/IMG-20250818-WA0017.jpg';
+import portfolioOthers13 from '../../assets/Portfolio/Others/telepodklcc_1.webp';
+import portfolioParker01 from '../../assets/Portfolio/Parker Hannafin/20250702_125051.jpg';
+import portfolioParker02 from '../../assets/Portfolio/Parker Hannafin/20250702_130902.jpg';
+import portfolioParker03 from '../../assets/Portfolio/Parker Hannafin/20250702_130908.jpg';
+import portfolioParker04 from '../../assets/Portfolio/Parker Hannafin/20250702_130917.jpg';
+import portfolioParker05 from '../../assets/Portfolio/Parker Hannafin/20250702_131006.jpg';
+import portfolioParker06 from '../../assets/Portfolio/Parker Hannafin/20250702_131028.jpg';
+import portfolioAceHub01 from '../../assets/Portfolio/Ace hub/20260313_145941.jpg';
+import portfolioAceHub02 from '../../assets/Portfolio/Ace hub/20260313_145945.jpg';
+import portfolioAceHub03 from '../../assets/Portfolio/Ace hub/20260313_145948.jpg';
+import portfolioAceHub04 from '../../assets/Portfolio/Ace hub/20260313_145950.jpg';
+import portfolioAceHub05 from '../../assets/Portfolio/Ace hub/Untitled_design_15.webp';
+import { POD_SEO_BY_SLUG } from './podSeoCatalog';
 
 const deliveryDefaults = {
   default: 350,
@@ -73,11 +113,68 @@ const deliveryDefaults = {
     'Other areas outside of Klang Valley will be subject to different delivery and installation charges. If items need to be carried via staircase, additional handling charges will apply.'
 };
 
-const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290 };
+const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290, image: barStoolBlack };
 const meetingSofaAddon = { id: 'meeting-sofa-set', label: '1 set sofa (Ace Meet only)', amount: 1250 };
 const meetingXLSofaAddon = { id: 'meeting-xl-sofa-set', label: '1 set sofa (Ace Hub only)', amount: 1400 };
 const meetingXLLShapeSofaAddon = { id: 'meeting-xl-l-shape-sofa', label: 'L-shape sofa (Ace Hub only)', amount: 2650 };
 const defaultCustomerPhotos = [podsInstallation, deliveryPods, openOffice, barStoolBlack, barStoolWhite];
+const aceSoloPortfolioPhotos = [
+  portfolioCma02,
+  portfolioCma03,
+  portfolioAlphabet03,
+  portfolioAlphabet01,
+  portfolioCma01,
+  portfolioParker01,
+  portfolioParker02,
+  portfolioParker03,
+  portfolioParker04,
+  portfolioParker05,
+  portfolioParker06,
+  barStoolBlack,
+  barStoolWhite
+];
+const acePlusPortfolioPhotos = [
+  portfolioTaylorPods,
+  portfolioTaylorFeature,
+  portfolioTaylorInstallation,
+  portfolioTaylorAddons,
+  portfolioOthers01,
+  portfolioOthers02,
+  portfolioOthers03,
+  portfolioOthers04,
+  portfolioOthers05,
+  portfolioOthers06,
+  portfolioOthers07,
+  portfolioOthers08,
+  portfolioOthers09,
+  portfolioOthers10,
+  portfolioOthers11,
+  portfolioOthers12,
+  portfolioOthers13,
+  barStoolBlack,
+  barStoolWhite
+];
+const aceFlexAlphabetPhotos = [
+  portfolioAlphabet01,
+  portfolioAlphabet02,
+  portfolioAlphabet03,
+  portfolioAlphabet04,
+  portfolioAlphabet05,
+  portfolioAlphabet06,
+  portfolioAlphabet07,
+  portfolioAlphabet08,
+  barStoolBlack,
+  barStoolWhite
+];
+const aceHubPortfolioPhotos = [
+  portfolioAceHub01,
+  portfolioAceHub02,
+  portfolioAceHub03,
+  portfolioAceHub04,
+  portfolioAceHub05,
+  barStoolBlack,
+  barStoolWhite
+];
 const sharedFeatureStripItems = [
   { title: 'Motion sensor for energy saving', desc: 'Systems activate on entry and turn off after inactivity.' },
   { title: 'Efficient air flow system', desc: 'Fresh air is circulated to preserve acoustic comfort.' },
@@ -146,25 +243,27 @@ const meetingXLExteriorImageMap = {
   'finish-charcoal-grey': aceMeetingXLCharcoalGreyImage
 };
 
+const formatFromPrice = (amount) => `From RM${amount.toLocaleString('en-MY')}`;
+
 export const products = [
   {
     slug: 'ace-solo',
     name: 'Ace Solo',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: 'Private pod for calls and quick focused work',
+    shortDesc: POD_SEO_BY_SLUG['ace-solo'].shortDesc,
     heroImage: aceSoloHero,
     thumbImage: aceSoloCutout,
-    customerPhotos: defaultCustomerPhotos,
+    customerPhotos: aceSoloPortfolioPhotos,
     drawing2dImage: aceSolo2d,
     imageScale: 'scale-[1.30]',
     hoverImg: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For short daily use',
     pricing: {
-      amount: 'From RM12,500',
+      amount: formatFromPrice(POD_SEO_BY_SLUG['ace-solo'].startingPrice),
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
     },
     pdpPricing: {
-      baseConfigurations: [{ id: 'solo-unit', label: 'Unit only', price: 12500 }],
+      baseConfigurations: [{ id: 'solo-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-solo'].startingPrice }],
       configurationOptions: [],
       installationPerUnit: 350,
       delivery: deliveryDefaults,
@@ -264,20 +363,20 @@ export const products = [
     slug: 'ace-plus',
     name: 'Ace Plus',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: 'Quiet pod with automatic comfort controls',
+    shortDesc: POD_SEO_BY_SLUG['ace-plus'].shortDesc,
     heroImage: aceSoloPlusHero,
     thumbImage: aceSoloPlusCutout,
-    customerPhotos: defaultCustomerPhotos,
+    customerPhotos: acePlusPortfolioPhotos,
     drawing2dImage: aceSoloPlus2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'Single-person space for focused work',
     pricing: {
-      amount: 'From RM14,400',
+      amount: formatFromPrice(POD_SEO_BY_SLUG['ace-plus'].startingPrice),
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
     },
     pdpPricing: {
-      baseConfigurations: [{ id: 'solo-plus-unit', label: 'Unit only', price: 14400 }],
+      baseConfigurations: [{ id: 'solo-plus-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-plus'].startingPrice }],
       configurationOptions: [],
       installationPerUnit: 500,
       delivery: deliveryDefaults,
@@ -355,7 +454,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '24 dBA',
+      certifiedTestedDba: '27 dBA',
       weight: '335kg',
       boothFacilities: ['Standing height table', 'Whiteboard panel', 'Netbox power']
     },
@@ -403,20 +502,20 @@ export const products = [
     slug: 'ace-flex',
     name: 'Ace Flex',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: 'Enhanced workspace and comfort',
+    shortDesc: POD_SEO_BY_SLUG['ace-flex'].shortDesc,
     heroImage: aceDuoHero,
     thumbImage: aceDuoCutout,
-    customerPhotos: defaultCustomerPhotos,
+    customerPhotos: aceFlexAlphabetPhotos,
     drawing2dImage: aceDuo2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'Spacious private pod for focused work',
     pricing: {
-      amount: 'From RM19,900',
+      amount: formatFromPrice(POD_SEO_BY_SLUG['ace-flex'].startingPrice),
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
     },
     pdpPricing: {
-      baseConfigurations: [{ id: 'duo-unit', label: 'Unit only', price: 19900 }],
+      baseConfigurations: [{ id: 'duo-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-flex'].startingPrice }],
       configurationOptions: [
         { id: 'duo-fixed-table', label: 'Fixed normal height table', amount: 1000 },
         { id: 'duo-adjustable-table', label: 'Adjustable table', amount: 3000 }
@@ -497,7 +596,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '24 dBA',
+      certifiedTestedDba: '27 dBA',
       weight: '523kg',
       boothFacilities: ['Standing height table', 'Netbox power', 'Optional: height adjustable table', 'Optional: Netbox power (different ports)']
     },
@@ -542,7 +641,7 @@ export const products = [
     slug: 'ace-meet',
     name: 'Ace Meet',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: 'Meeting pod for small team discussions',
+    shortDesc: POD_SEO_BY_SLUG['ace-meet'].shortDesc,
     heroImage: aceMeetingHero,
     thumbImage: aceMeetingCutout,
     customerPhotos: defaultCustomerPhotos,
@@ -551,11 +650,11 @@ export const products = [
     hoverImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 4 people and hybrid calls',
     pricing: {
-      amount: 'From RM22,200',
+      amount: formatFromPrice(POD_SEO_BY_SLUG['ace-meet'].startingPrice),
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
     },
     pdpPricing: {
-      baseConfigurations: [{ id: 'meeting-unit', label: 'Unit only', price: 22200 }],
+      baseConfigurations: [{ id: 'meeting-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-meet'].startingPrice }],
       configurationOptions: [
         { id: 'meeting-fixed-table', label: 'Fixed normal height table', amount: 700 },
         { id: 'meeting-adjustable-table', label: 'Height adjustable table', amount: 2550 },
@@ -583,7 +682,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '24 dBA',
+      certifiedTestedDba: '27 dBA',
       weight: '651kg ±',
       boothFacilities: ['Fixed center table', 'White board center panel', 'Full fabric panel', '2 units of sofa (2-seater)']
     },
@@ -619,20 +718,20 @@ export const products = [
     slug: 'ace-hub',
     name: 'Ace Hub',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: 'Meeting pod for larger team discussions',
+    shortDesc: POD_SEO_BY_SLUG['ace-hub'].shortDesc,
     heroImage: aceMeetingXLHero,
     thumbImage: aceMeetingXLCutout,
-    customerPhotos: defaultCustomerPhotos,
+    customerPhotos: aceHubPortfolioPhotos,
     drawing2dImage: aceMeetingXL2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 6 people and hybrid calls',
     pricing: {
-      amount: 'From RM27,800',
+      amount: formatFromPrice(POD_SEO_BY_SLUG['ace-hub'].startingPrice),
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
     },
     pdpPricing: {
-      baseConfigurations: [{ id: 'meeting-xl-unit', label: 'Unit only', price: 27800 }],
+      baseConfigurations: [{ id: 'meeting-xl-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-hub'].startingPrice }],
       configurationOptions: [
         { id: 'meeting-xl-centre-table', label: 'Centre table', amount: 1200 },
         { id: 'meeting-xl-whiteboard-centre-table', label: 'Whiteboard panel + centre table', amount: 4200 },
@@ -659,7 +758,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '24 dBA',
+      certifiedTestedDba: '27 dBA',
       weight: '651kg ±',
       boothFacilities: ['Fixed center table', 'White board center panel', 'Full fabric panel', '2 units of sofa (2-seater)', 'Netbox power']
     },

@@ -9,6 +9,7 @@ const sourceFilesForRoute = (route) => {
   if (route.startsWith('/pods/')) return ['src/pages/ProductPage.jsx', 'src/data/products.js'];
 
   const staticRouteSources = {
+    '/portfolio': ['src/pages/PortfolioPage.jsx'],
     '/office-pods': ['src/pages/OfficePodsPage.jsx'],
     '/compare-office-pods': ['src/pages/CompareOfficePodsPage.jsx'],
     '/pricing': ['src/pages/PricingPage.jsx'],
