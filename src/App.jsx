@@ -6,13 +6,10 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Globe,
   Hammer,
-  Instagram,
   LayoutGrid,
   LockKeyhole,
   MessageSquare,
-  Linkedin,
   Maximize2,
   Menu,
   Route,
@@ -21,7 +18,7 @@ import {
   X
 } from 'lucide-react';
 import acePodsLogo from '../Logos/ace pods logo.png';
-import acePodsHero from '../assets/pods-hero-v2.png';
+import acePodsHero from '../assets/hero-pods.png';
 import officeOneImage from '../assets/Office-1.png';
 import officeTwoImage from '../assets/office-2.png';
 import officeThreeImage from '../assets/office-3.png';
@@ -38,10 +35,11 @@ import jyEliteLogo from '../assets/jy-elite.jpg';
 import wsConstructionLogo from '../assets/ws-construction.png';
 import idCandyLogo from '../assets/id-candy.jpg';
 import SeoMeta from './components/SeoMeta';
+import SiteFooter from './components/SiteFooter';
 import SmartPodsBanner from './components/SmartPodsBanner';
 import { smartPodsMenuItems } from './components/smartPodsMenuData';
 import { products } from './data/products';
-import { HOME_FAQ_ITEMS } from './seo/constants';
+import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from './seo/constants';
 import { buildCanonical, createFaqSchema, organizationSchema, websiteSchema } from './seo/schema';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
@@ -54,7 +52,7 @@ const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder'
 );
 
 const navItems = [
-  { label: 'Smart Pods', type: 'smart-pods' },
+  { label: 'Office Pods', type: 'smart-pods' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Office Chairs', to: '/office-chairs' },
   { label: 'Pricing', to: '/pricing' },
@@ -63,15 +61,6 @@ const navItems = [
 ];
 
 const WHATSAPP_LINK = 'https://wa.link/9umr4q';
-const footerSocialLinks = [
-  { label: 'Instagram', href: 'https://www.instagram.com/acepodsmy/', Icon: Instagram },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/?viewAsMember=true',
-    Icon: Linkedin
-  }
-];
-
 const renovationPoints = [
   {
     num: '01',
@@ -254,44 +243,11 @@ const trustedLogos = [
   { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', logoStageClass: 'max-h-[52px] max-w-[172px]' }
 ];
 
-const footerLinkGroups = [
-  {
-    key: 'products',
-    title: 'Products',
-      links: [
-        { label: 'Ace Solo', to: '/pods/ace-solo' },
-        { label: 'Ace Plus', to: '/pods/ace-plus' },
-        { label: 'Ace Flex', to: '/pods/ace-flex' },
-        { label: 'Ace Meet', to: '/pods/ace-meet' },
-        { label: 'Ace Hub', to: '/pods/ace-hub' }
-      ]
-  },
-  {
-    key: 'company',
-    title: 'Company',
-    links: [
-      { label: 'About', href: '#' },
-      { label: 'Explore', href: '#' },
-      { label: 'Professionals', href: '#' }
-    ]
-  },
-  {
-    key: 'support',
-    title: 'Support',
-    links: [
-      { label: 'Contact us', href: '#' },
-      { label: 'Installation & delivery', href: '#' },
-      { label: 'After-sales support', href: '#' }
-    ]
-  }
-];
-
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSmartPodsDesktopOpen, setIsSmartPodsDesktopOpen] = useState(false);
   const [isSmartPodsMobileOpen, setIsSmartPodsMobileOpen] = useState(false);
-  const [openFooterGroup, setOpenFooterGroup] = useState('products');
   const [openHomepageFaq, setOpenHomepageFaq] = useState(0);
   const [activePodIndex, setActivePodIndex] = useState(0);
   const navRef = useRef(null);
@@ -366,7 +322,7 @@ export default function App() {
   const activeCompareItems = seoCompareItems;
   const activeReassuranceItems = seoReassuranceItems;
   const desktopTopPodCards = products.slice(0, 3);
-  const desktopBottomPodCards = products.slice(3, 5);
+  const desktopBottomPodCards = products.slice(3);
 
   const heroHeadline = 'Office pods for calls, focus, and meetings';
   const heroSupportingText = 'Add private space for calls, focused work, and meetings without building new rooms.';
@@ -376,7 +332,6 @@ export default function App() {
   const compareSupportingLine = 'Compare more confidently when pricing, installation, and support are clear upfront.';
   const trustSectionHeading = 'Trusted by local and international companies';
   const whyHeading = 'Choose AcePods';
-  const footerBrandLine = 'Acoustic office pods for calls, focus, and meetings';
   const homepageSchemas = [organizationSchema, websiteSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
 
   const renderPodCard = (pod, extraClass = '') => (
@@ -449,9 +404,10 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
       <SeoMeta
-        title="Office Pods for Calls, Focus and Meetings | AcePods"
-        description="Explore office pods for calls, focused work, and meetings. Add private space without major renovation, with clear pricing, installation, and support from AcePods."
+        title="Office Pods for Calls, Focus and Meetings | Ace Office Pods"
+        description="Explore office pods and office booths for calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams add private space without major renovation, with clear pricing, installation, and support."
         canonical={buildCanonical('/')}
+        keywords={`${SEO_KEYWORDS_COMMON}, office booth provider`}
         schemas={homepageSchemas}
       />
       <nav
@@ -467,16 +423,16 @@ export default function App() {
                 if (isSmartPods) {
                   return (
                     <div key={item.label} className="group flex cursor-pointer items-center gap-1.5">
-                      <button
-                        type="button"
-                        onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)}
+                      <Link
+                        to="/office-pods"
+                        onClick={() => setIsSmartPodsDesktopOpen(false)}
                         className="text-[16px] font-medium text-[#111111] transition-colors group-hover:text-[#00855a]"
                       >
                         {item.label}
-                      </button>
+                      </Link>
                       <button
                         type="button"
-                        aria-label={`${isSmartPodsDesktopOpen ? 'Close' : 'Open'} Smart Pods menu`}
+                        aria-label={`${isSmartPodsDesktopOpen ? 'Close' : 'Open'} Office Pods menu`}
                         onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)}
                         className="inline-flex items-center text-[#00855a]"
                       >
@@ -537,14 +493,26 @@ export default function App() {
             if (isSmartPods) {
               return (
                 <div key={item.label} className="space-y-4">
-                  <button
-                    type="button"
-                    onClick={() => setIsSmartPodsMobileOpen((prev) => !prev)}
-                    className="group flex w-full items-center justify-between"
-                  >
-                    <span className="text-2xl font-bold tracking-tight">{item.label}</span>
-                    <ChevronDown className={`text-[#00855a] transition-transform ${isSmartPodsMobileOpen ? 'rotate-180' : ''}`} />
-                  </button>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      to="/office-pods"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsSmartPodsMobileOpen(false);
+                      }}
+                      className="text-2xl font-bold tracking-tight"
+                    >
+                      {item.label}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setIsSmartPodsMobileOpen((prev) => !prev)}
+                      className="inline-flex items-center"
+                      aria-label={`${isSmartPodsMobileOpen ? 'Close' : 'Open'} Office Pods menu`}
+                    >
+                      <ChevronDown className={`text-[#00855a] transition-transform ${isSmartPodsMobileOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                  </div>
                   {isSmartPodsMobileOpen && (
                     <div className="space-y-10 border-t border-[#d9d9d9] pt-6">
                       {smartPodsMenuItems.map((item) => (
@@ -580,44 +548,46 @@ export default function App() {
       </div>
 
       <div className="pt-[64px] md:pt-[80px]">
-        <section className="relative flex h-[560px] items-end justify-start pb-8 sm:h-[620px] sm:pb-8 lg:h-[600px] lg:items-center lg:justify-end lg:pb-0">
-          <div className="absolute inset-0 z-0">
-            <img
-              src={acePodsHero}
-              alt="Acoustic office pods for calls and focused work in an open office"
-              className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22 lg:bg-black/18"></div>
-          </div>
+        <section className="relative bg-white">
+          <div className="relative mx-auto h-[500px] w-full max-w-[1240px] overflow-hidden pb-8 sm:h-[540px] sm:pb-8 lg:h-[520px] lg:pb-0">
+            <div className="absolute inset-0 z-0">
+              <img
+                src={acePodsHero}
+                alt="Acoustic office pods for calls and focused work in an open office"
+                className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22 lg:bg-black/18"></div>
+            </div>
 
-          <div className="relative z-10 w-full max-w-[1440px] px-4 md:mx-auto md:px-12">
-            <div className="w-full max-w-none px-6 py-0 text-left text-white sm:px-6 lg:ml-auto lg:max-w-[640px] lg:bg-black/50 lg:px-8 lg:py-10">
-              <div className="max-w-none md:max-w-[520px]">
-                <h1 className="mb-4 max-w-[16ch] text-[35px] font-bold leading-[1.03] tracking-[-0.03em] sm:max-w-[18ch] sm:text-[39px] md:mb-6 md:max-w-none md:text-[65px]">
+            <div className="relative z-10 flex h-full w-full items-end px-4 md:px-12 lg:grid lg:grid-cols-2 lg:items-center">
+              <div className="w-full max-w-none px-6 py-0 text-left text-white sm:px-6 lg:col-start-2 lg:col-end-3 lg:w-[86%] lg:max-w-none lg:justify-self-end lg:bg-black/40 lg:px-7 lg:py-7">
+                <div className="max-w-none md:max-w-[520px]">
+                <h1 className="mb-4 max-w-[16ch] text-[35px] font-bold leading-[1.03] tracking-[-0.03em] sm:max-w-[18ch] sm:text-[39px] md:mb-5 md:max-w-none md:text-[57px]">
                   {heroHeadline}
                 </h1>
-                <p className="mb-5 max-w-[32ch] text-[18px] font-semibold leading-[1.5] text-white/92 sm:max-w-[36ch] sm:text-[20px] md:mb-4 md:max-w-lg md:text-[28px]">
+                <p className="mb-5 max-w-[32ch] text-[18px] font-semibold leading-[1.5] text-white/92 sm:max-w-[36ch] sm:text-[20px] md:mb-3 md:max-w-lg md:text-[24px]">
                   {heroSupportingText}
                 </p>
-                <p className="mb-7 max-w-none whitespace-nowrap text-[12px] font-semibold leading-[1.4] tracking-[0.01em] text-white/78 sm:text-[13px] md:mb-8 md:text-[17px]">
+                <p className="mb-6 max-w-none whitespace-nowrap text-[12px] font-semibold leading-[1.4] tracking-[0.01em] text-white/78 sm:text-[13px] md:mb-7 md:text-[15px]">
                   {heroTrustLine}
                 </p>
 
-                <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
-                  <Link
-                    to="/pricing#all-pod-prices"
-                    className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-4 md:text-[18px]"
-                  >
-                    Get Pricing
-                  </Link>
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="min-w-0 flex-1 rounded-[6px] border border-white/90 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-4 md:text-[18px]"
-                  >
-                    Book Viewing
-                  </a>
+                  <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
+                    <Link
+                      to="/pricing#all-pod-prices"
+                      className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                    >
+                      Get Pricing
+                    </Link>
+                    <a
+                      href={WHATSAPP_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="min-w-0 flex-1 rounded-[6px] border border-white/90 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                    >
+                      Book Viewing
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -895,128 +865,7 @@ export default function App() {
           </div>
         </section>
 
-        <footer className="bg-[#121212] px-5 pb-12 pt-14 text-left text-white md:px-12 md:pt-20">
-          <div className="mx-auto max-w-[1440px]">
-            <div className="space-y-6 md:hidden">
-              <div className="space-y-4">
-                <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
-                  <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
-                </div>
-                <p className="max-w-xs text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
-                <div className="flex gap-3">
-                  {footerSocialLinks.map(({ label, href, Icon }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:text-white"
-                    >
-                      <Icon size={18} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="divide-y divide-white/10 border-y border-white/10">
-                {footerLinkGroups.map((group) => {
-                  const isOpen = openFooterGroup === group.key;
-                  return (
-                    <div key={group.key}>
-                      <button
-                        type="button"
-                        onClick={() => setOpenFooterGroup(isOpen ? '' : group.key)}
-                        className="flex min-h-[48px] w-full items-center justify-between py-3 text-left"
-                      >
-                        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-300">{group.title}</span>
-                        <ChevronDown size={18} className={`text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      {isOpen && (
-                        <ul className="space-y-2 pb-4">
-                          {group.links.map((link) => (
-                            <li key={link.label}>
-                              {link.to ? (
-                                <Link to={link.to} className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white">
-                                  {link.label}
-                                </Link>
-                              ) : (
-                                <a href={link.href} className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white">
-                                  {link.label}
-                                </a>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="mb-14 hidden grid-cols-4 gap-10 md:grid">
-              <div className="space-y-6">
-                <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
-                  <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto md:h-14" />
-                </div>
-                <p className="max-w-xs text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
-                <div className="flex gap-3">
-                  {footerSocialLinks.map(({ label, href, Icon }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:text-white"
-                    >
-                      <Icon size={18} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {footerLinkGroups.map((group) => (
-                <div key={group.key} className="space-y-5">
-                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-gray-400">{group.title}</h4>
-                  <ul className="space-y-3">
-                    {group.links.map((link) => (
-                      <li key={link.label}>
-                        {link.to ? (
-                          <Link to={link.to} className="text-[15px] text-gray-400 transition-colors hover:text-white">
-                            {link.label}
-                          </Link>
-                        ) : (
-                          <a href={link.href} className="text-[15px] text-gray-400 transition-colors hover:text-white">
-                            {link.label}
-                          </a>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-600 md:flex-row">
-              <div className="flex flex-col items-center gap-2 md:items-start">
-                <div>© 2026 ACE PODS. ALL RIGHTS RESERVED.</div>
-                <a
-                  href="https://aceofficepods.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[11px] font-medium normal-case tracking-normal text-gray-500 transition-colors hover:text-white"
-                >
-                  Owned by Ace Workplace Solutions (Ace Office Pods Malaysia) - 202403171118
-                </a>
-              </div>
-              <div className="flex items-center gap-2 text-gray-500">
-                <Globe size={14} /> GLOBAL EN <ChevronDown size={14} />
-              </div>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter className="mt-0" />
       </div>
     </div>
   );

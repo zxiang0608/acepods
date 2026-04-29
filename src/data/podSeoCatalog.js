@@ -7,11 +7,16 @@ export const POD_SEO_BY_SLUG = {
   'ace-plus': {
     name: 'Ace Plus',
     shortDesc: 'Quiet pod with automatic comfort controls',
-    startingPrice: 14400
+    startingPrice: 14500
   },
   'ace-flex': {
     name: 'Ace Flex',
     shortDesc: 'Enhanced workspace and comfort',
+    startingPrice: 19900
+  },
+  'ace-flex-duo': {
+    name: 'Ace Flex Duo',
+    shortDesc: 'Two-seater pod for focused work',
     startingPrice: 19900
   },
   'ace-meet': {
