@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
 import { products } from '../data/products';
+import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -14,9 +15,10 @@ export default function PricingPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pod Pricing in Malaysia | AcePods"
+        title="Office Pod Pricing in Malaysia | Ace Office Pods"
         description="Understand office pod pricing and what affects final project cost, including pod type, delivery, installation, and selected options."
         canonical={buildCanonical('/pricing')}
+        keywords={`${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 

@@ -1,20 +1,186 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ChevronDown, Globe, Instagram, Linkedin } from 'lucide-react';
+import acePodsLogo from '../../Logos/ace pods logo.png';
+import highResPodCert from '../../assets/high-res-pod-cert.png';
 
-export default function SiteFooter({ className = 'mt-16' }) {
+const footerSocialLinks = [
+  { label: 'Instagram', href: 'https://www.instagram.com/acepodsmy/', Icon: Instagram },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/?viewAsMember=true',
+    Icon: Linkedin
+  }
+];
+
+const footerLinkGroups = [
+  {
+    key: 'products',
+    title: 'Products',
+    links: [
+      { label: 'Ace Solo', to: '/pods/ace-solo' },
+      { label: 'Ace Plus', to: '/pods/ace-plus' },
+      { label: 'Ace Flex', to: '/pods/ace-flex' },
+      { label: 'Ace Flex Duo', to: '/pods/ace-flex-duo' },
+      { label: 'Ace Meet', to: '/pods/ace-meet' },
+      { label: 'Ace Hub', to: '/pods/ace-hub' }
+    ]
+  },
+  {
+    key: 'company',
+    title: 'Company',
+    links: [
+      { label: 'About', href: '#' },
+      { label: 'Explore', href: '#' },
+      { label: 'Professionals', href: '#' }
+    ]
+  },
+  {
+    key: 'support',
+    title: 'Support',
+    links: [
+      { label: 'Contact us', href: '#' },
+      { label: 'Installation & delivery', href: '#' },
+      { label: 'After-sales support', href: '#' }
+    ]
+  }
+];
+
+export default function SiteFooter({ className = 'mt-0' }) {
+  const [openFooterGroup, setOpenFooterGroup] = useState('products');
+  const footerBrandLine = 'Silent acoustic office pods\nFor calls, focus, and meetings';
+
   return (
-    <footer className={`${className} border-t border-[#e1dfd7] bg-white px-5 py-10 md:px-8`}>
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <p className="text-[14px] text-[#4f565f]">Acoustic office pods for calls, focus, and meetings</p>
-        <div className="flex flex-col items-start gap-1 md:items-end">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#7a8086]">© 2026 AcePods</p>
-          <a
-            href="https://aceofficepods.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[12px] font-medium text-[#7a8086] transition-colors hover:text-[#1e2227]"
-          >
-            Owned by Ace Workplace Solutions (Ace Office Pods Malaysia) - 202403171118
-          </a>
+    <footer className={`${className} bg-[#121212] px-5 pb-12 pt-14 text-left text-white md:px-12 md:pt-20`}>
+      <div className="mx-auto max-w-[1440px]">
+        <div className="space-y-6 md:hidden">
+          <div className="space-y-4">
+            <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
+              <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
+            </div>
+            <p className="max-w-xs whitespace-pre-line text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
+            <div className="max-w-sm overflow-hidden">
+              <img src={highResPodCert} alt="Certification logos: Made in Malaysia, GREENGUARD, FSC, CARB P2, scratch resistance, stain resistance, cigarette burn resistance" className="h-auto w-full object-contain" />
+            </div>
+            <div className="flex gap-3">
+              {footerSocialLinks.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:text-white"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="divide-y divide-white/10 border-y border-white/10">
+            {footerLinkGroups.map((group) => {
+              const isOpen = openFooterGroup === group.key;
+              return (
+                <div key={group.key}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFooterGroup(isOpen ? '' : group.key)}
+                    className="flex min-h-[48px] w-full items-center justify-between py-3 text-left"
+                  >
+                    <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-gray-300">{group.title}</span>
+                    <ChevronDown size={18} className={`text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isOpen && (
+                    <ul className="space-y-2 pb-4">
+                      {group.links.map((link) => (
+                        <li key={link.label}>
+                          {link.to ? (
+                            <Link to={link.to} className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white">
+                              {link.label}
+                            </Link>
+                          ) : (
+                            <a href={link.href} className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white">
+                              {link.label}
+                            </a>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mb-14 hidden grid-cols-4 gap-10 md:grid">
+          <div className="space-y-6">
+            <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
+              <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto md:h-14" />
+            </div>
+            <p className="max-w-xs whitespace-pre-line text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
+            <div className="flex gap-3">
+              {footerSocialLinks.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-colors hover:text-white"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {footerLinkGroups.map((group) => (
+            <div key={group.key} className="space-y-5">
+              <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-gray-400">{group.title}</h4>
+              <ul className="space-y-3">
+                {group.links.map((link) => (
+                  <li key={link.label}>
+                    {link.to ? (
+                      <Link to={link.to} className="text-[15px] text-gray-400 transition-colors hover:text-white">
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a href={link.href} className="text-[15px] text-gray-400 transition-colors hover:text-white">
+                        {link.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div className="col-start-3 col-span-2 mt-2 overflow-hidden">
+            <img
+              src={highResPodCert}
+              alt="Certification logos: Made in Malaysia, GREENGUARD, FSC, CARB P2, scratch resistance, stain resistance, cigarette burn resistance"
+              className="h-auto w-full max-w-[600px] object-contain"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-600 md:flex-row">
+          <div className="flex flex-col items-center gap-2 md:items-start">
+            <div>© 2026 ACE PODS. ALL RIGHTS RESERVED.</div>
+            <a
+              href="https://aceofficepods.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] font-medium normal-case tracking-normal text-gray-500 transition-colors hover:text-white"
+            >
+              Owned by Ace Workplace Solutions (Ace Office Pods Malaysia) - 202403171118
+            </a>
+          </div>
+          <div className="flex items-center gap-2 text-gray-500">
+            <Globe size={14} /> GLOBAL EN <ChevronDown size={14} />
+          </div>
         </div>
       </div>
     </footer>

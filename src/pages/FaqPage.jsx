@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
-import { FAQ_PAGE_ITEMS } from '../seo/constants';
+import { FAQ_PAGE_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -14,9 +14,10 @@ export default function FaqPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pod FAQ | AcePods"
+        title="Office Pod FAQ | Ace Office Pods"
         description="Read direct answers to common office pod buyer questions on pricing, inclusions, installation, and after-sales support."
         canonical={buildCanonical('/faq')}
+        keywords={`${SEO_KEYWORDS_COMMON}, office pod FAQ, office booth FAQ`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/faq', FAQ_PAGE_ITEMS)]}
       />
 

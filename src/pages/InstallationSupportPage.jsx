@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Building2, Star } from 'lucide-react';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
+import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -125,14 +126,15 @@ const INSTALLATION_FAQ_ITEMS = [
 export default function InstallationSupportPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const whatsappHref = 'https://wa.link/9umr4q';
-  const emailHref = 'mailto:sales@aceofficepods.com?subject=AcePods%20installation%20project%20consultation';
+  const emailHref = 'mailto:sales@aceofficepods.com?subject=Ace%20Office%20Pods%20installation%20project%20consultation';
 
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pod Delivery, Installation and Support | AcePods"
+        title="Office Pod Delivery, Installation and Support | Ace Office Pods"
         description="See what to expect from site review to handover with clear lead times, installation planning, and after-sales support for office pod projects."
         canonical={buildCanonical('/installation-support')}
+        keywords={`${SEO_KEYWORDS_COMMON}, office pod installation, office booth delivery`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/installation-support', INSTALLATION_FAQ_ITEMS)]}
       />
 

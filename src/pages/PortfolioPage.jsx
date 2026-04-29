@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
+import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import parkerLogo from '../../assets/parker-logo.png';
 import alphabetLogo from '../../assets/alphabet-logo.png';
@@ -64,9 +65,10 @@ export default function PortfolioPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pod Portfolio Malaysia | Past Installations and Project Work | AcePods"
-        description="Explore AcePods portfolio projects across Malaysia. See past office pod installations for calls, focused work, and meetings with practical commercial outcomes."
+        title="Office Pod Portfolio Malaysia | Past Installations and Project Work | Ace Office Pods"
+        description="Explore Ace Office Pods portfolio projects across Malaysia. See past office pod and office booth installations for calls, focused work, and meetings with practical commercial outcomes."
         canonical={buildCanonical('/portfolio')}
+        keywords={`${SEO_KEYWORDS_COMMON}, office pod portfolio, office booth installation`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 

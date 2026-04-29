@@ -1,4 +1,4 @@
-import { SEO_BASE_URL } from './constants';
+import { SEO_BASE_URL, SEO_BRAND_ALTERNATE_NAMES, SEO_BRAND_LEGAL, SEO_BRAND_PRIMARY, SEO_BRAND_SAME_AS } from './constants';
 
 export const buildCanonical = (path) => `${SEO_BASE_URL}${path}`;
 export const buildAbsoluteUrl = (value) => {
@@ -10,17 +10,20 @@ export const buildAbsoluteUrl = (value) => {
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'AcePods',
-  legalName: 'Ace Workplace Solutions (Ace Office Pods Malaysia)',
+  name: SEO_BRAND_PRIMARY,
+  legalName: SEO_BRAND_LEGAL,
+  alternateName: SEO_BRAND_ALTERNATE_NAMES,
   identifier: '202403171118',
   url: SEO_BASE_URL,
-  description: 'Acoustic office pods for calls, focus, and meetings.'
+  sameAs: SEO_BRAND_SAME_AS,
+  description: 'Silent acoustic office pods for calls, focus, and meetings.'
 };
 
 export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'AcePods',
+  name: SEO_BRAND_PRIMARY,
+  alternateName: SEO_BRAND_ALTERNATE_NAMES,
   url: SEO_BASE_URL
 };
 
@@ -66,7 +69,7 @@ export const createProductSchema = ({
   ...(image ? { image: [buildAbsoluteUrl(image)] } : {}),
   brand: {
     '@type': 'Brand',
-    name: 'AcePods'
+    name: SEO_BRAND_PRIMARY
   },
   category,
   url: buildCanonical(path),

@@ -40,7 +40,7 @@ const removeDemoPrefixFromCanonical = (href) => {
   }
 };
 
-export default function SeoMeta({ title, description, canonical, ogImage = DEFAULT_OG_IMAGE, robots = 'index, follow', schemas = [] }) {
+export default function SeoMeta({ title, description, canonical, keywords, ogImage = DEFAULT_OG_IMAGE, robots = 'index, follow', schemas = [] }) {
   const schemaSignature = JSON.stringify(schemas);
   const isDemoPath = window.location.pathname === '/demo' || window.location.pathname.startsWith('/demo/');
   const effectiveCanonical = isDemoPath ? removeDemoPrefixFromCanonical(canonical) : canonical;
@@ -49,6 +49,7 @@ export default function SeoMeta({ title, description, canonical, ogImage = DEFAU
   useEffect(() => {
     document.title = title;
     upsertMetaTag('name', 'description', description);
+    upsertMetaTag('name', 'keywords', keywords);
     upsertMetaTag('name', 'robots', effectiveRobots);
     upsertMetaTag('property', 'og:type', 'website');
     upsertMetaTag('property', 'og:title', title);
@@ -77,7 +78,7 @@ export default function SeoMeta({ title, description, canonical, ogImage = DEFAU
       const cleanupSchemaTags = document.head.querySelectorAll('script[data-seo-schema="true"]');
       cleanupSchemaTags.forEach((tag) => tag.remove());
     };
-  }, [description, effectiveCanonical, effectiveRobots, ogImage, schemaSignature, title]);
+  }, [description, effectiveCanonical, effectiveRobots, keywords, ogImage, schemaSignature, title]);
 
   return null;
 }

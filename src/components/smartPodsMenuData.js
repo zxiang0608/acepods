@@ -25,6 +25,12 @@ export const smartPodsMenuItems = [
     to: '/pods/ace-flex'
   },
   {
+    title: 'Ace Flex Duo',
+    description: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
+    image: menuAceDuo,
+    to: '/pods/ace-flex-duo'
+  },
+  {
     title: 'Ace Meet',
     description: 'Sound-contained environment tailored for small team meetings.',
     image: menuAceMeeting,

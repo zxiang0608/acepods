@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import SiteFooter from '../components/SiteFooter';
+import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical } from '../seo/schema';
 
 export default function NotFoundPage() {
@@ -10,10 +11,11 @@ export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-[#f4f4f4] text-[#1e2227]">
       <SeoMeta
-        title="Page not found | AcePods"
+        title="Page not found | Ace Office Pods"
         description="The page you requested is unavailable."
         canonical={buildCanonical(pathname || '/404')}
         robots="noindex, follow"
+        keywords={SEO_KEYWORDS_COMMON}
         schemas={[]}
       />
       <main className="flex min-h-[calc(100vh-180px)] items-center justify-center px-6 py-16">

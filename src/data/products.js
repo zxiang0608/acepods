@@ -18,6 +18,34 @@ import deliveryPods from '../../assets/delivery-pods.png';
 import openOffice from '../../assets/open-office.png';
 import barStoolBlack from '../../assets/bar-stool-black.png';
 import barStoolWhite from '../../assets/bar-stool-white.png';
+import soloFeature01 from '../../assets/features/For ace solo only/to post-01.png';
+import soloFeature02 from '../../assets/features/For ace solo only/to post-02.png';
+import soloFeature03 from '../../assets/features/For ace solo only/to post-03.png';
+import soloFeature04 from '../../assets/features/For ace solo only/to post-04.png';
+import soloFeature05 from '../../assets/features/For ace solo only/to post-05.png';
+import soloFeature06 from '../../assets/features/For ace solo only/to post-06.png';
+import soloFeature07 from '../../assets/features/For ace solo only/to post-07.png';
+import soloFeature08 from '../../assets/features/For ace solo only/to post-08.png';
+import soloFeature09 from '../../assets/features/For ace solo only/to post-09.png';
+import soloFeature10 from '../../assets/features/For ace solo only/to post-10.png';
+import plusFeature11 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-11.png';
+import plusFeature12 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-12.png';
+import plusFeature13 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-13.png';
+import plusFeature14 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-14.png';
+import plusFeature15 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-15.png';
+import plusFeature16 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-16.png';
+import plusFeature17 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-17.png';
+import plusFeature18 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-18.png';
+import plusFeature19 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-19.png';
+import plusFeature20 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-20.png';
+import plusFeature22 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-22.png';
+import plusFeature23 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-23.png';
+import plusFeature24 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-24.png';
+import plusFeature25 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-25.png';
+import plusFeature26 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-26.png';
+import plusFeature27 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-27.png';
+import plusFeature28 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-28.png';
+import plusFeature29 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-29.png';
 import aceSoloShimoAshImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ss-04-03.webp';
 import aceSoloCrossMetalImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/ss-04-01.webp';
 import aceSoloLarixPearlImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/ss-04-02.webp';
@@ -175,6 +203,113 @@ const aceHubPortfolioPhotos = [
   barStoolBlack,
   barStoolWhite
 ];
+const soloFeatureRows = [
+  [soloFeature01, soloFeature02, soloFeature03, soloFeature04, soloFeature05, soloFeature06].map((image) => ({
+    image
+  })),
+  [soloFeature07, soloFeature08, soloFeature09, soloFeature10].map((image) => ({
+    image
+  }))
+];
+const plusAndAboveFeatureItems = [
+  {
+    image: plusFeature16,
+    title: 'Acoustic Excellence',
+    desc: 'High quality wood engineered for a single purpose to reduce sound & crafted to absorb sound, in turn to create a truly private and wonderful space to work and talk'
+  },
+  {
+    image: plusFeature22,
+    title: 'Superb Ventilation System',
+    desc: "Low-noise air ventilation system ensures rapid circulation of fresh air within minutes, all the while preserving the booth's exceptional soundproofing characteristics."
+  },
+  {
+    image: plusFeature24,
+    title: 'Adjustable Lights & Fan',
+    desc: 'Adjustable LED lights knob switches. Allows you to tailor the lighting to your desired level of dimness. Adjustable fan speed too according to your preferred fan speed'
+  },
+  {
+    image: plusFeature13,
+    title: 'Smart Connectivity',
+    desc: 'With multiple options for ports, we have a universal power port, USB, USB Type C charger. Ethernet ports are optional upon request.'
+  },
+  {
+    image: plusFeature11,
+    title: 'PET for Enhanced Acoustics',
+    desc: 'PET Fabric Material specifically designed to absorb sound waves, minimize echoes and enhance acoustic performance within the pod.'
+  },
+  {
+    image: plusFeature19,
+    title: 'Motion Sensor For Energy Saving',
+    desc: 'The motion sensor will automatically turn on or off after 5 minutes based on activity within the pod. (time can be set manually)'
+  },
+  {
+    image: plusFeature12,
+    title: 'Ventilation Outlet System',
+    desc: 'While our fan ventilation pulls in fresh air, this outlet ventilates out stale air to keep the air within the pod cool and fresh inside'
+  },
+  {
+    image: plusFeature27,
+    title: 'Air Conditioning in the Pod',
+    desc: 'Enhance your comfort in the pod with a cool, climate-controlled built-in air condition unit. (This function only available for pods > 4 seaters, kindly enquire if need)'
+  },
+  {
+    image: plusFeature28,
+    title: 'Enhance Power Output',
+    desc: '13A UK Floor-Mounted Plug with built-in fuse, 3-meter cable, wide voltage compatibility (110-240V), paired with Cat 6 Ethernet port'
+  },
+  {
+    image: plusFeature17,
+    title: 'Mobile Pod Capabilities',
+    desc: 'We give you ultimate convenience to move the pods yourself. Featuring a robust hidden heavy duty wheels to make your pod relocation a breeze.'
+  },
+  {
+    image: plusFeature26,
+    title: 'Sofa Furnishing',
+    desc: 'The sofa is upholstered in premium fabric which give a fitted plush cushioning and high-density foam, ensuring lasting comfort and shape retention over time'
+  },
+  {
+    image: plusFeature25,
+    title: 'Aluminium Pivot Frame',
+    desc: 'Cutting edge Italian-made pivot door hinges redefine the art of accessibility, allowing doors to swing open carefully.'
+  },
+  {
+    image: plusFeature14,
+    title: 'Solid Ergonomic Door Handle',
+    desc: 'Door handle chosen carefully to enable easy handling of ease of access for users.'
+  },
+  {
+    image: plusFeature23,
+    title: 'Soft Door Closure',
+    desc: 'No more slam door scares. This new upgrade ensures a soft and satisfying close for the tempered glass door.'
+  },
+  {
+    image: plusFeature15,
+    title: 'Stylish Belt Door Stopper',
+    desc: 'Door smoothly swings at 110°, eliminating worries about door slamming or breaking. Made from premium high quality leather.'
+  },
+  {
+    image: plusFeature20,
+    title: 'Magnetic Writable Whiteboard',
+    desc: 'Take down notes during a solo video call meeting or a group meeting in our pod models'
+  },
+  {
+    image: plusFeature29,
+    title: 'Foldable Clothing Hook',
+    desc: 'Hang your coats or your bags, without laying your items on the floor to create more space in the pod.'
+  },
+  {
+    image: plusFeature18,
+    title: 'Smart Connectivity',
+    desc: 'This upgrade features a built-in multimedia TV for ACE HUB pods only. Perfect for virtual meetings, presentation, and entertainment. (Upgrade for ACE HUB pods only)'
+  }
+];
+const plusAndAboveFeatureRows = [
+  plusAndAboveFeatureItems.slice(0, 4),
+  plusAndAboveFeatureItems.slice(4, 8),
+  plusAndAboveFeatureItems.slice(8, 12),
+  plusAndAboveFeatureItems.slice(12, 16),
+  plusAndAboveFeatureItems.slice(16, 18)
+];
 const sharedFeatureStripItems = [
   { title: 'Motion sensor for energy saving', desc: 'Systems activate on entry and turn off after inactivity.' },
   { title: 'Efficient air flow system', desc: 'Fresh air is circulated to preserve acoustic comfort.' },
@@ -324,6 +459,7 @@ export const products = [
       weight: '335kg ±',
       boothFacilities: ['Standing height table', 'Power socket']
     },
+    featureRows: soloFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     featureAvailabilityNote: '* Eco Pod does not include these features',
     specs: [
@@ -458,6 +594,7 @@ export const products = [
       weight: '335kg',
       boothFacilities: ['Standing height table', 'Whiteboard panel', 'Netbox power']
     },
+    featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
       { label: 'Capacity', value: '1 person' },
@@ -600,6 +737,7 @@ export const products = [
       weight: '523kg',
       boothFacilities: ['Standing height table', 'Netbox power', 'Optional: height adjustable table', 'Optional: Netbox power (different ports)']
     },
+    featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
       { label: 'Capacity', value: 'Up to 2 people' },
@@ -635,6 +773,146 @@ export const products = [
     faq: [
       { q: 'Does Ace Flex support hybrid calls?', a: 'Yes. It works well for private calls and small hybrid discussions.' },
       { q: 'Can it replace small meeting rooms?', a: 'For short two-person sessions, Ace Flex is a practical alternative.' }
+    ]
+  },
+  {
+    slug: 'ace-flex-duo',
+    name: 'Ace Flex Duo',
+    breadcrumbLabel: 'Ace Pods',
+    shortDesc: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
+    heroImage: aceDuoHero,
+    thumbImage: aceDuoCutout,
+    customerPhotos: aceFlexAlphabetPhotos,
+    drawing2dImage: aceDuo2d,
+    imageScale: 'scale-[1.40]',
+    hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
+    cardSupport: 'For 2 people and hybrid calls',
+    pricing: {
+      amount: formatFromPrice(POD_SEO_BY_SLUG['ace-flex-duo'].startingPrice),
+      note: 'Indicative pricing, final quote depends on finish and site conditions.'
+    },
+    pdpPricing: {
+      baseConfigurations: [{ id: 'duo-2seater-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-flex-duo'].startingPrice }],
+      configurationOptions: [
+        { id: 'duo-fixed-table', label: 'Fixed normal height table', amount: 1000 },
+        { id: 'duo-adjustable-table', label: 'Adjustable table', amount: 3000 }
+      ],
+      installationPerUnit: 550,
+      delivery: deliveryDefaults,
+      addOnOptions: [highBarStoolAddon]
+    },
+    colorImageMap: {
+      default: aceSoloProGreyAshImage,
+      byExterior: {
+        'finish-orange-squash': aceSoloProOrangeSquashImage,
+        'finish-mustard-yellow': aceSoloProMustardYellowImage,
+        'finish-green-moss': aceSoloProGreenMossImage,
+        'finish-ocean-blue': aceSoloProOceanBlueImage,
+        'finish-grey-ash': aceSoloProGreyAshImage,
+        'finish-charcoal-grey': aceSoloProCharcoalGreyImage
+      },
+      byPair: {
+        'finish-orange-squash|int-shimo-ash': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-sky-blue': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-moonlight-grey': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-tangerine': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-light-plum': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-vivid-red': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-creamy-white': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-sesame-black': aceSoloProOrangeSquashImage,
+        'finish-mustard-yellow|int-shimo-ash': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-sky-blue': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-moonlight-grey': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-tangerine': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-light-plum': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-vivid-red': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-creamy-white': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-sesame-black': aceSoloProMustardYellowImage,
+        'finish-green-moss|int-shimo-ash': aceSoloProGreenMossImage,
+        'finish-green-moss|int-sky-blue': aceSoloProGreenMossImage,
+        'finish-green-moss|int-moonlight-grey': aceSoloProGreenMossImage,
+        'finish-green-moss|int-tangerine': aceSoloProGreenMossImage,
+        'finish-green-moss|int-light-plum': aceSoloProGreenMossImage,
+        'finish-green-moss|int-vivid-red': aceSoloProGreenMossImage,
+        'finish-green-moss|int-creamy-white': aceSoloProGreenMossImage,
+        'finish-green-moss|int-sesame-black': aceSoloProGreenMossImage,
+        'finish-ocean-blue|int-shimo-ash': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-sky-blue': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-moonlight-grey': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-tangerine': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-light-plum': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-vivid-red': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-creamy-white': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-sesame-black': aceSoloProOceanBlueImage,
+        'finish-grey-ash|int-shimo-ash': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-sky-blue': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-moonlight-grey': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-tangerine': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-light-plum': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-vivid-red': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-creamy-white': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-sesame-black': aceSoloProGreyAshImage,
+        'finish-charcoal-grey|int-shimo-ash': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-sky-blue': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-moonlight-grey': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-tangerine': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-light-plum': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-vivid-red': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-creamy-white': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-sesame-black': aceSoloProCharcoalGreyImage
+      }
+    },
+    hideThumbnailsOnColorMode: true,
+    exteriorLabel: 'Fabric Exterior Colour Options',
+    interiorMaterialSections: splitInteriorMaterialSections,
+    approximatePetTintOverlay: true,
+    technicalSpecifications: {
+      capacity: '1 person',
+      externalDimensions: '1600mm × 1200mm (62.99" × 47.24")',
+      internalDimensions: '1452mm × 1100mm (57.16" × 43.30")',
+      internalHeight: '2070mm (81.50")',
+      externalHeight: '2350mm (92.52")',
+      roomHeightRequirement: '2500mm (98.43")',
+      certifiedTestedDba: '27 dBA',
+      weight: '523kg',
+      boothFacilities: ['Standing height table', 'Netbox power', 'Optional: height adjustable table', 'Optional: Netbox power (different ports)']
+    },
+    featureRows: plusAndAboveFeatureRows,
+    featureStripItems: sharedFeatureStripItems,
+    specs: [
+      { label: 'Capacity', value: 'Up to 2 people' },
+      { label: 'Best for', value: 'Two-person discussions with reoriented seating' },
+      { label: 'Ventilation', value: 'Continuous airflow for two-person occupancy' },
+      { label: 'Power', value: 'Integrated lighting + power access' }
+    ],
+    useCases: [
+      'Two-person collaboration with face-to-face seat orientation',
+      'Private one-to-one calls and interviews in open-plan offices',
+      'Corporate offices and SMEs needing instant privacy for two people'
+    ],
+    exteriorColors: [
+      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
+      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
+      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
+      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
+      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
+      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
+    ],
+    interiorColors: [
+      { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
+      { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
+      { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
+      { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
+      { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
+      { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
+      { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
+      { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
+    ],
+    defaultExterior: 'finish-grey-ash',
+    defaultInterior: 'int-shimo-ash',
+    faq: [
+      { q: 'How is Ace Flex Duo different from Ace Flex?', a: 'Ace Flex Duo uses reoriented seating for a dedicated two-seater collaboration layout.' },
+      { q: 'Can I use the same finishes and options as Ace Flex?', a: 'Yes. Ace Flex Duo follows the same finish, option, and installation setup as Ace Flex.' }
     ]
   },
   {
@@ -686,6 +964,7 @@ export const products = [
       weight: '651kg ±',
       boothFacilities: ['Fixed center table', 'White board center panel', 'Full fabric panel', '2 units of sofa (2-seater)']
     },
+    featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
       { label: 'Capacity', value: '4 people' },
@@ -762,6 +1041,7 @@ export const products = [
       weight: '651kg ±',
       boothFacilities: ['Fixed center table', 'White board center panel', 'Full fabric panel', '2 units of sofa (2-seater)', 'Netbox power']
     },
+    featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
       { label: 'Capacity', value: '6 people' },

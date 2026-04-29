@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
+import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -13,9 +14,10 @@ export default function CompareOfficePodsPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Compare Office Pods by Price, Installation and Support | AcePods"
+        title="Compare Office Pods by Price, Installation and Support | Ace Office Pods"
         description="Compare office pods beyond headline price. Review installation, support, warranty coverage, and office-fit considerations before buying."
         canonical={buildCanonical('/compare-office-pods')}
+        keywords={`${SEO_KEYWORDS_COMMON}, compare office pods, office booth comparison`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 

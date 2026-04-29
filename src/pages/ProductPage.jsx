@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Check, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import SeoMeta from '../components/SeoMeta';
 import SiteFooter from '../components/SiteFooter';
 import SubpageHeader from '../components/SubpageHeader';
 import { getProductBySlug } from '../data/products';
-import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema } from '../seo/schema';
+import { SEO_KEYWORDS_COMMON } from '../seo/constants';
+import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import highResPodCert from '../../assets/high-res-pod-cert.png';
 
 const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false }) => (
@@ -44,6 +45,8 @@ export default function ProductPage() {
   const [isAddonMenuOpen, setIsAddonMenuOpen] = useState(false);
   const [isContactChooserOpen, setIsContactChooserOpen] = useState(false);
   const [isDimensionsModalOpen, setIsDimensionsModalOpen] = useState(false);
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
+  const [galleryModalIndex, setGalleryModalIndex] = useState(0);
   const chooserRef = useRef(null);
   const addonMenuRef = useRef(null);
 
@@ -57,6 +60,8 @@ export default function ProductPage() {
     setIsAddonMenuOpen(false);
     setIsContactChooserOpen(false);
     setIsDimensionsModalOpen(false);
+    setIsGalleryModalOpen(false);
+    setGalleryModalIndex(0);
   }, [product]);
 
   useEffect(() => {
@@ -105,10 +110,11 @@ export default function ProductPage() {
     return (
       <main className="min-h-screen bg-[#f4f4f4] px-6 py-16 text-[#1e2227]">
         <SeoMeta
-          title="Pod not found | AcePods"
+          title="Pod not found | Ace Office Pods"
           description="The requested office pod page is not available."
           canonical={buildCanonical(`/pods/${slug || ''}`)}
           robots="noindex, follow"
+          keywords={SEO_KEYWORDS_COMMON}
           schemas={[]}
         />
         <div className="mx-auto max-w-[900px] rounded-[16px] border border-[#dedede] bg-white p-8 text-center">
@@ -128,7 +134,7 @@ export default function ProductPage() {
 
   const canonicalPath = `/pods/${product.slug}`;
   const whatsappHref = 'https://wa.link/9umr4q';
-  const emailHref = `mailto:sales@aceofficepods.com?subject=${encodeURIComponent(`AcePods enquiry - ${product.name}`)}`;
+  const emailHref = `mailto:sales@aceofficepods.com?subject=${encodeURIComponent(`Ace Office Pods enquiry - ${product.name}`)}`;
   const pdpPricing = product.pdpPricing || {};
   const baseConfigurations = [...(pdpPricing.baseConfigurations || [])].sort((a, b) => a.price - b.price);
   const baseUnit = baseConfigurations[0];
@@ -144,7 +150,7 @@ export default function ProductPage() {
   const deliveryAmount = pdpPricing.delivery?.default || 0;
   const computedTotal = (baseUnit?.price || 0) + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
 
-  const isFlexAndAbove = ['ace-flex', 'ace-meet', 'ace-hub'].includes(product.slug);
+  const isFlexAndAbove = ['ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'].includes(product.slug);
   const pricingRows = [
     { label: isFlexAndAbove ? 'Base unit (pod only)' : 'Base unit price', amount: baseUnit?.price || 0 },
     { label: 'Add-on', amount: selectedConfigurationAmount },
@@ -243,7 +249,7 @@ export default function ProductPage() {
   })();
   const colorGalleryItems = galleryItems.filter((item) => item.type === 'color');
   const photoGalleryItems = galleryItems.filter((item) => item.type === 'photo');
-  const orderedGalleryItems = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-hub'].includes(product.slug)
+  const orderedGalleryItems = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-hub'].includes(product.slug)
     ? photoGalleryItems
     : [...colorGalleryItems, ...photoGalleryItems];
   const mainImage = selectedImage || primaryGalleryImage;
@@ -257,9 +263,21 @@ export default function ProductPage() {
     .map((optionId) => product.interiorColors.find((color) => color.id === optionId))
     .filter(Boolean);
   const hasSplitInteriorSections = mdfInteriorOptions.length > 0 && petInteriorOptions.length > 0;
-  const seoTitle = `${product.displayTitle || product.name} Office Pod Pricing, Specs and Colors | AcePods`;
-  const seoDescription = `${product.displayTitle || product.name}: ${product.shortDesc}. ${product.pricing.amount} in Malaysia. View colors, add-ons, installation (Klang Valley), and delivery details.`;
+  const featureRows = product.featureRows || [];
+  const isPlusAndAboveFeatures = product.slug !== 'ace-solo';
+  const displayFeatureRows = (() => {
+    if (product.slug !== 'ace-solo') return featureRows;
+    const flatFeatures = featureRows.flat();
+    if (flatFeatures.length < 10) return featureRows;
+    return [flatFeatures.slice(0, 3), flatFeatures.slice(3, 6), flatFeatures.slice(6, 10)];
+  })();
+  const hasFeatureRows = displayFeatureRows.some((row) => row.length > 0);
+  const seoTitle = `${product.displayTitle || product.name} Office Pod Pricing, Specs and Colors | Ace Office Pods`;
+  const seoDescription = `${product.displayTitle || product.name}: ${product.shortDesc}. ${product.pricing.amount} in Malaysia from Ace Office Pods by Ace Workplace Solutions. View office pod and office booth colors, add-ons, installation (Klang Valley), and delivery details.`;
+  const seoKeywords = `${SEO_KEYWORDS_COMMON}, ${product.displayTitle || product.name}, ${product.slug.replace(/-/g, ' ')}`;
   const seoSchemas = [
+    organizationSchema,
+    websiteSchema,
     createProductSchema({
       path: canonicalPath,
       name: product.displayTitle || product.name,
@@ -312,7 +330,7 @@ export default function ProductPage() {
 
     const handleGalleryKeydown = (event) => {
       if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-      if (isDimensionsModalOpen || isAddonMenuOpen || isContactChooserOpen) return;
+      if (isDimensionsModalOpen || isAddonMenuOpen || isContactChooserOpen || isGalleryModalOpen) return;
 
       const target = event.target;
       if (target instanceof HTMLElement) {
@@ -333,14 +351,51 @@ export default function ProductPage() {
     return () => {
       document.removeEventListener('keydown', handleGalleryKeydown);
     };
-  }, [orderedGalleryItems, isDimensionsModalOpen, isAddonMenuOpen, isContactChooserOpen, activeGalleryIndex]);
+  }, [orderedGalleryItems, isDimensionsModalOpen, isAddonMenuOpen, isContactChooserOpen, isGalleryModalOpen, activeGalleryIndex]);
 
-  const handleThumbnailSelect = (item) => {
-    if (item.type === 'color') {
-      setSelectedExterior(item.exteriorId);
-      setSelectedInterior(item.interiorId);
-    }
-    setSelectedImage(item.image);
+  const openGalleryModalAtIndex = (index) => {
+    if (index < 0 || index >= orderedGalleryItems.length) return;
+    setGalleryModalIndex(index);
+    setIsGalleryModalOpen(true);
+  };
+
+  const goToPrevModalImage = () => {
+    if (orderedGalleryItems.length < 2) return;
+    setGalleryModalIndex((current) => (current - 1 + orderedGalleryItems.length) % orderedGalleryItems.length);
+  };
+
+  const goToNextModalImage = () => {
+    if (orderedGalleryItems.length < 2) return;
+    setGalleryModalIndex((current) => (current + 1) % orderedGalleryItems.length);
+  };
+
+  useEffect(() => {
+    if (!isGalleryModalOpen) return;
+
+    const handleModalKeydown = (event) => {
+      if (event.key === 'Escape') {
+        setIsGalleryModalOpen(false);
+        return;
+      }
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToPrevModalImage();
+        return;
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToNextModalImage();
+      }
+    };
+
+    document.addEventListener('keydown', handleModalKeydown);
+    return () => {
+      document.removeEventListener('keydown', handleModalKeydown);
+    };
+  }, [isGalleryModalOpen, orderedGalleryItems.length]);
+
+  const handleThumbnailSelect = (_item, index) => {
+    openGalleryModalAtIndex(index);
   };
 
   return (
@@ -349,6 +404,7 @@ export default function ProductPage() {
         title={seoTitle}
         description={seoDescription}
         canonical={buildCanonical(canonicalPath)}
+        keywords={seoKeywords}
         ogImage={buildAbsoluteUrl(podPrimaryImage || mainImage)}
         schemas={seoSchemas}
       />
@@ -619,33 +675,71 @@ export default function ProductPage() {
             </div>
           </div>
 
-          {shouldShowThumbnails && (
-            <div className="w-full pt-8">
-              <div className="w-full overflow-x-auto pb-1">
-                <div className="flex w-max min-w-full justify-center gap-3 sm:gap-4">
-                  {orderedGalleryItems.map((item, index) => {
-                    const isActive = mainImage === item.image;
-                    return (
-                      <button
-                        key={`${product.slug}-${item.type}-thumb-unified-${index}`}
-                        type="button"
-                        onClick={() => handleThumbnailSelect(item)}
-                        className={`flex h-[56px] w-[56px] shrink-0 items-center justify-center overflow-hidden rounded-[8px] border bg-white transition sm:h-[66px] sm:w-[66px] ${
-                          isActive ? 'border-[#145b5f] ring-1 ring-[#145b5f]/40' : 'border-[#d0d3d7] hover:border-[#98a2ac]'
-                        }`}
-                        aria-label={`View ${item.type === 'color' ? item.label : `photo ${index + 1}`} for ${product.name}`}
-                      >
-                        <img
-                          src={item.image}
-                          alt={`${product.name} ${item.type === 'color' ? item.label : `photo ${index + 1}`}`}
-                          className="h-full w-full object-cover"
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
+          {hasFeatureRows && (
+            <section className="py-14 md:py-18">
+              <h2 className="text-center text-[28px] font-semibold tracking-tight text-[#1e2227]">Key Features</h2>
+
+              <div className="mt-8 space-y-10 md:mt-10 md:space-y-12">
+                {displayFeatureRows.map((row, rowIndex) => {
+                  const gridClasses =
+                    product.slug === 'ace-solo' && row.length === 3
+                      ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3'
+                      : product.slug === 'ace-solo' && row.length === 4
+                        ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'
+                      : row.length === 6
+                      ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-6'
+                      : row.length === 4
+                        ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'
+                        : row.length === 2
+                          ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'
+                        : 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-3';
+                  const containerClasses =
+                    product.slug === 'ace-solo'
+                      ? row.length === 4
+                        ? 'mx-auto max-w-[1120px]'
+                        : 'mx-auto max-w-[980px]'
+                      : row.length === 6
+                        ? 'max-w-none'
+                        : row.length === 4
+                          ? 'mx-auto max-w-[1280px]'
+                          : 'mx-auto max-w-[1120px]';
+
+                  return (
+                    <div key={`feature-row-${rowIndex}`} className={`${containerClasses}`}>
+                      <div className={`grid ${gridClasses} items-start justify-items-center gap-x-7 gap-y-8 md:gap-x-8 md:gap-y-9 lg:gap-x-10 lg:gap-y-10`}>
+                        {row.map((item, itemIndex) => (
+                          <article
+                            key={`${rowIndex}-${itemIndex}`}
+                            className={product.slug === 'ace-solo' ? 'text-center' : 'flex h-full w-full max-w-[320px] flex-col text-center'}
+                          >
+                            <img
+                              src={item.image}
+                              alt={`${product.name} key feature ${rowIndex * 6 + itemIndex + 1}`}
+                              className={
+                                product.slug === 'ace-solo'
+                                  ? 'mx-auto h-auto w-full max-w-[300px] object-contain sm:max-w-[320px] lg:max-w-[340px]'
+                                  : 'mx-auto h-[242px] w-full rounded-[28px] object-cover [object-position:center_68%] sm:h-[254px] lg:h-[266px]'
+                              }
+                              loading="lazy"
+                            />
+                            {isPlusAndAboveFeatures && item.title && (
+                              <h3 className="mx-auto mt-2 max-w-[18ch] text-[16px] font-semibold leading-[1.3] tracking-tight text-[#1f232a] md:text-[18px]">
+                                {item.title}
+                              </h3>
+                            )}
+                            {isPlusAndAboveFeatures && item.desc && (
+                              <p className="mx-auto mt-1 max-w-[28ch] text-[14px] leading-[1.45] text-[#4f5660] md:text-[15px]">
+                                {item.desc}
+                              </p>
+                            )}
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </div>
+            </section>
           )}
 
           <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,56fr)_minmax(0,44fr)] lg:gap-12">
@@ -701,6 +795,35 @@ export default function ProductPage() {
             </div>
           </div>
 
+          {shouldShowThumbnails && (
+            <div className="w-full pt-10">
+              <div className="w-full overflow-x-auto pb-2">
+                <div className="flex w-max min-w-full justify-center gap-4 md:gap-5">
+                  {orderedGalleryItems.map((item, index) => {
+                    const isActive = isGalleryModalOpen ? galleryModalIndex === index : mainImage === item.image;
+                    return (
+                      <button
+                        key={`${product.slug}-${item.type}-thumb-unified-${index}`}
+                        type="button"
+                        onClick={() => handleThumbnailSelect(item, index)}
+                        className={`flex h-[112px] w-[112px] shrink-0 items-center justify-center overflow-hidden rounded-[10px] border bg-white transition sm:h-[124px] sm:w-[124px] md:h-[132px] md:w-[132px] ${
+                          isActive ? 'border-[#145b5f] ring-1 ring-[#145b5f]/40' : 'border-[#d0d3d7] hover:border-[#98a2ac]'
+                        }`}
+                        aria-label={`Open gallery image ${index + 1} for ${product.name}`}
+                      >
+                        <img
+                          src={item.image}
+                          alt={`${product.name} ${item.type === 'color' ? item.label : `photo ${index + 1}`}`}
+                          className="h-full w-full object-cover"
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+
           <section className="mx-auto w-full max-w-[980px] border-t border-[#d0d0d0] pt-8">
             <a
               href={whatsappHref}
@@ -737,6 +860,55 @@ export default function ProductPage() {
               alt={`${product.name} dimensions detailed view`}
               className="max-h-[88vh] max-w-[92vw] rounded-[8px] border border-[#d9d9d9] bg-white object-contain"
             />
+          </div>
+        </div>
+      )}
+
+      {isGalleryModalOpen && orderedGalleryItems.length > 0 && (
+        <div
+          className="fixed inset-0 z-[130] flex items-center justify-center bg-black/80 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${product.name} image gallery`}
+          onClick={() => setIsGalleryModalOpen(false)}
+        >
+          <div className="relative flex h-full max-h-[92vh] w-full max-w-[96vw] items-center justify-center" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setIsGalleryModalOpen(false)}
+              className="absolute right-2 top-2 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white transition hover:bg-black"
+              aria-label="Close gallery"
+            >
+              <X size={24} />
+            </button>
+
+            {orderedGalleryItems.length > 1 && (
+              <button
+                type="button"
+                onClick={goToPrevModalImage}
+                className="absolute left-2 z-20 rounded-full bg-white/90 p-2 text-[#1e2227] transition hover:bg-white"
+                aria-label="Previous gallery image"
+              >
+                <ChevronLeft size={28} />
+              </button>
+            )}
+
+            <img
+              src={orderedGalleryItems[galleryModalIndex]?.image}
+              alt={`${product.name} gallery image ${galleryModalIndex + 1}`}
+              className="max-h-[88vh] max-w-[92vw] rounded-[8px] object-contain"
+            />
+
+            {orderedGalleryItems.length > 1 && (
+              <button
+                type="button"
+                onClick={goToNextModalImage}
+                className="absolute right-2 z-20 rounded-full bg-white/90 p-2 text-[#1e2227] transition hover:bg-white"
+                aria-label="Next gallery image"
+              >
+                <ChevronRight size={28} />
+              </button>
+            )}
           </div>
         </div>
       )}

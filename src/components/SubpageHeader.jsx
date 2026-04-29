@@ -6,7 +6,7 @@ import SmartPodsBanner from './SmartPodsBanner';
 import { smartPodsMenuItems } from './smartPodsMenuData';
 
 const navItems = [
-  { label: 'Smart Pods', type: 'smart-pods' },
+  { label: 'Office Pods', type: 'smart-pods' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Office Chairs', to: '/office-chairs' },
   { label: 'Pricing', to: '/pricing' },
@@ -46,12 +46,12 @@ export default function SubpageHeader() {
               if (item.type === 'smart-pods') {
                 return (
                   <div key={item.label} className="group flex cursor-pointer items-center gap-1.5">
-                    <button type="button" onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)} className="transition-colors group-hover:text-[#145b5f]">
+                    <Link to="/office-pods" onClick={() => setIsSmartPodsDesktopOpen(false)} className="transition-colors group-hover:text-[#145b5f]">
                       {item.label}
-                    </button>
+                    </Link>
                     <button
                       type="button"
-                      aria-label={`${isSmartPodsDesktopOpen ? 'Close' : 'Open'} Smart Pods menu`}
+                      aria-label={`${isSmartPodsDesktopOpen ? 'Close' : 'Open'} Office Pods menu`}
                       onClick={() => setIsSmartPodsDesktopOpen((prev) => !prev)}
                       className="inline-flex items-center text-[#00855a]"
                     >
@@ -96,10 +96,21 @@ export default function SubpageHeader() {
             if (item.type === 'smart-pods') {
               return (
                 <div key={item.label} className="space-y-4">
-                  <button type="button" onClick={() => setIsSmartPodsMobileOpen((prev) => !prev)} className="group flex w-full items-center justify-between">
-                    <span className="text-[28px] font-bold leading-none tracking-tight text-[#151a1f]">{item.label}</span>
-                    <ChevronDown className={`text-[#00855a] transition-transform ${isSmartPodsMobileOpen ? 'rotate-180' : ''}`} size={24} />
-                  </button>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      to="/office-pods"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsSmartPodsMobileOpen(false);
+                      }}
+                      className="text-[28px] font-bold leading-none tracking-tight text-[#151a1f]"
+                    >
+                      {item.label}
+                    </Link>
+                    <button type="button" onClick={() => setIsSmartPodsMobileOpen((prev) => !prev)} className="inline-flex items-center">
+                      <ChevronDown className={`text-[#00855a] transition-transform ${isSmartPodsMobileOpen ? 'rotate-180' : ''}`} size={24} />
+                    </button>
+                  </div>
                   {isSmartPodsMobileOpen && (
                     <div className="space-y-8 border-t border-[#d9d9d9] pt-5">
                       {smartPodsMenuItems.map((menuItem) => (

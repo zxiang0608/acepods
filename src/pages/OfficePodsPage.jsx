@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
 import { products } from '../data/products';
+import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -14,9 +15,10 @@ export default function OfficePodsPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pods Malaysia for Calls, Focus and Meetings | AcePods"
-        description="Explore acoustic office pods for calls, focused work, and team meetings. Compare pod types by use case and choose the right fit for your office."
+        title="Office Pods Malaysia for Calls, Focus and Meetings | Ace Office Pods"
+        description="Explore acoustic office pods and office booths for calls, focused work, and team meetings. Ace Office Pods by Ace Workplace Solutions helps you compare pod types by use case and choose the right fit."
         canonical={buildCanonical('/office-pods')}
+        keywords={`${SEO_KEYWORDS_COMMON}, office booth Malaysia`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
@@ -32,7 +34,7 @@ export default function OfficePodsPage() {
           Office pods for calls, focus, and meetings
         </h1>
         <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
-          AcePods offers acoustic office pods for private calls, focused work, and small team meetings. Choose your pod by capacity, use case, and project requirements.
+          Ace Office Pods by Ace Workplace Solutions offers acoustic office pods for private calls, focused work, and small team meetings. Choose your pod by capacity, use case, and project requirements.
         </p>
       </section>
 

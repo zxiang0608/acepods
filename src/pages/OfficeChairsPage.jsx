@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
+import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -13,10 +14,11 @@ export default function OfficeChairsPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Chairs | AcePods"
-        description="Office chair collection from AcePods is coming soon. Contact our team for updates and early project support."
+        title="Office Chairs | Ace Office Pods"
+        description="Office chair collection from Ace Office Pods is coming soon. Contact our team for updates and early project support."
         canonical={buildCanonical('/office-chairs')}
         robots="noindex, follow"
+        keywords={`${SEO_KEYWORDS_COMMON}, office chairs`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
