@@ -1,6 +1,7 @@
 import aceSoloCutout from '../../assets/ace-solo-cutout.png';
 import aceSoloPlusCutout from '../../assets/ace-solo-plus-cutout.png';
 import aceDuoCutout from '../../assets/ace-duo-cutout.png';
+import aceFlexDuoCutout from '../../assets/ace-flex-duo-cutout.png';
 import aceMeetingCutout from '../../assets/ace-meeting-cutout.png';
 import aceMeetingXLCutout from '../../assets/ace-meeting-XL-cutout.png';
 import aceSoloHero from '../../assets/ace-solo.png';
@@ -28,24 +29,24 @@ import soloFeature07 from '../../assets/features/For ace solo only/to post-07.pn
 import soloFeature08 from '../../assets/features/For ace solo only/to post-08.png';
 import soloFeature09 from '../../assets/features/For ace solo only/to post-09.png';
 import soloFeature10 from '../../assets/features/For ace solo only/to post-10.png';
-import plusFeature11 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-11.png';
-import plusFeature12 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-12.png';
-import plusFeature13 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-13.png';
-import plusFeature14 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-14.png';
-import plusFeature15 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-15.png';
-import plusFeature16 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-16.png';
-import plusFeature17 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-17.png';
-import plusFeature18 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-18.png';
-import plusFeature19 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-19.png';
-import plusFeature20 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-20.png';
-import plusFeature22 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-22.png';
-import plusFeature23 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-23.png';
-import plusFeature24 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-24.png';
-import plusFeature25 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-25.png';
-import plusFeature26 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-26.png';
-import plusFeature27 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-27.png';
-import plusFeature28 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-28.png';
-import plusFeature29 from '../../assets/features/For ace plus and above/pictures only (high res)/to post-29.png';
+import plusFeature11 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-11-trimmed.png';
+import plusFeature12 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-12-trimmed.png';
+import plusFeature13 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-13-trimmed.png';
+import plusFeature14 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-14-trimmed.png';
+import plusFeature15 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-15-trimmed.png';
+import plusFeature16 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-16-trimmed.png';
+import plusFeature17 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-17-trimmed.png';
+import plusFeature18 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-18-trimmed.png';
+import plusFeature19 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-19-trimmed.png';
+import plusFeature20 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-20-trimmed.png';
+import plusFeature22 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-22-trimmed.png';
+import plusFeature23 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-23-trimmed.png';
+import plusFeature24 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-24-trimmed.png';
+import plusFeature25 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-25-trimmed.png';
+import plusFeature26 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-26-trimmed.png';
+import plusFeature27 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-27-trimmed.png';
+import plusFeature28 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-28-trimmed.png';
+import plusFeature29 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-29-trimmed.png';
 import aceSoloShimoAshImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ss-04-03.webp';
 import aceSoloCrossMetalImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/ss-04-01.webp';
 import aceSoloLarixPearlImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/ss-04-02.webp';
@@ -94,7 +95,6 @@ import aceMeetingXLGreenMossImage from '../../assets/POD images/TEAM POD 6 Seate
 import aceMeetingXLOceanBlueImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/ocean blue.jpg';
 import aceMeetingXLGreyAshImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/Grey ash-01.png';
 import aceMeetingXLCharcoalGreyImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/charcoal grey.png';
-import portfolioAlphabet01 from '../../assets/Portfolio/Alphabet Capital/20250619_132036.jpg';
 import portfolioAlphabet02 from '../../assets/Portfolio/Alphabet Capital/20250619_140819.jpg';
 import portfolioAlphabet03 from '../../assets/Portfolio/Alphabet Capital/20250619_141013.jpg';
 import portfolioAlphabet04 from '../../assets/Portfolio/Alphabet Capital/ace-duo-2.jpg';
@@ -102,7 +102,6 @@ import portfolioAlphabet05 from '../../assets/Portfolio/Alphabet Capital/ace-duo
 import portfolioAlphabet06 from '../../assets/Portfolio/Alphabet Capital/handle.jpg';
 import portfolioAlphabet07 from '../../assets/Portfolio/Alphabet Capital/knob.jpg';
 import portfolioAlphabet08 from '../../assets/Portfolio/Alphabet Capital/wall-inside-2.jpg';
-import portfolioCma01 from '../../assets/Portfolio/CMA CGM/20250703_111306.jpg';
 import portfolioCma02 from '../../assets/Portfolio/CMA CGM/20250703_114411.jpg';
 import portfolioCma03 from '../../assets/Portfolio/CMA CGM/20250703_120131.jpg';
 import portfolioTaylorPods from "../../assets/Portfolio/Taylor's College/20260209_143054.jpg";
@@ -150,8 +149,6 @@ const aceSoloPortfolioPhotos = [
   portfolioCma02,
   portfolioCma03,
   portfolioAlphabet03,
-  portfolioAlphabet01,
-  portfolioCma01,
   portfolioParker01,
   portfolioParker02,
   portfolioParker03,
@@ -183,7 +180,6 @@ const acePlusPortfolioPhotos = [
   barStoolWhite
 ];
 const aceFlexAlphabetPhotos = [
-  portfolioAlphabet01,
   portfolioAlphabet02,
   portfolioAlphabet03,
   portfolioAlphabet04,
@@ -239,7 +235,7 @@ const plusAndAboveFeatureItems = [
   },
   {
     image: plusFeature19,
-    title: 'Motion Sensor For Energy Saving',
+    title: 'Energy Saving Motion Sensor',
     desc: 'The motion sensor will automatically turn on or off after 5 minutes based on activity within the pod. (time can be set manually)'
   },
   {
@@ -300,7 +296,7 @@ const plusAndAboveFeatureItems = [
   {
     image: plusFeature18,
     title: 'Smart Connectivity',
-    desc: 'This upgrade features a built-in multimedia TV for ACE HUB pods only. Perfect for virtual meetings, presentation, and entertainment. (Upgrade for ACE HUB pods only)'
+    desc: 'This upgrade features a built-in multimedia TV for ACE HUB pods only. Perfect for virtual meetings, presentation, and entertainment. (Upgrade for ACE HUB only)'
   }
 ];
 const plusAndAboveFeatureRows = [
@@ -392,7 +388,7 @@ export const products = [
     drawing2dImage: aceSolo2d,
     imageScale: 'scale-[1.30]',
     hoverImg: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop',
-    cardSupport: 'For short daily use',
+    cardSupport: 'Ideal for short daily use',
     pricing: {
       amount: formatFromPrice(POD_SEO_BY_SLUG['ace-solo'].startingPrice),
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
@@ -506,7 +502,7 @@ export const products = [
     drawing2dImage: aceSoloPlus2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop',
-    cardSupport: 'Single-person space for focused work',
+    cardSupport: 'For one-person focused work',
     pricing: {
       amount: formatFromPrice(POD_SEO_BY_SLUG['ace-plus'].startingPrice),
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
@@ -584,23 +580,49 @@ export const products = [
     interiorMaterialSections: splitInteriorMaterialSections,
     approximatePetTintOverlay: true,
     technicalSpecifications: {
-      capacity: '1 person',
-      externalDimensions: '1000mm × 1000mm (39.37" × 39.37")',
-      internalDimensions: '853mm × 918mm (33.58" × 36.14")',
+      capacity: '1 pax',
+      externalDimensions: '1000W × 1000D × 2350H mm',
+      internalDimensions: '853W × 918D × 2070H mm',
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
       certifiedTestedDba: '27 dBA',
-      weight: '335kg',
-      boothFacilities: ['Standing height table', 'Whiteboard panel', 'Netbox power']
+      weight: '335 kg without crate / 455 kg with crate',
+      boothFacilities: ['Standing table'],
+      extraRows: [
+        { label: 'Category', value: '1-pax phone / focus pod' },
+        { label: 'Exterior walls', value: 'Melamine-faced chipboard, CARB Phase 2 / EPA, upholstery with sponge fabric' },
+        { label: 'Frame structure', value: 'Metal structure with epoxy powder coating' },
+        { label: 'Swing glass door', value: '10 mm tempered door with flush hinges, made in Italy' },
+        { label: 'Heavy-duty castors', value: '4' },
+        { label: 'Interior walls', value: 'Recycled PET felt, polyethylene terephthalate' },
+        { label: 'Table', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with 2 mm ABS edging' },
+        { label: 'Floor carpet', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with carpet cladding' },
+        { label: 'Ceiling roof', value: 'PET polyester wool' },
+        { label: 'Wall accessories', value: 'Foldable hanging hook, holds up to 3 kg' },
+        { label: 'Furnishing', value: 'Standing table' },
+        { label: 'Ventilation system', value: 'Ambient air exchange with super silent fans' },
+        { label: 'Fan speed', value: '100% PWM / 12V / 1500 rpm' },
+        { label: 'Ventilation fans, ceiling', value: '1' },
+        { label: 'Exhaust fans, ceiling', value: '1' },
+        { label: 'Illumination', value: 'LED strip lights in suspended ceiling panel, cool white 4000K' },
+        { label: 'Motion sensor', value: 'Integrated into ceiling; controls illumination and ventilation, AC100–240V, 50–60Hz' },
+        { label: 'Touch buttons', value: 'Light dimmer on/off and brightness knob; exhaust fan on/off knob' },
+        { label: 'Power cable', value: 'Power connector with fuse via floor 13A UK plug, 3 m, 110–240V' },
+        { label: 'Socket type', value: 'Type A' },
+        { label: 'Socket detail', value: 'Netbox M 2-gang, 2 universal power sockets' },
+        { label: 'Power consumption', value: 'LED lights 22.4W; quiet fan 4.8W; exhaust fan 3.12W' },
+        { label: 'Airflow', value: '155 CFM, complete air exchange at 100% fan power' },
+        { label: 'Noise reduction', value: '27 dB' }
+      ]
     },
     featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
-      { label: 'Capacity', value: '1 person' },
-      { label: 'Best for', value: 'Single-person calls and focused work with automatic comfort activation' },
-      { label: 'Ventilation', value: 'Automatic fan activation when the door opens' },
-      { label: 'Power', value: 'Automatic power and lighting activation when the door opens' }
+      { label: 'Capacity', value: '1 pax' },
+      { label: 'Best for', value: '1-pax phone / focus pod' },
+      { label: 'Ventilation', value: '1 ventilation fan + 1 exhaust fan, 1500 rpm, 155 CFM' },
+      { label: 'Power', value: 'Type A socket, Netbox M 2-gang, 2 universal sockets' }
     ],
     useCases: [
       'Private calls and video meetings in open-plan offices (Malaysia)',
@@ -646,7 +668,7 @@ export const products = [
     drawing2dImage: aceDuo2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
-    cardSupport: 'Spacious private pod for focused work',
+    cardSupport: 'Extra room for longer sessions',
     pricing: {
       amount: formatFromPrice(POD_SEO_BY_SLUG['ace-flex'].startingPrice),
       note: 'Indicative pricing, final quote depends on finish and site conditions.'
@@ -727,23 +749,49 @@ export const products = [
     interiorMaterialSections: splitInteriorMaterialSections,
     approximatePetTintOverlay: true,
     technicalSpecifications: {
-      capacity: '1 person',
-      externalDimensions: '1600mm × 1200mm (62.99" × 47.24")',
-      internalDimensions: '1452mm × 1100mm (57.16" × 43.30")',
+      capacity: '1 pax',
+      externalDimensions: '1600W × 1200D × 2350H mm',
+      internalDimensions: '1452W × 1100D × 2070H mm',
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
       certifiedTestedDba: '27 dBA',
-      weight: '523kg',
-      boothFacilities: ['Standing height table', 'Netbox power', 'Optional: height adjustable table', 'Optional: Netbox power (different ports)']
+      weight: '523 kg without crate / 663 kg with crate',
+      boothFacilities: ['Fixed table / height-adjustable table (HAT)'],
+      extraRows: [
+        { label: 'Category', value: '1-pax larger focus / work pod' },
+        { label: 'Exterior walls', value: 'Melamine-faced chipboard, CARB Phase 2 / EPA, upholstery with sponge fabric' },
+        { label: 'Frame structure', value: 'Metal structure with epoxy powder coating' },
+        { label: 'Swing glass door', value: '10 mm tempered door with flush hinges, made in Italy' },
+        { label: 'Heavy-duty castors', value: '4' },
+        { label: 'Interior walls', value: 'Egg-crate acoustic foam with sound-grooved melamine-faced MDF + drilled acoustic tiled panels with nonwoven felt' },
+        { label: 'Table', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with 2 mm ABS edging' },
+        { label: 'Floor carpet', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with carpet cladding' },
+        { label: 'Ceiling roof', value: 'PET polyester wool' },
+        { label: 'Wall accessories', value: 'Foldable hanging hook, holds up to 3 kg' },
+        { label: 'Furnishing', value: 'Fixed table / height-adjustable table (HAT)' },
+        { label: 'Ventilation system', value: 'Ambient air exchange with super silent fans' },
+        { label: 'Fan speed', value: '100% PWM / 12V / 1500 rpm' },
+        { label: 'Ventilation fans, ceiling', value: '1' },
+        { label: 'Exhaust fans, ceiling', value: '1' },
+        { label: 'Illumination', value: 'LED strip lights in suspended ceiling panel, cool white 4000K' },
+        { label: 'Motion sensor', value: 'Integrated into ceiling; controls illumination and ventilation, AC100–240V, 50–60Hz' },
+        { label: 'Touch buttons', value: 'Light dimmer on/off and brightness knob; exhaust fan on/off knob' },
+        { label: 'Power cable', value: 'Power connector with fuse via floor 13A UK plug, 3 m, 110–240V' },
+        { label: 'Socket type', value: 'Type B' },
+        { label: 'Socket detail', value: 'Netbox M 2-gang, 1 universal power socket, 1 USB charging port, 1 Type-C charging port' },
+        { label: 'Power consumption', value: 'LED lights 22.4W; quiet fan 4.8W; exhaust fan 3.12W' },
+        { label: 'Airflow', value: '155 CFM, complete air exchange at 100% fan power' },
+        { label: 'Noise reduction', value: '27 dB' }
+      ]
     },
     featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
-      { label: 'Capacity', value: 'Up to 2 people' },
-      { label: 'Best for', value: 'One-to-one conversations and focused collaboration' },
-      { label: 'Ventilation', value: 'Continuous airflow for two-person occupancy' },
-      { label: 'Power', value: 'Integrated lighting + power access' }
+      { label: 'Capacity', value: '1 pax' },
+      { label: 'Best for', value: '1-pax larger focus / work pod' },
+      { label: 'Ventilation', value: '1 ventilation fan + 1 exhaust fan, 1500 rpm, 155 CFM' },
+      { label: 'Power', value: 'Type B socket, Netbox M 2-gang, universal + USB + Type-C' }
     ],
     useCases: [
       'Quick discussions and short check-ins without booking meeting rooms',
@@ -781,7 +829,7 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
     heroImage: aceDuoHero,
-    thumbImage: aceDuoCutout,
+    thumbImage: aceFlexDuoCutout,
     customerPhotos: aceFlexAlphabetPhotos,
     drawing2dImage: aceDuo2d,
     imageScale: 'scale-[1.40]',
@@ -867,23 +915,49 @@ export const products = [
     interiorMaterialSections: splitInteriorMaterialSections,
     approximatePetTintOverlay: true,
     technicalSpecifications: {
-      capacity: '1 person',
-      externalDimensions: '1600mm × 1200mm (62.99" × 47.24")',
-      internalDimensions: '1452mm × 1100mm (57.16" × 43.30")',
+      capacity: '1 pax',
+      externalDimensions: '1600W × 1200D × 2350H mm',
+      internalDimensions: '1452W × 1100D × 2070H mm',
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
       certifiedTestedDba: '27 dBA',
-      weight: '523kg',
-      boothFacilities: ['Standing height table', 'Netbox power', 'Optional: height adjustable table', 'Optional: Netbox power (different ports)']
+      weight: '523 kg without crate / 663 kg with crate',
+      boothFacilities: ['Fixed table / height-adjustable table (HAT)'],
+      extraRows: [
+        { label: 'Category', value: '1-pax larger focus / work pod' },
+        { label: 'Exterior walls', value: 'Melamine-faced chipboard, CARB Phase 2 / EPA, upholstery with sponge fabric' },
+        { label: 'Frame structure', value: 'Metal structure with epoxy powder coating' },
+        { label: 'Swing glass door', value: '10 mm tempered door with flush hinges, made in Italy' },
+        { label: 'Heavy-duty castors', value: '4' },
+        { label: 'Interior walls', value: 'Egg-crate acoustic foam with sound-grooved melamine-faced MDF + drilled acoustic tiled panels with nonwoven felt' },
+        { label: 'Table', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with 2 mm ABS edging' },
+        { label: 'Floor carpet', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with carpet cladding' },
+        { label: 'Ceiling roof', value: 'PET polyester wool' },
+        { label: 'Wall accessories', value: 'Foldable hanging hook, holds up to 3 kg' },
+        { label: 'Furnishing', value: 'Fixed table / height-adjustable table (HAT)' },
+        { label: 'Ventilation system', value: 'Ambient air exchange with super silent fans' },
+        { label: 'Fan speed', value: '100% PWM / 12V / 1500 rpm' },
+        { label: 'Ventilation fans, ceiling', value: '1' },
+        { label: 'Exhaust fans, ceiling', value: '1' },
+        { label: 'Illumination', value: 'LED strip lights in suspended ceiling panel, cool white 4000K' },
+        { label: 'Motion sensor', value: 'Integrated into ceiling; controls illumination and ventilation, AC100–240V, 50–60Hz' },
+        { label: 'Touch buttons', value: 'Light dimmer on/off and brightness knob; exhaust fan on/off knob' },
+        { label: 'Power cable', value: 'Power connector with fuse via floor 13A UK plug, 3 m, 110–240V' },
+        { label: 'Socket type', value: 'Type B' },
+        { label: 'Socket detail', value: 'Netbox M 2-gang, 1 universal power socket, 1 USB charging port, 1 Type-C charging port' },
+        { label: 'Power consumption', value: 'LED lights 22.4W; quiet fan 4.8W; exhaust fan 3.12W' },
+        { label: 'Airflow', value: '155 CFM, complete air exchange at 100% fan power' },
+        { label: 'Noise reduction', value: '27 dB' }
+      ]
     },
     featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
-      { label: 'Capacity', value: 'Up to 2 people' },
-      { label: 'Best for', value: 'Two-person discussions with reoriented seating' },
-      { label: 'Ventilation', value: 'Continuous airflow for two-person occupancy' },
-      { label: 'Power', value: 'Integrated lighting + power access' }
+      { label: 'Capacity', value: '1 pax' },
+      { label: 'Best for', value: '1-pax larger focus / work pod' },
+      { label: 'Ventilation', value: '1 ventilation fan + 1 exhaust fan, 1500 rpm, 155 CFM' },
+      { label: 'Power', value: 'Type B socket, Netbox M 2-gang, universal + USB + Type-C' }
     ],
     useCases: [
       'Two-person collaboration with face-to-face seat orientation',
@@ -954,23 +1028,49 @@ export const products = [
     interiorMaterialSections: splitInteriorMaterialSections,
     approximatePetTintOverlay: true,
     technicalSpecifications: {
-      capacity: '2–4 people',
-      externalDimensions: '2200mm × 1200mm (86.61" × 47.24")',
-      internalDimensions: '2030mm × 1140mm (79.92" × 44.88")',
+      capacity: '2–4 pax',
+      externalDimensions: '2200W × 1200D × 2350H mm',
+      internalDimensions: '2030W × 1140D × 2070H mm',
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
       certifiedTestedDba: '27 dBA',
-      weight: '651kg ±',
-      boothFacilities: ['Fixed center table', 'White board center panel', 'Full fabric panel', '2 units of sofa (2-seater)']
+      weight: '636 kg without crate / 826 kg with crate',
+      boothFacilities: ['Empty / sofa / chair optional'],
+      extraRows: [
+        { label: 'Category', value: '2–4 pax meeting pod' },
+        { label: 'Exterior walls', value: 'Melamine-faced chipboard, CARB Phase 2 / EPA, upholstery with sponge fabric' },
+        { label: 'Frame structure', value: 'Metal structure with epoxy powder coating' },
+        { label: 'Swing glass door', value: '10 mm tempered door with flush hinges, made in Italy' },
+        { label: 'Heavy-duty castors', value: '4' },
+        { label: 'Interior walls', value: 'Egg-crate acoustic foam with sound-grooved melamine-faced MDF + drilled acoustic tiled panels with nonwoven felt' },
+        { label: 'Table', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with 2 mm ABS edging' },
+        { label: 'Floor carpet', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with carpet cladding' },
+        { label: 'Ceiling roof', value: 'PET polyester wool' },
+        { label: 'Wall accessories', value: 'Foldable hanging hook, holds up to 3 kg' },
+        { label: 'Furnishing', value: 'Empty / sofa / chair optional' },
+        { label: 'Ventilation system', value: 'Ambient air exchange with super silent fans' },
+        { label: 'Fan speed', value: '100% PWM / 12V / 1500 rpm' },
+        { label: 'Ventilation fans, ceiling', value: '2' },
+        { label: 'Exhaust fans, ceiling', value: '1' },
+        { label: 'Illumination', value: 'LED strip lights 4000K + additional downlight 4000K (sharing pod)' },
+        { label: 'Motion sensor', value: 'Integrated into ceiling; controls illumination and ventilation, AC100–240V, 50–60Hz' },
+        { label: 'Touch buttons', value: 'Light dimmer on/off and brightness knob; exhaust fan on/off knob' },
+        { label: 'Power cable', value: 'Power connector with fuse via floor 13A UK plug, 3 m, 110–240V' },
+        { label: 'Socket type', value: 'Type B' },
+        { label: 'Socket detail', value: 'Netbox M 2-gang, 1 universal power socket, 1 USB charging port, 1 Type-C charging port' },
+        { label: 'Power consumption', value: 'LED lights 22.4W; downlights 3W; quiet fan 4.8W; exhaust fan 3.12W' },
+        { label: 'Airflow', value: '310 CFM, complete air exchange at 100% fan power' },
+        { label: 'Noise reduction', value: '27 dB' }
+      ]
     },
     featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
-      { label: 'Capacity', value: '4 people' },
-      { label: 'Best for', value: 'Small team meetings and hybrid calls' },
-      { label: 'Ventilation', value: 'Continuous airflow for group sessions' },
-      { label: 'Power', value: 'Integrated lighting + power access' }
+      { label: 'Capacity', value: '2–4 pax' },
+      { label: 'Best for', value: '2–4 pax meeting pod' },
+      { label: 'Ventilation', value: '2 ventilation fans + 1 exhaust fan, 1500 rpm, 310 CFM' },
+      { label: 'Power', value: 'Type B socket, Netbox M 2-gang, universal + USB + Type-C' }
     ],
     useCases: [
       'Quick discussions and short check-ins without booking meeting rooms',
@@ -1031,23 +1131,50 @@ export const products = [
     interiorMaterialSections: splitInteriorMaterialSections,
     approximatePetTintOverlay: true,
     technicalSpecifications: {
-      capacity: 'Up to 6 people',
-      externalDimensions: '2200mm × 1500mm (86.61" × 59.05")',
-      internalDimensions: '2030mm × 1440mm (79.92" × 56.69")',
+      capacity: 'Up to 6 pax',
+      externalDimensions: '2200W × 1500D × 2350H mm',
+      internalDimensions: '2030W × 1440D × 2070H mm',
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
       certifiedTestedDba: '27 dBA',
-      weight: '651kg ±',
-      boothFacilities: ['Fixed center table', 'White board center panel', 'Full fabric panel', '2 units of sofa (2-seater)', 'Netbox power']
+      weight: '469 kg without crate / 679 kg with crate',
+      boothFacilities: ['Empty / sofa / chair optional'],
+      extraRows: [
+        { label: 'Category', value: 'Up-to-6-pax hub / lounge pod' },
+        { label: 'Exterior walls', value: 'Melamine-faced chipboard, CARB Phase 2 / EPA, upholstery with sponge fabric' },
+        { label: 'Frame structure', value: 'Metal structure with epoxy powder coating' },
+        { label: 'Swing glass door', value: '10 mm tempered door with flush hinges, made in Italy' },
+        { label: 'Heavy-duty castors', value: '6' },
+        { label: 'Interior walls', value: 'Additional option: recycled PET felt, polyethylene terephthalate' },
+        { label: 'Control wall elements', value: 'Magnetic writing board with metal channel control panel' },
+        { label: 'Table', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with 2 mm ABS edging' },
+        { label: 'Floor carpet', value: 'Melamine-faced chipboard, 25 mm, CARB Phase 2, with carpet cladding' },
+        { label: 'Ceiling roof', value: 'PET polyester wool' },
+        { label: 'Wall accessories', value: 'Foldable hanging hook, holds up to 3 kg' },
+        { label: 'Furnishing', value: 'Empty / sofa / chair optional' },
+        { label: 'Ventilation system', value: 'Ambient air exchange with super silent fans' },
+        { label: 'Fan speed', value: '100% PWM / 12V / 1500 rpm' },
+        { label: 'Ventilation fans, ceiling', value: '2' },
+        { label: 'Exhaust fans, ceiling', value: '1' },
+        { label: 'Illumination', value: 'LED strip lights 4000K + additional downlight 4000K (sharing pod)' },
+        { label: 'Motion sensor', value: 'Integrated into ceiling; controls illumination and ventilation, AC100–240V, 50–60Hz' },
+        { label: 'Touch buttons', value: 'Light dimmer on/off and brightness knob; exhaust fan on/off knob' },
+        { label: 'Power cable', value: 'Power connector with fuse via floor 13A UK plug, 3 m, 110–240V' },
+        { label: 'Socket type', value: 'Type D' },
+        { label: 'Socket detail', value: 'Mount on table, Netbox Smart 2-gang, 1 universal power socket, 1 USB charging port, 1 Type-C charging port' },
+        { label: 'Power consumption', value: 'LED lights 22.4W; downlights 3W; quiet fan 4.8W; exhaust fan 3.12W' },
+        { label: 'Airflow', value: '310 CFM, complete air exchange at 100% fan power' },
+        { label: 'Noise reduction', value: '27 dB' }
+      ]
     },
     featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
-      { label: 'Capacity', value: '6 people' },
-      { label: 'Best for', value: 'Larger team meetings and hybrid calls' },
-      { label: 'Ventilation', value: 'Continuous airflow for extended group use' },
-      { label: 'Power', value: 'Integrated lighting + power access' }
+      { label: 'Capacity', value: 'Up to 6 pax' },
+      { label: 'Best for', value: 'Up-to-6-pax hub / lounge pod' },
+      { label: 'Ventilation', value: '2 ventilation fans + 1 exhaust fan, 1500 rpm, 310 CFM' },
+      { label: 'Power', value: 'Type D socket, Netbox Smart 2-gang, universal + USB + Type-C' }
     ],
     useCases: [
       'Team meetings and longer hybrid sessions for up to 6 people',

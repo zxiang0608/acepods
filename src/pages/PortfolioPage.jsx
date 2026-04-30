@@ -19,7 +19,7 @@ const portfolioImageModules = import.meta.glob('../../assets/Portfolio/**/*.{jpg
   import: 'default'
 });
 
-const excludedPortfolioBasenames = new Set(['20250624_150024']);
+const excludedPortfolioBasenames = new Set(['20250624_150024', '20250619_132036', '20250703_111306', '20250703_120024']);
 
 const orderedCompanies = ["Parker Hannafin", 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Others'];
 

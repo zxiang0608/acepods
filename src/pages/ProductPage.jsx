@@ -47,6 +47,7 @@ export default function ProductPage() {
   const [isDimensionsModalOpen, setIsDimensionsModalOpen] = useState(false);
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [galleryModalIndex, setGalleryModalIndex] = useState(0);
+  const [isSpecsExpanded, setIsSpecsExpanded] = useState(false);
   const chooserRef = useRef(null);
   const addonMenuRef = useRef(null);
 
@@ -62,6 +63,7 @@ export default function ProductPage() {
     setIsDimensionsModalOpen(false);
     setIsGalleryModalOpen(false);
     setGalleryModalIndex(0);
+    setIsSpecsExpanded(false);
   }, [product]);
 
   useEffect(() => {
@@ -202,7 +204,13 @@ export default function ProductPage() {
     },
     { label: 'Certified tested dBA (A-weighted decibels)', value: technicalSpecifications.certifiedTestedDba },
     { label: 'Weight', value: technicalSpecifications.weight }
-  ].filter((row) => row.value);
+  ];
+  const extraTechnicalSpecRows = technicalSpecifications.extraRows || [];
+  const mergedTechnicalSpecRows = [...technicalSpecRows, ...extraTechnicalSpecRows].filter((row) => row?.label && row?.value);
+  const exteriorWallsRowIndex = mergedTechnicalSpecRows.findIndex((row) => row.label === 'Exterior walls');
+  const canToggleSpecs = exteriorWallsRowIndex >= 0 && exteriorWallsRowIndex < mergedTechnicalSpecRows.length - 1;
+  const visibleTechnicalSpecRows =
+    canToggleSpecs && !isSpecsExpanded ? mergedTechnicalSpecRows.slice(0, exteriorWallsRowIndex + 1) : mergedTechnicalSpecRows;
   const customerPhotos = product.customerPhotos || [];
   const podPrimaryImage = product.thumbImage || product.heroImage;
   const primaryGalleryImage = mappedImage || podPrimaryImage;
@@ -272,6 +280,7 @@ export default function ProductPage() {
     return [flatFeatures.slice(0, 3), flatFeatures.slice(3, 6), flatFeatures.slice(6, 10)];
   })();
   const hasFeatureRows = displayFeatureRows.some((row) => row.length > 0);
+  const allFeatureItems = displayFeatureRows.flat();
   const seoTitle = `${product.displayTitle || product.name} Office Pod Pricing, Specs and Colors | Ace Office Pods`;
   const seoDescription = `${product.displayTitle || product.name}: ${product.shortDesc}. ${product.pricing.amount} in Malaysia from Ace Office Pods by Ace Workplace Solutions. View office pod and office booth colors, add-ons, installation (Klang Valley), and delivery details.`;
   const seoKeywords = `${SEO_KEYWORDS_COMMON}, ${product.displayTitle || product.name}, ${product.slug.replace(/-/g, ' ')}`;
@@ -676,68 +685,45 @@ export default function ProductPage() {
           </div>
 
           {hasFeatureRows && (
-            <section className="py-14 md:py-18">
+            <section className="py-12 md:py-14">
               <h2 className="text-center text-[28px] font-semibold tracking-tight text-[#1e2227]">Key Features</h2>
 
-              <div className="mt-8 space-y-10 md:mt-10 md:space-y-12">
-                {displayFeatureRows.map((row, rowIndex) => {
-                  const gridClasses =
-                    product.slug === 'ace-solo' && row.length === 3
-                      ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3'
-                      : product.slug === 'ace-solo' && row.length === 4
-                        ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'
-                      : row.length === 6
-                      ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-6'
-                      : row.length === 4
-                        ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'
-                        : row.length === 2
-                          ? 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-2'
-                        : 'grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-3';
-                  const containerClasses =
-                    product.slug === 'ace-solo'
-                      ? row.length === 4
-                        ? 'mx-auto max-w-[1120px]'
-                        : 'mx-auto max-w-[980px]'
-                      : row.length === 6
-                        ? 'max-w-none'
-                        : row.length === 4
-                          ? 'mx-auto max-w-[1280px]'
-                          : 'mx-auto max-w-[1120px]';
-
-                  return (
-                    <div key={`feature-row-${rowIndex}`} className={`${containerClasses}`}>
-                      <div className={`grid ${gridClasses} items-start justify-items-center gap-x-7 gap-y-8 md:gap-x-8 md:gap-y-9 lg:gap-x-10 lg:gap-y-10`}>
-                        {row.map((item, itemIndex) => (
-                          <article
-                            key={`${rowIndex}-${itemIndex}`}
-                            className={product.slug === 'ace-solo' ? 'text-center' : 'flex h-full w-full max-w-[320px] flex-col text-center'}
-                          >
-                            <img
-                              src={item.image}
-                              alt={`${product.name} key feature ${rowIndex * 6 + itemIndex + 1}`}
-                              className={
-                                product.slug === 'ace-solo'
-                                  ? 'mx-auto h-auto w-full max-w-[300px] object-contain sm:max-w-[320px] lg:max-w-[340px]'
-                                  : 'mx-auto h-[242px] w-full rounded-[28px] object-cover [object-position:center_68%] sm:h-[254px] lg:h-[266px]'
-                              }
-                              loading="lazy"
-                            />
-                            {isPlusAndAboveFeatures && item.title && (
-                              <h3 className="mx-auto mt-2 max-w-[18ch] text-[16px] font-semibold leading-[1.3] tracking-tight text-[#1f232a] md:text-[18px]">
-                                {item.title}
-                              </h3>
-                            )}
-                            {isPlusAndAboveFeatures && item.desc && (
-                              <p className="mx-auto mt-1 max-w-[28ch] text-[14px] leading-[1.45] text-[#4f5660] md:text-[15px]">
-                                {item.desc}
-                              </p>
-                            )}
-                          </article>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="mt-6 md:mt-7">
+                <div className="overflow-x-auto pb-3">
+                  <div className="flex w-max min-w-full items-start justify-start gap-6 md:gap-8 lg:gap-10">
+                    {allFeatureItems.map((item, itemIndex) => (
+                      <article
+                        key={`feature-single-row-${itemIndex}`}
+                        className={
+                          product.slug === 'ace-solo'
+                            ? 'w-[280px] shrink-0 text-center sm:w-[300px] md:w-[320px]'
+                            : 'flex w-[280px] shrink-0 flex-col text-center sm:w-[300px] md:w-[320px]'
+                        }
+                      >
+                        <img
+                          src={item.image}
+                          alt={`${product.name} key feature ${itemIndex + 1}`}
+                          className={
+                            product.slug === 'ace-solo'
+                              ? 'mx-auto block h-[152px] w-full max-w-[280px] object-cover [object-position:center_72%] sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] lg:h-[188px] lg:max-w-[340px]'
+                              : 'mx-auto block h-[152px] w-full rounded-[24px] object-cover [object-position:center_72%] sm:h-[164px] md:h-[176px] md:rounded-[28px] lg:h-[188px]'
+                          }
+                          loading="lazy"
+                        />
+                        {isPlusAndAboveFeatures && item.title && (
+                          <h3 className="mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#1f232a] md:mt-1.5 md:text-[18px]">
+                            {item.title}
+                          </h3>
+                        )}
+                        {isPlusAndAboveFeatures && item.desc && (
+                          <p className="mx-auto mt-1.5 max-w-[28ch] text-justify text-[14px] leading-[1.45] text-[#4f5660] md:mt-2 md:text-[15px]">
+                            {item.desc}
+                          </p>
+                        )}
+                      </article>
+                    ))}
+                  </div>
+                </div>
               </div>
             </section>
           )}
@@ -748,13 +734,24 @@ export default function ProductPage() {
                 <div>
                   <h2 className="text-[24px] font-semibold tracking-tight">Technical Specifications</h2>
                   <dl className="mt-3 grid gap-y-2">
-                    {technicalSpecRows.map((spec) => (
+                    {visibleTechnicalSpecRows.map((spec) => (
                       <div key={spec.label} className="flex items-start justify-between gap-4 border-b border-[#d9d9d9] pb-2 text-[14px]">
                         <dt className="font-medium text-[#4e535a]">{spec.label}</dt>
                         <dd className="max-w-[70%] text-right font-semibold text-[#1f232a]">{spec.value}</dd>
                       </div>
                     ))}
                   </dl>
+                  {canToggleSpecs && (
+                    <div className="mt-3 flex justify-center">
+                      <button
+                        type="button"
+                        onClick={() => setIsSpecsExpanded((prev) => !prev)}
+                        className="text-[13px] font-medium text-[#4e535a] underline underline-offset-2 transition-colors hover:text-[#1f232a]"
+                      >
+                        {isSpecsExpanded ? 'See less' : 'See more'}
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -797,6 +794,7 @@ export default function ProductPage() {
 
           {shouldShowThumbnails && (
             <div className="w-full pt-10">
+              <h3 className="mb-12 text-center text-[36px] font-semibold tracking-tight text-[#1e2227] md:text-[40px]">Our Past Projects</h3>
               <div className="w-full overflow-x-auto pb-2">
                 <div className="flex w-max min-w-full justify-center gap-4 md:gap-5">
                   {orderedGalleryItems.map((item, index) => {
@@ -824,7 +822,7 @@ export default function ProductPage() {
             </div>
           )}
 
-          <section className="mx-auto w-full max-w-[980px] border-t border-[#d0d0d0] pt-8">
+          <section className="mx-auto flex w-full max-w-[980px] justify-center border-t border-[#d0d0d0] pt-8">
             <a
               href={whatsappHref}
               target="_blank"

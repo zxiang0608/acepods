@@ -11,6 +11,7 @@ import OfficePodsPage from './pages/OfficePodsPage';
 import PortfolioPage from './pages/PortfolioPage';
 import PricingPage from './pages/PricingPage';
 import ProductPage from './pages/ProductPage';
+import ScrollToTop from './components/ScrollToTop';
 import './index.css';
 
 const isDemoPath = window.location.pathname === '/demo' || window.location.pathname.startsWith('/demo/');
@@ -19,6 +20,7 @@ const routerBasename = isDemoPath ? '/demo' : '/';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename={routerBasename}>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/portfolio" element={<PortfolioPage />} />

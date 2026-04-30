@@ -8,7 +8,7 @@ import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
 export const smartPodsMenuItems = [
   {
     title: 'Ace Solo',
-    description: 'Designed for individuals who need a quiet, private workspace.',
+    description: POD_SEO_BY_SLUG['ace-solo'].shortDesc,
     image: menuAceSolo,
     to: '/pods/ace-solo'
   },
@@ -20,7 +20,7 @@ export const smartPodsMenuItems = [
   },
   {
     title: 'Ace Flex',
-    description: 'Enhanced workspace and comfort',
+    description: POD_SEO_BY_SLUG['ace-flex'].shortDesc,
     image: menuAceDuo,
     to: '/pods/ace-flex'
   },
@@ -32,14 +32,14 @@ export const smartPodsMenuItems = [
   },
   {
     title: 'Ace Meet',
-    description: 'Sound-contained environment tailored for small team meetings.',
+    description: POD_SEO_BY_SLUG['ace-meet'].shortDesc,
     image: menuAceMeeting,
     imageClassName: 'scale-[1.14] mix-blend-multiply',
     to: '/pods/ace-meet'
   },
   {
     title: 'Ace Hub',
-    description: 'Provides ample space for larger team meetings and collaboration.',
+    description: POD_SEO_BY_SLUG['ace-hub'].shortDesc,
     image: menuAceMeetingXL,
     imageClassName: 'mix-blend-multiply',
     to: '/pods/ace-hub'

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Globe, Instagram, Linkedin } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
-import highResPodCert from '../../assets/high-res-pod-cert.png';
 
 const footerSocialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/acepodsmy/', Icon: Instagram },
@@ -20,19 +19,16 @@ const footerLinkGroups = [
     links: [
       { label: 'Ace Solo', to: '/pods/ace-solo' },
       { label: 'Ace Plus', to: '/pods/ace-plus' },
-      { label: 'Ace Flex', to: '/pods/ace-flex' },
-      { label: 'Ace Flex Duo', to: '/pods/ace-flex-duo' },
-      { label: 'Ace Meet', to: '/pods/ace-meet' },
-      { label: 'Ace Hub', to: '/pods/ace-hub' }
+      { label: 'Ace Flex', to: '/pods/ace-flex' }
     ]
   },
   {
-    key: 'company',
-    title: 'Company',
+    key: 'products-more',
+    title: 'Products',
     links: [
-      { label: 'About', href: '#' },
-      { label: 'Explore', href: '#' },
-      { label: 'Professionals', href: '#' }
+      { label: 'Ace Flex Duo', to: '/pods/ace-flex-duo' },
+      { label: 'Ace Meet', to: '/pods/ace-meet' },
+      { label: 'Ace Hub', to: '/pods/ace-hub' }
     ]
   },
   {
@@ -52,16 +48,13 @@ export default function SiteFooter({ className = 'mt-0' }) {
 
   return (
     <footer className={`${className} bg-[#121212] px-5 pb-12 pt-14 text-left text-white md:px-12 md:pt-20`}>
-      <div className="mx-auto max-w-[1440px]">
+      <div className="mx-auto max-w-[1280px]">
         <div className="space-y-6 md:hidden">
           <div className="space-y-4">
             <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
               <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
-            <div className="max-w-sm overflow-hidden">
-              <img src={highResPodCert} alt="Certification logos: Made in Malaysia, GREENGUARD, FSC, CARB P2, scratch resistance, stain resistance, cigarette burn resistance" className="h-auto w-full object-contain" />
-            </div>
             <div className="flex gap-3">
               {footerSocialLinks.map(({ label, href, Icon }) => (
                 <a
@@ -114,7 +107,7 @@ export default function SiteFooter({ className = 'mt-0' }) {
           </div>
         </div>
 
-        <div className="mb-14 hidden grid-cols-4 gap-10 md:grid">
+        <div className="hidden grid-cols-4 gap-10 md:grid">
           <div className="space-y-6">
             <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
               <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto md:h-14" />
@@ -138,7 +131,14 @@ export default function SiteFooter({ className = 'mt-0' }) {
 
           {footerLinkGroups.map((group) => (
             <div key={group.key} className="space-y-5">
-              <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-gray-400">{group.title}</h4>
+              <h4
+                className={`text-[11px] font-semibold uppercase tracking-[0.15em] text-gray-400 ${
+                  group.key === 'products-more' ? 'invisible' : ''
+                }`}
+                aria-hidden={group.key === 'products-more'}
+              >
+                {group.title}
+              </h4>
               <ul className="space-y-3">
                 {group.links.map((link) => (
                   <li key={link.label}>
@@ -157,13 +157,6 @@ export default function SiteFooter({ className = 'mt-0' }) {
             </div>
           ))}
 
-          <div className="col-start-3 col-span-2 mt-2 overflow-hidden">
-            <img
-              src={highResPodCert}
-              alt="Certification logos: Made in Malaysia, GREENGUARD, FSC, CARB P2, scratch resistance, stain resistance, cigarette burn resistance"
-              className="h-auto w-full max-w-[600px] object-contain"
-            />
-          </div>
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-600 md:flex-row">
