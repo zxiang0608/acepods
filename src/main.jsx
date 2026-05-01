@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import CompareOfficePodsPage from './pages/CompareOfficePodsPage';
+import ContactPage from './pages/ContactPage';
 import FaqPage from './pages/FaqPage';
 import InstallationSupportPage from './pages/InstallationSupportPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/office-pods" element={<OfficePodsPage />} />
         <Route path="/compare-office-pods" element={<CompareOfficePodsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/installation-support" element={<InstallationSupportPage />} />
         <Route path="/pods/:slug" element={<ProductPage />} />

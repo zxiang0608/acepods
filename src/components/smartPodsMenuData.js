@@ -1,6 +1,7 @@
 import menuAceSolo from '../../assets/ace-solo-cutout.png';
 import menuAceSoloPlus from '../../assets/ace-solo-plus-cutout.png';
 import menuAceDuo from '../../assets/ace-duo-cutout.png';
+import menuAceFlexDuo from '../../assets/ace-flex-duo-cutout.png';
 import menuAceMeeting from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/ocean-blue-cutout.png';
 import menuAceMeetingXL from '../../assets/ace-meeting-XL-cutout.png';
 import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
@@ -27,7 +28,7 @@ export const smartPodsMenuItems = [
   {
     title: 'Ace Flex Duo',
     description: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
-    image: menuAceDuo,
+    image: menuAceFlexDuo,
     to: '/pods/ace-flex-duo'
   },
   {

@@ -207,6 +207,34 @@ export default function ProductPage() {
   ];
   const extraTechnicalSpecRows = technicalSpecifications.extraRows || [];
   const mergedTechnicalSpecRows = [...technicalSpecRows, ...extraTechnicalSpecRows].filter((row) => row?.label && row?.value);
+  const quickAnswerDimensionParts = [
+    technicalSpecifications.capacity ? `Fits ${technicalSpecifications.capacity}` : null,
+    technicalSpecifications.externalDimensions ? `External dimensions: ${technicalSpecifications.externalDimensions}` : null,
+    technicalSpecifications.roomHeightRequirement ? `Recommended room height: ${technicalSpecifications.roomHeightRequirement}` : null
+  ].filter(Boolean);
+  const quickAnswerDimensionsText = quickAnswerDimensionParts.length > 0 ? quickAnswerDimensionParts.join('. ') + '.' : null;
+  const quickAnswerAcousticText = technicalSpecifications.certifiedTestedDba
+    ? `Certified tested acoustic performance: ${technicalSpecifications.certifiedTestedDba}.`
+    : null;
+  const quickAnswerDeliveryParts = [
+    installationAmount > 0 ? `Installation (Klang Valley): ${formatRM(installationAmount)}` : null,
+    `Delivery (Klang Valley): ${formatRM(deliveryAmount)}`
+  ].filter(Boolean);
+  const quickAnswerDeliveryText =
+    quickAnswerDeliveryParts.length > 0
+      ? `${quickAnswerDeliveryParts.join('. ')}. ${outstationNoteLines[0] || ''}`.trim()
+      : null;
+  const quickAnswerPowerRows = mergedTechnicalSpecRows.filter((row) => /power|socket|usb|plug|ethernet|connectivity/i.test(row.label));
+  const quickAnswerPowerText = quickAnswerPowerRows.length > 0
+    ? quickAnswerPowerRows
+        .slice(0, 2)
+        .map((row) => `${row.label}: ${row.value}`)
+        .join('. ') + '.'
+    : null;
+  const quickAnswerAddOnLabels = [...configurationOptions.map((item) => item.label), ...availableAddons.map((item) => item.label)];
+  const quickAnswerAddOnsText =
+    quickAnswerAddOnLabels.length > 0 ? `Available add-ons include ${quickAnswerAddOnLabels.slice(0, 4).join(', ')}.` : null;
+  const quickAnswerHelpText = 'Need help choosing the right pod size and setup? Contact our team for a model recommendation.';
   const exteriorWallsRowIndex = mergedTechnicalSpecRows.findIndex((row) => row.label === 'Exterior walls');
   const canToggleSpecs = exteriorWallsRowIndex >= 0 && exteriorWallsRowIndex < mergedTechnicalSpecRows.length - 1;
   const visibleTechnicalSpecRows =
@@ -249,7 +277,7 @@ export default function ProductPage() {
       items.push({
         type: 'photo',
         image,
-        label: `Customer photo ${index + 1}`
+        label: `Installation photo ${index + 1}`
       });
     });
 
@@ -293,7 +321,6 @@ export default function ProductPage() {
       description: product.shortDesc,
       image: podPrimaryImage || mainImage,
       price: baseUnit?.price,
-      availability: 'https://schema.org/InStock',
       category: 'Office pods'
     }),
     createBreadcrumbSchema([
@@ -305,6 +332,11 @@ export default function ProductPage() {
   const shouldShowThumbnails = orderedGalleryItems.length > 0;
   const isChairImage = typeof mainImage === 'string' && mainImage.includes('bar-stool');
   const shouldUseMultiplyBlend = product.slug !== 'ace-plus' || isChairImage;
+  const mainProductAlt = `${product.name} acoustic office pod`;
+  const getFeatureAlt = (featureItem) =>
+    featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
+  const getGalleryThumbAlt = (galleryItem) =>
+    galleryItem?.type === 'photo' ? `${product.name} office pod installation photo` : `${product.name} office pod product image`;
 
   const handleExteriorSelect = (id) => {
     setSelectedExterior(id);
@@ -454,7 +486,7 @@ export default function ProductPage() {
                 >
                   <img
                     src={mainImage}
-                    alt={product.name}
+                    alt={mainProductAlt}
                     className={`relative z-[1] object-contain object-center ${shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''} ${
                       isChairImage ? 'h-full w-full' : 'h-full w-auto max-w-none'
                     }`}
@@ -702,7 +734,7 @@ export default function ProductPage() {
                       >
                         <img
                           src={item.image}
-                          alt={`${product.name} key feature ${itemIndex + 1}`}
+                          alt={getFeatureAlt(item)}
                           className={
                             product.slug === 'ace-solo'
                               ? 'mx-auto block h-[152px] w-full max-w-[280px] object-cover [object-position:center_72%] sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] lg:h-[188px] lg:max-w-[340px]'
@@ -731,6 +763,46 @@ export default function ProductPage() {
           <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,56fr)_minmax(0,44fr)] lg:gap-12">
             <div className="min-w-0">
               <div className="h-full space-y-5">
+                <div>
+                  <h2 className="text-[24px] font-semibold tracking-tight">Product Details</h2>
+                  <div className="mt-3 space-y-3">
+                    {quickAnswerDimensionsText && (
+                      <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
+                        <h3 className="font-semibold text-[#1f232a]">Dimensions &amp; fit</h3>
+                        <p className="mt-1 text-[#4e535a]">{quickAnswerDimensionsText}</p>
+                      </div>
+                    )}
+                    {quickAnswerAcousticText && (
+                      <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
+                        <h3 className="font-semibold text-[#1f232a]">Acoustic performance</h3>
+                        <p className="mt-1 text-[#4e535a]">{quickAnswerAcousticText}</p>
+                      </div>
+                    )}
+                    {quickAnswerDeliveryText && (
+                      <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
+                        <h3 className="font-semibold text-[#1f232a]">Delivery &amp; installation</h3>
+                        <p className="mt-1 text-[#4e535a]">{quickAnswerDeliveryText}</p>
+                      </div>
+                    )}
+                    {quickAnswerPowerText && (
+                      <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
+                        <h3 className="font-semibold text-[#1f232a]">Power &amp; connectivity</h3>
+                        <p className="mt-1 text-[#4e535a]">{quickAnswerPowerText}</p>
+                      </div>
+                    )}
+                    {quickAnswerAddOnsText && (
+                      <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
+                        <h3 className="font-semibold text-[#1f232a]">Add-ons</h3>
+                        <p className="mt-1 text-[#4e535a]">{quickAnswerAddOnsText}</p>
+                      </div>
+                    )}
+                    <div className="text-[14px]">
+                      <h3 className="font-semibold text-[#1f232a]">Need help choosing?</h3>
+                      <p className="mt-1 text-[#4e535a]">{quickAnswerHelpText}</p>
+                    </div>
+                  </div>
+                </div>
+
                 <div>
                   <h2 className="text-[24px] font-semibold tracking-tight">Technical Specifications</h2>
                   <dl className="mt-3 grid gap-y-2">
@@ -811,7 +883,7 @@ export default function ProductPage() {
                       >
                         <img
                           src={item.image}
-                          alt={`${product.name} ${item.type === 'color' ? item.label : `photo ${index + 1}`}`}
+                          alt={getGalleryThumbAlt(item)}
                           className="h-full w-full object-cover"
                         />
                       </button>
@@ -893,7 +965,7 @@ export default function ProductPage() {
 
             <img
               src={orderedGalleryItems[galleryModalIndex]?.image}
-              alt={`${product.name} gallery image ${galleryModalIndex + 1}`}
+              alt={getGalleryThumbAlt(orderedGalleryItems[galleryModalIndex])}
               className="max-h-[88vh] max-w-[92vw] rounded-[8px] object-contain"
             />
 

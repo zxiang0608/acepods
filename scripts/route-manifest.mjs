@@ -6,6 +6,7 @@ const STATIC_PUBLIC_ROUTES = [
   '/office-pods',
   '/compare-office-pods',
   '/pricing',
+  '/contact',
   '/faq',
   '/installation-support',
   '/office-chairs'

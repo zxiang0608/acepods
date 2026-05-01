@@ -19,12 +19,19 @@ import {
 } from 'lucide-react';
 import acePodsLogo from '../Logos/ace pods logo.png';
 import acePodsHero from '../assets/hero-pods.png';
+import acePodsHeroAvif from '../assets/hero-pods.avif';
 import officeOneImage from '../assets/Office-1.png';
 import officeTwoImage from '../assets/office-2.png';
 import officeThreeImage from '../assets/office-3.png';
+import officeOneImageAvif from '../assets/Office-1.avif';
+import officeTwoImageAvif from '../assets/office-2.avif';
+import officeThreeImageAvif from '../assets/office-3.avif';
 import comparePriceImage from '../assets/quotation.jpg';
 import podsInstallationImage from '../assets/pods-installation.png';
 import deliveryPodsImage from '../assets/delivery-pods.png';
+import comparePriceImageAvif from '../assets/quotation.avif';
+import podsInstallationImageAvif from '../assets/pods-installation.avif';
+import deliveryPodsImageAvif from '../assets/delivery-pods.avif';
 import parkerLogo from '../assets/parker-logo.png';
 import cmacgmLogo from '../assets/cmacgm-logo.svg';
 import alphabetLogo from '../assets/alphabet-logo.png';
@@ -33,6 +40,7 @@ import matradeLogo from '../assets/matrade-logo.png';
 import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
 import jyEliteLogo from '../assets/jy-elite.jpg';
 import wsConstructionLogo from '../assets/ws-construction.png';
+import wsConstructionLogoWebp from '../assets/ws-construction.webp';
 import idCandyLogo from '../assets/id-candy.jpg';
 import SeoMeta from './components/SeoMeta';
 import SiteFooter from './components/SiteFooter';
@@ -348,7 +356,7 @@ export default function App() {
           <div className="aspect-square w-full max-w-[180px] md:max-w-[200px]">
             <img
               src={pod.thumbImage}
-              alt={pod.name}
+              alt={`${pod.name} acoustic office pod`}
               className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`}
             />
           </div>
@@ -387,7 +395,7 @@ export default function App() {
           <div className="mx-auto aspect-square w-full max-w-[288px]">
             <img
               src={pod.thumbImage}
-              alt={pod.name}
+              alt={`${pod.name} acoustic office pod`}
               className={`h-full w-full object-contain ${pod.imageScale}`}
             />
           </div>
@@ -551,11 +559,15 @@ export default function App() {
         <section className="relative bg-white">
           <div className="relative mx-auto h-[500px] w-full max-w-[1240px] overflow-hidden pb-8 sm:h-[540px] sm:pb-8 lg:h-[520px] lg:pb-0">
             <div className="absolute inset-0 z-0">
-              <img
-                src={acePodsHero}
-                alt="Acoustic office pods for calls and focused work in an open office"
-                className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
-              />
+              <picture>
+                <source srcSet={acePodsHeroAvif} type="image/avif" />
+                <img
+                  src={acePodsHero}
+                  alt="Acoustic office pods for calls and focused work in an open office"
+                  className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
+                  fetchPriority="high"
+                />
+              </picture>
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22 lg:bg-black/18"></div>
             </div>
 
@@ -690,7 +702,19 @@ export default function App() {
               {activeRenovationPoints.map((item) => (
                 <article key={item.num} className="flex flex-col">
                   <div className="aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#eceae3]">
-                    <img src={item.image} alt={item.imageAlt} className="h-full w-full object-cover" loading="lazy" />
+                    <picture>
+                      <source
+                        srcSet={
+                          item.image === officeOneImage
+                            ? officeOneImageAvif
+                            : item.image === officeTwoImage
+                              ? officeTwoImageAvif
+                              : officeThreeImageAvif
+                        }
+                        type="image/avif"
+                      />
+                      <img src={item.image} alt={item.imageAlt} className="h-full w-full object-cover" loading="lazy" />
+                    </picture>
                   </div>
                   <div className="mt-6 border-t border-[#717171] pt-6 md:mt-7 md:pt-7">
                     <span className="mb-3 block text-[12px] font-extrabold tracking-widest text-[#00855a] md:mb-5 md:text-[13px]">{item.num}</span>
@@ -745,7 +769,24 @@ export default function App() {
               {activeCompareItems.map((item) => (
                 <article key={item.title} className="overflow-hidden rounded-[22px] border border-[#e5e5e2] bg-[#f2f2f0] shadow-[0_6px_18px_rgba(0,0,0,0.06)]">
                   <div className="aspect-[5/3] w-full">
-                    <img src={item.image} alt={item.imageAlt} className={`h-full w-full object-cover ${item.imageClassName || ''}`} />
+                    <picture>
+                      <source
+                        srcSet={
+                          item.image === comparePriceImage
+                            ? comparePriceImageAvif
+                            : item.image === podsInstallationImage
+                              ? podsInstallationImageAvif
+                              : deliveryPodsImageAvif
+                        }
+                        type="image/avif"
+                      />
+                      <img
+                        src={item.image}
+                        alt={item.imageAlt}
+                        className={`h-full w-full object-cover ${item.imageClassName || ''}`}
+                        loading="lazy"
+                      />
+                    </picture>
                   </div>
                   <div className="px-6 pb-8 pt-5 text-left">
                     <h3 className="text-[33px] font-bold leading-[1.12] tracking-tight text-[#111111] md:text-[30px]">{item.title}</h3>
@@ -769,7 +810,14 @@ export default function App() {
                   className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#FAFAFA] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
                 >
                   <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
-                    <img src={logo.image} alt={logo.name} className={`h-full w-full object-contain ${logo.fitClass || ''}`} />
+                    {logo.image === wsConstructionLogo ? (
+                      <picture>
+                        <source srcSet={wsConstructionLogoWebp} type="image/webp" />
+                        <img src={logo.image} alt={logo.name} className={`h-full w-full object-contain ${logo.fitClass || ''}`} />
+                      </picture>
+                    ) : (
+                      <img src={logo.image} alt={logo.name} className={`h-full w-full object-contain ${logo.fitClass || ''}`} />
+                    )}
                   </div>
                 </div>
               ))}
@@ -795,9 +843,12 @@ export default function App() {
               ))}
             </div>
 
-            <button className="mt-14 inline-flex items-center rounded-full bg-[#4a9078] px-10 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#3f7e69] md:mt-16 md:px-14 md:py-4 md:text-[17px]">
+            <Link
+              to="/contact"
+              className="mt-14 inline-flex items-center rounded-full bg-[#4a9078] px-10 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#3f7e69] md:mt-16 md:px-14 md:py-4 md:text-[17px]"
+            >
               Contact us
-            </button>
+            </Link>
           </div>
         </section>
 

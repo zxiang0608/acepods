@@ -112,7 +112,6 @@ export const createProductSchema = ({
   image,
   price,
   priceCurrency = 'MYR',
-  availability = 'https://schema.org/InStock',
   category = 'Office pods'
 }) => ({
   '@context': 'https://schema.org',
@@ -132,8 +131,7 @@ export const createProductSchema = ({
           '@type': 'Offer',
           url: buildCanonical(path),
           priceCurrency,
-          price: String(price),
-          availability
+          price: String(price)
         }
       }
     : {})

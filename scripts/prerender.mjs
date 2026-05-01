@@ -312,6 +312,43 @@ const STATIC_PRERENDER_META = {
       }
     ]
   },
+  '/contact': {
+    title: 'Contact Ace Office Pods | WhatsApp, Email, and Sales Support',
+    description: 'Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries via WhatsApp, email, or phone in Malaysia.',
+    keywords: `${SEO_KEYWORDS_COMMON}, contact Ace Office Pods, office pod sales enquiry`,
+    h1: 'Contact Ace Office Pods',
+    body: [
+      'Contact Ace Office Pods by Ace Workplace Solutions for office pod enquiries, model guidance, and quote support.',
+      'Reach our team by WhatsApp, email, or phone.'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Contact Ace Office Pods',
+        url: canonical,
+        description: 'Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries via WhatsApp, email, or phone in Malaysia.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Contact',
+            item: canonical
+          }
+        ]
+      }
+    ]
+  },
   '/installation-support': {
     title: 'Office Pod Delivery, Installation and Support | Ace Office Pods',
     description:
@@ -438,7 +475,6 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
         '@type': 'Offer',
         price: String(productMeta.startingPrice),
         priceCurrency: 'MYR',
-        availability: 'https://schema.org/InStock',
         url: canonical
       }
     }

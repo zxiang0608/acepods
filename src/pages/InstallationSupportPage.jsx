@@ -269,6 +269,9 @@ export default function InstallationSupportPage() {
 
       <section id="book-viewing" className="mx-auto w-full max-w-[1180px] px-5 pb-14 pt-2 md:px-8 md:pb-20">
         <div className="rounded-[14px] border border-[#bfd1cb] bg-[#e6f0ed] px-6 py-9 text-left md:px-8">
+          <div id="after-sales-support" className="mb-4 inline-flex rounded-full border border-[#9db6b0] bg-white/70 px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-[#145b5f]">
+            After-sales support
+          </div>
           <h2 className="text-[32px] font-bold leading-[1.15] tracking-tight text-[#14181c] md:text-[40px]">Discuss your office pod project with our team</h2>
           <p className="mt-3 max-w-[72ch] text-[16px] leading-[1.5] text-[#47505a] md:text-[17px]">
             Book a consultation to confirm model fit, site readiness, and installation timing before order confirmation.

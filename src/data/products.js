@@ -7,6 +7,7 @@ import aceMeetingXLCutout from '../../assets/ace-meeting-XL-cutout.png';
 import aceSoloHero from '../../assets/ace-solo.png';
 import aceSoloPlusHero from '../../assets/ace-solo-plus.png';
 import aceDuoHero from '../../assets/ace-duo.png';
+import aceFlexDuoHero from '../../assets/ace-flex-duo.png';
 import aceMeetingHero from '../../assets/ace-meeting.png';
 import aceMeetingXLHero from '../../assets/ace-meeting-XL.png';
 import aceSolo2d from '../../assets/2D images/1. Ace Solo.png';
@@ -95,6 +96,9 @@ import aceMeetingXLGreenMossImage from '../../assets/POD images/TEAM POD 6 Seate
 import aceMeetingXLOceanBlueImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/ocean blue.jpg';
 import aceMeetingXLGreyAshImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/Grey ash-01.png';
 import aceMeetingXLCharcoalGreyImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/charcoal grey.png';
+import aceFlexDuoGallery01 from '../../assets/POD images/Ace Flex Duo/flexduo1.jpeg';
+import aceFlexDuoGallery02 from '../../assets/POD images/Ace Flex Duo/flexduo2.jpeg';
+import aceFlexDuoGallery03 from '../../assets/POD images/Ace Flex Duo/flexduo3.jpeg';
 import portfolioAlphabet02 from '../../assets/Portfolio/Alphabet Capital/20250619_140819.jpg';
 import portfolioAlphabet03 from '../../assets/Portfolio/Alphabet Capital/20250619_141013.jpg';
 import portfolioAlphabet04 from '../../assets/Portfolio/Alphabet Capital/ace-duo-2.jpg';
@@ -190,6 +194,7 @@ const aceFlexAlphabetPhotos = [
   barStoolBlack,
   barStoolWhite
 ];
+const aceFlexDuoGalleryPhotos = [aceFlexDuoGallery01, aceFlexDuoGallery02, aceFlexDuoGallery03];
 const aceHubPortfolioPhotos = [
   portfolioAceHub01,
   portfolioAceHub02,
@@ -828,9 +833,9 @@ export const products = [
     name: 'Ace Flex Duo',
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
-    heroImage: aceDuoHero,
+    heroImage: aceFlexDuoHero,
     thumbImage: aceFlexDuoCutout,
-    customerPhotos: aceFlexAlphabetPhotos,
+    customerPhotos: aceFlexDuoGalleryPhotos,
     drawing2dImage: aceDuo2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',

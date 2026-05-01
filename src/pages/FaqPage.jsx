@@ -43,6 +43,26 @@ export default function FaqPage() {
           </article>
         ))}
       </section>
+
+      <section className="mx-auto w-full max-w-[1100px] px-5 pb-14 pt-8 md:px-8 md:pb-20">
+        <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
+          <h2 className="text-[20px] font-semibold tracking-tight text-[#1d232a]">Related links</h2>
+          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[15px] font-medium text-[#145b5f]">
+            <Link to="/office-pods" className="underline-offset-4 hover:underline">
+              Office pod models
+            </Link>
+            <Link to="/pricing" className="underline-offset-4 hover:underline">
+              Pricing guide
+            </Link>
+            <Link to="/installation-support" className="underline-offset-4 hover:underline">
+              Installation and delivery
+            </Link>
+            <Link to="/contact" className="underline-offset-4 hover:underline">
+              Contact our team
+            </Link>
+          </div>
+        </div>
+      </section>
     </PageShell>
   );
 }

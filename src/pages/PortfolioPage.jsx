@@ -102,7 +102,11 @@ export default function PortfolioPage() {
                     <div className="aspect-[4/3] w-full overflow-hidden bg-[#eceae3]">
                       <img
                         src={image.src}
-                        alt={`${section.companyName} portfolio project ${index + 1}`}
+                        alt={
+                          section.companyName
+                            ? `Ace Pods office pod installation for ${section.companyName}`
+                            : 'Ace Pods office pod installation project'
+                        }
                         className="h-full w-full object-cover"
                         loading="lazy"
                       />
