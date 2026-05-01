@@ -6,7 +6,12 @@ import {
   HOME_FAQ_ITEMS,
   SEO_BASE_URL,
   SEO_BRAND_ALTERNATE_NAMES,
+  SEO_BRAND_AREA_SERVED,
+  SEO_BRAND_EMAIL,
+  SEO_BRAND_IDENTIFIER,
   SEO_BRAND_LEGAL,
+  SEO_BRAND_LOGO,
+  SEO_BRAND_PHONE,
   SEO_BRAND_PRIMARY,
   SEO_BRAND_SAME_AS,
   SEO_KEYWORDS_COMMON
@@ -17,37 +22,81 @@ const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.png`;
 const buildOrganizationSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${SEO_BASE_URL}/#organization`,
   name: SEO_BRAND_PRIMARY,
   legalName: SEO_BRAND_LEGAL,
   alternateName: SEO_BRAND_ALTERNATE_NAMES,
-  identifier: '202403171118',
+  identifier: SEO_BRAND_IDENTIFIER,
   url: SEO_BASE_URL,
+  logo: SEO_BRAND_LOGO,
+  email: SEO_BRAND_EMAIL,
+  telephone: SEO_BRAND_PHONE,
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: SEO_BRAND_AREA_SERVED
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: SEO_BRAND_PHONE,
+    email: SEO_BRAND_EMAIL,
+    contactType: 'sales',
+    areaServed: 'MY',
+    availableLanguage: ['en', 'ms']
+  },
   sameAs: SEO_BRAND_SAME_AS,
-  description: 'Silent acoustic office pods for calls, focus, and meetings.'
+  description: 'Ace Office Pods (Ace Workplace Solutions) supplies office pods and office booths for calls, focus, and meetings in Malaysia.'
 });
 
 const buildWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${SEO_BASE_URL}/#website`,
   name: SEO_BRAND_PRIMARY,
   alternateName: SEO_BRAND_ALTERNATE_NAMES,
-  url: SEO_BASE_URL
+  url: SEO_BASE_URL,
+  publisher: {
+    '@id': `${SEO_BASE_URL}/#organization`
+  }
+});
+
+const buildHomepageWebPageSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Ace Office Pods by Ace Workplace Solutions',
+  url: SEO_BASE_URL,
+  description: 'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.',
+  isPartOf: {
+    '@id': `${SEO_BASE_URL}/#website`
+  },
+  about: [
+    { '@type': 'Thing', name: 'Ace Office Pods' },
+    { '@type': 'Thing', name: 'Ace Workplace Solutions' },
+    { '@type': 'Thing', name: 'office pods' },
+    { '@type': 'Thing', name: 'office booths' }
+  ],
+  mentions: [
+    { '@type': 'Thing', name: 'acoustic office pods' },
+    { '@type': 'Place', name: 'Malaysia' },
+    { '@type': 'Place', name: SEO_BRAND_AREA_SERVED }
+  ]
 });
 
 const STATIC_PRERENDER_META = {
   '/': {
-    title: 'Office Pods for Calls, Focus and Meetings | Ace Office Pods',
+    title: 'Ace Office Pods by Ace Workplace Solutions | Office Pods and Booths Malaysia',
     description:
-      'Explore office pods and office booths for calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams add private space without major renovation, with clear pricing, installation, and support.',
+      'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia with clear pricing, installation, and support.',
     keywords: `${SEO_KEYWORDS_COMMON}, office booth provider`,
     h1: 'Office pods for calls, focus, and meetings',
     body: [
+      'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.',
       'Add private space for calls, focused work, and meetings without building new rooms.',
       'Compare models, pricing, installation support, and office fit before deciding.'
     ],
     schemas: (canonical) => [
       buildOrganizationSchema(),
       buildWebsiteSchema(),
+      buildHomepageWebPageSchema(),
       {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
@@ -103,23 +152,23 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/office-pods': {
-    title: 'Office Pods Malaysia for Calls, Focus and Meetings | Ace Office Pods',
+    title: 'Office Pods and Office Booths Malaysia | Ace Office Pods',
     description:
-      'Explore acoustic office pods and office booths for calls, focused work, and team meetings. Ace Office Pods by Ace Workplace Solutions helps you compare pod types by use case and choose the right fit.',
+      'Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams choose the right pod by use case, capacity, and project needs.',
     keywords: `${SEO_KEYWORDS_COMMON}, office booth Malaysia`,
-    h1: 'Office pods for calls, focus, and meetings',
+    h1: 'Office pods and office booths for calls, focus, and meetings',
     body: [
-      'Ace Office Pods by Ace Workplace Solutions offers acoustic office pods for private calls, focused work, and small team meetings.',
-      'Compare pod types by use case, capacity, and project requirements.'
+      'Ace Office Pods by Ace Workplace Solutions offers acoustic office pods and office booths in Malaysia for private calls, focused work, hybrid meetings, and small team discussions.',
+      'Our office booth range includes compact call pods, one-person focus booths, two-person discussion pods, and larger meeting pods for offices that need quiet space without building new rooms.'
     ],
     schemas: (canonical) => [
       {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        name: 'Office Pods Malaysia',
+        name: 'Office Pods and Office Booths Malaysia',
         url: canonical,
         description:
-          'Explore acoustic office pods and office booths for calls, focused work, and team meetings. Ace Office Pods by Ace Workplace Solutions helps you compare pod types by use case and choose the right fit.'
+          'Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams choose the right pod by use case, capacity, and project needs.'
       },
       {
         '@context': 'https://schema.org',

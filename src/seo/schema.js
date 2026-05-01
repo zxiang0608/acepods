@@ -1,4 +1,15 @@
-import { SEO_BASE_URL, SEO_BRAND_ALTERNATE_NAMES, SEO_BRAND_LEGAL, SEO_BRAND_PRIMARY, SEO_BRAND_SAME_AS } from './constants';
+import {
+  SEO_BASE_URL,
+  SEO_BRAND_ALTERNATE_NAMES,
+  SEO_BRAND_AREA_SERVED,
+  SEO_BRAND_EMAIL,
+  SEO_BRAND_IDENTIFIER,
+  SEO_BRAND_LEGAL,
+  SEO_BRAND_LOGO,
+  SEO_BRAND_PHONE,
+  SEO_BRAND_PRIMARY,
+  SEO_BRAND_SAME_AS
+} from './constants';
 
 export const buildCanonical = (path) => `${SEO_BASE_URL}${path}`;
 export const buildAbsoluteUrl = (value) => {
@@ -10,21 +21,63 @@ export const buildAbsoluteUrl = (value) => {
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${SEO_BASE_URL}/#organization`,
   name: SEO_BRAND_PRIMARY,
   legalName: SEO_BRAND_LEGAL,
   alternateName: SEO_BRAND_ALTERNATE_NAMES,
-  identifier: '202403171118',
+  identifier: SEO_BRAND_IDENTIFIER,
   url: SEO_BASE_URL,
+  logo: SEO_BRAND_LOGO,
+  email: SEO_BRAND_EMAIL,
+  telephone: SEO_BRAND_PHONE,
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: SEO_BRAND_AREA_SERVED
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: SEO_BRAND_PHONE,
+    email: SEO_BRAND_EMAIL,
+    contactType: 'sales',
+    areaServed: 'MY',
+    availableLanguage: ['en', 'ms']
+  },
   sameAs: SEO_BRAND_SAME_AS,
-  description: 'Silent acoustic office pods for calls, focus, and meetings.'
+  description: 'Ace Office Pods (Ace Workplace Solutions) supplies office pods and office booths for calls, focus, and meetings in Malaysia.'
 };
 
 export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${SEO_BASE_URL}/#website`,
   name: SEO_BRAND_PRIMARY,
   alternateName: SEO_BRAND_ALTERNATE_NAMES,
-  url: SEO_BASE_URL
+  url: SEO_BASE_URL,
+  publisher: {
+    '@id': `${SEO_BASE_URL}/#organization`
+  }
+};
+
+export const homepageWebPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Ace Office Pods by Ace Workplace Solutions',
+  url: SEO_BASE_URL,
+  description: 'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.',
+  isPartOf: {
+    '@id': `${SEO_BASE_URL}/#website`
+  },
+  about: [
+    { '@type': 'Thing', name: 'Ace Office Pods' },
+    { '@type': 'Thing', name: 'Ace Workplace Solutions' },
+    { '@type': 'Thing', name: 'office pods' },
+    { '@type': 'Thing', name: 'office booths' }
+  ],
+  mentions: [
+    { '@type': 'Thing', name: 'acoustic office pods' },
+    { '@type': 'Place', name: 'Malaysia' },
+    { '@type': 'Place', name: SEO_BRAND_AREA_SERVED }
+  ]
 };
 
 export const createFaqSchema = (path, items) => ({

@@ -1,13 +1,18 @@
 export const SEO_BASE_URL = 'https://aceofficepods.com';
 export const SEO_BRAND_PRIMARY = 'Ace Office Pods';
-export const SEO_BRAND_LEGAL = 'Ace Workplace Solutions (Ace Office Pods Malaysia)';
+export const SEO_BRAND_LEGAL = 'Ace Workplace Solutions';
 export const SEO_BRAND_ALTERNATE_NAMES = ['Ace Workplace Solutions', 'Ace Office Pods', 'AcePods'];
+export const SEO_BRAND_IDENTIFIER = '20243171118';
+export const SEO_BRAND_EMAIL = 'sales@aceofficepods.com';
+export const SEO_BRAND_PHONE = '+601154352700';
+export const SEO_BRAND_AREA_SERVED = 'Klang Valley, Malaysia';
+export const SEO_BRAND_LOGO = `${SEO_BASE_URL}/ace-pods-logo.png`;
 export const SEO_BRAND_SAME_AS = [
   'https://www.instagram.com/acepodsmy/',
   'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/?viewAsMember=true'
 ];
 export const SEO_KEYWORDS_COMMON =
-  'Ace Workplace Solutions, Ace Office Pods, AcePods, office pod, office booth, acoustic office pods, office pods Malaysia';
+  'Ace Workplace Solutions, Ace Office Pods, AcePods, office pod, office booth, acoustic office pods, office pods Malaysia, office booths Malaysia';
 
 export const HOME_FAQ_ITEMS = [
   {

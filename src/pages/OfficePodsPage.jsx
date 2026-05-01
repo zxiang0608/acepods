@@ -11,15 +11,24 @@ const breadcrumbs = [
   { name: 'Office Pods', path: '/office-pods' }
 ];
 
+const officePodsCollectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Office Pods and Office Booths Malaysia',
+  url: buildCanonical('/office-pods'),
+  description:
+    'Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams choose the right pod by use case, capacity, and project needs.'
+};
+
 export default function OfficePodsPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pods Malaysia for Calls, Focus and Meetings | Ace Office Pods"
-        description="Explore acoustic office pods and office booths for calls, focused work, and team meetings. Ace Office Pods by Ace Workplace Solutions helps you compare pod types by use case and choose the right fit."
+        title="Office Pods and Office Booths Malaysia | Ace Office Pods"
+        description="Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams choose the right pod by use case, capacity, and project needs."
         canonical={buildCanonical('/office-pods')}
         keywords={`${SEO_KEYWORDS_COMMON}, office booth Malaysia`}
-        schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
+        schemas={[organizationSchema, websiteSchema, officePodsCollectionSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
@@ -31,10 +40,13 @@ export default function OfficePodsPage() {
         </nav>
 
         <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">
-          Office pods for calls, focus, and meetings
+          Office pods and office booths for calls, focus, and meetings
         </h1>
         <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
-          Ace Office Pods by Ace Workplace Solutions offers acoustic office pods for private calls, focused work, and small team meetings. Choose your pod by capacity, use case, and project requirements.
+          Ace Office Pods by Ace Workplace Solutions offers acoustic office pods and office booths in Malaysia for private calls, focused work, hybrid meetings, and small team discussions. Choose your office pod by capacity, use case, and project requirements.
+        </p>
+        <p className="mt-3 max-w-[70ch] text-[16px] leading-[1.65] text-[#58616b]">
+          Our office booth range includes compact call pods, one-person focus booths, two-person discussion pods, and larger meeting pods for offices that need quiet space without building new rooms.
         </p>
       </section>
 
@@ -56,7 +68,7 @@ export default function OfficePodsPage() {
       <section className="mx-auto mt-12 w-full max-w-[1200px] rounded-[10px] border border-[#ddd8cf] bg-white px-5 py-8 md:px-8">
         <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Need help choosing?</h2>
         <p className="mt-3 text-[16px] leading-[1.6] text-[#4d555e]">
-          Compare office pods by use case first: calls, focused work, or meetings. Then review installation, support, and final project pricing before you decide.
+          Compare office pods and office booths by use case first: calls, focused work, or meetings. Then review installation, support, and final project pricing before you decide.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-[15px] font-semibold text-[#145b5f]">
           <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">

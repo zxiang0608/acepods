@@ -40,7 +40,7 @@ import SmartPodsBanner from './components/SmartPodsBanner';
 import { smartPodsMenuItems } from './components/smartPodsMenuData';
 import { products } from './data/products';
 import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from './seo/constants';
-import { buildCanonical, createFaqSchema, organizationSchema, websiteSchema } from './seo/schema';
+import { buildCanonical, createFaqSchema, homepageWebPageSchema, organizationSchema, websiteSchema } from './seo/schema';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
   <div
@@ -332,7 +332,7 @@ export default function App() {
   const compareSupportingLine = 'Compare more confidently when pricing, installation, and support are clear upfront.';
   const trustSectionHeading = 'Trusted by local and international companies';
   const whyHeading = 'Choose AcePods';
-  const homepageSchemas = [organizationSchema, websiteSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
+  const homepageSchemas = [organizationSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
 
   const renderPodCard = (pod, extraClass = '') => (
     <Link
@@ -404,8 +404,8 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
       <SeoMeta
-        title="Office Pods for Calls, Focus and Meetings | Ace Office Pods"
-        description="Explore office pods and office booths for calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams add private space without major renovation, with clear pricing, installation, and support."
+        title="Ace Office Pods by Ace Workplace Solutions | Office Pods and Booths Malaysia"
+        description="Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia with clear pricing, installation, and support."
         canonical={buildCanonical('/')}
         keywords={`${SEO_KEYWORDS_COMMON}, office booth provider`}
         schemas={homepageSchemas}
@@ -597,9 +597,14 @@ export default function App() {
         <section className="relative overflow-hidden bg-white px-5 pt-8 pb-16 md:px-12 md:pt-12 md:pb-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-8 flex flex-col items-start justify-between gap-6 md:mb-10 md:flex-row md:items-end">
-              <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight text-[#222222] sm:text-[30px] md:text-[38px]">
-                {productIntroHeading}
-              </h2>
+              <div>
+                <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight text-[#222222] sm:text-[30px] md:text-[38px]">
+                  {productIntroHeading}
+                </h2>
+                <p className="mt-4 max-w-[760px] text-[15px] leading-[1.65] text-[#555555] md:text-[17px]">
+                  Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.
+                </p>
+              </div>
             </div>
 
             <div className="relative md:hidden">
