@@ -336,6 +336,16 @@ export default function ProductPage() {
   const mainProductAlt = `${product.name} acoustic office pod`;
   const getFeatureAlt = (featureItem) =>
     featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
+  const isIconLikeFeature = (featureItem) => {
+    const title = (featureItem?.title || '').toLowerCase();
+    const imagePath = typeof featureItem?.image === 'string' ? featureItem.image.toLowerCase() : '';
+
+    if (product.slug === 'ace-solo') return true;
+
+    if (imagePath.includes('icon') || imagePath.includes('symbol')) return true;
+
+    return /(led|spotlight|standing|table|hook|handle|stopper|sensor|connectivity|power output|closure|whiteboard)/.test(title);
+  };
   const getGalleryThumbAlt = (galleryItem) =>
     galleryItem?.type === 'photo' ? `${product.name} office pod installation photo` : `${product.name} office pod product image`;
 
@@ -751,27 +761,35 @@ export default function ProductPage() {
               <h2 className="text-center text-[28px] font-semibold tracking-tight text-[#1e2227]">Key Features</h2>
 
               <div className="mt-6 md:mt-7">
-                <div className="overflow-x-auto pb-3">
-                  <div className="flex w-max min-w-full items-start justify-start gap-6 md:gap-8 lg:gap-10">
+                <div className="md:overflow-x-auto md:pb-3">
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:flex md:w-max md:min-w-full md:items-start md:justify-start md:gap-8 lg:gap-10">
                     {allFeatureItems.map((item, itemIndex) => (
                       <article
                         key={`feature-single-row-${itemIndex}`}
                         className={
                           product.slug === 'ace-solo'
-                            ? 'w-[280px] shrink-0 text-center sm:w-[300px] md:w-[320px]'
-                            : 'flex w-[280px] shrink-0 flex-col text-center sm:w-[300px] md:w-[320px]'
+                            ? 'mx-auto w-full max-w-[320px] text-center md:mx-0 md:w-[320px] md:max-w-none md:shrink-0'
+                            : 'mx-auto flex w-full max-w-[320px] flex-col text-center md:mx-0 md:w-[320px] md:max-w-none md:shrink-0'
                         }
                       >
-                        <img
-                          src={item.image}
-                          alt={getFeatureAlt(item)}
+                        <div
                           className={
                             product.slug === 'ace-solo'
-                              ? 'mx-auto block h-[152px] w-full max-w-[280px] object-cover [object-position:center_72%] sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] lg:h-[188px] lg:max-w-[340px]'
-                              : 'mx-auto block h-[152px] w-full rounded-[24px] object-cover [object-position:center_72%] sm:h-[164px] md:h-[176px] md:rounded-[28px] lg:h-[188px]'
+                              ? 'mx-auto flex h-[152px] w-full max-w-[280px] items-center justify-center overflow-hidden sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] lg:h-[188px] lg:max-w-[340px]'
+                              : 'mx-auto flex h-[152px] w-full items-center justify-center overflow-hidden rounded-[24px] sm:h-[164px] md:h-[176px] md:rounded-[28px] lg:h-[188px]'
                           }
-                          loading="lazy"
-                        />
+                        >
+                          <img
+                            src={item.image}
+                            alt={getFeatureAlt(item)}
+                            className={
+                              isIconLikeFeature(item)
+                                ? 'h-full w-full object-contain'
+                                : 'h-full w-full object-cover [object-position:center_72%]'
+                            }
+                            loading="lazy"
+                          />
+                        </div>
                         {isPlusAndAboveFeatures && item.title && (
                           <h3 className="mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#1f232a] md:mt-1.5 md:text-[18px]">
                             {item.title}
