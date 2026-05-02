@@ -48,6 +48,12 @@ export default function FaqPage() {
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
           <h2 className="text-[20px] font-semibold tracking-tight text-[#1d232a]">Related links</h2>
           <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[15px] font-medium text-[#145b5f]">
+            <Link to="/meeting-pods-malaysia" className="underline-offset-4 hover:underline">
+              Meeting pods in Malaysia
+            </Link>
+            <Link to="/office-phone-booth-malaysia" className="underline-offset-4 hover:underline">
+              Office phone booth solutions
+            </Link>
             <Link to="/office-pods" className="underline-offset-4 hover:underline">
               Office pod models
             </Link>

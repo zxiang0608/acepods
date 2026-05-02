@@ -8,10 +8,12 @@ import FaqPage from './pages/FaqPage';
 import InstallationSupportPage from './pages/InstallationSupportPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OfficeChairsPage from './pages/OfficeChairsPage';
+import OfficePhoneBoothMalaysiaPage from './pages/OfficePhoneBoothMalaysiaPage';
 import OfficePodsPage from './pages/OfficePodsPage';
 import PortfolioPage from './pages/PortfolioPage';
 import PricingPage from './pages/PricingPage';
 import ProductPage from './pages/ProductPage';
+import MeetingPodsMalaysiaPage from './pages/MeetingPodsMalaysiaPage';
 import ScrollToTop from './components/ScrollToTop';
 import RouteTracking from './components/RouteTracking';
 import './index.css';
@@ -29,6 +31,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/office-chairs" element={<OfficeChairsPage />} />
         <Route path="/office-pods" element={<OfficePodsPage />} />
+        <Route path="/meeting-pods-malaysia" element={<MeetingPodsMalaysiaPage />} />
+        <Route path="/office-phone-booth-malaysia" element={<OfficePhoneBoothMalaysiaPage />} />
         <Route path="/compare-office-pods" element={<CompareOfficePodsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/contact" element={<ContactPage />} />

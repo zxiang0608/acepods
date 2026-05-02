@@ -84,6 +84,12 @@ export default function OfficePodsPage() {
           Compare office pods and office booths by use case first: calls, focused work, or meetings. Then review installation, support, and final project pricing before you decide.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-[15px] font-semibold text-[#145b5f]">
+          <Link to="/meeting-pods-malaysia" className="underline-offset-4 hover:underline">
+            Meeting pods in Malaysia
+          </Link>
+          <Link to="/office-phone-booth-malaysia" className="underline-offset-4 hover:underline">
+            Office phone booth solutions
+          </Link>
           <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">
             Compare office pods
           </Link>

@@ -11,6 +11,8 @@ const sourceFilesForRoute = (route) => {
   const staticRouteSources = {
     '/portfolio': ['src/pages/PortfolioPage.jsx'],
     '/office-pods': ['src/pages/OfficePodsPage.jsx'],
+    '/meeting-pods-malaysia': ['src/pages/MeetingPodsMalaysiaPage.jsx', 'src/data/products.js'],
+    '/office-phone-booth-malaysia': ['src/pages/OfficePhoneBoothMalaysiaPage.jsx', 'src/data/products.js'],
     '/compare-office-pods': ['src/pages/CompareOfficePodsPage.jsx'],
     '/pricing': ['src/pages/PricingPage.jsx'],
     '/contact': ['src/pages/ContactPage.jsx', 'src/seo/constants.js'],

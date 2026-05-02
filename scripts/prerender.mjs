@@ -190,6 +190,84 @@ const STATIC_PRERENDER_META = {
       }
     ]
   },
+  '/meeting-pods-malaysia': {
+    title: 'Meeting Pods Malaysia for 2–6 Pax Teams | Ace Office Pods',
+    description:
+      'Compare meeting pods in Malaysia for small-team discussions and hybrid calls. Review Ace Meet and Ace Hub with pricing, installation, and support details.',
+    keywords: `${SEO_KEYWORDS_COMMON}, meeting pods malaysia, office meeting pod malaysia, 4 person meeting pod, 6 person meeting pod`,
+    h1: 'Meeting pods in Malaysia for small-team collaboration',
+    body: [
+      'Compare meeting pods for 2–6 pax team discussions and hybrid calls.',
+      'Review Ace Meet and Ace Hub by team size, practical use case, and pricing factors.'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Meeting Pods Malaysia for 2–6 Pax Teams',
+        url: canonical,
+        description:
+          'Compare meeting pods in Malaysia for small-team discussions and hybrid calls. Review Ace Meet and Ace Hub with pricing, installation, and support details.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Meeting Pods Malaysia',
+            item: canonical
+          }
+        ]
+      }
+    ]
+  },
+  '/office-phone-booth-malaysia': {
+    title: 'Office Phone Booth Malaysia for Calls and Focus | Ace Office Pods',
+    description:
+      'Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Solo, Ace Plus, and Ace Flex by space, use case, and pricing.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office phone booth malaysia, phone booth office malaysia, call pod malaysia, single person office pod`,
+    h1: 'Office phone booth solutions in Malaysia',
+    body: [
+      'Compare office phone booth style pods for private calls and focused work.',
+      'Review Ace Solo, Ace Plus, and Ace Flex by space, use case, and project fit.'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Office Phone Booth Malaysia for Calls and Focus',
+        url: canonical,
+        description:
+          'Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Solo, Ace Plus, and Ace Flex by space, use case, and pricing.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Office Phone Booth Malaysia',
+            item: canonical
+          }
+        ]
+      }
+    ]
+  },
   '/faq': {
     title: 'Office Pod FAQ | Ace Office Pods',
     description:

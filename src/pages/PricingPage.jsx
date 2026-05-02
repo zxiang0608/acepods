@@ -72,6 +72,12 @@ export default function PricingPage() {
       </section>
 
       <section className="mx-auto mt-10 flex w-full max-w-[1100px] flex-wrap gap-5 px-5 text-[15px] font-semibold text-[#145b5f] md:px-8">
+        <Link to="/meeting-pods-malaysia" className="underline-offset-4 hover:underline">
+          Compare meeting pods
+        </Link>
+        <Link to="/office-phone-booth-malaysia" className="underline-offset-4 hover:underline">
+          Compare office phone booth models
+        </Link>
         <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">
           Compare office pods
         </Link>
