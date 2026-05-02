@@ -42,11 +42,13 @@ import jyEliteLogo from '../assets/jy-elite.jpg';
 import wsConstructionLogo from '../assets/ws-construction.png';
 import wsConstructionLogoWebp from '../assets/ws-construction.webp';
 import idCandyLogo from '../assets/id-candy.jpg';
+import flexDuoMainImage from '../assets/ace-flex-duo.png';
 import SeoMeta from './components/SeoMeta';
 import SiteFooter from './components/SiteFooter';
 import SmartPodsBanner from './components/SmartPodsBanner';
 import { smartPodsMenuItems } from './components/smartPodsMenuData';
 import { products } from './data/products';
+import { pushDataLayerEvent } from './lib/tracking';
 import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from './seo/constants';
 import { buildCanonical, createFaqSchema, homepageWebPageSchema, organizationSchema, websiteSchema } from './seo/schema';
 
@@ -341,11 +343,21 @@ export default function App() {
   const trustSectionHeading = 'Trusted by local and international companies';
   const whyHeading = 'Choose AcePods';
   const homepageSchemas = [organizationSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
+  const trackProductCta = (product, ctaText, ctaLocation, destinationUrl) => {
+    pushDataLayerEvent('product_cta_click', {
+      cta_location: ctaLocation,
+      cta_text: ctaText,
+      destination_url: destinationUrl,
+      product_name: product?.name,
+      product_slug: product?.slug
+    });
+  };
 
   const renderPodCard = (pod, extraClass = '') => (
     <Link
       key={pod.slug}
       to={`/pods/${pod.slug}`}
+      onClick={() => trackProductCta(pod, 'Explore', 'homepage_product_card_desktop', `/pods/${pod.slug}`)}
       className={`group relative min-h-[400px] overflow-hidden rounded-[16px] bg-[#EAEAEA] md:h-[500px] md:rounded-[8px] ${extraClass}`}
     >
       <div className="relative z-10 flex h-full flex-col items-center px-6 pb-8 pt-8 md:pt-10">
@@ -355,7 +367,7 @@ export default function App() {
         <div className="mb-10 flex w-full items-center justify-center px-2">
           <div className="aspect-square w-full max-w-[180px] md:max-w-[200px]">
             <img
-              src={pod.thumbImage}
+              src={pod.slug === 'ace-flex-duo' ? flexDuoMainImage : pod.thumbImage}
               alt={`${pod.name} acoustic office pod`}
               className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`}
             />
@@ -394,13 +406,17 @@ export default function App() {
         <div className="mt-auto w-full pt-8">
           <div className="mx-auto aspect-square w-full max-w-[288px]">
             <img
-              src={pod.thumbImage}
+              src={pod.slug === 'ace-flex-duo' ? flexDuoMainImage : pod.thumbImage}
               alt={`${pod.name} acoustic office pod`}
               className={`h-full w-full object-contain ${pod.imageScale}`}
             />
           </div>
           <div className="mt-[84px] flex justify-center">
-            <Link to={`/pods/${pod.slug}`} className="rounded-[6px] bg-[#00855a] px-9 py-3.5 text-[16px] font-bold text-white">
+            <Link
+              to={`/pods/${pod.slug}`}
+              onClick={() => trackProductCta(pod, 'Explore', 'homepage_product_card_mobile', `/pods/${pod.slug}`)}
+              className="rounded-[6px] bg-[#00855a] px-9 py-3.5 text-[16px] font-bold text-white"
+            >
               Explore
             </Link>
           </div>
@@ -470,6 +486,13 @@ export default function App() {
           <div className="flex items-center gap-4 md:gap-6">
             <Link
               to="/installation-support#book-viewing"
+              onClick={() =>
+                pushDataLayerEvent('header_contact_click', {
+                  cta_location: 'homepage_header',
+                  cta_text: 'Contact us',
+                  destination_url: '/installation-support#book-viewing'
+                })
+              }
               className="hidden rounded-[4px] bg-[#00855a] px-6 py-2.5 text-[15px] font-semibold text-white transition-all hover:bg-[#006e4a] sm:inline-flex"
             >
               Contact us
@@ -587,6 +610,13 @@ export default function App() {
                   <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
                     <Link
                       to="/pricing#all-pod-prices"
+                      onClick={() =>
+                        pushDataLayerEvent('pricing_cta_click', {
+                          cta_location: 'homepage_hero',
+                          cta_text: 'Get Pricing',
+                          destination_url: '/pricing#all-pod-prices'
+                        })
+                      }
                       className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
                     >
                       Get Pricing
@@ -595,6 +625,14 @@ export default function App() {
                       href={WHATSAPP_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        pushDataLayerEvent('whatsapp_click', {
+                          cta_location: 'homepage_hero',
+                          cta_text: 'Book Viewing',
+                          destination_url: WHATSAPP_LINK,
+                          contact_method: 'whatsapp'
+                        })
+                      }
                       className="min-w-0 flex-1 rounded-[6px] border border-white/90 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
                     >
                       Book Viewing
@@ -845,6 +883,13 @@ export default function App() {
 
             <Link
               to="/contact"
+              onClick={() =>
+                pushDataLayerEvent('quote_cta_click', {
+                  cta_location: 'homepage_reassurance',
+                  cta_text: 'Contact us',
+                  destination_url: '/contact'
+                })
+              }
               className="mt-14 inline-flex items-center rounded-full bg-[#4a9078] px-10 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#3f7e69] md:mt-16 md:px-14 md:py-4 md:text-[17px]"
             >
               Contact us
@@ -866,7 +911,17 @@ export default function App() {
                 <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">
                   Compare office pods
                 </Link>
-                <Link to="/pricing" className="underline-offset-4 hover:underline">
+                <Link
+                  to="/pricing"
+                  onClick={() =>
+                    pushDataLayerEvent('pricing_cta_click', {
+                      cta_location: 'homepage_faq_links',
+                      cta_text: 'View office pod pricing',
+                      destination_url: '/pricing'
+                    })
+                  }
+                  className="underline-offset-4 hover:underline"
+                >
                   View office pod pricing
                 </Link>
                 <Link to="/installation-support" className="underline-offset-4 hover:underline">
@@ -875,7 +930,17 @@ export default function App() {
                 <Link to="/faq" className="underline-offset-4 hover:underline">
                   Read common questions about office pods
                 </Link>
-                <Link to="/installation-support#book-viewing" className="underline-offset-4 hover:underline">
+                <Link
+                  to="/installation-support#book-viewing"
+                  onClick={() =>
+                    pushDataLayerEvent('quote_cta_click', {
+                      cta_location: 'homepage_faq_links',
+                      cta_text: 'Book a viewing with our team',
+                      destination_url: '/installation-support#book-viewing'
+                    })
+                  }
+                  className="underline-offset-4 hover:underline"
+                >
                   Book a viewing with our team
                 </Link>
               </div>
@@ -913,6 +978,13 @@ export default function App() {
             <div className="mt-8 flex justify-center md:mt-10">
               <Link
                 to="/installation-support#book-viewing"
+                onClick={() =>
+                  pushDataLayerEvent('quote_cta_click', {
+                    cta_location: 'homepage_faq_section',
+                    cta_text: 'Contact us',
+                    destination_url: '/installation-support#book-viewing'
+                  })
+                }
                 className="inline-flex items-center rounded-[8px] bg-[#145b5f] px-8 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#104c4f]"
               >
                 Contact us

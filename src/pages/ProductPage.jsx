@@ -5,6 +5,7 @@ import SeoMeta from '../components/SeoMeta';
 import SiteFooter from '../components/SiteFooter';
 import SubpageHeader from '../components/SubpageHeader';
 import { getProductBySlug } from '../data/products';
+import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import highResPodCert from '../../assets/high-res-pod-cert.png';
@@ -677,7 +678,16 @@ export default function ProductPage() {
                       <div className="relative mt-4" ref={chooserRef}>
                         <button
                           type="button"
-                          onClick={() => setIsContactChooserOpen((prev) => !prev)}
+                          onClick={() => {
+                            pushDataLayerEvent('quote_cta_click', {
+                              cta_location: 'product_page_pricing_panel',
+                              cta_text: 'Contact Us',
+                              destination_url: '#contact-chooser',
+                              product_name: product.name,
+                              product_slug: product.slug
+                            });
+                            setIsContactChooserOpen((prev) => !prev);
+                          }}
                           aria-expanded={isContactChooserOpen}
                           aria-controls="contact-chooser"
                           className="w-full rounded-[4px] border border-[#145b5f] bg-white px-4 py-3 text-[15px] font-semibold text-[#145b5f] transition-colors hover:bg-[#f1f6f6]"
@@ -694,12 +704,32 @@ export default function ProductPage() {
                               href={whatsappHref}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={() =>
+                                pushDataLayerEvent('whatsapp_click', {
+                                  cta_location: 'product_page_contact_chooser',
+                                  cta_text: 'WhatsApp Us',
+                                  destination_url: whatsappHref,
+                                  contact_method: 'whatsapp',
+                                  product_name: product.name,
+                                  product_slug: product.slug
+                                })
+                              }
                               className="block rounded-[6px] bg-[#145b5f] px-3 py-2.5 text-center text-[14px] font-semibold text-white hover:bg-[#0f4b4e]"
                             >
                               WhatsApp Us
                             </a>
                             <a
                               href={emailHref}
+                              onClick={() =>
+                                pushDataLayerEvent('email_click', {
+                                  cta_location: 'product_page_contact_chooser',
+                                  cta_text: 'Email Us',
+                                  destination_url: emailHref,
+                                  contact_method: 'email',
+                                  product_name: product.name,
+                                  product_slug: product.slug
+                                })
+                              }
                               className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center hover:bg-[#f5f6f7]"
                             >
                               <span className="block text-[14px] font-semibold text-[#1e2227]">Email Us</span>
@@ -899,6 +929,16 @@ export default function ProductPage() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                pushDataLayerEvent('whatsapp_click', {
+                  cta_location: 'product_page_bottom_cta',
+                  cta_text: 'WhatsApp us',
+                  destination_url: whatsappHref,
+                  contact_method: 'whatsapp',
+                  product_name: product.name,
+                  product_slug: product.slug
+                })
+              }
               className="mx-auto inline-flex w-full items-center justify-center rounded-[6px] bg-[#145b5f] px-6 py-3 text-[16px] font-semibold text-white transition-colors hover:bg-[#0f4b4e] sm:w-auto"
             >
               WhatsApp us

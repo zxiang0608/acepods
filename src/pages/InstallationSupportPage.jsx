@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Building2, Star } from 'lucide-react';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
+import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
@@ -281,11 +282,30 @@ export default function InstallationSupportPage() {
               href={whatsappHref}
               target="_blank"
               rel="noreferrer"
+              onClick={() =>
+                pushDataLayerEvent('whatsapp_click', {
+                  cta_location: 'installation_support_page',
+                  cta_text: 'WhatsApp Us',
+                  destination_url: whatsappHref,
+                  contact_method: 'whatsapp'
+                })
+              }
               className="inline-flex rounded-[8px] bg-[#145b5f] px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#104c4f]"
             >
               WhatsApp Us
             </a>
-            <a href={emailHref} className="text-[#145b5f] underline-offset-4 hover:underline">
+            <a
+              href={emailHref}
+              onClick={() =>
+                pushDataLayerEvent('email_click', {
+                  cta_location: 'installation_support_page',
+                  cta_text: 'Email Us',
+                  destination_url: emailHref,
+                  contact_method: 'email'
+                })
+              }
+              className="text-[#145b5f] underline-offset-4 hover:underline"
+            >
               <span className="block text-[15px] font-semibold">Email Us</span>
               <span className="block text-[13px] font-medium text-[#3f6668]">sales@aceofficepods.com</span>
             </a>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
 import { products } from '../data/products';
+import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
@@ -51,7 +52,19 @@ export default function PricingPage() {
             <h3 className="text-[24px] font-semibold tracking-tight text-[#1d232a]">{product.name}</h3>
             <p className="mt-2 text-[17px] font-semibold text-[#145b5f]">{product.pricing.amount}</p>
             <p className="mt-2 text-[14px] leading-[1.55] text-[#5a616a]">{product.pricing.note}</p>
-            <Link to={`/pods/${product.slug}`} className="mt-4 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+            <Link
+              to={`/pods/${product.slug}`}
+              onClick={() =>
+                pushDataLayerEvent('product_cta_click', {
+                  cta_location: 'pricing_page_product_card',
+                  cta_text: 'View pod details',
+                  destination_url: `/pods/${product.slug}`,
+                  product_name: product.name,
+                  product_slug: product.slug
+                })
+              }
+              className="mt-4 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+            >
               View pod details
             </Link>
           </article>

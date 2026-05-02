@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
 import { products } from '../data/products';
+import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
@@ -58,7 +59,19 @@ export default function OfficePodsPage() {
             <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">{product.shortDesc}</p>
             <p className="mt-3 text-[14px] font-medium text-[#626a72]">{product.cardSupport}</p>
             <p className="mt-4 text-[16px] font-semibold text-[#145b5f]">{product.pricing.amount}</p>
-            <Link to={`/pods/${product.slug}`} className="mt-4 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+            <Link
+              to={`/pods/${product.slug}`}
+              onClick={() =>
+                pushDataLayerEvent('product_cta_click', {
+                  cta_location: 'office_pods_page_card',
+                  cta_text: `View ${product.name}`,
+                  destination_url: `/pods/${product.slug}`,
+                  product_name: product.name,
+                  product_slug: product.slug
+                })
+              }
+              className="mt-4 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+            >
               View {product.name}
             </Link>
           </article>
@@ -74,7 +87,17 @@ export default function OfficePodsPage() {
           <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">
             Compare office pods
           </Link>
-          <Link to="/pricing" className="underline-offset-4 hover:underline">
+          <Link
+            to="/pricing"
+            onClick={() =>
+              pushDataLayerEvent('pricing_cta_click', {
+                cta_location: 'office_pods_page_help_section',
+                cta_text: 'View office pod pricing',
+                destination_url: '/pricing'
+              })
+            }
+            className="underline-offset-4 hover:underline"
+          >
             View office pod pricing
           </Link>
           <Link to="/installation-support" className="underline-offset-4 hover:underline">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Globe, Instagram, Linkedin } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
+import { pushDataLayerEvent } from '../lib/tracking';
 
 const footerSocialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/acepodsmy/', Icon: Instagram },
@@ -45,6 +46,13 @@ const footerLinkGroups = [
 export default function SiteFooter({ className = 'mt-0' }) {
   const [openFooterGroup, setOpenFooterGroup] = useState('products');
   const footerBrandLine = 'Silent acoustic office pods\nFor calls, focus, and meetings';
+  const trackFooterClick = (label, destinationUrl, area) => {
+    pushDataLayerEvent('footer_cta_click', {
+      cta_location: area,
+      cta_text: label,
+      destination_url: destinationUrl
+    });
+  };
 
   return (
     <footer className={`${className} bg-[#121212] px-5 pb-12 pt-14 text-left text-white md:px-12 md:pt-20`}>
@@ -89,11 +97,19 @@ export default function SiteFooter({ className = 'mt-0' }) {
                       {group.links.map((link) => (
                         <li key={link.label}>
                           {link.to ? (
-                            <Link to={link.to} className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white">
+                            <Link
+                              to={link.to}
+                              onClick={() => trackFooterClick(link.label, link.to, 'footer_mobile')}
+                              className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white"
+                            >
                               {link.label}
                             </Link>
                           ) : (
-                            <a href={link.href} className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white">
+                            <a
+                              href={link.href}
+                              onClick={() => trackFooterClick(link.label, link.href, 'footer_mobile')}
+                              className="block py-1 text-[15px] text-gray-400 transition-colors hover:text-white"
+                            >
                               {link.label}
                             </a>
                           )}
@@ -143,11 +159,19 @@ export default function SiteFooter({ className = 'mt-0' }) {
                 {group.links.map((link) => (
                   <li key={link.label}>
                     {link.to ? (
-                      <Link to={link.to} className="text-[15px] text-gray-400 transition-colors hover:text-white">
+                      <Link
+                        to={link.to}
+                        onClick={() => trackFooterClick(link.label, link.to, 'footer_desktop')}
+                        className="text-[15px] text-gray-400 transition-colors hover:text-white"
+                      >
                         {link.label}
                       </Link>
                     ) : (
-                      <a href={link.href} className="text-[15px] text-gray-400 transition-colors hover:text-white">
+                      <a
+                        href={link.href}
+                        onClick={() => trackFooterClick(link.label, link.href, 'footer_desktop')}
+                        className="text-[15px] text-gray-400 transition-colors hover:text-white"
+                      >
                         {link.label}
                       </a>
                     )}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import acePodsLogo from '../../Logos/ace pods logo.png';
 import SmartPodsBanner from './SmartPodsBanner';
 import { smartPodsMenuItems } from './smartPodsMenuData';
+import { pushDataLayerEvent } from '../lib/tracking';
 
 const navItems = [
   { label: 'Office Pods', type: 'smart-pods' },
@@ -71,6 +72,13 @@ export default function SubpageHeader() {
           <div className="flex items-center gap-4">
             <Link
               to="/installation-support#book-viewing"
+              onClick={() =>
+                pushDataLayerEvent('header_contact_click', {
+                  cta_location: 'subpage_header',
+                  cta_text: 'Contact us',
+                  destination_url: '/installation-support#book-viewing'
+                })
+              }
               className="hidden rounded-[4px] bg-[#00855a] px-5 py-2 text-[14px] font-semibold text-white transition-colors hover:bg-[#006e4a] md:inline-flex"
             >
               Contact us

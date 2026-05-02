@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
+import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_BRAND_EMAIL, SEO_BRAND_PHONE, SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
@@ -43,18 +44,48 @@ export default function ContactPage() {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              pushDataLayerEvent('whatsapp_click', {
+                cta_location: 'contact_page',
+                cta_text: 'Chat with sales',
+                destination_url: whatsappHref,
+                contact_method: 'whatsapp'
+              })
+            }
             className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#145b5f]"
           >
             <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#6a7683]">WhatsApp</p>
             <p className="mt-2 text-[17px] font-semibold text-[#14181c]">Chat with sales</p>
           </a>
 
-          <a href={phoneHref} className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#145b5f]">
+          <a
+            href={phoneHref}
+            onClick={() =>
+              pushDataLayerEvent('phone_click', {
+                cta_location: 'contact_page',
+                cta_text: 'Phone',
+                destination_url: phoneHref,
+                contact_method: 'phone'
+              })
+            }
+            className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#145b5f]"
+          >
             <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#6a7683]">Phone</p>
             <p className="mt-2 text-[17px] font-semibold text-[#14181c]">{SEO_BRAND_PHONE}</p>
           </a>
 
-          <a href={emailHref} className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#145b5f]">
+          <a
+            href={emailHref}
+            onClick={() =>
+              pushDataLayerEvent('email_click', {
+                cta_location: 'contact_page',
+                cta_text: 'Email',
+                destination_url: emailHref,
+                contact_method: 'email'
+              })
+            }
+            className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#145b5f]"
+          >
             <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#6a7683]">Email</p>
             <p className="mt-2 text-[17px] font-semibold text-[#14181c] break-all">{SEO_BRAND_EMAIL}</p>
           </a>
