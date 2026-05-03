@@ -42,7 +42,6 @@ import jyEliteLogo from '../assets/jy-elite.jpg';
 import wsConstructionLogo from '../assets/ws-construction.png';
 import wsConstructionLogoWebp from '../assets/ws-construction.webp';
 import idCandyLogo from '../assets/id-candy.jpg';
-import flexDuoMainImage from '../assets/ace-flex-duo.png';
 import SeoMeta from './components/SeoMeta';
 import SiteFooter from './components/SiteFooter';
 import SmartPodsBanner from './components/SmartPodsBanner';
@@ -337,11 +336,11 @@ export default function App() {
   const heroHeadline = 'Office pods for calls, focus, and meetings';
   const heroSupportingText = 'Add private space for calls, focused work, and meetings without building new rooms.';
   const heroTrustLine = 'A practical alternative to building new rooms';
-  const productIntroHeading = 'Choose the right office pod for calls, focus, or meetings';
+  const productIntroHeading = 'Choose the right office pod\nfor calls, focus, or meetings';
   const privateSpaceHeading = 'Add private space without building new rooms';
   const compareSupportingLine = 'Compare more confidently when pricing, installation, and support are clear upfront.';
   const trustSectionHeading = 'Trusted by local and international companies';
-  const whyHeading = 'Choose AcePods';
+  const whyHeading = 'Choose Ace Pods';
   const homepageSchemas = [organizationSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
   const trackProductCta = (product, ctaText, ctaLocation, destinationUrl) => {
     pushDataLayerEvent('product_cta_click', {
@@ -367,7 +366,7 @@ export default function App() {
         <div className="mb-10 flex w-full items-center justify-center px-2">
           <div className="aspect-square w-full max-w-[180px] md:max-w-[200px]">
             <img
-              src={pod.slug === 'ace-flex-duo' ? flexDuoMainImage : pod.thumbImage}
+              src={pod.thumbImage}
               alt={`${pod.name} acoustic office pod`}
               className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`}
             />
@@ -406,7 +405,7 @@ export default function App() {
         <div className="mt-auto w-full pt-8">
           <div className="mx-auto aspect-square w-full max-w-[288px]">
             <img
-              src={pod.slug === 'ace-flex-duo' ? flexDuoMainImage : pod.thumbImage}
+              src={pod.thumbImage}
               alt={`${pod.name} acoustic office pod`}
               className={`h-full w-full object-contain ${pod.imageScale}`}
             />
@@ -510,7 +509,7 @@ export default function App() {
       </nav>
 
       <div
-        className={`fixed inset-0 z-[100] transform bg-white transition-transform duration-500 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed inset-0 z-[100] flex h-[100dvh] flex-col transform overflow-hidden bg-white transition-transform duration-500 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-between border-b border-gray-100 p-6">
           <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
@@ -518,7 +517,8 @@ export default function App() {
             <X size={32} />
           </button>
         </div>
-        <div className="h-[calc(100vh-80px)] space-y-8 overflow-y-auto p-8">
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain p-8 pb-14 [-webkit-overflow-scrolling:touch]">
+          <div className="space-y-8">
           {navItems.map((item) => {
             const isSmartPods = item.type === 'smart-pods';
             if (isSmartPods) {
@@ -575,12 +575,13 @@ export default function App() {
               </Link>
             );
           })}
+          </div>
         </div>
       </div>
 
       <div className="pt-[64px] md:pt-[80px]">
-        <section className="relative bg-white">
-          <div className="relative mx-auto h-[500px] w-full max-w-[1240px] overflow-hidden pb-8 sm:h-[540px] sm:pb-8 lg:h-[520px] lg:pb-0">
+        <section className="relative bg-white px-5 md:px-12">
+          <div className="relative mx-auto h-[500px] w-full max-w-[1440px] overflow-hidden pb-8 sm:h-[540px] sm:pb-8 lg:h-[520px] lg:pb-0">
             <div className="absolute inset-0 z-0">
               <picture>
                 <source srcSet={acePodsHeroAvif} type="image/avif" />
@@ -646,12 +647,12 @@ export default function App() {
 
         <section className="relative overflow-hidden bg-white px-5 pt-8 pb-16 md:px-12 md:pt-12 md:pb-24">
           <div className="mx-auto max-w-[1440px]">
-            <div className="mb-8 flex flex-col items-start justify-between gap-6 md:mb-10 md:flex-row md:items-end">
-              <div>
-                <h2 className="text-[24px] font-semibold leading-[1.2] tracking-tight text-[#222222] sm:text-[30px] md:text-[38px]">
+            <div className="mb-10 flex flex-col items-center justify-center gap-4 text-center md:mb-12">
+              <div className="mx-auto max-w-[980px]">
+                <h2 className="whitespace-pre-line text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">
                   {productIntroHeading}
                 </h2>
-                <p className="mt-4 max-w-[760px] text-[15px] leading-[1.65] text-[#555555] md:text-[17px]">
+                <p className="mx-auto mt-4 max-w-[760px] text-center text-[16px] leading-[1.6] text-[#555555] md:text-[20px]">
                   Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.
                 </p>
               </div>
@@ -722,16 +723,31 @@ export default function App() {
           </div>
         </section>
 
-        <section className="hidden border-b border-[#f0f0f0] bg-white px-5 py-16 md:block md:px-12 md:py-32">
+        <section className="bg-white px-5 pb-2 md:px-12 md:pb-6">
           <div className="mx-auto max-w-[1440px]">
-            <div className="mb-12 max-w-none md:mb-24">
+            <div className="mx-auto w-full max-w-[760px] px-6 py-6 text-center md:max-w-[680px] md:px-10 md:py-8">
+              <span className="block text-[11px] font-bold uppercase tracking-[0.2em] text-[#6a727a] md:text-[12px]">
+                Since 2025
+              </span>
+              <p className="mt-3 text-[46px] font-bold leading-none tracking-tight text-[#111111] md:text-[58px]">180+</p>
+              <p className="mt-2 text-[18px] font-semibold tracking-tight text-[#1f2932] md:text-[20px]">pods sold</p>
+              <p className="mx-auto mt-3 max-w-[560px] text-[14px] leading-[1.6] text-[#55606c] md:text-[16px]">
+                Across office call, focus, and meeting pod projects in Malaysia.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="hidden border-b border-[#f0f0f0] bg-white px-5 pt-8 pb-16 md:block md:px-12 md:pt-16 md:pb-32">
+          <div className="mx-auto max-w-[1440px]">
+            <div className="mb-12 max-w-none text-center md:mb-24">
               <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#666666] md:mb-6 md:text-[11px]">
                 Pods instead of renovation
               </span>
               <h2 className="mb-6 text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px] xl:whitespace-nowrap">
                 {privateSpaceHeading}
               </h2>
-              <p className="max-w-none text-[16px] leading-[1.6] text-[#555555] md:text-[20px] xl:whitespace-nowrap">
+              <p className="mx-auto max-w-[760px] text-[16px] leading-[1.6] text-[#555555] md:text-[20px] xl:max-w-none xl:whitespace-nowrap">
                 A more practical way to create quiet, usable office space for calls, focus, and meetings.
               </p>
             </div>
@@ -769,12 +785,11 @@ export default function App() {
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[900px] text-center">
               <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#62727b] md:text-[12px]">WHY OFFICE PODS MAKE SENSE</span>
-              <h2 className="text-[36px] font-extrabold leading-[1.08] tracking-tight text-[#111111] sm:text-[44px] md:text-[56px]">
-                Add Quiet, Private Space
-                <br className="hidden md:block" />
-                Without Renovating Your Office
+              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">
+                <span className="block md:inline">Add Quiet, Private Space</span>{' '}
+                <span className="block md:inline">Without Renovating Your Office</span>
               </h2>
-              <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-[1.65] text-[#4f5660] md:text-[20px]">
+              <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-[1.6] text-[#4f5660] md:text-[20px]">
                 Ace Pods help teams take calls, focus, meet, and recharge inside busy open offices - without permanent construction or major disruption.
               </p>
             </div>
@@ -799,8 +814,8 @@ export default function App() {
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[960px] text-center">
               <span className="mb-4 block text-[12px] font-bold uppercase tracking-[0.24em] text-[#757d86] md:mb-5 md:text-[13px]">BEYOND THE PRODUCT</span>
-              <h2 className="text-[36px] font-extrabold leading-[1.08] tracking-tight text-[#111111] sm:text-[44px] md:text-[52px]">Why Choose AcePods</h2>
-              <p className="mx-auto mt-5 max-w-[70ch] text-[16px] leading-[1.65] text-[#4c545d] md:text-[19px]">{compareSupportingLine}</p>
+              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">Why Choose Ace Pods</h2>
+              <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-[1.6] text-[#4c545d] md:text-[20px]">{compareSupportingLine}</p>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
@@ -900,8 +915,8 @@ export default function App() {
         <section className="bg-white px-5 py-14 md:px-12 md:py-20">
           <div className="mx-auto max-w-[1360px]">
             <div className="mx-auto max-w-[780px] text-center">
-              <h2 className="text-[30px] font-bold tracking-tight text-[#15191d] md:text-[42px]">Common questions about office pods</h2>
-              <p className="mt-3 text-[16px] leading-[1.65] text-[#505964] md:text-[17px]">
+              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#15191d] sm:text-[36px] md:text-[48px] lg:text-[52px]">Common questions about office pods</h2>
+              <p className="mt-3 text-[16px] leading-[1.6] text-[#505964] md:text-[20px]">
                 A few things buyers usually want to clarify before choosing a pod.
               </p>
               <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[14px] font-medium text-[#145b5f] md:text-[15px]">

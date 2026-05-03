@@ -22,6 +22,19 @@ export default function SubpageHeader() {
   const navRef = useRef(null);
 
   useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      setIsSmartPodsMobileOpen(false);
+    }
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     if (!isSmartPodsDesktopOpen) return;
 
     const handleOutsideClick = (event) => {
@@ -92,14 +105,17 @@ export default function SubpageHeader() {
         {isSmartPodsDesktopOpen && <SmartPodsBanner items={smartPodsMenuItems} onItemClick={() => setIsSmartPodsDesktopOpen(false)} maxWidthClass="max-w-[1200px]" />}
       </header>
 
-      <div className={`fixed inset-0 z-[100] transform bg-white transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div
+        className={`fixed inset-0 z-[100] flex h-[100dvh] flex-col transform overflow-hidden bg-white transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      >
         <div className="flex items-center justify-between border-b border-[#ececec] p-6">
           <img src={acePodsLogo} alt="AcePods" className="h-8 w-auto" />
           <button type="button" onClick={() => setIsMenuOpen(false)} className="p-1" aria-label="Close menu">
             <X size={30} />
           </button>
         </div>
-        <div className="space-y-7 p-8">
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain p-8 pb-14 [-webkit-overflow-scrolling:touch]">
+          <div className="space-y-7">
           {navItems.map((item) => {
             if (item.type === 'smart-pods') {
               return (
@@ -150,6 +166,7 @@ export default function SubpageHeader() {
               </Link>
             );
           })}
+          </div>
         </div>
       </div>
     </>
