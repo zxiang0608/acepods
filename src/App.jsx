@@ -332,6 +332,14 @@ export default function App() {
   const activeReassuranceItems = seoReassuranceItems;
   const desktopTopPodCards = products.slice(0, 3);
   const desktopBottomPodCards = products.slice(3);
+  const displayScaleBySlug = {
+    'ace-solo': 'scale-[0.90]',
+    'ace-plus': 'scale-[0.88]',
+    'ace-flex': 'scale-[0.96]',
+    'ace-flex-duo': 'scale-[0.96]',
+    'ace-meet': 'scale-[1.15]',
+    'ace-hub': 'scale-[1.18]'
+  };
 
   const heroHeadline = 'Office pods for calls, focus, and meetings';
   const heroSupportingText = 'Add private space for calls, focused work, and meetings without building new rooms.';
@@ -351,6 +359,10 @@ export default function App() {
       product_slug: product?.slug
     });
   };
+  const getHomepagePodImageClassName = (pod) => {
+    const scaleClass = displayScaleBySlug[pod.slug] || '';
+    return `h-full w-full object-contain ${scaleClass}`.trim();
+  };
 
   const renderPodCard = (pod, extraClass = '') => (
     <Link
@@ -364,11 +376,11 @@ export default function App() {
           {pod.name}
         </h3>
         <div className="mb-10 flex w-full items-center justify-center px-2">
-          <div className="aspect-square w-full max-w-[180px] md:max-w-[200px]">
+          <div className="flex h-[210px] w-[210px] items-center justify-center md:h-[230px] md:w-[230px]">
             <img
               src={pod.thumbImage}
               alt={`${pod.name} acoustic office pod`}
-              className={`h-full w-full object-contain transition-transform duration-300 ${pod.imageScale}`}
+              className={getHomepagePodImageClassName(pod)}
             />
           </div>
         </div>
@@ -403,11 +415,11 @@ export default function App() {
         </div>
 
         <div className="mt-auto w-full pt-8">
-          <div className="mx-auto aspect-square w-full max-w-[288px]">
+          <div className="mx-auto flex h-[300px] w-[300px] max-w-full items-center justify-center">
             <img
               src={pod.thumbImage}
               alt={`${pod.name} acoustic office pod`}
-              className={`h-full w-full object-contain ${pod.imageScale}`}
+              className={getHomepagePodImageClassName(pod)}
             />
           </div>
           <div className="mt-[84px] flex justify-center">
@@ -581,63 +593,119 @@ export default function App() {
 
       <div className="pt-[64px] md:pt-[80px]">
         <section className="relative bg-white px-5 md:px-12">
-          <div className="relative mx-auto h-[500px] w-full max-w-[1440px] overflow-hidden pb-8 sm:h-[540px] sm:pb-8 lg:h-[520px] lg:pb-0">
-            <div className="absolute inset-0 z-0">
-              <picture>
-                <source srcSet={acePodsHeroAvif} type="image/avif" />
-                <img
-                  src={acePodsHero}
-                  alt="Acoustic office pods for calls and focused work in an open office"
-                  className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-center"
-                  fetchPriority="high"
-                />
-              </picture>
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.03)_0%,rgba(0,0,0,0.08)_24%,rgba(0,0,0,0.22)_52%,rgba(0,0,0,0.58)_100%)] md:bg-black/22 lg:bg-black/18"></div>
-            </div>
-
-            <div className="relative z-10 flex h-full w-full items-end px-4 md:px-12 lg:grid lg:grid-cols-2 lg:items-center">
-              <div className="w-full max-w-none px-6 py-0 text-left text-white sm:px-6 lg:col-start-2 lg:col-end-3 lg:w-[86%] lg:max-w-none lg:justify-self-end lg:bg-black/40 lg:px-7 lg:py-7">
-                <div className="max-w-none md:max-w-[520px]">
-                <h1 className="mb-4 max-w-[16ch] text-[35px] font-bold leading-[1.03] tracking-[-0.03em] sm:max-w-[18ch] sm:text-[39px] md:mb-5 md:max-w-none md:text-[57px]">
+          <div className="mx-auto w-full max-w-[1440px]">
+            <div className="pb-8 pt-6 md:hidden">
+              <div className="rounded-[12px] border border-[#e6e6e6] bg-white p-5">
+                <p className="text-[12px] font-semibold tracking-[0.18em] text-[#f97316]">PRIVATE OFFICE PODS</p>
+                <h1 className="mt-3 text-[50px] font-bold leading-[0.98] tracking-[-0.03em] text-[#0f2239]">
                   {heroHeadline}
                 </h1>
-                <p className="mb-5 max-w-[32ch] text-[18px] font-semibold leading-[1.5] text-white/92 sm:max-w-[36ch] sm:text-[20px] md:mb-3 md:max-w-lg md:text-[24px]">
-                  {heroSupportingText}
-                </p>
-                <p className="mb-6 max-w-none whitespace-nowrap text-[12px] font-semibold leading-[1.4] tracking-[0.01em] text-white/78 sm:text-[13px] md:mb-7 md:text-[15px]">
-                  {heroTrustLine}
-                </p>
+                <p className="mt-4 text-[17px] font-medium leading-[1.5] text-[#233142]">{heroSupportingText}</p>
 
-                  <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
-                    <Link
-                      to="/pricing#all-pod-prices"
-                      onClick={() =>
-                        pushDataLayerEvent('pricing_cta_click', {
-                          cta_location: 'homepage_hero',
-                          cta_text: 'Get Pricing',
-                          destination_url: '/pricing#all-pod-prices'
-                        })
-                      }
-                      className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
-                    >
-                      Get Pricing
-                    </Link>
-                    <a
-                      href={WHATSAPP_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        pushDataLayerEvent('whatsapp_click', {
-                          cta_location: 'homepage_hero',
-                          cta_text: 'Book Viewing',
-                          destination_url: WHATSAPP_LINK,
-                          contact_method: 'whatsapp'
-                        })
-                      }
-                      className="min-w-0 flex-1 rounded-[6px] border border-white/90 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
-                    >
-                      Book Viewing
-                    </a>
+                <div className="mt-6 space-y-3">
+                  <Link
+                    to="/pricing#all-pod-prices"
+                    onClick={() =>
+                      pushDataLayerEvent('pricing_cta_click', {
+                        cta_location: 'homepage_hero',
+                        cta_text: 'Get Pricing',
+                        destination_url: '/pricing#all-pod-prices'
+                      })
+                    }
+                    className="block w-full rounded-[8px] bg-[#0b2038] px-4 py-3 text-center text-[18px] font-bold text-white"
+                  >
+                    Get Pricing
+                  </Link>
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      pushDataLayerEvent('whatsapp_click', {
+                        cta_location: 'homepage_hero',
+                        cta_text: 'Book Viewing',
+                        destination_url: WHATSAPP_LINK,
+                        contact_method: 'whatsapp'
+                      })
+                    }
+                    className="block w-full rounded-[8px] border border-[#1f2937] px-4 py-3 text-center text-[18px] font-semibold text-[#111827]"
+                  >
+                    Book Viewing
+                  </a>
+                </div>
+
+                <div className="mt-5 overflow-hidden rounded-[18px]">
+                  <picture>
+                    <source srcSet={acePodsHeroAvif} type="image/avif" />
+                    <img
+                      src={acePodsHero}
+                      alt="Acoustic office pods for calls and focused work in an open office"
+                      className="h-[360px] w-full object-cover object-[20%_50%]"
+                      fetchPriority="high"
+                    />
+                  </picture>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative hidden h-[520px] w-full overflow-hidden pb-8 sm:h-[560px] sm:pb-8 md:block lg:h-[600px] lg:pb-0">
+              <div className="absolute inset-0 z-0">
+                <picture>
+                  <source srcSet={acePodsHeroAvif} type="image/avif" />
+                  <img
+                    src={acePodsHero}
+                    alt="Acoustic office pods for calls and focused work in an open office"
+                    className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-[50%_42%] lg:object-[50%_44%]"
+                    fetchPriority="high"
+                  />
+                </picture>
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.09)_0%,rgba(0,0,0,0.24)_32%,rgba(0,0,0,0.6)_72%,rgba(0,0,0,0.82)_100%),linear-gradient(90deg,rgba(0,0,0,0.46)_0%,rgba(0,0,0,0.18)_46%,rgba(0,0,0,0.08)_100%)] md:bg-[linear-gradient(180deg,rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.17)_34%,rgba(0,0,0,0.46)_78%,rgba(0,0,0,0.7)_100%),linear-gradient(92deg,rgba(0,0,0,0.44)_0%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.1)_100%)] lg:bg-[linear-gradient(95deg,rgba(0,0,0,0.08)_0%,rgba(0,0,0,0.16)_30%,rgba(0,0,0,0.6)_62%,rgba(0,0,0,0.84)_100%)]"></div>
+              </div>
+
+              <div className="relative z-10 flex h-full w-full items-end px-4 md:px-12 lg:grid lg:grid-cols-2 lg:items-center">
+                <div className="w-full max-w-none rounded-[8px] bg-black/34 px-6 py-5 text-left text-white backdrop-blur-[0.5px] sm:px-6 sm:py-6 md:bg-black/28 lg:col-start-2 lg:col-end-3 lg:w-[86%] lg:max-w-none lg:justify-self-end lg:rounded-none lg:bg-black/52 lg:px-7 lg:py-7 lg:backdrop-blur-0">
+                  <div className="max-w-none md:max-w-[520px]">
+                    <h1 className="mb-4 max-w-[16ch] text-[35px] font-bold leading-[1.03] tracking-[-0.03em] sm:max-w-[18ch] sm:text-[39px] md:mb-5 md:max-w-none md:text-[57px]">
+                      {heroHeadline}
+                    </h1>
+                    <p className="mb-5 max-w-[32ch] text-[18px] font-semibold leading-[1.5] text-white/92 sm:max-w-[36ch] sm:text-[20px] md:mb-3 md:max-w-lg md:text-[24px]">
+                      {heroSupportingText}
+                    </p>
+                    <p className="mb-6 max-w-none whitespace-nowrap text-[12px] font-semibold leading-[1.4] tracking-[0.01em] text-white/78 sm:text-[13px] md:mb-7 md:text-[15px]">
+                      {heroTrustLine}
+                    </p>
+
+                    <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
+                      <Link
+                        to="/pricing#all-pod-prices"
+                        onClick={() =>
+                          pushDataLayerEvent('pricing_cta_click', {
+                            cta_location: 'homepage_hero',
+                            cta_text: 'Get Pricing',
+                            destination_url: '/pricing#all-pod-prices'
+                          })
+                        }
+                        className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                      >
+                        Get Pricing
+                      </Link>
+                      <a
+                        href={WHATSAPP_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() =>
+                          pushDataLayerEvent('whatsapp_click', {
+                            cta_location: 'homepage_hero',
+                            cta_text: 'Book Viewing',
+                            destination_url: WHATSAPP_LINK,
+                            contact_method: 'whatsapp'
+                          })
+                        }
+                        className="min-w-0 flex-1 rounded-[6px] border border-white/90 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                      >
+                        Book Viewing
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -723,11 +791,11 @@ export default function App() {
           </div>
         </section>
 
-        <section className="bg-white px-5 pb-2 md:px-12 md:pb-6">
+        <section className="bg-white px-5 pb-12 md:px-12 md:pb-6">
           <div className="mx-auto max-w-[1440px]">
-            <div className="mx-auto w-full max-w-[760px] px-6 py-6 text-center md:max-w-[680px] md:px-10 md:py-8">
+            <div className="mx-auto w-full max-w-[760px] rounded-[8px] border border-[#d7dbe0] bg-white px-6 py-6 text-center md:max-w-[680px] md:px-10 md:py-8">
               <span className="block text-[11px] font-bold uppercase tracking-[0.2em] text-[#6a727a] md:text-[12px]">
-                Since 2025
+                Since 2023
               </span>
               <p className="mt-3 text-[46px] font-bold leading-none tracking-tight text-[#111111] md:text-[58px]">180+</p>
               <p className="mt-2 text-[18px] font-semibold tracking-tight text-[#1f2932] md:text-[20px]">pods sold</p>
@@ -781,7 +849,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="bg-[#F6F5F0] px-5 py-16 md:px-12 md:py-24">
+        <section className="bg-[#F6F5F0] px-5 pt-12 pb-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[900px] text-center">
               <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#62727b] md:text-[12px]">WHY OFFICE PODS MAKE SENSE</span>

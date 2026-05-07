@@ -243,35 +243,51 @@ export default function ProductPage() {
   const customerPhotos = product.customerPhotos || [];
   const podPrimaryImage = product.thumbImage || product.heroImage;
   const primaryGalleryImage = mappedImage || podPrimaryImage;
-  const galleryItems = (() => {
+  const productDisplayItems = (() => {
     const items = [];
     const seenImages = new Set();
 
-    Object.entries(colorImageMap?.byPair || {}).forEach(([pair, image]) => {
+    const addProductImage = (image, meta = {}) => {
       if (!image || seenImages.has(image)) return;
-      const [exteriorId, interiorId] = pair.split('|');
-      if (!exteriorId || !interiorId) return;
       seenImages.add(image);
       items.push({
-        type: 'color',
+        type: 'product',
         image,
-        label: `${exteriorId} + ${interiorId}`,
-        exteriorId,
-        interiorId
+        ...meta
       });
-    });
+    };
 
-    if (primaryGalleryImage && !seenImages.has(primaryGalleryImage)) {
-      seenImages.add(primaryGalleryImage);
-      items.unshift({
-        type: 'color',
-        image: primaryGalleryImage,
+    if (primaryGalleryImage) {
+      addProductImage(primaryGalleryImage, {
         label: `${selectedExterior} + ${selectedInterior}`,
         exteriorId: selectedExterior,
         interiorId: selectedInterior
       });
     }
 
+    Object.entries(colorImageMap?.byPair || {}).forEach(([pair, image]) => {
+      const [exteriorId, interiorId] = pair.split('|');
+      if (!exteriorId || !interiorId) return;
+      addProductImage(image, {
+        label: `${exteriorId} + ${interiorId}`,
+        exteriorId,
+        interiorId
+      });
+    });
+
+    if (items.length === 0 && podPrimaryImage) {
+      addProductImage(podPrimaryImage, {
+        label: `${selectedExterior} + ${selectedInterior}`,
+        exteriorId: selectedExterior,
+        interiorId: selectedInterior
+      });
+    }
+
+    return items;
+  })();
+  const customerGalleryItems = (() => {
+    const items = [];
+    const seenImages = new Set();
     customerPhotos.forEach((image, index) => {
       if (!image || seenImages.has(image)) return;
       seenImages.add(image);
@@ -284,13 +300,8 @@ export default function ProductPage() {
 
     return items;
   })();
-  const colorGalleryItems = galleryItems.filter((item) => item.type === 'color');
-  const photoGalleryItems = galleryItems.filter((item) => item.type === 'photo');
-  const orderedGalleryItems = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-hub'].includes(product.slug)
-    ? photoGalleryItems
-    : [...colorGalleryItems, ...photoGalleryItems];
-  const mainImage = selectedImage || primaryGalleryImage;
-  const activeGalleryIndex = Math.max(orderedGalleryItems.findIndex((item) => item.image === mainImage), 0);
+  const mainImage = selectedImage || productDisplayItems[0]?.image || primaryGalleryImage || podPrimaryImage;
+  const activeGalleryIndex = Math.max(productDisplayItems.findIndex((item) => item.image === mainImage), 0);
   const exteriorLabel = product.exteriorLabel || 'Exterior Color';
   const interiorMaterialSections = product.interiorMaterialSections || null;
   const mdfInteriorOptions = (interiorMaterialSections?.mdf?.optionIds || [])
@@ -330,7 +341,7 @@ export default function ProductPage() {
       { name: product.displayTitle || product.name, path: canonicalPath }
     ])
   ];
-  const shouldShowThumbnails = orderedGalleryItems.length > 0;
+  const shouldShowThumbnails = customerGalleryItems.length > 0;
   const isChairImage = typeof mainImage === 'string' && mainImage.includes('bar-stool');
   const shouldUseMultiplyBlend = product.slug !== 'ace-plus' || isChairImage;
   const mainProductAlt = `${product.name} acoustic office pod`;
@@ -366,19 +377,19 @@ export default function ProductPage() {
   };
 
   const goToPrevImage = () => {
-    if (orderedGalleryItems.length < 2) return;
-    const nextIndex = (activeGalleryIndex - 1 + orderedGalleryItems.length) % orderedGalleryItems.length;
-    setSelectedImage(orderedGalleryItems[nextIndex].image);
+    if (productDisplayItems.length < 2) return;
+    const nextIndex = (activeGalleryIndex - 1 + productDisplayItems.length) % productDisplayItems.length;
+    setSelectedImage(productDisplayItems[nextIndex].image);
   };
 
   const goToNextImage = () => {
-    if (orderedGalleryItems.length < 2) return;
-    const nextIndex = (activeGalleryIndex + 1) % orderedGalleryItems.length;
-    setSelectedImage(orderedGalleryItems[nextIndex].image);
+    if (productDisplayItems.length < 2) return;
+    const nextIndex = (activeGalleryIndex + 1) % productDisplayItems.length;
+    setSelectedImage(productDisplayItems[nextIndex].image);
   };
 
   useEffect(() => {
-    if (orderedGalleryItems.length < 2) return;
+    if (productDisplayItems.length < 2) return;
 
     const handleGalleryKeydown = (event) => {
       if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -403,22 +414,28 @@ export default function ProductPage() {
     return () => {
       document.removeEventListener('keydown', handleGalleryKeydown);
     };
-  }, [orderedGalleryItems, isDimensionsModalOpen, isAddonMenuOpen, isContactChooserOpen, isGalleryModalOpen, activeGalleryIndex]);
+  }, [productDisplayItems, isDimensionsModalOpen, isAddonMenuOpen, isContactChooserOpen, isGalleryModalOpen, activeGalleryIndex]);
+
+  useEffect(() => {
+    if (selectedImage && !productDisplayItems.some((item) => item.image === selectedImage)) {
+      setSelectedImage('');
+    }
+  }, [product.slug, productDisplayItems, selectedImage]);
 
   const openGalleryModalAtIndex = (index) => {
-    if (index < 0 || index >= orderedGalleryItems.length) return;
+    if (index < 0 || index >= customerGalleryItems.length) return;
     setGalleryModalIndex(index);
     setIsGalleryModalOpen(true);
   };
 
   const goToPrevModalImage = () => {
-    if (orderedGalleryItems.length < 2) return;
-    setGalleryModalIndex((current) => (current - 1 + orderedGalleryItems.length) % orderedGalleryItems.length);
+    if (customerGalleryItems.length < 2) return;
+    setGalleryModalIndex((current) => (current - 1 + customerGalleryItems.length) % customerGalleryItems.length);
   };
 
   const goToNextModalImage = () => {
-    if (orderedGalleryItems.length < 2) return;
-    setGalleryModalIndex((current) => (current + 1) % orderedGalleryItems.length);
+    if (customerGalleryItems.length < 2) return;
+    setGalleryModalIndex((current) => (current + 1) % customerGalleryItems.length);
   };
 
   useEffect(() => {
@@ -444,7 +461,13 @@ export default function ProductPage() {
     return () => {
       document.removeEventListener('keydown', handleModalKeydown);
     };
-  }, [isGalleryModalOpen, orderedGalleryItems.length]);
+  }, [isGalleryModalOpen, customerGalleryItems.length]);
+
+  useEffect(() => {
+    if (galleryModalIndex >= customerGalleryItems.length) {
+      setGalleryModalIndex(0);
+    }
+  }, [galleryModalIndex, customerGalleryItems.length, product.slug]);
 
   const handleThumbnailSelect = (_item, index) => {
     openGalleryModalAtIndex(index);
@@ -479,7 +502,7 @@ export default function ProductPage() {
                 <p className="mt-4 max-w-[42ch] text-[17px] leading-[1.5] text-[#2e3136]">{product.shortDesc}</p>
               </div>
               <div className="relative mt-6 h-[380px] w-full sm:h-[460px] md:h-[620px] lg:mt-[106px] lg:h-[644px]">
-                {orderedGalleryItems.length > 1 && (
+                {productDisplayItems.length > 1 && (
                   <button
                     type="button"
                     onClick={goToPrevImage}
@@ -504,7 +527,7 @@ export default function ProductPage() {
                   />
                 </div>
 
-                {orderedGalleryItems.length > 1 && (
+                {productDisplayItems.length > 1 && (
                   <button
                     type="button"
                     onClick={goToNextImage}
@@ -917,8 +940,8 @@ export default function ProductPage() {
               <h3 className="mb-12 text-center text-[36px] font-semibold tracking-tight text-[#1e2227] md:text-[40px]">Our Past Projects</h3>
               <div className="w-full overflow-x-auto pb-2">
                 <div className="flex w-max min-w-full justify-center gap-4 md:gap-5">
-                  {orderedGalleryItems.map((item, index) => {
-                    const isActive = isGalleryModalOpen ? galleryModalIndex === index : mainImage === item.image;
+                  {customerGalleryItems.map((item, index) => {
+                    const isActive = isGalleryModalOpen ? galleryModalIndex === index : index === 0;
                     return (
                       <button
                         key={`${product.slug}-${item.type}-thumb-unified-${index}`}
@@ -992,7 +1015,7 @@ export default function ProductPage() {
         </div>
       )}
 
-      {isGalleryModalOpen && orderedGalleryItems.length > 0 && (
+      {isGalleryModalOpen && customerGalleryItems.length > 0 && (
         <div
           className="fixed inset-0 z-[130] flex items-center justify-center bg-black/80 p-4"
           role="dialog"
@@ -1010,7 +1033,7 @@ export default function ProductPage() {
               <X size={24} />
             </button>
 
-            {orderedGalleryItems.length > 1 && (
+            {customerGalleryItems.length > 1 && (
               <button
                 type="button"
                 onClick={goToPrevModalImage}
@@ -1022,12 +1045,12 @@ export default function ProductPage() {
             )}
 
             <img
-              src={orderedGalleryItems[galleryModalIndex]?.image}
-              alt={getGalleryThumbAlt(orderedGalleryItems[galleryModalIndex])}
+              src={customerGalleryItems[galleryModalIndex]?.image}
+              alt={getGalleryThumbAlt(customerGalleryItems[galleryModalIndex])}
               className="max-h-[88vh] max-w-[92vw] rounded-[8px] object-contain"
             />
 
-            {orderedGalleryItems.length > 1 && (
+            {customerGalleryItems.length > 1 && (
               <button
                 type="button"
                 onClick={goToNextModalImage}

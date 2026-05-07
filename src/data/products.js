@@ -1,7 +1,6 @@
 import aceSoloCutout from '../../assets/ace-solo-cutout.png';
 import aceSoloPlusCutout from '../../assets/ace-solo-plus-cutout.png';
 import aceDuoCutout from '../../assets/ace-duo-cutout.png';
-import aceFlexDuoCutout from '../../assets/ace-flex-duo-cutout.png';
 import aceMeetingCutout from '../../assets/ace-meeting-cutout.png';
 import aceMeetingXLCutout from '../../assets/ace-meeting-XL-cutout.png';
 import aceSoloHero from '../../assets/ace-solo.png';
@@ -834,7 +833,7 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
     heroImage: aceFlexDuoHero,
-    thumbImage: aceFlexDuoCutout,
+    thumbImage: aceFlexDuoHero,
     customerPhotos: aceFlexDuoGalleryPhotos,
     drawing2dImage: aceDuo2d,
     imageScale: 'scale-[1.40]',
