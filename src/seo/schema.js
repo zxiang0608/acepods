@@ -63,7 +63,8 @@ export const homepageWebPageSchema = {
   '@type': 'WebPage',
   name: 'Ace Office Pods by Ace Workplace Solutions',
   url: SEO_BASE_URL,
-  description: 'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.',
+  description:
+    'Ace Office Pods (Ace Workplace Solutions), supplier of office pods and office booths for calls, focus, and meetings. 100% locally made in Malaysia.',
   isPartOf: {
     '@id': `${SEO_BASE_URL}/#website`
   },

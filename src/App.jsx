@@ -340,6 +340,14 @@ export default function App() {
     'ace-meet': 'scale-[1.15]',
     'ace-hub': 'scale-[1.18]'
   };
+  const mobileImageOffsetBySlug = {
+    'ace-solo': '-translate-x-1',
+    'ace-plus': '-translate-x-[5px]',
+    'ace-flex': '-translate-x-1',
+    'ace-flex-duo': 'translate-x-1',
+    'ace-meet': 'translate-x-0',
+    'ace-hub': 'translate-x-0'
+  };
 
   const heroHeadline = 'Office pods for calls, focus, and meetings';
   const heroSupportingText = 'Add private space for calls, focused work, and meetings without building new rooms.';
@@ -363,13 +371,26 @@ export default function App() {
     const scaleClass = displayScaleBySlug[pod.slug] || '';
     return `h-full w-full object-contain ${scaleClass}`.trim();
   };
+  const getMobileHomepagePodImageClassName = (pod) => {
+    const offsetClass = mobileImageOffsetBySlug[pod.slug] || 'translate-x-0';
+    return `${getHomepagePodImageClassName(pod)} ${offsetClass}`.trim();
+  };
+  const homepageCardHeadlineBySlug = {
+    'ace-solo': 'Compact pod for calls\nand quick tasks',
+    'ace-plus': 'Built for privacy, focus\nand sound control',
+    'ace-flex': 'Spacious pod for comfort\nand focus',
+    'ace-flex-duo': 'Two-person pod for\nfocused work',
+    'ace-meet': 'Meeting pod for\nsmall teams',
+    'ace-hub': 'Meeting pod for\nlarger teams'
+  };
+  const getHomepageCardHeadline = (pod) => homepageCardHeadlineBySlug[pod.slug] || pod.shortDesc;
 
   const renderPodCard = (pod, extraClass = '') => (
     <Link
       key={pod.slug}
       to={`/pods/${pod.slug}`}
       onClick={() => trackProductCta(pod, 'Explore', 'homepage_product_card_desktop', `/pods/${pod.slug}`)}
-      className={`group relative min-h-[400px] overflow-hidden rounded-[16px] bg-[#EAEAEA] md:h-[500px] md:rounded-[8px] ${extraClass}`}
+      className={`group relative min-h-[400px] overflow-hidden rounded-[16px] bg-[#EAEAEA] md:h-[530px] md:rounded-[8px] ${extraClass}`}
     >
       <div className="relative z-10 flex h-full flex-col items-center px-6 pb-8 pt-8 md:pt-10">
         <h3 className="relative -top-1 mb-8 whitespace-pre-line text-center text-[15px] font-semibold tracking-wide text-[#505050] md:text-[15px]">
@@ -380,12 +401,12 @@ export default function App() {
             <img
               src={pod.thumbImage}
               alt={`${pod.name} acoustic office pod`}
-              className={getHomepagePodImageClassName(pod)}
+              className={getMobileHomepagePodImageClassName(pod)}
             />
           </div>
         </div>
-        <p className="mb-5 max-w-[13ch] whitespace-pre-line text-center text-[19px] font-semibold leading-[1.3] text-[#3c3c3c] md:text-[20px]">
-          {pod.shortDesc}
+        <p className="mb-5 max-w-[18ch] whitespace-pre-line text-center text-[19px] font-semibold leading-[1.3] text-[#3c3c3c] md:text-[20px]">
+          {getHomepageCardHeadline(pod)}
         </p>
         <p className="mb-2 min-h-[18px] text-center text-[12px] font-medium text-[#7a7a7a] md:text-[12px]">
           {pod.cardSupport}
@@ -409,7 +430,9 @@ export default function App() {
       <div className="relative z-10 flex h-full flex-col items-center text-center">
         <div className="max-w-[300px]">
           <h3 className="text-[16px] font-semibold tracking-[0.01em] text-[#636a74]">{pod.name}</h3>
-          <p className="mt-4 text-[22px] font-semibold leading-[1.22] tracking-tight text-[#3d434b]">{pod.shortDesc}</p>
+          <p className="mt-4 text-[22px] font-semibold leading-[1.22] tracking-tight text-[#3d434b]">
+            {getHomepageCardHeadline(pod)}
+          </p>
           <p className="mt-3 text-[15px] font-medium leading-[1.4] text-[#6d7580]">{pod.cardSupport}</p>
           {pod.cardNote && <p className="mt-2 text-[13px] font-medium leading-[1.4] text-[#7f8792]">{pod.cardNote}</p>}
         </div>
@@ -440,7 +463,7 @@ export default function App() {
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
       <SeoMeta
         title="Ace Office Pods by Ace Workplace Solutions | Office Pods and Booths Malaysia"
-        description="Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia with clear pricing, installation, and support."
+        description="Ace Office Pods (Ace Workplace Solutions), supplier of office pods and office booths for calls, focus, and meetings. 100% locally made in Malaysia."
         canonical={buildCanonical('/')}
         keywords={`${SEO_KEYWORDS_COMMON}, office booth provider`}
         schemas={homepageSchemas}
@@ -721,7 +744,7 @@ export default function App() {
                   {productIntroHeading}
                 </h2>
                 <p className="mx-auto mt-4 max-w-[760px] text-center text-[16px] leading-[1.6] text-[#555555] md:text-[20px]">
-                  Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.
+                  Ace Office Pods (Ace Workplace Solutions), supplier of office pods and office booths for calls, focus, and meetings. 100% locally made in Malaysia.
                 </p>
               </div>
             </div>

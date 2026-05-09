@@ -6,7 +6,7 @@ import aceMeetingXLCutout from '../../assets/ace-meeting-XL-cutout.png';
 import aceSoloHero from '../../assets/ace-solo.png';
 import aceSoloPlusHero from '../../assets/ace-solo-plus.png';
 import aceDuoHero from '../../assets/ace-duo.png';
-import aceFlexDuoHero from '../../assets/ace-flex-duo.png';
+import aceFlexDuoHero from '../../assets/ace-flex-duo-hero.png';
 import aceMeetingHero from '../../assets/ace-meeting.png';
 import aceMeetingXLHero from '../../assets/ace-meeting-XL.png';
 import aceSolo2d from '../../assets/2D images/1. Ace Solo.png';
@@ -29,24 +29,24 @@ import soloFeature07 from '../../assets/features/For ace solo only/to post-07.pn
 import soloFeature08 from '../../assets/features/For ace solo only/to post-08.png';
 import soloFeature09 from '../../assets/features/For ace solo only/to post-09.png';
 import soloFeature10 from '../../assets/features/For ace solo only/to post-10.png';
-import plusFeature11 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-11-trimmed.png';
-import plusFeature12 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-12-trimmed.png';
-import plusFeature13 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-13-trimmed.png';
-import plusFeature14 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-14-trimmed.png';
-import plusFeature15 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-15-trimmed.png';
-import plusFeature16 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-16-trimmed.png';
-import plusFeature17 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-17-trimmed.png';
-import plusFeature18 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-18-trimmed.png';
-import plusFeature19 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-19-trimmed.png';
-import plusFeature20 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-20-trimmed.png';
-import plusFeature22 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-22-trimmed.png';
-import plusFeature23 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-23-trimmed.png';
-import plusFeature24 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-24-trimmed.png';
-import plusFeature25 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-25-trimmed.png';
-import plusFeature26 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-26-trimmed.png';
-import plusFeature27 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-27-trimmed.png';
-import plusFeature28 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-28-trimmed.png';
-import plusFeature29 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/to post-29-trimmed.png';
+import plusFeature11 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/11-trimmed.png';
+import plusFeature12 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/12-trimmed.png';
+import plusFeature21 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/21-normalized-v2.png';
+import plusFeature14 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/14-trimmed.png';
+import plusFeature15 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/15-trimmed.png';
+import plusFeature16 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/16-trimmed.png';
+import plusFeature17 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/17-trimmed.png';
+import plusFeature18 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/18-trimmed.png';
+import plusFeature19 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/19-trimmed.png';
+import plusFeature20 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/20-trimmed.png';
+import plusFeature22 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/22-trimmed.png';
+import plusFeature23 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/23-trimmed.png';
+import plusFeature24 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/24-trimmed.png';
+import plusFeature25 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/25-trimmed.png';
+import plusFeature26 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/26-trimmed.png';
+import plusFeature27 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/27-trimmed.png';
+import plusFeature28 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/28-trimmed.png';
+import plusFeature29 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/29-trimmed.png';
 import aceSoloShimoAshImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ss-04-03.webp';
 import aceSoloCrossMetalImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/ss-04-01.webp';
 import aceSoloLarixPearlImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/ss-04-02.webp';
@@ -69,6 +69,28 @@ import aceSoloLarixPearlTangerineImage from '../../assets/POD images/ECO POD - A
 import aceSoloLarixPearlLightPlumImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-plum.png';
 import aceSoloLarixPearlCreamyWhiteImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-creamywhite.png';
 import aceSoloLarixPearlSesameBlackImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-black.png';
+import aceSoloCrossMetalCreamyWhiteImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalCreamyWhiteImage-normalized.png';
+import aceSoloCrossMetalImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalImage-normalized.png';
+import aceSoloCrossMetalLightPlumImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalLightPlumImage-normalized.png';
+import aceSoloCrossMetalMoonlightGreyImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalMoonlightGreyImage-normalized.png';
+import aceSoloCrossMetalSesameBlackImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalSesameBlackImage-normalized.png';
+import aceSoloCrossMetalSkyBlueImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalSkyBlueImage-normalized.png';
+import aceSoloCrossMetalTangerineImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalTangerineImage-normalized.png';
+import aceSoloLarixPearlCreamyWhiteImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlCreamyWhiteImage-normalized.png';
+import aceSoloLarixPearlImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlImage-normalized.png';
+import aceSoloLarixPearlLightPlumImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlLightPlumImage-normalized.png';
+import aceSoloLarixPearlMoonlightGreyImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlMoonlightGreyImage-normalized.png';
+import aceSoloLarixPearlSesameBlackImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlSesameBlackImage-normalized.png';
+import aceSoloLarixPearlSkyBlueImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlSkyBlueImage-normalized.png';
+import aceSoloLarixPearlTangerineImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlTangerineImage-normalized.png';
+import aceSoloShimoAshBlueImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshBlueImage-normalized.png';
+import aceSoloShimoAshCreamyWhiteImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshCreamyWhiteImage-normalized.png';
+import aceSoloShimoAshImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshImage-normalized.png';
+import aceSoloShimoAshLightPlumImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshLightPlumImage-normalized.png';
+import aceSoloShimoAshMoonlightGreyImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshMoonlightGreyImage-normalized.png';
+import aceSoloShimoAshSesameBlackImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshSesameBlackImage-normalized.png';
+import aceSoloShimoAshTangerineImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshTangerineImage-normalized.png';
+import aceSoloShimoAshVividRedImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshVividRedImage-normalized.png';
 import aceSoloPlusOrangeSquashImage from '../../assets/ace-plus-cutouts/ace-plus-orange-squash.png';
 import aceSoloPlusMustardYellowImage from '../../assets/ace-plus-cutouts/ace-plus-mustard-yellow.png';
 import aceSoloPlusGreenMossImage from '../../assets/ace-plus-cutouts/ace-plus-green-moss.png';
@@ -151,7 +173,6 @@ const defaultCustomerPhotos = [podsInstallation, deliveryPods, openOffice, barSt
 const aceSoloPortfolioPhotos = [
   portfolioCma02,
   portfolioCma03,
-  portfolioAlphabet03,
   portfolioParker01,
   portfolioParker02,
   portfolioParker03,
@@ -204,101 +225,115 @@ const aceHubPortfolioPhotos = [
   barStoolWhite
 ];
 const soloFeatureRows = [
-  [soloFeature01, soloFeature02, soloFeature03, soloFeature04, soloFeature05, soloFeature06].map((image) => ({
+  [soloFeature01, soloFeature02, soloFeature03, soloFeature04, soloFeature05, soloFeature06].map((image, index) => ({
+    id: `solo-feature-${index + 1}`,
     image
   })),
-  [soloFeature07, soloFeature08, soloFeature09, soloFeature10].map((image) => ({
+  [soloFeature07, soloFeature08, soloFeature09, soloFeature10].map((image, index) => ({
+    id: `solo-feature-${index + 7}`,
     image
   }))
 ];
 const plusAndAboveFeatureItems = [
   {
+    id: 'plus-feature-acoustic-excellence',
     image: plusFeature16,
     title: 'Acoustic Excellence',
     desc: 'High quality wood engineered for a single purpose to reduce sound & crafted to absorb sound, in turn to create a truly private and wonderful space to work and talk'
   },
   {
-    image: plusFeature22,
+    id: 'plus-feature-superb-ventilation-system',
+    image: plusFeature21,
     title: 'Superb Ventilation System',
     desc: "Low-noise air ventilation system ensures rapid circulation of fresh air within minutes, all the while preserving the booth's exceptional soundproofing characteristics."
   },
   {
+    id: 'plus-feature-adjustable-lights-fan',
     image: plusFeature24,
     title: 'Adjustable Lights & Fan',
     desc: 'Adjustable LED lights knob switches. Allows you to tailor the lighting to your desired level of dimness. Adjustable fan speed too according to your preferred fan speed'
   },
   {
-    image: plusFeature13,
-    title: 'Smart Connectivity',
-    desc: 'With multiple options for ports, we have a universal power port, USB, USB Type C charger. Ethernet ports are optional upon request.'
-  },
-  {
+    id: 'plus-feature-pet-enhanced-acoustics',
     image: plusFeature11,
     title: 'PET for Enhanced Acoustics',
     desc: 'PET Fabric Material specifically designed to absorb sound waves, minimize echoes and enhance acoustic performance within the pod.'
   },
   {
+    id: 'plus-feature-energy-saving-motion-sensor',
     image: plusFeature19,
     title: 'Energy Saving Motion Sensor',
     desc: 'The motion sensor will automatically turn on or off after 5 minutes based on activity within the pod. (time can be set manually)'
   },
   {
+    id: 'plus-feature-ventilation-outlet-system',
     image: plusFeature12,
     title: 'Ventilation Outlet System',
     desc: 'While our fan ventilation pulls in fresh air, this outlet ventilates out stale air to keep the air within the pod cool and fresh inside'
   },
   {
+    id: 'plus-feature-air-conditioning-pod',
     image: plusFeature27,
     title: 'Air Conditioning in the Pod',
     desc: 'Enhance your comfort in the pod with a cool, climate-controlled built-in air condition unit. (This function only available for pods > 4 seaters, kindly enquire if need)'
   },
   {
+    id: 'plus-feature-enhance-power-output',
     image: plusFeature28,
     title: 'Enhance Power Output',
     desc: '13A UK Floor-Mounted Plug with built-in fuse, 3-meter cable, wide voltage compatibility (110-240V), paired with Cat 6 Ethernet port'
   },
   {
+    id: 'plus-feature-mobile-pod-capabilities',
     image: plusFeature17,
     title: 'Mobile Pod Capabilities',
     desc: 'We give you ultimate convenience to move the pods yourself. Featuring a robust hidden heavy duty wheels to make your pod relocation a breeze.'
   },
   {
+    id: 'plus-feature-sofa-furnishing',
     image: plusFeature26,
     title: 'Sofa Furnishing',
     desc: 'The sofa is upholstered in premium fabric which give a fitted plush cushioning and high-density foam, ensuring lasting comfort and shape retention over time'
   },
   {
+    id: 'plus-feature-aluminium-pivot-frame',
     image: plusFeature25,
     title: 'Aluminium Pivot Frame',
     desc: 'Cutting edge Italian-made pivot door hinges redefine the art of accessibility, allowing doors to swing open carefully.'
   },
   {
+    id: 'plus-feature-solid-ergonomic-door-handle',
     image: plusFeature14,
     title: 'Solid Ergonomic Door Handle',
     desc: 'Door handle chosen carefully to enable easy handling of ease of access for users.'
   },
   {
+    id: 'plus-feature-soft-door-closure',
     image: plusFeature23,
     title: 'Soft Door Closure',
     desc: 'No more slam door scares. This new upgrade ensures a soft and satisfying close for the tempered glass door.'
   },
   {
+    id: 'plus-feature-stylish-belt-door-stopper',
     image: plusFeature15,
     title: 'Stylish Belt Door Stopper',
     desc: 'Door smoothly swings at 110°, eliminating worries about door slamming or breaking. Made from premium high quality leather.'
   },
   {
+    id: 'plus-feature-magnetic-writable-whiteboard',
     image: plusFeature20,
     title: 'Magnetic Writable Whiteboard',
     desc: 'Take down notes during a solo video call meeting or a group meeting in our pod models'
   },
   {
+    id: 'plus-feature-foldable-clothing-hook',
     image: plusFeature29,
     title: 'Foldable Clothing Hook',
     desc: 'Hang your coats or your bags, without laying your items on the floor to create more space in the pod.'
   },
   {
-    image: plusFeature18,
+    id: 'plus-feature-smart-connectivity-hub-tv',
+    image: plusFeature22,
     title: 'Smart Connectivity',
     desc: 'This upgrade features a built-in multimedia TV for ACE HUB pods only. Perfect for virtual meetings, presentation, and entertainment. (Upgrade for ACE HUB only)'
   }
@@ -405,47 +440,47 @@ export const products = [
       addOnOptions: [highBarStoolAddon]
     },
     colorImageMap: {
-      default: aceSoloShimoAshImage,
+      default: aceSoloShimoAshImageNormalized,
       byExterior: {
-        'finish-shimo-ash': aceSoloShimoAshImage,
-        'finish-cross-metal': aceSoloCrossMetalImage,
-        'finish-larix-pearl': aceSoloLarixPearlImage
+        'finish-shimo-ash': aceSoloShimoAshImageNormalized,
+        'finish-cross-metal': aceSoloCrossMetalImageNormalized,
+        'finish-larix-pearl': aceSoloLarixPearlImageNormalized
       },
       byInterior: {
-        'int-shimo-ash': aceSoloShimoAshImage,
-        'int-sky-blue': aceSoloShimoAshBlueImage,
-        'int-moonlight-grey': aceSoloShimoAshMoonlightGreyImage,
-        'int-tangerine': aceSoloShimoAshTangerineImage,
-        'int-light-plum': aceSoloShimoAshLightPlumImage,
-        'int-vivid-red': aceSoloShimoAshVividRedImage,
-        'int-creamy-white': aceSoloShimoAshCreamyWhiteImage,
-        'int-sesame-black': aceSoloShimoAshSesameBlackImage
+        'int-shimo-ash': aceSoloShimoAshImageNormalized,
+        'int-sky-blue': aceSoloShimoAshBlueImageNormalized,
+        'int-moonlight-grey': aceSoloShimoAshMoonlightGreyImageNormalized,
+        'int-tangerine': aceSoloShimoAshTangerineImageNormalized,
+        'int-light-plum': aceSoloShimoAshLightPlumImageNormalized,
+        'int-vivid-red': aceSoloShimoAshVividRedImageNormalized,
+        'int-creamy-white': aceSoloShimoAshCreamyWhiteImageNormalized,
+        'int-sesame-black': aceSoloShimoAshSesameBlackImageNormalized
       },
       byPair: {
-        'finish-shimo-ash|int-shimo-ash': aceSoloShimoAshImage,
-        'finish-shimo-ash|int-sky-blue': aceSoloShimoAshBlueImage,
-        'finish-shimo-ash|int-moonlight-grey': aceSoloShimoAshMoonlightGreyImage,
-        'finish-shimo-ash|int-tangerine': aceSoloShimoAshTangerineImage,
-        'finish-shimo-ash|int-light-plum': aceSoloShimoAshLightPlumImage,
-        'finish-shimo-ash|int-vivid-red': aceSoloShimoAshVividRedImage,
-        'finish-shimo-ash|int-creamy-white': aceSoloShimoAshCreamyWhiteImage,
-        'finish-shimo-ash|int-sesame-black': aceSoloShimoAshSesameBlackImage,
-        'finish-cross-metal|int-shimo-ash': aceSoloCrossMetalImage,
-        'finish-cross-metal|int-sky-blue': aceSoloCrossMetalSkyBlueImage,
-        'finish-cross-metal|int-moonlight-grey': aceSoloCrossMetalMoonlightGreyImage,
-        'finish-cross-metal|int-tangerine': aceSoloCrossMetalTangerineImage,
-        'finish-cross-metal|int-light-plum': aceSoloCrossMetalLightPlumImage,
-        'finish-cross-metal|int-vivid-red': aceSoloCrossMetalMoonlightGreyImage,
-        'finish-cross-metal|int-creamy-white': aceSoloCrossMetalCreamyWhiteImage,
-        'finish-cross-metal|int-sesame-black': aceSoloCrossMetalSesameBlackImage,
-        'finish-larix-pearl|int-shimo-ash': aceSoloLarixPearlImage,
-        'finish-larix-pearl|int-sky-blue': aceSoloLarixPearlSkyBlueImage,
-        'finish-larix-pearl|int-moonlight-grey': aceSoloLarixPearlMoonlightGreyImage,
-        'finish-larix-pearl|int-tangerine': aceSoloLarixPearlTangerineImage,
-        'finish-larix-pearl|int-light-plum': aceSoloLarixPearlLightPlumImage,
-        'finish-larix-pearl|int-vivid-red': aceSoloLarixPearlMoonlightGreyImage,
-        'finish-larix-pearl|int-creamy-white': aceSoloLarixPearlCreamyWhiteImage,
-        'finish-larix-pearl|int-sesame-black': aceSoloLarixPearlSesameBlackImage
+        'finish-shimo-ash|int-shimo-ash': aceSoloShimoAshImageNormalized,
+        'finish-shimo-ash|int-sky-blue': aceSoloShimoAshBlueImageNormalized,
+        'finish-shimo-ash|int-moonlight-grey': aceSoloShimoAshMoonlightGreyImageNormalized,
+        'finish-shimo-ash|int-tangerine': aceSoloShimoAshTangerineImageNormalized,
+        'finish-shimo-ash|int-light-plum': aceSoloShimoAshLightPlumImageNormalized,
+        'finish-shimo-ash|int-vivid-red': aceSoloShimoAshVividRedImageNormalized,
+        'finish-shimo-ash|int-creamy-white': aceSoloShimoAshCreamyWhiteImageNormalized,
+        'finish-shimo-ash|int-sesame-black': aceSoloShimoAshSesameBlackImageNormalized,
+        'finish-cross-metal|int-shimo-ash': aceSoloCrossMetalImageNormalized,
+        'finish-cross-metal|int-sky-blue': aceSoloCrossMetalSkyBlueImageNormalized,
+        'finish-cross-metal|int-moonlight-grey': aceSoloCrossMetalMoonlightGreyImageNormalized,
+        'finish-cross-metal|int-tangerine': aceSoloCrossMetalTangerineImageNormalized,
+        'finish-cross-metal|int-light-plum': aceSoloCrossMetalLightPlumImageNormalized,
+        'finish-cross-metal|int-vivid-red': aceSoloCrossMetalMoonlightGreyImageNormalized,
+        'finish-cross-metal|int-creamy-white': aceSoloCrossMetalCreamyWhiteImageNormalized,
+        'finish-cross-metal|int-sesame-black': aceSoloCrossMetalSesameBlackImageNormalized,
+        'finish-larix-pearl|int-shimo-ash': aceSoloLarixPearlImageNormalized,
+        'finish-larix-pearl|int-sky-blue': aceSoloLarixPearlSkyBlueImageNormalized,
+        'finish-larix-pearl|int-moonlight-grey': aceSoloLarixPearlMoonlightGreyImageNormalized,
+        'finish-larix-pearl|int-tangerine': aceSoloLarixPearlTangerineImageNormalized,
+        'finish-larix-pearl|int-light-plum': aceSoloLarixPearlLightPlumImageNormalized,
+        'finish-larix-pearl|int-vivid-red': aceSoloLarixPearlMoonlightGreyImageNormalized,
+        'finish-larix-pearl|int-creamy-white': aceSoloLarixPearlCreamyWhiteImageNormalized,
+        'finish-larix-pearl|int-sesame-black': aceSoloLarixPearlSesameBlackImageNormalized
       }
     },
     hideThumbnailsOnColorMode: true,
@@ -479,7 +514,6 @@ export const products = [
       { id: 'finish-larix-pearl', label: 'Larix Pearl', hex: '#cbbca7' }
     ],
     interiorColors: [
-      { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
       { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
       { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
       { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
@@ -489,7 +523,7 @@ export const products = [
       { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
     ],
     defaultExterior: 'finish-shimo-ash',
-    defaultInterior: 'int-shimo-ash',
+    defaultInterior: 'int-sky-blue',
     faq: [
       { q: 'How fast can Ace Solo be installed?', a: 'Typical projects are scheduled after a site review and final confirmation.' },
       { q: 'Can it be moved later?', a: 'Yes. The unit can be relocated with proper handling and planning.' }

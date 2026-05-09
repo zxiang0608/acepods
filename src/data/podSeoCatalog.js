@@ -17,7 +17,7 @@ export const POD_SEO_BY_SLUG = {
   'ace-flex-duo': {
     name: 'Ace Flex Duo',
     shortDesc: 'Two-person pod for focused work',
-    startingPrice: 19900
+    startingPrice: 23900
   },
   'ace-meet': {
     name: 'Ace Meet',

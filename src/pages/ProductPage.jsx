@@ -51,6 +51,9 @@ export default function ProductPage() {
   const [isSpecsExpanded, setIsSpecsExpanded] = useState(false);
   const chooserRef = useRef(null);
   const addonMenuRef = useRef(null);
+  const featureScrollRef = useRef(null);
+  const [canScrollFeaturesLeft, setCanScrollFeaturesLeft] = useState(false);
+  const [canScrollFeaturesRight, setCanScrollFeaturesRight] = useState(false);
 
   useEffect(() => {
     if (!product) return;
@@ -108,6 +111,26 @@ export default function ProductPage() {
       document.removeEventListener('keydown', handleEsc);
     };
   }, [isDimensionsModalOpen]);
+
+  useEffect(() => {
+    const scroller = featureScrollRef.current;
+    if (!scroller) return;
+
+    const updateFeatureScrollState = () => {
+      const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+      setCanScrollFeaturesLeft(scroller.scrollLeft > 4);
+      setCanScrollFeaturesRight(maxScrollLeft - scroller.scrollLeft > 4);
+    };
+
+    updateFeatureScrollState();
+    scroller.addEventListener('scroll', updateFeatureScrollState, { passive: true });
+    window.addEventListener('resize', updateFeatureScrollState);
+
+    return () => {
+      scroller.removeEventListener('scroll', updateFeatureScrollState);
+      window.removeEventListener('resize', updateFeatureScrollState);
+    };
+  }, [product?.slug]);
 
   if (!product) {
     return (
@@ -344,21 +367,40 @@ export default function ProductPage() {
   const shouldShowThumbnails = customerGalleryItems.length > 0;
   const isChairImage = typeof mainImage === 'string' && mainImage.includes('bar-stool');
   const shouldUseMultiplyBlend = product.slug !== 'ace-plus' || isChairImage;
+  const hasMultipleExteriorColors = (product.exteriorColors || []).length > 1;
+  const exteriorThumbnailItems = (product.exteriorColors || []).map((color) => {
+    const exteriorPairKey = `${color.id}|${selectedInterior}`;
+    const thumbnailImage =
+      colorImageMap?.byPair?.[exteriorPairKey] || colorImageMap?.byExterior?.[color.id] || colorImageMap?.default || podPrimaryImage;
+    return {
+      ...color,
+      thumbnailImage
+    };
+  });
   const mainProductAlt = `${product.name} acoustic office pod`;
   const getFeatureAlt = (featureItem) =>
     featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
-  const isIconLikeFeature = (featureItem) => {
-    const title = (featureItem?.title || '').toLowerCase();
-    const imagePath = typeof featureItem?.image === 'string' ? featureItem.image.toLowerCase() : '';
-
-    if (product.slug === 'ace-solo') return true;
-
-    if (imagePath.includes('icon') || imagePath.includes('symbol')) return true;
-
-    return /(led|spotlight|standing|table|hook|handle|stopper|sensor|connectivity|power output|closure|whiteboard)/.test(title);
-  };
+  const sharedFeatureCardClass = 'mx-auto flex w-full max-w-[320px] flex-col text-center md:mx-0 md:w-[320px] md:max-w-none md:shrink-0';
+  const sharedFeatureMediaFrameClass =
+    'mx-auto flex h-[152px] w-full max-w-[280px] items-center justify-center overflow-hidden rounded-[24px] sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] md:rounded-[28px] lg:h-[188px] lg:max-w-[340px]';
+  const soloFeatureMediaFrameClass =
+    'mx-auto flex h-[228px] w-full max-w-[280px] items-center justify-center overflow-hidden sm:h-[246px] sm:max-w-[300px] md:h-[264px] md:max-w-[320px] lg:h-[282px] lg:max-w-[340px]';
+  const sharedFeatureImageClass = 'h-full w-full object-cover object-center';
+  const soloFeatureImageClass = 'h-full w-full object-contain object-center';
+  const featureTrackGapClass = isPlusAndAboveFeatures
+    ? 'grid grid-cols-1 gap-6 sm:grid-cols-2 md:flex md:w-max md:min-w-full md:items-start md:justify-start md:gap-8 lg:gap-10'
+    : 'grid grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-0 md:flex md:w-max md:min-w-full md:items-start md:justify-start md:gap-0 lg:gap-0';
+  const sharedFeatureTitleClass =
+    'mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#1f232a] md:mt-1.5 md:text-[18px]';
+  const sharedFeatureDescClass = 'mx-auto mt-1.5 max-w-[28ch] text-left text-[14px] leading-[1.45] text-[#4f5660] md:mt-2 md:text-[15px]';
   const getGalleryThumbAlt = (galleryItem) =>
     galleryItem?.type === 'photo' ? `${product.name} office pod installation photo` : `${product.name} office pod product image`;
+  const scrollFeatureTrack = (direction) => {
+    const scroller = featureScrollRef.current;
+    if (!scroller) return;
+    const step = Math.max(280, Math.round(scroller.clientWidth * 0.72));
+    scroller.scrollBy({ left: direction * step, behavior: 'smooth' });
+  };
 
   const handleExteriorSelect = (id) => {
     setSelectedExterior(id);
@@ -501,7 +543,7 @@ export default function ProductPage() {
                 </p>
                 <p className="mt-4 max-w-[42ch] text-[17px] leading-[1.5] text-[#2e3136]">{product.shortDesc}</p>
               </div>
-              <div className="relative mt-6 h-[380px] w-full sm:h-[460px] md:h-[620px] lg:mt-[106px] lg:h-[644px]">
+              <div className="relative mt-6 h-[380px] w-full sm:h-[460px] md:h-[620px] lg:mt-[56px] lg:h-[600px]">
                 {productDisplayItems.length > 1 && (
                   <button
                     type="button"
@@ -513,17 +555,11 @@ export default function ProductPage() {
                   </button>
                 )}
 
-                <div
-                  className={`relative flex h-full w-full justify-center overflow-hidden ${
-                    isChairImage ? 'items-center' : 'items-stretch'
-                  }`}
-                >
+                <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
                   <img
                     src={mainImage}
                     alt={mainProductAlt}
-                    className={`relative z-[1] object-contain object-center ${shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''} ${
-                      isChairImage ? 'h-full w-full' : 'h-full w-auto max-w-none'
-                    }`}
+                    className={`relative z-[1] h-full w-full object-contain object-center ${shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''}`}
                   />
                 </div>
 
@@ -538,13 +574,47 @@ export default function ProductPage() {
                   </button>
                 )}
               </div>
-              <div className="mt-4 hidden lg:block">
-                <div className="h-[106px] w-full">
+              <div className="mt-1 hidden lg:block">
+                <div className="h-[72px] w-full">
                   <div className="flex h-full w-full items-center justify-center overflow-hidden">
                     <img src={highResPodCert} alt="AcePods certifications" className="h-[140%] w-auto max-w-none object-contain" />
                   </div>
                 </div>
               </div>
+              {hasMultipleExteriorColors && (
+                <div className="mt-1 hidden lg:block">
+                  <div className="px-0 py-1">
+                    <p className="mb-2 text-center text-[12px] font-semibold tracking-[0.03em] text-[#3b3f45]">Available pod colours</p>
+                    <div className="flex justify-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                      {exteriorThumbnailItems.map((color) => {
+                        const selected = color.id === selectedExterior;
+                        return (
+                          <button
+                            key={`left-color-${color.id}`}
+                            type="button"
+                            onClick={() => handleExteriorSelect(color.id)}
+                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f5f6f8] transition-all ${
+                              selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
+                            }`}
+                            aria-label={`Available pod colours: ${color.label}`}
+                          >
+                            <img
+                              src={color.thumbnailImage}
+                              alt={`${product.name} in ${color.label}`}
+                              className="h-full w-full object-contain object-center"
+                            />
+                            {selected && (
+                              <span className="absolute inset-0 border border-[#1e2227]">
+                                <Check size={12} className="absolute right-0.5 top-0.5 text-white drop-shadow-[0_0_2px_rgba(0,0,0,0.75)]" />
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="min-w-0 lg:flex lg:h-[760px] lg:flex-col">
@@ -784,48 +854,58 @@ export default function ProductPage() {
               <h2 className="text-center text-[28px] font-semibold tracking-tight text-[#1e2227]">Key Features</h2>
 
               <div className="mt-6 md:mt-7">
-                <div className="md:overflow-x-auto md:pb-3">
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:flex md:w-max md:min-w-full md:items-start md:justify-start md:gap-8 lg:gap-10">
-                    {allFeatureItems.map((item, itemIndex) => (
+                <div className="relative">
+                  <button
+                    type="button"
+                    aria-label="Scroll features left"
+                    onClick={() => scrollFeatureTrack(-1)}
+                    disabled={!canScrollFeaturesLeft}
+                    className={`absolute left-0 top-[72px] z-10 hidden -translate-x-1/2 rounded-full border border-[#cfd4d8] bg-white p-2 text-[#2a3138] shadow-sm transition md:block ${
+                      canScrollFeaturesLeft ? 'hover:bg-[#f5f7f8]' : 'pointer-events-none opacity-40'
+                    }`}
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Scroll features right"
+                    onClick={() => scrollFeatureTrack(1)}
+                    disabled={!canScrollFeaturesRight}
+                    className={`absolute right-0 top-[72px] z-10 hidden translate-x-1/2 rounded-full border border-[#cfd4d8] bg-white p-2 text-[#2a3138] shadow-sm transition md:block ${
+                      canScrollFeaturesRight ? 'hover:bg-[#f5f7f8]' : 'pointer-events-none opacity-40'
+                    }`}
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                <div ref={featureScrollRef} className="md:overflow-x-auto md:pb-3">
+                  <div className={featureTrackGapClass}>
+                    {allFeatureItems.map((item) => (
                       <article
-                        key={`feature-single-row-${itemIndex}`}
-                        className={
-                          product.slug === 'ace-solo'
-                            ? 'mx-auto w-full max-w-[320px] text-center md:mx-0 md:w-[320px] md:max-w-none md:shrink-0'
-                            : 'mx-auto flex w-full max-w-[320px] flex-col text-center md:mx-0 md:w-[320px] md:max-w-none md:shrink-0'
-                        }
+                        key={item.id}
+                        className={sharedFeatureCardClass}
                       >
-                        <div
-                          className={
-                            product.slug === 'ace-solo'
-                              ? 'mx-auto flex h-[152px] w-full max-w-[280px] items-center justify-center overflow-hidden sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] lg:h-[188px] lg:max-w-[340px]'
-                              : 'mx-auto flex h-[152px] w-full items-center justify-center overflow-hidden rounded-[24px] sm:h-[164px] md:h-[176px] md:rounded-[28px] lg:h-[188px]'
-                          }
-                        >
+                        <div className={isPlusAndAboveFeatures ? sharedFeatureMediaFrameClass : soloFeatureMediaFrameClass}>
                           <img
                             src={item.image}
                             alt={getFeatureAlt(item)}
-                            className={
-                              isIconLikeFeature(item)
-                                ? 'h-full w-full object-contain'
-                                : 'h-full w-full object-cover [object-position:center_72%]'
-                            }
+                            className={isPlusAndAboveFeatures ? sharedFeatureImageClass : soloFeatureImageClass}
                             loading="lazy"
                           />
                         </div>
                         {isPlusAndAboveFeatures && item.title && (
-                          <h3 className="mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#1f232a] md:mt-1.5 md:text-[18px]">
+                          <h3 className={sharedFeatureTitleClass}>
                             {item.title}
                           </h3>
                         )}
                         {isPlusAndAboveFeatures && item.desc && (
-                          <p className="mx-auto mt-1.5 max-w-[28ch] text-justify text-[14px] leading-[1.45] text-[#4f5660] md:mt-2 md:text-[15px]">
+                          <p className={sharedFeatureDescClass}>
                             {item.desc}
                           </p>
                         )}
                       </article>
                     ))}
                   </div>
+                </div>
                 </div>
               </div>
             </section>
