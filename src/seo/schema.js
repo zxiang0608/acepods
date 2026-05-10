@@ -106,6 +106,29 @@ export const createBreadcrumbSchema = (items) => ({
   }))
 });
 
+export const createPricingItemListSchema = (path, items) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Office Pod Pricing in Malaysia',
+  url: buildCanonical(path),
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: item.name,
+      url: buildCanonical(item.path),
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: item.priceCurrency || 'MYR',
+        price: String(item.price),
+        availability: 'https://schema.org/InStock',
+        url: buildCanonical(item.path)
+      }
+    }
+  }))
+});
+
 export const createProductSchema = ({
   path,
   name,
@@ -127,13 +150,14 @@ export const createProductSchema = ({
   category,
   url: buildCanonical(path),
   ...(typeof price === 'number'
-    ? {
-        offers: {
-          '@type': 'Offer',
-          url: buildCanonical(path),
-          priceCurrency,
-          price: String(price)
+      ? {
+          offers: {
+            '@type': 'Offer',
+            url: buildCanonical(path),
+            priceCurrency,
+            price: String(price),
+            availability: 'https://schema.org/InStock'
+          }
         }
-      }
-    : {})
+      : {})
 });

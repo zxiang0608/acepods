@@ -4,8 +4,8 @@ import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
 import { products } from '../data/products';
 import { pushDataLayerEvent } from '../lib/tracking';
-import { SEO_KEYWORDS_COMMON } from '../seo/constants';
-import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { PRICING_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
+import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -13,6 +13,15 @@ const breadcrumbs = [
 ];
 
 export default function PricingPage() {
+  const pricingListItems = products.map((product) => {
+    const basePrice = product.pdpPricing?.baseConfigurations?.[0]?.price;
+    return {
+      name: product.name,
+      path: `/pods/${product.slug}`,
+      price: basePrice
+    };
+  });
+
   return (
     <PageShell>
       <SeoMeta
@@ -20,7 +29,13 @@ export default function PricingPage() {
         description="Understand office pod pricing and what affects final project cost, including pod type, delivery, installation, and selected options."
         canonical={buildCanonical('/pricing')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`}
-        schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
+        schemas={[
+          organizationSchema,
+          websiteSchema,
+          createBreadcrumbSchema(breadcrumbs),
+          createFaqSchema('/pricing', PRICING_FAQ_ITEMS),
+          createPricingItemListSchema('/pricing', pricingListItems)
+        ]}
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
@@ -33,7 +48,8 @@ export default function PricingPage() {
 
         <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">How much does an office pod cost?</h1>
         <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
-          Office pod pricing depends on model, size, selected features, delivery, installation conditions, and any add-ons.
+          Office pod pricing depends on model size, configuration, quantity, delivery access, installation requirements, and optional add-ons. The
+          prices below are starting prices for Ace Office Pods models in Malaysia.
         </p>
       </section>
 
@@ -43,6 +59,19 @@ export default function PricingPage() {
           <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
             The full project price can include the pod, delivery, installation, and selected add-ons. Scope is confirmed clearly before final quote acceptance.
           </p>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
+        <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Office pod starting prices in Malaysia</h2>
+          <ul className="mt-4 space-y-2 text-[16px] leading-[1.6] text-[#30363d]">
+            {products.map((product) => (
+              <li key={`price-list-${product.slug}`}>
+                <span className="font-semibold text-[#1d232a]">{product.name}</span> - <span>{product.pricing.amount}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -69,6 +98,38 @@ export default function PricingPage() {
             </Link>
           </article>
         ))}
+      </section>
+
+      <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
+        <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">What affects the final price?</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+            Final pricing may vary depending on pod model, quantity, delivery location, floor/access conditions, installation scope, optional
+            furniture, finishes, power requirements, and project timeline.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
+        <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Bulk and project pricing</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+            Corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, and project buyers can request project pricing
+            or bulk pricing depending on quantity, model mix, location, and installation scope.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
+        <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Common pricing questions</h2>
+        <div className="mt-4 space-y-3">
+          {PRICING_FAQ_ITEMS.map((item) => (
+            <article key={item.question} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
+              <h3 className="text-[18px] font-semibold leading-[1.35] text-[#1d232a]">{item.question}</h3>
+              <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">{item.answer}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="mx-auto mt-10 flex w-full max-w-[1100px] flex-wrap gap-5 px-5 text-[15px] font-semibold text-[#145b5f] md:px-8">

@@ -37,7 +37,7 @@ const footerLinkGroups = [
     title: 'Support',
     links: [
       { label: 'Contact us', to: '/contact' },
-      { label: 'Article', to: '/articles' },
+      { label: 'Articles', to: '/articles' },
       { label: 'Installation & delivery', to: '/installation-support' },
       { label: 'After-sales support', to: '/installation-support#after-sales-support' }
     ]

@@ -132,3 +132,31 @@ export const OFFICE_PODS_FAQ_ITEMS = [
       'Choose a one-person phone booth for calls and video meetings, a focus pod for individual work, a two-person pod for quick discussions, and a larger meeting pod for team collaboration. The right size depends on how many people will use the pod and whether the main use is calls, focus work, or meetings.'
   }
 ];
+
+export const PRICING_FAQ_ITEMS = [
+  {
+    question: 'How much does an office pod cost in Malaysia?',
+    answer:
+      'Ace Office Pods start from RM12,500 for a one-person office pod. Larger meeting pods and multi-person models have higher starting prices depending on size, configuration, delivery, and installation requirements.'
+  },
+  {
+    question: 'What affects the final office pod price?',
+    answer:
+      'Final pricing may vary based on pod model, quantity, delivery location, site access, installation scope, finishes, furniture, power requirements, and project timeline.'
+  },
+  {
+    question: 'Do prices include delivery and installation?',
+    answer:
+      'Pricing may depend on delivery location and installation scope. For accurate costing, share your office location, floor access, quantity, and preferred models when requesting a quotation.'
+  },
+  {
+    question: 'Is bulk pricing available for corporate or project orders?',
+    answer:
+      'Yes. Bulk or project pricing can be discussed for corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, and multi-unit office projects.'
+  },
+  {
+    question: 'Are office pods cheaper than building rooms?',
+    answer:
+      'Office pods can be a lower-disruption alternative to building new rooms, especially when the priority is speed, flexibility, and modular private space. The best option depends on office layout, quantity, specification, and long-term use.'
+  }
+];

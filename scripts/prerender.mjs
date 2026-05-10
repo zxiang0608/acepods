@@ -5,6 +5,7 @@ import {
   FAQ_PAGE_ITEMS,
   HOME_FAQ_ITEMS,
   OFFICE_PODS_FAQ_ITEMS,
+  PRICING_FAQ_ITEMS,
   SEO_BASE_URL,
   SEO_BRAND_ALTERNATE_NAMES,
   SEO_BRAND_AREA_SERVED,
@@ -19,6 +20,14 @@ import {
 } from '../src/seo/constants.js';
 import { ARTICLES } from '../src/data/articles.js';
 import { POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
+
+const POD_ROUTE_ORDER = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'];
+const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
+  slug,
+  name: POD_SEO_BY_SLUG[slug].name,
+  price: POD_SEO_BY_SLUG[slug].startingPrice,
+  path: `/pods/${slug}`
+}));
 
 const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.png`;
 const buildOrganizationSchema = () => ({
@@ -121,9 +130,16 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`,
     h1: 'How much does an office pod cost?',
     body: [
-      'Office pod pricing depends on model, size, selected features, delivery, installation conditions, and any add-ons.',
-      'Starting from RM12,500 (Ace Solo), RM14,400 (Ace Plus), RM19,900 (Ace Flex), RM19,900 (Ace Flex Duo), RM22,200 (Ace Meet), and RM27,800 (Ace Hub).'
+      'Office pod pricing depends on model size, configuration, quantity, delivery access, installation requirements, and optional add-ons. The prices below are starting prices for Ace Office Pods models in Malaysia.',
+      '## Office pod starting prices in Malaysia',
+      ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - From RM${item.price.toLocaleString('en-MY')}`),
+      '## What affects the final price?',
+      'Final pricing may vary depending on pod model, quantity, delivery location, floor/access conditions, installation scope, optional furniture, finishes, power requirements, and project timeline.',
+      '## Bulk and project pricing',
+      'Corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, and project buyers can request project pricing or bulk pricing depending on quantity, model mix, location, and installation scope.'
     ],
+    noscriptFaqHeading: 'Common pricing questions',
+    noscriptFaqItems: PRICING_FAQ_ITEMS,
     schemas: (canonical) => [
       {
         '@context': 'https://schema.org',
@@ -150,6 +166,41 @@ const STATIC_PRERENDER_META = {
             item: canonical
           }
         ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Office Pod Pricing in Malaysia',
+        url: canonical,
+        itemListElement: PRICING_LIST_ITEMS.map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Product',
+            name: item.name,
+            url: `${SEO_BASE_URL}${item.path}`,
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'MYR',
+              price: String(item.price),
+              availability: 'https://schema.org/InStock',
+              url: `${SEO_BASE_URL}${item.path}`
+            }
+          }
+        }))
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        url: canonical,
+        mainEntity: PRICING_FAQ_ITEMS.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer
+          }
+        }))
       }
     ]
   },
@@ -722,6 +773,7 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
         '@type': 'Offer',
         price: String(productMeta.startingPrice),
         priceCurrency: 'MYR',
+        availability: 'https://schema.org/InStock',
         url: canonical
       }
     }
