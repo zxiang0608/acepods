@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+  <channel>
+    <title>Ace Office Pods Merchant Feed</title>
+    <link>https://aceofficepods.com</link>
+    <description>Product feed for Ace Office Pods in Malaysia</description>
+    <item>
+      <g:id>ace-solo</g:id>
+      <g:title>Ace Solo Office Pod</g:title>
+      <g:description>Compact pod for calls and quick tasks</g:description>
+      <g:link>https://aceofficepods.com/pods/ace-solo</g:link>
+      <g:image_link>https://aceofficepods.com/products/ace-solo.png</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>12500.00 MYR</g:price>
+      <g:brand>Ace Office Pods</g:brand>
+      <g:condition>new</g:condition>
+      <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+    </item>
+    <item>
+      <g:id>ace-plus</g:id>
+      <g:title>Ace Plus Office Pod</g:title>
+      <g:description>Built for privacy, focus, and sound control</g:description>
+      <g:link>https://aceofficepods.com/pods/ace-plus</g:link>
+      <g:image_link>https://aceofficepods.com/products/ace-plus.png</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>14500.00 MYR</g:price>
+      <g:brand>Ace Office Pods</g:brand>
+      <g:condition>new</g:condition>
+      <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+    </item>
+    <item>
+      <g:id>ace-flex</g:id>
+      <g:title>Ace Flex Office Pod</g:title>
+      <g:description>Spacious pod for comfort and focus</g:description>
+      <g:link>https://aceofficepods.com/pods/ace-flex</g:link>
+      <g:image_link>https://aceofficepods.com/products/ace-flex.png</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>19900.00 MYR</g:price>
+      <g:brand>Ace Office Pods</g:brand>
+      <g:condition>new</g:condition>
+      <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+    </item>
+    <item>
+      <g:id>ace-flex-duo</g:id>
+      <g:title>Ace Flex Duo Office Pod</g:title>
+      <g:description>Two-person pod for focused work</g:description>
+      <g:link>https://aceofficepods.com/pods/ace-flex-duo</g:link>
+      <g:image_link>https://aceofficepods.com/products/ace-flex-duo.png</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>23900.00 MYR</g:price>
+      <g:brand>Ace Office Pods</g:brand>
+      <g:condition>new</g:condition>
+      <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+    </item>
+    <item>
+      <g:id>ace-meet</g:id>
+      <g:title>Ace Meet Office Pod</g:title>
+      <g:description>Meeting pod for small teams</g:description>
+      <g:link>https://aceofficepods.com/pods/ace-meet</g:link>
+      <g:image_link>https://aceofficepods.com/products/ace-meet.png</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>22200.00 MYR</g:price>
+      <g:brand>Ace Office Pods</g:brand>
+      <g:condition>new</g:condition>
+      <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+    </item>
+    <item>
+      <g:id>ace-hub</g:id>
+      <g:title>Ace Hub Office Pod</g:title>
+      <g:description>Meeting pod for larger teams</g:description>
+      <g:link>https://aceofficepods.com/pods/ace-hub</g:link>
+      <g:image_link>https://aceofficepods.com/products/ace-hub.png</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>27800.00 MYR</g:price>
+      <g:brand>Ace Office Pods</g:brand>
+      <g:condition>new</g:condition>
+      <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+    </item>
+  </channel>
+</rss>
