@@ -1,47 +1,48 @@
-import menuAceSolo from '../../assets/ace-solo-cutout.png';
-import menuAceSoloPlus from '../../assets/ace-solo-plus-cutout.png';
-import menuAceDuo from '../../assets/ace-duo-cutout.png';
-import menuAceFlexDuo from '../../assets/ace-flex-duo-hero.png';
-import menuAceMeeting from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/ocean-blue-cutout.png';
-import menuAceMeetingXL from '../../assets/ace-meeting-XL-cutout.png';
+import menuAceSoloAsh from '../../assets/products/ace-solo/normalized/aceSoloShimoAshImage-normalized.png';
+import menuAceSoloPlusGreyAsh from '../../assets/ace-plus-cutouts/ace-plus-grey-ash.png';
+import menuAceFlex from '../../assets/ace-flex.png';
+import menuAceFlexDuoHero from '../../assets/ace-flex-duo-hero.png';
+import menuAceMeetingGreyAsh from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/Grey ash.png';
+import menuAceHubGreyAsh from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/Grey ash-01.png';
 import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
 
 export const smartPodsMenuItems = [
   {
     title: 'Ace Solo',
     description: POD_SEO_BY_SLUG['ace-solo'].shortDesc,
-    image: menuAceSolo,
+    image: menuAceSoloAsh,
     to: '/pods/ace-solo'
   },
   {
     title: 'Ace Plus',
     description: POD_SEO_BY_SLUG['ace-plus'].shortDesc,
-    image: menuAceSoloPlus,
+    image: menuAceSoloPlusGreyAsh,
     to: '/pods/ace-plus'
   },
   {
     title: 'Ace Flex',
     description: POD_SEO_BY_SLUG['ace-flex'].shortDesc,
-    image: menuAceDuo,
+    image: menuAceFlex,
+    imageClassName: 'mix-blend-multiply',
     to: '/pods/ace-flex'
   },
   {
     title: 'Ace Flex Duo',
     description: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
-    image: menuAceFlexDuo,
+    image: menuAceFlexDuoHero,
     to: '/pods/ace-flex-duo'
   },
   {
     title: 'Ace Meet',
     description: POD_SEO_BY_SLUG['ace-meet'].shortDesc,
-    image: menuAceMeeting,
+    image: menuAceMeetingGreyAsh,
     imageClassName: 'scale-[1.14] mix-blend-multiply',
     to: '/pods/ace-meet'
   },
   {
     title: 'Ace Hub',
     description: POD_SEO_BY_SLUG['ace-hub'].shortDesc,
-    image: menuAceMeetingXL,
+    image: menuAceHubGreyAsh,
     imageClassName: 'mix-blend-multiply',
     to: '/pods/ace-hub'
   }

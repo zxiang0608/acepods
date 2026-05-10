@@ -20,6 +20,9 @@ import {
 import acePodsLogo from '../Logos/ace pods logo.png';
 import acePodsHero from '../assets/hero-pods.png';
 import acePodsHeroAvif from '../assets/hero-pods.avif';
+import aceFlexGreyAshCutout from '../assets/homepage-cutouts/ace-flex-grey-ash-cutout.png';
+import aceMeetGreyAshCutout from '../assets/homepage-cutouts/ace-meet-grey-ash-cutout.png';
+import aceHubGreyAshCutout from '../assets/homepage-cutouts/ace-hub-grey-ash-cutout.png';
 import officeOneImage from '../assets/Office-1.png';
 import officeTwoImage from '../assets/office-2.png';
 import officeThreeImage from '../assets/office-3.png';
@@ -350,7 +353,7 @@ export default function App() {
   };
 
   const heroHeadline = 'Office pods for calls, focus, and meetings';
-  const heroSupportingText = 'Add private space for calls, focused work, and meetings without building new rooms.';
+  const heroSupportingText = 'Acoustic office pods and booths for private calls, focused work, and meetings.';
   const heroTrustLine = 'A practical alternative to building new rooms';
   const productIntroHeading = 'Choose the right office pod\nfor calls, focus, or meetings';
   const privateSpaceHeading = 'Add private space without building new rooms';
@@ -371,9 +374,23 @@ export default function App() {
     const scaleClass = displayScaleBySlug[pod.slug] || '';
     return `h-full w-full object-contain ${scaleClass}`.trim();
   };
+  const getMenuPodItemBySlug = (slug) => smartPodsMenuItems.find((item) => item.to === `/pods/${slug}`) || null;
+  const getHomepagePodImageBlendClassName = (pod) => {
+    if (['ace-flex', 'ace-meet', 'ace-hub'].includes(pod.slug)) return '';
+    const menuItem = getMenuPodItemBySlug(pod.slug);
+    if (menuItem?.imageClassName?.includes('mix-blend-multiply')) return 'mix-blend-multiply';
+    return '';
+  };
+  const getHomepagePodCardImage = (pod) => {
+    if (pod.slug === 'ace-flex') return aceFlexGreyAshCutout;
+    if (pod.slug === 'ace-meet') return aceMeetGreyAshCutout;
+    if (pod.slug === 'ace-hub') return aceHubGreyAshCutout;
+    const menuItem = getMenuPodItemBySlug(pod.slug);
+    return menuItem?.image || pod.thumbImage;
+  };
   const getMobileHomepagePodImageClassName = (pod) => {
     const offsetClass = mobileImageOffsetBySlug[pod.slug] || 'translate-x-0';
-    return `${getHomepagePodImageClassName(pod)} ${offsetClass}`.trim();
+    return `${getHomepagePodImageClassName(pod)} ${offsetClass} ${getHomepagePodImageBlendClassName(pod)}`.trim();
   };
   const homepageCardHeadlineBySlug = {
     'ace-solo': 'Compact pod for calls\nand quick tasks',
@@ -399,7 +416,7 @@ export default function App() {
         <div className="mb-10 flex w-full items-center justify-center px-2">
           <div className="flex h-[210px] w-[210px] items-center justify-center md:h-[230px] md:w-[230px]">
             <img
-              src={pod.thumbImage}
+              src={getHomepagePodCardImage(pod)}
               alt={`${pod.name} acoustic office pod`}
               className={getMobileHomepagePodImageClassName(pod)}
             />
@@ -440,9 +457,9 @@ export default function App() {
         <div className="mt-auto w-full pt-8">
           <div className="mx-auto flex h-[300px] w-[300px] max-w-full items-center justify-center">
             <img
-              src={pod.thumbImage}
+              src={getHomepagePodCardImage(pod)}
               alt={`${pod.name} acoustic office pod`}
-              className={getHomepagePodImageClassName(pod)}
+              className={`${getHomepagePodImageClassName(pod)} ${getHomepagePodImageBlendClassName(pod)}`.trim()}
             />
           </div>
           <div className="mt-[84px] flex justify-center">
@@ -462,8 +479,8 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
       <SeoMeta
-        title="Ace Office Pods by Ace Workplace Solutions | Office Pods and Booths Malaysia"
-        description="Ace Office Pods (Ace Workplace Solutions), supplier of office pods and office booths for calls, focus, and meetings. 100% locally made in Malaysia."
+        title="Ace Office Pods & Office Booths Malaysia | Acoustic Meeting Pods"
+        description="Ace Office Pods supplies acoustic office pods, office booths, phone booths, and meeting pods in Malaysia for private calls, focused work, and small meetings."
         canonical={buildCanonical('/')}
         keywords={`${SEO_KEYWORDS_COMMON}, office booth provider`}
         schemas={homepageSchemas}

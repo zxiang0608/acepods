@@ -555,13 +555,13 @@ export default function ProductPage() {
                   </button>
                 )}
 
-                <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
-                  <img
-                    src={mainImage}
-                    alt={mainProductAlt}
-                    className={`relative z-[1] h-full w-full object-contain object-center ${shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''}`}
-                  />
-                </div>
+	                <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+	                  <img
+	                    src={mainImage}
+	                    alt={mainProductAlt}
+	                    className={`relative z-[1] h-full w-full object-contain object-center ${shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''}`}
+	                  />
+	                </div>
 
                 {productDisplayItems.length > 1 && (
                   <button

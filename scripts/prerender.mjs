@@ -4,6 +4,7 @@ import { getRouteManifest } from './route-manifest.mjs';
 import {
   FAQ_PAGE_ITEMS,
   HOME_FAQ_ITEMS,
+  OFFICE_PODS_FAQ_ITEMS,
   SEO_BASE_URL,
   SEO_BRAND_ALTERNATE_NAMES,
   SEO_BRAND_AREA_SERVED,
@@ -16,6 +17,7 @@ import {
   SEO_BRAND_SAME_AS,
   SEO_KEYWORDS_COMMON
 } from '../src/seo/constants.js';
+import { ARTICLES } from '../src/data/articles.js';
 import { POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
 
 const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.png`;
@@ -158,9 +160,11 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office booth Malaysia`,
     h1: 'Office pods and office booths for calls, focus, and meetings',
     body: [
-      'Ace Office Pods by Ace Workplace Solutions offers acoustic office pods and office booths in Malaysia for private calls, focused work, hybrid meetings, and small team discussions.',
-      'Our office booth range includes compact call pods, one-person focus booths, two-person discussion pods, and larger meeting pods for offices that need quiet space without building new rooms.'
+      'Ace Office Pods by Ace Workplace Solutions offers acoustic office pods and office booths in Malaysia for private calls, focused work, hybrid meetings, and small team discussions. In workplace planning, “office pods” and “office booths” are often used interchangeably for enclosed acoustic spaces designed for calls, focused work, and small meetings.',
+      'Our office booth range includes compact phone-booth style pods, one-person focus pods, two-person discussion pods, and larger meeting pods for team collaboration. These are privacy-focused, sound-reducing solutions for open-plan offices, and acoustic results vary by model and placement.'
     ],
+    noscriptFaqHeading: 'Common questions about office pods and office booths',
+    noscriptFaqItems: OFFICE_PODS_FAQ_ITEMS,
     schemas: (canonical) => [
       {
         '@context': 'https://schema.org',
@@ -187,6 +191,19 @@ const STATIC_PRERENDER_META = {
             item: canonical
           }
         ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        url: canonical,
+        mainEntity: OFFICE_PODS_FAQ_ITEMS.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer
+          }
+        }))
       }
     ]
   },
@@ -351,6 +368,45 @@ const STATIC_PRERENDER_META = {
       }
     ]
   },
+  '/articles': {
+    title: 'Office Pod Articles and Guides | Ace Office Pods',
+    description:
+      'Browse practical articles on office pods, office booths, phone booths, and meeting pod planning for modern workplaces in Malaysia.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office pod articles, office booth guide`,
+    h1: 'Office pod articles and planning guides',
+    body: [
+      'Explore practical guidance on office pods and office booths, including use-case planning, sizing, and workspace fit.',
+      'Read topic-specific articles to shortlist the right pod setup for calls, focused work, and team collaboration.'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Office Pod Articles and Guides',
+        url: canonical,
+        description:
+          'Browse practical articles on office pods, office booths, phone booths, and meeting pod planning for modern workplaces in Malaysia.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Articles',
+            item: canonical
+          }
+        ]
+      }
+    ]
+  },
   '/compare-office-pods': {
     title: 'Compare Office Pods by Price, Installation and Support | Ace Office Pods',
     description:
@@ -494,9 +550,115 @@ const escapeHtml = (value) =>
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
 
-const buildFallbackBody = ({ h1, body = [] }) => {
-  const paragraphs = body.map((line) => `<p>${escapeHtml(line)}</p>`).join('');
-  return `<main><section><h1>${escapeHtml(h1)}</h1>${paragraphs}</section></main>`;
+const renderInlineHtml = (text) => {
+  const value = String(text);
+  const pattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
+  let lastIndex = 0;
+  let output = '';
+  let match;
+
+  while ((match = pattern.exec(value)) !== null) {
+    if (match.index > lastIndex) {
+      output += escapeHtml(value.slice(lastIndex, match.index));
+    }
+
+    const token = match[0];
+    if (token.startsWith('**') && token.endsWith('**')) {
+      output += `<strong>${escapeHtml(token.slice(2, -2))}</strong>`;
+    } else {
+      const linkMatch = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (linkMatch) {
+        const [, label, url] = linkMatch;
+        output += `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>`;
+      } else {
+        output += escapeHtml(token);
+      }
+    }
+
+    lastIndex = pattern.lastIndex;
+  }
+
+  if (lastIndex < value.length) {
+    output += escapeHtml(value.slice(lastIndex));
+  }
+
+  return output;
+};
+
+const renderStructuredBodyHtml = (body = []) => {
+  const lines = Array.isArray(body) ? body.map((line) => String(line)) : [];
+  const blocks = [];
+  let index = 0;
+
+  while (index < lines.length) {
+    const line = lines[index];
+
+    if (line.startsWith('## ')) {
+      blocks.push(`<h2>${renderInlineHtml(line.slice(3))}</h2>`);
+      index += 1;
+      continue;
+    }
+
+    if (line.startsWith('### ')) {
+      blocks.push(`<h3>${renderInlineHtml(line.slice(4))}</h3>`);
+      index += 1;
+      continue;
+    }
+
+    if (line.startsWith('- ')) {
+      const items = [];
+      while (index < lines.length && lines[index].startsWith('- ')) {
+        items.push(lines[index].slice(2));
+        index += 1;
+      }
+      blocks.push(`<ul>${items.map((item) => `<li>${renderInlineHtml(item)}</li>`).join('')}</ul>`);
+      continue;
+    }
+
+    const isTableHeader = line.startsWith('|') && line.endsWith('|');
+    const isSeparator = index + 1 < lines.length && /^\|[-\s|:]+\|$/.test(lines[index + 1]);
+    if (isTableHeader && isSeparator) {
+      const headerCells = line
+        .split('|')
+        .slice(1, -1)
+        .map((cell) => cell.trim());
+      index += 2;
+
+      const rows = [];
+      while (index < lines.length && lines[index].startsWith('|') && lines[index].endsWith('|')) {
+        rows.push(
+          lines[index]
+            .split('|')
+            .slice(1, -1)
+            .map((cell) => cell.trim())
+        );
+        index += 1;
+      }
+
+      const thead = `<thead><tr>${headerCells.map((cell) => `<th>${renderInlineHtml(cell)}</th>`).join('')}</tr></thead>`;
+      const tbody = `<tbody>${rows
+        .map((row) => `<tr>${row.map((cell) => `<td>${renderInlineHtml(cell)}</td>`).join('')}</tr>`)
+        .join('')}</tbody>`;
+      blocks.push(`<table>${thead}${tbody}</table>`);
+      continue;
+    }
+
+    blocks.push(`<p>${renderInlineHtml(line)}</p>`);
+    index += 1;
+  }
+
+  return blocks.join('');
+};
+
+const buildFallbackBody = ({ h1, body = [], noscriptFaqHeading, noscriptFaqItems = [] }) => {
+  const structuredBody = renderStructuredBodyHtml(body);
+  const faqBlock =
+    noscriptFaqHeading && noscriptFaqItems.length
+      ? `<section><h2>${escapeHtml(noscriptFaqHeading)}</h2>${noscriptFaqItems
+          .map((item) => `<article><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></article>`)
+          .join('')}</section>`
+      : '';
+  return `<main><section><h1>${escapeHtml(h1)}</h1>${structuredBody}</section>${faqBlock}</main>`;
 };
 
 const injectSeoHtml = (html, route, meta) => {
@@ -521,6 +683,13 @@ const injectSeoHtml = (html, route, meta) => {
     `    <meta name="description" content="${escapeHtml(meta.description)}" />\n` +
       `    <meta name="robots" content="${escapeHtml(robots)}" />\n` +
       `${keywords ? `    <meta name="keywords" content="${escapeHtml(keywords)}" />\n` : ''}` +
+      `    <meta property="og:type" content="${escapeHtml(meta.ogType || 'website')}" />\n` +
+      `    <meta property="og:title" content="${escapeHtml(meta.title)}" />\n` +
+      `    <meta property="og:description" content="${escapeHtml(meta.description)}" />\n` +
+      `    <meta property="og:url" content="${canonical}" />\n` +
+      `    <meta name="twitter:card" content="summary_large_image" />\n` +
+      `    <meta name="twitter:title" content="${escapeHtml(meta.title)}" />\n` +
+      `    <meta name="twitter:description" content="${escapeHtml(meta.description)}" />\n` +
       `    <link rel="canonical" href="${canonical}" />\n` +
       `${schemaScripts ? `${schemaScripts}\n` : ''}` +
       '  </head>'
@@ -559,6 +728,57 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
   ]
 });
 
+const buildArticlePrerenderMeta = (route, articleMeta) => ({
+  title: articleMeta.seoTitle || `${articleMeta.title} | Ace Office Pods`,
+  description: articleMeta.seoDescription || articleMeta.excerpt,
+  keywords: `${SEO_KEYWORDS_COMMON}, office pod article`,
+  h1: articleMeta.title,
+  body: articleMeta.content,
+  schemas: (canonical) => [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: articleMeta.title,
+      description: articleMeta.seoDescription || articleMeta.excerpt,
+      datePublished: articleMeta.date,
+      dateModified: articleMeta.date,
+      mainEntityOfPage: canonical,
+      author: {
+        '@type': 'Organization',
+        name: SEO_BRAND_PRIMARY
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: SEO_BRAND_PRIMARY
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: `${SEO_BASE_URL}/`
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Articles',
+          item: `${SEO_BASE_URL}/articles`
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: articleMeta.title,
+          item: canonical
+        }
+      ]
+    }
+  ]
+});
+
 const run = async () => {
   const { PUBLIC_ROUTES } = await getRouteManifest();
   const baseHtmlPath = path.resolve(process.cwd(), 'dist/index.html');
@@ -567,11 +787,19 @@ const run = async () => {
   for (const route of PUBLIC_ROUTES) {
     const staticRouteMeta = STATIC_PRERENDER_META[route];
     const productSlug = route.startsWith('/pods/') ? route.split('/').pop() : null;
+    const articleSlug = route.startsWith('/articles/') ? route.split('/').pop() : null;
     const productRouteMeta = productSlug ? POD_SEO_BY_SLUG[productSlug] : null;
+    const articleRouteMeta = articleSlug ? ARTICLES.find((article) => article.slug === articleSlug) : null;
     if (productSlug && !productRouteMeta) {
       throw new Error(`Missing SEO catalog data for pod route: ${route}`);
     }
-    const resolvedMeta = staticRouteMeta || (productRouteMeta ? buildProductPrerenderMeta(route, productRouteMeta) : null);
+    if (articleSlug && !articleRouteMeta) {
+      throw new Error(`Missing SEO catalog data for article route: ${route}`);
+    }
+    const resolvedMeta =
+      staticRouteMeta ||
+      (productRouteMeta ? buildProductPrerenderMeta(route, productRouteMeta) : null) ||
+      (articleRouteMeta ? buildArticlePrerenderMeta(route, articleRouteMeta) : null);
     if (!resolvedMeta) {
       throw new Error(`Missing prerender SEO meta for route: ${route}`);
     }

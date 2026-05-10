@@ -4,8 +4,8 @@ import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
 import { products } from '../data/products';
 import { pushDataLayerEvent } from '../lib/tracking';
-import { SEO_KEYWORDS_COMMON } from '../seo/constants';
-import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { OFFICE_PODS_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
+import { buildCanonical, createBreadcrumbSchema, createFaqSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -29,7 +29,7 @@ export default function OfficePodsPage() {
         description="Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams choose the right pod by use case, capacity, and project needs."
         canonical={buildCanonical('/office-pods')}
         keywords={`${SEO_KEYWORDS_COMMON}, office booth Malaysia`}
-        schemas={[organizationSchema, websiteSchema, officePodsCollectionSchema, createBreadcrumbSchema(breadcrumbs)]}
+        schemas={[organizationSchema, websiteSchema, officePodsCollectionSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/office-pods', OFFICE_PODS_FAQ_ITEMS)]}
       />
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
@@ -44,10 +44,10 @@ export default function OfficePodsPage() {
           Office pods and office booths for calls, focus, and meetings
         </h1>
         <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
-          Ace Office Pods by Ace Workplace Solutions offers acoustic office pods and office booths in Malaysia for private calls, focused work, hybrid meetings, and small team discussions. Choose your office pod by capacity, use case, and project requirements.
+          Ace Office Pods by Ace Workplace Solutions offers acoustic office pods and office booths in Malaysia for private calls, focused work, hybrid meetings, and small team discussions. In workplace planning, “office pods” and “office booths” are often used interchangeably for enclosed acoustic spaces designed for calls, focused work, and small meetings.
         </p>
         <p className="mt-3 max-w-[70ch] text-[16px] leading-[1.65] text-[#58616b]">
-          Our office booth range includes compact call pods, one-person focus booths, two-person discussion pods, and larger meeting pods for offices that need quiet space without building new rooms.
+          Our office booth range includes compact phone-booth style pods, one-person focus pods, two-person discussion pods, and larger meeting pods for team collaboration. These are privacy-focused, sound-reducing solutions for open-plan offices, and acoustic results vary by model and placement.
         </p>
       </section>
 
@@ -74,6 +74,18 @@ export default function OfficePodsPage() {
             >
               View {product.name}
             </Link>
+          </article>
+        ))}
+      </section>
+
+      <section className="mx-auto w-full max-w-[1200px] px-5 pb-2 pt-8 md:px-8 md:pt-10">
+        <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Common questions about office pods and office booths</h2>
+      </section>
+      <section className="mx-auto grid w-full max-w-[1200px] gap-4 px-5 md:px-8">
+        {OFFICE_PODS_FAQ_ITEMS.map((item) => (
+          <article key={item.question} className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
+            <h3 className="text-[22px] font-semibold tracking-tight text-[#1d232a]">{item.question}</h3>
+            <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">{item.answer}</p>
           </article>
         ))}
       </section>
@@ -108,6 +120,12 @@ export default function OfficePodsPage() {
           </Link>
           <Link to="/installation-support" className="underline-offset-4 hover:underline">
             Learn about installation and support
+          </Link>
+          <Link to="/faq" className="underline-offset-4 hover:underline">
+            Read office pod FAQs
+          </Link>
+          <Link to="/contact" className="underline-offset-4 hover:underline">
+            Ask for a recommendation
           </Link>
         </div>
       </section>

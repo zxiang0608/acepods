@@ -103,6 +103,12 @@ import aceSoloProGreenMossImage from '../../assets/POD images/S POD + - Ace Solo
 import aceSoloProOceanBlueImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/ocean blue s pod+.png';
 import aceSoloProGreyAshImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/grey s pod+.png';
 import aceSoloProCharcoalGreyImage from '../../assets/POD images/S POD + - Ace Solo Pro/all colors/charcoal grey s pod+.png';
+import aceFlexDuoOrangeSquashImage from '../../assets/POD images/Ace Flex Duo/with 2 bar stools/ORANGE SQUAS.png';
+import aceFlexDuoMustardYellowImage from '../../assets/POD images/Ace Flex Duo/with 2 bar stools/yellow.png';
+import aceFlexDuoGreenMossImage from '../../assets/POD images/Ace Flex Duo/with 2 bar stools/green moss.png';
+import aceFlexDuoOceanBlueImage from '../../assets/POD images/Ace Flex Duo/with 2 bar stools/ocean blue.png';
+import aceFlexDuoGreyAshImage from '../../assets/POD images/Ace Flex Duo/with 2 bar stools/GREY ASH.png';
+import aceFlexDuoCharcoalGreyImage from '../../assets/POD images/Ace Flex Duo/with 2 bar stools/charcoal grey.png';
 import aceMeetingOrangeSquashImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/orange squash.png';
 import aceMeetingMustardYellowImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/mustard yellow.png';
 import aceMeetingGreenExteriorImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/green moss.png';
@@ -120,6 +126,7 @@ import aceMeetingXLCharcoalGreyImage from '../../assets/POD images/TEAM POD 6 Se
 import aceFlexDuoGallery01 from '../../assets/POD images/Ace Flex Duo/flexduo1.jpeg';
 import aceFlexDuoGallery02 from '../../assets/POD images/Ace Flex Duo/flexduo2.jpeg';
 import aceFlexDuoGallery03 from '../../assets/POD images/Ace Flex Duo/flexduo3.jpeg';
+import aceFlexDuoGallery04 from '../../assets/POD images/Ace Flex Duo/2 seaters.png';
 import portfolioAlphabet02 from '../../assets/Portfolio/Alphabet Capital/20250619_140819.jpg';
 import portfolioAlphabet03 from '../../assets/Portfolio/Alphabet Capital/20250619_141013.jpg';
 import portfolioAlphabet04 from '../../assets/Portfolio/Alphabet Capital/ace-duo-2.jpg';
@@ -214,7 +221,7 @@ const aceFlexAlphabetPhotos = [
   barStoolBlack,
   barStoolWhite
 ];
-const aceFlexDuoGalleryPhotos = [aceFlexDuoGallery01, aceFlexDuoGallery02, aceFlexDuoGallery03];
+const aceFlexDuoGalleryPhotos = [aceFlexDuoGallery01, aceFlexDuoGallery02, aceFlexDuoGallery03, aceFlexDuoGallery04];
 const aceHubPortfolioPhotos = [
   portfolioAceHub01,
   portfolioAceHub02,
@@ -411,6 +418,15 @@ const meetingXLExteriorImageMap = {
   'finish-ocean-blue': aceMeetingXLOceanBlueImage,
   'finish-grey-ash': aceMeetingXLGreyAshImage,
   'finish-charcoal-grey': aceMeetingXLCharcoalGreyImage
+};
+
+const aceFlexDuoExteriorImageMap = {
+  'finish-orange-squash': aceFlexDuoOrangeSquashImage,
+  'finish-mustard-yellow': aceFlexDuoMustardYellowImage,
+  'finish-green-moss': aceFlexDuoGreenMossImage,
+  'finish-ocean-blue': aceFlexDuoOceanBlueImage,
+  'finish-grey-ash': aceFlexDuoGreyAshImage,
+  'finish-charcoal-grey': aceFlexDuoCharcoalGreyImage
 };
 
 const formatFromPrice = (amount) => `From RM${amount.toLocaleString('en-MY')}`;
@@ -722,65 +738,9 @@ export const products = [
       addOnOptions: [highBarStoolAddon]
     },
     colorImageMap: {
-      default: aceSoloProGreyAshImage,
-      byExterior: {
-        'finish-orange-squash': aceSoloProOrangeSquashImage,
-        'finish-mustard-yellow': aceSoloProMustardYellowImage,
-        'finish-green-moss': aceSoloProGreenMossImage,
-        'finish-ocean-blue': aceSoloProOceanBlueImage,
-        'finish-grey-ash': aceSoloProGreyAshImage,
-        'finish-charcoal-grey': aceSoloProCharcoalGreyImage
-      },
-      byPair: {
-        'finish-orange-squash|int-shimo-ash': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-sky-blue': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-moonlight-grey': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-tangerine': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-light-plum': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-vivid-red': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-creamy-white': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-sesame-black': aceSoloProOrangeSquashImage,
-        'finish-mustard-yellow|int-shimo-ash': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-sky-blue': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-moonlight-grey': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-tangerine': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-light-plum': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-vivid-red': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-creamy-white': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-sesame-black': aceSoloProMustardYellowImage,
-        'finish-green-moss|int-shimo-ash': aceSoloProGreenMossImage,
-        'finish-green-moss|int-sky-blue': aceSoloProGreenMossImage,
-        'finish-green-moss|int-moonlight-grey': aceSoloProGreenMossImage,
-        'finish-green-moss|int-tangerine': aceSoloProGreenMossImage,
-        'finish-green-moss|int-light-plum': aceSoloProGreenMossImage,
-        'finish-green-moss|int-vivid-red': aceSoloProGreenMossImage,
-        'finish-green-moss|int-creamy-white': aceSoloProGreenMossImage,
-        'finish-green-moss|int-sesame-black': aceSoloProGreenMossImage,
-        'finish-ocean-blue|int-shimo-ash': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-sky-blue': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-moonlight-grey': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-tangerine': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-light-plum': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-vivid-red': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-creamy-white': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-sesame-black': aceSoloProOceanBlueImage,
-        'finish-grey-ash|int-shimo-ash': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-sky-blue': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-moonlight-grey': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-tangerine': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-light-plum': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-vivid-red': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-creamy-white': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-sesame-black': aceSoloProGreyAshImage,
-        'finish-charcoal-grey|int-shimo-ash': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-sky-blue': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-moonlight-grey': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-tangerine': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-light-plum': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-vivid-red': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-creamy-white': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-sesame-black': aceSoloProCharcoalGreyImage
-      }
+      default: aceFlexDuoExteriorImageMap['finish-grey-ash'],
+      byExterior: aceFlexDuoExteriorImageMap,
+      byPair: createExteriorInteriorPairMap(aceFlexDuoExteriorImageMap)
     },
     hideThumbnailsOnColorMode: true,
     exteriorLabel: 'Fabric Exterior Colour Options',
@@ -888,64 +848,64 @@ export const products = [
       addOnOptions: [highBarStoolAddon]
     },
     colorImageMap: {
-      default: aceSoloProGreyAshImage,
+      default: aceFlexDuoGreyAshImage,
       byExterior: {
-        'finish-orange-squash': aceSoloProOrangeSquashImage,
-        'finish-mustard-yellow': aceSoloProMustardYellowImage,
-        'finish-green-moss': aceSoloProGreenMossImage,
-        'finish-ocean-blue': aceSoloProOceanBlueImage,
-        'finish-grey-ash': aceSoloProGreyAshImage,
-        'finish-charcoal-grey': aceSoloProCharcoalGreyImage
+        'finish-orange-squash': aceFlexDuoOrangeSquashImage,
+        'finish-mustard-yellow': aceFlexDuoMustardYellowImage,
+        'finish-green-moss': aceFlexDuoGreenMossImage,
+        'finish-ocean-blue': aceFlexDuoOceanBlueImage,
+        'finish-grey-ash': aceFlexDuoGreyAshImage,
+        'finish-charcoal-grey': aceFlexDuoCharcoalGreyImage
       },
       byPair: {
-        'finish-orange-squash|int-shimo-ash': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-sky-blue': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-moonlight-grey': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-tangerine': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-light-plum': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-vivid-red': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-creamy-white': aceSoloProOrangeSquashImage,
-        'finish-orange-squash|int-sesame-black': aceSoloProOrangeSquashImage,
-        'finish-mustard-yellow|int-shimo-ash': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-sky-blue': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-moonlight-grey': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-tangerine': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-light-plum': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-vivid-red': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-creamy-white': aceSoloProMustardYellowImage,
-        'finish-mustard-yellow|int-sesame-black': aceSoloProMustardYellowImage,
-        'finish-green-moss|int-shimo-ash': aceSoloProGreenMossImage,
-        'finish-green-moss|int-sky-blue': aceSoloProGreenMossImage,
-        'finish-green-moss|int-moonlight-grey': aceSoloProGreenMossImage,
-        'finish-green-moss|int-tangerine': aceSoloProGreenMossImage,
-        'finish-green-moss|int-light-plum': aceSoloProGreenMossImage,
-        'finish-green-moss|int-vivid-red': aceSoloProGreenMossImage,
-        'finish-green-moss|int-creamy-white': aceSoloProGreenMossImage,
-        'finish-green-moss|int-sesame-black': aceSoloProGreenMossImage,
-        'finish-ocean-blue|int-shimo-ash': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-sky-blue': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-moonlight-grey': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-tangerine': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-light-plum': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-vivid-red': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-creamy-white': aceSoloProOceanBlueImage,
-        'finish-ocean-blue|int-sesame-black': aceSoloProOceanBlueImage,
-        'finish-grey-ash|int-shimo-ash': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-sky-blue': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-moonlight-grey': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-tangerine': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-light-plum': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-vivid-red': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-creamy-white': aceSoloProGreyAshImage,
-        'finish-grey-ash|int-sesame-black': aceSoloProGreyAshImage,
-        'finish-charcoal-grey|int-shimo-ash': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-sky-blue': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-moonlight-grey': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-tangerine': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-light-plum': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-vivid-red': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-creamy-white': aceSoloProCharcoalGreyImage,
-        'finish-charcoal-grey|int-sesame-black': aceSoloProCharcoalGreyImage
+        'finish-orange-squash|int-shimo-ash': aceFlexDuoOrangeSquashImage,
+        'finish-orange-squash|int-sky-blue': aceFlexDuoOrangeSquashImage,
+        'finish-orange-squash|int-moonlight-grey': aceFlexDuoOrangeSquashImage,
+        'finish-orange-squash|int-tangerine': aceFlexDuoOrangeSquashImage,
+        'finish-orange-squash|int-light-plum': aceFlexDuoOrangeSquashImage,
+        'finish-orange-squash|int-vivid-red': aceFlexDuoOrangeSquashImage,
+        'finish-orange-squash|int-creamy-white': aceFlexDuoOrangeSquashImage,
+        'finish-orange-squash|int-sesame-black': aceFlexDuoOrangeSquashImage,
+        'finish-mustard-yellow|int-shimo-ash': aceFlexDuoMustardYellowImage,
+        'finish-mustard-yellow|int-sky-blue': aceFlexDuoMustardYellowImage,
+        'finish-mustard-yellow|int-moonlight-grey': aceFlexDuoMustardYellowImage,
+        'finish-mustard-yellow|int-tangerine': aceFlexDuoMustardYellowImage,
+        'finish-mustard-yellow|int-light-plum': aceFlexDuoMustardYellowImage,
+        'finish-mustard-yellow|int-vivid-red': aceFlexDuoMustardYellowImage,
+        'finish-mustard-yellow|int-creamy-white': aceFlexDuoMustardYellowImage,
+        'finish-mustard-yellow|int-sesame-black': aceFlexDuoMustardYellowImage,
+        'finish-green-moss|int-shimo-ash': aceFlexDuoGreenMossImage,
+        'finish-green-moss|int-sky-blue': aceFlexDuoGreenMossImage,
+        'finish-green-moss|int-moonlight-grey': aceFlexDuoGreenMossImage,
+        'finish-green-moss|int-tangerine': aceFlexDuoGreenMossImage,
+        'finish-green-moss|int-light-plum': aceFlexDuoGreenMossImage,
+        'finish-green-moss|int-vivid-red': aceFlexDuoGreenMossImage,
+        'finish-green-moss|int-creamy-white': aceFlexDuoGreenMossImage,
+        'finish-green-moss|int-sesame-black': aceFlexDuoGreenMossImage,
+        'finish-ocean-blue|int-shimo-ash': aceFlexDuoOceanBlueImage,
+        'finish-ocean-blue|int-sky-blue': aceFlexDuoOceanBlueImage,
+        'finish-ocean-blue|int-moonlight-grey': aceFlexDuoOceanBlueImage,
+        'finish-ocean-blue|int-tangerine': aceFlexDuoOceanBlueImage,
+        'finish-ocean-blue|int-light-plum': aceFlexDuoOceanBlueImage,
+        'finish-ocean-blue|int-vivid-red': aceFlexDuoOceanBlueImage,
+        'finish-ocean-blue|int-creamy-white': aceFlexDuoOceanBlueImage,
+        'finish-ocean-blue|int-sesame-black': aceFlexDuoOceanBlueImage,
+        'finish-grey-ash|int-shimo-ash': aceFlexDuoGreyAshImage,
+        'finish-grey-ash|int-sky-blue': aceFlexDuoGreyAshImage,
+        'finish-grey-ash|int-moonlight-grey': aceFlexDuoGreyAshImage,
+        'finish-grey-ash|int-tangerine': aceFlexDuoGreyAshImage,
+        'finish-grey-ash|int-light-plum': aceFlexDuoGreyAshImage,
+        'finish-grey-ash|int-vivid-red': aceFlexDuoGreyAshImage,
+        'finish-grey-ash|int-creamy-white': aceFlexDuoGreyAshImage,
+        'finish-grey-ash|int-sesame-black': aceFlexDuoGreyAshImage,
+        'finish-charcoal-grey|int-shimo-ash': aceFlexDuoCharcoalGreyImage,
+        'finish-charcoal-grey|int-sky-blue': aceFlexDuoCharcoalGreyImage,
+        'finish-charcoal-grey|int-moonlight-grey': aceFlexDuoCharcoalGreyImage,
+        'finish-charcoal-grey|int-tangerine': aceFlexDuoCharcoalGreyImage,
+        'finish-charcoal-grey|int-light-plum': aceFlexDuoCharcoalGreyImage,
+        'finish-charcoal-grey|int-vivid-red': aceFlexDuoCharcoalGreyImage,
+        'finish-charcoal-grey|int-creamy-white': aceFlexDuoCharcoalGreyImage,
+        'finish-charcoal-grey|int-sesame-black': aceFlexDuoCharcoalGreyImage
       }
     },
     hideThumbnailsOnColorMode: true,

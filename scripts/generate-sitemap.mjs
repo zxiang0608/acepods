@@ -7,9 +7,11 @@ const BASE_URL = 'https://aceofficepods.com';
 const sourceFilesForRoute = (route) => {
   if (route === '/') return ['src/App.jsx', 'src/seo/constants.js'];
   if (route.startsWith('/pods/')) return ['src/pages/ProductPage.jsx', 'src/data/products.js'];
+  if (route.startsWith('/articles/')) return ['src/pages/ArticleDetailPage.jsx', 'src/data/articles.js'];
 
   const staticRouteSources = {
     '/portfolio': ['src/pages/PortfolioPage.jsx'],
+    '/articles': ['src/pages/ArticlesPage.jsx', 'src/data/articles.js'],
     '/office-pods': ['src/pages/OfficePodsPage.jsx'],
     '/meeting-pods-malaysia': ['src/pages/MeetingPodsMalaysiaPage.jsx', 'src/data/products.js'],
     '/office-phone-booth-malaysia': ['src/pages/OfficePhoneBoothMalaysiaPage.jsx', 'src/data/products.js'],

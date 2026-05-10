@@ -109,3 +109,26 @@ export const FAQ_PAGE_ITEMS = [
       'Typical buyers include corporate teams, SMEs, interior designers, contractors, and procurement teams. They choose office pods to add privacy for calls, meetings, and focused work without major renovation. Many also value faster deployment, cleaner project execution, and layout flexibility as teams grow.'
   }
 ];
+
+export const OFFICE_PODS_FAQ_ITEMS = [
+  {
+    question: 'What is an office booth?',
+    answer:
+      'An office booth is an enclosed acoustic workspace designed for private calls, focused work, or small meetings inside an existing office. The term is often used interchangeably with office pod, especially for phone-booth style pods and compact meeting pods.'
+  },
+  {
+    question: 'What is the difference between an office pod and an office booth?',
+    answer:
+      'Office pods and office booths are often used interchangeably. In general, office pod is a broader term for enclosed workplace spaces, while office booth often refers to compact phone, focus, or meeting booths used inside open-plan offices.'
+  },
+  {
+    question: 'Are office booths soundproof?',
+    answer:
+      'Office booths are designed to reduce noise and improve privacy, but they should not be treated as fully soundproof unless supported by specific acoustic test data. Acoustic performance depends on the model, materials, seals, ventilation, placement, and surrounding office noise.'
+  },
+  {
+    question: 'Which office pod size should I choose?',
+    answer:
+      'Choose a one-person phone booth for calls and video meetings, a focus pod for individual work, a two-person pod for quick discussions, and a larger meeting pod for team collaboration. The right size depends on how many people will use the pod and whether the main use is calls, focus work, or meetings.'
+  }
+];

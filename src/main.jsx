@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import CompareOfficePodsPage from './pages/CompareOfficePodsPage';
 import ContactPage from './pages/ContactPage';
+import ArticleDetailPage from './pages/ArticleDetailPage';
+import ArticlesPage from './pages/ArticlesPage';
 import FaqPage from './pages/FaqPage';
 import InstallationSupportPage from './pages/InstallationSupportPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -29,6 +31,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/articles/:slug" element={<ArticleDetailPage />} />
         <Route path="/office-chairs" element={<OfficeChairsPage />} />
         <Route path="/office-pods" element={<OfficePodsPage />} />
         <Route path="/meeting-pods-malaysia" element={<MeetingPodsMalaysiaPage />} />
