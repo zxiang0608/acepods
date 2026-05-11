@@ -46,6 +46,7 @@ import wsConstructionLogo from '../assets/ws-construction.png';
 import wsConstructionLogoWebp from '../assets/ws-construction.webp';
 import idCandyLogo from '../assets/id-candy.jpg';
 import SeoMeta from './components/SeoMeta';
+import InstagramFeed from './components/InstagramFeed';
 import SiteFooter from './components/SiteFooter';
 import SmartPodsBanner from './components/SmartPodsBanner';
 import { smartPodsMenuItems } from './components/smartPodsMenuData';
@@ -1116,6 +1117,7 @@ export default function App() {
           </div>
         </section>
 
+        <InstagramFeed />
         <SiteFooter className="mt-0" />
       </div>
     </div>
