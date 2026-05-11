@@ -16,6 +16,11 @@ import aceMeeting2d from '../../assets/2D images/4. Ace Meet with Sofa and Table
 import aceMeetingXL2d from '../../assets/2D images/8. Ace Hub with Table and Sofa.png';
 import aceFlexSofaImage from '../../assets/ace-flex-sofa.png';
 import aceFlexAdjustableTableImage from '../../assets/ace-flex-adjustable-table.png';
+import aceFlexDuoFrontTransparentImage from '../../assets/ace-flex-duo-front-transparent.png';
+import aceFlexFrontTransparentImage from '../../assets/ace-flex-front-transparent.png';
+import aceHubFrontTransparentImage from '../../assets/ace-hub-front-transparent.png';
+import aceMeetFrontTransparentImage from '../../assets/ace-meet-front-transparent.png';
+import acePlusFrontTransparentImage from '../../assets/ace-plus-front-transparent.png';
 import podsInstallation from '../../assets/pods-installation.png';
 import deliveryPods from '../../assets/delivery-pods.png';
 import openOffice from '../../assets/open-office.png';
@@ -558,6 +563,7 @@ export const products = [
     shortDesc: POD_SEO_BY_SLUG['ace-plus'].shortDesc,
     heroImage: aceSoloPlusHero,
     thumbImage: aceSoloPlusCutout,
+    extraPreviewImages: [acePlusFrontTransparentImage],
     customerPhotos: acePlusPortfolioPhotos,
     drawing2dImage: aceSoloPlus2d,
     imageScale: 'scale-[1.40]',
@@ -724,6 +730,7 @@ export const products = [
     shortDesc: POD_SEO_BY_SLUG['ace-flex'].shortDesc,
     heroImage: aceDuoHero,
     thumbImage: aceDuoCutout,
+    extraPreviewImages: [aceFlexFrontTransparentImage],
     customerPhotos: aceFlexAlphabetPhotos,
     drawing2dImage: aceDuo2d,
     imageScale: 'scale-[1.40]',
@@ -890,6 +897,7 @@ export const products = [
     shortDesc: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
     heroImage: aceFlexDuoHero,
     thumbImage: aceFlexDuoHero,
+    extraPreviewImages: [aceFlexDuoFrontTransparentImage],
     customerPhotos: aceFlexDuoGalleryPhotos,
     drawing2dImage: aceDuo2d,
     imageScale: 'scale-[1.40]',
@@ -1056,6 +1064,7 @@ export const products = [
     shortDesc: POD_SEO_BY_SLUG['ace-meet'].shortDesc,
     heroImage: aceMeetingHero,
     thumbImage: aceMeetingCutout,
+    extraPreviewImages: [aceMeetFrontTransparentImage],
     customerPhotos: aceMeetPortfolioPhotos,
     drawing2dImage: aceMeeting2d,
     imageScale: 'scale-[1.40]',
@@ -1160,6 +1169,7 @@ export const products = [
     shortDesc: POD_SEO_BY_SLUG['ace-hub'].shortDesc,
     heroImage: aceMeetingXLHero,
     thumbImage: aceMeetingXLCutout,
+    extraPreviewImages: [aceHubFrontTransparentImage],
     customerPhotos: aceHubPortfolioPhotos,
     drawing2dImage: aceMeetingXL2d,
     imageScale: 'scale-[1.40]',

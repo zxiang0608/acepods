@@ -351,6 +351,12 @@ export default function ProductPage() {
       });
     });
 
+    (product.extraPreviewImages || []).forEach((image) => {
+      addProductImage(image, {
+        label: `${product.name} front view`
+      });
+    });
+
     if (items.length === 0 && podPrimaryImage) {
       addProductImage(podPrimaryImage, {
         label: `${selectedExterior} + ${selectedInterior}`,
@@ -376,7 +382,8 @@ export default function ProductPage() {
 
     return items;
   })();
-  const mainImage = selectedImage || productDisplayItems[0]?.image || primaryGalleryImage || podPrimaryImage;
+  const defaultFrontPreviewImage = (product.extraPreviewImages || [])[0] || '';
+  const mainImage = selectedImage || defaultFrontPreviewImage || productDisplayItems[0]?.image || primaryGalleryImage || podPrimaryImage;
   const activeGalleryIndex = Math.max(productDisplayItems.findIndex((item) => item.image === mainImage), 0);
   const exteriorLabel = product.exteriorLabel || 'Exterior Color';
   const interiorMaterialSections = product.interiorMaterialSections || null;
@@ -430,6 +437,10 @@ export default function ProductPage() {
       thumbnailImage
     };
   });
+  const previewThumbnailItems = (product.extraPreviewImages || []).map((image, index) => ({
+    id: `preview-${index}`,
+    image
+  }));
   const chairThumbnailItems = [
     { id: 'chair-black', label: 'High bar stool (black)', image: barStoolBlack },
     { id: 'chair-white', label: 'High bar stool (white)', image: barStoolWhite }
@@ -461,8 +472,11 @@ export default function ProductPage() {
   };
 
   const handleExteriorSelect = (id) => {
+    const exteriorPairKey = `${id}|${selectedInterior}`;
+    const nextImage =
+      colorImageMap?.byPair?.[exteriorPairKey] || colorImageMap?.byExterior?.[id] || colorImageMap?.default || podPrimaryImage || '';
     setSelectedExterior(id);
-    setSelectedImage('');
+    setSelectedImage(nextImage);
     if (product.syncExteriorInteriorSelection) {
       setSelectedInterior(id);
     }
@@ -670,6 +684,31 @@ export default function ProductPage() {
                   <div className="px-0 py-1">
                     <p className="mb-2 text-center text-[12px] font-semibold tracking-[0.03em] text-[#3b3f45]">Available pod colours</p>
                     <div className="flex justify-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                      {previewThumbnailItems.map((preview) => {
+                        const selected = mainImage === preview.image;
+                        return (
+                          <button
+                            key={preview.id}
+                            type="button"
+                            onClick={() => setSelectedImage(preview.image)}
+                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f5f6f8] transition-all ${
+                              selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
+                            }`}
+                            aria-label={`Available pod colours preview image ${preview.id.replace('preview-', '')}`}
+                          >
+                            <img
+                              src={preview.image}
+                              alt={`${product.name} front view`}
+                              className="h-full w-full object-contain object-center"
+                            />
+                            {selected && (
+                              <span className="absolute inset-0 border border-[#1e2227]">
+                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#1e2227]" />
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
                       {exteriorThumbnailItems.map((color) => {
                         const selected = color.id === selectedExterior;
                         return (
