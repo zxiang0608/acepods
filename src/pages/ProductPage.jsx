@@ -196,13 +196,60 @@ export default function ProductPage() {
   const outstationNoteLines = outstationNote.match(/[^.?!]+[.?!]/g)?.map((line) => line.trim()) || [outstationNote];
 
   const formatRM = (amount) => `RM${amount.toLocaleString('en-MY')}`;
+  const mutuallyExclusiveTableOptionIds = new Set(['duo-fixed-table', 'duo-adjustable-table']);
+  const mutuallyExclusiveSeatingAddonIds = new Set(['high-bar-stool', 'flex-sofa']);
+  const getPreviewImageForOption = (option) => {
+    if (!option) return '';
+    if (option.id === 'high-bar-stool') {
+      return selectedStoolVariant === 'white' ? barStoolWhite : barStoolBlack;
+    }
+    return option.previewImage || '';
+  };
+  const applySelectionPreviewImage = (option) => {
+    const previewImage = getPreviewImageForOption(option);
+    if (previewImage) {
+      setSelectedImage(previewImage);
+    }
+  };
   const toggleConfigurationOption = (id) => {
-    setSelectedConfigurationOptionIds((current) =>
-      current.includes(id) ? current.filter((optionId) => optionId !== id) : [...current, id]
-    );
+    const option = configurationOptions.find((configuration) => configuration.id === id);
+    setSelectedConfigurationOptionIds((current) => {
+      const isSelected = current.includes(id);
+      if (isSelected) {
+        const optionPreviewImage = getPreviewImageForOption(option);
+        if (optionPreviewImage && selectedImage === optionPreviewImage) {
+          setSelectedImage('');
+        }
+        return current.filter((optionId) => optionId !== id);
+      }
+      const next = mutuallyExclusiveTableOptionIds.has(id)
+        ? current.filter((optionId) => !mutuallyExclusiveTableOptionIds.has(optionId))
+        : current;
+      if (option) {
+        applySelectionPreviewImage(option);
+      }
+      return [...next, id];
+    });
   };
   const toggleAddon = (id) => {
-    setSelectedAddons((current) => (current.includes(id) ? current.filter((addonId) => addonId !== id) : [...current, id]));
+    const option = availableAddons.find((addon) => addon.id === id);
+    setSelectedAddons((current) => {
+      const isSelected = current.includes(id);
+      if (isSelected) {
+        const optionPreviewImage = getPreviewImageForOption(option);
+        if (optionPreviewImage && selectedImage === optionPreviewImage) {
+          setSelectedImage('');
+        }
+        return current.filter((addonId) => addonId !== id);
+      }
+      const next = mutuallyExclusiveSeatingAddonIds.has(id)
+        ? current.filter((addonId) => !mutuallyExclusiveSeatingAddonIds.has(addonId))
+        : current;
+      if (option) {
+        applySelectionPreviewImage(option);
+      }
+      return [...next, id];
+    });
   };
   const selectedConfigurationLabels = configurationOptions
     .filter((configuration) => selectedConfigurationOptionIds.includes(configuration.id))
@@ -470,18 +517,25 @@ export default function ProductPage() {
   }, [productDisplayItems, isDimensionsModalOpen, isAddonMenuOpen, isContactChooserOpen, isGalleryModalOpen, activeGalleryIndex]);
 
   useEffect(() => {
-    const isStoolImage = selectedImage === barStoolBlack || selectedImage === barStoolWhite;
-    if (selectedImage && !productDisplayItems.some((item) => item.image === selectedImage) && !isStoolImage) {
+    const validPreviewImages = new Set(productDisplayItems.map((item) => item.image));
+    configurationOptions.forEach((option) => {
+      if (option?.previewImage) validPreviewImages.add(option.previewImage);
+    });
+    availableAddons.forEach((addon) => {
+      const previewImage = getPreviewImageForOption(addon);
+      if (previewImage) validPreviewImages.add(previewImage);
+    });
+    if (selectedImage && !validPreviewImages.has(selectedImage)) {
       setSelectedImage('');
     }
-  }, [product.slug, productDisplayItems, selectedImage]);
+  }, [product.slug, productDisplayItems, selectedImage, configurationOptions, availableAddons, selectedStoolVariant]);
 
   useEffect(() => {
     const isStoolImage = selectedImage === barStoolBlack || selectedImage === barStoolWhite;
     if (!isBarStoolSelected && isStoolImage) {
       setSelectedImage('');
     }
-  }, [isBarStoolSelected, selectedImage, selectedStoolVariant]);
+  }, [isBarStoolSelected, selectedImage]);
 
   useEffect(() => {
     const wasSelected = wasBarStoolSelectedRef.current;
@@ -651,7 +705,10 @@ export default function ProductPage() {
                             onClick={() => {
                               setSelectedStoolVariant(variant);
                               setSelectedImage(chair.image);
-                              setSelectedAddons((current) => (current.includes('high-bar-stool') ? current : [...current, 'high-bar-stool']));
+                              setSelectedAddons((current) => {
+                                const withoutSofa = current.filter((addonId) => addonId !== 'flex-sofa');
+                                return withoutSofa.includes('high-bar-stool') ? withoutSofa : [...withoutSofa, 'high-bar-stool'];
+                              });
                             }}
                             className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[8px] border transition-all ${
                               selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
@@ -749,33 +806,42 @@ export default function ProductPage() {
                           >
                             <div className="grid gap-2.5">
                               <div>
-                                <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#66707a]">Configuration options</p>
-                                <div className="grid gap-1.5">
-                                  {configurationOptions.length > 0 ? (
-                                    configurationOptions.map((configuration) => {
-                                      const checked = selectedConfigurationOptionIds.includes(configuration.id);
-                                      return (
-                                        <label
-                                          key={configuration.id}
-                                          className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f9fafb]"
-                                        >
-                                          <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
-                                            <input
-                                              type="checkbox"
-                                              checked={checked}
-                                              onChange={() => toggleConfigurationOption(configuration.id)}
-                                              className="h-4 w-4 accent-[#145b5f]"
-                                            />
-                                            {configuration.label}
-                                          </span>
-                                          <span className="text-[12px] font-semibold tabular-nums text-[#59606a]">{formatRM(configuration.amount)}</span>
-                                        </label>
-                                      );
-                                    })
-                                  ) : (
-                                    <p className="px-2 py-1.5 text-[12px] text-[#6b727b]">No configuration upgrades for this pod.</p>
-                                  )}
-                                </div>
+                                {product.slug === 'ace-flex-duo' ? (
+                                  <div>
+                                    <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#66707a]">Configuration included</p>
+                                    <p className="px-2 py-1.5 text-[13px] font-medium text-[#333941]">Bar-height table included as standard</p>
+                                  </div>
+                                ) : (
+                                  <div>
+                                    <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#66707a]">Configuration options</p>
+                                    <div className="grid gap-1.5">
+                                      {configurationOptions.length > 0 ? (
+                                        configurationOptions.map((configuration) => {
+                                          const checked = selectedConfigurationOptionIds.includes(configuration.id);
+                                          return (
+                                            <label
+                                              key={configuration.id}
+                                              className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f9fafb]"
+                                            >
+                                              <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
+                                                <input
+                                                  type="checkbox"
+                                                  checked={checked}
+                                                  onChange={() => toggleConfigurationOption(configuration.id)}
+                                                  className="h-4 w-4 accent-[#145b5f]"
+                                                />
+                                                {configuration.label}
+                                              </span>
+                                              <span className="text-[12px] font-semibold tabular-nums text-[#59606a]">{formatRM(configuration.amount)}</span>
+                                            </label>
+                                          );
+                                        })
+                                      ) : (
+                                        <p className="px-2 py-1.5 text-[12px] text-[#6b727b]">No configuration upgrades for this pod.</p>
+                                      )}
+                                    </div>
+                                  </div>
+                                )}
                               </div>
 
                               <div className="border-t border-[#e4e7eb] pt-2.5">

@@ -14,6 +14,8 @@ import aceSoloPlus2d from '../../assets/2D images/2. Ace Plus.png';
 import aceDuo2d from '../../assets/2D images/3. Ace Flex.png';
 import aceMeeting2d from '../../assets/2D images/4. Ace Meet with Sofa and Table.png';
 import aceMeetingXL2d from '../../assets/2D images/8. Ace Hub with Table and Sofa.png';
+import aceFlexSofaImage from '../../assets/ace-flex-sofa.png';
+import aceFlexAdjustableTableImage from '../../assets/ace-flex-adjustable-table.png';
 import podsInstallation from '../../assets/pods-installation.png';
 import deliveryPods from '../../assets/delivery-pods.png';
 import openOffice from '../../assets/open-office.png';
@@ -173,6 +175,7 @@ const deliveryDefaults = {
 };
 
 const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290, image: barStoolBlack };
+const flexSofaAddon = { id: 'flex-sofa', label: 'Sofa', amount: 600, image: aceFlexSofaImage, previewImage: aceFlexSofaImage };
 const meetingSofaAddon = { id: 'meeting-sofa-set', label: '1 set sofa (Ace Meet only)', amount: 1250 };
 const meetingXLSofaAddon = { id: 'meeting-xl-sofa-set', label: '1 set sofa (Ace Hub only)', amount: 1400 };
 const meetingXLLShapeSofaAddon = { id: 'meeting-xl-l-shape-sofa', label: 'L-shape sofa (Ace Hub only)', amount: 2650 };
@@ -733,12 +736,12 @@ export const products = [
     pdpPricing: {
       baseConfigurations: [{ id: 'duo-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-flex'].startingPrice }],
       configurationOptions: [
-        { id: 'duo-fixed-table', label: 'Fixed normal height table', amount: 1000 },
-        { id: 'duo-adjustable-table', label: 'Adjustable table', amount: 3000 }
+        { id: 'duo-fixed-table', label: 'Fixed normal height table', amount: 1000, previewImage: aceSoloProMustardYellowImage },
+        { id: 'duo-adjustable-table', label: 'Adjustable table', amount: 3000, previewImage: aceFlexAdjustableTableImage }
       ],
       installationPerUnit: 550,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon]
+      addOnOptions: [highBarStoolAddon, flexSofaAddon]
     },
     colorImageMap: {
       default: aceSoloProGreyAshImage,
