@@ -163,7 +163,7 @@ import portfolioAceHub01 from '../../assets/Portfolio/Ace hub/20260313_145941.jp
 import portfolioAceHub02 from '../../assets/Portfolio/Ace hub/20260313_145945.jpg';
 import portfolioAceHub03 from '../../assets/Portfolio/Ace hub/20260313_145948.jpg';
 import portfolioAceHub04 from '../../assets/Portfolio/Ace hub/20260313_145950.jpg';
-import portfolioAceHub05 from '../../assets/Portfolio/Ace hub/Untitled_design_15.webp';
+import portfolioAceHub06 from '../../assets/Portfolio/Ace hub/YYC_advisor_4.webp';
 import { POD_SEO_BY_SLUG } from './podSeoCatalog';
 
 const deliveryDefaults = {
@@ -176,7 +176,6 @@ const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/
 const meetingSofaAddon = { id: 'meeting-sofa-set', label: '1 set sofa (Ace Meet only)', amount: 1250 };
 const meetingXLSofaAddon = { id: 'meeting-xl-sofa-set', label: '1 set sofa (Ace Hub only)', amount: 1400 };
 const meetingXLLShapeSofaAddon = { id: 'meeting-xl-l-shape-sofa', label: 'L-shape sofa (Ace Hub only)', amount: 2650 };
-const defaultCustomerPhotos = [podsInstallation, deliveryPods, openOffice, barStoolBlack, barStoolWhite];
 const aceSoloPortfolioPhotos = [
   portfolioCma02,
   portfolioCma03,
@@ -222,12 +221,16 @@ const aceFlexAlphabetPhotos = [
   barStoolWhite
 ];
 const aceFlexDuoGalleryPhotos = [aceFlexDuoGallery01, aceFlexDuoGallery02, aceFlexDuoGallery03, aceFlexDuoGallery04];
-const aceHubPortfolioPhotos = [
+const aceMeetPortfolioPhotos = [
   portfolioAceHub01,
   portfolioAceHub02,
   portfolioAceHub03,
   portfolioAceHub04,
-  portfolioAceHub05,
+  barStoolBlack,
+  barStoolWhite
+];
+const aceHubPortfolioPhotos = [
+  portfolioAceHub06,
   barStoolBlack,
   barStoolWhite
 ];
@@ -738,9 +741,65 @@ export const products = [
       addOnOptions: [highBarStoolAddon]
     },
     colorImageMap: {
-      default: aceFlexDuoExteriorImageMap['finish-grey-ash'],
-      byExterior: aceFlexDuoExteriorImageMap,
-      byPair: createExteriorInteriorPairMap(aceFlexDuoExteriorImageMap)
+      default: aceSoloProGreyAshImage,
+      byExterior: {
+        'finish-orange-squash': aceSoloProOrangeSquashImage,
+        'finish-mustard-yellow': aceSoloProMustardYellowImage,
+        'finish-green-moss': aceSoloProGreenMossImage,
+        'finish-ocean-blue': aceSoloProOceanBlueImage,
+        'finish-grey-ash': aceSoloProGreyAshImage,
+        'finish-charcoal-grey': aceSoloProCharcoalGreyImage
+      },
+      byPair: {
+        'finish-orange-squash|int-shimo-ash': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-sky-blue': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-moonlight-grey': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-tangerine': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-light-plum': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-vivid-red': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-creamy-white': aceSoloProOrangeSquashImage,
+        'finish-orange-squash|int-sesame-black': aceSoloProOrangeSquashImage,
+        'finish-mustard-yellow|int-shimo-ash': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-sky-blue': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-moonlight-grey': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-tangerine': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-light-plum': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-vivid-red': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-creamy-white': aceSoloProMustardYellowImage,
+        'finish-mustard-yellow|int-sesame-black': aceSoloProMustardYellowImage,
+        'finish-green-moss|int-shimo-ash': aceSoloProGreenMossImage,
+        'finish-green-moss|int-sky-blue': aceSoloProGreenMossImage,
+        'finish-green-moss|int-moonlight-grey': aceSoloProGreenMossImage,
+        'finish-green-moss|int-tangerine': aceSoloProGreenMossImage,
+        'finish-green-moss|int-light-plum': aceSoloProGreenMossImage,
+        'finish-green-moss|int-vivid-red': aceSoloProGreenMossImage,
+        'finish-green-moss|int-creamy-white': aceSoloProGreenMossImage,
+        'finish-green-moss|int-sesame-black': aceSoloProGreenMossImage,
+        'finish-ocean-blue|int-shimo-ash': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-sky-blue': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-moonlight-grey': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-tangerine': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-light-plum': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-vivid-red': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-creamy-white': aceSoloProOceanBlueImage,
+        'finish-ocean-blue|int-sesame-black': aceSoloProOceanBlueImage,
+        'finish-grey-ash|int-shimo-ash': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-sky-blue': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-moonlight-grey': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-tangerine': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-light-plum': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-vivid-red': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-creamy-white': aceSoloProGreyAshImage,
+        'finish-grey-ash|int-sesame-black': aceSoloProGreyAshImage,
+        'finish-charcoal-grey|int-shimo-ash': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-sky-blue': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-moonlight-grey': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-tangerine': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-light-plum': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-vivid-red': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-creamy-white': aceSoloProCharcoalGreyImage,
+        'finish-charcoal-grey|int-sesame-black': aceSoloProCharcoalGreyImage
+      }
     },
     hideThumbnailsOnColorMode: true,
     exteriorLabel: 'Fabric Exterior Colour Options',
@@ -994,7 +1053,7 @@ export const products = [
     shortDesc: POD_SEO_BY_SLUG['ace-meet'].shortDesc,
     heroImage: aceMeetingHero,
     thumbImage: aceMeetingCutout,
-    customerPhotos: defaultCustomerPhotos,
+    customerPhotos: aceMeetPortfolioPhotos,
     drawing2dImage: aceMeeting2d,
     imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
