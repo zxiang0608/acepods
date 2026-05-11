@@ -9,6 +9,8 @@ import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import highResPodCert from '../../assets/high-res-pod-cert.png';
+import barStoolBlack from '../../assets/bar-stool-black.png';
+import barStoolWhite from '../../assets/bar-stool-white.png';
 
 const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false }) => (
   <div>
@@ -43,6 +45,7 @@ export default function ProductPage() {
   const [selectedInterior, setSelectedInterior] = useState('');
   const [selectedConfigurationOptionIds, setSelectedConfigurationOptionIds] = useState([]);
   const [selectedAddons, setSelectedAddons] = useState([]);
+  const [selectedStoolVariant, setSelectedStoolVariant] = useState('');
   const [isAddonMenuOpen, setIsAddonMenuOpen] = useState(false);
   const [isContactChooserOpen, setIsContactChooserOpen] = useState(false);
   const [isDimensionsModalOpen, setIsDimensionsModalOpen] = useState(false);
@@ -52,6 +55,7 @@ export default function ProductPage() {
   const chooserRef = useRef(null);
   const addonMenuRef = useRef(null);
   const featureScrollRef = useRef(null);
+  const wasBarStoolSelectedRef = useRef(false);
   const [canScrollFeaturesLeft, setCanScrollFeaturesLeft] = useState(false);
   const [canScrollFeaturesRight, setCanScrollFeaturesRight] = useState(false);
 
@@ -62,6 +66,8 @@ export default function ProductPage() {
     setSelectedImage('');
     setSelectedConfigurationOptionIds([]);
     setSelectedAddons([]);
+    setSelectedStoolVariant('');
+    wasBarStoolSelectedRef.current = false;
     setIsAddonMenuOpen(false);
     setIsContactChooserOpen(false);
     setIsDimensionsModalOpen(false);
@@ -377,6 +383,11 @@ export default function ProductPage() {
       thumbnailImage
     };
   });
+  const chairThumbnailItems = [
+    { id: 'chair-black', label: 'High bar stool (black)', image: barStoolBlack },
+    { id: 'chair-white', label: 'High bar stool (white)', image: barStoolWhite }
+  ];
+  const isBarStoolSelected = selectedAddons.includes('high-bar-stool');
   const mainProductAlt = `${product.name} acoustic office pod`;
   const getFeatureAlt = (featureItem) =>
     featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
@@ -459,10 +470,27 @@ export default function ProductPage() {
   }, [productDisplayItems, isDimensionsModalOpen, isAddonMenuOpen, isContactChooserOpen, isGalleryModalOpen, activeGalleryIndex]);
 
   useEffect(() => {
-    if (selectedImage && !productDisplayItems.some((item) => item.image === selectedImage)) {
+    const isStoolImage = selectedImage === barStoolBlack || selectedImage === barStoolWhite;
+    if (selectedImage && !productDisplayItems.some((item) => item.image === selectedImage) && !isStoolImage) {
       setSelectedImage('');
     }
   }, [product.slug, productDisplayItems, selectedImage]);
+
+  useEffect(() => {
+    const isStoolImage = selectedImage === barStoolBlack || selectedImage === barStoolWhite;
+    if (!isBarStoolSelected && isStoolImage) {
+      setSelectedImage('');
+    }
+  }, [isBarStoolSelected, selectedImage, selectedStoolVariant]);
+
+  useEffect(() => {
+    const wasSelected = wasBarStoolSelectedRef.current;
+    const isFirstSelect = !wasSelected && isBarStoolSelected;
+    if (isFirstSelect) {
+      setSelectedImage(selectedStoolVariant === 'white' ? barStoolWhite : barStoolBlack);
+    }
+    wasBarStoolSelectedRef.current = isBarStoolSelected;
+  }, [isBarStoolSelected, selectedStoolVariant]);
 
   const openGalleryModalAtIndex = (index) => {
     if (index < 0 || index >= customerGalleryItems.length) return;
@@ -556,11 +584,13 @@ export default function ProductPage() {
                 )}
 
 	                <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
-	                  <img
-	                    src={mainImage}
-	                    alt={mainProductAlt}
-	                    className={`relative z-[1] h-full w-full object-contain object-center ${shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''}`}
-	                  />
+                    <img
+                      src={mainImage}
+                      alt={mainProductAlt}
+                      className={`relative z-[1] object-contain object-center ${isChairImage ? 'h-1/2 w-1/2' : 'h-full w-full'} ${
+                        shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''
+                      }`}
+                    />
 	                </div>
 
                 {productDisplayItems.length > 1 && (
@@ -606,6 +636,32 @@ export default function ProductPage() {
                             {selected && (
                               <span className="absolute inset-0 border border-[#1e2227]">
                                 <Check size={12} className="absolute right-0.5 top-0.5 text-white drop-shadow-[0_0_2px_rgba(0,0,0,0.75)]" />
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                      {chairThumbnailItems.map((chair) => {
+                        const variant = chair.id === 'chair-white' ? 'white' : 'black';
+                        const selected = mainImage === chair.image;
+                        return (
+                          <button
+                            key={chair.id}
+                            type="button"
+                            onClick={() => {
+                              setSelectedStoolVariant(variant);
+                              setSelectedImage(chair.image);
+                              setSelectedAddons((current) => (current.includes('high-bar-stool') ? current : [...current, 'high-bar-stool']));
+                            }}
+                            className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[8px] border transition-all ${
+                              selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
+                            }`}
+                            aria-label={`Available pod colours accessory: ${chair.label}`}
+                          >
+                            <img src={chair.image} alt={chair.label} className="h-9 w-9 object-contain object-center mix-blend-multiply" />
+                            {selected && (
+                              <span className="absolute inset-0 border border-[#1e2227]">
+                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#1e2227]" />
                               </span>
                             )}
                           </button>
