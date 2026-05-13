@@ -104,8 +104,28 @@ const STATIC_PRERENDER_META = {
     body: [
       'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.',
       'Add private space for calls, focused work, and meetings without building new rooms.',
-      'Compare models, pricing, installation support, and office fit before deciding.'
+      'Compare models, pricing, installation support, and office fit before deciding.',
+      '## Office pods for practical daily use',
+      'Office pods are enclosed workspace units used to create quieter call and meeting zones inside active offices. Teams typically use them to reduce interruptions during client calls, private discussions, and focused tasks.',
+      'For most buyers, the practical decision comes down to matching model size to usage pattern: one-person calls, one-person focus, two-person discussions, or small team meetings.',
+      '## Why companies compare office pods before buying',
+      'Most projects evaluate pod size, expected daily usage, acoustic performance expectations, installation constraints, and budget range before selecting a model.',
+      'Comparing these factors early helps avoid mismatch between room capacity, workflow, and final project cost.',
+      '## Local delivery and installation context in Malaysia',
+      'Delivery and installation planning often includes access route checks, lift or staircase handling, floor protection, and final placement coordination. Projects outside Klang Valley or with restricted access are usually quoted based on actual site conditions.',
+      '## Common buying path',
+      '- Define whether the primary use is calls, focused work, or meetings',
+      '- Compare model sizes and starting pricing',
+      '- Confirm delivery and installation scope',
+      '- Finalize options and project timeline',
+      '## Helpful next steps',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Contact our team](/contact)',
+      '[Read FAQs](/faq)'
     ],
+    noscriptFaqHeading: 'Common questions about office pods',
+    noscriptFaqItems: HOME_FAQ_ITEMS,
     schemas: (canonical) => [
       buildOrganizationSchema(),
       buildWebsiteSchema(),
@@ -138,7 +158,25 @@ const STATIC_PRERENDER_META = {
       '## What affects the final price?',
       'Final pricing may vary depending on pod model, quantity, delivery location, floor/access conditions, installation scope, optional furniture, finishes, power requirements, and project timeline.',
       '## Bulk and project pricing',
-      'Corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, and project buyers can request project pricing or bulk pricing depending on quantity, model mix, location, and installation scope.'
+      'Corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, and project buyers can request project pricing or bulk pricing depending on quantity, model mix, location, and installation scope.',
+      '## Pricing clarity and scope confirmation',
+      'A practical quote typically confirms model, quantity, selected options, delivery area, installation arrangement, and any access constraints before final approval.',
+      'This helps teams compare office pods on total project scope instead of headline figures alone.',
+      '## What buyers usually request in pricing comparisons',
+      '- Side-by-side model shortlist with starting prices',
+      '- Clarification on inclusions in base scope',
+      '- Notes for outside Klang Valley or restricted-access handling',
+      '- Expected lead time and installation planning assumptions',
+      '## Why total scope matters',
+      'Two similar model options can still have different final project cost when access route, installation coordination, or selected options vary.',
+      'Evaluating total scope early gives procurement, office management, and leadership a more reliable basis for commercial decisions.',
+      '## Pricing review workflow for teams',
+      'A practical workflow is to shortlist models first, validate use-case fit, then review delivery and installation assumptions before final approval.',
+      'This sequence keeps pricing discussions grounded in operational needs rather than headline-only comparison.',
+      '## Related planning links',
+      '[Compare office pods](/compare-office-pods)',
+      '[Read FAQs](/faq)',
+      '[Contact our team](/contact)'
     ],
     noscriptFaqHeading: 'Common pricing questions',
     noscriptFaqItems: PRICING_FAQ_ITEMS,
@@ -214,7 +252,27 @@ const STATIC_PRERENDER_META = {
     h1: 'Office pods and office booths for calls, focus, and meetings',
     body: [
       'Ace Office Pods by Ace Workplace Solutions offers acoustic office pods and office booths in Malaysia for private calls, focused work, hybrid meetings, and small team discussions. In workplace planning, “office pods” and “office booths” are often used interchangeably for enclosed acoustic spaces designed for calls, focused work, and small meetings.',
-      'Our office booth range includes compact phone-booth style pods, one-person focus pods, two-person discussion pods, and larger meeting pods for team collaboration. These are privacy-focused, sound-reducing solutions for open-plan offices, and acoustic results vary by model and placement.'
+      'Our office booth range includes compact phone-booth style pods, one-person focus pods, two-person discussion pods, and larger meeting pods for team collaboration. These are privacy-focused, sound-reducing solutions for open-plan offices, and acoustic results vary by model and placement.',
+      '## Office pod types by use case',
+      '- One-person call pod for private calls and short tasks',
+      '- One-person focus pod for longer concentrated work',
+      '- Two-person discussion pod for quick collaboration',
+      '- Team meeting pod for small group sessions',
+      '## What to compare before selecting a model',
+      'Compare intended daily usage, team size, available floor space, acoustic expectations, and project budget. This reduces the risk of choosing a pod that is either too small for meetings or oversized for call use.',
+      '## Delivery and installation planning in Malaysia',
+      'Site access can influence project execution. Teams usually confirm lift access, staircase handling, loading zones, and final placement path before installation day.',
+      '## Commercial review points for office pod buyers',
+      'Beyond sizing and appearance, most teams compare operational practicality: expected utilization, support process, and whether the selected pod type still fits future layout changes.',
+      'A practical shortlist often combines one-person and meeting-focused models so calls, focused work, and collaboration can be supported without building permanent rooms.',
+      '## Procurement scope alignment',
+      'For procurement and project stakeholders, clear scope usually includes model selection, selected options, delivery assumptions, installation constraints, and target timeline.',
+      'When this scope is confirmed early, supplier comparison becomes clearer and internal approvals are generally faster.',
+      '## Related pages',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Contact our team](/contact)',
+      '[Read FAQs](/faq)'
     ],
     noscriptFaqHeading: 'Common questions about office pods and office booths',
     noscriptFaqItems: OFFICE_PODS_FAQ_ITEMS,
@@ -268,7 +326,35 @@ const STATIC_PRERENDER_META = {
     h1: 'Meeting pods in Malaysia for small-team collaboration',
     body: [
       'Compare meeting pods for 2–6 pax team discussions and hybrid calls.',
-      'Review Ace Meet and Ace Hub by team size, practical use case, and pricing factors.'
+      'Review Ace Meet and Ace Hub by team size, practical use case, and pricing factors.',
+      '## How teams shortlist meeting pods',
+      'Most buyers compare meeting pods by expected participant count, call frequency, discussion style, and available office footprint. A 2–4 pax pod often suits recurring team check-ins, while larger pods support broader collaboration sessions.',
+      '## Practical model comparison points',
+      '- Typical team size for each model',
+      '- Intended use: calls, discussions, or mixed meeting formats',
+      '- Starting price and optional configuration impact',
+      '- Delivery and installation considerations by site access',
+      '## Pricing and project scope notes',
+      'Starting prices are useful for first comparison, but final scope often includes selected options, installation requirements, and access logistics. Reviewing total scope early improves budget certainty.',
+      '## Malaysia installation context',
+      'Projects in Klang Valley commonly include delivery and installation within agreed scope. Outside Klang Valley or restricted-access handling is typically quoted based on site conditions and logistics needs.',
+      '## When to choose different meeting pod sizes',
+      'Teams that run short recurring discussions and hybrid calls often prioritize a 2–4 pax format. Teams that need broader internal room for larger sessions usually compare bigger meeting pod configurations.',
+      'The best fit depends on actual usage pattern, not only maximum capacity. Reviewing meeting duration, participant turnover, and call frequency helps avoid over-sizing or under-sizing.',
+      '## Commercial planning notes',
+      'Meeting pod projects are typically reviewed as a full package: model, options, delivery conditions, installation scope, and target handover timing. This helps teams compare offers on readiness and execution clarity.',
+      '## Related pages',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Contact our team](/contact)',
+      '[Read FAQs](/faq)'
+    ],
+    noscriptFaqHeading: 'Common meeting pod questions',
+    noscriptFaqItems: [
+      FAQ_PAGE_ITEMS[2],
+      FAQ_PAGE_ITEMS[1],
+      FAQ_PAGE_ITEMS[5],
+      FAQ_PAGE_ITEMS[10]
     ],
     schemas: (canonical) => [
       {
@@ -307,7 +393,35 @@ const STATIC_PRERENDER_META = {
     h1: 'Office phone booth solutions in Malaysia',
     body: [
       'Compare office phone booth style pods for private calls and focused work.',
-      'Review Ace Solo, Ace Plus, and Ace Flex by space, use case, and project fit.'
+      'Review Ace Solo, Ace Plus, and Ace Flex by space, use case, and project fit.',
+      '## What an office phone booth is used for',
+      'A phone booth style office pod is usually selected for private calls, short virtual meetings, and focused individual tasks inside open offices. Teams use these pods to create privacy without building permanent rooms.',
+      '## How to compare one-person pod models',
+      '- Match model size to expected daily call volume',
+      '- Check whether the pod will be used mainly for calls or longer focused work',
+      '- Review starting pricing and selected option impact',
+      '- Confirm installation access and placement path',
+      '## Pricing and setup considerations',
+      'Final project pricing can vary based on model, quantity, selected options, and site access conditions. For many offices, confirming delivery and installation details early helps avoid timeline delays.',
+      '## Malaysia project context',
+      'Office phone booth projects in Klang Valley generally follow a straightforward delivery and installation process when access conditions are confirmed. Additional handling for complex access routes is usually reviewed during quotation.',
+      '## How teams use phone booth pods daily',
+      'Phone booth style pods are commonly used for client calls, internal check-ins, and focused tasks that need fewer interruptions than open workstations provide.',
+      'Where teams face frequent background noise or high call volume, one-person pods can reduce disruption while keeping larger meeting spaces available for group sessions.',
+      '## Buyer comparison notes',
+      'A practical comparison includes footprint, comfort for intended session length, and clarity on delivery and installation scope. This reduces late-stage adjustments during implementation.',
+      '## Related pages',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Contact our team](/contact)',
+      '[Read FAQs](/faq)'
+    ],
+    noscriptFaqHeading: 'Common office phone booth questions',
+    noscriptFaqItems: [
+      FAQ_PAGE_ITEMS[2],
+      FAQ_PAGE_ITEMS[1],
+      FAQ_PAGE_ITEMS[6],
+      FAQ_PAGE_ITEMS[8]
     ],
     schemas: (canonical) => [
       {
@@ -346,8 +460,22 @@ const STATIC_PRERENDER_META = {
     h1: 'Office pod FAQ',
     body: [
       'Direct answers for buyers comparing office pods in Malaysia.',
-      'Get clear guidance on pricing, installation, support, and model fit.'
+      'Get clear guidance on pricing, installation, support, and model fit.',
+      '## FAQ scope',
+      'These FAQs focus on practical buyer questions around pricing, inclusions, model fit, delivery, installation, and post-sales support for office pods in Malaysia.',
+      '## Buyer planning checklist',
+      '- Compare model type to daily use case',
+      '- Confirm what is included in scope',
+      '- Review delivery and installation constraints',
+      '- Clarify lead time and support process',
+      '## Related pages',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Contact our team](/contact)',
+      '[Read office pod models](/office-pods)'
     ],
+    noscriptFaqHeading: 'Office pod frequently asked questions',
+    noscriptFaqItems: FAQ_PAGE_ITEMS,
     schemas: (canonical) => [
       {
         '@context': 'https://schema.org',
@@ -390,8 +518,19 @@ const STATIC_PRERENDER_META = {
     h1: 'Past office pod projects across Malaysia',
     body: [
       'View real office pod projects completed across Malaysia.',
-      'Explore installation examples for calls, focused work, and team meetings.'
+      'Explore installation examples for calls, focused work, and team meetings.',
+      '## What this portfolio page shows',
+      'Portfolio examples help buyers understand how office pods are used in real workplaces, including call privacy zones, one-person focus areas, and small team meeting setups.',
+      '## How to use project references',
+      'Use project references to review model fit, practical placement, and expected office context. A portfolio review is most useful when paired with model comparison, pricing review, and installation planning.',
+      '## Project planning links',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Contact our team](/contact)',
+      '[Read FAQs](/faq)'
     ],
+    noscriptFaqHeading: 'Common buyer questions',
+    noscriptFaqItems: [HOME_FAQ_ITEMS[0], HOME_FAQ_ITEMS[1], HOME_FAQ_ITEMS[5]],
     schemas: (canonical) => [
       {
         '@context': 'https://schema.org',
@@ -468,8 +607,29 @@ const STATIC_PRERENDER_META = {
     h1: 'Compare office pods by price, installation, and support',
     body: [
       'Compare models beyond headline pricing with practical buying factors in one view.',
-      'Review installation, support, and office fit before making a final decision.'
+      'Review installation, support, and office fit before making a final decision.',
+      '## Price comparison beyond headline numbers',
+      'A meaningful comparison should include model suitability, selected options, delivery assumptions, and installation requirements. Headline pricing alone can hide project differences that matter during execution.',
+      '## What procurement teams usually compare',
+      '- Intended daily use: calls, focused work, or meetings',
+      '- Model capacity and internal comfort for the expected use',
+      '- Delivery and installation requirements by location',
+      '- Post-sales support and response expectations',
+      '## Installation and support impact',
+      'Installation planning affects timeline and final project experience. Support terms affect long-term usability after handover. Comparing these items early improves decision quality.',
+      '## Practical framework for comparison discussions',
+      'A straightforward framework helps teams align quickly: define use case, shortlist model sizes, compare scope assumptions, and validate installation constraints.',
+      'This structure reduces uncertainty during procurement review because each option is assessed against the same criteria.',
+      '## Why this matters in Malaysia projects',
+      'Building access and installation coordination can vary by office location. Including these factors in early comparison helps reduce timeline and scope surprises.',
+      '## Related pages',
+      '[View pricing](/pricing)',
+      '[Read FAQs](/faq)',
+      '[Contact our team](/contact)',
+      '[View office pod models](/office-pods)'
     ],
+    noscriptFaqHeading: 'Common comparison questions',
+    noscriptFaqItems: [HOME_FAQ_ITEMS[0], HOME_FAQ_ITEMS[1], HOME_FAQ_ITEMS[3], HOME_FAQ_ITEMS[5]],
     schemas: (canonical) => [
       {
         '@context': 'https://schema.org',
@@ -506,8 +666,22 @@ const STATIC_PRERENDER_META = {
     h1: 'Contact Ace Office Pods',
     body: [
       'Contact Ace Office Pods by Ace Workplace Solutions for office pod enquiries, model guidance, and quote support.',
-      'Reach our team by WhatsApp, email, or phone.'
+      'Reach our team by WhatsApp, email, or phone.',
+      '## What to prepare before contacting sales',
+      'Sharing your office location, expected pod usage, and preferred model shortlist helps the team provide a more accurate recommendation and quotation scope.',
+      '## Typical enquiry topics',
+      '- Model comparison by use case',
+      '- Starting price and option planning',
+      '- Delivery and installation scope',
+      '- Lead time and project scheduling',
+      '## Related planning links',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Read FAQs](/faq)',
+      '[View office pod models](/office-pods)'
     ],
+    noscriptFaqHeading: 'Common pre-sales questions',
+    noscriptFaqItems: [HOME_FAQ_ITEMS[0], HOME_FAQ_ITEMS[1], FAQ_PAGE_ITEMS[10]],
     schemas: (canonical) => [
       {
         '@context': 'https://schema.org',
