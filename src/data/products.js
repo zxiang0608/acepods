@@ -14,13 +14,26 @@ import aceSoloPlus2d from '../../assets/2D images/2. Ace Plus.png';
 import aceDuo2d from '../../assets/2D images/3. Ace Flex.png';
 import aceMeeting2d from '../../assets/2D images/4. Ace Meet with Sofa and Table.png';
 import aceMeetingXL2d from '../../assets/2D images/8. Ace Hub with Table and Sofa.png';
-import aceFlexSofaImage from '../../assets/ace-flex-sofa.png';
+import aceMeetSofaImage from '../../assets/sofa.png';
+import aceHubLShapeSofaImage from '../../assets/L-shape-sofa.png';
+import officeChairImage from '../../assets/office-chair.png';
 import aceFlexAdjustableTableImage from '../../assets/ace-flex-adjustable-table.png';
 import aceFlexDuoFrontTransparentImage from '../../assets/ace-flex-duo-front-transparent.png';
 import aceFlexFrontTransparentImage from '../../assets/ace-flex-front-transparent.png';
 import aceHubFrontTransparentImage from '../../assets/ace-hub-front-transparent.png';
 import aceMeetFrontTransparentImage from '../../assets/ace-meet-front-transparent.png';
 import acePlusFrontTransparentImage from '../../assets/ace-plus-front-transparent.png';
+import meetTableNormalizedImage from '../../assets/meet-table-normalized.png';
+import meetAdjustableNormalizedImage from '../../assets/meet-adjustable-normalized.png';
+import meetTableWhiteboardNormalizedImage from '../../assets/meet-table-whiteboard-normalized.png';
+import greyAshNormalizedImage from '../../assets/grey-ash-normalized.png';
+import meetSofaTableWhiteboardNormalizedImage from '../../assets/meet-sofa-table-whiteboard-normalized.png';
+import officeChairNormalizedImage from '../../assets/office-chair-normalized.png';
+import sofaNormalizedImage from '../../assets/sofa-normalized.png';
+import hubTableNormalizedImage from '../../assets/hub-table-normalized.png';
+import hubCentreTableWhiteboardNormalizedImage from '../../assets/hub-centre-table-whiteboard-normalized.png';
+import greyAsh01NormalizedImage from '../../assets/grey-ash-01-normalized.png';
+import hubTableSofaWhiteboardNormalizedImage from '../../assets/hub-table-sofa-whiteboard-normalized.png';
 import podsInstallation from '../../assets/pods-installation.png';
 import deliveryPods from '../../assets/delivery-pods.png';
 import openOffice from '../../assets/open-office.png';
@@ -180,10 +193,36 @@ const deliveryDefaults = {
 };
 
 const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290, image: barStoolBlack };
-const flexSofaAddon = { id: 'flex-sofa', label: 'Sofa', amount: 600, image: aceFlexSofaImage, previewImage: aceFlexSofaImage };
-const meetingSofaAddon = { id: 'meeting-sofa-set', label: '1 set sofa (Ace Meet only)', amount: 1250 };
-const meetingXLSofaAddon = { id: 'meeting-xl-sofa-set', label: '1 set sofa (Ace Hub only)', amount: 1400 };
-const meetingXLLShapeSofaAddon = { id: 'meeting-xl-l-shape-sofa', label: 'L-shape sofa (Ace Hub only)', amount: 2650 };
+const officeChairAddon = { id: 'office-chair', label: 'Office chair', amount: 199, image: officeChairImage, previewImage: officeChairImage };
+const meetingOfficeChairAddon = {
+  id: 'office-chair',
+  label: 'Office chair',
+  amount: 199,
+  image: officeChairNormalizedImage,
+  previewImage: officeChairNormalizedImage
+};
+const flexSofaAddon = { id: 'flex-sofa', label: 'Sofa', amount: 600, image: aceMeetSofaImage, previewImage: aceMeetSofaImage };
+const meetingSofaAddon = {
+  id: 'meeting-sofa-set',
+  label: '1 set sofa (Ace Meet only)',
+  amount: 1250,
+  image: sofaNormalizedImage,
+  previewImage: sofaNormalizedImage
+};
+const meetingXLSofaAddon = {
+  id: 'meeting-xl-sofa-set',
+  label: '1 set sofa (Ace Hub only)',
+  amount: 1400,
+  image: aceMeetSofaImage,
+  previewImage: aceMeetSofaImage
+};
+const meetingXLLShapeSofaAddon = {
+  id: 'meeting-xl-l-shape-sofa',
+  label: 'L-shape sofa (Ace Hub only)',
+  amount: 2650,
+  image: aceHubLShapeSofaImage,
+  previewImage: aceHubLShapeSofaImage
+};
 const aceSoloPortfolioPhotos = [
   portfolioCma02,
   portfolioCma03,
@@ -748,7 +787,7 @@ export const products = [
       ],
       installationPerUnit: 550,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon, flexSofaAddon]
+      addOnOptions: [officeChairAddon, flexSofaAddon]
     },
     colorImageMap: {
       default: aceSoloProGreyAshImage,
@@ -1077,15 +1116,20 @@ export const products = [
     pdpPricing: {
       baseConfigurations: [{ id: 'meeting-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-meet'].startingPrice }],
       configurationOptions: [
-        { id: 'meeting-fixed-table', label: 'Fixed normal height table', amount: 700 },
-        { id: 'meeting-adjustable-table', label: 'Height adjustable table', amount: 2550 },
-        { id: 'meeting-whiteboard-discussion', label: '1 whiteboard panel + 1 discussion table', amount: 3600 },
-        { id: 'meeting-2sofa-centre-table', label: '2 sofa sets + 1 central discussion table', amount: 3800 },
-        { id: 'meeting-whiteboard-discussion-2sofa', label: '1 whiteboard panel + 1 discussion table + 2 sofa set', amount: 6200 }
+        { id: 'meeting-fixed-table', label: 'Fixed normal height table', amount: 700, previewImage: meetTableNormalizedImage },
+        { id: 'meeting-adjustable-table', label: 'Height adjustable table', amount: 2550, previewImage: meetAdjustableNormalizedImage },
+        { id: 'meeting-whiteboard-discussion', label: '1 whiteboard panel + 1 discussion table', amount: 3600, previewImage: meetTableWhiteboardNormalizedImage },
+        { id: 'meeting-2sofa-centre-table', label: '2 sofa sets + 1 central discussion table', amount: 3800, previewImage: greyAshNormalizedImage },
+        {
+          id: 'meeting-whiteboard-discussion-2sofa',
+          label: '1 whiteboard panel + 1 discussion table + 2 sofa set',
+          amount: 6200,
+          previewImage: meetSofaTableWhiteboardNormalizedImage
+        }
       ],
       installationPerUnit: 750,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon, meetingSofaAddon]
+      addOnOptions: [meetingOfficeChairAddon, meetingSofaAddon]
     },
     colorImageMap: {
       default: aceMeetingGreyAshImage,
@@ -1182,14 +1226,24 @@ export const products = [
     pdpPricing: {
       baseConfigurations: [{ id: 'meeting-xl-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-hub'].startingPrice }],
       configurationOptions: [
-        { id: 'meeting-xl-centre-table', label: 'Centre table', amount: 1200 },
-        { id: 'meeting-xl-whiteboard-centre-table', label: 'Whiteboard panel + centre table', amount: 4200 },
-        { id: 'meeting-xl-centre-table-2sofa', label: 'Centre table + 2 sofa sets', amount: 5200 },
-        { id: 'meeting-xl-whiteboard-centre-table-2sofa', label: 'Whiteboard panel + centre table + 2 sofa sets', amount: 8200 }
+        { id: 'meeting-xl-centre-table', label: 'Centre table', amount: 1200, previewImage: hubTableNormalizedImage },
+        {
+          id: 'meeting-xl-whiteboard-centre-table',
+          label: 'Whiteboard panel + centre table',
+          amount: 4200,
+          previewImage: hubCentreTableWhiteboardNormalizedImage
+        },
+        { id: 'meeting-xl-centre-table-2sofa', label: 'Centre table + 2 sofa sets', amount: 5200, previewImage: greyAsh01NormalizedImage },
+        {
+          id: 'meeting-xl-whiteboard-centre-table-2sofa',
+          label: 'Whiteboard panel + centre table + 2 sofa sets',
+          amount: 8200,
+          previewImage: hubTableSofaWhiteboardNormalizedImage
+        }
       ],
       installationPerUnit: 800,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon, meetingXLSofaAddon, meetingXLLShapeSofaAddon]
+      addOnOptions: [officeChairAddon, meetingXLSofaAddon, meetingXLLShapeSofaAddon]
     },
     colorImageMap: {
       default: meetingXLExteriorImageMap['finish-grey-ash'],

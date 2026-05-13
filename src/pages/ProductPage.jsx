@@ -55,9 +55,12 @@ export default function ProductPage() {
   const chooserRef = useRef(null);
   const addonMenuRef = useRef(null);
   const featureScrollRef = useRef(null);
+  const thumbnailScrollRef = useRef(null);
   const wasBarStoolSelectedRef = useRef(false);
   const [canScrollFeaturesLeft, setCanScrollFeaturesLeft] = useState(false);
   const [canScrollFeaturesRight, setCanScrollFeaturesRight] = useState(false);
+  const [canScrollThumbnailsLeft, setCanScrollThumbnailsLeft] = useState(false);
+  const [canScrollThumbnailsRight, setCanScrollThumbnailsRight] = useState(false);
 
   useEffect(() => {
     if (!product) return;
@@ -138,6 +141,26 @@ export default function ProductPage() {
     };
   }, [product?.slug]);
 
+  useEffect(() => {
+    const scroller = thumbnailScrollRef.current;
+    if (!scroller) return;
+
+    const updateThumbnailScrollState = () => {
+      const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+      setCanScrollThumbnailsLeft(scroller.scrollLeft > 4);
+      setCanScrollThumbnailsRight(maxScrollLeft - scroller.scrollLeft > 4);
+    };
+
+    updateThumbnailScrollState();
+    scroller.addEventListener('scroll', updateThumbnailScrollState, { passive: true });
+    window.addEventListener('resize', updateThumbnailScrollState);
+
+    return () => {
+      scroller.removeEventListener('scroll', updateThumbnailScrollState);
+      window.removeEventListener('resize', updateThumbnailScrollState);
+    };
+  }, [product?.slug, selectedExterior, selectedInterior, selectedAddons, selectedConfigurationOptionIds]);
+
   if (!product) {
     return (
       <main className="min-h-screen bg-[#f4f4f4] px-6 py-16 text-[#1e2227]">
@@ -175,6 +198,10 @@ export default function ProductPage() {
     .filter((configuration) => selectedConfigurationOptionIds.includes(configuration.id))
     .reduce((sum, configuration) => sum + configuration.amount, 0);
   const availableAddons = pdpPricing.addOnOptions || [];
+  const currentChairAddon =
+    availableAddons.find((addon) => addon.id === 'office-chair') ||
+    availableAddons.find((addon) => addon.id === 'high-bar-stool') ||
+    null;
   const selectedAddonsAmount = availableAddons
     .filter((addon) => selectedAddons.includes(addon.id))
     .reduce((sum, addon) => sum + addon.amount, 0);
@@ -182,11 +209,11 @@ export default function ProductPage() {
   const deliveryAmount = pdpPricing.delivery?.default || 0;
   const computedTotal = (baseUnit?.price || 0) + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
 
-  const isFlexAndAbove = ['ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'].includes(product.slug);
+  const isAceFlexDuo = product.slug === 'ace-flex-duo';
   const pricingRows = [
-    { label: isFlexAndAbove ? 'Base unit (pod only)' : 'Base unit price', amount: baseUnit?.price || 0 },
+    { label: isAceFlexDuo ? 'Base unit' : 'Base unit\n(empty pod)', amount: baseUnit?.price || 0 },
     { label: 'Add-on', amount: selectedConfigurationAmount },
-    { label: 'Installation (Klang Valley)', amount: installationAmount },
+    { label: 'Installation\n(Klang Valley)', amount: installationAmount },
     { label: 'Delivery (Klang Valley)', amount: deliveryAmount },
     { label: 'Add-ons subtotal', amount: selectedAddonsAmount }
   ];
@@ -197,7 +224,7 @@ export default function ProductPage() {
 
   const formatRM = (amount) => `RM${amount.toLocaleString('en-MY')}`;
   const mutuallyExclusiveTableOptionIds = new Set(['duo-fixed-table', 'duo-adjustable-table']);
-  const mutuallyExclusiveSeatingAddonIds = new Set(['high-bar-stool', 'flex-sofa']);
+  const mutuallyExclusiveSeatingAddonIds = new Set(['high-bar-stool', 'office-chair', 'flex-sofa']);
   const getPreviewImageForOption = (option) => {
     if (!option) return '';
     if (option.id === 'high-bar-stool') {
@@ -215,12 +242,19 @@ export default function ProductPage() {
     const option = configurationOptions.find((configuration) => configuration.id === id);
     setSelectedConfigurationOptionIds((current) => {
       const isSelected = current.includes(id);
+      const isSingleSelectConfigProduct = ['ace-meet', 'ace-hub'].includes(product.slug);
       if (isSelected) {
         const optionPreviewImage = getPreviewImageForOption(option);
         if (optionPreviewImage && selectedImage === optionPreviewImage) {
           setSelectedImage('');
         }
-        return current.filter((optionId) => optionId !== id);
+        return isSingleSelectConfigProduct ? [] : current.filter((optionId) => optionId !== id);
+      }
+      if (isSingleSelectConfigProduct) {
+        if (option) {
+          applySelectionPreviewImage(option);
+        }
+        return [id];
       }
       const next = mutuallyExclusiveTableOptionIds.has(id)
         ? current.filter((optionId) => !mutuallyExclusiveTableOptionIds.has(optionId))
@@ -425,8 +459,13 @@ export default function ProductPage() {
     ])
   ];
   const shouldShowThumbnails = customerGalleryItems.length > 0;
-  const isChairImage = typeof mainImage === 'string' && mainImage.includes('bar-stool');
-  const shouldUseMultiplyBlend = product.slug !== 'ace-plus' || isChairImage;
+  const isBarStoolSelected = currentChairAddon ? selectedAddons.includes(currentChairAddon.id) : false;
+  const addonPreviewImages = [
+    ...availableAddons.map((addon) => getPreviewImageForOption(addon)).filter(Boolean),
+    ...(currentChairAddon ? [barStoolBlack, barStoolWhite] : [])
+  ];
+  const isAddonPreviewImage = addonPreviewImages.includes(mainImage);
+  const shouldUseMultiplyBlend = product.slug !== 'ace-plus' || isAddonPreviewImage;
   const hasMultipleExteriorColors = (product.exteriorColors || []).length > 1;
   const exteriorThumbnailItems = (product.exteriorColors || []).map((color) => {
     const exteriorPairKey = `${color.id}|${selectedInterior}`;
@@ -441,11 +480,52 @@ export default function ProductPage() {
     id: `preview-${index}`,
     image
   }));
-  const chairThumbnailItems = [
-    { id: 'chair-black', label: 'High bar stool (black)', image: barStoolBlack },
-    { id: 'chair-white', label: 'High bar stool (white)', image: barStoolWhite }
+  const optionThumbnailItems = [
+    ...configurationOptions
+      .map((option) => {
+        const image = getPreviewImageForOption(option);
+        if (!image) return null;
+        return {
+          kind: 'config',
+          id: option.id,
+          label: option.label,
+          image
+        };
+      })
+      .filter(Boolean),
+    ...availableAddons
+      .map((option) => {
+        if (option.id === 'high-bar-stool') {
+          return null;
+        }
+        if (option.id === 'office-chair' && ['ace-plus', 'ace-solo', 'ace-flex'].includes(product.slug)) {
+          return null;
+        }
+        const image = getPreviewImageForOption(option);
+        if (!image) return null;
+        return {
+          kind: 'addon',
+          id: option.id,
+          label: option.label,
+          image
+        };
+      })
+      .filter(Boolean)
   ];
-  const isBarStoolSelected = selectedAddons.includes('high-bar-stool');
+  const chairThumbnailItems = currentChairAddon && !['ace-meet', 'ace-hub'].includes(product.slug)
+    ? [
+        { id: 'chair-black', label: 'Chair (black)', image: barStoolBlack },
+        { id: 'chair-white', label: 'Chair (white)', image: barStoolWhite }
+      ]
+    : [];
+  const hubLShapeSofaPreviewImage = getPreviewImageForOption(availableAddons.find((addon) => addon.id === 'meeting-xl-l-shape-sofa'));
+  const isHubLShapeSofaMainPreview = product.slug === 'ace-hub' && mainImage === hubLShapeSofaPreviewImage;
+  const aceMeetOptionPreviewImages =
+    product.slug === 'ace-meet' ? [...configurationOptions, ...availableAddons].map((option) => getPreviewImageForOption(option)).filter(Boolean) : [];
+  const isAceMeetOptionPreviewImage = product.slug === 'ace-meet' && aceMeetOptionPreviewImages.includes(mainImage);
+  const aceHubConfigurationPreviewImages =
+    product.slug === 'ace-hub' ? configurationOptions.map((option) => getPreviewImageForOption(option)).filter(Boolean) : [];
+  const isAceHubConfigurationPreviewImage = product.slug === 'ace-hub' && aceHubConfigurationPreviewImages.includes(mainImage);
   const mainProductAlt = `${product.name} acoustic office pod`;
   const getFeatureAlt = (featureItem) =>
     featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
@@ -468,6 +548,13 @@ export default function ProductPage() {
     const scroller = featureScrollRef.current;
     if (!scroller) return;
     const step = Math.max(280, Math.round(scroller.clientWidth * 0.72));
+    scroller.scrollBy({ left: direction * step, behavior: 'smooth' });
+  };
+
+  const scrollThumbnailTrack = (direction) => {
+    const scroller = thumbnailScrollRef.current;
+    if (!scroller) return;
+    const step = Math.max(180, Math.round(scroller.clientWidth * 0.55));
     scroller.scrollBy({ left: direction * step, behavior: 'smooth' });
   };
 
@@ -539,10 +626,14 @@ export default function ProductPage() {
       const previewImage = getPreviewImageForOption(addon);
       if (previewImage) validPreviewImages.add(previewImage);
     });
+    if (currentChairAddon) {
+      validPreviewImages.add(barStoolBlack);
+      validPreviewImages.add(barStoolWhite);
+    }
     if (selectedImage && !validPreviewImages.has(selectedImage)) {
       setSelectedImage('');
     }
-  }, [product.slug, productDisplayItems, selectedImage, configurationOptions, availableAddons, selectedStoolVariant]);
+  }, [product.slug, productDisplayItems, selectedImage, configurationOptions, availableAddons, selectedStoolVariant, currentChairAddon]);
 
   useEffect(() => {
     const isStoolImage = selectedImage === barStoolBlack || selectedImage === barStoolWhite;
@@ -554,11 +645,11 @@ export default function ProductPage() {
   useEffect(() => {
     const wasSelected = wasBarStoolSelectedRef.current;
     const isFirstSelect = !wasSelected && isBarStoolSelected;
-    if (isFirstSelect) {
+    if (isFirstSelect && currentChairAddon?.id === 'high-bar-stool') {
       setSelectedImage(selectedStoolVariant === 'white' ? barStoolWhite : barStoolBlack);
     }
     wasBarStoolSelectedRef.current = isBarStoolSelected;
-  }, [isBarStoolSelected, selectedStoolVariant]);
+  }, [isBarStoolSelected, selectedStoolVariant, currentChairAddon]);
 
   const openGalleryModalAtIndex = (index) => {
     if (index < 0 || index >= customerGalleryItems.length) return;
@@ -655,7 +746,17 @@ export default function ProductPage() {
                     <img
                       src={mainImage}
                       alt={mainProductAlt}
-                      className={`relative z-[1] object-contain object-center ${isChairImage ? 'h-1/2 w-1/2' : 'h-full w-full'} ${
+                      className={`relative z-[1] object-contain object-center ${
+                        isHubLShapeSofaMainPreview
+                          ? 'h-[70%] w-[70%]'
+                          : isAceMeetOptionPreviewImage
+                            ? 'h-full w-full'
+                            : isAceHubConfigurationPreviewImage
+                              ? 'h-full w-full'
+                            : isAddonPreviewImage
+                              ? 'h-1/2 w-1/2'
+                              : 'h-full w-full'
+                      } ${
                         shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''
                       }`}
                     />
@@ -680,10 +781,36 @@ export default function ProductPage() {
                 </div>
               </div>
               {hasMultipleExteriorColors && (
-                <div className="mt-1 hidden lg:block">
+                <div className="mt-1 block">
                   <div className="px-0 py-1">
                     <p className="mb-2 text-center text-[12px] font-semibold tracking-[0.03em] text-[#3b3f45]">Available pod colours</p>
-                    <div className="flex justify-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => scrollThumbnailTrack(-1)}
+                        aria-label="Scroll thumbnails left"
+                        disabled={!canScrollThumbnailsLeft}
+                        className={`absolute left-0 top-1/2 z-[2] hidden -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/90 p-1.5 text-[#2f3439] shadow-sm backdrop-blur-sm transition-colors md:block ${
+                          canScrollThumbnailsLeft ? 'hover:bg-white' : 'cursor-not-allowed opacity-35'
+                        }`}
+                      >
+                        <ChevronLeft size={18} strokeWidth={2.25} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => scrollThumbnailTrack(1)}
+                        aria-label="Scroll thumbnails right"
+                        disabled={!canScrollThumbnailsRight}
+                        className={`absolute right-0 top-1/2 z-[2] hidden -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/90 p-1.5 text-[#2f3439] shadow-sm backdrop-blur-sm transition-colors md:block ${
+                          canScrollThumbnailsRight ? 'hover:bg-white' : 'cursor-not-allowed opacity-35'
+                        }`}
+                      >
+                        <ChevronRight size={18} strokeWidth={2.25} />
+                      </button>
+                      <div
+                        ref={thumbnailScrollRef}
+                        className="flex max-w-full flex-nowrap justify-center gap-2 overflow-x-auto overflow-y-hidden px-0 pb-1 md:px-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                      >
                       {previewThumbnailItems.map((preview) => {
                         const selected = mainImage === preview.image;
                         return (
@@ -734,6 +861,51 @@ export default function ProductPage() {
                           </button>
                         );
                       })}
+                      {optionThumbnailItems.map((item) => {
+                        const selected = mainImage === item.image;
+                        return (
+                          <button
+                            key={`${item.kind}-${item.id}`}
+                            type="button"
+                            onClick={() => {
+                              if (item.kind === 'config') {
+                                if (!selectedConfigurationOptionIds.includes(item.id)) {
+                                  toggleConfigurationOption(item.id);
+                                  return;
+                                }
+                                setSelectedImage(item.image);
+                                return;
+                              }
+                              if (!selectedAddons.includes(item.id)) {
+                                toggleAddon(item.id);
+                                return;
+                              }
+                              setSelectedImage(item.image);
+                            }}
+                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f5f6f8] transition-all ${
+                              selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
+                            }`}
+                            aria-label={`Available pod colours option: ${item.label}`}
+                          >
+                            <img
+                              src={item.image}
+                              alt={item.label}
+                              className={`object-contain object-center ${
+                                ['flex-sofa', 'meeting-xl-sofa-set'].includes(item.id)
+                                  ? 'mx-auto my-auto h-[70%] w-[70%]'
+                                  : item.id === 'meeting-xl-l-shape-sofa'
+                                    ? 'mx-auto my-auto h-[98%] w-[98%]'
+                                    : 'h-full w-full'
+                              }`}
+                            />
+                            {selected && (
+                              <span className="absolute inset-0 border border-[#1e2227]">
+                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#1e2227]" />
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
                       {chairThumbnailItems.map((chair) => {
                         const variant = chair.id === 'chair-white' ? 'white' : 'black';
                         const selected = mainImage === chair.image;
@@ -742,11 +914,16 @@ export default function ProductPage() {
                             key={chair.id}
                             type="button"
                             onClick={() => {
+                              if (!currentChairAddon) return;
                               setSelectedStoolVariant(variant);
                               setSelectedImage(chair.image);
                               setSelectedAddons((current) => {
-                                const withoutSofa = current.filter((addonId) => addonId !== 'flex-sofa');
-                                return withoutSofa.includes('high-bar-stool') ? withoutSofa : [...withoutSofa, 'high-bar-stool'];
+                                const withoutMutuallyExclusiveSeating = current.filter(
+                                  (addonId) => addonId !== 'flex-sofa' && addonId !== 'high-bar-stool' && addonId !== 'office-chair'
+                                );
+                                return withoutMutuallyExclusiveSeating.includes(currentChairAddon.id)
+                                  ? withoutMutuallyExclusiveSeating
+                                  : [...withoutMutuallyExclusiveSeating, currentChairAddon.id];
                               });
                             }}
                             className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[8px] border transition-all ${
@@ -763,6 +940,7 @@ export default function ProductPage() {
                           </button>
                         );
                       })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -921,7 +1099,7 @@ export default function ProductPage() {
                         <div className="space-y-0">
                           {pricingRows.map((row) => (
                             <div key={row.label} className="grid grid-cols-[1fr_auto] items-center border-b border-[#e8eaed] py-2.5">
-                              <dt className="font-medium text-[#414850]">{row.label}</dt>
+                              <dt className="whitespace-pre-line font-medium leading-[1.35] text-[#414850]">{row.label}</dt>
                               <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{formatRM(row.amount)}</dd>
                             </div>
                           ))}

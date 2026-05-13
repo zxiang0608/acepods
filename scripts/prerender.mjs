@@ -30,6 +30,8 @@ const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
 }));
 
 const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.png`;
+const NOSCRIPT_BRAND_OWNERSHIP_TEXT =
+  'Ace Office Pods is owned by Ace Workplace Solutions and supplies office pods, office booths, office phone booths, and meeting pods in Malaysia.';
 const buildOrganizationSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -709,7 +711,7 @@ const buildFallbackBody = ({ h1, body = [], noscriptFaqHeading, noscriptFaqItems
           .map((item) => `<article><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></article>`)
           .join('')}</section>`
       : '';
-  return `<main><section><h1>${escapeHtml(h1)}</h1>${structuredBody}</section>${faqBlock}</main>`;
+  return `<main><section><h1>${escapeHtml(h1)}</h1><p>${escapeHtml(NOSCRIPT_BRAND_OWNERSHIP_TEXT)}</p>${structuredBody}</section>${faqBlock}</main>`;
 };
 
 const injectSeoHtml = (html, route, meta) => {

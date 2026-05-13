@@ -1,7 +1,14 @@
 export const SEO_BASE_URL = 'https://aceofficepods.com';
 export const SEO_BRAND_PRIMARY = 'Ace Office Pods';
 export const SEO_BRAND_LEGAL = 'Ace Workplace Solutions';
-export const SEO_BRAND_ALTERNATE_NAMES = ['Ace Workplace Solutions', 'Ace Office Pods', 'AcePods'];
+export const SEO_BRAND_ALTERNATE_NAMES = [
+  'Ace Workplace Solutions',
+  'Ace Office Pods',
+  'AcePods',
+  'Ace Office Pods Malaysia',
+  'Ace Office Booths',
+  'Ace Office Booths Malaysia'
+];
 export const SEO_BRAND_IDENTIFIER = '202403171118';
 export const SEO_BRAND_EMAIL = 'sales@aceofficepods.com';
 export const SEO_BRAND_PHONE = '+601154352700';
