@@ -72,6 +72,44 @@ const buildWebsiteSchema = () => ({
   }
 });
 
+const buildProfessionalServiceSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SEO_BASE_URL}/#professional-service`,
+  name: SEO_BRAND_PRIMARY,
+  url: SEO_BASE_URL,
+  logo: SEO_BRAND_LOGO,
+  telephone: SEO_BRAND_PHONE,
+  email: SEO_BRAND_EMAIL,
+  areaServed: [
+    {
+      '@type': 'Country',
+      name: 'Malaysia'
+    },
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Klang Valley'
+    },
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Greater Kuala Lumpur'
+    },
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Selangor'
+    },
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Kuala Lumpur'
+    }
+  ],
+  sameAs: SEO_BRAND_SAME_AS,
+  provider: {
+    '@id': `${SEO_BASE_URL}/#organization`
+  },
+  description: 'Ace Office Pods (Ace Workplace Solutions) supplies office pods and office booths for calls, focus, and meetings in Malaysia.'
+});
+
 const buildHomepageWebPageSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebPage',
@@ -113,6 +151,11 @@ const STATIC_PRERENDER_META = {
       'Comparing these factors early helps avoid mismatch between room capacity, workflow, and final project cost.',
       '## Local delivery and installation context in Malaysia',
       'Delivery and installation planning often includes access route checks, lift or staircase handling, floor protection, and final placement coordination. Projects outside Klang Valley or with restricted access are usually quoted based on actual site conditions.',
+      '## Areas we serve',
+      'Ace Office Pods supports office pod enquiries, delivery planning, and installation coordination across Malaysia, with a focus on Klang Valley and Greater Kuala Lumpur.',
+      'Kuala Lumpur areas include KLCC, KL Sentral, Bangsar, Bangsar South, Mont Kiara, Sri Hartamas, TTDI, Cheras, Ampang, Setapak, Wangsa Maju, Kepong, Bukit Jalil, Old Klang Road, and Mid Valley.',
+      'Selangor and nearby areas include Petaling Jaya, Shah Alam, Subang Jaya, USJ, Puchong, Cyberjaya, Putrajaya, Damansara, Kota Damansara, Ara Damansara, Tropicana, Sunway, Bandar Sunway, Kelana Jaya, Glenmarie, Klang, Kajang, Seri Kembangan, Balakong, Rawang, Nilai, and Seremban.',
+      'Our team can help with model selection, layout planning, delivery coordination, installation, and post-installation support based on the agreed project scope.',
       '## Common buying path',
       '- Define whether the primary use is calls, focused work, or meetings',
       '- Compare model sizes and starting pricing',
@@ -129,6 +172,7 @@ const STATIC_PRERENDER_META = {
     schemas: (canonical) => [
       buildOrganizationSchema(),
       buildWebsiteSchema(),
+      buildProfessionalServiceSchema(),
       buildHomepageWebPageSchema(),
       {
         '@context': 'https://schema.org',
@@ -162,6 +206,7 @@ const STATIC_PRERENDER_META = {
       '## Pricing clarity and scope confirmation',
       'A practical quote typically confirms model, quantity, selected options, delivery area, installation arrangement, and any access constraints before final approval.',
       'This helps teams compare office pods on total project scope instead of headline figures alone.',
+      'Service and installation planning are available across Malaysia, with a focus on Klang Valley and Greater Kuala Lumpur offices.',
       '## What buyers usually request in pricing comparisons',
       '- Side-by-side model shortlist with starting prices',
       '- Clarification on inclusions in base scope',
@@ -262,6 +307,7 @@ const STATIC_PRERENDER_META = {
       'Compare intended daily usage, team size, available floor space, acoustic expectations, and project budget. This reduces the risk of choosing a pod that is either too small for meetings or oversized for call use.',
       '## Delivery and installation planning in Malaysia',
       'Site access can influence project execution. Teams usually confirm lift access, staircase handling, loading zones, and final placement path before installation day.',
+      'Service and installation planning are available across Malaysia, with a focus on Klang Valley and Greater Kuala Lumpur offices.',
       '## Commercial review points for office pod buyers',
       'Beyond sizing and appearance, most teams compare operational practicality: expected utilization, support process, and whether the selected pod type still fits future layout changes.',
       'A practical shortlist often combines one-person and meeting-focused models so calls, focused work, and collaboration can be supported without building permanent rooms.',
@@ -338,6 +384,7 @@ const STATIC_PRERENDER_META = {
       'Starting prices are useful for first comparison, but final scope often includes selected options, installation requirements, and access logistics. Reviewing total scope early improves budget certainty.',
       '## Malaysia installation context',
       'Projects in Klang Valley commonly include delivery and installation within agreed scope. Outside Klang Valley or restricted-access handling is typically quoted based on site conditions and logistics needs.',
+      'Service and installation planning are available across Malaysia, with a focus on Klang Valley and Greater Kuala Lumpur offices.',
       '## When to choose different meeting pod sizes',
       'Teams that run short recurring discussions and hybrid calls often prioritize a 2–4 pax format. Teams that need broader internal room for larger sessions usually compare bigger meeting pod configurations.',
       'The best fit depends on actual usage pattern, not only maximum capacity. Reviewing meeting duration, participant turnover, and call frequency helps avoid over-sizing or under-sizing.',
@@ -405,6 +452,7 @@ const STATIC_PRERENDER_META = {
       'Final project pricing can vary based on model, quantity, selected options, and site access conditions. For many offices, confirming delivery and installation details early helps avoid timeline delays.',
       '## Malaysia project context',
       'Office phone booth projects in Klang Valley generally follow a straightforward delivery and installation process when access conditions are confirmed. Additional handling for complex access routes is usually reviewed during quotation.',
+      'Service and installation planning are available across Malaysia, with a focus on Klang Valley and Greater Kuala Lumpur offices.',
       '## How teams use phone booth pods daily',
       'Phone booth style pods are commonly used for client calls, internal check-ins, and focused tasks that need fewer interruptions than open workstations provide.',
       'Where teams face frequent background noise or high call volume, one-person pods can reduce disruption while keeping larger meeting spaces available for group sessions.',
@@ -674,6 +722,11 @@ const STATIC_PRERENDER_META = {
       '- Starting price and option planning',
       '- Delivery and installation scope',
       '- Lead time and project scheduling',
+      '## Areas we serve',
+      'Ace Office Pods supports office pod enquiries, delivery planning, and installation coordination across Malaysia, with a focus on Klang Valley and Greater Kuala Lumpur.',
+      'Kuala Lumpur areas include KLCC, KL Sentral, Bangsar, Bangsar South, Mont Kiara, Sri Hartamas, TTDI, Cheras, Ampang, Setapak, Wangsa Maju, Kepong, Bukit Jalil, Old Klang Road, and Mid Valley.',
+      'Selangor and nearby areas include Petaling Jaya, Shah Alam, Subang Jaya, USJ, Puchong, Cyberjaya, Putrajaya, Damansara, Kota Damansara, Ara Damansara, Tropicana, Sunway, Bandar Sunway, Kelana Jaya, Glenmarie, Klang, Kajang, Seri Kembangan, Balakong, Rawang, Nilai, and Seremban.',
+      'Our team can help with model selection, layout planning, delivery coordination, installation, and post-installation support based on the agreed project scope.',
       '## Related planning links',
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
@@ -683,6 +736,7 @@ const STATIC_PRERENDER_META = {
     noscriptFaqHeading: 'Common pre-sales questions',
     noscriptFaqItems: [HOME_FAQ_ITEMS[0], HOME_FAQ_ITEMS[1], FAQ_PAGE_ITEMS[10]],
     schemas: (canonical) => [
+      buildProfessionalServiceSchema(),
       {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
