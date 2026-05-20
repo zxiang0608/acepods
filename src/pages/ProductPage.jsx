@@ -193,6 +193,8 @@ export default function ProductPage() {
   const pdpPricing = product.pdpPricing || {};
   const baseConfigurations = [...(pdpPricing.baseConfigurations || [])].sort((a, b) => a.price - b.price);
   const baseUnit = baseConfigurations[0];
+  const hasBaseUnitPrice = typeof baseUnit?.price === 'number';
+  const baseUnitPrice = hasBaseUnitPrice ? baseUnit.price : 0;
   const configurationOptions = [...(pdpPricing.configurationOptions || [])].sort((a, b) => a.amount - b.amount);
   const selectedConfigurationAmount = configurationOptions
     .filter((configuration) => selectedConfigurationOptionIds.includes(configuration.id))
@@ -207,11 +209,15 @@ export default function ProductPage() {
     .reduce((sum, addon) => sum + addon.amount, 0);
   const installationAmount = pdpPricing.installationPerUnit || 0;
   const deliveryAmount = pdpPricing.delivery?.default || 0;
-  const computedTotal = (baseUnit?.price || 0) + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
+  const computedTotal = baseUnitPrice + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
 
   const isAceFlexDuo = product.slug === 'ace-flex-duo';
   const pricingRows = [
-    { label: isAceFlexDuo ? 'Base unit' : 'Base unit\n(empty pod)', amount: baseUnit?.price || 0 },
+    {
+      label: isAceFlexDuo ? 'Base unit' : 'Base unit\n(empty pod)',
+      amount: baseUnitPrice,
+      amountLabel: hasBaseUnitPrice ? null : product.pricing?.amount || 'Contact for price'
+    },
     { label: 'Add-on', amount: selectedConfigurationAmount },
     { label: 'Installation\n(Klang Valley)', amount: installationAmount },
     { label: 'Delivery (Klang Valley)', amount: deliveryAmount },
@@ -223,6 +229,8 @@ export default function ProductPage() {
   const outstationNoteLines = outstationNote.match(/[^.?!]+[.?!]/g)?.map((line) => line.trim()) || [outstationNote];
 
   const formatRM = (amount) => `RM${amount.toLocaleString('en-MY')}`;
+  const startingPriceText = hasBaseUnitPrice ? formatRM(baseUnitPrice) : product.pricing?.amount || 'Contact for price';
+  const computedTotalText = hasBaseUnitPrice ? formatRM(computedTotal) : 'Contact for price';
   const mutuallyExclusiveTableOptionIds = new Set(['duo-fixed-table', 'duo-adjustable-table']);
   const mutuallyExclusiveSeatingAddonIds = new Set(['high-bar-stool', 'office-chair', 'flex-sofa']);
   const getPreviewImageForOption = (option) => {
@@ -438,6 +446,7 @@ export default function ProductPage() {
   })();
   const hasFeatureRows = displayFeatureRows.some((row) => row.length > 0);
   const allFeatureItems = displayFeatureRows.flat();
+  const isAceSoloPage = product.slug === 'ace-solo';
   const seoTitle = `${product.displayTitle || product.name} Office Pod Pricing, Specs and Colors | Ace Office Pods`;
   const seoDescription = `${product.displayTitle || product.name}: ${product.shortDesc}. ${product.pricing.amount} in Malaysia from Ace Office Pods by Ace Workplace Solutions. View office pod and office booth colors, add-ons, installation (Klang Valley), and delivery details.`;
   const seoKeywords = `${SEO_KEYWORDS_COMMON}, ${product.displayTitle || product.name}, ${product.slug.replace(/-/g, ' ')}`;
@@ -726,7 +735,7 @@ export default function ProductPage() {
                   {product.displayTitle || product.name}
                 </h1>
                 <p className="mt-3 text-[16px] font-semibold leading-tight text-[#145b5f] md:text-[20px]">
-                  Starting from {formatRM(baseUnit?.price || 0)}
+                  Starting from {startingPriceText}
                 </p>
                 <p className="mt-4 max-w-[42ch] text-[17px] leading-[1.5] text-[#2e3136]">{product.shortDesc}</p>
               </div>
@@ -954,7 +963,7 @@ export default function ProductPage() {
                 </p>
                 <h1 className="text-[56px] font-semibold leading-[1.03] tracking-tight">{product.displayTitle || product.name}</h1>
                 <p className="mt-2 text-[22px] leading-tight text-[#2e3136]">{product.shortDesc}</p>
-                <p className="mt-2 text-[24px] font-semibold leading-tight text-[#145b5f]">Starting from {formatRM(baseUnit?.price || 0)}</p>
+                <p className="mt-2 text-[24px] font-semibold leading-tight text-[#145b5f]">Starting from {startingPriceText}</p>
               </div>
 
               <div className="mt-6 py-6 md:py-7 lg:flex-1">
@@ -1100,14 +1109,14 @@ export default function ProductPage() {
                           {pricingRows.map((row) => (
                             <div key={row.label} className="grid grid-cols-[1fr_auto] items-center border-b border-[#e8eaed] py-2.5">
                               <dt className="whitespace-pre-line font-medium leading-[1.35] text-[#414850]">{row.label}</dt>
-                              <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{formatRM(row.amount)}</dd>
+                              <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{row.amountLabel || formatRM(row.amount)}</dd>
                             </div>
                           ))}
                         </div>
                         <div className="mt-3 border-t border-[#d3d9df] pt-3">
                           <div className="grid grid-cols-[1fr_auto] items-center">
                             <dt className="text-[16px] font-semibold text-[#1f232a]">Total</dt>
-                            <dd className="text-right text-[18px] font-bold tabular-nums text-[#1f232a]">{formatRM(computedTotal)}</dd>
+                            <dd className="text-right text-[18px] font-bold tabular-nums text-[#1f232a]">{computedTotalText}</dd>
                           </div>
                         </div>
                       </dl>
@@ -1256,6 +1265,13 @@ export default function ProductPage() {
                 <div>
                   <h2 className="text-[24px] font-semibold tracking-tight">Product Details</h2>
                   <div className="mt-3 space-y-3">
+                    {isAceSoloPage && (
+                      <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
+                        <p className="text-[#4e535a]">
+                          Designed for open-plan offices, Ace Solo adds a private call and focus point without building a permanent room.
+                        </p>
+                      </div>
+                    )}
                     {quickAnswerDimensionsText && (
                       <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
                         <h3 className="font-semibold text-[#1f232a]">Dimensions &amp; fit</h3>
@@ -1324,6 +1340,36 @@ export default function ProductPage() {
                     ))}
                   </ul>
                 </div>
+
+                {isAceSoloPage && (
+                  <div>
+                    <h3 className="text-[20px] font-semibold tracking-tight">Quick answers about Ace Solo</h3>
+                    <div className="mt-2 space-y-2 text-[14px] text-[#3d4147]">
+                      <p>
+                        <span className="font-semibold text-[#1f232a]">Q: What is Ace Solo?</span>
+                        <br />
+                        A: Ace Solo is a compact one-person acoustic office pod that creates an enclosed workspace inside an existing office.
+                      </p>
+                      <p>
+                        <span className="font-semibold text-[#1f232a]">Q: How much does Ace Solo cost in Malaysia?</span>
+                        <br />
+                        A: Ace Solo&apos;s base unit starts from {startingPriceText}. The calculator estimates the total with selected
+                        add-ons plus Klang Valley delivery and installation.
+                      </p>
+                      <p>
+                        <span className="font-semibold text-[#1f232a]">Q: What is Ace Solo best for?</span>
+                        <br />
+                        A: It is best for phone calls, video meetings, and short solo work sessions where teams need privacy close to their desks.
+                      </p>
+                      <p>
+                        <span className="font-semibold text-[#1f232a]">Q: Does Ace Solo include delivery and installation?</span>
+                        <br />
+                        A: Delivery and installation are shown as separate Klang Valley line items in the calculator. Other areas may be subject to
+                        different delivery and installation charges.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
