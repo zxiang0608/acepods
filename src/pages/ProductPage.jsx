@@ -12,6 +12,124 @@ import highResPodCert from '../../assets/high-res-pod-cert.png';
 import barStoolBlack from '../../assets/bar-stool-black.png';
 import barStoolWhite from '../../assets/bar-stool-white.png';
 
+const PDP_QUICK_ANSWER_COPY = {
+  'ace-solo': {
+    intro: 'Designed for open-plan offices, Ace Solo adds a private call and focus point without building a permanent room.',
+    heading: 'Quick answers about Ace Solo',
+    items: [
+      {
+        q: 'What is Ace Solo?',
+        a: 'Ace Solo is a compact one-person acoustic office pod that creates an enclosed workspace inside an existing office.'
+      },
+      {
+        q: 'How much does Ace Solo cost in Malaysia?',
+        a: ({ startingPriceText }) =>
+          `Ace Solo's base unit starts from ${startingPriceText}. The calculator estimates the total with selected add-ons plus Klang Valley delivery and installation.`
+      },
+      {
+        q: 'What is Ace Solo best for?',
+        a: 'It is best for phone calls, video meetings, and short solo work sessions where teams need privacy close to their desks.'
+      },
+      {
+        q: 'Does Ace Solo include delivery and installation?',
+        a: 'Delivery and installation are shown as separate Klang Valley line items in the calculator. Other areas may be subject to different delivery and installation charges.'
+      }
+    ]
+  },
+  'ace-plus': {
+    intro: 'Ace Plus gives one person a more controlled space for calls and focused work in busy open-plan offices.',
+    heading: 'Quick answers about Ace Plus',
+    items: [
+      {
+        q: 'What is Ace Plus?',
+        a: 'Ace Plus is a one-person phone and focus pod for private calls, video meetings, and focused work inside open-plan offices.'
+      },
+      {
+        q: 'How much does Ace Plus cost in Malaysia?',
+        a: ({ startingPriceText }) =>
+          `Ace Plus starts from ${startingPriceText}. The calculator estimates the total with selected add-ons plus Klang Valley delivery and installation.`
+      },
+      {
+        q: 'What is Ace Plus best for?',
+        a: 'It is best for repeated one-person use, especially calls, video meetings, and focused work where privacy and sound control matter.'
+      },
+      {
+        q: 'Does Ace Plus include delivery and installation?',
+        a: 'Delivery and installation are shown as separate Klang Valley line items in the calculator. Other areas may be subject to different delivery and installation charges.'
+      }
+    ]
+  },
+  'ace-flex': {
+    intro: 'Ace Flex adds more internal room for longer focus sessions and private work without converting fixed office space.',
+    heading: 'Quick answers about Ace Flex',
+    items: [
+      {
+        q: 'What is Ace Flex?',
+        a: 'Ace Flex is a larger one-person focus and work pod with more internal room than the compact call pod models.'
+      },
+      {
+        q: 'How much does Ace Flex cost in Malaysia?',
+        a: ({ startingPriceText }) =>
+          `Ace Flex starts from ${startingPriceText}. The calculator estimates the total with selected table options, add-ons, delivery, and installation.`
+      },
+      {
+        q: 'What is Ace Flex best for?',
+        a: 'It is best for longer focus sessions, private calls, and users who need more workspace inside the pod.'
+      },
+      {
+        q: 'What configuration options are available for Ace Flex?',
+        a: 'Ace Flex supports fixed normal-height table and adjustable table options, with office chair or sofa add-ons depending on the selected setup.'
+      }
+    ]
+  },
+  'ace-meet': {
+    intro: 'Ace Meet creates a dedicated meeting space for small teams without depending only on built meeting rooms.',
+    heading: 'Quick answers about Ace Meet',
+    items: [
+      {
+        q: 'What is Ace Meet?',
+        a: 'Ace Meet is a 2-4 pax meeting pod for small team discussions, hybrid calls, and quiet collaboration inside open-plan offices.'
+      },
+      {
+        q: 'How much does Ace Meet cost in Malaysia?',
+        a: ({ startingPriceText }) =>
+          `Ace Meet starts from ${startingPriceText}. The calculator estimates the total with selected furniture configurations, add-ons, delivery, and installation.`
+      },
+      {
+        q: 'What is Ace Meet best for?',
+        a: 'It is best for small team meetings, short check-ins, and hybrid calls without relying only on fixed meeting rooms.'
+      },
+      {
+        q: 'What configurations are available for Ace Meet?',
+        a: 'Ace Meet supports table, adjustable table, whiteboard, sofa, and discussion-table configurations based on the selected setup.'
+      }
+    ]
+  },
+  'ace-hub': {
+    intro: 'Ace Hub gives larger teams a more spacious enclosed area for meetings, hybrid calls, and lounge-style collaboration.',
+    heading: 'Quick answers about Ace Hub',
+    items: [
+      {
+        q: 'What is Ace Hub?',
+        a: 'Ace Hub is a larger meeting and lounge pod for team discussions, longer hybrid sessions, and group collaboration for up to 6 people.'
+      },
+      {
+        q: 'How much does Ace Hub cost in Malaysia?',
+        a: ({ startingPriceText }) =>
+          `Ace Hub starts from ${startingPriceText}. The calculator estimates the total with selected table, whiteboard, sofa, delivery, and installation options.`
+      },
+      {
+        q: 'How is Ace Hub different from Ace Meet?',
+        a: 'Ace Hub provides more internal room for larger group sessions, while Ace Meet is positioned for smaller 2-4 pax meetings.'
+      },
+      {
+        q: 'What is Ace Hub best for?',
+        a: 'It is best for team meetings, longer hybrid calls, and teams that need a larger enclosed collaboration space.'
+      }
+    ]
+  }
+};
+
 const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false }) => (
   <div>
     {!hideHeading && <h3 className="mb-3 text-[16px] font-semibold text-[#1e2227]">{label}</h3>}
@@ -446,7 +564,7 @@ export default function ProductPage() {
   })();
   const hasFeatureRows = displayFeatureRows.some((row) => row.length > 0);
   const allFeatureItems = displayFeatureRows.flat();
-  const isAceSoloPage = product.slug === 'ace-solo';
+  const pdpQuickAnswerCopy = PDP_QUICK_ANSWER_COPY[product.slug] || null;
   const seoTitle = `${product.displayTitle || product.name} Office Pod Pricing, Specs and Colors | Ace Office Pods`;
   const seoDescription = `${product.displayTitle || product.name}: ${product.shortDesc}. ${product.pricing.amount} in Malaysia from Ace Office Pods by Ace Workplace Solutions. View office pod and office booth colors, add-ons, installation (Klang Valley), and delivery details.`;
   const seoKeywords = `${SEO_KEYWORDS_COMMON}, ${product.displayTitle || product.name}, ${product.slug.replace(/-/g, ' ')}`;
@@ -1265,11 +1383,9 @@ export default function ProductPage() {
                 <div>
                   <h2 className="text-[24px] font-semibold tracking-tight">Product Details</h2>
                   <div className="mt-3 space-y-3">
-                    {isAceSoloPage && (
+                    {pdpQuickAnswerCopy?.intro && (
                       <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
-                        <p className="text-[#4e535a]">
-                          Designed for open-plan offices, Ace Solo adds a private call and focus point without building a permanent room.
-                        </p>
+                        <p className="text-[#4e535a]">{pdpQuickAnswerCopy.intro}</p>
                       </div>
                     )}
                     {quickAnswerDimensionsText && (
@@ -1341,32 +1457,17 @@ export default function ProductPage() {
                   </ul>
                 </div>
 
-                {isAceSoloPage && (
+                {pdpQuickAnswerCopy && (
                   <div>
-                    <h3 className="text-[20px] font-semibold tracking-tight">Quick answers about Ace Solo</h3>
+                    <h3 className="text-[20px] font-semibold tracking-tight">{pdpQuickAnswerCopy.heading}</h3>
                     <div className="mt-2 space-y-2 text-[14px] text-[#3d4147]">
-                      <p>
-                        <span className="font-semibold text-[#1f232a]">Q: What is Ace Solo?</span>
-                        <br />
-                        A: Ace Solo is a compact one-person acoustic office pod that creates an enclosed workspace inside an existing office.
-                      </p>
-                      <p>
-                        <span className="font-semibold text-[#1f232a]">Q: How much does Ace Solo cost in Malaysia?</span>
-                        <br />
-                        A: Ace Solo&apos;s base unit starts from {startingPriceText}. The calculator estimates the total with selected
-                        add-ons plus Klang Valley delivery and installation.
-                      </p>
-                      <p>
-                        <span className="font-semibold text-[#1f232a]">Q: What is Ace Solo best for?</span>
-                        <br />
-                        A: It is best for phone calls, video meetings, and short solo work sessions where teams need privacy close to their desks.
-                      </p>
-                      <p>
-                        <span className="font-semibold text-[#1f232a]">Q: Does Ace Solo include delivery and installation?</span>
-                        <br />
-                        A: Delivery and installation are shown as separate Klang Valley line items in the calculator. Other areas may be subject to
-                        different delivery and installation charges.
-                      </p>
+                      {pdpQuickAnswerCopy.items.map((item) => (
+                        <p key={item.q}>
+                          <span className="font-semibold text-[#1f232a]">Q: {item.q}</span>
+                          <br />
+                          A: {typeof item.a === 'function' ? item.a({ startingPriceText }) : item.a}
+                        </p>
+                      ))}
                     </div>
                   </div>
                 )}
