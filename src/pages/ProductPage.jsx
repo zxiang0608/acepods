@@ -82,6 +82,29 @@ const PDP_QUICK_ANSWER_COPY = {
       }
     ]
   },
+  'ace-flex-duo': {
+    intro: 'Ace Flex Duo creates a dedicated two-person pod for focused collaboration and private discussions in open offices.',
+    heading: 'Quick answers about Ace Flex Duo',
+    items: [
+      {
+        q: 'What is Ace Flex Duo?',
+        a: 'Ace Flex Duo is a two-person pod configured for face-to-face collaboration, focused work, and private one-to-one discussions.'
+      },
+      {
+        q: 'How much does Ace Flex Duo cost in Malaysia?',
+        a: ({ startingPriceText }) =>
+          `Ace Flex Duo starts from ${startingPriceText}. The calculator estimates the total with selected table options, add-ons, delivery, and installation.`
+      },
+      {
+        q: 'How is Ace Flex Duo different from Ace Flex?',
+        a: 'Ace Flex Duo uses a dedicated two-seater collaboration layout, while Ace Flex is positioned as a larger one-person focus and work pod.'
+      },
+      {
+        q: 'What is Ace Flex Duo best for?',
+        a: 'It is best for two-person collaboration, hybrid calls, interviews, and private discussions in open offices.'
+      }
+    ]
+  },
   'ace-meet': {
     intro: 'Ace Meet creates a dedicated meeting space for small teams without depending only on built meeting rooms.',
     heading: 'Quick answers about Ace Meet',

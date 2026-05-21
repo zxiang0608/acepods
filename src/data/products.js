@@ -1022,7 +1022,7 @@ export const products = [
     interiorMaterialSections: splitInteriorMaterialSections,
     approximatePetTintOverlay: true,
     technicalSpecifications: {
-      capacity: '1 pax',
+      capacity: '2 pax',
       externalDimensions: '1600W × 1200D × 2350H mm',
       internalDimensions: '1452W × 1100D × 2070H mm',
       internalHeight: '2070mm (81.50")',
@@ -1032,7 +1032,7 @@ export const products = [
       weight: '523 kg without crate / 663 kg with crate',
       boothFacilities: ['Fixed table / height-adjustable table (HAT)'],
       extraRows: [
-        { label: 'Category', value: '1-pax larger focus / work pod' },
+        { label: 'Category', value: '2-person collaboration / focus pod' },
         { label: 'Exterior walls', value: 'Melamine-faced chipboard, CARB Phase 2 / EPA, upholstery with sponge fabric' },
         { label: 'Frame structure', value: 'Metal structure with epoxy powder coating' },
         { label: 'Swing glass door', value: '10 mm tempered door with flush hinges, made in Italy' },
@@ -1061,8 +1061,8 @@ export const products = [
     featureRows: plusAndAboveFeatureRows,
     featureStripItems: sharedFeatureStripItems,
     specs: [
-      { label: 'Capacity', value: '1 pax' },
-      { label: 'Best for', value: '1-pax larger focus / work pod' },
+      { label: 'Capacity', value: '2 pax' },
+      { label: 'Best for', value: '2-person collaboration / focus pod' },
       { label: 'Ventilation', value: '1 ventilation fan + 1 exhaust fan, 1500 rpm, 155 CFM' },
       { label: 'Power', value: 'Type B socket, Netbox M 2-gang, universal + USB + Type-C' }
     ],
