@@ -29,6 +29,29 @@ const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
   path: `/pods/${slug}`
 }));
 
+const INSTALLATION_FAQ_ITEMS = [
+  {
+    question: 'How does office pod installation work?',
+    answer: 'We run a clear flow: consultation, site checks, scheduling, delivery, setup, and handover. Each stage is confirmed before moving to the next.'
+  },
+  {
+    question: 'What happens during the site visit?',
+    answer: 'We verify access routes, lift or doorway clearance, placement, and office constraints. This prevents delivery-day surprises.'
+  },
+  {
+    question: 'How long does delivery take after deposit?',
+    answer: 'Lead time starts after the 50% deposit is received. Most projects run in about 3–6 working weeks based on model, quantity, and site scope.'
+  },
+  {
+    question: 'Will installation disrupt office operations?',
+    answer: 'We plan timing and access before install day to reduce disruption. Scheduling is coordinated around normal office operations where possible.'
+  },
+  {
+    question: 'What support is available after handover?',
+    answer: 'After handover, you have warranty-related support, usage guidance, and follow-up assistance. A clear contact path is provided for post-install help.'
+  }
+];
+
 const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.png`;
 const NOSCRIPT_BRAND_OWNERSHIP_TEXT =
   'Ace Office Pods is owned by Ace Workplace Solutions and supplies office pods, office booths, office phone booths, and meeting pods in Malaysia.';
@@ -796,10 +819,23 @@ const STATIC_PRERENDER_META = {
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'Installation & Support',
+            name: 'Installation and Support',
             item: canonical
           }
         ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        url: canonical,
+        mainEntity: INSTALLATION_FAQ_ITEMS.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer
+          }
+        }))
       }
     ]
   },
@@ -1006,6 +1042,30 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
         availability: 'https://schema.org/InStock',
         url: canonical
       }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: `${SEO_BASE_URL}/`
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Ace Pods',
+          item: `${SEO_BASE_URL}/office-pods`
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: productMeta.name,
+          item: canonical
+        }
+      ]
     }
   ]
 });
