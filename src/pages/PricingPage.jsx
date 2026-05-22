@@ -12,6 +12,14 @@ const breadcrumbs = [
   { name: 'Pricing', path: '/pricing' }
 ];
 
+const pricingWebPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Office Pod Pricing in Malaysia',
+  url: buildCanonical('/pricing'),
+  description: 'Understand office pod pricing and what affects final project cost, including pod type, delivery, installation, and selected options.'
+};
+
 export default function PricingPage() {
   const pricingListItems = products.map((product) => {
     const basePrice = product.pdpPricing?.baseConfigurations?.[0]?.price;
@@ -32,6 +40,7 @@ export default function PricingPage() {
         schemas={[
           organizationSchema,
           websiteSchema,
+          pricingWebPageSchema,
           createBreadcrumbSchema(breadcrumbs),
           createFaqSchema('/pricing', PRICING_FAQ_ITEMS),
           createPricingItemListSchema('/pricing', pricingListItems)
