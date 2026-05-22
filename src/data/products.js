@@ -558,7 +558,8 @@ export const products = [
       externalHeight: '2250mm (88.58")',
       roomHeightRequirement: '2400mm (94.48")',
       weight: '335kg ±',
-      boothFacilities: ['Standing height table', 'Power socket']
+      boothFacilities: ['Standing height table', 'Power socket'],
+      extraRows: [{ label: 'Category', value: '1-person compact call / focus pod' }]
     },
     featureRows: soloFeatureRows,
     featureStripItems: sharedFeatureStripItems,
@@ -902,7 +903,7 @@ export const products = [
     useCases: [
       'Quick discussions and short check-ins without booking meeting rooms',
       'Private one-to-one calls and interviews in open-plan offices',
-      'Corporate offices and SMEs needing instant privacy for two people'
+      'Corporate offices and SMEs needing instant privacy for one person'
     ],
     exteriorColors: [
       { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
