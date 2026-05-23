@@ -234,7 +234,7 @@ export const ARTICLES = [
       'Teams often compare office pods against conventional renovation when they need private space for calls, focused work, and short meetings.',
       'Pods are typically chosen when speed, lower disruption, and future layout flexibility matter more than fixed permanent construction.',
       'Built rooms may still be appropriate for projects that require permanent structural integration and long-term fixed zoning.',
-      'For many open-plan offices, acoustic pods provide a practical middle ground: faster deployment with privacy-focused, sound-reducing performance.'
+      'For many open-plan offices, acoustic pods provide a practical middle ground: faster deployment with privacy-focused, sound-reducing performance. Start with the [office pods range](/office-pods), then compare [office pod pricing](/pricing) against your project scope.'
     ]
   },
   {
@@ -249,9 +249,9 @@ export const ARTICLES = [
       'A practical office pod size guide for one-person booths, two-person pods, and larger meeting pods based on use case and team behavior.',
     content: [
       'Start with daily use patterns: private calls, solo focus sessions, quick two-person discussions, or larger team collaboration.',
-      'One-person pods are usually sufficient for call privacy and focused individual work, especially in high-traffic open-plan zones.',
-      'Two-person pods can reduce pressure on meeting rooms by handling short syncs and one-to-one conversations.',
-      'Larger meeting pods are suited for recurring hybrid calls and small-team collaboration where consistency and acoustic comfort matter.'
+      'One-person pods such as [Ace Solo](/pods/ace-solo) are usually sufficient for call privacy and focused individual work, especially in high-traffic open-plan zones.',
+      'Two-person pods can reduce pressure on meeting rooms by handling short syncs and one-to-one conversations. For small groups, compare larger options in the [office pods range](/office-pods).',
+      'Larger meeting pods such as [Ace Meet](/pods/ace-meet) are suited for recurring hybrid calls and small-team collaboration where consistency and acoustic comfort matter.'
     ]
   },
   {
@@ -266,9 +266,9 @@ export const ARTICLES = [
       'Key checks for selecting office phone booths in open-plan workplaces, including acoustic expectations, airflow, placement, and user comfort.',
     content: [
       'Phone-booth style office pods are most effective when placement and user flow are considered at the planning stage.',
-      'Prioritize acoustic expectations, ventilation consistency, and practical power access so booths support back-to-back daily use.',
+      'Prioritize acoustic expectations, ventilation consistency, and practical power access so booths support back-to-back daily use. For call-focused models, start with [office phone booth solutions](/office-phone-booth-malaysia).',
       'Avoid treating booths as fully soundproof by default; performance depends on model, seals, placement, and surrounding noise.',
-      'For long-term results, align booth quantity with call demand to prevent bottlenecks during peak collaboration hours.'
+      'For long-term results, align booth quantity with call demand to prevent bottlenecks during peak collaboration hours. Compact teams can compare [Ace Solo](/pods/ace-solo) and [Ace Plus](/pods/ace-plus) first.'
     ]
   },
   {
@@ -283,9 +283,9 @@ export const ARTICLES = [
       'A practical guide to planning meeting pod capacity and placement for hybrid teams, with focus on call quality, comfort, and office flow.',
     content: [
       'Hybrid teams need reliable enclosed spaces for virtual calls and focused discussions without occupying large boardrooms.',
-      'Meeting pod selection should balance team size, duration of sessions, and expected overlap during busy office periods.',
+      'Meeting pod selection should balance team size, duration of sessions, and expected overlap during busy office periods. Start with the [meeting pods in Malaysia](/meeting-pods-malaysia) shortlist when the main use case is team collaboration.',
       'Placement near collaboration zones can improve usage, but circulation clearance and surrounding noise should be reviewed early.',
-      'When configured correctly, meeting pods help teams maintain communication quality while reducing interruption across open floors.'
+      'When configured correctly, meeting pods such as [Ace Meet](/pods/ace-meet) and [Ace Hub](/pods/ace-hub) help teams maintain communication quality while reducing interruption across open floors.'
     ]
   }
 ];

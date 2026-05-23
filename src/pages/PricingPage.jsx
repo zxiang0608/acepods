@@ -157,6 +157,9 @@ export default function PricingPage() {
         <Link to="/faq" className="underline-offset-4 hover:underline">
           Read common questions about office pods
         </Link>
+        <Link to="/contact" className="underline-offset-4 hover:underline">
+          Request a project quote
+        </Link>
       </section>
     </PageShell>
   );
