@@ -1,6 +1,6 @@
 export const SEO_BASE_URL = 'https://aceofficepods.com';
 export const SEO_BRAND_PRIMARY = 'Ace Office Pods';
-export const SEO_BRAND_LEGAL = 'Ace Workplace Solutions';
+export const SEO_BRAND_LEGAL = 'ACE WORKPLACE SOLUTIONS';
 export const SEO_BRAND_ALTERNATE_NAMES = [
   'Ace Workplace Solutions',
   'Ace Office Pods',
@@ -12,7 +12,7 @@ export const SEO_BRAND_ALTERNATE_NAMES = [
 export const SEO_BRAND_IDENTIFIER = '202403171118';
 export const SEO_BRAND_EMAIL = 'sales@aceofficepods.com';
 export const SEO_BRAND_PHONE = '+601154352700';
-export const SEO_BRAND_AREA_SERVED = 'Klang Valley, Malaysia';
+export const SEO_BRAND_AREA_SERVED = 'West Malaysia';
 export const SEO_BRAND_LOGO = `${SEO_BASE_URL}/ace-pods-logo.png`;
 export const SEO_BRAND_SAME_AS = [
   'https://www.instagram.com/acepodsmy/',

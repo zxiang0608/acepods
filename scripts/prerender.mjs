@@ -80,7 +80,13 @@ const buildOrganizationSchema = () => ({
     availableLanguage: ['en', 'ms']
   },
   sameAs: SEO_BRAND_SAME_AS,
-  description: 'Ace Office Pods (Ace Workplace Solutions) supplies office pods and office booths for calls, focus, and meetings in Malaysia.'
+  description: `Ace Office Pods (${SEO_BRAND_LEGAL}) supplies office pods and office booths for calls, focus, and meetings in ${SEO_BRAND_AREA_SERVED}.`
+});
+
+const buildServiceOrganizationSchema = () => ({
+  ...buildOrganizationSchema(),
+  '@type': ['Organization', 'ProfessionalService'],
+  description: `Ace Office Pods (${SEO_BRAND_LEGAL}) supplies office pods and office booths for calls, focus, and meetings in ${SEO_BRAND_AREA_SERVED}.`
 });
 
 const buildWebsiteSchema = () => ({
@@ -93,44 +99,6 @@ const buildWebsiteSchema = () => ({
   publisher: {
     '@id': `${SEO_BASE_URL}/#organization`
   }
-});
-
-const buildProfessionalServiceSchema = () => ({
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  '@id': `${SEO_BASE_URL}/#professional-service`,
-  name: SEO_BRAND_PRIMARY,
-  url: SEO_BASE_URL,
-  logo: SEO_BRAND_LOGO,
-  telephone: SEO_BRAND_PHONE,
-  email: SEO_BRAND_EMAIL,
-  areaServed: [
-    {
-      '@type': 'Country',
-      name: 'Malaysia'
-    },
-    {
-      '@type': 'AdministrativeArea',
-      name: 'Klang Valley'
-    },
-    {
-      '@type': 'AdministrativeArea',
-      name: 'Greater Kuala Lumpur'
-    },
-    {
-      '@type': 'AdministrativeArea',
-      name: 'Selangor'
-    },
-    {
-      '@type': 'AdministrativeArea',
-      name: 'Kuala Lumpur'
-    }
-  ],
-  sameAs: SEO_BRAND_SAME_AS,
-  provider: {
-    '@id': `${SEO_BASE_URL}/#organization`
-  },
-  description: 'Ace Office Pods (Ace Workplace Solutions) supplies office pods and office booths for calls, focus, and meetings in Malaysia.'
 });
 
 const buildHomepageWebPageSchema = () => ({
@@ -193,9 +161,8 @@ const STATIC_PRERENDER_META = {
     noscriptFaqHeading: 'Common questions about office pods',
     noscriptFaqItems: HOME_FAQ_ITEMS,
     schemas: (canonical) => [
-      buildOrganizationSchema(),
+      buildServiceOrganizationSchema(),
       buildWebsiteSchema(),
-      buildProfessionalServiceSchema(),
       buildHomepageWebPageSchema(),
       {
         '@context': 'https://schema.org',
@@ -759,7 +726,7 @@ const STATIC_PRERENDER_META = {
     noscriptFaqHeading: 'Common pre-sales questions',
     noscriptFaqItems: [HOME_FAQ_ITEMS[0], HOME_FAQ_ITEMS[1], FAQ_PAGE_ITEMS[10]],
     schemas: (canonical) => [
-      buildProfessionalServiceSchema(),
+      buildServiceOrganizationSchema(),
       {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
@@ -984,10 +951,14 @@ const injectSeoHtml = (html, route, meta) => {
   const keywords = meta.keywords || '';
   const routeSchemas = typeof meta.schemas === 'function' ? meta.schemas(canonical) : meta.schemas || [];
   const schemas = [...routeSchemas];
-  if (!schemas.some((schema) => schema['@type'] === 'Organization')) {
+  const hasSchemaType = (schema, type) => {
+    const schemaType = schema['@type'];
+    return Array.isArray(schemaType) ? schemaType.includes(type) : schemaType === type;
+  };
+  if (!schemas.some((schema) => hasSchemaType(schema, 'Organization'))) {
     schemas.unshift(buildOrganizationSchema());
   }
-  if (!schemas.some((schema) => schema['@type'] === 'WebSite')) {
+  if (!schemas.some((schema) => hasSchemaType(schema, 'WebSite'))) {
     schemas.unshift(buildWebsiteSchema());
   }
   const schemaScripts = schemas

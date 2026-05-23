@@ -53,7 +53,7 @@ import { smartPodsMenuItems } from './components/smartPodsMenuData';
 import { products } from './data/products';
 import { pushDataLayerEvent } from './lib/tracking';
 import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from './seo/constants';
-import { buildCanonical, createFaqSchema, homepageWebPageSchema, organizationSchema, websiteSchema } from './seo/schema';
+import { buildCanonical, createFaqSchema, homepageWebPageSchema, serviceOrganizationSchema, websiteSchema } from './seo/schema';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
   <div
@@ -361,7 +361,7 @@ export default function App() {
   const compareSupportingLine = 'Compare more confidently when pricing, installation, and support are clear upfront.';
   const trustSectionHeading = 'Trusted by local and international companies';
   const whyHeading = 'Choose Ace Pods';
-  const homepageSchemas = [organizationSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
+  const homepageSchemas = [serviceOrganizationSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)];
   const trackProductCta = (product, ctaText, ctaLocation, destinationUrl) => {
     pushDataLayerEvent('product_cta_click', {
       cta_location: ctaLocation,

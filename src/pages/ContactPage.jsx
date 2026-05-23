@@ -4,7 +4,7 @@ import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_BRAND_EMAIL, SEO_BRAND_PHONE, SEO_KEYWORDS_COMMON } from '../seo/constants';
-import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { buildCanonical, createBreadcrumbSchema, serviceOrganizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -23,7 +23,7 @@ export default function ContactPage() {
         description="Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries by WhatsApp, phone, or email."
         canonical={buildCanonical('/contact')}
         keywords={`${SEO_KEYWORDS_COMMON}, contact Ace Office Pods, office pod enquiry`}
-        schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
+        schemas={[serviceOrganizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-14 pt-10 md:px-8 md:pb-20 md:pt-12">
