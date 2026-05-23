@@ -84,6 +84,9 @@ export default function CompareOfficePodsPage() {
         <Link to="/installation-support" className="underline-offset-4 hover:underline">
           Learn about installation and support
         </Link>
+        <Link to="/contact" className="underline-offset-4 hover:underline">
+          Ask for a recommendation
+        </Link>
       </section>
     </PageShell>
   );
