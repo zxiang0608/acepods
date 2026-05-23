@@ -5,6 +5,7 @@ import SeoMeta from '../components/SeoMeta';
 import SiteFooter from '../components/SiteFooter';
 import SubpageHeader from '../components/SubpageHeader';
 import { getProductBySlug } from '../data/products';
+import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
@@ -600,7 +601,8 @@ export default function ProductPage() {
       description: product.shortDesc,
       image: podPrimaryImage || mainImage,
       price: baseUnit?.price,
-      category: 'Office pods'
+      category: 'Office pods',
+      additionalProperties: POD_SEO_BY_SLUG[product.slug]?.schemaProperties
     }),
     createBreadcrumbSchema([
       { name: 'Home', path: '/' },

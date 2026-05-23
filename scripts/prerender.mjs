@@ -1006,6 +1006,17 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
       description: productMeta.shortDesc,
       image: [DEFAULT_OG_IMAGE],
       url: canonical,
+      ...(productMeta.schemaProperties?.length
+        ? {
+            additionalProperty: productMeta.schemaProperties
+              .filter((property) => property?.name && property?.value)
+              .map((property) => ({
+                '@type': 'PropertyValue',
+                name: property.name,
+                value: property.value
+              }))
+          }
+        : {}),
       offers: {
         '@type': 'Offer',
         price: String(productMeta.startingPrice),
