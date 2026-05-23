@@ -142,7 +142,8 @@ export const createProductSchema = ({
   image,
   price,
   priceCurrency = 'MYR',
-  category = 'Office pods'
+  category = 'Office pods',
+  additionalProperties = []
 }) => ({
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -155,6 +156,17 @@ export const createProductSchema = ({
   },
   category,
   url: buildCanonical(path),
+  ...(additionalProperties.length
+      ? {
+          additionalProperty: additionalProperties
+            .filter((property) => property?.name && property?.value)
+            .map((property) => ({
+              '@type': 'PropertyValue',
+              name: property.name,
+              value: property.value
+            }))
+        }
+      : {}),
   ...(typeof price === 'number'
       ? {
           offers: {
