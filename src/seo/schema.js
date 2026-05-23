@@ -43,7 +43,13 @@ export const organizationSchema = {
     availableLanguage: ['en', 'ms']
   },
   sameAs: SEO_BRAND_SAME_AS,
-  description: 'Ace Office Pods (Ace Workplace Solutions) supplies office pods and office booths for calls, focus, and meetings in Malaysia.'
+  description: `Ace Office Pods (${SEO_BRAND_LEGAL}) supplies office pods and office booths for calls, focus, and meetings in ${SEO_BRAND_AREA_SERVED}.`
+};
+
+export const serviceOrganizationSchema = {
+  ...organizationSchema,
+  '@type': ['Organization', 'ProfessionalService'],
+  description: `Ace Office Pods (${SEO_BRAND_LEGAL}) supplies office pods and office booths for calls, focus, and meetings in ${SEO_BRAND_AREA_SERVED}.`
 };
 
 export const websiteSchema = {
