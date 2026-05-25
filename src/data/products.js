@@ -15,6 +15,7 @@ import aceDuo2d from '../../assets/2D images/3. Ace Flex.png';
 import aceMeeting2d from '../../assets/2D images/4. Ace Meet with Sofa and Table.png';
 import aceMeetingXL2d from '../../assets/2D images/8. Ace Hub with Table and Sofa.png';
 import aceMeetSofaImage from '../../assets/sofa.png';
+import aceFlexSofaImage from '../../assets/ace-flex-sofa.png';
 import aceHubLShapeSofaImage from '../../assets/L-shape-sofa.png';
 import officeChairImage from '../../assets/office-chair.png';
 import aceFlexAdjustableTableImage from '../../assets/ace-flex-adjustable-table.png';
@@ -201,7 +202,7 @@ const meetingOfficeChairAddon = {
   image: officeChairNormalizedImage,
   previewImage: officeChairNormalizedImage
 };
-const flexSofaAddon = { id: 'flex-sofa', label: 'Sofa', amount: 600, image: aceMeetSofaImage, previewImage: aceMeetSofaImage };
+const flexSofaAddon = { id: 'flex-sofa', label: 'Sofa', amount: 600, image: aceFlexSofaImage, previewImage: aceFlexSofaImage };
 const meetingSofaAddon = {
   id: 'meeting-sofa-set',
   label: '1 set sofa (Ace Meet only)',

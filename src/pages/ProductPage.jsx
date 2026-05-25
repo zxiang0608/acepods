@@ -672,6 +672,8 @@ export default function ProductPage() {
     : [];
   const hubLShapeSofaPreviewImage = getPreviewImageForOption(availableAddons.find((addon) => addon.id === 'meeting-xl-l-shape-sofa'));
   const isHubLShapeSofaMainPreview = product.slug === 'ace-hub' && mainImage === hubLShapeSofaPreviewImage;
+  const aceFlexSofaPreviewImage = getPreviewImageForOption(availableAddons.find((addon) => addon.id === 'flex-sofa'));
+  const isAceFlexSofaMainPreview = product.slug === 'ace-flex' && mainImage === aceFlexSofaPreviewImage;
   const aceMeetOptionPreviewImages =
     product.slug === 'ace-meet' ? [...configurationOptions, ...availableAddons].map((option) => getPreviewImageForOption(option)).filter(Boolean) : [];
   const isAceMeetOptionPreviewImage = product.slug === 'ace-meet' && aceMeetOptionPreviewImages.includes(mainImage);
@@ -901,6 +903,8 @@ export default function ProductPage() {
                       className={`relative z-[1] object-contain object-center ${
                         isHubLShapeSofaMainPreview
                           ? 'h-[70%] w-[70%]'
+                          : isAceFlexSofaMainPreview
+                            ? 'h-full w-full'
                           : isAceMeetOptionPreviewImage
                             ? 'h-full w-full'
                             : isAceHubConfigurationPreviewImage
