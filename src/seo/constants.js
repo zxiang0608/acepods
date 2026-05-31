@@ -13,6 +13,11 @@ export const SEO_BRAND_IDENTIFIER = '202403171118';
 export const SEO_BRAND_EMAIL = 'sales@aceofficepods.com';
 export const SEO_BRAND_PHONE = '+601154352700';
 export const SEO_BRAND_AREA_SERVED = 'West Malaysia';
+export const SEO_BRAND_STREET_ADDRESS = 'Jalan Haji Salleh, Off Jalan Meru, Batu 5 1/2';
+export const SEO_BRAND_SHOWROOM_LOCALITY = 'Klang';
+export const SEO_BRAND_SHOWROOM_REGION = 'Selangor';
+export const SEO_BRAND_POSTAL_CODE = '41050';
+export const SEO_BRAND_COUNTRY = 'MY';
 export const SEO_BRAND_LOGO = `${SEO_BASE_URL}/ace-pods-logo.png`;
 export const SEO_BRAND_SAME_AS = [
   'https://www.instagram.com/acepodsmy/',

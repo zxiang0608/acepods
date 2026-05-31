@@ -3,8 +3,16 @@ import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { pushDataLayerEvent } from '../lib/tracking';
-import { SEO_BRAND_EMAIL, SEO_BRAND_PHONE, SEO_KEYWORDS_COMMON } from '../seo/constants';
-import { buildCanonical, createBreadcrumbSchema, serviceOrganizationSchema, websiteSchema } from '../seo/schema';
+import {
+  SEO_BRAND_EMAIL,
+  SEO_BRAND_PHONE,
+  SEO_BRAND_POSTAL_CODE,
+  SEO_BRAND_SHOWROOM_LOCALITY,
+  SEO_BRAND_SHOWROOM_REGION,
+  SEO_BRAND_STREET_ADDRESS,
+  SEO_KEYWORDS_COMMON
+} from '../seo/constants';
+import { buildCanonical, createBreadcrumbSchema, localBusinessSchema, serviceOrganizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -23,7 +31,7 @@ export default function ContactPage() {
         description="Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries by WhatsApp, phone, or email."
         canonical={buildCanonical('/contact')}
         keywords={`${SEO_KEYWORDS_COMMON}, contact Ace Office Pods, office pod enquiry`}
-        schemas={[serviceOrganizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
+        schemas={[localBusinessSchema, serviceOrganizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-14 pt-10 md:px-8 md:pb-20 md:pt-12">
@@ -90,6 +98,29 @@ export default function ContactPage() {
             <p className="mt-2 text-[17px] font-semibold text-[#14181c] break-all">{SEO_BRAND_EMAIL}</p>
           </a>
         </div>
+
+        <section className="mt-8 grid gap-5 border-y border-[#d8d3c8] py-7 md:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#145b5f]">Showroom</p>
+            <h2 className="mt-2 text-[24px] font-semibold tracking-tight text-[#14181c]">
+              {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}
+            </h2>
+            <p className="mt-2 text-[15px] font-semibold leading-[1.55] text-[#1d232a]">
+              {SEO_BRAND_STREET_ADDRESS}, {SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}
+            </p>
+            <p className="mt-3 text-[15px] leading-[1.65] text-[#4d555e]">
+              Showroom viewing is available by appointment for buyers who want to compare office pod size, finish, comfort, and acoustic performance
+              before confirming a quote.
+            </p>
+          </div>
+          <div>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#145b5f]">Service areas</p>
+            <p className="mt-2 text-[15px] leading-[1.65] text-[#4d555e]">
+              Ace Office Pods supports office pod enquiries, delivery planning, and installation coordination across Klang Valley and West Malaysia.
+              Common project areas include Klang, Shah Alam, Petaling Jaya, Subang Jaya, Kuala Lumpur, Puchong, Cyberjaya, and Putrajaya.
+            </p>
+          </div>
+        </section>
       </section>
     </PageShell>
   );

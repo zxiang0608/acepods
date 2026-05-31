@@ -3,12 +3,17 @@ import {
   SEO_BRAND_ALTERNATE_NAMES,
   SEO_BRAND_AREA_SERVED,
   SEO_BRAND_EMAIL,
+  SEO_BRAND_COUNTRY,
   SEO_BRAND_IDENTIFIER,
   SEO_BRAND_LEGAL,
   SEO_BRAND_LOGO,
   SEO_BRAND_PHONE,
+  SEO_BRAND_POSTAL_CODE,
   SEO_BRAND_PRIMARY,
-  SEO_BRAND_SAME_AS
+  SEO_BRAND_SAME_AS,
+  SEO_BRAND_SHOWROOM_LOCALITY,
+  SEO_BRAND_SHOWROOM_REGION,
+  SEO_BRAND_STREET_ADDRESS
 } from './constants';
 
 export const buildCanonical = (path) => `${SEO_BASE_URL}${path}`;
@@ -50,6 +55,32 @@ export const serviceOrganizationSchema = {
   ...organizationSchema,
   '@type': ['Organization', 'ProfessionalService'],
   description: `Ace Office Pods (${SEO_BRAND_LEGAL}) supplies office pods and office booths for calls, focus, and meetings in ${SEO_BRAND_AREA_SERVED}.`
+};
+
+export const localBusinessSchema = {
+  ...organizationSchema,
+  '@type': ['LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
+  '@id': `${SEO_BASE_URL}/#localbusiness`,
+  name: SEO_BRAND_PRIMARY,
+  priceRange: 'RM12,500+',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SEO_BRAND_STREET_ADDRESS,
+    addressLocality: SEO_BRAND_SHOWROOM_LOCALITY,
+    addressRegion: SEO_BRAND_SHOWROOM_REGION,
+    postalCode: SEO_BRAND_POSTAL_CODE,
+    addressCountry: SEO_BRAND_COUNTRY
+  },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Klang Valley' },
+    { '@type': 'AdministrativeArea', name: SEO_BRAND_AREA_SERVED },
+    { '@type': 'Country', name: 'Malaysia' }
+  ],
+  makesOffer: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod showroom viewing by appointment' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation in Klang Valley' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' } }
+  ]
 };
 
 export const websiteSchema = {
