@@ -59,6 +59,15 @@ const localWebPageSchema = {
   url: buildCanonical('/office-pods-near-me'),
   description:
     'Find office pods near you in Malaysia. Ace Office Pods offers showroom viewing by appointment in Klang, with office pod delivery and installation planning across Klang Valley and West Malaysia.',
+  isPartOf: {
+    '@id': `${buildCanonical('/')}#website`
+  },
+  publisher: {
+    '@id': `${buildCanonical('/')}#organization`
+  },
+  mainEntity: {
+    '@id': `${buildCanonical('/')}#organization`
+  },
   about: [
     { '@type': 'Thing', name: 'office pods near me' },
     { '@type': 'Thing', name: 'office pods price' },

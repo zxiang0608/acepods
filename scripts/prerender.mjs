@@ -96,8 +96,8 @@ const buildServiceOrganizationSchema = () => ({
 
 const buildLocalBusinessSchema = () => ({
   ...buildOrganizationSchema(),
-  '@type': ['LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
-  '@id': `${SEO_BASE_URL}/#localbusiness`,
+  '@type': ['Organization', 'LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
+  '@id': `${SEO_BASE_URL}/#organization`,
   priceRange: 'RM12,500+',
   address: {
     '@type': 'PostalAddress',
@@ -253,7 +253,17 @@ const STATIC_PRERENDER_META = {
         name: 'Office Pod Pricing in Malaysia',
         url: canonical,
         description:
-          'Understand office pod pricing and what affects final project cost, including pod type, delivery, installation, and selected options.'
+          'Understand office pod pricing and what affects final project cost, including pod type, delivery, installation, and selected options.',
+        isPartOf: {
+          '@id': `${SEO_BASE_URL}/#website`
+        },
+        publisher: {
+          '@id': `${SEO_BASE_URL}/#organization`
+        },
+        about: {
+          '@type': 'Thing',
+          name: 'office pod pricing in Malaysia'
+        }
       },
       {
         '@context': 'https://schema.org',
@@ -284,13 +294,21 @@ const STATIC_PRERENDER_META = {
           item: {
             '@type': 'Product',
             name: item.name,
+            brand: {
+              '@type': 'Brand',
+              name: SEO_BRAND_PRIMARY
+            },
+            category: 'Office pods',
             url: `${SEO_BASE_URL}${item.path}`,
             offers: {
               '@type': 'Offer',
               priceCurrency: 'MYR',
               price: String(item.price),
               availability: 'https://schema.org/InStock',
-              url: `${SEO_BASE_URL}${item.path}`
+              url: `${SEO_BASE_URL}${item.path}`,
+              seller: {
+                '@id': `${SEO_BASE_URL}/#organization`
+              }
             }
           }
         }))
@@ -386,7 +404,16 @@ const STATIC_PRERENDER_META = {
         name: 'Office Pods Near Me in Klang Valley and Malaysia',
         url: canonical,
         description:
-          'Find office pods near you in Malaysia. Ace Office Pods offers showroom viewing by appointment in Klang, with office pod delivery and installation planning across Klang Valley and West Malaysia.'
+          'Find office pods near you in Malaysia. Ace Office Pods offers showroom viewing by appointment in Klang, with office pod delivery and installation planning across Klang Valley and West Malaysia.',
+        isPartOf: {
+          '@id': `${SEO_BASE_URL}/#website`
+        },
+        publisher: {
+          '@id': `${SEO_BASE_URL}/#organization`
+        },
+        mainEntity: {
+          '@id': `${SEO_BASE_URL}/#organization`
+        }
       },
       {
         '@context': 'https://schema.org',
@@ -417,13 +444,21 @@ const STATIC_PRERENDER_META = {
           item: {
             '@type': 'Product',
             name: item.name,
+            brand: {
+              '@type': 'Brand',
+              name: SEO_BRAND_PRIMARY
+            },
+            category: 'Office pods',
             url: `${SEO_BASE_URL}${item.path}`,
             offers: {
               '@type': 'Offer',
               priceCurrency: 'MYR',
               price: String(item.price),
               availability: 'https://schema.org/InStock',
-              url: `${SEO_BASE_URL}${item.path}`
+              url: `${SEO_BASE_URL}${item.path}`,
+              seller: {
+                '@id': `${SEO_BASE_URL}/#organization`
+              }
             }
           }
         }))
@@ -880,13 +915,21 @@ const STATIC_PRERENDER_META = {
     noscriptFaqItems: [HOME_FAQ_ITEMS[0], HOME_FAQ_ITEMS[1], FAQ_PAGE_ITEMS[10]],
     schemas: (canonical) => [
       buildLocalBusinessSchema(),
-      buildServiceOrganizationSchema(),
       {
         '@context': 'https://schema.org',
-        '@type': 'WebPage',
+        '@type': 'ContactPage',
         name: 'Contact Ace Office Pods',
         url: canonical,
-        description: 'Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries via WhatsApp, email, or phone in Malaysia.'
+        description: 'Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries via WhatsApp, email, or phone in Malaysia.',
+        isPartOf: {
+          '@id': `${SEO_BASE_URL}/#website`
+        },
+        about: {
+          '@id': `${SEO_BASE_URL}/#organization`
+        },
+        mainEntity: {
+          '@id': `${SEO_BASE_URL}/#organization`
+        }
       },
       {
         '@context': 'https://schema.org',
@@ -1176,7 +1219,10 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
         price: String(productMeta.startingPrice),
         priceCurrency: 'MYR',
         availability: 'https://schema.org/InStock',
-        url: canonical
+        url: canonical,
+        seller: {
+          '@id': `${SEO_BASE_URL}/#organization`
+        }
       }
     },
     {
