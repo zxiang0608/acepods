@@ -59,8 +59,8 @@ export const serviceOrganizationSchema = {
 
 export const localBusinessSchema = {
   ...organizationSchema,
-  '@type': ['LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
-  '@id': `${SEO_BASE_URL}/#localbusiness`,
+  '@type': ['Organization', 'LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
+  '@id': `${SEO_BASE_URL}/#organization`,
   name: SEO_BRAND_PRIMARY,
   priceRange: 'RM12,500+',
   address: {
@@ -154,13 +154,21 @@ export const createPricingItemListSchema = (path, items) => ({
     item: {
       '@type': 'Product',
       name: item.name,
+      brand: {
+        '@type': 'Brand',
+        name: SEO_BRAND_PRIMARY
+      },
+      category: 'Office pods',
       url: buildCanonical(item.path),
       offers: {
         '@type': 'Offer',
         priceCurrency: item.priceCurrency || 'MYR',
         price: String(item.price),
         availability: 'https://schema.org/InStock',
-        url: buildCanonical(item.path)
+        url: buildCanonical(item.path),
+        seller: {
+          '@id': `${SEO_BASE_URL}/#organization`
+        }
       }
     }
   }))
@@ -205,7 +213,10 @@ export const createProductSchema = ({
             url: buildCanonical(path),
             priceCurrency,
             price: String(price),
-            availability: 'https://schema.org/InStock'
+            availability: 'https://schema.org/InStock',
+            seller: {
+              '@id': `${SEO_BASE_URL}/#organization`
+            }
           }
         }
       : {})

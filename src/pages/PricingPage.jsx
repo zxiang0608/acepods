@@ -5,7 +5,7 @@ import PageShell from '../components/PageShell';
 import { products } from '../data/products';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { PRICING_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
-import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, localBusinessSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -17,7 +17,17 @@ const pricingWebPageSchema = {
   '@type': 'WebPage',
   name: 'Office Pod Pricing in Malaysia',
   url: buildCanonical('/pricing'),
-  description: 'Understand office pod pricing and what affects final project cost, including pod type, delivery, installation, and selected options.'
+  description: 'Understand office pod pricing and what affects final project cost, including pod type, delivery, installation, and selected options.',
+  isPartOf: {
+    '@id': `${buildCanonical('/')}#website`
+  },
+  publisher: {
+    '@id': `${buildCanonical('/')}#organization`
+  },
+  about: {
+    '@type': 'Thing',
+    name: 'office pod pricing in Malaysia'
+  }
 };
 
 const pricingAnswerSchema = {
@@ -59,7 +69,6 @@ export default function PricingPage() {
         canonical={buildCanonical('/pricing')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`}
         schemas={[
-          organizationSchema,
           localBusinessSchema,
           websiteSchema,
           pricingWebPageSchema,

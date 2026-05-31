@@ -12,7 +12,7 @@ import {
   SEO_BRAND_STREET_ADDRESS,
   SEO_KEYWORDS_COMMON
 } from '../seo/constants';
-import { buildCanonical, createBreadcrumbSchema, localBusinessSchema, serviceOrganizationSchema, websiteSchema } from '../seo/schema';
+import { buildCanonical, createBreadcrumbSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -23,6 +23,23 @@ const whatsappHref = 'https://wa.link/9umr4q';
 const phoneHref = `tel:${SEO_BRAND_PHONE}`;
 const emailHref = `mailto:${SEO_BRAND_EMAIL}`;
 
+const contactWebPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Ace Office Pods',
+  url: buildCanonical('/contact'),
+  description: 'Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries by WhatsApp, phone, or email.',
+  isPartOf: {
+    '@id': `${buildCanonical('/')}#website`
+  },
+  about: {
+    '@id': `${buildCanonical('/')}#organization`
+  },
+  mainEntity: {
+    '@id': `${buildCanonical('/')}#organization`
+  }
+};
+
 export default function ContactPage() {
   return (
     <PageShell>
@@ -31,7 +48,7 @@ export default function ContactPage() {
         description="Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries by WhatsApp, phone, or email."
         canonical={buildCanonical('/contact')}
         keywords={`${SEO_KEYWORDS_COMMON}, contact Ace Office Pods, office pod enquiry`}
-        schemas={[localBusinessSchema, serviceOrganizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
+        schemas={[localBusinessSchema, websiteSchema, contactWebPageSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-14 pt-10 md:px-8 md:pb-20 md:pt-12">
