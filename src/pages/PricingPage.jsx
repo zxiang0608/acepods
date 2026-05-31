@@ -5,7 +5,7 @@ import PageShell from '../components/PageShell';
 import { products } from '../data/products';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { PRICING_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
-import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, localBusinessSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -18,6 +18,27 @@ const pricingWebPageSchema = {
   name: 'Office Pod Pricing in Malaysia',
   url: buildCanonical('/pricing'),
   description: 'Understand office pod pricing and what affects final project cost, including pod type, delivery, installation, and selected options.'
+};
+
+const pricingAnswerSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${buildCanonical('/pricing')}#office-pod-price-answer`,
+  name: 'Office pods price in Malaysia',
+  url: buildCanonical('/pricing'),
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#office-pod-price-answer']
+  },
+  mainEntity: {
+    '@type': 'Question',
+    name: 'How much does an office pod cost in Malaysia?',
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text:
+        'Ace Office Pods start from RM12,500 for a one-person office pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, add-ons, and selected configuration.'
+    }
+  }
 };
 
 export default function PricingPage() {
@@ -39,8 +60,10 @@ export default function PricingPage() {
         keywords={`${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`}
         schemas={[
           organizationSchema,
+          localBusinessSchema,
           websiteSchema,
           pricingWebPageSchema,
+          pricingAnswerSchema,
           createBreadcrumbSchema(breadcrumbs),
           createFaqSchema('/pricing', PRICING_FAQ_ITEMS),
           createPricingItemListSchema('/pricing', pricingListItems)
@@ -56,9 +79,9 @@ export default function PricingPage() {
         </nav>
 
         <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">How much does an office pod cost?</h1>
-        <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
+        <p id="office-pod-price-answer" className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
           Office pod pricing depends on model size, configuration, quantity, delivery access, installation requirements, and optional add-ons. The
-          prices below are starting prices for Ace Office Pods models in Malaysia.
+          prices below are starting prices for Ace Office Pods models in Malaysia, starting from RM12,500 for a one-person office pod.
         </p>
       </section>
 

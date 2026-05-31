@@ -7,6 +7,7 @@ const STATIC_PUBLIC_ROUTES = [
   '/portfolio',
   '/articles',
   '/office-pods',
+  '/office-pods-near-me',
   '/meeting-pods-malaysia',
   '/office-phone-booth-malaysia',
   '/compare-office-pods',

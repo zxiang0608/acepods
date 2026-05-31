@@ -11,6 +11,7 @@ import InstallationSupportPage from './pages/InstallationSupportPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OfficeChairsPage from './pages/OfficeChairsPage';
 import OfficePhoneBoothMalaysiaPage from './pages/OfficePhoneBoothMalaysiaPage';
+import OfficePodsNearMePage from './pages/OfficePodsNearMePage';
 import OfficePodsPage from './pages/OfficePodsPage';
 import PortfolioPage from './pages/PortfolioPage';
 import PricingPage from './pages/PricingPage';
@@ -35,6 +36,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/articles/:slug" element={<ArticleDetailPage />} />
         <Route path="/office-chairs" element={<OfficeChairsPage />} />
         <Route path="/office-pods" element={<OfficePodsPage />} />
+        <Route path="/office-pods-near-me" element={<OfficePodsNearMePage />} />
         <Route path="/meeting-pods-malaysia" element={<MeetingPodsMalaysiaPage />} />
         <Route path="/office-phone-booth-malaysia" element={<OfficePhoneBoothMalaysiaPage />} />
         <Route path="/compare-office-pods" element={<CompareOfficePodsPage />} />

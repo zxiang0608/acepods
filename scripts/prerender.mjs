@@ -9,13 +9,18 @@ import {
   SEO_BASE_URL,
   SEO_BRAND_ALTERNATE_NAMES,
   SEO_BRAND_AREA_SERVED,
+  SEO_BRAND_COUNTRY,
   SEO_BRAND_EMAIL,
   SEO_BRAND_IDENTIFIER,
   SEO_BRAND_LEGAL,
   SEO_BRAND_LOGO,
   SEO_BRAND_PHONE,
+  SEO_BRAND_POSTAL_CODE,
   SEO_BRAND_PRIMARY,
   SEO_BRAND_SAME_AS,
+  SEO_BRAND_SHOWROOM_LOCALITY,
+  SEO_BRAND_SHOWROOM_REGION,
+  SEO_BRAND_STREET_ADDRESS,
   SEO_KEYWORDS_COMMON
 } from '../src/seo/constants.js';
 import { ARTICLES } from '../src/data/articles.js';
@@ -87,6 +92,31 @@ const buildServiceOrganizationSchema = () => ({
   ...buildOrganizationSchema(),
   '@type': ['Organization', 'ProfessionalService'],
   description: `Ace Office Pods (${SEO_BRAND_LEGAL}) supplies office pods and office booths for calls, focus, and meetings in ${SEO_BRAND_AREA_SERVED}.`
+});
+
+const buildLocalBusinessSchema = () => ({
+  ...buildOrganizationSchema(),
+  '@type': ['LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
+  '@id': `${SEO_BASE_URL}/#localbusiness`,
+  priceRange: 'RM12,500+',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SEO_BRAND_STREET_ADDRESS,
+    addressLocality: SEO_BRAND_SHOWROOM_LOCALITY,
+    addressRegion: SEO_BRAND_SHOWROOM_REGION,
+    postalCode: SEO_BRAND_POSTAL_CODE,
+    addressCountry: SEO_BRAND_COUNTRY
+  },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Klang Valley' },
+    { '@type': 'AdministrativeArea', name: SEO_BRAND_AREA_SERVED },
+    { '@type': 'Country', name: 'Malaysia' }
+  ],
+  makesOffer: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod showroom viewing by appointment' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation in Klang Valley' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' } }
+  ]
 });
 
 const buildWebsiteSchema = () => ({
@@ -186,7 +216,7 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`,
     h1: 'How much does an office pod cost?',
     body: [
-      'Office pod pricing depends on model size, configuration, quantity, delivery access, installation requirements, and optional add-ons. The prices below are starting prices for Ace Office Pods models in Malaysia.',
+      'Office pod pricing depends on model size, configuration, quantity, delivery access, installation requirements, and optional add-ons. The prices below are starting prices for Ace Office Pods models in Malaysia, starting from RM12,500 for a one-person office pod.',
       '## Office pod starting prices in Malaysia',
       ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - From RM${item.price.toLocaleString('en-MY')}`),
       '## What affects the final price?',
@@ -216,6 +246,7 @@ const STATIC_PRERENDER_META = {
     noscriptFaqHeading: 'Common pricing questions',
     noscriptFaqItems: PRICING_FAQ_ITEMS,
     schemas: (canonical) => [
+      buildLocalBusinessSchema(),
       {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
@@ -266,6 +297,26 @@ const STATIC_PRERENDER_META = {
       },
       {
         '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonical}#office-pod-price-answer`,
+        name: 'Office pods price in Malaysia',
+        url: canonical,
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['#office-pod-price-answer']
+        },
+        mainEntity: {
+          '@type': 'Question',
+          name: 'How much does an office pod cost in Malaysia?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text:
+              'Ace Office Pods start from RM12,500 for a one-person office pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, add-ons, and selected configuration.'
+          }
+        }
+      },
+      {
+        '@context': 'https://schema.org',
         '@type': 'FAQPage',
         url: canonical,
         mainEntity: PRICING_FAQ_ITEMS.map((item) => ({
@@ -274,6 +325,106 @@ const STATIC_PRERENDER_META = {
           acceptedAnswer: {
             '@type': 'Answer',
             text: item.answer
+          }
+        }))
+      }
+    ]
+  },
+  '/office-pods-near-me': {
+    title: 'Office Pods Near Me in Malaysia | Klang Valley Showroom | Ace Office Pods',
+    description:
+      'Looking for office pods near you? Ace Office Pods offers showroom viewing by appointment in Klang, with office pod pricing, delivery, and installation support across Klang Valley and West Malaysia.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office pods near me, office pods near me Malaysia, office pods Klang Valley, office pods Selangor, office pods Kuala Lumpur`,
+    h1: 'Office pods near me',
+    body: [
+      'Ace Office Pods supplies acoustic office pods and office booths from Klang, Selangor, with showroom viewing by appointment and project support across Klang Valley and West Malaysia.',
+      '## Local office pod supply and installation',
+      'For near me buyers, the useful question is not only location. It is whether the supplier can handle viewing, model selection, delivery access, installation planning, and support after delivery.',
+      '## Contact',
+      `Showroom: ${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}. Viewing by appointment.`,
+      `Phone / WhatsApp: ${SEO_BRAND_PHONE}`,
+      `Email: ${SEO_BRAND_EMAIL}`,
+      '## Areas commonly served',
+      'Klang, Shah Alam, Petaling Jaya, Subang Jaya, Kuala Lumpur, Puchong, Cyberjaya, and Putrajaya.',
+      'Other West Malaysia locations can be quoted based on delivery distance, site access, floor level, lift access, and installation scope.',
+      '## Starting prices',
+      ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - From RM${item.price.toLocaleString('en-MY')}`),
+      '## Related planning links',
+      '[View pricing](/pricing)',
+      '[View office pod models](/office-pods)',
+      '[Contact our team](/contact)'
+    ],
+    noscriptFaqHeading: 'Common local questions',
+    noscriptFaqItems: [
+      {
+        question: 'Where can I find office pods near me in Malaysia?',
+        answer:
+          'Ace Office Pods supplies acoustic office pods and office booths from Klang, Selangor, with delivery and installation planning across Klang Valley and West Malaysia. Showroom viewing is available by appointment.'
+      },
+      {
+        question: 'Can I view an office pod before buying?',
+        answer:
+          'Yes. Buyers can arrange a showroom viewing in Klang to compare office pod models, check size, review finishes, and understand acoustic performance before confirming a quote.'
+      },
+      {
+        question: 'Do you install office pods near Kuala Lumpur, Selangor, and Klang Valley?',
+        answer:
+          'Yes. Ace Office Pods supports office pod delivery and installation planning for Kuala Lumpur, Selangor, Klang Valley, and other West Malaysia locations depending on access, quantity, and project scope.'
+      },
+      {
+        question: 'How much do office pods near me cost?',
+        answer:
+          'Ace Office Pods start from RM12,500 for a one-person pod. Final project pricing depends on the model, quantity, delivery location, installation access, add-ons, and selected configuration.'
+      }
+    ],
+    schemas: (canonical) => [
+      buildLocalBusinessSchema(),
+      buildWebsiteSchema(),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Office Pods Near Me in Klang Valley and Malaysia',
+        url: canonical,
+        description:
+          'Find office pods near you in Malaysia. Ace Office Pods offers showroom viewing by appointment in Klang, with office pod delivery and installation planning across Klang Valley and West Malaysia.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Office Pods Near Me',
+            item: canonical
+          }
+        ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Office Pod Pricing in Malaysia',
+        url: canonical,
+        itemListElement: PRICING_LIST_ITEMS.map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Product',
+            name: item.name,
+            url: `${SEO_BASE_URL}${item.path}`,
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'MYR',
+              price: String(item.price),
+              availability: 'https://schema.org/InStock',
+              url: `${SEO_BASE_URL}${item.path}`
+            }
           }
         }))
       }
@@ -705,6 +856,8 @@ const STATIC_PRERENDER_META = {
     body: [
       'Contact Ace Office Pods by Ace Workplace Solutions for office pod enquiries, model guidance, and quote support.',
       'Reach our team by WhatsApp, email, or phone.',
+      '## Showroom',
+      `Showroom viewing is available by appointment at ${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}. Buyers can compare office pod size, finish, comfort, and acoustic performance before confirming a quote.`,
       '## What to prepare before contacting sales',
       'Sharing your office location, expected pod usage, and preferred model shortlist helps the team provide a more accurate recommendation and quotation scope.',
       '## Typical enquiry topics',
@@ -726,6 +879,7 @@ const STATIC_PRERENDER_META = {
     noscriptFaqHeading: 'Common pre-sales questions',
     noscriptFaqItems: [HOME_FAQ_ITEMS[0], HOME_FAQ_ITEMS[1], FAQ_PAGE_ITEMS[10]],
     schemas: (canonical) => [
+      buildLocalBusinessSchema(),
       buildServiceOrganizationSchema(),
       {
         '@context': 'https://schema.org',

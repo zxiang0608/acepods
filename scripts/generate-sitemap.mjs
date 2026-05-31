@@ -13,6 +13,7 @@ const sourceFilesForRoute = (route) => {
     '/portfolio': ['src/pages/PortfolioPage.jsx'],
     '/articles': ['src/pages/ArticlesPage.jsx', 'src/data/articles.js'],
     '/office-pods': ['src/pages/OfficePodsPage.jsx'],
+    '/office-pods-near-me': ['src/pages/OfficePodsNearMePage.jsx', 'src/data/products.js', 'src/seo/constants.js'],
     '/meeting-pods-malaysia': ['src/pages/MeetingPodsMalaysiaPage.jsx', 'src/data/products.js'],
     '/office-phone-booth-malaysia': ['src/pages/OfficePhoneBoothMalaysiaPage.jsx', 'src/data/products.js'],
     '/compare-office-pods': ['src/pages/CompareOfficePodsPage.jsx'],
