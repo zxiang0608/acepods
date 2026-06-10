@@ -40,6 +40,7 @@ import cmacgmLogo from '../assets/cmacgm-logo.svg';
 import alphabetLogo from '../assets/alphabet-logo.png';
 import rightwillLogo from '../assets/rightwill-logo.png';
 import matradeLogo from '../assets/matrade-logo.png';
+import everllenceLogo from '../assets/everllence-logo.png';
 import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
 import jyEliteLogo from '../assets/jy-elite.jpg';
 import wsConstructionLogo from '../assets/ws-construction.png';
@@ -253,7 +254,8 @@ const trustedLogos = [
     fitClass: 'scale-[0.96]',
     logoStageClass: 'max-h-[48px] max-w-[176px]'
   },
-  { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', logoStageClass: 'max-h-[52px] max-w-[172px]' }
+  { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', logoStageClass: 'max-h-[52px] max-w-[172px]' },
+  { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[48px] max-w-[176px]' }
 ];
 
 export default function App() {

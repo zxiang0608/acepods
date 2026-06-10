@@ -8,6 +8,7 @@ const sourceFilesForRoute = (route) => {
   if (route === '/') return ['src/App.jsx', 'src/seo/constants.js'];
   if (route.startsWith('/pods/')) return ['src/pages/ProductPage.jsx', 'src/data/products.js'];
   if (route.startsWith('/articles/')) return ['src/pages/ArticleDetailPage.jsx', 'src/data/articles.js'];
+  if (route.startsWith('/locations/')) return ['src/pages/LocationPage.jsx', 'src/data/locations.js'];
 
   const staticRouteSources = {
     '/portfolio': ['src/pages/PortfolioPage.jsx'],
@@ -20,7 +21,8 @@ const sourceFilesForRoute = (route) => {
     '/pricing': ['src/pages/PricingPage.jsx'],
     '/contact': ['src/pages/ContactPage.jsx', 'src/seo/constants.js'],
     '/faq': ['src/pages/FaqPage.jsx', 'src/seo/constants.js'],
-    '/installation-support': ['src/pages/InstallationSupportPage.jsx']
+    '/installation-support': ['src/pages/InstallationSupportPage.jsx'],
+    '/locations': ['src/pages/LocationsPage.jsx', 'src/data/locations.js']
   };
 
   return staticRouteSources[route] || [];

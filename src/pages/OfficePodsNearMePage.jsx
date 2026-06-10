@@ -76,7 +76,16 @@ const localWebPageSchema = {
   ]
 };
 
-const serviceAreas = ['Klang', 'Shah Alam', 'Petaling Jaya', 'Subang Jaya', 'Kuala Lumpur', 'Puchong', 'Cyberjaya', 'Putrajaya'];
+const serviceAreas = [
+  { name: 'Klang' },
+  { name: 'Shah Alam', path: '/locations/shah-alam' },
+  { name: 'Petaling Jaya' },
+  { name: 'Subang Jaya', path: '/locations/subang-jaya' },
+  { name: 'Kuala Lumpur', path: '/locations/kuala-lumpur' },
+  { name: 'Puchong' },
+  { name: 'Cyberjaya' },
+  { name: 'Putrajaya' }
+];
 
 export default function OfficePodsNearMePage() {
   const pricingListItems = products.map((product) => ({
@@ -185,11 +194,21 @@ export default function OfficePodsNearMePage() {
       <section className="mx-auto mt-10 w-full max-w-[1100px] px-5 md:px-8">
         <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Areas commonly served</h2>
         <div className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-4">
-          {serviceAreas.map((area) => (
-            <div key={area} className="border border-[#ddd8cf] bg-white px-4 py-3 text-[15px] font-semibold text-[#30363d]">
-              {area}
-            </div>
-          ))}
+          {serviceAreas.map((area) =>
+            area.path ? (
+              <Link
+                key={area.name}
+                to={area.path}
+                className="border border-[#ddd8cf] bg-white px-4 py-3 text-[15px] font-semibold text-[#30363d] transition-colors hover:border-[#145b5f] hover:text-[#145b5f]"
+              >
+                {area.name}
+              </Link>
+            ) : (
+              <div key={area.name} className="border border-[#ddd8cf] bg-white px-4 py-3 text-[15px] font-semibold text-[#30363d]">
+                {area.name}
+              </div>
+            )
+          )}
         </div>
         <p className="mt-4 text-[14px] leading-[1.6] text-[#626a72]">
           Other West Malaysia locations can be quoted based on delivery distance, site access, floor level, lift access, and installation scope.

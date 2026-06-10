@@ -8,6 +8,8 @@ import ArticleDetailPage from './pages/ArticleDetailPage';
 import ArticlesPage from './pages/ArticlesPage';
 import FaqPage from './pages/FaqPage';
 import InstallationSupportPage from './pages/InstallationSupportPage';
+import LocationPage from './pages/LocationPage';
+import LocationsPage from './pages/LocationsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OfficeChairsPage from './pages/OfficeChairsPage';
 import OfficePhoneBoothMalaysiaPage from './pages/OfficePhoneBoothMalaysiaPage';
@@ -44,6 +46,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/installation-support" element={<InstallationSupportPage />} />
+        <Route path="/locations" element={<LocationsPage />} />
+        <Route path="/locations/:slug" element={<LocationPage />} />
         <Route path="/pods/:slug" element={<ProductPage />} />
         <Route path="/seo/*" element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />

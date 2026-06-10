@@ -153,7 +153,118 @@ const buildHomepageWebPageSchema = () => ({
   ]
 });
 
+const LOCATION_PRERENDER_DATA = [
+  {
+    slug: 'kuala-lumpur',
+    city: 'Kuala Lumpur',
+    shortName: 'Kuala Lumpur (KL)',
+    title: 'Office Pods Kuala Lumpur (KL) | Delivery & Installation | Ace Office Pods',
+    description:
+      'Office pods in Kuala Lumpur with completed installations for Everllence, Alphabet Capital, and CMA CGM in Bangsar. Compare models, pricing, delivery, and installation.',
+    intro:
+      'Ace Office Pods supplies and installs office phone booths, focus pods, and meeting pods for Kuala Lumpur workplaces.',
+    projects: [
+      'Everllence — Ace Plus installation in Kuala Lumpur',
+      'Alphabet Capital — Ace Flex Duo installation in Kuala Lumpur',
+      'CMA CGM — Ace Solo installation in Bangsar, Kuala Lumpur'
+    ]
+  },
+  {
+    slug: 'shah-alam',
+    city: 'Shah Alam',
+    shortName: 'Shah Alam',
+    title: 'Office Pods Shah Alam | Delivery & Installation | Ace Office Pods',
+    description:
+      'Office pods in Shah Alam with a completed Parker Hannifin installation. Compare phone booths, acoustic pods, pricing, delivery, and installation support.',
+    intro: 'Ace Office Pods supplies and installs office phone booths and acoustic work pods for Shah Alam offices.',
+    projects: ['Parker Hannifin — Ace Solo installation in Shah Alam']
+  },
+  {
+    slug: 'subang-jaya',
+    city: 'Subang Jaya',
+    shortName: 'Subang Jaya',
+    title: 'Office Pods Subang Jaya | Delivery & Installation | Ace Office Pods',
+    description:
+      "Office pods in Subang Jaya with a completed Taylor's College installation. Compare acoustic phone booths, pod pricing, delivery, and installation support.",
+    intro: 'Ace Office Pods supplies and installs office phone booths and acoustic pods for Subang Jaya workplaces and education environments.',
+    projects: ["Taylor's College — Ace Plus installation in Subang Jaya"]
+  }
+];
+
+const buildLocationPrerenderEntries = () =>
+  Object.fromEntries(
+    LOCATION_PRERENDER_DATA.map((location) => {
+      const route = `/locations/${location.slug}`;
+      return [
+        route,
+        {
+          title: location.title,
+          description: location.description,
+          keywords: `${SEO_KEYWORDS_COMMON}, office pods ${location.city}, office phone booth ${location.city}, acoustic office pod ${location.city}`,
+          h1: `Office pods in ${location.shortName}`,
+          body: [
+            location.intro,
+            `## Completed office pod projects in ${location.city}`,
+            ...location.projects.map((project) => `- ${project}`),
+            '## Delivery and installation planning',
+            `Projects in ${location.city} are planned around building access, loading arrangements, lift or staircase clearance, floor protection, delivery timing, and final pod placement.`,
+            '## Showroom viewing',
+            'The physical Ace Office Pods showroom is in Klang, Selangor. Viewing is available by appointment before selecting a model.',
+            '## Related planning links',
+            '[View office pod pricing](/pricing)',
+            '[Compare office pod models](/office-pods)',
+            '[View installation portfolio](/portfolio)',
+            '[Contact our team](/contact)'
+          ],
+          schemas: (canonical) => [
+            buildLocalBusinessSchema(),
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Service',
+              name: `Office pod delivery and installation in ${location.city}`,
+              url: canonical,
+              description: location.description,
+              provider: {
+                '@id': `${SEO_BASE_URL}/#organization`
+              },
+              areaServed: {
+                '@type': 'City',
+                name: location.city
+              },
+              serviceType: ['Office pod supply', 'Office pod delivery', 'Office pod installation']
+            },
+            {
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: `${SEO_BASE_URL}/`
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Locations',
+                  item: `${SEO_BASE_URL}/locations`
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: location.city,
+                  item: canonical
+                }
+              ]
+            }
+          ]
+        }
+      ];
+    })
+  );
+
 const STATIC_PRERENDER_META = {
+  ...buildLocationPrerenderEntries(),
   '/': {
     title: 'Ace Office Pods by Ace Workplace Solutions | Office Pods and Booths Malaysia',
     description:
@@ -1000,6 +1111,58 @@ const STATIC_PRERENDER_META = {
             text: item.answer
           }
         }))
+      }
+    ]
+  },
+  '/locations': {
+    title: 'Office Pod Delivery Locations | Kuala Lumpur, Shah Alam & Subang Jaya',
+    description:
+      'Explore Ace Office Pods delivery and installation locations backed by completed projects in Kuala Lumpur, Shah Alam, and Subang Jaya.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office pods Kuala Lumpur, office pods Shah Alam, office pods Subang Jaya`,
+    h1: 'Office pod delivery locations',
+    body: [
+      'Explore areas where Ace Office Pods has completed customer installations. Each location page uses real project examples to show the pod models delivered and the local installation context.',
+      '## Kuala Lumpur',
+      'Completed projects for Everllence, Alphabet Capital, and CMA CGM in Bangsar.',
+      '[View office pod projects in Kuala Lumpur](/locations/kuala-lumpur)',
+      '## Shah Alam',
+      'Completed Ace Solo installation for Parker Hannifin.',
+      '[View office pod projects in Shah Alam](/locations/shah-alam)',
+      '## Subang Jaya',
+      "Completed Ace Plus installation for Taylor's College.",
+      '[View office pod projects in Subang Jaya](/locations/subang-jaya)',
+      '## Showroom in Klang',
+      'These are delivery and installation areas, not separate Ace branches. The physical showroom remains in Klang, Selangor, with viewing available by appointment.'
+    ],
+    schemas: (canonical) => [
+      buildLocalBusinessSchema(),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Office Pod Delivery Locations',
+        url: canonical,
+        description: 'Office pod delivery and installation locations supported by completed Ace Office Pods projects in Klang Valley.',
+        isPartOf: {
+          '@id': `${SEO_BASE_URL}/#website`
+        }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Locations',
+            item: canonical
+          }
+        ]
       }
     ]
   },

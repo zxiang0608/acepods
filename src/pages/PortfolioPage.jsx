@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
@@ -7,6 +8,7 @@ import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSche
 import parkerLogo from '../../assets/parker-logo.png';
 import alphabetLogo from '../../assets/alphabet-logo.png';
 import cmacgmLogo from '../../assets/cmacgm-logo.svg';
+import everllenceLogo from '../../assets/everllence-logo.png';
 import taylorsLogo from '../../assets/taylorsuniversity.svg';
 
 const breadcrumbs = [
@@ -21,13 +23,14 @@ const portfolioImageModules = import.meta.glob('../../assets/Portfolio/**/*.{jpg
 
 const excludedPortfolioBasenames = new Set(['20250624_150024', '20250619_132036', '20250703_111306', '20250703_120024']);
 
-const orderedCompanies = ["Parker Hannafin", 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Others'];
+const orderedCompanies = ['Everllence', "Parker Hannafin", 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Others'];
 
 const companyBranding = {
-  'Parker Hannafin': { logo: parkerLogo, logoAlt: 'Parker Hannafin logo' },
-  'Alphabet Capital': { logo: alphabetLogo, logoAlt: 'Alphabet Capital logo' },
-  'CMA CGM': { logo: cmacgmLogo, logoAlt: 'CMA CGM logo' },
-  "Taylor's College": { logo: taylorsLogo, logoAlt: "Taylor's College logo" },
+  Everllence: { logo: everllenceLogo, logoAlt: 'Everllence logo', location: 'Kuala Lumpur' },
+  'Parker Hannafin': { logo: parkerLogo, logoAlt: 'Parker Hannafin logo', location: 'Shah Alam' },
+  'Alphabet Capital': { logo: alphabetLogo, logoAlt: 'Alphabet Capital logo', location: 'Kuala Lumpur' },
+  'CMA CGM': { logo: cmacgmLogo, logoAlt: 'CMA CGM logo', location: 'Bangsar, Kuala Lumpur' },
+  "Taylor's College": { logo: taylorsLogo, logoAlt: "Taylor's College logo", location: 'Subang Jaya' },
   Others: { logo: null, logoAlt: '' }
 };
 const companyImageSourceMap = {
@@ -53,14 +56,57 @@ const groupedPortfolio = Object.entries(portfolioImageModules)
     return acc;
   }, {});
 
+const getVisiblePortfolioImages = (images) => (images.length > 9 ? images.slice(0, 9) : images);
+
 export default function PortfolioPage() {
+  const [activeGallery, setActiveGallery] = useState(null);
   const companySections = orderedCompanies
-    .map((companyName) => ({
-      companyName,
-      images: groupedPortfolio[companyImageSourceMap[companyName] || companyName] || [],
-      branding: companyBranding[companyName]
-    }))
+    .map((companyName) => {
+      const images = groupedPortfolio[companyImageSourceMap[companyName] || companyName] || [];
+
+      return {
+        companyName,
+        images: getVisiblePortfolioImages(images),
+        branding: companyBranding[companyName]
+      };
+    })
     .filter((section) => section.images.length > 0);
+
+  useEffect(() => {
+    if (!activeGallery) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setActiveGallery(null);
+      } else if (event.key === 'ArrowLeft') {
+        setActiveGallery((current) => ({
+          ...current,
+          index: (current.index - 1 + current.images.length) % current.images.length
+        }));
+      } else if (event.key === 'ArrowRight') {
+        setActiveGallery((current) => ({
+          ...current,
+          index: (current.index + 1) % current.images.length
+        }));
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeGallery]);
+
+  const moveGallery = (direction) => {
+    setActiveGallery((current) => ({
+      ...current,
+      index: (current.index + direction + current.images.length) % current.images.length
+    }));
+  };
 
   return (
     <PageShell>
@@ -83,41 +129,111 @@ export default function PortfolioPage() {
         <h1 className="text-[34px] font-bold leading-[1.08] tracking-tight text-[#14181c] md:text-[48px]">Past office pod projects across Malaysia</h1>
       </section>
 
-      <section className="mx-auto w-full max-w-[1200px] px-5 md:px-8">
-        <div className="space-y-12 md:space-y-14">
+      <section className="mx-auto w-full max-w-[1200px] px-5 pb-16 md:px-8 md:pb-20">
+        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-14">
           {companySections.map((section) => (
-            <div key={section.companyName}>
-              <div className="mb-5 flex items-center gap-3 border-b border-[#d9d6cf] pb-3">
+            <article key={section.companyName} className="min-w-0">
+              <div className="mb-4 flex min-h-[52px] items-center gap-3 border-b border-[#d9d6cf] pb-3">
                 {section.branding?.logo ? (
-                  <div className="flex h-[36px] w-[120px] items-center justify-start overflow-hidden rounded-[4px] bg-white px-2">
-                    <img src={section.branding.logo} alt={section.branding.logoAlt} className="h-full w-full object-contain object-left" loading="lazy" />
+                  <div className="flex h-[36px] w-[112px] shrink-0 items-center justify-start overflow-hidden">
+                    <img
+                      src={section.branding.logo}
+                      alt={section.branding.logoAlt}
+                      className="h-full w-full object-contain object-left mix-blend-multiply"
+                      loading="lazy"
+                    />
                   </div>
                 ) : null}
-                <h2 className="text-[20px] font-semibold tracking-tight text-[#14181c] md:text-[24px]">{section.companyName}</h2>
+                <div>
+                  <h2 className="text-[18px] font-semibold tracking-tight text-[#14181c] md:text-[20px]">{section.companyName}</h2>
+                  {section.branding?.location ? <p className="mt-0.5 text-[12px] text-[#65707a]">{section.branding.location}</p> : null}
+                </div>
               </div>
 
-              <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                {section.images.map((image, index) => (
-                  <article key={image.src} className="overflow-hidden rounded-[10px] border border-[#ddd8cf] bg-white">
-                    <div className="aspect-[4/3] w-full overflow-hidden bg-[#eceae3]">
-                      <img
-                        src={image.src}
-                        alt={
-                          section.companyName
-                            ? `Ace Pods office pod installation for ${section.companyName}`
-                            : 'Ace Pods office pod installation project'
-                        }
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                  </article>
+              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+                {section.images.map((image, imageIndex) => (
+                  <button
+                    key={image.src}
+                    type="button"
+                    className="aspect-[4/3] overflow-hidden rounded-[6px] bg-[#eceae3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#145b5f]"
+                    aria-label={`Open ${section.companyName} project image ${imageIndex + 1}`}
+                    onClick={() =>
+                      setActiveGallery({
+                        companyName: section.companyName,
+                        images: section.images,
+                        index: imageIndex
+                      })
+                    }
+                  >
+                    <img
+                      src={image.src}
+                      alt={
+                        section.companyName ? `Ace Pods office pod installation for ${section.companyName}` : 'Ace Pods office pod installation project'
+                      }
+                      className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
+                      loading="lazy"
+                    />
+                  </button>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
+
+      {activeGallery ? (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 md:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${activeGallery.companyName} project gallery`}
+          onClick={() => setActiveGallery(null)}
+        >
+          <button
+            type="button"
+            aria-label="Close gallery"
+            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white hover:bg-black md:right-7 md:top-7"
+            onClick={() => setActiveGallery(null)}
+          >
+            <X size={24} />
+          </button>
+
+          <button
+            type="button"
+            aria-label="Previous project image"
+            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-[#14181c] hover:bg-white md:left-7"
+            onClick={(event) => {
+              event.stopPropagation();
+              moveGallery(-1);
+            }}
+          >
+            <ChevronLeft size={28} />
+          </button>
+
+          <figure className="flex max-h-full max-w-[1100px] flex-col items-center gap-3" onClick={(event) => event.stopPropagation()}>
+            <img
+              src={activeGallery.images[activeGallery.index].src}
+              alt={`Ace Pods office pod installation for ${activeGallery.companyName}`}
+              className="max-h-[82vh] max-w-full object-contain"
+            />
+            <figcaption className="text-center text-[13px] text-white/85">
+              {activeGallery.companyName} · {activeGallery.index + 1} of {activeGallery.images.length}
+            </figcaption>
+          </figure>
+
+          <button
+            type="button"
+            aria-label="Next project image"
+            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-[#14181c] hover:bg-white md:right-7"
+            onClick={(event) => {
+              event.stopPropagation();
+              moveGallery(1);
+            }}
+          >
+            <ChevronRight size={28} />
+          </button>
+        </div>
+      ) : null}
     </PageShell>
   );
 }

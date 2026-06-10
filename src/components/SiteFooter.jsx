@@ -37,6 +37,7 @@ const footerLinkGroups = [
     title: 'Support',
     links: [
       { label: 'Contact us', to: '/contact' },
+      { label: 'Locations', to: '/locations' },
       { label: 'Office pods near me', to: '/office-pods-near-me' },
       { label: 'Articles', to: '/articles' },
       { label: 'Installation & delivery', to: '/installation-support' },

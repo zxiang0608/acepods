@@ -185,6 +185,12 @@ import portfolioAceHub02 from '../../assets/Portfolio/Ace hub/20260313_145945.jp
 import portfolioAceHub03 from '../../assets/Portfolio/Ace hub/20260313_145948.jpg';
 import portfolioAceHub04 from '../../assets/Portfolio/Ace hub/20260313_145950.jpg';
 import portfolioAceHub06 from '../../assets/Portfolio/Ace hub/YYC_advisor_4.webp';
+import portfolioEverllenceOpenDoor from '../../assets/Portfolio/Everllence/everllence-ace-plus-open-door.jpg';
+import portfolioEverllenceInUse from '../../assets/Portfolio/Everllence/everllence-ace-plus-in-use.jpg';
+import portfolioEverllenceInterior from '../../assets/Portfolio/Everllence/everllence-ace-plus-interior.jpg';
+import portfolioEverllenceOfficeWide01 from '../../assets/Portfolio/Everllence/everllence-ace-plus-office-wide-01.jpg';
+import portfolioEverllenceOfficeWide03 from '../../assets/Portfolio/Everllence/everllence-ace-plus-office-wide-03.jpg';
+import portfolioEverllenceBrandedFront from '../../assets/Portfolio/Everllence/everllence-ace-plus-branded-front.jpg';
 import { POD_SEO_BY_SLUG } from './podSeoCatalog';
 
 const deliveryDefaults = {
@@ -254,6 +260,12 @@ const acePlusPortfolioPhotos = [
   portfolioOthers11,
   portfolioOthers12,
   portfolioOthers13,
+  portfolioEverllenceInUse,
+  portfolioEverllenceBrandedFront,
+  portfolioEverllenceOpenDoor,
+  portfolioEverllenceInterior,
+  portfolioEverllenceOfficeWide01,
+  portfolioEverllenceOfficeWide03,
   barStoolBlack,
   barStoolWhite
 ];

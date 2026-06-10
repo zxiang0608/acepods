@@ -15,6 +15,10 @@ const STATIC_PUBLIC_ROUTES = [
   '/contact',
   '/faq',
   '/installation-support',
+  '/locations',
+  '/locations/kuala-lumpur',
+  '/locations/shah-alam',
+  '/locations/subang-jaya',
   '/office-chairs'
 ];
 
