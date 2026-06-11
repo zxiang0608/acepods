@@ -21,9 +21,8 @@ export const SEO_BRAND_COUNTRY = 'MY';
 export const SEO_BRAND_LOGO = `${SEO_BASE_URL}/ace-pods-logo.png`;
 export const SEO_BRAND_SAME_AS = [
   'https://www.instagram.com/acepodsmy/',
-  'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/'
-  // Add your Google Business Profile URL here once you have it:
-  // 'https://maps.app.goo.gl/YOUR_GBP_URL'
+  'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/',
+  'https://share.google/P1Dp8reRiaHf2UOlr'
 ];
 export const SEO_KEYWORDS_COMMON =
   'Ace Workplace Solutions, Ace Office Pods, AcePods, office pod, office booth, acoustic office pods, office pods Malaysia, office booths Malaysia';
