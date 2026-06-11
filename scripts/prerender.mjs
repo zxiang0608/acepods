@@ -1325,7 +1325,14 @@ const injectSeoHtml = (html, route, meta) => {
     .map((schemaObject) => `    <script type="application/ld+json" data-seo-schema="true">${JSON.stringify(schemaObject)}</script>`)
     .join('\n');
 
-  let output = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(meta.title)}</title>`);
+  // Strip previously injected tags first so re-running prerender on already-processed HTML is idempotent.
+  let output = html
+    .replace(/\s*<meta property="og:image"[^>]*\/>/g, '')
+    .replace(/\s*<meta name="twitter:image"[^>]*\/>/g, '')
+    .replace(/<div id="root">[\s\S]*?<\/main><\/div>/, '<div id="root"></div>')
+    .replace(/\s*<noscript><main>[\s\S]*?<\/main><\/noscript>\n?/, '');
+
+  output = output.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(meta.title)}</title>`);
   output = output.replace(
     '</head>',
     `    <meta name="description" content="${escapeHtml(meta.description)}" />\n` +
@@ -1335,15 +1342,22 @@ const injectSeoHtml = (html, route, meta) => {
       `    <meta property="og:title" content="${escapeHtml(meta.title)}" />\n` +
       `    <meta property="og:description" content="${escapeHtml(meta.description)}" />\n` +
       `    <meta property="og:url" content="${canonical}" />\n` +
+      `    <meta property="og:image" content="${escapeHtml(meta.ogImage || DEFAULT_OG_IMAGE)}" />\n` +
       `    <meta name="twitter:card" content="summary_large_image" />\n` +
       `    <meta name="twitter:title" content="${escapeHtml(meta.title)}" />\n` +
       `    <meta name="twitter:description" content="${escapeHtml(meta.description)}" />\n` +
+      `    <meta name="twitter:image" content="${escapeHtml(meta.ogImage || DEFAULT_OG_IMAGE)}" />\n` +
       `    <link rel="canonical" href="${canonical}" />\n` +
       `${schemaScripts ? `${schemaScripts}\n` : ''}` +
       '  </head>'
   );
 
-  output = output.replace('</body>', `    <noscript>${buildFallbackBody(meta)}</noscript>\n  </body>`);
+  const prerenderBody = buildFallbackBody(meta);
+  // Inject into #root so static HTML parsers (AEO tools, ChatGPT Browse, Perplexity) see real content.
+  // React's createRoot().render() replaces this when JS loads — no hydration config needed.
+  output = output.replace('<div id="root"></div>', `<div id="root">${prerenderBody}</div>`);
+  // Keep noscript as fallback for JS-disabled browsers.
+  output = output.replace('</body>', `    <noscript>${prerenderBody}</noscript>\n  </body>`);
 
   return output;
 };
@@ -1353,7 +1367,11 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
   description: `${productMeta.name}: ${productMeta.shortDesc}. Starting from ${formatRM(productMeta.startingPrice)} in Malaysia from Ace Office Pods by Ace Workplace Solutions. View office pod and office booth colors, add-ons, installation, and delivery details.`,
   keywords: `${SEO_KEYWORDS_COMMON}, ${productMeta.name}, ${route.split('/').pop().replaceAll('-', ' ')}`,
   h1: productMeta.name,
-  body: [`Starting from ${formatRM(productMeta.startingPrice)}`, productMeta.shortDesc],
+  body: [
+    `Starting from ${formatRM(productMeta.startingPrice)}`,
+    productMeta.shortDesc,
+    ...(productMeta.schemaProperties?.map((p) => `${p.name}: ${p.value}`) ?? [])
+  ],
   schemas: (canonical) => [
     {
       '@context': 'https://schema.org',
