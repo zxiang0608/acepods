@@ -1299,10 +1299,10 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/locations': {
-    title: 'Office Pod Delivery Locations | KL, Shah Alam, Subang Jaya & Johor Bahru',
+    title: 'Office Pod Delivery Locations | KL, Shah Alam, Subang Jaya, Penang & JB',
     description:
-      'Explore Ace Office Pods delivery and installation locations with completed projects in Kuala Lumpur, Shah Alam, and Subang Jaya, plus delivery to Johor Bahru.',
-    keywords: `${SEO_KEYWORDS_COMMON}, office pods Kuala Lumpur, office pods Shah Alam, office pods Subang Jaya, office pods Johor Bahru`,
+      'Explore Ace Office Pods delivery and installation locations with completed projects in Kuala Lumpur, Shah Alam, and Subang Jaya, plus delivery to Penang and Johor Bahru.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office pods Kuala Lumpur, office pods Shah Alam, office pods Subang Jaya, office pods Penang, office pods Johor Bahru`,
     h1: 'Office pod delivery locations',
     body: [
       'Explore areas where Ace Office Pods has completed customer installations. Each location page uses real project examples to show the pod models delivered and the local installation context.',
@@ -1315,6 +1315,9 @@ const STATIC_PRERENDER_META = {
       '## Subang Jaya',
       "Completed Ace Plus installation for Taylor's College.",
       '[View office pod projects in Subang Jaya](/locations/subang-jaya)',
+      '## Penang',
+      'Office pod supply and delivery available for Penang Island and Seberang Perai workplaces. No completed project listed yet — contact us for a Penang project quote.',
+      '[View office pods in Penang](/locations/penang)',
       '## Johor Bahru',
       'Office pod supply and delivery available for Johor Bahru workplaces. No completed project listed yet — contact us for a JB project quote.',
       '[View office pods in Johor Bahru](/locations/johor-bahru)',
@@ -1349,6 +1352,81 @@ const STATIC_PRERENDER_META = {
             name: 'Locations',
             item: canonical
           }
+        ]
+      }
+    ]
+  },
+  '/locations/penang': {
+    title: 'Office Pods Penang | Supply, Delivery & Installation | Ace Office Pods',
+    description: 'Office pods in Penang — acoustic phone booths and meeting pods for George Town and Bayan Lepas workplaces. Compare models, pricing, delivery lead times, and installation support.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office pods Penang, office pod George Town, soundproof pod Penang, meeting pod Penang`,
+    h1: 'Office pods in Penang',
+    body: [
+      'Ace Office Pods supplies and delivers acoustic office pods and phone booths to Penang workplaces.',
+      'Our range covers one-person focus pods and phone booths through to four and six-person meeting pods, with delivery and installation coordination available for Penang Island and Seberang Perai sites.',
+      '## Models available for Penang delivery',
+      'All six Ace Office Pod models are available — Ace Solo (from RM12,500), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
+      '## Delivery and installation planning',
+      'Penang deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
+      '## Areas served in Penang',
+      'Ace Office Pods delivers to offices across Penang including George Town, Bayan Lepas, Bukit Mertajam, Butterworth, Penang Hill area, and surrounding commercial areas on Penang Island and Seberang Perai.',
+      '## Frequently asked questions',
+      'How much does an office pod cost in Penang? Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, and site installation requirements.',
+      'How long does delivery to Penang take? Standard lead time is approximately 3 to 6 working weeks from order confirmation. Penang logistics are confirmed with the quotation.',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Contact our team for a Penang quote](/contact)'
+    ],
+    schemas: (canonical) => [
+      buildLocalBusinessSchema(),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Office pod delivery and installation in Penang',
+        url: canonical,
+        description: 'Ace Office Pods supplies acoustic office pods and phone booths to Penang workplaces with delivery and installation coordination.',
+        provider: { '@id': `${SEO_BASE_URL}/#organization` },
+        areaServed: { '@type': 'City', name: 'Penang' },
+        serviceType: ['Office pod supply', 'Office pod delivery', 'Office pod installation']
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Do you deliver and install office pods in Penang?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Yes. Ace Office Pods supplies and coordinates delivery and installation for Penang office projects on both Penang Island and Seberang Perai. Delivery lead time and logistics are confirmed as part of the project scope.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'How much does an office pod cost in Penang?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, delivery distance, and site installation requirements.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'How long does delivery to Penang take?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Standard lead time is approximately 3 to 6 working weeks from order confirmation. Penang delivery logistics are confirmed with the quotation.' }
+          }
+        ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonical}#location-penang-answer`,
+        url: canonical,
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['#location-penang-answer']
+        }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SEO_BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Locations', item: `${SEO_BASE_URL}/locations` },
+          { '@type': 'ListItem', position: 3, name: 'Penang', item: canonical }
         ]
       }
     ]

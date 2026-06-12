@@ -19,6 +19,7 @@ const STATIC_PUBLIC_ROUTES = [
   '/locations/kuala-lumpur',
   '/locations/shah-alam',
   '/locations/subang-jaya',
+  '/locations/penang',
   '/locations/johor-bahru',
   '/office-chairs',
   '/privacy',

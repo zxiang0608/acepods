@@ -93,7 +93,8 @@ export const ARTICLES = [
       'Choose a one-person phone booth for calls, a focus pod for individual work, a two-person pod for short discussions, and a larger meeting pod for team collaboration.',
       '## Final thoughts',
       'Office pods and office booths are becoming a practical part of modern workplace planning. They help businesses create private, flexible spaces for calls, meetings, focus work, and hybrid collaboration without committing to heavy renovation.',
-      'For companies planning an office upgrade, the next step is to compare models based on use case, size, quantity, and installation requirements. View the [office pods range](/office-pods), compare [office pod pricing](/pricing), or [ask for a recommendation](/contact) based on your office layout.'
+      'For companies planning an office upgrade, the next step is to compare models based on use case, size, quantity, and installation requirements. View the [office pods range](/office-pods), compare [office pod pricing](/pricing), or [ask for a recommendation](/contact) based on your office layout.',
+      'For a step-by-step selection process, read [how to choose an office pod in Malaysia](/articles/how-to-choose-office-pod-malaysia). For cost planning, see the [office pod price guide](/articles/office-pod-price-guide-malaysia) or the [cost comparison against building a room](/articles/office-pod-vs-building-room-malaysia).'
     ]
   },
   {
@@ -219,7 +220,7 @@ export const ARTICLES = [
       'Yes. Office pods can be included in renovation, fit-out, relocation, coworking, education, showroom, and corporate office projects as modular private spaces.',
       '## Final thoughts',
       'For corporate and project buyers, office pods are most useful when they are planned as part of a wider workplace strategy. The right solution depends on use case, quantity, site access, installation timing, and long-term support.',
-      'If you are planning a corporate office upgrade, contractor package, interior design proposal, dealer enquiry, or export project, start by reviewing the [office pods range](/office-pods), checking [office pod pricing](/pricing), or [requesting a recommendation](/contact) based on your project details.'
+      'If you are planning a corporate office upgrade, contractor package, interior design proposal, dealer enquiry, or export project, start by reviewing the [office pods range](/office-pods), checking [office pod pricing](/pricing), or [requesting a recommendation](/contact) based on your project details. For a full price breakdown by model, see the [office pod price guide for Malaysia](/articles/office-pod-price-guide-malaysia).'
     ]
   },
   {
@@ -292,7 +293,7 @@ export const ARTICLES = [
       '### Do office pods require any building work?',
       'No structural work is needed for standard pod installation. Power access, floor protection, and delivery access are the main site requirements. The installation team manages the setup within the agreed timeline.',
       '### How do I decide between a pod and a room for my office?',
-      'Start with three questions: how soon is the space needed, how permanent should it be, and what is the tolerance for on-site disruption? If all three answers favor speed and low disruption, an office pod is usually the right choice. Compare the Ace pod range or contact the team with your project brief for a specific recommendation.'
+      'Start with three questions: how soon is the space needed, how permanent should it be, and what is the tolerance for on-site disruption? If all three answers favor speed and low disruption, an office pod is usually the right choice. Compare the Ace pod range or contact the team with your project brief for a specific recommendation. For a full cost comparison using 2026 Malaysia renovation data, see [office pod vs building a room](/articles/office-pod-vs-building-room-malaysia).'
     ]
   },
   {
@@ -372,7 +373,7 @@ export const ARTICLES = [
       '### How do I choose between Ace Solo, Ace Plus, and Ace Flex for solo use?',
       'Ace Solo is best for short, frequent calls. Ace Plus offers better acoustic performance and ventilation for users who spend more time in the pod during the day. Ace Flex provides the most spacious single-person environment for longer sessions or users who need room to work across documents and equipment.',
       '### What if I am unsure which size to choose?',
-      'Share your office layout, team size, and main use case with the team. A recommendation based on your specific setup is usually faster than comparing specs alone. Contact the team or view the full range to get started.'
+      'Share your office layout, team size, and main use case with the team. A recommendation based on your specific setup is usually faster than comparing specs alone. Contact the team or view the full range to get started. For a complete step-by-step selection process covering use case, dimensions, and site access, see [how to choose an office pod in Malaysia](/articles/how-to-choose-office-pod-malaysia).'
     ]
   },
   {
@@ -428,7 +429,7 @@ export const ARTICLES = [
       '|---|---|---|',
       '| [Ace Solo](/pods/ace-solo) | High-frequency solo calls, compact spaces | From RM12,500 |',
       '| [Ace Plus](/pods/ace-plus) | Extended daily use, 27 dBA noise reduction | From RM14,500 |',
-      'For a full comparison including dimensions, configurations, and add-on options, see [office phone booth solutions in Malaysia](/office-phone-booth-malaysia) or [view the complete range](/office-pods).',
+      'For a full comparison including dimensions, configurations, and add-on options, see [office phone booth solutions in Malaysia](/office-phone-booth-malaysia) or [view the complete range](/office-pods). For model pricing and project cost information, see the [office pod price guide for Malaysia](/articles/office-pod-price-guide-malaysia).',
       '## Frequently asked questions',
       '### Are office phone booths soundproof?',
       'Phone booths significantly reduce noise but are not completely soundproof. The Ace Plus achieves approximately 27 dBA noise reduction in real office conditions, which is effective for call privacy. Total soundproofing would require a built room with full acoustic construction. For most open-plan offices, 27 dBA is sufficient for comfortable, private phone use.',
@@ -504,7 +505,7 @@ export const ARTICLES = [
       '### How is a meeting pod different from a regular meeting room?',
       'Meeting pods are pre-manufactured, self-contained units that can be installed in an open-plan office without construction work. They provide acoustic privacy for small group calls and discussions. Traditional meeting rooms are built into the office structure and are typically larger, more permanent, and more costly to create. Meeting pods complement built rooms by handling shorter, higher-frequency team sessions.',
       '### How do I choose between Ace Meet and Ace Hub?',
-      'If the typical on-site group size is two to four people, Ace Meet is the right choice. If sessions regularly involve five or six people, or if the team needs a more spacious lounge-style collaboration environment, Ace Hub is a better fit. Contact the Ace team with your floor plan and team setup for a specific recommendation.'
+      'If the typical on-site group size is two to four people, Ace Meet is the right choice. If sessions regularly involve five or six people, or if the team needs a more spacious lounge-style collaboration environment, Ace Hub is a better fit. Contact the Ace team with your floor plan and team setup for a specific recommendation. For a full price breakdown by model, see the [office pod price guide for Malaysia](/articles/office-pod-price-guide-malaysia).'
     ]
   },
   {
@@ -577,7 +578,7 @@ export const ARTICLES = [
       '- Lift dimensions or staircase access details',
       '- Target installation date or project timeline',
       'With this information, the team can provide a complete scope covering the pod unit, delivery, and installation as a single project cost.',
-      'View the full [office pods range](/office-pods) or [request a quotation](/contact).',
+      'View the full [office pods range](/office-pods) or [request a quotation](/contact). For a step-by-step selection guide covering use case, capacity, floor space, and access requirements, see [how to choose an office pod in Malaysia](/articles/how-to-choose-office-pod-malaysia).',
       '## Frequently asked questions',
       '### How much does an office pod cost in Malaysia?',
       'Ace office pods start from RM12,500 for the Ace Solo (one-person) and go up to RM27,800 for the Ace Hub (up to six persons). Final project cost depends on the model, quantity, delivery location, floor level, and installation conditions.',
@@ -677,7 +678,7 @@ export const ARTICLES = [
       '- [ ] Power socket location confirmed',
       '- [ ] Total budget including delivery and installation set',
       '- [ ] Quantity and target delivery date agreed',
-      'With this checklist complete, you are ready to request a quotation. [Contact the team](/contact) with your shortlist and site details for a full project scope.',
+      'With this checklist complete, you are ready to request a quotation. [Contact the team](/contact) with your shortlist and site details for a full project scope. For a full breakdown of model prices, delivery, and installation costs, see the [office pod price guide for Malaysia](/articles/office-pod-price-guide-malaysia).',
       '## Frequently asked questions',
       '### Which office pod is best for phone calls in Malaysia?',
       'For daily phone calls and video meetings, the Ace Plus is the most practical choice. It achieves approximately 27 dBA noise reduction in real office conditions and is designed for extended daily use. The Ace Solo is a lower-cost alternative for shorter sessions or offices with limited floor space.',
@@ -770,7 +771,7 @@ export const ARTICLES = [
       '- The priority is calls, focus work, or small meetings (not boardroom-scale space)',
       '- Budget certainty matters — pod prices are fixed, renovation quotes often increase',
       '## The asset argument',
-      'One underappreciated factor: a built room is a sunk cost. It cannot be moved, resold, or transferred. An office pod is a movable asset. If the company relocates, the pod relocates with it. If the company downsizes, the pod can be sold. This residual value is not reflected in renovation budgets but is relevant to total cost planning.',
+      'One underappreciated factor: a built room is a sunk cost. It cannot be moved, resold, or transferred. An office pod is a movable asset. If the company relocates, the pod relocates with it. If the company downsizes, the pod can be sold. This residual value is not reflected in renovation budgets but is relevant to total cost planning. For a full breakdown of model prices and how delivery and installation are quoted, see the [office pod price guide for Malaysia](/articles/office-pod-price-guide-malaysia).',
       '## Frequently asked questions',
       '### Is it cheaper to build a room or buy an office pod in Malaysia?',
       'On a five-year total cost basis, a pod is usually competitive with or cheaper than building a room, once reinstatement and approval costs are included. The comparison is closest at the one-person level (built room vs Ace Solo/Plus). For a two to four person pod, building an equivalent room is typically more expensive.',

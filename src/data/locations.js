@@ -177,6 +177,47 @@ export const locations = [
     ]
   },
   {
+    slug: 'penang',
+    city: 'Penang',
+    shortName: 'Penang',
+    eyebrow: 'Office pod supply and delivery to Penang',
+    title: 'Office pods in Penang',
+    metaTitle: 'Office Pods Penang | Supply, Delivery & Installation | Ace Office Pods',
+    metaDescription:
+      'Office pods in Penang — acoustic phone booths and meeting pods for George Town and Bayan Lepas workplaces. Compare models, pricing, delivery lead times, and installation support.',
+    intro:
+      'Ace Office Pods supplies and delivers acoustic office pods and phone booths to Penang workplaces. Our range covers one-person focus pods and phone booths through to four and six-person meeting pods, with delivery and installation coordination available for Penang Island and Seberang Perai sites.',
+    serviceSummary:
+      'Penang deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
+    localContext:
+      'Offices in George Town, Bayan Lepas, Bukit Mertajam, Butterworth, and surrounding Penang areas can select from the full Ace Office Pods range. One-person pods suit private calls and focused work; two to six-person models are available for team discussions and meetings. Showroom viewing is available by appointment at our Klang, Selangor showroom.',
+    projectIntro:
+      'Ace Office Pods delivers and installs acoustic pods for Penang businesses. Contact our team to discuss your Penang project requirements, site access, and preferred models.',
+    projects: [],
+    faqs: [
+      {
+        question: 'Do you deliver and install office pods in Penang?',
+        answer:
+          'Yes. Ace Office Pods supplies and coordinates delivery and installation for Penang office projects on both Penang Island and Seberang Perai. Delivery lead time and logistics are confirmed as part of the project scope.'
+      },
+      {
+        question: 'How much does an office pod cost in Penang?',
+        answer:
+          'Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, delivery distance, and site installation requirements. Contact us for a project quote.'
+      },
+      {
+        question: 'Which office pod models are available for Penang delivery?',
+        answer:
+          'All six Ace Office Pod models are available for Penang delivery — Ace Solo, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
+      },
+      {
+        question: 'How long does delivery to Penang take?',
+        answer:
+          'Standard lead time is approximately 3 to 6 working weeks from order confirmation, depending on model, quantity, and project requirements. Penang delivery logistics are confirmed with the quotation.'
+      }
+    ]
+  },
+  {
     slug: 'johor-bahru',
     city: 'Johor Bahru',
     shortName: 'Johor Bahru (JB)',
