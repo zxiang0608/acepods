@@ -5,6 +5,7 @@ import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
+import { SEO_BASE_URL } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -17,73 +18,92 @@ const processJourneySteps = [
     num: '1',
     phase: 'Consultation & Assessment',
     summary: 'Choose your pod',
-    desc: 'From enquiry to viewing and assessment, we align pod fit with your workspace needs.',
+    desc: 'We start by understanding your team\'s needs — call frequency, meeting patterns, headcount, and available floor space. Model options are reviewed against your layout, and a site visit confirms lift access, doorway clearance, and placement zones before anything is ordered.',
     tp1: {
       title: 'Needs & Viewing',
-      desc: 'Model options are matched to space, team size, and budget.'
+      desc: 'Pod model, size, and quantity are matched to your space, team workflow, and budget.'
     },
     tp2: {
       title: 'Site Assessment',
-      desc: 'Access routes and placement zones are reviewed upfront.'
+      desc: 'Lift dimensions, delivery routes, and preferred pod placement are confirmed to avoid surprises on installation day.'
     }
   },
   {
     num: '2',
     phase: 'Quotation & Confirmation',
     summary: 'Confirm order',
-    desc: 'Once specifications are finalized, we issue a clear quote and confirm the order.',
+    desc: 'Once the model selection and site requirements are agreed, we issue a written quotation with a clear scope — pod model, quantity, delivery, installation, and any add-ons. A 50% deposit confirms the order and triggers production.',
     tp1: {
       title: 'Transparent Quotation',
-      desc: 'A detailed cost and scope breakdown is provided.'
+      desc: 'Every line item is listed clearly. No hidden fees. Warranty and support terms are included in writing.'
     },
     tp2: {
       title: 'Deposit & Kickoff',
-      desc: 'A 50% deposit starts production and project scheduling.'
+      desc: 'A 50% deposit starts production and locks in your delivery window. The balance is collected before or at handover.'
     }
   },
   {
     num: '3',
     phase: 'Production & Scheduling',
     summary: 'Build and plan',
-    desc: 'Pods enter production while delivery timing is coordinated with your team.',
+    desc: 'Units are built to your approved specification. Most standard orders complete production within 3 to 6 weeks. During this period we coordinate the delivery schedule with your facilities or operations team to find a window that keeps office disruption low.',
     tp1: {
       title: 'Quality Manufacturing',
-      desc: 'Units are built to the approved project specification.'
+      desc: 'Each unit is built to the confirmed project specification, including finish colour, interior configuration, and add-on selections.'
     },
     tp2: {
-      title: 'Flexible Coordination',
-      desc: 'Delivery windows are arranged to reduce office disruption.'
+      title: 'Flexible Scheduling',
+      desc: 'Delivery and installation can be timed for early morning, off-peak hours, or weekends depending on office requirements.'
     }
   },
   {
     num: '4',
     phase: 'Delivery & Installation',
     summary: 'Install safely',
-    desc: 'On the confirmed date, our team delivers and assembles the pod on site.',
+    desc: 'On the confirmed date, the Ace installation team arrives with all components, tools, and materials needed to assemble the pod in one visit. No structural work or renovation is required — just access to the placement area and a nearby power point.',
     tp1: {
       title: 'Professional Assembly',
-      desc: 'Setup is handled by trained installation personnel.'
+      desc: 'Installation is handled by the trained Ace team. Typical single-pod installation completes within one working day.'
     },
     tp2: {
-      title: 'Efficient Execution',
-      desc: 'Installation is completed according to the planned timeline.'
+      title: 'Minimal Disruption',
+      desc: 'Adjacent areas remain operational throughout installation. The team cleans up fully before leaving.'
     }
   },
   {
     num: '5',
     phase: 'Handover & Enjoyment',
     summary: 'Install and hand over',
-    desc: 'We walk through pod use so your team can start confidently from day one.',
+    desc: 'Once assembly is complete, the team walks through pod operation with whoever will manage or use it — ventilation, lighting, power, door mechanism, and any optional features. A clear contact path to the Ace team is established for post-handover questions.',
     tp1: {
       title: 'Feature Walkthrough',
-      desc: 'Ventilation, lighting, and usage guidance are explained clearly.'
+      desc: 'Ventilation controls, lighting, power access, door seals, and any add-on features are demonstrated and explained.'
     },
     tp2: {
       title: 'Ongoing Support',
-      desc: 'After-sales support remains available after handover.'
+      desc: 'After-sales support for warranty and operational questions is available through the same team that managed your project.'
     }
   }
 ];
+
+const installationHowToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How office pod installation works',
+  description: 'The step-by-step process for purchasing and installing an Ace Office Pod, from initial consultation to post-delivery support.',
+  url: `${SEO_BASE_URL}/installation-support`,
+  totalTime: 'P6W',
+  step: processJourneySteps.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.phase,
+    text: s.desc,
+    itemListElement: [
+      { '@type': 'HowToDirection', text: s.tp1.desc },
+      { '@type': 'HowToDirection', text: s.tp2.desc }
+    ]
+  }))
+};
 
 const preInstallationChecks = [
   'Access path into your office',
@@ -104,23 +124,23 @@ const timingExpectations = [
 const INSTALLATION_FAQ_ITEMS = [
   {
     question: 'How does office pod installation work?',
-    answer: 'We run a clear flow: consultation, site checks, scheduling, delivery, setup, and handover. Each stage is confirmed before moving to the next.'
+    answer: 'Office pod installation follows a five-stage process: consultation and site assessment, quotation and order confirmation, production and scheduling, delivery and on-site assembly, and handover with usage walkthrough. Each stage is confirmed before moving to the next to avoid surprises on installation day.'
   },
   {
     question: 'What happens during the site visit?',
-    answer: 'We verify access routes, lift or doorway clearance, placement, and office constraints. This prevents delivery-day surprises.'
+    answer: 'During the site visit, the team verifies access routes into the building, lift and doorway clearance for the largest pod dimension, the intended placement location on the office floor, and any constraints that may affect installation timing or method. This step prevents delivery-day complications and confirms the project can proceed as planned.'
   },
   {
     question: 'How long does delivery take after deposit?',
-    answer: 'Lead time starts after the 50% deposit is received. Most projects run in about 3–6 working weeks based on model, quantity, and site scope.'
+    answer: 'Lead time starts after the 50% deposit is received. Most standard orders are completed within 3 to 6 weeks, depending on model, quantity, and site access conditions. The confirmed delivery date is communicated once the pod enters production and the installation window is agreed with the client.'
   },
   {
     question: 'Will installation disrupt office operations?',
-    answer: 'We plan timing and access before install day to reduce disruption. Scheduling is coordinated around normal office operations where possible.'
+    answer: 'Installation is planned to minimize disruption. The team coordinates access timing, delivery windows, and assembly sequencing with the client before installation day. Most pod installations are completed within one working day per unit. Normal office operations can typically continue in adjacent areas during the process.'
   },
   {
     question: 'What support is available after handover?',
-    answer: 'After handover, you have warranty-related support, usage guidance, and follow-up assistance. A clear contact path is provided for post-install help.'
+    answer: 'After handover, clients receive warranty-related support for manufacturing defects, usage guidance for ventilation and lighting controls, and follow-up assistance for post-installation adjustments. A clear contact path to the Ace team is provided at handover so any issues can be raised and resolved promptly.'
   }
 ];
 
@@ -136,7 +156,7 @@ export default function InstallationSupportPage() {
         description="See what to expect from site review to handover with clear lead times, installation planning, and after-sales support for office pod projects."
         canonical={buildCanonical('/installation-support')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod installation, office booth delivery`}
-        schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/installation-support', INSTALLATION_FAQ_ITEMS)]}
+        schemas={[organizationSchema, websiteSchema, installationHowToSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/installation-support', INSTALLATION_FAQ_ITEMS)]}
       />
 
       <section className="mx-auto w-full max-w-[1180px] px-5 pb-8 pt-10 md:px-8 md:pt-12">
@@ -150,6 +170,15 @@ export default function InstallationSupportPage() {
         <h1 className="max-w-[21ch] text-[34px] font-bold leading-[1.08] tracking-tight text-[#14181c] md:text-[54px]">
           Clear delivery, installation, and after-sales support
         </h1>
+        <p className="mt-5 max-w-[72ch] text-[17px] leading-[1.65] text-[#454d56] md:text-[19px]">
+          Every Ace Office Pod project follows a five-stage process from first contact to handover. Lead time is typically 3 to 6 weeks from deposit. The team coordinates site access, delivery timing, and installation to minimise disruption to your office.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-5 text-[14px] font-semibold text-[#145b5f]">
+          <a href="#process" className="underline-offset-4 hover:underline">How it works</a>
+          <a href="#pre-installation" className="underline-offset-4 hover:underline">What we check before delivery</a>
+          <a href="#lead-time" className="underline-offset-4 hover:underline">Lead times</a>
+          <a href="#book-viewing" className="underline-offset-4 hover:underline">Book a consultation</a>
+        </div>
       </section>
 
       <section id="process" className="mx-auto w-full max-w-[1180px] px-5 py-8 md:px-8 md:py-12">

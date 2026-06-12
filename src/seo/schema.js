@@ -62,7 +62,12 @@ export const localBusinessSchema = {
   '@type': ['Organization', 'LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
   '@id': `${SEO_BASE_URL}/#organization`,
   name: SEO_BRAND_PRIMARY,
+  foundingDate: '2024',
   priceRange: 'RM12,500+',
+  image: [
+    SEO_BRAND_LOGO,
+    `${SEO_BASE_URL}/og-image.png`
+  ],
   address: {
     '@type': 'PostalAddress',
     streetAddress: SEO_BRAND_STREET_ADDRESS,
@@ -71,6 +76,20 @@ export const localBusinessSchema = {
     postalCode: SEO_BRAND_POSTAL_CODE,
     addressCountry: SEO_BRAND_COUNTRY
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 3.07523,
+    longitude: 101.44187
+  },
+  hasMap: 'https://maps.app.goo.gl/nJHHvTLD5YEov9e4A',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00'
+    }
+  ],
   areaServed: [
     { '@type': 'AdministrativeArea', name: 'Klang Valley' },
     { '@type': 'AdministrativeArea', name: SEO_BRAND_AREA_SERVED },
@@ -80,7 +99,13 @@ export const localBusinessSchema = {
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod showroom viewing by appointment' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation in Klang Valley' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' } }
-  ]
+  ],
+  additionalProperty: {
+    '@type': 'QuantitativeValue',
+    name: 'Office pods sold',
+    value: '180+',
+    description: 'Acoustic office pods and office booths sold in Malaysia since 2023'
+  }
 };
 
 export const websiteSchema = {

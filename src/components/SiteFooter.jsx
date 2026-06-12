@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { ChevronDown, Globe, Instagram, Linkedin } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
 import { pushDataLayerEvent } from '../lib/tracking';
+import { SEO_BRAND_STREET_ADDRESS, SEO_BRAND_POSTAL_CODE } from '../seo/constants';
 
 const footerSocialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/acepodsmy/', Icon: Instagram },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/?viewAsMember=true',
+    href: 'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/',
     Icon: Linkedin
   }
 ];
@@ -33,12 +34,20 @@ const footerLinkGroups = [
     ]
   },
   {
+    key: 'solutions',
+    title: 'Solutions',
+    links: [
+      { label: 'Meeting pods Malaysia', to: '/meeting-pods-malaysia' },
+      { label: 'Office phone booths Malaysia', to: '/office-phone-booth-malaysia' },
+      { label: 'Office pods near me', to: '/office-pods-near-me' },
+      { label: 'Locations', to: '/locations' }
+    ]
+  },
+  {
     key: 'support',
     title: 'Support',
     links: [
       { label: 'Contact us', to: '/contact' },
-      { label: 'Locations', to: '/locations' },
-      { label: 'Office pods near me', to: '/office-pods-near-me' },
       { label: 'Articles', to: '/articles' },
       { label: 'Installation & delivery', to: '/installation-support' },
       { label: 'After-sales support', to: '/installation-support#after-sales-support' }
@@ -66,6 +75,20 @@ export default function SiteFooter({ className = 'mt-0' }) {
               <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
+            <address
+              itemScope
+              itemType="https://schema.org/LocalBusiness"
+              className="not-italic text-[13px] leading-relaxed text-gray-500"
+            >
+              <span itemProp="name" className="sr-only">Ace Office Pods by Ace Workplace Solutions</span>
+              <span itemProp="streetAddress">{SEO_BRAND_STREET_ADDRESS}</span><br />
+              <span itemProp="addressLocality">Klang</span>,{' '}
+              <span itemProp="addressRegion">Selangor</span>{' '}
+              <span itemProp="postalCode">{SEO_BRAND_POSTAL_CODE}</span><br />
+              <a href="tel:+601154352700" itemProp="telephone" className="hover:text-white transition-colors">+60 11-5435 2700</a>
+              {' · '}
+              <a href="mailto:sales@aceofficepods.com" itemProp="email" className="hover:text-white transition-colors">sales@aceofficepods.com</a>
+            </address>
             <div className="flex gap-3">
               {footerSocialLinks.map(({ label, href, Icon }) => (
                 <a
@@ -126,12 +149,25 @@ export default function SiteFooter({ className = 'mt-0' }) {
           </div>
         </div>
 
-        <div className="hidden grid-cols-4 gap-10 md:grid">
+        <div className="hidden grid-cols-5 gap-8 md:grid">
           <div className="space-y-6">
             <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
               <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto md:h-14" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
+            <address
+              itemScope
+              itemType="https://schema.org/LocalBusiness"
+              className="not-italic text-[13px] leading-relaxed text-gray-500"
+            >
+              <span itemProp="name" className="sr-only">Ace Office Pods by Ace Workplace Solutions</span>
+              <span itemProp="streetAddress">{SEO_BRAND_STREET_ADDRESS}</span><br />
+              <span itemProp="addressLocality">Klang</span>,{' '}
+              <span itemProp="addressRegion">Selangor</span>{' '}
+              <span itemProp="postalCode">{SEO_BRAND_POSTAL_CODE}</span><br />
+              <a href="tel:+601154352700" itemProp="telephone" className="hover:text-white transition-colors">+60 11-5435 2700</a><br />
+              <a href="mailto:sales@aceofficepods.com" itemProp="email" className="hover:text-white transition-colors">sales@aceofficepods.com</a>
+            </address>
             <div className="flex gap-3">
               {footerSocialLinks.map(({ label, href, Icon }) => (
                 <a
@@ -197,6 +233,10 @@ export default function SiteFooter({ className = 'mt-0' }) {
             >
               Owned by Ace Workplace Solutions (Ace Office Pods Malaysia) - 202403171118
             </a>
+            <div className="flex gap-4 text-[11px] font-medium normal-case tracking-normal text-gray-600">
+              <Link to="/privacy" className="transition-colors hover:text-white">Privacy Policy</Link>
+              <Link to="/terms" className="transition-colors hover:text-white">Terms of Use</Link>
+            </div>
           </div>
           <div className="flex items-center gap-2 text-gray-500">
             <Globe size={14} /> GLOBAL EN <ChevronDown size={14} />

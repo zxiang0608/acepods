@@ -5,6 +5,7 @@ import PageShell from '../components/PageShell';
 import { products } from '../data/products';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { PRICING_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
+import QuoteForm from '../components/QuoteForm';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -46,7 +47,7 @@ const pricingAnswerSchema = {
     acceptedAnswer: {
       '@type': 'Answer',
       text:
-        'Ace Office Pods start from RM12,500 for a one-person office pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, add-ons, and selected configuration.'
+        'Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons. Contact the team for an accurate project quotation.'
     }
   }
 };
@@ -89,8 +90,8 @@ export default function PricingPage() {
 
         <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">How much does an office pod cost?</h1>
         <p id="office-pod-price-answer" className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
-          Office pod pricing depends on model size, configuration, quantity, delivery access, installation requirements, and optional add-ons. The
-          prices below are starting prices for Ace Office Pods models in Malaysia, starting from RM12,500 for a one-person office pod.
+          Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on
+          model size, quantity, delivery location, installation access, and optional add-ons.
         </p>
       </section>
 
@@ -139,6 +140,10 @@ export default function PricingPage() {
             </Link>
           </article>
         ))}
+      </section>
+
+      <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
+        <QuoteForm />
       </section>
 
       <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">

@@ -5,6 +5,15 @@ import PageShell from '../components/PageShell';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
+const COMPARISON_ROWS = [
+  { model: 'Ace Solo',     path: '/pods/ace-solo',     capacity: '1 pax',        dimensions: '1200 × 1000 mm', from: 'RM12,500', bestFor: 'Calls, quick focus' },
+  { model: 'Ace Plus',     path: '/pods/ace-plus',     capacity: '1 pax',        dimensions: '1000 × 1000 mm', from: 'RM14,500', bestFor: 'Extended daily use, 27 dBA' },
+  { model: 'Ace Flex',     path: '/pods/ace-flex',     capacity: '1 pax',        dimensions: '1600 × 1200 mm', from: 'RM19,900', bestFor: 'Spacious solo work' },
+  { model: 'Ace Flex Duo', path: '/pods/ace-flex-duo', capacity: '2 pax',        dimensions: '1600 × 1200 mm', from: 'RM23,900', bestFor: 'One-to-one discussions' },
+  { model: 'Ace Meet',     path: '/pods/ace-meet',     capacity: '2–4 pax',      dimensions: '2200 × 1200 mm', from: 'RM22,200', bestFor: 'Small team meetings' },
+  { model: 'Ace Hub',      path: '/pods/ace-hub',      capacity: 'Up to 6 pax',  dimensions: '2200 × 1500 mm', from: 'RM27,800', bestFor: 'Larger group collaboration' }
+];
+
 const breadcrumbs = [
   { name: 'Home', path: '/' },
   { name: 'Compare Office Pods', path: '/compare-office-pods' }
@@ -37,7 +46,38 @@ export default function CompareOfficePodsPage() {
         </p>
       </section>
 
-      <section className="mx-auto grid w-full max-w-[1100px] gap-5 px-5 md:px-8">
+      <section className="mx-auto w-full max-w-[1100px] px-5 md:px-8">
+        <h2 className="text-[22px] font-semibold tracking-tight text-[#14181c]">Office pod model comparison</h2>
+        <div className="mt-4 overflow-x-auto rounded-[10px] border border-[#ddd8cf]">
+          <table className="w-full min-w-[560px] border-collapse bg-white text-[14px]">
+            <thead>
+              <tr className="border-b border-[#ddd8cf] bg-[#f8f6f2]">
+                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">Model</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">Capacity</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">W × D</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">From</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARISON_ROWS.map((row, i) => (
+                <tr key={row.model} className={`border-b border-[#f0ece5] ${i % 2 === 0 ? '' : 'bg-[#fdfcfa]'}`}>
+                  <td className="px-4 py-3 font-semibold text-[#145b5f]">
+                    <Link to={row.path} className="hover:underline underline-offset-4">{row.model}</Link>
+                  </td>
+                  <td className="px-4 py-3 text-[#30363d]">{row.capacity}</td>
+                  <td className="px-4 py-3 text-[#30363d]">{row.dimensions}</td>
+                  <td className="px-4 py-3 font-semibold text-[#30363d]">{row.from}</td>
+                  <td className="px-4 py-3 text-[#4d555e]">{row.bestFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-2 text-[13px] text-[#6a7683]">All prices are starting prices. Final cost depends on delivery location, installation scope, and selected options.</p>
+      </section>
+
+      <section className="mx-auto mt-6 grid w-full max-w-[1100px] gap-5 px-5 md:px-8">
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
           <h2 className="text-[25px] font-semibold tracking-tight text-[#14181c]">See the full project price upfront</h2>
           <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">

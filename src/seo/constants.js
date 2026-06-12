@@ -22,7 +22,7 @@ export const SEO_BRAND_LOGO = `${SEO_BASE_URL}/ace-pods-logo.png`;
 export const SEO_BRAND_SAME_AS = [
   'https://www.instagram.com/acepodsmy/',
   'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/',
-  'https://share.google/P1Dp8reRiaHf2UOlr'
+  'https://maps.app.goo.gl/nJHHvTLD5YEov9e4A'
 ];
 export const SEO_KEYWORDS_COMMON =
   'Ace Workplace Solutions, Ace Office Pods, AcePods, office pod, office booth, acoustic office pods, office pods Malaysia, office booths Malaysia';
@@ -120,6 +120,21 @@ export const FAQ_PAGE_ITEMS = [
     question: 'What kind of clients buy office pods in Malaysia and why?',
     answer:
       'Typical buyers include corporate teams, SMEs, interior designers, contractors, and procurement teams. They choose office pods to add privacy for calls, meetings, and focused work without major renovation. Many also value faster deployment, cleaner project execution, and layout flexibility as teams grow.'
+  },
+  {
+    question: 'Can office pods be customized with company colours or branding?',
+    answer:
+      'Yes. Ace Office Pods can be finished in custom colours or brand finishes depending on model and order quantity. Customization options are discussed during the quotation stage, and lead time may be slightly longer for non-standard finishes. Minimum order requirements may apply for certain custom specifications.'
+  },
+  {
+    question: 'What are the power and electrical requirements for office pods?',
+    answer:
+      'Most Ace Office Pods connect to a standard wall socket (13A, single-phase). The pod handles built-in lighting, ventilation fan, and power sockets internally. No special electrical installation is typically required, which simplifies planning and avoids additional contractor costs for most office environments.'
+  },
+  {
+    question: 'Are office pods a good investment compared to building new rooms?',
+    answer:
+      'For one to two-person private spaces, office pods often deliver better cost certainty than building equivalent acoustic rooms. Pods also retain relocation value if the office moves or layout changes, which reduces long-term risk on short-term leases. For fully permanent needs, built rooms may still suit some projects better.'
   }
 ];
 
@@ -150,26 +165,26 @@ export const PRICING_FAQ_ITEMS = [
   {
     question: 'How much does an office pod cost in Malaysia?',
     answer:
-      'Ace Office Pods start from RM12,500 for a one-person office pod. Larger meeting pods and multi-person models have higher starting prices depending on size, configuration, delivery, and installation requirements.'
+      'Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons. Contact the team for an accurate project quotation.'
   },
   {
     question: 'What affects the final office pod price?',
     answer:
-      'Final pricing may vary based on pod model, quantity, delivery location, site access, installation scope, finishes, furniture, power requirements, and project timeline.'
+      'Final office pod pricing depends on pod model, quantity ordered, delivery location, site access conditions such as lift size and floor level, installation scope, selected finishes, built-in furniture, power requirements, and project timeline. These factors are reviewed during the quotation process so buyers receive a clear, all-in cost before committing.'
   },
   {
     question: 'Do prices include delivery and installation?',
     answer:
-      'Pricing may depend on delivery location and installation scope. For accurate costing, share your office location, floor access, quantity, and preferred models when requesting a quotation.'
+      'Delivery and installation within the agreed project scope are typically included in the final quotation for Klang Valley projects. For locations outside Klang Valley or projects with complex access requirements, delivery and installation costs are confirmed separately. Share your office location, floor access, quantity, and preferred models when requesting a quotation for accurate pricing.'
   },
   {
     question: 'Is bulk pricing available for corporate or project orders?',
     answer:
-      'Yes. Bulk or project pricing can be discussed for corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, and multi-unit office projects.'
+      'Yes. Bulk and project pricing can be discussed for corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, and multi-unit office projects. Pricing is based on quantity, model selection, delivery location, and installation scope. Contact the team with your project details for a tailored quotation.'
   },
   {
     question: 'Are office pods cheaper than building rooms?',
     answer:
-      'Office pods can be a lower-disruption alternative to building new rooms, especially when the priority is speed, flexibility, and modular private space. The best option depends on office layout, quantity, specification, and long-term use.'
+      'For one to two-person private spaces, office pods are often more cost-effective than building a room with equivalent acoustic performance. The total cost advantage depends on site conditions, contractor rates, and renovation scope. Office pods also offer faster deployment and relocation flexibility, which reduces long-term cost risk for businesses on short-term leases or growing teams.'
   }
 ];

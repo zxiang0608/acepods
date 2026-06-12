@@ -9,6 +9,7 @@ import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import QuoteForm from '../components/QuoteForm';
 import highResPodCert from '../../assets/high-res-pod-cert.png';
 import barStoolBlack from '../../assets/bar-stool-black.png';
 import barStoolWhite from '../../assets/bar-stool-white.png';
@@ -608,7 +609,17 @@ export default function ProductPage() {
       { name: 'Home', path: '/' },
       { name: 'Ace Pods', path: '/office-pods' },
       { name: product.displayTitle || product.name, path: canonicalPath }
-    ])
+    ]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${buildCanonical(canonicalPath)}#${product.slug}-answer`,
+      url: buildCanonical(canonicalPath),
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: [`#${product.slug}-answer`]
+      }
+    }
   ];
   const shouldShowThumbnails = customerGalleryItems.length > 0;
   const isBarStoolSelected = currentChairAddon ? selectedAddons.includes(currentChairAddon.id) : false;
@@ -900,6 +911,7 @@ export default function ProductPage() {
                     <img
                       src={mainImage}
                       alt={mainProductAlt}
+                      fetchPriority="high"
                       className={`relative z-[1] object-contain object-center ${
                         isHubLShapeSofaMainPreview
                           ? 'h-[70%] w-[70%]'
@@ -1109,7 +1121,7 @@ export default function ProductPage() {
                   Home / {product.breadcrumbLabel || 'Ace Pods'} / {product.displayTitle || product.name}
                 </p>
                 <h1 className="text-[56px] font-semibold leading-[1.03] tracking-tight">{product.displayTitle || product.name}</h1>
-                <p className="mt-2 text-[22px] leading-tight text-[#2e3136]">{product.shortDesc}</p>
+                <p id={`${product.slug}-answer`} className="mt-2 text-[22px] leading-tight text-[#2e3136]">{product.shortDesc}</p>
                 <p className="mt-2 text-[24px] font-semibold leading-tight text-[#145b5f]">Starting from {startingPriceText}</p>
               </div>
 
@@ -1560,25 +1572,28 @@ export default function ProductPage() {
             </div>
           )}
 
-          <section className="mx-auto flex w-full max-w-[980px] justify-center border-t border-[#d0d0d0] pt-8">
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() =>
-                pushDataLayerEvent('whatsapp_click', {
-                  cta_location: 'product_page_bottom_cta',
-                  cta_text: 'WhatsApp us',
-                  destination_url: whatsappHref,
-                  contact_method: 'whatsapp',
-                  product_name: product.name,
-                  product_slug: product.slug
-                })
-              }
-              className="mx-auto inline-flex w-full items-center justify-center rounded-[6px] bg-[#145b5f] px-6 py-3 text-[16px] font-semibold text-white transition-colors hover:bg-[#0f4b4e] sm:w-auto"
-            >
-              WhatsApp us
-            </a>
+          <section className="mx-auto w-full max-w-[980px] border-t border-[#d0d0d0] pt-8">
+            <QuoteForm defaultPod={product.displayTitle || product.name} />
+            <div className="mt-6 flex justify-center">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  pushDataLayerEvent('whatsapp_click', {
+                    cta_location: 'product_page_bottom_cta',
+                    cta_text: 'WhatsApp us',
+                    destination_url: whatsappHref,
+                    contact_method: 'whatsapp',
+                    product_name: product.name,
+                    product_slug: product.slug
+                  })
+                }
+                className="inline-flex w-full items-center justify-center rounded-[6px] bg-[#145b5f] px-6 py-3 text-[16px] font-semibold text-white transition-colors hover:bg-[#0f4b4e] sm:w-auto"
+              >
+                WhatsApp us
+              </a>
+            </div>
           </section>
         </div>
       </section>

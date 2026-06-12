@@ -9,7 +9,8 @@
     "merchant-feed": "node scripts/generate-merchant-feed.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "prerender": "node scripts/prerender.mjs",
-    "build": "npm run merchant-feed && npm run sitemap && npm run build:spa && npm run prerender",
+    "indexnow": "node scripts/indexnow.mjs",
+    "build": "npm run merchant-feed && npm run sitemap && npm run build:spa && npm run prerender && npm run indexnow",
     "preview": "vite preview"
   },
   "dependencies": {

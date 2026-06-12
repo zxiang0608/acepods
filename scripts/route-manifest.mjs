@@ -19,10 +19,12 @@ const STATIC_PUBLIC_ROUTES = [
   '/locations/kuala-lumpur',
   '/locations/shah-alam',
   '/locations/subang-jaya',
-  '/office-chairs'
+  '/office-chairs',
+  '/privacy',
+  '/terms'
 ];
 
-const NOINDEX_ROUTES = ['/office-chairs'];
+const NOINDEX_ROUTES = ['/office-chairs', '/privacy', '/terms'];
 
 export const getRouteManifest = async () => {
   const podRoutes = POD_SLUGS.map((slug) => `/pods/${slug}`);

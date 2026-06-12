@@ -19,6 +19,8 @@ import PortfolioPage from './pages/PortfolioPage';
 import PricingPage from './pages/PricingPage';
 import ProductPage from './pages/ProductPage';
 import MeetingPodsMalaysiaPage from './pages/MeetingPodsMalaysiaPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
 import ScrollToTop from './components/ScrollToTop';
 import RouteTracking from './components/RouteTracking';
 import './index.css';
@@ -49,6 +51,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/locations" element={<LocationsPage />} />
         <Route path="/locations/:slug" element={<LocationPage />} />
         <Route path="/pods/:slug" element={<ProductPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
         <Route path="/seo/*" element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

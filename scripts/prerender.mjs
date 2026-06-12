@@ -37,23 +37,23 @@ const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
 const INSTALLATION_FAQ_ITEMS = [
   {
     question: 'How does office pod installation work?',
-    answer: 'We run a clear flow: consultation, site checks, scheduling, delivery, setup, and handover. Each stage is confirmed before moving to the next.'
+    answer: 'Office pod installation follows a five-stage process: consultation and site assessment, quotation and order confirmation, production and scheduling, delivery and on-site assembly, and handover with usage walkthrough. Each stage is confirmed before moving to the next to avoid surprises on installation day.'
   },
   {
     question: 'What happens during the site visit?',
-    answer: 'We verify access routes, lift or doorway clearance, placement, and office constraints. This prevents delivery-day surprises.'
+    answer: 'During the site visit, the team verifies access routes into the building, lift and doorway clearance for the largest pod dimension, the intended placement location on the office floor, and any constraints that may affect installation timing or method. This step prevents delivery-day complications and confirms the project can proceed as planned.'
   },
   {
     question: 'How long does delivery take after deposit?',
-    answer: 'Lead time starts after the 50% deposit is received. Most projects run in about 3–6 working weeks based on model, quantity, and site scope.'
+    answer: 'Lead time starts after the 50% deposit is received. Most standard orders are completed within 3 to 6 weeks, depending on model, quantity, and site access conditions. The confirmed delivery date is communicated once the pod enters production and the installation window is agreed with the client.'
   },
   {
     question: 'Will installation disrupt office operations?',
-    answer: 'We plan timing and access before install day to reduce disruption. Scheduling is coordinated around normal office operations where possible.'
+    answer: 'Installation is planned to minimize disruption. The team coordinates access timing, delivery windows, and assembly sequencing with the client before installation day. Most pod installations are completed within one working day per unit. Normal office operations can typically continue in adjacent areas during the process.'
   },
   {
     question: 'What support is available after handover?',
-    answer: 'After handover, you have warranty-related support, usage guidance, and follow-up assistance. A clear contact path is provided for post-install help.'
+    answer: 'After handover, clients receive warranty-related support for manufacturing defects, usage guidance for ventilation and lighting controls, and follow-up assistance for post-installation adjustments. A clear contact path to the Ace team is provided at handover so any issues can be raised and resolved promptly.'
   }
 ];
 
@@ -98,7 +98,9 @@ const buildLocalBusinessSchema = () => ({
   ...buildOrganizationSchema(),
   '@type': ['Organization', 'LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
   '@id': `${SEO_BASE_URL}/#organization`,
+  foundingDate: '2024',
   priceRange: 'RM12,500+',
+  image: [SEO_BRAND_LOGO, `${SEO_BASE_URL}/og-image.png`],
   address: {
     '@type': 'PostalAddress',
     streetAddress: SEO_BRAND_STREET_ADDRESS,
@@ -107,6 +109,20 @@ const buildLocalBusinessSchema = () => ({
     postalCode: SEO_BRAND_POSTAL_CODE,
     addressCountry: SEO_BRAND_COUNTRY
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 3.07523,
+    longitude: 101.44187
+  },
+  hasMap: 'https://maps.app.goo.gl/nJHHvTLD5YEov9e4A',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00'
+    }
+  ],
   areaServed: [
     { '@type': 'AdministrativeArea', name: 'Klang Valley' },
     { '@type': 'AdministrativeArea', name: SEO_BRAND_AREA_SERVED },
@@ -116,7 +132,13 @@ const buildLocalBusinessSchema = () => ({
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod showroom viewing by appointment' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation in Klang Valley' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' } }
-  ]
+  ],
+  additionalProperty: {
+    '@type': 'QuantitativeValue',
+    name: 'Office pods sold',
+    value: '180+',
+    description: 'Acoustic office pods and office booths sold in Malaysia since 2023'
+  }
 });
 
 const buildWebsiteSchema = () => ({
@@ -158,6 +180,7 @@ const LOCATION_PRERENDER_DATA = [
     slug: 'kuala-lumpur',
     city: 'Kuala Lumpur',
     shortName: 'Kuala Lumpur (KL)',
+    geo: { latitude: 3.1390, longitude: 101.6869 },
     title: 'Office Pods Kuala Lumpur (KL) | Delivery & Installation | Ace Office Pods',
     description:
       'Office pods in Kuala Lumpur with completed installations for Everllence, Alphabet Capital, and CMA CGM in Bangsar. Compare models, pricing, delivery, and installation.',
@@ -173,6 +196,7 @@ const LOCATION_PRERENDER_DATA = [
     slug: 'shah-alam',
     city: 'Shah Alam',
     shortName: 'Shah Alam',
+    geo: { latitude: 3.0733, longitude: 101.5185 },
     title: 'Office Pods Shah Alam | Delivery & Installation | Ace Office Pods',
     description:
       'Office pods in Shah Alam with a completed Parker Hannifin installation. Compare phone booths, acoustic pods, pricing, delivery, and installation support.',
@@ -183,6 +207,7 @@ const LOCATION_PRERENDER_DATA = [
     slug: 'subang-jaya',
     city: 'Subang Jaya',
     shortName: 'Subang Jaya',
+    geo: { latitude: 3.0565, longitude: 101.5819 },
     title: 'Office Pods Subang Jaya | Delivery & Installation | Ace Office Pods',
     description:
       "Office pods in Subang Jaya with a completed Taylor's College installation. Compare acoustic phone booths, pod pricing, delivery, and installation support.",
@@ -229,7 +254,12 @@ const buildLocationPrerenderEntries = () =>
               },
               areaServed: {
                 '@type': 'City',
-                name: location.city
+                name: location.city,
+                geo: {
+                  '@type': 'GeoCoordinates',
+                  latitude: location.geo.latitude,
+                  longitude: location.geo.longitude
+                }
               },
               serviceType: ['Office pod supply', 'Office pod delivery', 'Office pod installation']
             },
@@ -302,7 +332,7 @@ const STATIC_PRERENDER_META = {
     noscriptFaqHeading: 'Common questions about office pods',
     noscriptFaqItems: HOME_FAQ_ITEMS,
     schemas: (canonical) => [
-      buildServiceOrganizationSchema(),
+      buildLocalBusinessSchema(),
       buildWebsiteSchema(),
       buildHomepageWebPageSchema(),
       {
@@ -317,6 +347,16 @@ const STATIC_PRERENDER_META = {
             text: item.answer
           }
         }))
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonical}#home-answer`,
+        url: canonical,
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['#home-answer']
+        }
       }
     ]
   },
@@ -327,7 +367,7 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`,
     h1: 'How much does an office pod cost?',
     body: [
-      'Office pod pricing depends on model size, configuration, quantity, delivery access, installation requirements, and optional add-ons. The prices below are starting prices for Ace Office Pods models in Malaysia, starting from RM12,500 for a one-person office pod.',
+      'Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.',
       '## Office pod starting prices in Malaysia',
       ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - From RM${item.price.toLocaleString('en-MY')}`),
       '## What affects the final price?',
@@ -440,7 +480,7 @@ const STATIC_PRERENDER_META = {
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'Ace Office Pods start from RM12,500 for a one-person office pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, add-ons, and selected configuration.'
+              'Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons. Contact the team for an accurate project quotation.'
           }
         }
       },
@@ -842,6 +882,16 @@ const STATIC_PRERENDER_META = {
             item: canonical
           }
         ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonical}#faq-intro`,
+        url: canonical,
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['#faq-intro']
+        }
       }
     ]
   },
@@ -852,12 +902,20 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office pod portfolio, office booth installation`,
     h1: 'Past office pod projects across Malaysia',
     body: [
-      'View real office pod projects completed across Malaysia.',
-      'Explore installation examples for calls, focused work, and team meetings.',
-      '## What this portfolio page shows',
-      'Portfolio examples help buyers understand how office pods are used in real workplaces, including call privacy zones, one-person focus areas, and small team meeting setups.',
-      '## How to use project references',
-      'Use project references to review model fit, practical placement, and expected office context. A portfolio review is most useful when paired with model comparison, pricing review, and installation planning.',
+      'Ace Office Pods has completed acoustic pod installations across Malaysia for corporate, financial, education, and logistics clients. All projects are completed by our in-house team with delivery and installation included.',
+      '## Completed projects',
+      '### Everllence — Kuala Lumpur',
+      'Model: Ace Plus. Multi-unit installation for a financial advisory firm in Kuala Lumpur. Pods deployed across an open-plan office floor for private client calls and focused analytical work. Project scope included delivery, installation, and post-install acoustic verification.',
+      '### Parker Hannifin — Shah Alam',
+      'Model: Ace Solo. Single-unit installation for an engineering and manufacturing firm in Shah Alam, Selangor. Used for confidential calls in an open engineering workspace.',
+      '### Alphabet Capital — Kuala Lumpur',
+      'Model: Ace Plus. Installation for an investment firm in Kuala Lumpur. Pods positioned in open trading and advisory floor areas requiring high acoustic isolation.',
+      '### CMA CGM — Bangsar, Kuala Lumpur',
+      'Model: Ace Solo. Installation for a global logistics operator at their Malaysia office in Bangsar. Pod deployed for confidential shipping and operations calls in an open-plan office.',
+      "### Taylor's College — Subang Jaya",
+      "Model: Ace Plus. Installation for Taylor's College Subang Jaya campus. Pod deployed in a student services or administrative area for private advising and support sessions.",
+      '## What these projects demonstrate',
+      'Installations span single-unit deployments to multi-pod floor plans. Clients across finance, logistics, education, and engineering use Ace Office Pods for call privacy, focused work, and small team meetings within open-plan offices.',
       '## Project planning links',
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
@@ -943,6 +1001,13 @@ const STATIC_PRERENDER_META = {
     body: [
       'Compare models beyond headline pricing with practical buying factors in one view.',
       'Review installation, support, and office fit before making a final decision.',
+      '## Office pod model comparison',
+      '- Ace Solo — 1 pax, 1200 × 1000 mm, from RM12,500 — best for calls and quick focus',
+      '- Ace Plus — 1 pax, 1000 × 1000 mm, from RM14,500 — best for extended daily use, 27 dBA',
+      '- Ace Flex — 1 pax, 1600 × 1200 mm, from RM19,900 — best for spacious solo work',
+      '- Ace Flex Duo — 2 pax, 1600 × 1200 mm, from RM23,900 — best for one-to-one discussions',
+      '- Ace Meet — 2–4 pax, 2200 × 1200 mm, from RM22,200 — best for small team meetings',
+      '- Ace Hub — up to 6 pax, 2200 × 1500 mm, from RM27,800 — best for larger group collaboration',
       '## Price comparison beyond headline numbers',
       'A meaningful comparison should include model suitability, selected options, delivery assumptions, and installation requirements. Headline pricing alone can hide project differences that matter during execution.',
       '## What procurement teams usually compare',
@@ -1003,7 +1068,9 @@ const STATIC_PRERENDER_META = {
       'Contact Ace Office Pods by Ace Workplace Solutions for office pod enquiries, model guidance, and quote support.',
       'Reach our team by WhatsApp, email, or phone.',
       '## Showroom',
-      `Showroom viewing is available by appointment at ${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}. Buyers can compare office pod size, finish, comfort, and acoustic performance before confirming a quote.`,
+      `Address: ${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}`,
+      'Hours: Mon–Fri, 9am–6pm (showroom by appointment)',
+      'Showroom viewing is available by appointment. Buyers can compare office pod size, finish, comfort, and acoustic performance before confirming a quote.',
       '## What to prepare before contacting sales',
       'Sharing your office location, expected pod usage, and preferred model shortlist helps the team provide a more accurate recommendation and quotation scope.',
       '## Typical enquiry topics',
@@ -1070,8 +1137,16 @@ const STATIC_PRERENDER_META = {
     h1: 'Office pod delivery, installation, and support',
     body: [
       'Understand each project stage from needs review and site check to final handover.',
-      'Plan with clear lead times, installation coordination, and after-sales support.'
+      'Plan with clear lead times, installation coordination, and after-sales support.',
+      '## How office pod installation works',
+      '1. Consultation and site assessment — model options are matched to space and access requirements',
+      '2. Quotation and order confirmation — a transparent scope and cost breakdown is issued, 50% deposit starts production',
+      '3. Production and scheduling — units are built to specification while delivery timing is coordinated',
+      '4. Delivery and installation — the Ace team assembles the pod on-site within the agreed timeline',
+      '5. Handover and support — usage walkthrough provided, after-sales contact path established'
     ],
+    noscriptFaqHeading: 'Installation questions',
+    noscriptFaqItems: INSTALLATION_FAQ_ITEMS,
     schemas: (canonical) => [
       {
         '@context': 'https://schema.org',
@@ -1080,6 +1155,66 @@ const STATIC_PRERENDER_META = {
         url: canonical,
         description:
           'See what to expect from site review to handover with clear lead times, installation planning, and after-sales support for office pod projects.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: 'How office pod installation works',
+        description: 'The step-by-step process for purchasing and installing an Ace Office Pod, from initial consultation to post-delivery support.',
+        url: canonical,
+        totalTime: 'P6W',
+        step: [
+          {
+            '@type': 'HowToStep',
+            position: 1,
+            name: 'Consultation and Assessment',
+            text: 'From enquiry to viewing and assessment, we align pod fit with your workspace needs.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'Model options are matched to space, team size, and budget.' },
+              { '@type': 'HowToDirection', text: 'Access routes and placement zones are reviewed upfront.' }
+            ]
+          },
+          {
+            '@type': 'HowToStep',
+            position: 2,
+            name: 'Quotation and Confirmation',
+            text: 'Once specifications are finalized, we issue a clear quote and confirm the order.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'A detailed cost and scope breakdown is provided.' },
+              { '@type': 'HowToDirection', text: 'A 50% deposit starts production and project scheduling.' }
+            ]
+          },
+          {
+            '@type': 'HowToStep',
+            position: 3,
+            name: 'Production and Scheduling',
+            text: 'Pods enter production while delivery timing is coordinated with your team.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'Units are built to the approved project specification.' },
+              { '@type': 'HowToDirection', text: 'Delivery windows are arranged to reduce office disruption.' }
+            ]
+          },
+          {
+            '@type': 'HowToStep',
+            position: 4,
+            name: 'Delivery and Installation',
+            text: 'On the confirmed date, our team delivers and assembles the pod on site.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'Setup is handled by trained installation personnel.' },
+              { '@type': 'HowToDirection', text: 'Installation is completed according to the planned timeline.' }
+            ]
+          },
+          {
+            '@type': 'HowToStep',
+            position: 5,
+            name: 'Handover and Support',
+            text: 'We walk through pod use so your team can start confidently from day one.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'Ventilation, lighting, and usage guidance are explained clearly.' },
+              { '@type': 'HowToDirection', text: 'After-sales support remains available after handover.' }
+            ]
+          }
+        ]
       },
       {
         '@context': 'https://schema.org',
@@ -1111,6 +1246,44 @@ const STATIC_PRERENDER_META = {
             text: item.answer
           }
         }))
+      }
+    ]
+  },
+  '/privacy': {
+    title: 'Privacy Policy | Ace Office Pods',
+    description: 'Privacy policy for aceofficepods.com under Malaysia\'s Personal Data Protection Act 2010.',
+    robots: 'noindex, follow',
+    h1: 'Privacy Policy',
+    body: [
+      'This policy explains how Ace Workplace Solutions collects, uses, and protects personal data in accordance with the Personal Data Protection Act 2010 (Malaysia).',
+      'We collect enquiry and contact data only to respond to your questions and manage projects. We do not sell personal data to third parties.',
+      'Contact: sales@aceofficepods.com'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Privacy Policy',
+        url: canonical
+      }
+    ]
+  },
+  '/terms': {
+    title: 'Terms of Use | Ace Office Pods',
+    description: 'Terms of use for aceofficepods.com covering acceptable use, pricing information, limitation of liability, and governing law under Malaysia.',
+    robots: 'noindex, follow',
+    h1: 'Terms of Use',
+    body: [
+      'By using aceofficepods.com you agree to these terms. This website is operated by Ace Workplace Solutions (registration no. 202403171118).',
+      'Product descriptions and pricing are for reference only. Final pricing depends on model, quantity, delivery location, and installation scope.',
+      'These terms are governed by the laws of Malaysia.'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Terms of Use',
+        url: canonical
       }
     ]
   },
@@ -1362,7 +1535,9 @@ const injectSeoHtml = (html, route, meta) => {
   return output;
 };
 
-const buildProductPrerenderMeta = (route, productMeta) => ({
+const buildProductPrerenderMeta = (route, productMeta) => {
+const slug = route.split('/').pop();
+return ({
   title: `${productMeta.name} Office Pod Pricing, Specs and Colors | Ace Office Pods`,
   description: `${productMeta.name}: ${productMeta.shortDesc}. Starting from ${formatRM(productMeta.startingPrice)} in Malaysia from Ace Office Pods by Ace Workplace Solutions. View office pod and office booth colors, add-ons, installation, and delivery details.`,
   keywords: `${SEO_KEYWORDS_COMMON}, ${productMeta.name}, ${route.split('/').pop().replaceAll('-', ' ')}`,
@@ -1370,8 +1545,12 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
   body: [
     `Starting from ${formatRM(productMeta.startingPrice)}`,
     productMeta.shortDesc,
+    ...(productMeta.useCases ?? []),
     ...(productMeta.schemaProperties?.map((p) => `${p.name}: ${p.value}`) ?? [])
   ],
+  ...(productMeta.faqItems?.length
+    ? { noscriptFaqHeading: `Common questions about ${productMeta.name}`, noscriptFaqItems: productMeta.faqItems }
+    : {}),
   schemas: (canonical) => [
     {
       '@context': 'https://schema.org',
@@ -1400,6 +1579,8 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
         price: String(productMeta.startingPrice),
         priceCurrency: 'MYR',
         availability: 'https://schema.org/InStock',
+        itemCondition: 'https://schema.org/NewCondition',
+        priceValidUntil: '2026-12-31',
         url: canonical,
         seller: {
           '@id': `${SEO_BASE_URL}/#organization`
@@ -1429,32 +1610,102 @@ const buildProductPrerenderMeta = (route, productMeta) => ({
           item: canonical
         }
       ]
+    },
+    ...(productMeta.faqItems?.length
+      ? [{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          url: canonical,
+          mainEntity: productMeta.faqItems.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: { '@type': 'Answer', text: item.answer }
+          }))
+        }]
+      : []),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${canonical}#${slug}-answer`,
+      url: canonical,
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: [`#${slug}-answer`]
+      }
     }
   ]
 });
+};
 
-const buildArticlePrerenderMeta = (route, articleMeta) => ({
+const extractArticleFaqs = (content) => {
+  const faqs = [];
+  let inFaqSection = false;
+  let currentQuestion = null;
+  const currentAnswerParts = [];
+
+  for (const line of content) {
+    if (typeof line !== 'string') continue;
+    if (/^##\s+frequently asked questions/i.test(line)) {
+      inFaqSection = true;
+      continue;
+    }
+    if (!inFaqSection) continue;
+    if (/^##\s+/.test(line) && !/^##\s+frequently/i.test(line)) {
+      if (currentQuestion && currentAnswerParts.length) {
+        faqs.push({ question: currentQuestion, answer: currentAnswerParts.join(' ') });
+        currentAnswerParts.length = 0;
+        currentQuestion = null;
+      }
+      break;
+    }
+    if (/^###\s+/.test(line)) {
+      if (currentQuestion && currentAnswerParts.length) {
+        faqs.push({ question: currentQuestion, answer: currentAnswerParts.join(' ') });
+        currentAnswerParts.length = 0;
+      }
+      currentQuestion = line.replace(/^###\s+/, '').trim();
+    } else if (currentQuestion && line.trim()) {
+      currentAnswerParts.push(line.trim());
+    }
+  }
+  if (currentQuestion && currentAnswerParts.length) {
+    faqs.push({ question: currentQuestion, answer: currentAnswerParts.join(' ') });
+  }
+  return faqs;
+};
+
+const buildArticlePrerenderMeta = (route, articleMeta) => {
+  const faqItems = extractArticleFaqs(articleMeta.content);
+  return {
   title: articleMeta.seoTitle || `${articleMeta.title} | Ace Office Pods`,
   description: articleMeta.seoDescription || articleMeta.excerpt,
   keywords: `${SEO_KEYWORDS_COMMON}, office pod article`,
   h1: articleMeta.title,
   body: articleMeta.content,
+  ...(faqItems.length ? { noscriptFaqHeading: 'Frequently asked questions', noscriptFaqItems: faqItems } : {}),
   schemas: (canonical) => [
     {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: articleMeta.title,
       description: articleMeta.seoDescription || articleMeta.excerpt,
+      image: articleMeta.ogImage || DEFAULT_OG_IMAGE,
       datePublished: articleMeta.date,
       dateModified: articleMeta.date,
       mainEntityOfPage: canonical,
       author: {
         '@type': 'Organization',
-        name: SEO_BRAND_PRIMARY
+        name: SEO_BRAND_PRIMARY,
+        url: SEO_BASE_URL
       },
       publisher: {
         '@type': 'Organization',
-        name: SEO_BRAND_PRIMARY
+        name: SEO_BRAND_PRIMARY,
+        url: SEO_BASE_URL,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${SEO_BASE_URL}/ace-pods-logo.png`
+        }
       }
     },
     {
@@ -1480,9 +1731,34 @@ const buildArticlePrerenderMeta = (route, articleMeta) => ({
           item: canonical
         }
       ]
-    }
+    },
+    ...(faqItems.length
+      ? [{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          url: canonical,
+          mainEntity: faqItems.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: { '@type': 'Answer', text: item.answer }
+          }))
+        }]
+      : []),
+    ...(articleMeta.slug === 'office-pods-office-booths-modern-workplace'
+      ? [{
+          '@context': 'https://schema.org',
+          '@type': 'DefinedTermSet',
+          name: 'Office pod terminology',
+          hasDefinedTerm: [
+            { '@type': 'DefinedTerm', name: 'Office pod', description: 'Enclosed pre-manufactured workspace for calls, focus work, or meetings inside an existing office.' },
+            { '@type': 'DefinedTerm', name: 'Office booth', description: 'Compact enclosed pod, typically one-person, for phone calls or focused work.' },
+            { '@type': 'DefinedTerm', name: 'Meeting pod', description: 'Larger enclosed pod for two to six people to meet or collaborate.' }
+          ]
+        }]
+      : [])
   ]
-});
+  };
+};
 
 const run = async () => {
   const { PUBLIC_ROUTES } = await getRouteManifest();

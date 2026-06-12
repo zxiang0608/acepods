@@ -189,7 +189,33 @@ export default function ArticleDetailPage() {
         description={article.seoDescription || article.excerpt}
         canonical={buildCanonical(canonicalPath)}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod article`}
-        schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}
+        schemas={[
+          organizationSchema,
+          websiteSchema,
+          createBreadcrumbSchema(breadcrumbs),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: article.title,
+            description: article.seoDescription || article.excerpt,
+            datePublished: article.date,
+            url: buildCanonical(canonicalPath),
+            publisher: {
+              '@type': 'Organization',
+              name: 'Ace Office Pods',
+              url: buildCanonical('/')
+            },
+            ...(article.author
+              ? {
+                  author: {
+                    '@type': 'Organization',
+                    name: article.author.name,
+                    url: buildCanonical('/')
+                  }
+                }
+              : {})
+          }
+        ]}
       />
 
       <section className="mx-auto w-full max-w-[1000px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
@@ -208,6 +234,12 @@ export default function ArticleDetailPage() {
           {article.category} · {article.date}
         </p>
         <h1 className="mt-3 text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">{article.title}</h1>
+        {article.author && (
+          <p className="mt-3 text-[14px] text-[#65707a]">
+            By <span className="font-semibold text-[#2e3338]">{article.author.name}</span>
+            {article.author.role ? <span> · {article.author.role}</span> : null}
+          </p>
+        )}
         <p className="mt-4 text-[18px] leading-[1.6] text-[#4d555e]">{article.excerpt}</p>
       </section>
 

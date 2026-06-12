@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
 import { FAQ_PAGE_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
+import { SEO_BASE_URL } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -18,7 +19,22 @@ export default function FaqPage() {
         description="Read direct answers to common office pod buyer questions on pricing, inclusions, installation, and after-sales support."
         canonical={buildCanonical('/faq')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod FAQ, office booth FAQ`}
-        schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/faq', FAQ_PAGE_ITEMS)]}
+        schemas={[
+          organizationSchema,
+          websiteSchema,
+          createBreadcrumbSchema(breadcrumbs),
+          createFaqSchema('/faq', FAQ_PAGE_ITEMS),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            '@id': `${SEO_BASE_URL}/faq#faq-intro`,
+            url: buildCanonical('/faq'),
+            speakable: {
+              '@type': 'SpeakableSpecification',
+              cssSelector: ['#faq-intro']
+            }
+          }
+        ]}
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
@@ -30,7 +46,7 @@ export default function FaqPage() {
         </nav>
 
         <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">Office pod FAQ</h1>
-        <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
+        <p id="faq-intro" className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
           Direct answers for buyers comparing office pods in Malaysia.
         </p>
       </section>

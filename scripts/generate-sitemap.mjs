@@ -4,6 +4,13 @@ import { getRouteManifest } from './route-manifest.mjs';
 
 const BASE_URL = 'https://aceofficepods.com';
 
+const MANUAL_LASTMOD = {
+  '/locations/kuala-lumpur': '2026-06-12',
+  '/locations/shah-alam': '2026-06-12',
+  '/locations/subang-jaya': '2026-06-12',
+  '/locations': '2026-06-12'
+};
+
 const sourceFilesForRoute = (route) => {
   if (route === '/') return ['src/App.jsx', 'src/seo/constants.js'];
   if (route.startsWith('/pods/')) return ['src/pages/ProductPage.jsx', 'src/data/products.js'];
@@ -29,6 +36,8 @@ const sourceFilesForRoute = (route) => {
 };
 
 const getLastmod = (route) => {
+  if (MANUAL_LASTMOD[route]) return MANUAL_LASTMOD[route];
+
   const sourceFiles = sourceFilesForRoute(route);
   if (!sourceFiles.length) return null;
 

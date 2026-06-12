@@ -125,10 +125,25 @@ export default function ContactPage() {
             <p className="mt-2 text-[15px] font-semibold leading-[1.55] text-[#1d232a]">
               {SEO_BRAND_STREET_ADDRESS}, {SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}
             </p>
+            <p className="mt-2 text-[14px] text-[#4d555e]">
+              <span className="font-semibold text-[#14181c]">Hours:</span> Mon–Fri, 9am–6pm (showroom by appointment)
+            </p>
             <p className="mt-3 text-[15px] leading-[1.65] text-[#4d555e]">
               Showroom viewing is available by appointment for buyers who want to compare office pod size, finish, comfort, and acoustic performance
               before confirming a quote.
             </p>
+            <div className="mt-4 overflow-hidden rounded-[8px] border border-[#d8d3c8]">
+              <iframe
+                title="Ace Office Pods showroom location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8!2d101.44187!3d3.07523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMsKwMDQnMzAuOCJOIDEwMcKwMjYnMzAuNyJF!5e0!3m2!1sen!2smy!4v1"
+                width="100%"
+                height="280"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
           <div>
             <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#145b5f]">Service areas</p>
