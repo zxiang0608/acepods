@@ -82,7 +82,7 @@ export default function LocationPage() {
         <h1 className="mt-3 max-w-[20ch] text-[34px] font-bold leading-[1.08] tracking-tight text-[#14181c] md:text-[52px]">
           {location.title}
         </h1>
-        <p className="mt-4 max-w-[74ch] text-[17px] leading-[1.65] text-[#454d56] md:text-[18px]">{location.intro}</p>
+        <p id={`location-${location.slug}-answer`} className="mt-4 max-w-[74ch] text-[17px] leading-[1.65] text-[#454d56] md:text-[18px]">{location.intro}</p>
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
           <Link
             to="/pricing#all-pod-prices"

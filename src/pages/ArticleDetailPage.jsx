@@ -240,7 +240,7 @@ export default function ArticleDetailPage() {
             {article.author.role ? <span> · {article.author.role}</span> : null}
           </p>
         )}
-        <p className="mt-4 text-[18px] leading-[1.6] text-[#4d555e]">{article.excerpt}</p>
+        <p id={`article-${article.slug}-answer`} className="mt-4 text-[18px] leading-[1.6] text-[#4d555e]">{article.excerpt}</p>
       </section>
 
       <section className="mx-auto w-full max-w-[1000px] px-5 md:px-8">

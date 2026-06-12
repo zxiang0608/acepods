@@ -286,6 +286,16 @@ const buildLocationPrerenderEntries = () =>
                   item: canonical
                 }
               ]
+            },
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              '@id': `${canonical}#location-${location.slug}-answer`,
+              url: canonical,
+              speakable: {
+                '@type': 'SpeakableSpecification',
+                cssSelector: [`#location-${location.slug}-answer`]
+              }
             }
           ]
         }
@@ -302,6 +312,7 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office booth provider`,
     h1: 'Office pods for calls, focus, and meetings',
     body: [
+      'Ace Office Pods (aceofficepods.com), trading as Ace Workplace Solutions (registration no. 202403171118), is a Malaysian office pod manufacturer and supplier. Not affiliated with Supreme Office Furniture or any other office pod brand.',
       'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.',
       'Add private space for calls, focused work, and meetings without building new rooms.',
       'Compare models, pricing, installation support, and office fit before deciding.',
@@ -1398,6 +1409,16 @@ const STATIC_PRERENDER_META = {
       },
       {
         '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonical}#location-johor-bahru-answer`,
+        url: canonical,
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['#location-johor-bahru-answer']
+        }
+      },
+      {
+        '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: `${SEO_BASE_URL}/` },
@@ -1812,6 +1833,16 @@ const buildArticlePrerenderMeta = (route, articleMeta) => {
           }))
         }]
       : []),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${canonical}#article-${articleMeta.slug}-answer`,
+      url: canonical,
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: [`#article-${articleMeta.slug}-answer`]
+      }
+    },
     ...(articleMeta.slug === 'office-pods-office-booths-modern-workplace'
       ? [{
           '@context': 'https://schema.org',

@@ -6,6 +6,7 @@ export const SEO_BRAND_ALTERNATE_NAMES = [
   'Ace Office Pods',
   'AcePods',
   'Ace Office Pods Malaysia',
+  'Ace Pods Malaysia',
   'Ace Office Booths',
   'Ace Office Booths Malaysia'
 ];
