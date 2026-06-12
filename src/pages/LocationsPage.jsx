@@ -31,10 +31,10 @@ export default function LocationsPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pod Delivery Locations | Kuala Lumpur, Shah Alam & Subang Jaya"
-        description="Explore Ace Office Pods delivery and installation locations backed by completed projects in Kuala Lumpur, Shah Alam, and Subang Jaya."
+        title="Office Pod Delivery Locations | KL, Shah Alam, Subang Jaya & Johor Bahru"
+        description="Explore Ace Office Pods delivery and installation locations with completed projects in Kuala Lumpur, Shah Alam, and Subang Jaya, plus delivery to Johor Bahru."
         canonical={buildCanonical('/locations')}
-        keywords={`${SEO_KEYWORDS_COMMON}, office pods Kuala Lumpur, office pods Shah Alam, office pods Subang Jaya`}
+        keywords={`${SEO_KEYWORDS_COMMON}, office pods Kuala Lumpur, office pods Shah Alam, office pods Subang Jaya, office pods Johor Bahru`}
         schemas={[localBusinessSchema, websiteSchema, locationsPageSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
 

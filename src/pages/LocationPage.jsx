@@ -57,7 +57,7 @@ export default function LocationPage() {
         description={location.metaDescription}
         canonical={buildCanonical(path)}
         keywords={`${SEO_KEYWORDS_COMMON}, office pods ${location.city}, office phone booth ${location.city}, acoustic office pod ${location.city}`}
-        ogImage={buildAbsoluteUrl(location.projects[0].image)}
+        ogImage={location.projects.length > 0 ? buildAbsoluteUrl(location.projects[0].image) : `${buildCanonical('/')}og-image.png`}
         schemas={[
           localBusinessSchema,
           websiteSchema,
@@ -118,35 +118,39 @@ export default function LocationPage() {
 
       <section className="border-y border-[#d8d3c8] bg-white">
         <div className="mx-auto w-full max-w-[1120px] px-5 py-10 md:px-8 md:py-14">
-          <h2 className="text-[28px] font-semibold tracking-tight text-[#14181c]">Completed office pod projects in {location.city}</h2>
+          <h2 className="text-[28px] font-semibold tracking-tight text-[#14181c]">
+            {location.projects.length > 0 ? `Completed office pod projects in ${location.city}` : `Office pod delivery and installation in ${location.city}`}
+          </h2>
           <p className="mt-3 max-w-[72ch] text-[16px] leading-[1.65] text-[#4d555e]">{location.projectIntro}</p>
 
-          <div className="mt-7 space-y-10">
-            {location.projects.map((project, index) => (
-              <article key={project.company} className="grid gap-5 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-8">
-                <div className={`overflow-hidden rounded-[4px] bg-[#e9e7e0] ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    className="aspect-[4/3] h-full w-full object-cover"
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                  />
-                </div>
-                <div className={index % 2 === 1 ? 'md:order-1' : ''}>
-                  <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#65707a]">{project.area}</p>
-                  <h3 className="mt-2 text-[25px] font-semibold tracking-tight text-[#14181c]">{project.company}</h3>
-                  <p className="mt-2 text-[15px] font-semibold text-[#145b5f]">{project.model} installation</p>
-                  <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">{project.summary}</p>
-                  <Link
-                    to={`/pods/${project.productSlug}`}
-                    className="mt-5 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
-                  >
-                    View {project.model}
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+          {location.projects.length > 0 ? (
+            <div className="mt-7 space-y-10">
+              {location.projects.map((project, index) => (
+                <article key={project.company} className="grid gap-5 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-8">
+                  <div className={`overflow-hidden rounded-[4px] bg-[#e9e7e0] ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      className="aspect-[4/3] h-full w-full object-cover"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                    />
+                  </div>
+                  <div className={index % 2 === 1 ? 'md:order-1' : ''}>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#65707a]">{project.area}</p>
+                    <h3 className="mt-2 text-[25px] font-semibold tracking-tight text-[#14181c]">{project.company}</h3>
+                    <p className="mt-2 text-[15px] font-semibold text-[#145b5f]">{project.model} installation</p>
+                    <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">{project.summary}</p>
+                    <Link
+                      to={`/pods/${project.productSlug}`}
+                      className="mt-5 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+                    >
+                      View {project.model}
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : null}
           <Link to="/portfolio" className="mt-9 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
             View the full installation portfolio
           </Link>

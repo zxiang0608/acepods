@@ -1288,10 +1288,10 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/locations': {
-    title: 'Office Pod Delivery Locations | Kuala Lumpur, Shah Alam & Subang Jaya',
+    title: 'Office Pod Delivery Locations | KL, Shah Alam, Subang Jaya & Johor Bahru',
     description:
-      'Explore Ace Office Pods delivery and installation locations backed by completed projects in Kuala Lumpur, Shah Alam, and Subang Jaya.',
-    keywords: `${SEO_KEYWORDS_COMMON}, office pods Kuala Lumpur, office pods Shah Alam, office pods Subang Jaya`,
+      'Explore Ace Office Pods delivery and installation locations with completed projects in Kuala Lumpur, Shah Alam, and Subang Jaya, plus delivery to Johor Bahru.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office pods Kuala Lumpur, office pods Shah Alam, office pods Subang Jaya, office pods Johor Bahru`,
     h1: 'Office pod delivery locations',
     body: [
       'Explore areas where Ace Office Pods has completed customer installations. Each location page uses real project examples to show the pod models delivered and the local installation context.',
@@ -1304,6 +1304,9 @@ const STATIC_PRERENDER_META = {
       '## Subang Jaya',
       "Completed Ace Plus installation for Taylor's College.",
       '[View office pod projects in Subang Jaya](/locations/subang-jaya)',
+      '## Johor Bahru',
+      'Office pod supply and delivery available for Johor Bahru workplaces. No completed project listed yet — contact us for a JB project quote.',
+      '[View office pods in Johor Bahru](/locations/johor-bahru)',
       '## Showroom in Klang',
       'These are delivery and installation areas, not separate Ace branches. The physical showroom remains in Klang, Selangor, with viewing available by appointment.'
     ],
@@ -1335,6 +1338,71 @@ const STATIC_PRERENDER_META = {
             name: 'Locations',
             item: canonical
           }
+        ]
+      }
+    ]
+  },
+  '/locations/johor-bahru': {
+    title: 'Office Pods Johor Bahru (JB) | Supply, Delivery & Installation | Ace Office Pods',
+    description: 'Office pods in Johor Bahru — acoustic phone booths and meeting pods for JB workplaces. Compare models, pricing, delivery lead times, and installation support.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office pods Johor Bahru, office pod JB, soundproof pod Johor, meeting pod Johor Bahru`,
+    h1: 'Office pods in Johor Bahru',
+    body: [
+      'Ace Office Pods supplies and delivers acoustic office pods and phone booths to Johor Bahru workplaces.',
+      'Our range covers one-person focus pods and phone booths through to four and six-person meeting pods, with delivery and installation coordination available for JB sites.',
+      '## Models available for Johor Bahru delivery',
+      'All six Ace Office Pod models are available — Ace Solo (from RM12,500), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
+      '## Delivery and installation planning',
+      'Johor Bahru deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
+      '## Areas served in Johor Bahru',
+      'Ace Office Pods delivers to offices across Johor Bahru including the city centre, Iskandar Puteri, Medini, Bukit Indah, Johor Jaya, and surrounding commercial areas.',
+      '## Frequently asked questions',
+      'How much does an office pod cost in Johor Bahru? Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, and site installation requirements.',
+      'How long does delivery to JB take? Standard lead time is approximately 3 to 6 working weeks from order confirmation. Johor Bahru logistics are confirmed with the quotation.',
+      '[View pricing](/pricing)',
+      '[Compare office pods](/compare-office-pods)',
+      '[Contact our team for a JB quote](/contact)'
+    ],
+    schemas: (canonical) => [
+      buildLocalBusinessSchema(),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Office pod delivery and installation in Johor Bahru',
+        url: canonical,
+        description: 'Ace Office Pods supplies acoustic office pods and phone booths to Johor Bahru workplaces with delivery and installation coordination.',
+        provider: { '@id': `${SEO_BASE_URL}/#organization` },
+        areaServed: { '@type': 'City', name: 'Johor Bahru' },
+        serviceType: ['Office pod supply', 'Office pod delivery', 'Office pod installation']
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Do you deliver and install office pods in Johor Bahru?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Yes. Ace Office Pods supplies and coordinates delivery and installation for Johor Bahru office projects. Delivery lead time and logistics are confirmed as part of the project scope.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'How much does an office pod cost in Johor Bahru?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, delivery distance, and site installation requirements.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'How long does delivery to Johor Bahru take?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Standard lead time is approximately 3 to 6 working weeks from order confirmation. Johor Bahru delivery logistics are confirmed with the quotation.' }
+          }
+        ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SEO_BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Locations', item: `${SEO_BASE_URL}/locations` },
+          { '@type': 'ListItem', position: 3, name: 'Johor Bahru', item: canonical }
         ]
       }
     ]

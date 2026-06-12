@@ -175,6 +175,47 @@ export const locations = [
           'Standard lead time is approximately 3 to 6 working weeks, depending on model, quantity, options, and project requirements. The final timeline is confirmed with the quotation.'
       }
     ]
+  },
+  {
+    slug: 'johor-bahru',
+    city: 'Johor Bahru',
+    shortName: 'Johor Bahru (JB)',
+    eyebrow: 'Office pod supply and delivery to Johor Bahru',
+    title: 'Office pods in Johor Bahru',
+    metaTitle: 'Office Pods Johor Bahru (JB) | Supply, Delivery & Installation | Ace Office Pods',
+    metaDescription:
+      'Office pods in Johor Bahru — acoustic phone booths and meeting pods for JB workplaces. Compare models, pricing, delivery lead times, and installation support.',
+    intro:
+      'Ace Office Pods supplies and delivers acoustic office pods and phone booths to Johor Bahru workplaces. Our range covers one-person focus pods and phone booths through to four and six-person meeting pods, with delivery and installation coordination available for JB sites.',
+    serviceSummary:
+      'Johor Bahru deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
+    localContext:
+      'Johor Bahru offices in the city centre, Iskandar Puteri, Medini, Bukit Indah, Johor Jaya, and surrounding areas can select from the full Ace Office Pods range. One-person pods suit private calls and focused work; two to six-person models are available for team discussions and meetings. Showroom viewing is available by appointment at our Klang, Selangor showroom.',
+    projectIntro:
+      'Ace Office Pods delivers and installs acoustic pods for Johor Bahru businesses. Contact our team to discuss your JB project requirements, site access, and preferred models.',
+    projects: [],
+    faqs: [
+      {
+        question: 'Do you deliver and install office pods in Johor Bahru?',
+        answer:
+          'Yes. Ace Office Pods supplies and coordinates delivery and installation for Johor Bahru office projects. Delivery lead time and logistics are confirmed as part of the project scope.'
+      },
+      {
+        question: 'How much does an office pod cost in Johor Bahru?',
+        answer:
+          'Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, delivery distance, and site installation requirements. Contact us for a project quote.'
+      },
+      {
+        question: 'Which office pod models are available for JB delivery?',
+        answer:
+          'All six Ace Office Pod models are available for Johor Bahru delivery — Ace Solo, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
+      },
+      {
+        question: 'How long does delivery to Johor Bahru take?',
+        answer:
+          'Standard lead time is approximately 3 to 6 working weeks from order confirmation, depending on model, quantity, and project requirements. Johor Bahru delivery logistics are confirmed with the quotation.'
+      }
+    ]
   }
 ];
 
