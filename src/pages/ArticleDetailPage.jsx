@@ -190,6 +190,8 @@ export default function ArticleDetailPage() {
         description={article.seoDescription || article.excerpt}
         canonical={buildCanonical(canonicalPath)}
         ogImage={buildAbsoluteUrl(articleImage)}
+        ogType="article"
+        ogPublishedTime={article.date}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod article`}
         schemas={[
           organizationSchema,

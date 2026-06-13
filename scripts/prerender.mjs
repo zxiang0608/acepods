@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { getRouteManifest } from './route-manifest.mjs';
 import {
   FAQ_PAGE_ITEMS,
@@ -26,6 +26,10 @@ import {
 import { ARTICLES } from '../src/data/articles.js';
 import { POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
 import { HOME_META, getProductMeta, getProductPublicImage } from '../src/seo/pageMeta.js';
+
+// Populated at runtime in run() by scanning dist/assets — changes on every Vite build
+let PRELOAD_FONT_400 = '';
+let PRELOAD_HERO_AVIF = '';
 
 const POD_ROUTE_ORDER = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'];
 const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
@@ -338,7 +342,11 @@ const STATIC_PRERENDER_META = {
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
       '[Contact our team](/contact)',
-      '[Read FAQs](/faq)'
+      '[Read FAQs](/faq)',
+      '## Further reading',
+      '[Office pod prices in Malaysia — full model and cost guide](/articles/office-pod-price-guide-malaysia)',
+      '[How to choose an office pod in Malaysia](/articles/how-to-choose-office-pod-malaysia)',
+      '[Office pod vs building a room — total cost comparison](/articles/office-pod-vs-building-room-malaysia)'
     ],
     noscriptFaqHeading: 'Common questions about office pods',
     noscriptFaqItems: HOME_FAQ_ITEMS,
@@ -1673,12 +1681,22 @@ const injectSeoHtml = (html, route, meta) => {
     .replace(/\s*<noscript><main>[\s\S]*?<\/main><\/noscript>\n?/, '');
 
   output = output.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(meta.title)}</title>`);
+  const fontPreloadHint = PRELOAD_FONT_400
+    ? `    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/${PRELOAD_FONT_400}" />\n`
+    : '';
+  const heroPreloadHint = route === '/' && PRELOAD_HERO_AVIF
+    ? `    <link rel="preload" as="image" type="image/avif" href="/assets/${PRELOAD_HERO_AVIF}" fetchpriority="high" />\n`
+    : '';
+
   output = output.replace(
     '</head>',
-    `    <meta name="description" content="${escapeHtml(meta.description)}" />\n` +
+    `${fontPreloadHint}` +
+      `${heroPreloadHint}` +
+      `    <meta name="description" content="${escapeHtml(meta.description)}" />\n` +
       `    <meta name="robots" content="${escapeHtml(robots)}" />\n` +
       `${keywords ? `    <meta name="keywords" content="${escapeHtml(keywords)}" />\n` : ''}` +
       `    <meta property="og:type" content="${escapeHtml(meta.ogType || 'website')}" />\n` +
+      `${meta.ogPublishedTime ? `    <meta property="article:published_time" content="${escapeHtml(meta.ogPublishedTime)}" />\n` : ''}` +
       `    <meta property="og:title" content="${escapeHtml(meta.title)}" />\n` +
       `    <meta property="og:description" content="${escapeHtml(meta.description)}" />\n` +
       `    <meta property="og:url" content="${canonical}" />\n` +
@@ -1853,6 +1871,8 @@ const buildArticlePrerenderMeta = (route, articleMeta) => {
   title: articleMeta.seoTitle || `${articleMeta.title} | Ace Office Pods`,
   description: articleMeta.seoDescription || articleMeta.excerpt,
   ogImage: articleImage,
+  ogType: 'article',
+  ogPublishedTime: articleMeta.date,
   keywords: `${SEO_KEYWORDS_COMMON}, office pod article`,
   h1: articleMeta.title,
   body: articleMeta.content,
@@ -1946,6 +1966,13 @@ const buildArticlePrerenderMeta = (route, articleMeta) => {
 
 const run = async () => {
   const { PUBLIC_ROUTES } = await getRouteManifest();
+
+  // Discover hashed asset filenames for preload hints
+  const assetsDir = path.resolve(process.cwd(), 'dist/assets');
+  const assetFiles = await readdir(assetsDir).catch(() => []);
+  PRELOAD_FONT_400 = assetFiles.find((f) => f.startsWith('plus-jakarta-sans-latin-400-normal-') && f.endsWith('.woff2')) || '';
+  PRELOAD_HERO_AVIF = assetFiles.find((f) => f.startsWith('hero-pods-') && f.endsWith('.avif')) || '';
+
   const baseHtmlPath = path.resolve(process.cwd(), 'dist/index.html');
   const baseHtml = await readFile(baseHtmlPath, 'utf8');
 

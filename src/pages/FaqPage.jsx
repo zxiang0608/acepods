@@ -15,7 +15,7 @@ export default function FaqPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pod FAQ | Ace Office Pods"
+        title="Office Pod FAQ Malaysia — Pricing, Delivery & Installation | Ace Office Pods"
         description="Read direct answers to common office pod buyer questions on pricing, inclusions, installation, and after-sales support."
         canonical={buildCanonical('/faq')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod FAQ, office booth FAQ`}

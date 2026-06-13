@@ -40,7 +40,7 @@ const removeDemoPrefixFromCanonical = (href) => {
   }
 };
 
-export default function SeoMeta({ title, description, canonical, keywords, ogImage = DEFAULT_OG_IMAGE, robots = 'index, follow', schemas = [] }) {
+export default function SeoMeta({ title, description, canonical, keywords, ogImage = DEFAULT_OG_IMAGE, ogType = 'website', ogPublishedTime, robots = 'index, follow', schemas = [] }) {
   const schemaSignature = JSON.stringify(schemas);
   const isDemoPath = window.location.pathname === '/demo' || window.location.pathname.startsWith('/demo/');
   const effectiveCanonical = isDemoPath ? removeDemoPrefixFromCanonical(canonical) : canonical;
@@ -51,7 +51,8 @@ export default function SeoMeta({ title, description, canonical, keywords, ogIma
     upsertMetaTag('name', 'description', description);
     upsertMetaTag('name', 'keywords', keywords);
     upsertMetaTag('name', 'robots', effectiveRobots);
-    upsertMetaTag('property', 'og:type', 'website');
+    upsertMetaTag('property', 'og:type', ogType);
+    if (ogPublishedTime) upsertMetaTag('property', 'article:published_time', ogPublishedTime);
     upsertMetaTag('property', 'og:title', title);
     upsertMetaTag('property', 'og:description', description);
     upsertMetaTag('property', 'og:url', effectiveCanonical);
@@ -78,7 +79,7 @@ export default function SeoMeta({ title, description, canonical, keywords, ogIma
       const cleanupSchemaTags = document.head.querySelectorAll('script[data-seo-schema="true"]');
       cleanupSchemaTags.forEach((tag) => tag.remove());
     };
-  }, [description, effectiveCanonical, effectiveRobots, keywords, ogImage, schemaSignature, title]);
+  }, [description, effectiveCanonical, effectiveRobots, keywords, ogImage, ogType, ogPublishedTime, schemaSignature, title]);
 
   return null;
 }

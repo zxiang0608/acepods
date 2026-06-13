@@ -31,6 +31,8 @@
 - [Office pods in Kuala Lumpur](/locations/kuala-lumpur)
 - [Office pods in Shah Alam](/locations/shah-alam)
 - [Office pods in Subang Jaya](/locations/subang-jaya)
+- [Office pods in Penang](/locations/penang)
+- [Office pods in Johor Bahru](/locations/johor-bahru)
 
 ## Pricing
 
@@ -45,3 +47,6 @@
 - [How to Choose the Right Office Pod Size](/articles/how-to-choose-office-pod-size)
 - [Office Phone Booths for Open-Plan Offices](/articles/office-phone-booths-for-open-plan-offices)
 - [Meeting Pods for Hybrid Teams](/articles/meeting-pods-for-hybrid-teams)
+- [Office Pod Prices in Malaysia (2026): Complete Model and Cost Guide](/articles/office-pod-price-guide-malaysia)
+- [How to Choose an Office Pod in Malaysia: A Practical Buyer's Guide](/articles/how-to-choose-office-pod-malaysia)
+- [Office Pod vs Building a Room in Malaysia: Total Cost Comparison](/articles/office-pod-vs-building-room-malaysia)
