@@ -7,6 +7,7 @@ import SubpageHeader from '../components/SubpageHeader';
 import { getProductBySlug } from '../data/products';
 import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
 import { pushDataLayerEvent } from '../lib/tracking';
+import { getGalleryAvifSource } from '../lib/galleryImages';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { getProductMeta, getProductPublicImage } from '../seo/pageMeta';
@@ -1598,11 +1599,14 @@ export default function ProductPage() {
                         }`}
                         aria-label={`Open gallery image ${index + 1} for ${product.name}`}
                       >
-                        <img
-                          src={item.image}
-                          alt={getGalleryThumbAlt(item)}
-                          className="h-full w-full object-cover"
-                        />
+                        <picture className="block h-full w-full">
+                          {getGalleryAvifSource(item.image) ? <source srcSet={getGalleryAvifSource(item.image)} type="image/avif" /> : null}
+                          <img
+                            src={item.image}
+                            alt={getGalleryThumbAlt(item)}
+                            className="h-full w-full object-cover"
+                          />
+                        </picture>
                       </button>
                     );
                   })}
@@ -1693,11 +1697,16 @@ export default function ProductPage() {
               </button>
             )}
 
-            <img
-              src={customerGalleryItems[galleryModalIndex]?.image}
-              alt={getGalleryThumbAlt(customerGalleryItems[galleryModalIndex])}
-              className="max-h-[88vh] max-w-[92vw] rounded-[8px] object-contain"
-            />
+            <picture className="flex max-h-[88vh] max-w-[92vw] items-center justify-center">
+              {getGalleryAvifSource(customerGalleryItems[galleryModalIndex]?.image) ? (
+                <source srcSet={getGalleryAvifSource(customerGalleryItems[galleryModalIndex]?.image)} type="image/avif" />
+              ) : null}
+              <img
+                src={customerGalleryItems[galleryModalIndex]?.image}
+                alt={getGalleryThumbAlt(customerGalleryItems[galleryModalIndex])}
+                className="max-h-[88vh] max-w-[92vw] rounded-[8px] object-contain"
+              />
+            </picture>
 
             {customerGalleryItems.length > 1 && (
               <button

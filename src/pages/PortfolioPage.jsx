@@ -5,6 +5,7 @@ import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { getGalleryAvifSource } from '../lib/galleryImages';
 import parkerLogo from '../../assets/parker-logo.png';
 import alphabetLogo from '../../assets/alphabet-logo.png';
 import cmacgmLogo from '../../assets/cmacgm-logo.svg';
@@ -44,7 +45,7 @@ const groupedPortfolio = Object.entries(portfolioImageModules)
     const segments = path.split('/');
     const filename = segments[segments.length - 1];
     const companyName = segments[segments.length - 2];
-    return { src, filename, companyName };
+    return { src, avifSrc: getGalleryAvifSource(src), filename, companyName };
   })
   .filter((item) => orderedCompanies.includes(item.companyName))
   .sort((a, b) => a.filename.localeCompare(b.filename))
@@ -165,14 +166,17 @@ export default function PortfolioPage() {
                       })
                     }
                   >
-                    <img
-                      src={image.src}
-                      alt={
-                        section.companyName ? `Ace Pods office pod installation for ${section.companyName}` : 'Ace Pods office pod installation project'
-                      }
-                      className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
-                      loading="lazy"
-                    />
+                    <picture className="block h-full w-full">
+                      {image.avifSrc ? <source srcSet={image.avifSrc} type="image/avif" /> : null}
+                      <img
+                        src={image.src}
+                        alt={
+                          section.companyName ? `Ace Pods office pod installation for ${section.companyName}` : 'Ace Pods office pod installation project'
+                        }
+                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
+                        loading="lazy"
+                      />
+                    </picture>
                   </button>
                 ))}
               </div>
@@ -211,11 +215,16 @@ export default function PortfolioPage() {
           </button>
 
           <figure className="flex max-h-full max-w-[1100px] flex-col items-center gap-3" onClick={(event) => event.stopPropagation()}>
-            <img
-              src={activeGallery.images[activeGallery.index].src}
-              alt={`Ace Pods office pod installation for ${activeGallery.companyName}`}
-              className="max-h-[82vh] max-w-full object-contain"
-            />
+            <picture className="flex max-h-[82vh] max-w-full items-center justify-center">
+              {activeGallery.images[activeGallery.index].avifSrc ? (
+                <source srcSet={activeGallery.images[activeGallery.index].avifSrc} type="image/avif" />
+              ) : null}
+              <img
+                src={activeGallery.images[activeGallery.index].src}
+                alt={`Ace Pods office pod installation for ${activeGallery.companyName}`}
+                className="max-h-[82vh] max-w-full object-contain"
+              />
+            </picture>
             <figcaption className="text-center text-[13px] text-white/85">
               {activeGallery.companyName} · {activeGallery.index + 1} of {activeGallery.images.length}
             </figcaption>
