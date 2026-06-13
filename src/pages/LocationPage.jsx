@@ -131,6 +131,8 @@ export default function LocationPage() {
                     <img
                       src={project.image}
                       alt={project.imageAlt}
+                      width="1200"
+                      height="900"
                       className="aspect-[4/3] h-full w-full object-cover"
                       loading={index === 0 ? 'eager' : 'lazy'}
                     />

@@ -1,6 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { getRouteManifest } from './route-manifest.mjs';
+import { ARTICLES } from '../src/data/articles.js';
 
 const BASE_URL = 'https://aceofficepods.com';
 const MALAYSIA_TIME_ZONE = 'Asia/Kuala_Lumpur';
@@ -9,8 +10,14 @@ const MANUAL_LASTMOD = {
   '/locations/kuala-lumpur': '2026-06-12',
   '/locations/shah-alam': '2026-06-12',
   '/locations/subang-jaya': '2026-06-12',
+  '/locations/penang': '2026-06-12',
+  '/locations/johor-bahru': '2026-06-12',
   '/locations': '2026-06-12'
 };
+
+const ARTICLE_DATE_MAP = Object.fromEntries(
+  ARTICLES.map((a) => [`/articles/${a.slug}`, a.date])
+);
 
 const formatMalaysiaDateTime = (value) => {
   if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -65,6 +72,7 @@ const sourceFilesForRoute = (route) => {
 
 const getLastmod = (route) => {
   if (MANUAL_LASTMOD[route]) return formatMalaysiaDateTime(MANUAL_LASTMOD[route]);
+  if (ARTICLE_DATE_MAP[route]) return formatMalaysiaDateTime(ARTICLE_DATE_MAP[route]);
 
   const sourceFiles = sourceFilesForRoute(route);
   if (!sourceFiles.length) return null;

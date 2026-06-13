@@ -942,6 +942,8 @@ export default function ProductPage() {
                     <img
                       src={mainImage}
                       alt={mainProductAlt}
+                      width="1000"
+                      height="1000"
                       fetchPriority="high"
                       className={`relative z-[1] object-contain object-center ${
                         isHubLShapeSofaMainPreview
@@ -1025,6 +1027,8 @@ export default function ProductPage() {
                             <img
                               src={preview.image}
                               alt={`${product.name} front view`}
+                              width="56"
+                              height="56"
                               className="h-full w-full object-contain object-center"
                             />
                             {selected && (
@@ -1050,6 +1054,8 @@ export default function ProductPage() {
                             <img
                               src={color.thumbnailImage}
                               alt={`${product.name} in ${color.label}`}
+                              width="56"
+                              height="56"
                               className="h-full w-full object-contain object-center"
                             />
                             {selected && (
@@ -1089,6 +1095,8 @@ export default function ProductPage() {
                             <img
                               src={item.image}
                               alt={item.label}
+                              width="56"
+                              height="56"
                               className={`object-contain object-center ${
                                 ['flex-sofa', 'meeting-xl-sofa-set'].includes(item.id)
                                   ? 'mx-auto my-auto h-[70%] w-[70%]'
@@ -1130,7 +1138,7 @@ export default function ProductPage() {
                             }`}
                             aria-label={`Available pod colours accessory: ${chair.label}`}
                           >
-                            <img src={chair.image} alt={chair.label} className="h-9 w-9 object-contain object-center mix-blend-multiply" />
+                            <img src={chair.image} alt={chair.label} width="36" height="36" className="h-9 w-9 object-contain object-center mix-blend-multiply" />
                             {selected && (
                               <span className="absolute inset-0 border border-[#1e2227]">
                                 <Check size={12} className="absolute right-0.5 top-0.5 text-[#1e2227]" />
