@@ -5,6 +5,7 @@ import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { locations, locationsBySlug } from '../data/locations';
 import { pushDataLayerEvent } from '../lib/tracking';
+import { getGalleryAvifSource } from '../lib/galleryImages';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import {
   buildAbsoluteUrl,
@@ -128,12 +129,15 @@ export default function LocationPage() {
               {location.projects.map((project, index) => (
                 <article key={project.company} className="grid gap-5 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-8">
                   <div className={`overflow-hidden rounded-[4px] bg-[#e9e7e0] ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      className="aspect-[4/3] h-full w-full object-cover"
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                    />
+                    <picture className="block h-full w-full">
+                      {getGalleryAvifSource(project.image) ? <source srcSet={getGalleryAvifSource(project.image)} type="image/avif" /> : null}
+                      <img
+                        src={project.image}
+                        alt={project.imageAlt}
+                        className="aspect-[4/3] h-full w-full object-cover"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                      />
+                    </picture>
                   </div>
                   <div className={index % 2 === 1 ? 'md:order-1' : ''}>
                     <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#65707a]">{project.area}</p>
