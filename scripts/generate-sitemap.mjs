@@ -3,12 +3,40 @@ import { execFileSync } from 'node:child_process';
 import { getRouteManifest } from './route-manifest.mjs';
 
 const BASE_URL = 'https://aceofficepods.com';
+const MALAYSIA_TIME_ZONE = 'Asia/Kuala_Lumpur';
 
 const MANUAL_LASTMOD = {
   '/locations/kuala-lumpur': '2026-06-12',
   '/locations/shah-alam': '2026-06-12',
   '/locations/subang-jaya': '2026-06-12',
   '/locations': '2026-06-12'
+};
+
+const formatMalaysiaDateTime = (value) => {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return `${value}T00:00:00+08:00`;
+  }
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat('en-CA', {
+      timeZone: MALAYSIA_TIME_ZONE,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hourCycle: 'h23'
+    })
+      .formatToParts(date)
+      .filter(({ type }) => type !== 'literal')
+      .map(({ type, value: partValue }) => [type, partValue])
+  );
+
+  return `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}+08:00`;
 };
 
 const sourceFilesForRoute = (route) => {
@@ -36,7 +64,7 @@ const sourceFilesForRoute = (route) => {
 };
 
 const getLastmod = (route) => {
-  if (MANUAL_LASTMOD[route]) return MANUAL_LASTMOD[route];
+  if (MANUAL_LASTMOD[route]) return formatMalaysiaDateTime(MANUAL_LASTMOD[route]);
 
   const sourceFiles = sourceFilesForRoute(route);
   if (!sourceFiles.length) return null;
@@ -45,7 +73,7 @@ const getLastmod = (route) => {
     const timestamp = execFileSync('git', ['log', '-1', '--format=%cI', '--', ...sourceFiles], {
       encoding: 'utf8'
     }).trim();
-    return timestamp || null;
+    return timestamp ? formatMalaysiaDateTime(timestamp) : null;
   } catch {
     return null;
   }
