@@ -355,17 +355,29 @@ export default function ProductPage() {
   const computedTotal = baseUnitPrice + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
 
   const isAceFlexDuo = product.slug === 'ace-flex-duo';
-  const pricingRows = [
-    {
-      label: isAceFlexDuo ? 'Base unit' : 'Base unit\n(empty pod)',
-      amount: baseUnitPrice,
-      amountLabel: hasBaseUnitPrice ? null : product.pricing?.amount || 'Contact for price'
-    },
-    { label: 'Add-on', amount: selectedConfigurationAmount },
-    { label: 'Installation\n(Klang Valley)', amount: installationAmount },
-    { label: 'Delivery (Klang Valley)', amount: deliveryAmount },
-    { label: 'Add-ons subtotal', amount: selectedAddonsAmount }
-  ];
+  const pricingRows = useMemo(
+    () => [
+      {
+        label: isAceFlexDuo ? 'Base unit' : 'Base unit\n(empty pod)',
+        amount: baseUnitPrice,
+        amountLabel: hasBaseUnitPrice ? null : product.pricing?.amount || 'Contact for price'
+      },
+      { label: 'Add-on', amount: selectedConfigurationAmount },
+      { label: 'Installation\n(Klang Valley)', amount: installationAmount },
+      { label: 'Delivery (Klang Valley)', amount: deliveryAmount },
+      { label: 'Add-ons subtotal', amount: selectedAddonsAmount }
+    ],
+    [
+      baseUnitPrice,
+      deliveryAmount,
+      hasBaseUnitPrice,
+      installationAmount,
+      isAceFlexDuo,
+      product.pricing?.amount,
+      selectedAddonsAmount,
+      selectedConfigurationAmount
+    ]
+  );
   const outstationNote =
     pdpPricing.delivery?.outstationNote ||
     'Other areas outside of Klang Valley will be subject to different delivery and installation charges. If items need to be carried via staircase, additional handling charges will apply.';
@@ -452,23 +464,28 @@ export default function ProductPage() {
     colorImageMap?.default ||
     null;
   const technicalSpecifications = product.technicalSpecifications || {};
-  const technicalSpecRows = [
-    { label: 'Capacity', value: technicalSpecifications.capacity },
-    { label: 'External dimensions', value: technicalSpecifications.externalDimensions },
-    { label: 'Internal dimensions', value: technicalSpecifications.internalDimensions },
-    { label: 'Internal height', value: technicalSpecifications.internalHeight },
-    {
-      label: 'External height',
-      value:
-        technicalSpecifications.externalHeight && technicalSpecifications.roomHeightRequirement
-          ? `${technicalSpecifications.externalHeight} (room height required: ${technicalSpecifications.roomHeightRequirement})`
-          : technicalSpecifications.externalHeight
+  const mergedTechnicalSpecRows = useMemo(
+    () => {
+      const specifications = product.technicalSpecifications || {};
+      return [
+        { label: 'Capacity', value: specifications.capacity },
+        { label: 'External dimensions', value: specifications.externalDimensions },
+        { label: 'Internal dimensions', value: specifications.internalDimensions },
+        { label: 'Internal height', value: specifications.internalHeight },
+        {
+          label: 'External height',
+          value:
+            specifications.externalHeight && specifications.roomHeightRequirement
+              ? `${specifications.externalHeight} (room height required: ${specifications.roomHeightRequirement})`
+              : specifications.externalHeight
+        },
+        { label: 'Certified tested dBA (A-weighted decibels)', value: specifications.certifiedTestedDba },
+        { label: 'Weight', value: specifications.weight },
+        ...(specifications.extraRows || [])
+      ].filter((row) => row?.label && row?.value);
     },
-    { label: 'Certified tested dBA (A-weighted decibels)', value: technicalSpecifications.certifiedTestedDba },
-    { label: 'Weight', value: technicalSpecifications.weight }
-  ];
-  const extraTechnicalSpecRows = technicalSpecifications.extraRows || [];
-  const mergedTechnicalSpecRows = [...technicalSpecRows, ...extraTechnicalSpecRows].filter((row) => row?.label && row?.value);
+    [product.technicalSpecifications]
+  );
   const quickAnswerDimensionParts = [
     technicalSpecifications.capacity ? `Fits ${technicalSpecifications.capacity}` : null,
     technicalSpecifications.externalDimensions ? `External dimensions: ${technicalSpecifications.externalDimensions}` : null,
@@ -501,10 +518,9 @@ export default function ProductPage() {
   const canToggleSpecs = exteriorWallsRowIndex >= 0 && exteriorWallsRowIndex < mergedTechnicalSpecRows.length - 1;
   const visibleTechnicalSpecRows =
     canToggleSpecs && !isSpecsExpanded ? mergedTechnicalSpecRows.slice(0, exteriorWallsRowIndex + 1) : mergedTechnicalSpecRows;
-  const customerPhotos = product.customerPhotos || [];
   const podPrimaryImage = product.thumbImage || product.heroImage;
   const primaryGalleryImage = mappedImage || podPrimaryImage;
-  const productDisplayItems = (() => {
+  const productDisplayItems = useMemo(() => {
     const items = [];
     const seenImages = new Set();
 
@@ -551,11 +567,19 @@ export default function ProductPage() {
     }
 
     return items;
-  })();
-  const customerGalleryItems = (() => {
+  }, [
+    colorImageMap,
+    podPrimaryImage,
+    primaryGalleryImage,
+    product.extraPreviewImages,
+    product.name,
+    selectedExterior,
+    selectedInterior
+  ]);
+  const customerGalleryItems = useMemo(() => {
     const items = [];
     const seenImages = new Set();
-    customerPhotos.forEach((image, index) => {
+    (product.customerPhotos || []).forEach((image, index) => {
       if (!image || seenImages.has(image)) return;
       seenImages.add(image);
       items.push({
@@ -566,7 +590,7 @@ export default function ProductPage() {
     });
 
     return items;
-  })();
+  }, [product.customerPhotos]);
   const defaultFrontPreviewImage = (product.extraPreviewImages || [])[0] || '';
   const mainImage = selectedImage || defaultFrontPreviewImage || productDisplayItems[0]?.image || primaryGalleryImage || podPrimaryImage;
   const activeGalleryIndex = Math.max(productDisplayItems.findIndex((item) => item.image === mainImage), 0);
