@@ -57,7 +57,7 @@ export default function LocationPage() {
         description={location.metaDescription}
         canonical={buildCanonical(path)}
         keywords={`${SEO_KEYWORDS_COMMON}, office pods ${location.city}, office phone booth ${location.city}, acoustic office pod ${location.city}`}
-        ogImage={location.projects.length > 0 ? buildAbsoluteUrl(location.projects[0].image) : `${buildCanonical('/')}og-image.png`}
+        ogImage={location.projects.length > 0 ? buildAbsoluteUrl(location.projects[0].image) : `${buildCanonical('/')}og-image.jpg`}
         schemas={[
           localBusinessSchema,
           websiteSchema,

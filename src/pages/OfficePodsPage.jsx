@@ -26,7 +26,7 @@ export default function OfficePodsPage() {
     <PageShell>
       <SeoMeta
         title="Office Pods and Office Booths Malaysia | Ace Office Pods"
-        description="Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams choose the right pod by use case, capacity, and project needs."
+        description="Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Compare models by use case, capacity, and price."
         canonical={buildCanonical('/office-pods')}
         keywords={`${SEO_KEYWORDS_COMMON}, office booth Malaysia`}
         schemas={[organizationSchema, websiteSchema, officePodsCollectionSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/office-pods', OFFICE_PODS_FAQ_ITEMS)]}
@@ -54,7 +54,15 @@ export default function OfficePodsPage() {
       <section className="mx-auto grid w-full max-w-[1200px] gap-5 px-5 md:grid-cols-2 md:px-8 lg:grid-cols-4">
         {products.map((product) => (
           <article key={product.slug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-            <img src={product.thumbImage} alt={`${product.name} office pod`} className="mx-auto h-[180px] w-auto object-contain" />
+            <img
+              src={product.thumbImage}
+              alt={`${product.name} office pod`}
+              width="990"
+              height="990"
+              className="mx-auto h-[180px] w-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
             <h2 className="mt-4 text-[22px] font-semibold tracking-tight text-[#1d232a]">{product.name}</h2>
             <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">{product.shortDesc}</p>
             <p className="mt-3 text-[14px] font-medium text-[#626a72]">{product.cardSupport}</p>

@@ -9,6 +9,7 @@ import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { getProductMeta, getProductPublicImage } from '../seo/pageMeta';
 import QuoteForm from '../components/QuoteForm';
 import highResPodCert from '../../assets/high-res-pod-cert.png';
 import barStoolBlack from '../../assets/bar-stool-black.png';
@@ -590,8 +591,10 @@ export default function ProductPage() {
   const hasFeatureRows = displayFeatureRows.some((row) => row.length > 0);
   const allFeatureItems = displayFeatureRows.flat();
   const pdpQuickAnswerCopy = PDP_QUICK_ANSWER_COPY[product.slug] || null;
-  const seoTitle = `${product.displayTitle || product.name} Office Pod Pricing, Specs and Colors | Ace Office Pods`;
-  const seoDescription = `${product.displayTitle || product.name}: ${product.shortDesc}. ${product.pricing.amount} in Malaysia from Ace Office Pods by Ace Workplace Solutions. View office pod and office booth colors, add-ons, installation (Klang Valley), and delivery details.`;
+  const productMeta = getProductMeta(product);
+  const seoTitle = productMeta.title;
+  const seoDescription = productMeta.description;
+  const productSeoImage = getProductPublicImage(product.slug);
   const seoKeywords = `${SEO_KEYWORDS_COMMON}, ${product.displayTitle || product.name}, ${product.slug.replace(/-/g, ' ')}`;
   const seoSchemas = [
     organizationSchema,
@@ -600,7 +603,7 @@ export default function ProductPage() {
       path: canonicalPath,
       name: product.displayTitle || product.name,
       description: product.shortDesc,
-      image: podPrimaryImage || mainImage,
+      image: productSeoImage,
       price: baseUnit?.price,
       category: 'Office pods',
       additionalProperties: POD_SEO_BY_SLUG[product.slug]?.schemaProperties
@@ -873,8 +876,8 @@ export default function ProductPage() {
         title={seoTitle}
         description={seoDescription}
         canonical={buildCanonical(canonicalPath)}
+        ogImage={buildAbsoluteUrl(productSeoImage)}
         keywords={seoKeywords}
-        ogImage={buildAbsoluteUrl(podPrimaryImage || mainImage)}
         schemas={seoSchemas}
       />
       <SubpageHeader />
@@ -887,9 +890,13 @@ export default function ProductPage() {
                 <p className="mb-3 text-[13px] font-medium text-[#1c6e72]">
                   Home / {product.breadcrumbLabel || 'Ace Pods'} / {product.displayTitle || product.name}
                 </p>
-                <h1 className="max-w-[12ch] text-[42px] font-semibold leading-[1.03] tracking-tight md:text-[56px]">
+                <div
+                  role="heading"
+                  aria-level="1"
+                  className="max-w-[12ch] text-[42px] font-semibold leading-[1.03] tracking-tight md:text-[56px]"
+                >
                   {product.displayTitle || product.name}
-                </h1>
+                </div>
                 <p className="mt-3 text-[16px] font-semibold leading-tight text-[#145b5f] md:text-[20px]">
                   Starting from {startingPriceText}
                 </p>

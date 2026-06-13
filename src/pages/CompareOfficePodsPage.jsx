@@ -23,7 +23,7 @@ export default function CompareOfficePodsPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Compare Office Pods by Price, Installation and Support | Ace Office Pods"
+        title="Compare Office Pod Prices, Installation & Support"
         description="Compare office pods beyond headline price. Review installation, support, warranty coverage, and office-fit considerations before buying."
         canonical={buildCanonical('/compare-office-pods')}
         keywords={`${SEO_KEYWORDS_COMMON}, compare office pods, office booth comparison`}

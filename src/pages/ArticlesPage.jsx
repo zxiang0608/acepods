@@ -40,7 +40,15 @@ export default function ArticlesPage() {
       <section className="mx-auto grid w-full max-w-[1200px] gap-5 px-5 pb-16 md:grid-cols-2 md:px-8 md:pb-20">
         {ARTICLES.map((article) => (
           <article key={article.slug} className="overflow-hidden rounded-[10px] border border-[#ddd8cf] bg-white">
-            <img src={getArticleImageBySlug(article.slug)} alt={article.title} className="h-[220px] w-full object-cover" />
+            <img
+              src={getArticleImageBySlug(article.slug)}
+              alt={article.title}
+              width="1200"
+              height="675"
+              className="h-[220px] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="p-6">
               <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#66707a]">
                 {article.category} · {article.date}

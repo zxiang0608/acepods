@@ -11,7 +11,7 @@ export const locations = [
     shortName: 'Kuala Lumpur (KL)',
     eyebrow: 'Completed projects in Kuala Lumpur',
     title: 'Office pods in Kuala Lumpur (KL)',
-    metaTitle: 'Office Pods Kuala Lumpur (KL) | Delivery & Installation | Ace Office Pods',
+    metaTitle: 'Office Pods Kuala Lumpur | Delivery & Installation',
     metaDescription:
       'Office pods in Kuala Lumpur with completed installations for Everllence, Alphabet Capital, and CMA CGM in Bangsar. Compare models, pricing, delivery, and installation.',
     intro:
@@ -131,7 +131,7 @@ export const locations = [
     shortName: 'Subang Jaya',
     eyebrow: 'Completed project in Subang Jaya',
     title: 'Office pods in Subang Jaya',
-    metaTitle: 'Office Pods Subang Jaya | Delivery & Installation | Ace Office Pods',
+    metaTitle: 'Office Pods Subang Jaya | Delivery & Installation',
     metaDescription:
       "Office pods in Subang Jaya with a completed Taylor's College installation. Compare acoustic phone booths, pod pricing, delivery, and installation support.",
     intro:
@@ -182,7 +182,7 @@ export const locations = [
     shortName: 'Penang',
     eyebrow: 'Office pod supply and delivery to Penang',
     title: 'Office pods in Penang',
-    metaTitle: 'Office Pods Penang | Supply, Delivery & Installation | Ace Office Pods',
+    metaTitle: 'Office Pods Penang | Delivery & Installation',
     metaDescription:
       'Office pods in Penang — acoustic phone booths and meeting pods for George Town and Bayan Lepas workplaces. Compare models, pricing, delivery lead times, and installation support.',
     intro:
@@ -223,7 +223,7 @@ export const locations = [
     shortName: 'Johor Bahru (JB)',
     eyebrow: 'Office pod supply and delivery to Johor Bahru',
     title: 'Office pods in Johor Bahru',
-    metaTitle: 'Office Pods Johor Bahru (JB) | Supply, Delivery & Installation | Ace Office Pods',
+    metaTitle: 'Office Pods Johor Bahru | Delivery & Installation',
     metaDescription:
       'Office pods in Johor Bahru — acoustic phone booths and meeting pods for JB workplaces. Compare models, pricing, delivery lead times, and installation support.',
     intro:

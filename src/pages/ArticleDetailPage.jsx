@@ -4,7 +4,7 @@ import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { ARTICLES, findArticleBySlug } from '../data/articles';
 import { getArticleImageBySlug } from '../lib/articleImages';
-import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 
 const renderInlineContent = (text) => {
@@ -175,6 +175,7 @@ export default function ArticleDetailPage() {
   }
 
   const canonicalPath = `/articles/${article.slug}`;
+  const articleImage = getArticleImageBySlug(article.slug);
   const relatedArticles = ARTICLES.filter((item) => item.slug !== article.slug).slice(0, 3);
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -188,6 +189,7 @@ export default function ArticleDetailPage() {
         title={article.seoTitle || `${article.title} | Ace Office Pods`}
         description={article.seoDescription || article.excerpt}
         canonical={buildCanonical(canonicalPath)}
+        ogImage={buildAbsoluteUrl(articleImage)}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod article`}
         schemas={[
           organizationSchema,
@@ -198,6 +200,7 @@ export default function ArticleDetailPage() {
             '@type': 'Article',
             headline: article.title,
             description: article.seoDescription || article.excerpt,
+            image: buildAbsoluteUrl(articleImage),
             datePublished: article.date,
             url: buildCanonical(canonicalPath),
             publisher: {
@@ -244,7 +247,14 @@ export default function ArticleDetailPage() {
       </section>
 
       <section className="mx-auto w-full max-w-[1000px] px-5 md:px-8">
-        <img src={getArticleImageBySlug(article.slug)} alt={article.title} className="h-[360px] w-full rounded-[10px] object-cover md:h-[420px]" />
+        <img
+          src={articleImage}
+          alt={article.title}
+          width="1200"
+          height="675"
+          className="h-[360px] w-full rounded-[10px] object-cover md:h-[420px]"
+          fetchPriority="high"
+        />
       </section>
 
       <section className="mx-auto w-full max-w-[1000px] px-5 pb-8 pt-8 md:px-8">

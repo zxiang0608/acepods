@@ -18,20 +18,20 @@ import {
   X
 } from 'lucide-react';
 import acePodsLogo from '../Logos/ace pods logo.png';
-import acePodsHero from '../assets/hero-pods.png';
+import acePodsHero from '../assets/hero-pods.webp';
 import acePodsHeroAvif from '../assets/hero-pods.avif';
 import aceFlexGreyAshCutout from '../assets/homepage-cutouts/ace-flex-grey-ash-cutout.png';
 import aceMeetGreyAshCutout from '../assets/homepage-cutouts/ace-meet-grey-ash-cutout.png';
 import aceHubGreyAshCutout from '../assets/homepage-cutouts/ace-hub-grey-ash-cutout.png';
-import officeOneImage from '../assets/Office-1.png';
-import officeTwoImage from '../assets/office-2.png';
-import officeThreeImage from '../assets/office-3.png';
+import officeOneImage from '../assets/Office-1.webp';
+import officeTwoImage from '../assets/office-2.webp';
+import officeThreeImage from '../assets/office-3.webp';
 import officeOneImageAvif from '../assets/Office-1.avif';
 import officeTwoImageAvif from '../assets/office-2.avif';
 import officeThreeImageAvif from '../assets/office-3.avif';
 import comparePriceImage from '../assets/quotation.jpg';
-import podsInstallationImage from '../assets/pods-installation.png';
-import deliveryPodsImage from '../assets/delivery-pods.png';
+import podsInstallationImage from '../assets/pods-installation.webp';
+import deliveryPodsImage from '../assets/delivery-pods.webp';
 import comparePriceImageAvif from '../assets/quotation.avif';
 import podsInstallationImageAvif from '../assets/pods-installation.avif';
 import deliveryPodsImageAvif from '../assets/delivery-pods.avif';
@@ -54,6 +54,7 @@ import { smartPodsMenuItems } from './components/smartPodsMenuData';
 import { products } from './data/products';
 import { pushDataLayerEvent } from './lib/tracking';
 import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from './seo/constants';
+import { HOME_META } from './seo/pageMeta';
 import { buildCanonical, createFaqSchema, homepageWebPageSchema, serviceOrganizationSchema, websiteSchema } from './seo/schema';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
@@ -436,7 +437,11 @@ export default function App() {
             <img
               src={getHomepagePodCardImage(pod)}
               alt={`${pod.name} acoustic office pod`}
+              width="990"
+              height="990"
               className={getMobileHomepagePodImageClassName(pod)}
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -477,7 +482,11 @@ export default function App() {
             <img
               src={getHomepagePodCardImage(pod)}
               alt={`${pod.name} acoustic office pod`}
+              width="990"
+              height="990"
               className={`${getHomepagePodImageClassName(pod)} ${getHomepagePodImageBlendClassName(pod)}`.trim()}
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="mt-[84px] flex justify-center">
@@ -497,8 +506,8 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
       <SeoMeta
-        title="Ace Office Pods & Office Booths Malaysia | Acoustic Meeting Pods"
-        description="Ace Office Pods supplies acoustic office pods, office booths, phone booths, and meeting pods in Malaysia for private calls, focused work, and small meetings."
+        title={HOME_META.title}
+        description={HOME_META.description}
         canonical={buildCanonical('/')}
         keywords={`${SEO_KEYWORDS_COMMON}, office booth provider`}
         schemas={homepageSchemas}
@@ -655,9 +664,13 @@ export default function App() {
             <div className="pb-8 pt-6 md:hidden">
               <div className="rounded-[12px] border border-[#e6e6e6] bg-white p-5">
                 <p className="text-[12px] font-semibold tracking-[0.18em] text-[#f97316]">PRIVATE OFFICE PODS</p>
-                <h1 className="mt-3 text-[50px] font-bold leading-[0.98] tracking-[-0.03em] text-[#0f2239]">
+                <div
+                  role="heading"
+                  aria-level="1"
+                  className="mt-3 text-[50px] font-bold leading-[0.98] tracking-[-0.03em] text-[#0f2239]"
+                >
                   {heroHeadline}
-                </h1>
+                </div>
                 <p className="mt-4 text-[17px] font-medium leading-[1.5] text-[#233142]">{heroSupportingText}</p>
 
                 <div className="mt-6 space-y-3">
@@ -698,6 +711,8 @@ export default function App() {
                     <img
                       src={acePodsHero}
                       alt="Acoustic office pods for calls and focused work in an open office"
+                      width="2816"
+                      height="1536"
                       className="h-[360px] w-full object-cover object-[20%_50%]"
                       fetchPriority="high"
                     />
@@ -713,6 +728,8 @@ export default function App() {
                   <img
                     src={acePodsHero}
                     alt="Acoustic office pods for calls and focused work in an open office"
+                    width="2816"
+                    height="1536"
                     className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-[50%_42%] lg:object-[50%_44%]"
                     fetchPriority="high"
                   />
@@ -893,7 +910,15 @@ export default function App() {
                         }
                         type="image/avif"
                       />
-                      <img src={item.image} alt={item.imageAlt} className="h-full w-full object-cover" loading="lazy" />
+                      <img
+                        src={item.image}
+                        alt={item.imageAlt}
+                        width="1600"
+                        height="1000"
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </picture>
                   </div>
                   <div className="mt-6 border-t border-[#717171] pt-6 md:mt-7 md:pt-7">
@@ -962,8 +987,11 @@ export default function App() {
                       <img
                         src={item.image}
                         alt={item.imageAlt}
+                        width="1000"
+                        height="600"
                         className={`h-full w-full object-cover ${item.imageClassName || ''}`}
                         loading="lazy"
+                        decoding="async"
                       />
                     </picture>
                   </div>
@@ -992,10 +1020,26 @@ export default function App() {
                     {logo.image === wsConstructionLogo ? (
                       <picture>
                         <source srcSet={wsConstructionLogoWebp} type="image/webp" />
-                        <img src={logo.image} alt={logo.name} className={`h-full w-full object-contain ${logo.fitClass || ''}`} />
+                        <img
+                          src={logo.image}
+                          alt={logo.name}
+                          width="210"
+                          height="64"
+                          className={`h-full w-full object-contain ${logo.fitClass || ''}`}
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </picture>
                     ) : (
-                      <img src={logo.image} alt={logo.name} className={`h-full w-full object-contain ${logo.fitClass || ''}`} />
+                      <img
+                        src={logo.image}
+                        alt={logo.name}
+                        width="210"
+                        height="64"
+                        className={`h-full w-full object-contain ${logo.fitClass || ''}`}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     )}
                   </div>
                 </div>

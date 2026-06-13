@@ -66,7 +66,7 @@ export const localBusinessSchema = {
   priceRange: 'RM12,500+',
   image: [
     SEO_BRAND_LOGO,
-    `${SEO_BASE_URL}/og-image.png`
+    `${SEO_BASE_URL}/og-image.jpg`
   ],
   address: {
     '@type': 'PostalAddress',

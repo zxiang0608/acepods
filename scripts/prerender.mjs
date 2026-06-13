@@ -25,6 +25,7 @@ import {
 } from '../src/seo/constants.js';
 import { ARTICLES } from '../src/data/articles.js';
 import { POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
+import { HOME_META, getProductMeta, getProductPublicImage } from '../src/seo/pageMeta.js';
 
 const POD_ROUTE_ORDER = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'];
 const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
@@ -57,7 +58,7 @@ const INSTALLATION_FAQ_ITEMS = [
   }
 ];
 
-const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.png`;
+const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.jpg`;
 const NOSCRIPT_BRAND_OWNERSHIP_TEXT =
   'Ace Office Pods is owned by Ace Workplace Solutions and supplies office pods, office booths, office phone booths, and meeting pods in Malaysia.';
 const buildOrganizationSchema = () => ({
@@ -100,7 +101,7 @@ const buildLocalBusinessSchema = () => ({
   '@id': `${SEO_BASE_URL}/#organization`,
   foundingDate: '2024',
   priceRange: 'RM12,500+',
-  image: [SEO_BRAND_LOGO, `${SEO_BASE_URL}/og-image.png`],
+  image: [SEO_BRAND_LOGO, `${SEO_BASE_URL}/og-image.jpg`],
   address: {
     '@type': 'PostalAddress',
     streetAddress: SEO_BRAND_STREET_ADDRESS,
@@ -181,7 +182,7 @@ const LOCATION_PRERENDER_DATA = [
     city: 'Kuala Lumpur',
     shortName: 'Kuala Lumpur (KL)',
     geo: { latitude: 3.1390, longitude: 101.6869 },
-    title: 'Office Pods Kuala Lumpur (KL) | Delivery & Installation | Ace Office Pods',
+    title: 'Office Pods Kuala Lumpur | Delivery & Installation',
     description:
       'Office pods in Kuala Lumpur with completed installations for Everllence, Alphabet Capital, and CMA CGM in Bangsar. Compare models, pricing, delivery, and installation.',
     intro:
@@ -208,7 +209,7 @@ const LOCATION_PRERENDER_DATA = [
     city: 'Subang Jaya',
     shortName: 'Subang Jaya',
     geo: { latitude: 3.0565, longitude: 101.5819 },
-    title: 'Office Pods Subang Jaya | Delivery & Installation | Ace Office Pods',
+    title: 'Office Pods Subang Jaya | Delivery & Installation',
     description:
       "Office pods in Subang Jaya with a completed Taylor's College installation. Compare acoustic phone booths, pod pricing, delivery, and installation support.",
     intro: 'Ace Office Pods supplies and installs office phone booths and acoustic pods for Subang Jaya workplaces and education environments.',
@@ -306,9 +307,8 @@ const buildLocationPrerenderEntries = () =>
 const STATIC_PRERENDER_META = {
   ...buildLocationPrerenderEntries(),
   '/': {
-    title: 'Ace Office Pods by Ace Workplace Solutions | Office Pods and Booths Malaysia',
-    description:
-      'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia with clear pricing, installation, and support.',
+    title: HOME_META.title,
+    description: HOME_META.description,
     keywords: `${SEO_KEYWORDS_COMMON}, office booth provider`,
     h1: 'Office pods for calls, focus, and meetings',
     body: [
@@ -511,9 +511,9 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/office-pods-near-me': {
-    title: 'Office Pods Near Me in Malaysia | Klang Valley Showroom | Ace Office Pods',
+    title: 'Office Pods Near Me | Klang Valley Showroom',
     description:
-      'Looking for office pods near you? Ace Office Pods offers showroom viewing by appointment in Klang, with office pod pricing, delivery, and installation support across Klang Valley and West Malaysia.',
+      'View office pods by appointment in Klang, with pricing, delivery, and installation support across Klang Valley and West Malaysia.',
     keywords: `${SEO_KEYWORDS_COMMON}, office pods near me, office pods near me Malaysia, office pods Klang Valley, office pods Selangor, office pods Kuala Lumpur`,
     h1: 'Office pods near me',
     body: [
@@ -630,7 +630,7 @@ const STATIC_PRERENDER_META = {
   '/office-pods': {
     title: 'Office Pods and Office Booths Malaysia | Ace Office Pods',
     description:
-      'Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Ace Office Pods by Ace Workplace Solutions helps teams choose the right pod by use case, capacity, and project needs.',
+      'Explore acoustic office pods and office booths in Malaysia for private calls, focused work, and meetings. Compare models by use case, capacity, and price.',
     keywords: `${SEO_KEYWORDS_COMMON}, office booth Malaysia`,
     h1: 'Office pods and office booths for calls, focus, and meetings',
     body: [
@@ -907,9 +907,9 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/portfolio': {
-    title: 'Office Pod Portfolio Malaysia | Past Installations and Project Work | Ace Office Pods',
+    title: 'Office Pod Installations Malaysia | Ace Portfolio',
     description:
-      'Explore Ace Office Pods portfolio projects across Malaysia. See past office pod and office booth installations for calls, focused work, and meetings with practical commercial outcomes.',
+      'Explore completed Ace Office Pods projects across Malaysia, including office booth and meeting pod installations for corporate and education workplaces.',
     keywords: `${SEO_KEYWORDS_COMMON}, office pod portfolio, office booth installation`,
     h1: 'Past office pod projects across Malaysia',
     body: [
@@ -1004,7 +1004,7 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/compare-office-pods': {
-    title: 'Compare Office Pods by Price, Installation and Support | Ace Office Pods',
+    title: 'Compare Office Pod Prices, Installation & Support',
     description:
       'Compare office pods beyond headline price. Review installation, support, warranty coverage, and office-fit considerations before buying.',
     keywords: `${SEO_KEYWORDS_COMMON}, compare office pods, office booth comparison`,
@@ -1299,7 +1299,7 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/locations': {
-    title: 'Office Pod Delivery Locations | KL, Shah Alam, Subang Jaya, Penang & JB',
+    title: 'Office Pod Delivery Locations in Malaysia',
     description:
       'Explore Ace Office Pods delivery and installation locations with completed projects in Kuala Lumpur, Shah Alam, and Subang Jaya, plus delivery to Penang and Johor Bahru.',
     keywords: `${SEO_KEYWORDS_COMMON}, office pods Kuala Lumpur, office pods Shah Alam, office pods Subang Jaya, office pods Penang, office pods Johor Bahru`,
@@ -1357,7 +1357,7 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/locations/penang': {
-    title: 'Office Pods Penang | Supply, Delivery & Installation | Ace Office Pods',
+    title: 'Office Pods Penang | Delivery & Installation',
     description: 'Office pods in Penang — acoustic phone booths and meeting pods for George Town and Bayan Lepas workplaces. Compare models, pricing, delivery lead times, and installation support.',
     keywords: `${SEO_KEYWORDS_COMMON}, office pods Penang, office pod George Town, soundproof pod Penang, meeting pod Penang`,
     h1: 'Office pods in Penang',
@@ -1432,7 +1432,7 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/locations/johor-bahru': {
-    title: 'Office Pods Johor Bahru (JB) | Supply, Delivery & Installation | Ace Office Pods',
+    title: 'Office Pods Johor Bahru | Delivery & Installation',
     description: 'Office pods in Johor Bahru — acoustic phone booths and meeting pods for JB workplaces. Compare models, pricing, delivery lead times, and installation support.',
     keywords: `${SEO_KEYWORDS_COMMON}, office pods Johor Bahru, office pod JB, soundproof pod Johor, meeting pod Johor Bahru`,
     h1: 'Office pods in Johor Bahru',
@@ -1696,17 +1696,22 @@ const injectSeoHtml = (html, route, meta) => {
   // Inject into #root so static HTML parsers (AEO tools, ChatGPT Browse, Perplexity) see real content.
   // React's createRoot().render() replaces this when JS loads — no hydration config needed.
   output = output.replace('<div id="root"></div>', `<div id="root">${prerenderBody}</div>`);
-  // Keep noscript as fallback for JS-disabled browsers.
-  output = output.replace('</body>', `    <noscript>${prerenderBody}</noscript>\n  </body>`);
+  // Avoid duplicating the complete crawlable fallback in both #root and noscript.
+  output = output.replace(
+    '</body>',
+    '    <noscript><p>JavaScript is required to use the interactive product configurator.</p></noscript>\n  </body>'
+  );
 
   return output;
 };
 
 const buildProductPrerenderMeta = (route, productMeta) => {
 const slug = route.split('/').pop();
+const sharedMeta = getProductMeta(productMeta);
 return ({
-  title: `${productMeta.name} Office Pod Pricing, Specs and Colors | Ace Office Pods`,
-  description: `${productMeta.name}: ${productMeta.shortDesc}. Starting from ${formatRM(productMeta.startingPrice)} in Malaysia from Ace Office Pods by Ace Workplace Solutions. View office pod and office booth colors, add-ons, installation, and delivery details.`,
+  title: sharedMeta.title,
+  description: sharedMeta.description,
+  ogImage: `${SEO_BASE_URL}${getProductPublicImage(slug)}`,
   keywords: `${SEO_KEYWORDS_COMMON}, ${productMeta.name}, ${route.split('/').pop().replaceAll('-', ' ')}`,
   h1: productMeta.name,
   body: [
@@ -1728,7 +1733,7 @@ return ({
         name: SEO_BRAND_PRIMARY
       },
       description: productMeta.shortDesc,
-      image: [DEFAULT_OG_IMAGE],
+      image: [`${SEO_BASE_URL}${getProductPublicImage(slug)}`],
       url: canonical,
       ...(productMeta.schemaProperties?.length
         ? {
@@ -1843,9 +1848,11 @@ const extractArticleFaqs = (content) => {
 
 const buildArticlePrerenderMeta = (route, articleMeta) => {
   const faqItems = extractArticleFaqs(articleMeta.content);
+  const articleImage = `${SEO_BASE_URL}/articles/images/${articleMeta.slug}.webp`;
   return {
   title: articleMeta.seoTitle || `${articleMeta.title} | Ace Office Pods`,
   description: articleMeta.seoDescription || articleMeta.excerpt,
+  ogImage: articleImage,
   keywords: `${SEO_KEYWORDS_COMMON}, office pod article`,
   h1: articleMeta.title,
   body: articleMeta.content,
@@ -1856,7 +1863,7 @@ const buildArticlePrerenderMeta = (route, articleMeta) => {
       '@type': 'Article',
       headline: articleMeta.title,
       description: articleMeta.seoDescription || articleMeta.excerpt,
-      image: articleMeta.ogImage || DEFAULT_OG_IMAGE,
+      image: articleImage,
       datePublished: articleMeta.date,
       dateModified: articleMeta.date,
       mainEntityOfPage: canonical,

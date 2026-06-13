@@ -72,7 +72,7 @@ export default function SiteFooter({ className = 'mt-0' }) {
         <div className="space-y-6 md:hidden">
           <div className="space-y-4">
             <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
-              <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto" />
+              <img src={acePodsLogo} alt="Ace Pods" width="32" height="32" className="h-8 w-auto" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
             <address
@@ -152,7 +152,7 @@ export default function SiteFooter({ className = 'mt-0' }) {
         <div className="hidden grid-cols-5 gap-8 md:grid">
           <div className="space-y-6">
             <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
-              <img src={acePodsLogo} alt="Ace Pods" className="h-8 w-auto md:h-14" />
+              <img src={acePodsLogo} alt="Ace Pods" width="56" height="56" className="h-8 w-auto md:h-14" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
             <address

@@ -27,8 +27,13 @@ import './index.css';
 
 const isDemoPath = window.location.pathname === '/demo' || window.location.pathname.startsWith('/demo/');
 const routerBasename = isDemoPath ? '/demo' : '/';
+const rootElement = document.getElementById('root');
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// The prerendered fallback is for crawlers and first response content.
+// Clear it before mounting so React does not retain a hidden duplicate subtree.
+rootElement.replaceChildren();
+
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <BrowserRouter basename={routerBasename}>
       <RouteTracking />

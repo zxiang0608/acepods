@@ -111,8 +111,8 @@ export default function PortfolioPage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pod Portfolio Malaysia | Past Installations and Project Work | Ace Office Pods"
-        description="Explore Ace Office Pods portfolio projects across Malaysia. See past office pod and office booth installations for calls, focused work, and meetings with practical commercial outcomes."
+        title="Office Pod Installations Malaysia | Ace Portfolio"
+        description="Explore completed Ace Office Pods projects across Malaysia, including office booth and meeting pod installations for corporate and education workplaces."
         canonical={buildCanonical('/portfolio')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod portfolio, office booth installation`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs)]}

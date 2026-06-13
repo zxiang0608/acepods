@@ -52,7 +52,7 @@ export default function SubpageHeader() {
       <header ref={navRef} className="relative z-40 border-b border-[#e2e0d7] bg-white">
         <div className="mx-auto flex h-[72px] w-full max-w-[1200px] items-center justify-between px-5 md:h-[80px] md:px-8">
           <Link to="/" className="inline-flex items-center">
-            <img src={acePodsLogo} alt="AcePods" className="h-8 w-auto md:h-14" />
+            <img src={acePodsLogo} alt="AcePods" width="56" height="56" className="h-8 w-auto md:h-14" />
           </Link>
 
           <nav aria-label="Commercial navigation" className="hidden items-center gap-6 text-[14px] font-semibold text-[#2f353b] lg:flex">
@@ -109,7 +109,7 @@ export default function SubpageHeader() {
         className={`fixed inset-0 z-[100] flex h-[100dvh] flex-col transform overflow-hidden bg-white transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-between border-b border-[#ececec] p-6">
-          <img src={acePodsLogo} alt="AcePods" className="h-8 w-auto" />
+          <img src={acePodsLogo} alt="AcePods" width="32" height="32" className="h-8 w-auto" />
           <button type="button" onClick={() => setIsMenuOpen(false)} className="p-1" aria-label="Close menu">
             <X size={30} />
           </button>
@@ -148,7 +148,15 @@ export default function SubpageHeader() {
                           className="block text-center"
                         >
                           <div className="mx-auto h-[200px] w-full max-w-[200px]">
-                            <img src={menuItem.image} alt={menuItem.title} className={`h-full w-full object-contain ${menuItem.imageClassName || ''}`} />
+                            <img
+                              src={menuItem.image}
+                              alt={menuItem.title}
+                              width="320"
+                              height="320"
+                              className={`h-full w-full object-contain ${menuItem.imageClassName || ''}`}
+                              loading="lazy"
+                              decoding="async"
+                            />
                           </div>
                           <h3 className="mt-3 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{menuItem.title}</h3>
                           <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#666666]">{menuItem.description}</p>

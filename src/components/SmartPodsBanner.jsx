@@ -9,7 +9,15 @@ export default function SmartPodsBanner({ items, onItemClick, maxWidthClass = 'm
           {items.map((item) => (
             <Link key={item.title} to={item.to} onClick={onItemClick} className="flex flex-col items-center text-center">
               <div className="flex h-[180px] w-full items-center justify-center">
-                <img src={item.image} alt={item.title} className={`h-full w-full object-contain ${item.imageClassName || ''}`} />
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  width="320"
+                  height="320"
+                  className={`h-full w-full object-contain ${item.imageClassName || ''}`}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <h3 className="mt-5 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{item.title}</h3>
               <p className="mt-3 text-[14px] leading-[1.5] text-[#666666]">{item.description}</p>

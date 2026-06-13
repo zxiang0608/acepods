@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { SEO_BASE_URL } from '../seo/constants';
 
-const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.png`;
+const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.jpg`;
 
 const upsertMetaTag = (attribute, key, content) => {
   if (!content) return;

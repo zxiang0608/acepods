@@ -97,8 +97,8 @@ export default function OfficePodsNearMePage() {
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pods Near Me in Malaysia | Klang Valley Showroom | Ace Office Pods"
-        description="Looking for office pods near you? Ace Office Pods offers showroom viewing by appointment in Klang, with office pod pricing, delivery, and installation support across Klang Valley and West Malaysia."
+        title="Office Pods Near Me | Klang Valley Showroom"
+        description="View office pods by appointment in Klang, with pricing, delivery, and installation support across Klang Valley and West Malaysia."
         canonical={buildCanonical('/office-pods-near-me')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pods near me, office pods near me Malaysia, office pods Klang Valley, office pods Selangor, office pods Kuala Lumpur`}
         schemas={[

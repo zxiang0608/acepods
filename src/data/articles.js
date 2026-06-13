@@ -105,7 +105,7 @@ export const ARTICLES = [
       'A B2B guide for project buyers comparing office pods for corporate offices, procurement projects, interior design proposals, contractor packages, dealer supply, bulk orders, and export enquiries.',
     category: 'B2B Guide',
     date: '2026-05-10',
-    seoTitle: 'Office Pods for Corporate Buyers, Contractors, IDs and Dealers Malaysia',
+    seoTitle: 'Office Pods for Corporate Buyers & Contractors Malaysia',
     seoDescription:
       'A practical office pod buying guide for corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, project partners, and export buyers.',
     content: [
@@ -516,9 +516,9 @@ export const ARTICLES = [
       'Office pod prices in Malaysia start from RM12,500 for a one-person booth to RM27,800 for a six-person hub. This guide covers all six Ace models, what affects final project cost, and how delivery and installation are priced.',
     category: 'Buying Guide',
     date: '2026-06-12',
-    seoTitle: 'Office Pod Prices Malaysia 2026 | Full Model Cost Guide | Ace Office Pods',
+    seoTitle: 'Office Pod Prices Malaysia 2026 | Model Cost Guide',
     seoDescription:
-      'Office pod prices in Malaysia from RM12,500 to RM27,800. Full breakdown of all six Ace models, what affects cost, delivery and installation considerations, and how to get an accurate quotation.',
+      'Office pod prices in Malaysia range from RM12,500 to RM27,800. Compare all six Ace models, cost factors, delivery, and installation considerations.',
     content: [
       'One of the first questions buyers ask when researching office pods in Malaysia is: how much does it cost? The short answer is that Ace office pods start from RM12,500 for a compact one-person booth and go up to RM27,800 for a six-person hub pod. Final project cost depends on the model, quantity, delivery location, installation conditions, and any selected options.',
       'This guide covers the full price range for all six Ace Office Pod models, explains what is included in the base price, and outlines the variables that affect the final quotation.',
@@ -602,7 +602,7 @@ export const ARTICLES = [
       'Choosing the right office pod comes down to four decisions: use case, capacity, available floor space, and delivery access. This guide walks through each step for Malaysian office buyers.',
     category: 'Buying Guide',
     date: '2026-06-12',
-    seoTitle: 'How to Choose an Office Pod Malaysia | Buyer\'s Guide 2026 | Ace Office Pods',
+    seoTitle: 'How to Choose an Office Pod in Malaysia | 2026 Guide',
     seoDescription:
       'Step-by-step guide to choosing an office pod in Malaysia. Match the right model to your use case, capacity needs, floor space, and budget — with a pre-order checklist.',
     content: [
@@ -700,9 +700,9 @@ export const ARTICLES = [
       'Building a small private room in a Malaysian office costs RM12,000 to RM24,000 before reinstatement. An office pod starts from RM12,500 and avoids renovation disruption, building approval, and end-of-lease demolition costs.',
     category: 'Workplace Guide',
     date: '2026-06-12',
-    seoTitle: 'Office Pod vs Building a Room Malaysia | Cost Comparison 2026 | Ace Office Pods',
+    seoTitle: 'Office Pod vs Built Room Malaysia | 2026 Cost Comparison',
     seoDescription:
-      'Should you build a room or buy an office pod? In Malaysia, a 3×3m room costs RM12,000–24,000 plus reinstatement. Compare total cost of ownership against an office pod for your office project.',
+      'Compare an office pod with building a room in Malaysia, including construction, reinstatement, disruption, relocation, and total ownership costs.',
     content: [
       'When a Malaysian company decides it needs more private space in an open-plan office, two options are usually on the table: build a room using partition walls, or buy a standalone office pod. Both solve the privacy problem. But the total cost and practical implications are different in ways that are not always obvious from the base price alone.',
       'This article provides a real-number comparison using 2026 renovation cost data for Malaysia alongside Ace Office Pod pricing.',
