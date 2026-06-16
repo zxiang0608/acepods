@@ -7,13 +7,14 @@
     "dev": "vite",
     "images": "node scripts/prepare-seo-images.mjs",
     "build:spa": "vite build",
+    "geo-discovery": "node scripts/generate-geo-discovery.mjs",
     "merchant-feed": "node scripts/generate-merchant-feed.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "prerender": "node scripts/prerender.mjs",
     "indexnow": "node scripts/indexnow.mjs",
     "postdeploy:indexnow": "INDEXNOW_STRICT=1 node scripts/indexnow.mjs",
     "seo:validate": "node scripts/validate-seo-output.mjs",
-    "build": "npm run images && npm run merchant-feed && npm run sitemap && npm run build:spa && npm run prerender && npm run seo:validate",
+    "build": "npm run images && npm run geo-discovery && npm run merchant-feed && npm run sitemap && npm run build:spa && npm run prerender && npm run seo:validate",
     "preview": "vite preview"
   },
   "dependencies": {

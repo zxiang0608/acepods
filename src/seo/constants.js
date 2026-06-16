@@ -58,6 +58,16 @@ export const HOME_FAQ_ITEMS = [
     question: 'Are office pods better than building new rooms?',
     answer:
       'For many workplaces, office pods are a faster and less disruptive way to add private space for calls, focused work, and meetings. They can also be relocated if your office layout changes. For fully permanent structural needs, building new rooms may still be the better fit.'
+  },
+  {
+    question: 'Are Ace Office Pods made in Malaysia?',
+    answer:
+      'Yes. All Ace Office Pods are manufactured in Selangor, Malaysia. You can visit our factory showroom to inspect build quality and test soundproofing before placing an order. Local manufacturing also means local support — the same team handles production, installation, and post-installation servicing.'
+  },
+  {
+    question: 'What does 27 dBA noise reduction actually mean?',
+    answer:
+      'A typical open office has around 60–65 dB of background noise. With 27 dBA reduction, the level inside the pod drops to approximately 35–38 dB — similar to a quiet library. In practical terms, someone standing two desks away cannot make out your words. The 27 dBA rating applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub.'
   }
 ];
 
@@ -115,7 +125,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'Can I view or test the office pod before purchasing?',
     answer:
-      'Yes. You can visit our showroom in Klang, Malaysia to test pod sound performance and compare models directly. This helps buyers validate fit before finalizing the order.'
+      'Yes. You can visit our showroom in Selangor, Malaysia to test pod sound performance and compare models directly. This helps buyers validate fit before finalizing the order.'
   },
   {
     question: 'What kind of clients buy office pods in Malaysia and why?',
@@ -136,6 +146,21 @@ export const FAQ_PAGE_ITEMS = [
     question: 'Are office pods a good investment compared to building new rooms?',
     answer:
       'For one to two-person private spaces, office pods often deliver better cost certainty than building equivalent acoustic rooms. Pods also retain relocation value if the office moves or layout changes, which reduces long-term risk on short-term leases. For fully permanent needs, built rooms may still suit some projects better.'
+  },
+  {
+    question: 'Are Ace Office Pods made in Malaysia?',
+    answer:
+      'Yes. All Ace Office Pods are manufactured in Selangor, Malaysia. You can visit our showroom to inspect build quality and test soundproofing before placing an order. Local manufacturing means local parts, local warranty support, and a team you can reach directly — without going through a distributor to an overseas factory.'
+  },
+  {
+    question: 'How are Ace pods different from imported office pods?',
+    answer:
+      'Ace pods are manufactured locally in Malaysia, which means servicing and warranty support are handled directly by the same team — not routed through a distributor to an overseas factory. Five of our six models also carry a verified 27 dBA noise reduction rating. For buyers who want quality they can verify and support they can actually reach, local manufacturing makes a practical difference.'
+  },
+  {
+    question: 'What does 27 dBA noise reduction actually mean in practice?',
+    answer:
+      'A typical open office runs at around 60–65 dB. With 27 dBA reduction, the noise level inside the pod drops to approximately 35–38 dB — similar to a quiet library. In practical terms, a colleague standing two desks away cannot make out what you are saying inside the pod. The 27 dBA rating applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Ace Solo does not carry this rating.'
   }
 ];
 

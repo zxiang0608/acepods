@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Ace Office Pods",
+  "legalName": "ACE WORKPLACE SOLUTIONS",
+  "url": "https://aceofficepods.com",
+  "description": "Malaysian supplier and local manufacturer of acoustic office pods, phone booths, focus pods, and meeting pods for calls, focused work, interviews, and small meetings.",
+  "updated": "2026-06-15",
+  "facts": {
+    "podsSold": "180+ since 2023",
+    "manufacturing": "Locally made in Malaysia",
+    "acousticPerformance": "Approximately 27 dBA noise reduction on five models",
+    "startingPrice": "RM12,500",
+    "leadTime": "Approximately 3-6 working weeks after 50% deposit",
+    "serviceArea": "Klang Valley and West Malaysia",
+    "showroom": "Klang, Selangor, Malaysia"
+  },
+  "products": [
+    {
+      "name": "Ace Solo",
+      "url": "https://aceofficepods.com/pods/ace-solo",
+      "description": "Compact pod for calls and quick tasks",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 12500
+      }
+    },
+    {
+      "name": "Ace Plus",
+      "url": "https://aceofficepods.com/pods/ace-plus",
+      "description": "Built for privacy, focus, and sound control",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 14500
+      }
+    },
+    {
+      "name": "Ace Flex",
+      "url": "https://aceofficepods.com/pods/ace-flex",
+      "description": "Spacious pod for comfort and focus",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 19900
+      }
+    },
+    {
+      "name": "Ace Flex Duo",
+      "url": "https://aceofficepods.com/pods/ace-flex-duo",
+      "description": "Two-person pod for focused work",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 23900
+      }
+    },
+    {
+      "name": "Ace Meet",
+      "url": "https://aceofficepods.com/pods/ace-meet",
+      "description": "Meeting pod for small teams",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 22200
+      }
+    },
+    {
+      "name": "Ace Hub",
+      "url": "https://aceofficepods.com/pods/ace-hub",
+      "description": "Meeting pod for larger teams",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 27800
+      }
+    }
+  ],
+  "resources": {
+    "products": "https://aceofficepods.com/office-pods",
+    "pricing": "https://aceofficepods.com/pricing",
+    "comparison": "https://aceofficepods.com/compare-office-pods",
+    "installation": "https://aceofficepods.com/installation-support",
+    "articles": "https://aceofficepods.com/articles",
+    "llms": "https://aceofficepods.com/llms.txt",
+    "fullReference": "https://aceofficepods.com/llms-full.txt",
+    "sitemap": "https://aceofficepods.com/sitemap.xml",
+    "feed": "https://aceofficepods.com/feed.xml"
+  },
+  "contact": {
+    "phone": "+601154352700",
+    "email": "sales@aceofficepods.com",
+    "url": "https://aceofficepods.com/contact"
+  }
+}

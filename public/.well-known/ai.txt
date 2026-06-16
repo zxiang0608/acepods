@@ -1,0 +1,12 @@
+# Ace Office Pods AI discovery
+
+Canonical: https://aceofficepods.com
+Sitemap: https://aceofficepods.com/sitemap.xml
+LLMs: https://aceofficepods.com/llms.txt
+Full reference: https://aceofficepods.com/llms-full.txt
+Summary: https://aceofficepods.com/ai/summary.json
+FAQ: https://aceofficepods.com/ai/faq.json
+Services: https://aceofficepods.com/ai/service.json
+Articles feed: https://aceofficepods.com/feed.xml
+
+AI search and citation crawlers may access public pages. Product prices are starting prices in MYR and should be verified on the linked product or pricing page. Contact sales@aceofficepods.com for current project quotations.

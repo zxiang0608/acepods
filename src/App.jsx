@@ -50,6 +50,7 @@ import SeoMeta from './components/SeoMeta';
 import InstagramFeed from './components/InstagramFeed';
 import SiteFooter from './components/SiteFooter';
 import SmartPodsBanner from './components/SmartPodsBanner';
+import PodStrip from './components/PodStrip';
 import { smartPodsMenuItems } from './components/smartPodsMenuData';
 import { products } from './data/products';
 import { pushDataLayerEvent } from './lib/tracking';
@@ -118,6 +119,15 @@ const seoRenovationPoints = [
   }
 ];
 
+const checklistItems = [
+  "Employees can't take calls without background noise bleeding in",
+  "Sensitive conversations — HR, client, management — risk being overheard",
+  "Deep-focus work is nearly impossible during busy open-floor hours",
+  "Meeting rooms are always occupied when teams need a quick discussion",
+  "You need more private space but can't commit to months of renovation",
+  "Your floor plan needs to stay flexible as your headcount changes",
+];
+
 const officeSenseItems = [
   {
     icon: VolumeX,
@@ -177,23 +187,23 @@ const reassuranceItems = [
 const seoReassuranceItems = [
   {
     icon: Hammer,
-    label: 'Local installation and support',
-    desc: 'Support stays close from planning through post-installation use.'
+    label: 'Made in Malaysia',
+    desc: 'Built in Selangor, Malaysia. Factory and showroom available for visit before purchase.'
   },
   {
-    icon: Route,
-    label: 'From quote to installation, made simple',
-    desc: 'Buyers get a clearer path from quote to setup.'
+    icon: VolumeX,
+    label: '27 dBA. Tested.',
+    desc: 'Five of our six models carry a verified 27 dBA noise reduction rating — a measured figure, not a marketing claim.'
   },
   {
     icon: CheckCircle2,
-    label: 'Comfortable for daily use',
-    desc: 'Designed for practical everyday office use.'
+    label: '180+ pods installed',
+    desc: 'Delivered and installed across Malaysia since 2023, for MNCs, SMEs, and corporate teams.'
   },
   {
-    icon: Maximize2,
-    label: 'Designed to fit modern workplaces',
-    desc: 'Pods fit circulation needs, team workflows, and existing layouts.'
+    icon: Route,
+    label: 'Same team. Start to finish.',
+    desc: 'The team that builds your pod handles installation and post-installation support. One contact from order to after-sales.'
   }
 ];
 
@@ -233,8 +243,8 @@ const seoCompareItems = [
     imageAlt: 'Office pod installation and site setup'
   },
   {
-    title: 'Delivery is not the end of the buying experience',
-    desc: 'When something needs adjusting or servicing, clear support makes the pod easier to manage.',
+    title: 'Local support that is actually local',
+    desc: 'When something needs attention after installation, you reach the team in Selangor that built the pod — no distributor chain, no overseas wait.',
     image: deliveryPodsImage,
     imageAlt: 'Office pod support and post-delivery use',
     imageClassName: 'object-[center_70%]'
@@ -361,8 +371,8 @@ export default function App() {
   const heroTrustLine = 'A practical alternative to building new rooms';
   const productIntroHeading = 'Choose the right office pod\nfor calls, focus, or meetings';
   const privateSpaceHeading = 'Add private space without building new rooms';
-  const compareSupportingLine = 'Compare more confidently when pricing, installation, and support are clear upfront.';
-  const trustSectionHeading = 'Trusted by local and international companies';
+  const compareSupportingLine = 'Locally made means locally accountable — pricing, installation, and after-sales support handled by the same team in Selangor.';
+  const trustSectionHeading = 'Trusted by MNCs and companies across Malaysia';
   const whyHeading = 'Choose Ace Pods';
   const homepageSchemas = [
     serviceOrganizationSchema,
@@ -788,6 +798,149 @@ export default function App() {
           </div>
         </section>
 
+        {/* ── TRUST BAR ── */}
+        <section className="bg-[#0b1e30] px-5 py-3.5 md:px-12">
+          <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
+            {activeReassuranceItems.map((item) => (
+              <div key={item.label} className="flex items-center gap-2">
+                <item.icon size={14} strokeWidth={2} className="shrink-0 text-[#4db891]" />
+                <span className="text-[12px] font-semibold text-white/90 md:text-[13px]">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── POD STRIP ── */}
+        <PodStrip />
+
+        {/* ── LOGO MARQUEE ── moved up for early social proof */}
+        <section className="overflow-hidden bg-white py-16 md:py-24">
+          <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#111111] md:mb-12 md:text-[32px]">
+            {trustSectionHeading}
+          </h2>
+          <div className="logo-marquee px-5 pb-6">
+            <div className="logo-marquee-track">
+              {[...trustedLogos, ...trustedLogos].map((logo, idx) => (
+                <div
+                  key={`${logo.name}-${idx}`}
+                  className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#FAFAFA] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
+                >
+                  <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
+                    {logo.image === wsConstructionLogo ? (
+                      <picture>
+                        <source srcSet={wsConstructionLogoWebp} type="image/webp" />
+                        <img
+                          src={logo.image}
+                          alt={logo.name}
+                          width="210"
+                          height="64"
+                          className={`h-full w-full object-contain ${logo.fitClass || ''}`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </picture>
+                    ) : (
+                      <img
+                        src={logo.image}
+                        alt={logo.name}
+                        width="210"
+                        height="64"
+                        className={`h-full w-full object-contain ${logo.fitClass || ''}`}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PODS VS RENOVATION ── problem framing before product grid */}
+        <section className="hidden border-b border-[#f0f0f0] bg-white px-5 pt-8 pb-16 md:block md:px-12 md:pt-16 md:pb-32">
+          <div className="mx-auto max-w-[1440px]">
+            <div className="mb-12 max-w-none text-center md:mb-24">
+              <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#666666] md:mb-6 md:text-[11px]">
+                Pods instead of renovation
+              </span>
+              <h2 className="mb-6 text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px] xl:whitespace-nowrap">
+                {privateSpaceHeading}
+              </h2>
+              <p className="mx-auto max-w-[760px] text-[16px] leading-[1.6] text-[#555555] md:text-[20px] xl:max-w-none xl:whitespace-nowrap">
+                A more practical way to create quiet, usable office space for calls, focus, and meetings.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-10 lg:gap-14">
+              {activeRenovationPoints.map((item) => (
+                <article key={item.num} className="flex flex-col">
+                  <div className="aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#eceae3]">
+                    <picture>
+                      <source
+                        srcSet={
+                          item.image === officeOneImage
+                            ? officeOneImageAvif
+                            : item.image === officeTwoImage
+                              ? officeTwoImageAvif
+                              : officeThreeImageAvif
+                        }
+                        type="image/avif"
+                      />
+                      <img
+                        src={item.image}
+                        alt={item.imageAlt}
+                        width="1600"
+                        height="1000"
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
+                  </div>
+                  <div className="mt-6 border-t border-[#717171] pt-6 md:mt-7 md:pt-7">
+                    <span className="mb-3 block text-[12px] font-extrabold tracking-widest text-[#00855a] md:mb-5 md:text-[13px]">{item.num}</span>
+                    <h3 className="mb-3 text-[20px] font-bold leading-[1.25] tracking-tight text-[#111111] md:mb-4 md:text-[26px]">{item.title}</h3>
+                    <p className="text-[15px] leading-[1.65] text-[#555555] md:text-[16px]">{item.desc}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── WHY PODS MAKE SENSE ── educate before product grid */}
+        <section className="bg-[#F6F5F0] px-5 pt-12 pb-16 md:px-12 md:py-24">
+          <div className="mx-auto max-w-[1240px]">
+            <div className="mx-auto max-w-[760px] text-center">
+              <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#62727b] md:text-[12px]">DOES THIS SOUND FAMILIAR?</span>
+              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">
+                Signs your office needs a pod
+              </h2>
+              <p className="mx-auto mt-5 text-[15px] leading-[1.6] text-[#62727b] md:text-[16px]">
+                Hover each card to see how a pod fixes it.
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {activeOfficeSenseItems.map((item) => (
+                <article key={item.title} className="group cursor-default rounded-[8px] border border-[#dddddd] bg-[#f8f8f8] p-6 transition-all duration-200 hover:border-[#c0c0c0] hover:bg-white hover:shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <item.icon size={22} strokeWidth={2} className="shrink-0 text-[#00855a]" />
+                    <h3 className="text-[17px] font-bold leading-snug tracking-tight text-[#111111] md:text-[18px]">{item.title}</h3>
+                  </div>
+                  <div className="grid grid-rows-[0fr] transition-all duration-300 group-hover:grid-rows-[1fr]">
+                    <div className="overflow-hidden">
+                      <p className="mt-3 text-[14px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRODUCT GRID ── buyer is ready after education */}
         <section className="relative overflow-hidden bg-white px-5 pt-8 pb-16 md:px-12 md:pt-12 md:pb-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-10 flex flex-col items-center justify-center gap-4 text-center md:mb-12">
@@ -796,7 +949,7 @@ export default function App() {
                   {productIntroHeading}
                 </h2>
                 <p id="home-answer" className="mx-auto mt-4 max-w-[760px] text-center text-[16px] leading-[1.6] text-[#555555] md:text-[20px]">
-                  Ace Office Pods (Ace Workplace Solutions), supplier of office pods and office booths for calls, focus, and meetings. 100% locally made in Malaysia.
+                  Ace Office Pods — 100% made in Malaysia, factory and showroom in Selangor. Five of our six models achieve 27 dBA noise reduction, tested and verified. The same local team handles production, installation, and post-installation support. 180+ pods installed across Malaysia since 2023.
                 </p>
               </div>
             </div>
@@ -866,101 +1019,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="bg-white px-5 pb-12 md:px-12 md:pb-6">
-          <div className="mx-auto max-w-[1440px]">
-            <div className="mx-auto w-full max-w-[760px] rounded-[8px] border border-[#d7dbe0] bg-white px-6 py-6 text-center md:max-w-[680px] md:px-10 md:py-8">
-              <span className="block text-[11px] font-bold uppercase tracking-[0.2em] text-[#6a727a] md:text-[12px]">
-                Since 2023
-              </span>
-              <p className="mt-3 text-[46px] font-bold leading-none tracking-tight text-[#111111] md:text-[58px]">180+</p>
-              <p className="mt-2 text-[18px] font-semibold tracking-tight text-[#1f2932] md:text-[20px]">pods sold</p>
-              <p className="mx-auto mt-3 max-w-[560px] text-[14px] leading-[1.6] text-[#55606c] md:text-[16px]">
-                Across office call, focus, and meeting pod projects in Malaysia.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="hidden border-b border-[#f0f0f0] bg-white px-5 pt-8 pb-16 md:block md:px-12 md:pt-16 md:pb-32">
-          <div className="mx-auto max-w-[1440px]">
-            <div className="mb-12 max-w-none text-center md:mb-24">
-              <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#666666] md:mb-6 md:text-[11px]">
-                Pods instead of renovation
-              </span>
-              <h2 className="mb-6 text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px] xl:whitespace-nowrap">
-                {privateSpaceHeading}
-              </h2>
-              <p className="mx-auto max-w-[760px] text-[16px] leading-[1.6] text-[#555555] md:text-[20px] xl:max-w-none xl:whitespace-nowrap">
-                A more practical way to create quiet, usable office space for calls, focus, and meetings.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-10 lg:gap-14">
-              {activeRenovationPoints.map((item) => (
-                <article key={item.num} className="flex flex-col">
-                  <div className="aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#eceae3]">
-                    <picture>
-                      <source
-                        srcSet={
-                          item.image === officeOneImage
-                            ? officeOneImageAvif
-                            : item.image === officeTwoImage
-                              ? officeTwoImageAvif
-                              : officeThreeImageAvif
-                        }
-                        type="image/avif"
-                      />
-                      <img
-                        src={item.image}
-                        alt={item.imageAlt}
-                        width="1600"
-                        height="1000"
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </picture>
-                  </div>
-                  <div className="mt-6 border-t border-[#717171] pt-6 md:mt-7 md:pt-7">
-                    <span className="mb-3 block text-[12px] font-extrabold tracking-widest text-[#00855a] md:mb-5 md:text-[13px]">{item.num}</span>
-                    <h3 className="mb-3 text-[20px] font-bold leading-[1.25] tracking-tight text-[#111111] md:mb-4 md:text-[26px]">{item.title}</h3>
-                    <p className="text-[15px] leading-[1.65] text-[#555555] md:text-[16px]">{item.desc}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-[#F6F5F0] px-5 pt-12 pb-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-[1240px]">
-            <div className="mx-auto max-w-[900px] text-center">
-              <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#62727b] md:text-[12px]">WHY OFFICE PODS MAKE SENSE</span>
-              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">
-                <span className="block md:inline">Add Quiet, Private Space</span>{' '}
-                <span className="block md:inline">Without Renovating Your Office</span>
-              </h2>
-              <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-[1.6] text-[#4f5660] md:text-[20px]">
-                Ace Pods help teams take calls, focus, meet, and recharge inside busy open offices - without permanent construction or major disruption.
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {activeOfficeSenseItems.map((item) => (
-                <article key={item.title} className="rounded-[8px] border border-[#dddddd] bg-[#f8f8f8] p-6">
-                  <div className="flex items-start gap-4">
-                    <item.icon size={36} strokeWidth={1.8} className="mt-0.5 shrink-0 text-[#2a3138]" />
-                    <div className="text-left">
-                      <h3 className="text-[24px] font-bold leading-[1.12] tracking-tight text-[#111111] md:text-[26px]">{item.title}</h3>
-                      <p className="mt-2 text-[16px] leading-[1.6] text-[#4f5660] md:text-[17px]">{item.desc}</p>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        {/* ── WHY CHOOSE ACE PODS ── differentiate after product consideration */}
         <section className="bg-[#F6F5F0] px-5 py-16 md:px-12 md:py-32">
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[960px] text-center">
@@ -1000,49 +1059,6 @@ export default function App() {
                     <p className="mt-3 text-[17px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
                   </div>
                 </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="overflow-hidden bg-white py-16 md:py-24">
-          <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#111111] md:mb-12 md:text-[32px]">
-            {trustSectionHeading}
-          </h2>
-          <div className="logo-marquee px-5 pb-6">
-            <div className="logo-marquee-track">
-              {[...trustedLogos, ...trustedLogos].map((logo, idx) => (
-                <div
-                  key={`${logo.name}-${idx}`}
-                  className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#FAFAFA] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
-                >
-                  <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
-                    {logo.image === wsConstructionLogo ? (
-                      <picture>
-                        <source srcSet={wsConstructionLogoWebp} type="image/webp" />
-                        <img
-                          src={logo.image}
-                          alt={logo.name}
-                          width="210"
-                          height="64"
-                          className={`h-full w-full object-contain ${logo.fitClass || ''}`}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </picture>
-                    ) : (
-                      <img
-                        src={logo.image}
-                        alt={logo.name}
-                        width="210"
-                        height="64"
-                        className={`h-full w-full object-contain ${logo.fitClass || ''}`}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
-                  </div>
-                </div>
               ))}
             </div>
           </div>

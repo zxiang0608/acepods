@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { ARTICLES } from '../data/articles';
-import { getArticleImageBySlug } from '../lib/articleImages';
+import { getArticleImageAltBySlug, getArticleImageBySlug } from '../lib/articleImages';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 
@@ -42,7 +42,7 @@ export default function ArticlesPage() {
           <article key={article.slug} className="overflow-hidden rounded-[10px] border border-[#ddd8cf] bg-white">
             <img
               src={getArticleImageBySlug(article.slug)}
-              alt={article.title}
+              alt={getArticleImageAltBySlug(article.slug, article.title)}
               width="1200"
               height="675"
               className="h-[220px] w-full object-cover"

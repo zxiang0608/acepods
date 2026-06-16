@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0",
+  "provider": {
+    "name": "Ace Office Pods",
+    "legalName": "ACE WORKPLACE SOLUTIONS",
+    "url": "https://aceofficepods.com"
+  },
+  "updated": "2026-06-15",
+  "services": [
+    {
+      "name": "Office pod supply",
+      "description": "One-person phone booths, focus pods, two-person pods, and meeting pods for up to six people.",
+      "url": "https://aceofficepods.com/office-pods"
+    },
+    {
+      "name": "Office pod delivery and installation",
+      "description": "Site planning, delivery, assembly, handover, and support across Klang Valley and West Malaysia.",
+      "url": "https://aceofficepods.com/installation-support"
+    },
+    {
+      "name": "Showroom consultation",
+      "description": "Product viewing and acoustic testing at the Klang showroom by appointment.",
+      "url": "https://aceofficepods.com/contact"
+    }
+  ],
+  "serviceArea": [
+    "Klang Valley",
+    "West Malaysia",
+    "Malaysia"
+  ],
+  "products": [
+    {
+      "name": "Ace Solo",
+      "url": "https://aceofficepods.com/pods/ace-solo",
+      "description": "Compact pod for calls and quick tasks",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 12500
+      }
+    },
+    {
+      "name": "Ace Plus",
+      "url": "https://aceofficepods.com/pods/ace-plus",
+      "description": "Built for privacy, focus, and sound control",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 14500
+      }
+    },
+    {
+      "name": "Ace Flex",
+      "url": "https://aceofficepods.com/pods/ace-flex",
+      "description": "Spacious pod for comfort and focus",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 19900
+      }
+    },
+    {
+      "name": "Ace Flex Duo",
+      "url": "https://aceofficepods.com/pods/ace-flex-duo",
+      "description": "Two-person pod for focused work",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 23900
+      }
+    },
+    {
+      "name": "Ace Meet",
+      "url": "https://aceofficepods.com/pods/ace-meet",
+      "description": "Meeting pod for small teams",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 22200
+      }
+    },
+    {
+      "name": "Ace Hub",
+      "url": "https://aceofficepods.com/pods/ace-hub",
+      "description": "Meeting pod for larger teams",
+      "startingPrice": {
+        "currency": "MYR",
+        "value": 27800
+      }
+    }
+  ]
+}

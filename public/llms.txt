@@ -39,6 +39,14 @@
 - [Full pricing page](/pricing): starts from RM12,500 for one-person pod
 - [Compare office pods](/compare-office-pods)
 
+## Optional
+
+- [Full product, installation, FAQ, and client reference](/llms-full.txt)
+- [Structured site summary](/ai/summary.json)
+- [Structured FAQ](/ai/faq.json)
+- [Structured services and products](/ai/service.json)
+- [Article RSS feed](/feed.xml)
+
 ## Articles
 
 - [Office Pods and Office Booths: A Modern Workplace Guide](/articles/office-pods-office-booths-modern-workplace)
@@ -50,3 +58,6 @@
 - [Office Pod Prices in Malaysia (2026): Complete Model and Cost Guide](/articles/office-pod-price-guide-malaysia)
 - [How to Choose an Office Pod in Malaysia: A Practical Buyer's Guide](/articles/how-to-choose-office-pod-malaysia)
 - [Office Pod vs Building a Room in Malaysia: Total Cost Comparison](/articles/office-pod-vs-building-room-malaysia)
+- [Are Office Pods Worth the Cost in Malaysia?](/articles/are-office-pods-worth-the-cost-malaysia)
+- [Office Phone Booth vs Office Pod: What Is the Difference?](/articles/office-phone-booth-vs-office-pod)
+- [How Long Do Office Pods Last?](/articles/how-long-do-office-pods-last)
