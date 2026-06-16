@@ -731,7 +731,7 @@ export default function ProductPage() {
   const soloFeatureImageClass = 'h-full w-full object-contain object-center';
   const featureTrackGapClass = isPlusAndAboveFeatures
     ? 'flex w-max items-start gap-5 px-5 md:px-0 md:min-w-full md:gap-8 lg:gap-10'
-    : 'flex w-max items-start gap-1 md:min-w-full md:gap-0';
+    : 'flex w-max items-start gap-0 md:min-w-full';
   const sharedFeatureTitleClass =
     'mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#1f232a] md:mt-1.5 md:text-[18px]';
   const sharedFeatureDescClass = 'mx-auto mt-1.5 max-w-[28ch] text-left text-[14px] leading-[1.45] text-[#4f5660] md:mt-2 md:text-[15px]';
