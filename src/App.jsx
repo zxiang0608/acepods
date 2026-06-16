@@ -275,6 +275,7 @@ export default function App() {
   const [isSmartPodsDesktopOpen, setIsSmartPodsDesktopOpen] = useState(false);
   const [isSmartPodsMobileOpen, setIsSmartPodsMobileOpen] = useState(false);
   const [openHomepageFaq, setOpenHomepageFaq] = useState(0);
+  const [openSenseIdx, setOpenSenseIdx] = useState(null);
   const [activePodIndex, setActivePodIndex] = useState(0);
   const navRef = useRef(null);
   const podTouchStartXRef = useRef(null);
@@ -369,7 +370,7 @@ export default function App() {
   const heroHeadline = 'Office pods for calls, focus, and meetings';
   const heroSupportingText = 'Acoustic office pods and booths for private calls, focused work, and meetings.';
   const heroTrustLine = 'A practical alternative to building new rooms';
-  const productIntroHeading = 'Choose the right office pod\nfor calls, focus, or meetings';
+  const productIntroHeading = 'Find the right pod\nfor calls, focus, or meetings';
   const privateSpaceHeading = 'Add private space without building new rooms';
   const compareSupportingLine = 'Locally made means locally accountable — pricing, installation, and after-sales support handled by the same team in Selangor.';
   const trustSectionHeading = 'Trusted by MNCs and companies across Malaysia';
@@ -671,19 +672,34 @@ export default function App() {
       <div className="pt-[64px] md:pt-[80px]">
         <section className="relative bg-white px-5 md:px-12">
           <div className="mx-auto w-full max-w-[1440px]">
-            <div className="pb-8 pt-6 md:hidden">
-              <div className="rounded-[12px] border border-[#e6e6e6] bg-white p-5">
-                <p className="text-[12px] font-semibold tracking-[0.18em] text-[#f97316]">PRIVATE OFFICE PODS</p>
+            <div className="md:hidden">
+              {/* Full-width hero image */}
+              <div className="overflow-hidden">
+                <picture>
+                  <source srcSet={acePodsHeroAvif} type="image/avif" />
+                  <img
+                    src={acePodsHero}
+                    alt="Acoustic office pods for calls and focused work in an open office"
+                    width="2816"
+                    height="1536"
+                    className="h-[240px] w-full object-cover object-[20%_50%]"
+                    fetchPriority="high"
+                  />
+                </picture>
+              </div>
+
+              {/* Text + CTAs flat on white */}
+              <div className="px-5 pb-8 pt-5">
+                <p className="text-[11px] font-bold tracking-[0.18em] text-[#f97316]">PRIVATE OFFICE PODS</p>
                 <div
                   role="heading"
                   aria-level="1"
-                  className="mt-3 text-[50px] font-bold leading-[0.98] tracking-[-0.03em] text-[#0f2239]"
+                  className="mt-2 text-[38px] font-bold leading-[1.0] tracking-[-0.03em] text-[#0f2239]"
                 >
                   {heroHeadline}
                 </div>
-                <p className="mt-4 text-[17px] font-medium leading-[1.5] text-[#233142]">{heroSupportingText}</p>
 
-                <div className="mt-6 space-y-3">
+                <div className="mt-5 flex gap-3">
                   <Link
                     to="/pricing#all-pod-prices"
                     onClick={() =>
@@ -693,7 +709,7 @@ export default function App() {
                         destination_url: '/pricing#all-pod-prices'
                       })
                     }
-                    className="block w-full rounded-[8px] bg-[#0b2038] px-4 py-3 text-center text-[18px] font-bold text-white"
+                    className="flex-1 rounded-[8px] bg-[#0b2038] px-4 py-3 text-center text-[16px] font-bold text-white"
                   >
                     Get Pricing
                   </Link>
@@ -709,24 +725,10 @@ export default function App() {
                         contact_method: 'whatsapp'
                       })
                     }
-                    className="block w-full rounded-[8px] border border-[#1f2937] px-4 py-3 text-center text-[18px] font-semibold text-[#111827]"
+                    className="flex-1 rounded-[8px] border border-[#1f2937] px-4 py-3 text-center text-[16px] font-semibold text-[#111827]"
                   >
                     Book Viewing
                   </a>
-                </div>
-
-                <div className="mt-5 overflow-hidden rounded-[18px]">
-                  <picture>
-                    <source srcSet={acePodsHeroAvif} type="image/avif" />
-                    <img
-                      src={acePodsHero}
-                      alt="Acoustic office pods for calls and focused work in an open office"
-                      width="2816"
-                      height="1536"
-                      className="h-[360px] w-full object-cover object-[20%_50%]"
-                      fetchPriority="high"
-                    />
-                  </picture>
                 </div>
               </div>
             </div>
@@ -915,14 +917,46 @@ export default function App() {
             <div className="mx-auto max-w-[760px] text-center">
               <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#62727b] md:text-[12px]">DOES THIS SOUND FAMILIAR?</span>
               <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">
-                Signs your office needs a pod
+                Is your office dealing with this?
               </h2>
-              <p className="mx-auto mt-5 text-[15px] leading-[1.6] text-[#62727b] md:text-[16px]">
+              <p className="mx-auto mt-5 hidden text-[15px] leading-[1.6] text-[#62727b] md:block md:text-[16px]">
                 Hover each card to see how a pod fixes it.
               </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {/* Mobile: accordion */}
+            <div className="mt-8 overflow-hidden rounded-[12px] border border-[#e0ddd6] bg-white md:hidden">
+              {activeOfficeSenseItems.map((item, idx) => {
+                const isOpen = openSenseIdx === idx;
+                return (
+                  <div key={item.title} className={idx < activeOfficeSenseItems.length - 1 ? 'border-b border-[#f0ede8]' : ''}>
+                    <button
+                      className="flex w-full items-center gap-3 px-5 py-4 text-left"
+                      onClick={() => setOpenSenseIdx(isOpen ? null : idx)}
+                      aria-expanded={isOpen}
+                    >
+                      <item.icon size={20} strokeWidth={2} className="shrink-0 text-[#00855a]" />
+                      <span className="flex-1 text-[15px] font-bold text-[#111111]">{item.title}</span>
+                      <svg
+                        width="16" height="16" viewBox="0 0 16 16" fill="none"
+                        className={`shrink-0 text-[#62727b] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        aria-hidden="true"
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                    <div className={`grid transition-all duration-200 ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                      <div className="overflow-hidden">
+                        <p className="px-5 pb-4 text-[14px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Desktop: hover cards */}
+            <div className="mt-12 hidden grid-cols-2 gap-3 md:grid lg:grid-cols-3">
               {activeOfficeSenseItems.map((item) => (
                 <article key={item.title} className="group cursor-default rounded-[8px] border border-[#dddddd] bg-[#f8f8f8] p-6 transition-all duration-200 hover:border-[#c0c0c0] hover:bg-white hover:shadow-sm">
                   <div className="flex items-center gap-3">
@@ -948,7 +982,14 @@ export default function App() {
                 <h2 className="whitespace-pre-line text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">
                   {productIntroHeading}
                 </h2>
-                <p id="home-answer" className="mx-auto mt-4 max-w-[760px] text-center text-[16px] leading-[1.6] text-[#555555] md:text-[20px]">
+
+                {/* Mobile: short version */}
+                <p id="home-answer" className="mt-4 text-left text-[14px] leading-[1.6] text-[#555555] md:hidden">
+                  100% made in Malaysia — same team from factory to installation. 27 dBA noise reduction, verified. 180+ pods installed across Malaysia since 2023.
+                </p>
+
+                {/* Desktop: full paragraph */}
+                <p className="mx-auto mt-4 hidden max-w-[760px] text-center text-[16px] leading-[1.6] text-[#555555] md:block md:text-[20px]">
                   Ace Office Pods — 100% made in Malaysia, factory and showroom in Selangor. Five of our six models achieve 27 dBA noise reduction, tested and verified. The same local team handles production, installation, and post-installation support. 180+ pods installed across Malaysia since 2023.
                 </p>
               </div>
