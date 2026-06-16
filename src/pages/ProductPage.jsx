@@ -722,7 +722,7 @@ export default function ProductPage() {
   const mainProductAlt = `${product.name} acoustic office pod`;
   const getFeatureAlt = (featureItem) =>
     featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
-  const sharedFeatureCardClass = 'mx-auto flex w-full max-w-[320px] flex-col text-center md:mx-0 md:w-[320px] md:max-w-none md:shrink-0';
+  const sharedFeatureCardClass = 'flex w-[260px] shrink-0 flex-col text-center md:w-[320px]';
   const sharedFeatureMediaFrameClass =
     'mx-auto flex h-[152px] w-full max-w-[280px] items-center justify-center overflow-hidden rounded-[24px] sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] md:rounded-[28px] lg:h-[188px] lg:max-w-[340px]';
   const soloFeatureMediaFrameClass =
@@ -730,8 +730,8 @@ export default function ProductPage() {
   const sharedFeatureImageClass = 'h-full w-full object-cover object-center';
   const soloFeatureImageClass = 'h-full w-full object-contain object-center';
   const featureTrackGapClass = isPlusAndAboveFeatures
-    ? 'grid grid-cols-1 gap-6 sm:grid-cols-2 md:flex md:w-max md:min-w-full md:items-start md:justify-start md:gap-8 lg:gap-10'
-    : 'grid grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-0 md:flex md:w-max md:min-w-full md:items-start md:justify-start md:gap-0 lg:gap-0';
+    ? 'flex w-max items-start gap-5 px-5 md:px-0 md:min-w-full md:gap-8 lg:gap-10'
+    : 'flex w-max items-start gap-0 md:min-w-full';
   const sharedFeatureTitleClass =
     'mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#1f232a] md:mt-1.5 md:text-[18px]';
   const sharedFeatureDescClass = 'mx-auto mt-1.5 max-w-[28ch] text-left text-[14px] leading-[1.45] text-[#4f5660] md:mt-2 md:text-[15px]';
@@ -1425,7 +1425,7 @@ export default function ProductPage() {
                   >
                     <ChevronRight size={18} />
                   </button>
-                <div ref={featureScrollRef} className="md:overflow-x-auto md:pb-3">
+                <div ref={featureScrollRef} className="overflow-x-auto pb-3" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                   <div className={featureTrackGapClass}>
                     {allFeatureItems.map((item) => (
                       <article
