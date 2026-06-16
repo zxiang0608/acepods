@@ -896,6 +896,7 @@ export default function ProductPage() {
   };
 
   return (
+    <div>
     <main className="min-h-screen bg-[#efefef] text-[#1e2227]">
       <SeoMeta
         title={seoTitle}
@@ -1722,5 +1723,6 @@ export default function ProductPage() {
         </div>
       )}
     </main>
+    </div>
   );
 }
