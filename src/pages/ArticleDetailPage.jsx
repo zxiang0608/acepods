@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { ARTICLES, findArticleBySlug } from '../data/articles';
-import { getArticleImageBySlug } from '../lib/articleImages';
+import { getArticleImageAltBySlug, getArticleImageBySlug } from '../lib/articleImages';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 
@@ -157,6 +157,29 @@ const renderArticleContent = (content) => {
   return elements;
 };
 
+const extractArticleFaqs = (content) => {
+  const faqStart = content.findIndex((line) => line === '## Frequently asked questions');
+  if (faqStart === -1) return [];
+
+  const faqs = [];
+  let index = faqStart + 1;
+
+  while (index < content.length && !content[index].startsWith('## ')) {
+    if (content[index].startsWith('### ')) {
+      const question = content[index].slice(4);
+      const answer = content[index + 1];
+      if (answer && !answer.startsWith('#')) {
+        faqs.push({ question, answer });
+        index += 2;
+        continue;
+      }
+    }
+    index += 1;
+  }
+
+  return faqs;
+};
+
 export default function ArticleDetailPage() {
   const { slug } = useParams();
   const article = findArticleBySlug(slug || '');
@@ -176,6 +199,7 @@ export default function ArticleDetailPage() {
 
   const canonicalPath = `/articles/${article.slug}`;
   const articleImage = getArticleImageBySlug(article.slug);
+  const articleFaqs = extractArticleFaqs(article.content);
   const relatedArticles = ARTICLES.filter((item) => item.slug !== article.slug).slice(0, 3);
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -219,7 +243,23 @@ export default function ArticleDetailPage() {
                   }
                 }
               : {})
-          }
+          },
+          ...(articleFaqs.length > 0
+            ? [
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: articleFaqs.map(({ question, answer }) => ({
+                    '@type': 'Question',
+                    name: question,
+                    acceptedAnswer: {
+                      '@type': 'Answer',
+                      text: answer
+                    }
+                  }))
+                }
+              ]
+            : [])
         ]}
       />
 
@@ -251,7 +291,7 @@ export default function ArticleDetailPage() {
       <section className="mx-auto w-full max-w-[1000px] px-5 md:px-8">
         <img
           src={articleImage}
-          alt={article.title}
+          alt={getArticleImageAltBySlug(article.slug, article.title)}
           width="1200"
           height="675"
           className="h-[360px] w-full rounded-[10px] object-cover md:h-[420px]"

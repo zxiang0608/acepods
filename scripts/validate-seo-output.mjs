@@ -67,6 +67,25 @@ const run = async () => {
   const { PUBLIC_ROUTES } = await getRouteManifest();
   const results = await Promise.all(PUBLIC_ROUTES.map(validateRoute));
   const errors = results.flat();
+  const discoveryFiles = [
+    'dist/llms.txt',
+    'dist/llms-full.txt',
+    'dist/feed.xml',
+    'dist/.well-known/ai.txt',
+    'dist/ai/summary.json',
+    'dist/ai/faq.json',
+    'dist/ai/service.json'
+  ];
+
+  for (const file of discoveryFiles) {
+    try {
+      const content = await readFile(path.resolve(file), 'utf8');
+      if (!content.trim()) errors.push(`${file}: file is empty`);
+      if (file.endsWith('.json')) JSON.parse(content);
+    } catch (error) {
+      errors.push(`${file}: ${error.message}`);
+    }
+  }
 
   if (errors.length) {
     throw new Error(`SEO validation failed:\n- ${errors.join('\n- ')}`);
