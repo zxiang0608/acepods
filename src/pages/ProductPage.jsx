@@ -722,16 +722,16 @@ export default function ProductPage() {
   const mainProductAlt = `${product.name} acoustic office pod`;
   const getFeatureAlt = (featureItem) =>
     featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
-  const sharedFeatureCardClass = 'flex w-[260px] shrink-0 flex-col text-center md:w-[320px]';
+  const sharedFeatureCardClass = 'flex w-[175px] shrink-0 flex-col text-center md:w-[320px]';
   const sharedFeatureMediaFrameClass =
     'mx-auto flex h-[152px] w-full max-w-[280px] items-center justify-center overflow-hidden rounded-[24px] sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] md:rounded-[28px] lg:h-[188px] lg:max-w-[340px]';
   const soloFeatureMediaFrameClass =
-    'mx-auto flex h-[228px] w-full max-w-[280px] items-center justify-center overflow-hidden sm:h-[246px] sm:max-w-[300px] md:h-[264px] md:max-w-[320px] lg:h-[282px] lg:max-w-[340px]';
+    'mx-auto flex h-[155px] w-full max-w-[155px] items-center justify-center overflow-hidden md:h-[264px] md:max-w-[320px] lg:h-[282px] lg:max-w-[340px]';
   const sharedFeatureImageClass = 'h-full w-full object-cover object-center';
   const soloFeatureImageClass = 'h-full w-full object-contain object-center';
   const featureTrackGapClass = isPlusAndAboveFeatures
     ? 'flex w-max items-start gap-5 px-5 md:px-0 md:min-w-full md:gap-8 lg:gap-10'
-    : 'flex w-max items-start gap-0 md:min-w-full';
+    : 'flex w-max items-start gap-3 px-4 md:px-0 md:min-w-full md:gap-0';
   const sharedFeatureTitleClass =
     'mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#1f232a] md:mt-1.5 md:text-[18px]';
   const sharedFeatureDescClass = 'mx-auto mt-1.5 max-w-[28ch] text-left text-[14px] leading-[1.45] text-[#4f5660] md:mt-2 md:text-[15px]';
