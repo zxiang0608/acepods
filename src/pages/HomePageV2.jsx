@@ -157,6 +157,15 @@ const priceRows = [
   { label: 'True total cost', imported: 'RM 11,500 – 17,000+ with hidden risk', ace: 'Pod + installation — every cost listed on our website', highlight: true }
 ];
 
+const glassRoomRows = [
+  { label: 'Estimated cost', renovation: 'RM 25,000 – 50,000', ace: 'From RM 18,800' },
+  { label: 'Time to complete', renovation: '6 – 8 weeks', ace: '1 working day' },
+  { label: 'Office disruption', renovation: 'Weeks of noise and dust', ace: 'None' },
+  { label: 'Landlord approval required', renovation: 'Usually yes', ace: 'No' },
+  { label: 'Can you relocate it?', renovation: '✕  No — permanent fixture', ace: '✓  Yes — move when you move' },
+  { label: 'Accountable contact', renovation: 'General contractor', ace: '✓  Same team, forever' },
+];
+
 const WhatsAppIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -372,13 +381,13 @@ export default function HomePageV2() {
             {/* Mobile: stacked */}
             <div className="md:hidden">
               <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#00855a]">
-                Acoustic Office Pods — Malaysian Made
+                Private Office Space — Malaysian Made
               </p>
               <h1 className="text-4xl font-bold leading-tight tracking-tight text-stone-900">
-                Your employees deserve somewhere quiet.
+                Private office space. Installed in a day. No construction required.
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-stone-600">
-                Acoustic office pods made in Malaysia, installed by our own team, supported from day one. No construction. No freight risk. No middlemen.
+                Ace pods give your team quiet, private space without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team.
               </p>
               <div className="mt-6 flex flex-col gap-3">
                 <a
@@ -415,16 +424,13 @@ export default function HomePageV2() {
             <div className="hidden md:grid md:grid-cols-2 md:items-center md:gap-12 lg:gap-20">
               <div>
                 <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.2em] text-[#00855a]">
-                  Acoustic Office Pods — Malaysian Made
+                  Private Office Space — Malaysian Made
                 </p>
                 <h1 className="text-5xl font-bold leading-[1.08] tracking-tight text-stone-900 lg:text-6xl">
-                  Your employees deserve somewhere quiet.
+                  Private office space. Installed in a day. No construction required.
                 </h1>
                 <p className="mt-5 text-xl leading-relaxed text-stone-600">
-                  Acoustic office pods made in Malaysia, installed by our own team, supported from day one. No construction. No freight risk. No middlemen.
-                </p>
-                <p className="mt-3 text-base italic text-stone-400">
-                  "Built here. Installed here. Here when you need us."
+                  Ace pods give your team quiet, private space without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team — from site visit to sign-off.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
@@ -731,51 +737,74 @@ export default function HomePageV2() {
         {/* ── PRICE COMPARISON ── */}
         <section className="bg-stone-900 px-5 py-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[1000px]">
+
+            {/* Primary: vs glass room / renovation */}
             <h2 className="mb-3 text-center text-2xl font-semibold leading-tight tracking-tight text-white md:text-4xl">
-              The number that matters isn't the pod price. It's the total.
+              The fastest way to add private space to your office isn't a renovation.
             </h2>
             <p className="mb-10 text-center text-base leading-relaxed text-stone-400">
-              An overseas pod looks cheaper in the initial quote. But before it's in your office and working, you've paid for freight, customs clearance, installation by a contractor who's never seen the product, and accepted zero local warranty support. Here's the full picture.
+              A glass room or partition costs RM 25,000–50,000, takes 6–8 weeks, and needs landlord approval. An Ace pod is installed in one day.
             </p>
 
             <div className="overflow-hidden rounded-2xl border border-stone-700">
-              {/* Header row */}
               <div className="grid grid-cols-3 border-b border-stone-700 bg-stone-800">
                 <div className="px-4 py-4 text-[12px] font-bold uppercase tracking-widest text-stone-500" />
                 <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-stone-400">
-                  Imported pod
+                  Glass room / partition
                 </div>
                 <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-[#4db891]">
                   Ace Office Pod
                 </div>
               </div>
-
-              {priceRows.map((row, i) => (
-                <div
-                  key={i}
-                  className={`grid grid-cols-3 border-b border-stone-700 last:border-b-0 ${
-                    row.highlight ? 'bg-stone-700' : 'bg-stone-800'
-                  }`}
-                >
+              {glassRoomRows.map((row, i) => (
+                <div key={i} className="grid grid-cols-3 border-b border-stone-700 last:border-b-0 bg-stone-800">
                   <div className="px-4 py-4 text-sm text-stone-400 md:text-base">{row.label}</div>
-                  <div className="border-l border-stone-700 px-4 py-4 text-center text-sm text-stone-400 md:text-base">
-                    {row.imported}
-                  </div>
-                  <div
-                    className={`border-l border-stone-700 px-4 py-4 text-center text-sm md:text-base ${
-                      row.highlight ? 'font-bold text-[#4db891]' : 'font-medium text-white'
-                    }`}
-                  >
-                    {row.ace}
-                  </div>
+                  <div className="border-l border-stone-700 px-4 py-4 text-center text-sm text-stone-400 md:text-base">{row.renovation}</div>
+                  <div className="border-l border-stone-700 px-4 py-4 text-center text-sm font-medium text-white md:text-base">{row.ace}</div>
                 </div>
               ))}
             </div>
 
             <p className="mt-6 text-center text-base font-semibold text-stone-300">
-              When you count every cost, Ace is almost always the better number.
+              Against a renovation, a pod isn't the expensive option. It's the obvious one.
             </p>
-            <div className="mt-8 text-center">
+
+            {/* Secondary: vs overseas import */}
+            <div className="mt-12 border-t border-stone-700 pt-10">
+              <p className="mb-2 text-center text-[11px] font-bold uppercase tracking-widest text-stone-500">
+                Also comparing with an overseas pod?
+              </p>
+              <p className="mb-8 text-center text-sm text-stone-400">
+                The import price looks lower until you add freight, customs, installation, and no local support.
+              </p>
+              <div className="overflow-hidden rounded-2xl border border-stone-700">
+                <div className="grid grid-cols-3 border-b border-stone-700 bg-stone-800">
+                  <div className="px-4 py-4 text-[12px] font-bold uppercase tracking-widest text-stone-500" />
+                  <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-stone-400">
+                    Imported pod
+                  </div>
+                  <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-[#4db891]">
+                    Ace Office Pod
+                  </div>
+                </div>
+                {priceRows.map((row, i) => (
+                  <div
+                    key={i}
+                    className={`grid grid-cols-3 border-b border-stone-700 last:border-b-0 ${
+                      row.highlight ? 'bg-stone-700' : 'bg-stone-800'
+                    }`}
+                  >
+                    <div className="px-4 py-4 text-sm text-stone-400 md:text-base">{row.label}</div>
+                    <div className="border-l border-stone-700 px-4 py-4 text-center text-sm text-stone-400 md:text-base">{row.imported}</div>
+                    <div className={`border-l border-stone-700 px-4 py-4 text-center text-sm md:text-base ${row.highlight ? 'font-bold text-[#4db891]' : 'font-medium text-white'}`}>
+                      {row.ace}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-10 text-center">
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
