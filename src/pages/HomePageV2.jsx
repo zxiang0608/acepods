@@ -91,52 +91,31 @@ const featuredModels = [
   }
 ];
 
-const testimonials = [
-  {
-    quote: 'The team handled everything from site visit to installation. We had the pod running within a week of signing off. Exactly what we needed for our HR team.',
-    name: '[Name, HR Manager]',
-    company: '[Company Name]',
-    role: 'HR Manager'
-  },
-  {
-    quote: "We compared a few options including cheaper imports. Once we saw the full cost breakdown — freight, customs, installation — Ace made the most sense. No regrets.",
-    name: '[Name, Operations Lead]',
-    company: '[Company Name]',
-    role: 'Operations Lead'
-  },
-  {
-    quote: 'Our employees actually use it. It fits naturally in the office, looks professional, and the noise reduction is genuinely impressive.',
-    name: '[Name, Office Manager]',
-    company: '[Company Name]',
-    role: 'Office Manager'
-  }
-];
-
 const whyAceItems = [
   {
     icon: Hammer,
-    title: 'Made Here. Supported Here.',
-    desc: 'Our factory and team are in Selangor. No freight delays, no customs surprises, no waiting weeks for someone to answer.'
+    title: 'No Import Nightmare.',
+    desc: 'Your pod ships from Selangor. No freight invoice, no customs clearance, no 8-week wait at Port Klang. Every cost is shown clearly upfront — no surprises between order and installation.'
   },
   {
     icon: Route,
-    title: 'One Team, Start to Finish.',
-    desc: "The same people who build your pod deliver it, install it, and pick up the phone when you call after. You'll have a name, not a ticket number."
+    title: 'One Number to Call. Forever.',
+    desc: "The same person who visits your office configures your order, manages your install, and answers your phone if anything needs adjusting two years later. No handoffs. No \"that's not my department.\""
   },
   {
     icon: CheckCircle2,
-    title: 'Proven in Real Malaysian Offices.',
-    desc: '180+ pods installed across MNCs, universities, and SMEs. We know Malaysian building codes, floor types, and what works in our climate.'
+    title: "180 Pods In. Yours Won't Be Experiment #1.",
+    desc: "We've installed over 180 pods in Malaysian offices — including for Parker, CMA CGM, and Alphabet. You get the benefit of everything we learned across those installs, applied to yours."
   },
   {
     icon: Shield,
-    title: 'Transparent Pricing. No Hidden Costs.',
-    desc: "What we quote includes delivery, installation, and site assessment. The number you see is the number you pay. What the cheaper quote doesn't show: freight, customs, self-installation, and no local support."
+    title: 'Every Cost Is on the Website Before You Ask.',
+    desc: 'Pod price, installation price — both listed on our pricing page. The number you see before you contact us is the number on your invoice. No add-ons appear after you sign.'
   },
   {
     icon: CheckCircle2,
-    title: 'Acoustic Performance You Can Verify.',
-    desc: "Visit our showroom and experience the difference yourself before you commit. We don't ask you to trust a spec sheet — we let the pod do the talking."
+    title: 'Test It Before You Sign.',
+    desc: "Visit our Selangor showroom and experience the acoustic performance yourself before committing to anything. We don't ask you to trust a spec sheet — we let the pod do the talking."
   }
 ];
 
@@ -159,23 +138,23 @@ const processSteps = [
 ];
 
 const galleryImages = [
-  { src: officeOneImage, srcAvif: officeOneImageAvif, alt: 'Ace Office Pod installed in a Malaysian office' },
-  { src: officeTwoImage, srcAvif: officeTwoImageAvif, alt: 'Meeting pod in an open-plan office' },
-  { src: officeThreeImage, srcAvif: officeThreeImageAvif, alt: 'Office pod installation in Selangor' },
-  { src: podsInstallationImage, srcAvif: podsInstallationImageAvif, alt: 'Ace Pods installation team at work' },
-  { src: deliveryPodsImage, srcAvif: deliveryPodsImageAvif, alt: 'Ace Pods delivery and setup' },
-  { src: officeTwoImage, srcAvif: officeTwoImageAvif, alt: 'Acoustic pod in corporate office environment' }
+  { src: officeOneImage, srcAvif: officeOneImageAvif, alt: 'Ace Office Pod installed in a Malaysian office', caption: 'Malaysian office, 2024' },
+  { src: officeTwoImage, srcAvif: officeTwoImageAvif, alt: 'Meeting pod in an open-plan office', caption: 'MNC office, Kuala Lumpur' },
+  { src: officeThreeImage, srcAvif: officeThreeImageAvif, alt: 'Office pod installation in Selangor', caption: 'Office installation, Selangor' },
+  { src: podsInstallationImage, srcAvif: podsInstallationImageAvif, alt: 'Ace Pods installation team at work', caption: 'Our installation team at work' },
+  { src: deliveryPodsImage, srcAvif: deliveryPodsImageAvif, alt: 'Ace Pods delivery and setup', caption: 'Delivery from our Selangor factory' },
+  { src: officeTwoImage, srcAvif: officeTwoImageAvif, alt: 'Acoustic pod in corporate office environment', caption: 'Corporate office, Malaysia' }
 ];
 
 const priceRows = [
   { label: 'Pod price', imported: 'RM 8,000 – 10,000', ace: 'From RM 12,500' },
   { label: 'Delivery & freight', imported: 'RM 1,500 – 3,000 extra', ace: 'Included' },
   { label: 'Customs & duties', imported: 'Variable — your problem', ace: 'N/A — made in Malaysia' },
-  { label: 'Installation', imported: 'Self-arranged (RM 2,000 – 4,000)', ace: 'Included, our team' },
+  { label: 'Installation', imported: 'Self-arrange a contractor (RM 2,000 – 4,000+)', ace: 'Our team — price listed on our website' },
   { label: 'Local warranty', imported: '✕  None', ace: '✓  Included' },
   { label: 'After-sales support', imported: '✕  No local contact', ace: '✓  Same team, Selangor' },
   { label: 'Risk if something fails', imported: 'You figure it out', ace: 'We come to you' },
-  { label: 'True total cost', imported: 'RM 11,500 – 17,000+ with risk', ace: 'From RM 12,500. All in.', highlight: true }
+  { label: 'True total cost', imported: 'RM 11,500 – 17,000+ with hidden risk', ace: 'Pod + installation — every cost listed on our website', highlight: true }
 ];
 
 const WhatsAppIcon = () => (
@@ -570,40 +549,54 @@ export default function HomePageV2() {
                 </Link>
               ))}
             </div>
-            <div className="mt-8 text-center">
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-8">
               <Link to="/office-pods" className="text-[15px] font-medium text-[#00855a] underline-offset-4 hover:underline">
                 View all 6 models →
+              </Link>
+              <Link to="/compare-office-pods" className="text-[15px] font-medium text-stone-500 underline-offset-4 hover:underline">
+                Compare models side by side →
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ── */}
+        {/* ── SOCIAL PROOF ── */}
         <section className="bg-stone-50 px-5 py-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[1400px]">
             <div className="mb-12 text-center">
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-stone-400">
+                Track record
+              </p>
               <h2 className="text-2xl font-semibold leading-tight tracking-tight text-stone-900 md:text-4xl">
-                What our customers say
+                Real offices. Real installs.
               </h2>
-              <p className="mt-3 text-base text-stone-500">
-                180+ pods installed. Here's what people who went through it tell us.
+              <p className="mt-4 text-base text-stone-500">
+                180+ pods across MNCs, universities, and growing Malaysian companies — every one installed by our own team.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {testimonials.map((t, i) => (
-                <article key={i} className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
-                  <p className="text-base italic leading-relaxed text-stone-700">"{t.quote}"</p>
-                  <div className="mt-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-200 text-sm font-bold text-stone-500">
-                      {t.name.charAt(1).toUpperCase()}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-stone-900">{t.name}</p>
-                      <p className="text-xs text-stone-500">{t.role} · {t.company}</p>
-                    </div>
-                  </div>
-                </article>
+            <div className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+              {[
+                { num: '180+', label: 'Pods installed across Malaysia' },
+                { num: '2023', label: 'Year our first pod went in' },
+                { num: '100%', label: 'Malaysian-made and installed' },
+                { num: '1', label: 'Team. Start to finish.' },
+              ].map((stat) => (
+                <div key={stat.label} className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
+                  <p className="text-3xl font-bold text-stone-900 md:text-4xl">{stat.num}</p>
+                  <p className="mt-2 text-xs leading-snug text-stone-500 md:text-sm">{stat.label}</p>
+                </div>
               ))}
+            </div>
+            <div className="text-center">
+              <Link to="/portfolio" className="text-[15px] font-medium text-[#00855a] underline-offset-4 hover:underline">
+                See installed pods →
+              </Link>
+              <p className="mt-4 text-sm text-stone-400">
+                Want to hear from a past customer?{' '}
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="font-medium text-stone-600 underline-offset-4 hover:underline">
+                  Ask us for a reference on WhatsApp.
+                </a>
+              </p>
             </div>
           </div>
         </section>
@@ -686,6 +679,9 @@ export default function HomePageV2() {
                 <WhatsAppIcon />
                 WhatsApp Us Now
               </a>
+              <p className="mt-4 text-xs text-stone-400">
+                Installation slots book 4–6 weeks out. If you have a target date, now is the right time to start.
+              </p>
             </div>
           </div>
         </section>
@@ -703,7 +699,7 @@ export default function HomePageV2() {
             </div>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
               {galleryImages.map((img, i) => (
-                <div key={i} className="aspect-square overflow-hidden rounded-xl">
+                <div key={i} className="group relative aspect-square overflow-hidden rounded-xl">
                   <picture>
                     <source srcSet={img.srcAvif} type="image/avif" />
                     <img
@@ -711,11 +707,16 @@ export default function HomePageV2() {
                       alt={img.alt}
                       width="600"
                       height="600"
-                      className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                       decoding="async"
                     />
                   </picture>
+                  {img.caption && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                      <p className="text-xs font-medium text-white/90">{img.caption}</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -731,10 +732,10 @@ export default function HomePageV2() {
         <section className="bg-stone-900 px-5 py-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[1000px]">
             <h2 className="mb-3 text-center text-2xl font-semibold leading-tight tracking-tight text-white md:text-4xl">
-              The cheaper quote looks better until you add everything it doesn't include.
+              The number that matters isn't the pod price. It's the total.
             </h2>
-            <p className="mb-10 text-center text-base text-stone-400">
-              A direct comparison — imported pod vs. an Ace pod.
+            <p className="mb-10 text-center text-base leading-relaxed text-stone-400">
+              An overseas pod looks cheaper in the initial quote. But before it's in your office and working, you've paid for freight, customs clearance, installation by a contractor who's never seen the product, and accepted zero local warranty support. Here's the full picture.
             </p>
 
             <div className="overflow-hidden rounded-2xl border border-stone-700">
@@ -772,7 +773,7 @@ export default function HomePageV2() {
             </div>
 
             <p className="mt-6 text-center text-base font-semibold text-stone-300">
-              Same budget. One has a team behind it. One doesn't.
+              When you count every cost, Ace is almost always the better number.
             </p>
             <div className="mt-8 text-center">
               <a
@@ -781,8 +782,27 @@ export default function HomePageV2() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-[#00855a] px-8 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#006e4a]"
               >
-                Let us show you the full picture — WhatsApp Us Now
+                <WhatsAppIcon />
+                Get the full breakdown — WhatsApp Us
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── GUARANTEE ── */}
+        <section className="bg-stone-50 px-5 py-12 md:px-12 md:py-16">
+          <div className="mx-auto max-w-[800px]">
+            <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm md:p-12">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
+                <Shield size={24} strokeWidth={2} className="text-[#00855a]" />
+              </div>
+              <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">The Ace Acoustic Guarantee</h3>
+              <p className="mt-4 text-base leading-relaxed text-stone-600">
+                If your Ace pod doesn't perform acoustically as specified within 30 days of installation, we'll modify it at no charge until it does. If we can't bring it to spec, we remove it and refund your investment in full.
+              </p>
+              <p className="mt-3 text-sm font-medium text-stone-400">
+                No negotiation. No support ticket. We fix it or we return your money.
+              </p>
             </div>
           </div>
         </section>
@@ -813,7 +833,7 @@ export default function HomePageV2() {
               </Link>
             </div>
             <p className="mt-5 text-sm text-white/60">
-              Free site visit · No obligation · Built here. Installed here. Here when you need us.
+              Free site visit · No obligation · Installation slots book 4–6 weeks out
             </p>
           </div>
         </section>
@@ -826,10 +846,11 @@ export default function HomePageV2() {
         href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with us on WhatsApp"
-        className="fixed bottom-6 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 md:bottom-8 md:right-8"
+        aria-label="Get a free noise assessment on WhatsApp"
+        className="fixed bottom-6 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 md:bottom-8 md:right-8 md:h-auto md:w-auto md:gap-2.5 md:rounded-full md:px-5 md:py-3.5"
       >
         <WhatsAppIcon />
+        <span className="hidden text-[14px] font-semibold md:inline">Get a free noise assessment</span>
       </a>
     </div>
   );
