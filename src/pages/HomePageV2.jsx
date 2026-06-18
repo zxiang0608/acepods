@@ -115,7 +115,7 @@ const whyAceItems = [
   {
     icon: CheckCircle2,
     title: 'Certified -27dB(A). Test It Before You Sign.',
-    desc: 'Independently certified acoustic performance. Visit our Selangor showroom and hear it yourself.'
+    desc: 'Independently certified acoustic performance. Visit our showroom in Klang, Selangor and hear it yourself.'
   },
   {
     icon: Shield,
@@ -695,7 +695,7 @@ export default function HomePageV2() {
                 180+ Pods in Malaysian Offices
               </h2>
               <p className="mt-3 text-base text-stone-500">
-                From MNCs to universities — every pod installed by our own team.
+                From MNCs to universities across Malaysia — every pod delivered and installed by our own Selangor team.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
