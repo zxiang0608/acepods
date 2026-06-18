@@ -382,7 +382,7 @@ export default function HomePageV2() {
 
         {/* ── HERO ── */}
         <section className="bg-stone-50 px-5 py-12 md:px-12 md:py-20">
-          <div className="mx-auto max-w-[1400px]">
+          <div className="mx-auto max-w-[1280px]">
 
             {/* Mobile: stacked */}
             <div className="md:hidden">
@@ -476,7 +476,7 @@ export default function HomePageV2() {
 
         {/* ── TRUST BAR ── */}
         <section className="bg-stone-900 px-5 py-10 md:px-12 md:py-14">
-          <div className="mx-auto max-w-[1400px]">
+          <div className="mx-auto max-w-[1280px]">
             <p className="mb-6 text-center text-[11px] font-semibold uppercase tracking-widest text-stone-400">
               Trusted by teams who can't afford downtime
             </p>
@@ -540,7 +540,7 @@ export default function HomePageV2() {
 
         {/* ── FEATURED MODELS ── */}
         <section className="bg-white px-5 py-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-[1400px]">
+          <div className="mx-auto max-w-[1280px]">
             <div className="mb-12 text-center">
               <h2 className="text-2xl font-semibold leading-tight tracking-tight text-stone-900 md:text-4xl">
                 Find the right pod for your team
@@ -597,8 +597,8 @@ export default function HomePageV2() {
         </section>
 
         {/* ── WHY ACE PODS ── */}
-        <section className="bg-white px-5 py-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-[1400px]">
+        <section className="bg-stone-50 px-5 py-16 md:px-12 md:py-24">
+          <div className="mx-auto max-w-[1280px]">
             <div className="mb-12 text-center">
               <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-stone-400">
                 Beyond the product
@@ -616,8 +616,8 @@ export default function HomePageV2() {
                   key={item.title}
                   className="rounded-2xl border border-stone-200 bg-stone-50 p-6 shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#e6f5f0]">
-                    <item.icon size={20} strokeWidth={2} className="text-[#00855a]" />
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
+                    <item.icon size={24} strokeWidth={2} className="text-[#00855a]" />
                   </div>
                   <h3 className="mb-2 text-lg font-semibold text-stone-900">{item.title}</h3>
                   <p className="text-base leading-relaxed text-stone-600">{item.desc}</p>
@@ -639,7 +639,7 @@ export default function HomePageV2() {
 
         {/* ── HOW IT WORKS ── */}
         <section className="bg-stone-100 px-5 py-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-[1400px]">
+          <div className="mx-auto max-w-[1280px]">
             <div className="mb-12 text-center">
               <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.2em] text-stone-400">
                 Simple process
@@ -683,7 +683,7 @@ export default function HomePageV2() {
 
         {/* ── GALLERY ── */}
         <section className="bg-white px-5 py-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-[1400px]">
+          <div className="mx-auto max-w-[1280px]">
             <div className="mb-10 text-center">
               <h2 className="text-2xl font-semibold leading-tight tracking-tight text-stone-900 md:text-4xl">
                 180+ Pods in Malaysian Offices
@@ -830,7 +830,7 @@ export default function HomePageV2() {
         </section>
 
         {/* ── FINAL CTA ── */}
-        <section className="bg-[#00855a] px-5 py-16 md:px-12 md:py-24">
+        <section className="bg-stone-900 px-5 py-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[800px] text-center">
             <h2 className="text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl">
               Ready to give your team somewhere quiet?
