@@ -137,7 +137,7 @@ const processSteps = [
   },
   {
     num: '03',
-    title: 'Installed in a day. Backed by us forever.',
+    title: 'Done in one day. We handle everything after.',
     desc: "Delivered and installed by our own crew — not a subcontractor. We're one call away for anything after."
   }
 ];
@@ -695,7 +695,7 @@ export default function HomePageV2() {
                 180+ Pods in Malaysian Offices
               </h2>
               <p className="mt-3 text-base text-stone-500">
-                From MNCs to universities across Malaysia — every pod delivered and installed by our own Selangor team.
+                From MNCs to universities in Malaysia — every pod delivered and installed by our own Selangor team.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
