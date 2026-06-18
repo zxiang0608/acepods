@@ -95,32 +95,32 @@ const whyAceItems = [
   {
     icon: Hammer,
     title: 'No Import Nightmare.',
-    desc: 'Your pod ships from Selangor. No freight invoice, no customs clearance, no 8-week wait at Port Klang. Every cost is shown clearly upfront — no surprises between order and installation.'
+    desc: 'Ships from Selangor. No freight, no customs, no delays. Every cost is upfront.'
   },
   {
     icon: Route,
     title: 'One Number to Call. Forever.',
-    desc: "The same person who visits your office configures your order, manages your install, and answers your phone if anything needs adjusting two years later. No handoffs. No \"that's not my department.\""
+    desc: 'Site visit, installation, after-sales — one person handles all of it. No handoffs.'
   },
   {
     icon: CheckCircle2,
     title: "180 Pods In. Yours Won't Be Experiment #1.",
-    desc: "We've installed over 180 pods in Malaysian offices — including for Parker, CMA CGM, and Alphabet. You get the benefit of everything we learned across those installs, applied to yours."
+    desc: '180 installs in Malaysian offices — Parker, CMA CGM, Alphabet. Everything learned, applied to yours.'
   },
   {
     icon: Shield,
     title: 'Every Cost Is on the Website Before You Ask.',
-    desc: 'Pod price, installation price — both listed on our pricing page. The number you see before you contact us is the number on your invoice. No add-ons appear after you sign.'
+    desc: 'Pod price and installation — both listed on our pricing page. No surprises on your invoice.'
   },
   {
     icon: CheckCircle2,
-    title: 'Test It Before You Sign.',
-    desc: "Visit our Selangor showroom and experience the acoustic performance yourself before committing to anything. We don't ask you to trust a spec sheet — we let the pod do the talking."
+    title: 'Certified -27dB(A). Test It Before You Sign.',
+    desc: 'Independently certified acoustic performance. Visit our Selangor showroom and hear it yourself.'
   },
   {
     icon: Shield,
     title: 'No Landlord Approval. No Lease Clause Triggered.',
-    desc: "An Ace pod is furniture, not a fixture. It won't trigger your alteration clause and doesn't need landlord sign-off. When your lease ends, the pod moves with you."
+    desc: "Furniture, not a fixture. No alteration clause, no landlord sign-off needed. Moves with you."
   }
 ];
 
@@ -168,6 +168,7 @@ const glassRoomRows = [
   { label: 'Office disruption', renovation: 'Weeks of noise and dust', ace: 'None' },
   { label: 'Landlord approval required', renovation: 'Usually yes', ace: 'No' },
   { label: 'Can you relocate it?', renovation: '✕  No — permanent fixture', ace: '✓  Yes — move when you move' },
+  { label: 'Acoustic certification', renovation: '✕  None — depends on contractor', ace: '✓  Certified -27dB(A)' },
   { label: 'Accountable contact', renovation: 'General contractor', ace: '✓  Same team, forever' },
 ];
 
@@ -394,6 +395,7 @@ export default function HomePageV2() {
               <p className="mt-4 text-lg leading-relaxed text-stone-600">
                 Ace pods give your team quiet, private space without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team.
               </p>
+              <p className="mt-3 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · all prices listed on our website</p>
               <div className="mt-6 flex flex-col gap-3">
                 <a
                   href={WHATSAPP_LINK}
@@ -437,6 +439,7 @@ export default function HomePageV2() {
                 <p className="mt-5 text-xl leading-relaxed text-stone-600">
                   Ace pods give your team quiet, private space without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team — from site visit to sign-off.
                 </p>
+                <p className="mt-4 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · all prices listed on our website</p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
                     href={WHATSAPP_LINK}
@@ -474,15 +477,22 @@ export default function HomePageV2() {
         {/* ── TRUST BAR ── */}
         <section className="bg-stone-900 px-5 py-10 md:px-12 md:py-14">
           <div className="mx-auto max-w-[1400px]">
-            <p className="mb-1 text-center text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <p className="mb-6 text-center text-[11px] font-semibold uppercase tracking-widest text-stone-400">
               Trusted by teams who can't afford downtime
             </p>
-            <p className="mb-3 text-center text-[15px] font-semibold text-[#4db891] md:text-[16px]">
-              180+ pods installed across Malaysia since 2023
-            </p>
-            <p className="mb-8 text-center text-[13px] text-stone-500">
-              We issue purchase orders and provide full warranty documentation for corporate procurement teams.
-            </p>
+            <div className="mb-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:gap-x-12">
+              {[
+                { num: '180+', label: 'pods installed' },
+                { num: '2023', label: 'first install' },
+                { num: '100%', label: 'Malaysian-made' },
+                { num: '1', label: 'team, start to finish' },
+              ].map((stat) => (
+                <div key={stat.label} className="flex items-baseline gap-1.5">
+                  <span className="text-2xl font-bold text-[#4db891]">{stat.num}</span>
+                  <span className="text-[13px] text-stone-400">{stat.label}</span>
+                </div>
+              ))}
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-5 md:gap-x-10">
               {trustedLogos.map((logo) => (
                 <div key={logo.name} className={`flex items-center justify-center ${logo.stageClass}`}>
@@ -513,6 +523,18 @@ export default function HomePageV2() {
                 </div>
               ))}
             </div>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center">
+              <Link to="/portfolio" className="text-[13px] font-medium text-stone-400 underline-offset-4 hover:text-stone-300 hover:underline">
+                See installed pods →
+              </Link>
+              <span className="hidden text-stone-700 md:inline">·</span>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-stone-400 underline-offset-4 hover:text-stone-300 hover:underline">
+                Ask us for a reference on WhatsApp
+              </a>
+            </div>
+            <p className="mt-3 text-center text-[12px] text-stone-600">
+              We issue purchase orders and provide full warranty documentation for corporate procurement teams.
+            </p>
           </div>
         </section>
 
@@ -570,47 +592,6 @@ export default function HomePageV2() {
               <Link to="/compare-office-pods" className="text-[15px] font-medium text-stone-500 underline-offset-4 hover:underline">
                 Compare models side by side →
               </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ── SOCIAL PROOF ── */}
-        <section className="bg-stone-50 px-5 py-16 md:px-12 md:py-24">
-          <div className="mx-auto max-w-[1400px]">
-            <div className="mb-12 text-center">
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-stone-400">
-                Track record
-              </p>
-              <h2 className="text-2xl font-semibold leading-tight tracking-tight text-stone-900 md:text-4xl">
-                Real offices. Real installs.
-              </h2>
-              <p className="mt-4 text-base text-stone-500">
-                180+ pods across MNCs, universities, and growing Malaysian companies — every one installed by our own team.
-              </p>
-            </div>
-            <div className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-              {[
-                { num: '180+', label: 'Pods installed across Malaysia' },
-                { num: '2023', label: 'Year our first pod went in' },
-                { num: '100%', label: 'Malaysian-made and installed' },
-                { num: '1', label: 'Team. Start to finish.' },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
-                  <p className="text-3xl font-bold text-stone-900 md:text-4xl">{stat.num}</p>
-                  <p className="mt-2 text-xs leading-snug text-stone-500 md:text-sm">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-            <div className="text-center">
-              <Link to="/portfolio" className="text-[15px] font-medium text-[#00855a] underline-offset-4 hover:underline">
-                See installed pods →
-              </Link>
-              <p className="mt-4 text-sm text-stone-400">
-                Want to hear from a past customer?{' '}
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="font-medium text-stone-600 underline-offset-4 hover:underline">
-                  Ask us for a reference on WhatsApp.
-                </a>
-              </p>
             </div>
           </div>
         </section>
@@ -750,8 +731,9 @@ export default function HomePageV2() {
                 <Shield size={24} strokeWidth={2} className="text-[#00855a]" />
               </div>
               <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">The Ace Acoustic Guarantee</h3>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-[#00855a]">Certified -27dB(A)</p>
               <p className="mt-4 text-base leading-relaxed text-stone-600">
-                If your Ace pod doesn't perform acoustically as specified within 30 days of installation, we'll modify it at no charge until it does. If we can't bring it to spec, we remove it and refund your investment in full.
+                If your pod doesn't perform to our certified -27dB(A) standard within 30 days of installation, we modify it at no charge until it does. If we can't bring it to spec, we remove it and refund your investment in full.
               </p>
               <p className="mt-3 text-sm font-medium text-stone-400">
                 No negotiation. No support ticket. We fix it or we return your money.
@@ -841,7 +823,7 @@ export default function HomePageV2() {
                 className="inline-flex items-center gap-2 rounded-full bg-[#00855a] px-8 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#006e4a]"
               >
                 <WhatsAppIcon />
-                Get the full breakdown — WhatsApp Us
+                Get a Free Site Visit
               </a>
             </div>
           </div>
