@@ -7,6 +7,8 @@ import { pushDataLayerEvent } from '../lib/tracking';
 import { PRICING_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
 import QuoteForm from '../components/QuoteForm';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
+import PodPrice from '../components/PodPrice';
+import { useCurrency } from '../hooks/useCurrency';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -53,6 +55,7 @@ const pricingAnswerSchema = {
 };
 
 export default function PricingPage() {
+  const { isLocal } = useCurrency();
   const pricingListItems = products.map((product) => {
     const basePrice = product.pdpPricing?.baseConfigurations?.[0]?.price;
     return {
@@ -93,6 +96,11 @@ export default function PricingPage() {
           Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on
           model size, quantity, delivery location, installation access, and optional add-ons.
         </p>
+        {!isLocal && (
+          <div className="mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-[14px] leading-[1.55] text-amber-900">
+            <strong>International buyers:</strong> Prices shown below are in USD, ex-works from our factory in Klang, Selangor, Malaysia. Shipping and installation to your country are arranged and paid by you. <a href="https://wa.link/9umr4q" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">WhatsApp us</a> for an export quote.
+          </div>
+        )}
       </section>
 
       <section className="mx-auto w-full max-w-[1100px] px-5 md:px-8">
@@ -110,7 +118,8 @@ export default function PricingPage() {
           <ul className="mt-4 space-y-2 text-[16px] leading-[1.6] text-[#30363d]">
             {products.map((product) => (
               <li key={`price-list-${product.slug}`}>
-                <span className="font-semibold text-[#1d232a]">{product.name}</span> - <span>{product.pricing.amount}</span>
+                <span className="font-semibold text-[#1d232a]">{product.name}</span> -{' '}
+                <PodPrice myrAmount={product.pdpPricing.baseConfigurations[0].price} />
               </li>
             ))}
           </ul>
@@ -121,7 +130,9 @@ export default function PricingPage() {
         {products.map((product) => (
           <article key={product.slug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
             <h3 className="text-[24px] font-semibold tracking-tight text-[#1d232a]">{product.name}</h3>
-            <p className="mt-2 text-[17px] font-semibold text-[#145b5f]">{product.pricing.amount}</p>
+            <p className="mt-2 text-[17px] font-semibold text-[#145b5f]">
+              <PodPrice myrAmount={product.pdpPricing.baseConfigurations[0].price} />
+            </p>
             <p className="mt-2 text-[14px] leading-[1.55] text-[#5a616a]">{product.pricing.note}</p>
             <Link
               to={`/pods/${product.slug}`}
