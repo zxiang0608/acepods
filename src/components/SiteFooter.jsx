@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ChevronDown, Globe, Instagram, Linkedin } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
 import { pushDataLayerEvent } from '../lib/tracking';
-import { SEO_BRAND_STREET_ADDRESS, SEO_BRAND_POSTAL_CODE } from '../seo/constants';
 
 const footerSocialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/acepodsmy/', Icon: Instagram },
@@ -75,20 +74,6 @@ export default function SiteFooter({ className = 'mt-0' }) {
               <img src={acePodsLogo} alt="Ace Pods" width="32" height="32" className="h-8 w-auto" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
-            <address
-              itemScope
-              itemType="https://schema.org/LocalBusiness"
-              className="not-italic text-[13px] leading-relaxed text-gray-500"
-            >
-              <span itemProp="name" className="sr-only">Ace Office Pods by Ace Workplace Solutions</span>
-              <span itemProp="streetAddress">{SEO_BRAND_STREET_ADDRESS}</span><br />
-              <span itemProp="addressLocality">Klang</span>,{' '}
-              <span itemProp="addressRegion">Selangor</span>{' '}
-              <span itemProp="postalCode">{SEO_BRAND_POSTAL_CODE}</span><br />
-              <a href="tel:+601154352700" itemProp="telephone" className="hover:text-white transition-colors">+60 11-5435 2700</a>
-              {' · '}
-              <a href="mailto:sales@aceofficepods.com" itemProp="email" className="hover:text-white transition-colors">sales@aceofficepods.com</a>
-            </address>
             <div className="flex gap-3">
               {footerSocialLinks.map(({ label, href, Icon }) => (
                 <a
@@ -155,19 +140,6 @@ export default function SiteFooter({ className = 'mt-0' }) {
               <img src={acePodsLogo} alt="Ace Pods" width="56" height="56" className="h-8 w-auto md:h-14" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
-            <address
-              itemScope
-              itemType="https://schema.org/LocalBusiness"
-              className="not-italic text-[13px] leading-relaxed text-gray-500"
-            >
-              <span itemProp="name" className="sr-only">Ace Office Pods by Ace Workplace Solutions</span>
-              <span itemProp="streetAddress">{SEO_BRAND_STREET_ADDRESS}</span><br />
-              <span itemProp="addressLocality">Klang</span>,{' '}
-              <span itemProp="addressRegion">Selangor</span>{' '}
-              <span itemProp="postalCode">{SEO_BRAND_POSTAL_CODE}</span><br />
-              <a href="tel:+601154352700" itemProp="telephone" className="hover:text-white transition-colors">+60 11-5435 2700</a><br />
-              <a href="mailto:sales@aceofficepods.com" itemProp="email" className="hover:text-white transition-colors">sales@aceofficepods.com</a>
-            </address>
             <div className="flex gap-3">
               {footerSocialLinks.map(({ label, href, Icon }) => (
                 <a
