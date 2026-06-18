@@ -395,7 +395,7 @@ export default function HomePageV2() {
               <p className="mt-4 text-lg leading-relaxed text-stone-600">
                 Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team.
               </p>
-              <p className="mt-3 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · all prices listed on our website</p>
+              <p className="mt-3 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">all prices on our website</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">30-day guarantee</a></p>
               <div className="mt-6 flex flex-col gap-3">
                 <a
                   href={WHATSAPP_LINK}
@@ -439,7 +439,7 @@ export default function HomePageV2() {
                 <p className="mt-5 text-xl leading-relaxed text-stone-600">
                   Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team — from site visit to sign-off.
                 </p>
-                <p className="mt-4 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · all prices listed on our website</p>
+                <p className="mt-4 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">all prices on our website</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">30-day guarantee</a></p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
                     href={WHATSAPP_LINK}
@@ -532,7 +532,7 @@ export default function HomePageV2() {
                 Ask us for a reference on WhatsApp
               </a>
             </div>
-            <p className="mt-3 text-center text-[12px] text-stone-600">
+            <p className="mt-3 text-center text-[13px] text-stone-400">
               We issue purchase orders and provide full warranty documentation for corporate procurement teams.
             </p>
           </div>
@@ -633,6 +633,9 @@ export default function HomePageV2() {
               >
                 Get a Free Site Visit
               </a>
+              <p className="mt-4 text-sm text-stone-400">
+                Not ready yet? <Link to="/pricing" className="text-[#00855a] underline-offset-2 hover:underline">View all prices →</Link>
+              </p>
             </div>
           </div>
         </section>
@@ -724,7 +727,7 @@ export default function HomePageV2() {
         </section>
 
         {/* ── GUARANTEE ── */}
-        <section className="bg-stone-50 px-5 py-12 md:px-12 md:py-16">
+        <section id="guarantee" className="bg-stone-50 px-5 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-[800px]">
             <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm md:p-12">
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
