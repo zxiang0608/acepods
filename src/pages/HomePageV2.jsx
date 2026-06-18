@@ -137,7 +137,7 @@ const processSteps = [
   },
   {
     num: '03',
-    title: 'We install it. We own it.',
+    title: 'Installed in a day. Backed by us forever.',
     desc: "Delivered and installed by our own crew — not a subcontractor. We're one call away for anything after."
   }
 ];
@@ -393,7 +393,7 @@ export default function HomePageV2() {
                 Private office space. Installed in a day. No construction required.
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-stone-600">
-                Ace pods give your team quiet, private space without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team.
+                Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team.
               </p>
               <p className="mt-3 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · all prices listed on our website</p>
               <div className="mt-6 flex flex-col gap-3">
@@ -437,7 +437,7 @@ export default function HomePageV2() {
                   Private office space. Installed in a day. No construction required.
                 </h1>
                 <p className="mt-5 text-xl leading-relaxed text-stone-600">
-                  Ace pods give your team quiet, private space without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team — from site visit to sign-off.
+                  Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team — from site visit to sign-off.
                 </p>
                 <p className="mt-4 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · all prices listed on our website</p>
                 <div className="mt-8 flex flex-wrap gap-4">
@@ -607,7 +607,7 @@ export default function HomePageV2() {
                 Why choose Ace Pods
               </h2>
               <p className="mx-auto mt-4 max-w-[600px] text-base leading-relaxed text-stone-500">
-                Locally made means locally accountable — pricing, installation, and after-sales handled by the same team in Selangor.
+                Solving the open-plan problem without a renovation is harder than it looks. Here's why 180 Malaysian offices chose us to handle it.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -835,7 +835,10 @@ export default function HomePageV2() {
             <h2 className="text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl">
               Ready to give your team somewhere quiet?
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-white/80">
+            <p className="mt-4 text-base text-white/60">
+              Every week the open plan stays unchanged, your team absorbs the cost in broken focus and missed calls.
+            </p>
+            <p className="mt-3 text-lg leading-relaxed text-white/80">
               Start with a free site visit. No commitment. Our team comes to you, measures the space, and tells you exactly what will work.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
