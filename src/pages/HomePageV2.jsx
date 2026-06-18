@@ -148,7 +148,7 @@ const galleryImages = [
   { src: officeThreeImage, srcAvif: officeThreeImageAvif, alt: 'Office pod installation in Selangor', caption: 'Office installation, Selangor' },
   { src: podsInstallationImage, srcAvif: podsInstallationImageAvif, alt: 'Ace Pods installation team at work', caption: 'Our installation team at work' },
   { src: deliveryPodsImage, srcAvif: deliveryPodsImageAvif, alt: 'Ace Pods delivery and setup', caption: 'Delivery from our Selangor factory' },
-  { src: officeTwoImage, srcAvif: officeTwoImageAvif, alt: 'Acoustic pod in corporate office environment', caption: 'Corporate office, Malaysia' }
+  { src: officeTwoImage, srcAvif: officeTwoImageAvif, alt: 'Acoustic office pod in a corporate office, Kuala Lumpur', caption: 'Corporate office, Kuala Lumpur' }
 ];
 
 const priceRows = [
@@ -212,8 +212,8 @@ export default function HomePageV2() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-stone-50 font-sans antialiased text-stone-900">
       <SeoMeta
-        title="Homepage V2 — Draft | Ace Office Pods"
-        description="Draft redesign of the Ace Office Pods homepage."
+        title="Office Pods Malaysia — Installed in a Day | Ace Pods"
+        description="Acoustic office pods installed in one day. No renovation or permits. 180+ pods in Malaysian offices. -27dB(A) certified. All prices listed on our website."
         robots="noindex, nofollow"
       />
 
@@ -390,7 +390,7 @@ export default function HomePageV2() {
                 Private Office Space — Malaysian Made
               </p>
               <h1 className="text-4xl font-bold leading-tight tracking-tight text-stone-900">
-                Private office space. Installed in a day. No construction required.
+                Private office pods. Installed in a day. No construction required.
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-stone-600">
                 Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team.
@@ -434,7 +434,7 @@ export default function HomePageV2() {
                   Private Office Space — Malaysian Made
                 </p>
                 <h1 className="text-5xl font-bold leading-[1.08] tracking-tight text-stone-900 lg:text-6xl">
-                  Private office space. Installed in a day. No construction required.
+                  Private office pods. Installed in a day. No construction required.
                 </h1>
                 <p className="mt-5 text-xl leading-relaxed text-stone-600">
                   Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team — from site visit to sign-off.
@@ -543,7 +543,7 @@ export default function HomePageV2() {
           <div className="mx-auto max-w-[1280px]">
             <div className="mb-12 text-center">
               <h2 className="text-2xl font-semibold leading-tight tracking-tight text-stone-900 md:text-4xl">
-                Find the right pod for your team
+                Find the right acoustic office pod for your team
               </h2>
               <p className="mt-4 text-base text-stone-500 md:text-lg">
                 Six models from RM 12,500. All designed, built, and installed by our team in Selangor.
@@ -679,6 +679,9 @@ export default function HomePageV2() {
               </a>
               <p className="mt-4 text-xs text-stone-400">
                 Installation slots book 4–6 weeks out. If you have a target date, now is the right time to start.
+              </p>
+              <p className="mt-3 text-xs text-stone-400">
+                Questions about the process? <Link to="/installation-support" className="underline-offset-2 hover:underline">See our installation & support guide →</Link>
               </p>
             </div>
           </div>
