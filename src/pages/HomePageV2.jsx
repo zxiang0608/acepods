@@ -116,6 +116,11 @@ const whyAceItems = [
     icon: CheckCircle2,
     title: 'Test It Before You Sign.',
     desc: "Visit our Selangor showroom and experience the acoustic performance yourself before committing to anything. We don't ask you to trust a spec sheet — we let the pod do the talking."
+  },
+  {
+    icon: Shield,
+    title: 'No Landlord Approval. No Lease Clause Triggered.',
+    desc: "An Ace pod is furniture, not a fixture. It won't trigger your alteration clause and doesn't need landlord sign-off. When your lease ends, the pod moves with you."
   }
 ];
 
@@ -472,8 +477,11 @@ export default function HomePageV2() {
             <p className="mb-1 text-center text-[11px] font-semibold uppercase tracking-widest text-stone-400">
               Trusted by teams who can't afford downtime
             </p>
-            <p className="mb-8 text-center text-[15px] font-semibold text-[#4db891] md:text-[16px]">
+            <p className="mb-3 text-center text-[15px] font-semibold text-[#4db891] md:text-[16px]">
               180+ pods installed across Malaysia since 2023
+            </p>
+            <p className="mb-8 text-center text-[13px] text-stone-500">
+              We issue purchase orders and provide full warranty documentation for corporate procurement teams.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-5 md:gap-x-10">
               {trustedLogos.map((logo) => (
@@ -734,6 +742,24 @@ export default function HomePageV2() {
           </div>
         </section>
 
+        {/* ── GUARANTEE ── */}
+        <section className="bg-stone-50 px-5 py-12 md:px-12 md:py-16">
+          <div className="mx-auto max-w-[800px]">
+            <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm md:p-12">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
+                <Shield size={24} strokeWidth={2} className="text-[#00855a]" />
+              </div>
+              <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">The Ace Acoustic Guarantee</h3>
+              <p className="mt-4 text-base leading-relaxed text-stone-600">
+                If your Ace pod doesn't perform acoustically as specified within 30 days of installation, we'll modify it at no charge until it does. If we can't bring it to spec, we remove it and refund your investment in full.
+              </p>
+              <p className="mt-3 text-sm font-medium text-stone-400">
+                No negotiation. No support ticket. We fix it or we return your money.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* ── PRICE COMPARISON ── */}
         <section className="bg-stone-900 px-5 py-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[1000px]">
@@ -804,7 +830,10 @@ export default function HomePageV2() {
               </div>
             </div>
 
-            <div className="mt-10 text-center">
+            <p className="mt-8 text-center text-sm text-stone-500">
+              Every price is on our website — build your budget proposal before you contact us.
+            </p>
+            <div className="mt-5 text-center">
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
@@ -814,24 +843,6 @@ export default function HomePageV2() {
                 <WhatsAppIcon />
                 Get the full breakdown — WhatsApp Us
               </a>
-            </div>
-          </div>
-        </section>
-
-        {/* ── GUARANTEE ── */}
-        <section className="bg-stone-50 px-5 py-12 md:px-12 md:py-16">
-          <div className="mx-auto max-w-[800px]">
-            <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm md:p-12">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
-                <Shield size={24} strokeWidth={2} className="text-[#00855a]" />
-              </div>
-              <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">The Ace Acoustic Guarantee</h3>
-              <p className="mt-4 text-base leading-relaxed text-stone-600">
-                If your Ace pod doesn't perform acoustically as specified within 30 days of installation, we'll modify it at no charge until it does. If we can't bring it to spec, we remove it and refund your investment in full.
-              </p>
-              <p className="mt-3 text-sm font-medium text-stone-400">
-                No negotiation. No support ticket. We fix it or we return your money.
-              </p>
             </div>
           </div>
         </section>
