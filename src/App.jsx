@@ -56,7 +56,7 @@ import { products } from './data/products';
 import { pushDataLayerEvent } from './lib/tracking';
 import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from './seo/constants';
 import { HOME_META } from './seo/pageMeta';
-import { buildCanonical, createFaqSchema, homepageWebPageSchema, serviceOrganizationSchema, websiteSchema } from './seo/schema';
+import { buildCanonical, createFaqSchema, homepageWebPageSchema, localBusinessSchema, serviceOrganizationSchema, websiteSchema } from './seo/schema';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
   <div
@@ -367,7 +367,7 @@ export default function App() {
     'ace-hub': 'translate-x-0'
   };
 
-  const heroHeadline = 'Office pods for calls, focus, and meetings';
+  const heroHeadline = 'Office pods in Malaysia — for calls, focus, and meetings';
   const heroSupportingText = 'Acoustic office pods and booths for private calls, focused work, and meetings.';
   const heroTrustLine = 'A practical alternative to building new rooms';
   const productIntroHeading = 'Find the right pod\nfor calls, focus, or meetings';
@@ -376,7 +376,8 @@ export default function App() {
   const trustSectionHeading = 'Trusted by MNCs and companies across Malaysia';
   const whyHeading = 'Choose Ace Pods';
   const homepageSchemas = [
-    serviceOrganizationSchema,
+    localBusinessSchema,
+    localBusinessSchema,
     websiteSchema,
     homepageWebPageSchema,
     createFaqSchema('/', HOME_FAQ_ITEMS),
@@ -515,7 +516,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#1a1a1a]">
+    <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#333333]">
       <SeoMeta
         title={HOME_META.title}
         description={HOME_META.description}
@@ -539,7 +540,7 @@ export default function App() {
                       <Link
                         to="/office-pods"
                         onClick={() => setIsSmartPodsDesktopOpen(false)}
-                        className="text-[16px] font-medium text-[#111111] transition-colors group-hover:text-[#00855a]"
+                        className="text-[16px] font-medium text-[#333333] transition-colors group-hover:text-[#00855a]"
                       >
                         {item.label}
                       </Link>
@@ -563,7 +564,7 @@ export default function App() {
                     key={item.label}
                     to={item.to}
                     onClick={() => setIsSmartPodsDesktopOpen(false)}
-                    className="text-[16px] font-medium text-[#111111] transition-colors hover:text-[#00855a]"
+                    className="text-[16px] font-medium text-[#333333] transition-colors hover:text-[#00855a]"
                   >
                     {item.label}
                   </Link>
@@ -588,7 +589,7 @@ export default function App() {
             </Link>
 
             <div className="flex items-center gap-4 lg:hidden">
-              <button className="p-1 text-[#111111]" onClick={() => setIsMenuOpen(true)}>
+              <button className="p-1 text-[#333333]" onClick={() => setIsMenuOpen(true)}>
                 <Menu size={27} />
               </button>
             </div>
@@ -772,7 +773,7 @@ export default function App() {
                             destination_url: '/pricing#all-pod-prices'
                           })
                         }
-                        className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#111111] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                        className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#333333] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
                       >
                         Get Pricing
                       </Link>
@@ -801,12 +802,13 @@ export default function App() {
         </section>
 
         {/* ── TRUST BAR ── */}
+        <div className="h-4 bg-white md:hidden" />
         <section className="bg-[#0b1e30] px-5 py-3.5 md:px-12">
           <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
             {activeReassuranceItems.map((item) => (
               <div key={item.label} className="flex items-center gap-2">
                 <item.icon size={14} strokeWidth={2} className="shrink-0 text-[#4db891]" />
-                <span className="text-[12px] font-semibold text-white/90 md:text-[13px]">{item.label}</span>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/90">{item.label}</span>
               </div>
             ))}
           </div>
@@ -817,7 +819,7 @@ export default function App() {
 
         {/* ── LOGO MARQUEE ── moved up for early social proof */}
         <section className="overflow-hidden bg-white py-16 md:py-24">
-          <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#111111] md:mb-12 md:text-[32px]">
+          <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#333333] md:mb-12 md:text-[32px]">
             {trustSectionHeading}
           </h2>
           <div className="logo-marquee px-5 pb-6">
@@ -866,10 +868,10 @@ export default function App() {
               <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#666666] md:mb-6 md:text-[11px]">
                 Pods instead of renovation
               </span>
-              <h2 className="mb-6 text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px] xl:whitespace-nowrap">
+              <h2 className="mb-6 text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">
                 {privateSpaceHeading}
               </h2>
-              <p className="mx-auto max-w-[760px] text-[16px] leading-[1.6] text-[#555555] md:text-[20px] xl:max-w-none xl:whitespace-nowrap">
+              <p className="mx-auto max-w-[760px] text-[15px] leading-[1.6] text-[#555555] md:text-[17px] xl:max-w-none xl:whitespace-nowrap">
                 A more practical way to create quiet, usable office space for calls, focus, and meetings.
               </p>
             </div>
@@ -902,7 +904,7 @@ export default function App() {
                   </div>
                   <div className="mt-6 border-t border-[#717171] pt-6 md:mt-7 md:pt-7">
                     <span className="mb-3 block text-[12px] font-extrabold tracking-widest text-[#00855a] md:mb-5 md:text-[13px]">{item.num}</span>
-                    <h3 className="mb-3 text-[20px] font-bold leading-[1.25] tracking-tight text-[#111111] md:mb-4 md:text-[26px]">{item.title}</h3>
+                    <h3 className="mb-3 text-[20px] font-bold leading-[1.25] tracking-tight text-[#333333] md:mb-4 md:text-[26px]">{item.title}</h3>
                     <p className="text-[15px] leading-[1.65] text-[#555555] md:text-[16px]">{item.desc}</p>
                   </div>
                 </article>
@@ -916,7 +918,7 @@ export default function App() {
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[760px] text-center">
               <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#62727b] md:text-[12px]">DOES THIS SOUND FAMILIAR?</span>
-              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">
+              <h2 className="text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">
                 Is your office dealing with this?
               </h2>
               <p className="mx-auto mt-5 hidden text-[15px] leading-[1.6] text-[#62727b] md:block md:text-[16px]">
@@ -936,7 +938,7 @@ export default function App() {
                       aria-expanded={isOpen}
                     >
                       <item.icon size={20} strokeWidth={2} className="shrink-0 text-[#00855a]" />
-                      <span className="flex-1 text-[15px] font-bold text-[#111111]">{item.title}</span>
+                      <span className="flex-1 text-[15px] font-bold text-[#333333]">{item.title}</span>
                       <svg
                         width="16" height="16" viewBox="0 0 16 16" fill="none"
                         className={`shrink-0 text-[#62727b] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
@@ -961,7 +963,7 @@ export default function App() {
                 <article key={item.title} className="group cursor-default rounded-[8px] border border-[#dddddd] bg-[#f8f8f8] p-6 transition-all duration-200 hover:border-[#c0c0c0] hover:bg-white hover:shadow-sm">
                   <div className="flex items-center gap-3">
                     <item.icon size={22} strokeWidth={2} className="shrink-0 text-[#00855a]" />
-                    <h3 className="text-[17px] font-bold leading-snug tracking-tight text-[#111111] md:text-[18px]">{item.title}</h3>
+                    <h3 className="text-[17px] font-bold leading-snug tracking-tight text-[#333333] md:text-[18px]">{item.title}</h3>
                   </div>
                   <div className="grid grid-rows-[0fr] transition-all duration-300 group-hover:grid-rows-[1fr]">
                     <div className="overflow-hidden">
@@ -979,7 +981,7 @@ export default function App() {
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-10 flex flex-col items-center justify-center gap-4 text-center md:mb-12">
               <div className="mx-auto max-w-[980px]">
-                <h2 className="whitespace-pre-line text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">
+                <h2 className="whitespace-pre-line text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">
                   {productIntroHeading}
                 </h2>
 
@@ -989,7 +991,7 @@ export default function App() {
                 </p>
 
                 {/* Desktop: full paragraph */}
-                <p className="mx-auto mt-4 hidden max-w-[760px] text-center text-[16px] leading-[1.6] text-[#555555] md:block md:text-[20px]">
+                <p className="mx-auto mt-4 hidden max-w-[760px] text-center text-[15px] leading-[1.6] text-[#555555] md:block md:text-[17px]">
                   Ace Office Pods — 100% made in Malaysia, factory and showroom in Selangor. Five of our six models achieve 27 dBA noise reduction, tested and verified. The same local team handles production, installation, and post-installation support. 180+ pods installed across Malaysia since 2023.
                 </p>
               </div>
@@ -1065,8 +1067,8 @@ export default function App() {
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[960px] text-center">
               <span className="mb-4 block text-[12px] font-bold uppercase tracking-[0.24em] text-[#757d86] md:mb-5 md:text-[13px]">BEYOND THE PRODUCT</span>
-              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#111111] sm:text-[36px] md:text-[48px] lg:text-[52px]">Why Choose Ace Pods</h2>
-              <p className="mx-auto mt-5 max-w-[760px] text-[16px] leading-[1.6] text-[#4c545d] md:text-[20px]">{compareSupportingLine}</p>
+              <h2 className="text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">Why Choose Ace Pods</h2>
+              <p className="mx-auto mt-5 max-w-[760px] text-[15px] leading-[1.6] text-[#4c545d] md:text-[17px]">{compareSupportingLine}</p>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
@@ -1096,8 +1098,8 @@ export default function App() {
                     </picture>
                   </div>
                   <div className="px-6 pb-8 pt-5 text-left">
-                    <h3 className="text-[33px] font-bold leading-[1.12] tracking-tight text-[#111111] md:text-[30px]">{item.title}</h3>
-                    <p className="mt-3 text-[17px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
+                    <h3 className="text-[33px] font-bold leading-[1.12] tracking-tight text-[#333333] md:text-[30px]">{item.title}</h3>
+                    <p className="mt-3 text-[15px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
                   </div>
                 </article>
               ))}
@@ -1107,18 +1109,18 @@ export default function App() {
 
         <section className="border-t border-[#f0f0f0] bg-[#efefef] px-5 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-[1200px] rounded-[16px] bg-[#e6e6e6] px-6 py-12 text-center md:px-12 md:py-16">
-            <h2 className="mx-auto max-w-[15ch] text-[36px] font-bold leading-[0.98] tracking-tight text-[#111111] md:max-w-none md:text-[48px] md:whitespace-nowrap">
+            <h2 className="mx-auto max-w-[15ch] text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:max-w-none md:text-[32px]">
               {whyHeading}
             </h2>
 
-            <div className="mt-14 flex flex-col items-center gap-14 md:mt-14 md:grid md:grid-cols-4 md:gap-7">
+            <div className="mt-10 flex flex-col items-center gap-4 md:mt-10 md:grid md:grid-cols-4 md:gap-5">
               {activeReassuranceItems.map((item) => (
-                <article key={item.label} className="flex max-w-[230px] flex-col items-center text-center md:max-w-[200px]">
-                  <item.icon size={52} strokeWidth={1.6} className="text-[#1f2328]" />
-                  <h3 className="mt-6 text-[19px] font-semibold leading-[1.35] tracking-tight text-[#111111] md:text-[17px]">
+                <article key={item.label} className="flex w-full flex-col items-center rounded-[12px] bg-white/50 px-4 py-6 text-center">
+                  <item.icon size={38} strokeWidth={1.5} className="text-[#4a9078]" />
+                  <h3 className="mt-4 text-[11px] font-bold uppercase tracking-[0.12em] text-[#333333]">
                     {item.label}
                   </h3>
-                  <span className="sr-only">{item.desc}</span>
+                  <p className="mt-2 text-[13px] leading-[1.6] text-[#666]">{item.desc}</p>
                 </article>
               ))}
             </div>
@@ -1142,8 +1144,8 @@ export default function App() {
         <section className="bg-white px-5 py-14 md:px-12 md:py-20">
           <div className="mx-auto max-w-[1360px]">
             <div className="mx-auto max-w-[780px] text-center">
-              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#15191d] sm:text-[36px] md:text-[48px] lg:text-[52px]">Common questions about office pods</h2>
-              <p className="mt-3 text-[16px] leading-[1.6] text-[#505964] md:text-[20px]">
+              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">Common questions about office pods</h2>
+              <p className="mt-3 text-[15px] leading-[1.6] text-[#505964] md:text-[17px]">
                 A few things buyers usually want to clarify before choosing a pod.
               </p>
               <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[14px] font-medium text-[#145b5f] md:text-[15px]">
@@ -1202,7 +1204,7 @@ export default function App() {
                         onClick={() => setOpenHomepageFaq(isOpen ? null : idx)}
                         className="flex w-full items-center justify-between gap-4 py-5 text-left md:py-6"
                       >
-                        <span className="text-[19px] font-semibold leading-[1.35] tracking-tight text-[#171b20] md:text-[24px]">{item.question}</span>
+                        <span className="text-[19px] font-semibold leading-[1.35] tracking-tight text-[#333333] md:text-[20px]">{item.question}</span>
                         <ChevronDown
                           size={20}
                           className={`mt-1 shrink-0 text-[#4a545f] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}

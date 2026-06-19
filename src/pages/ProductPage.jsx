@@ -726,9 +726,9 @@ export default function ProductPage() {
   const sharedFeatureMediaFrameClass =
     'mx-auto flex h-[152px] w-full max-w-[280px] items-center justify-center overflow-hidden rounded-[24px] sm:h-[164px] sm:max-w-[300px] md:h-[176px] md:max-w-[320px] md:rounded-[28px] lg:h-[188px] lg:max-w-[340px]';
   const soloFeatureMediaFrameClass =
-    'mx-auto flex h-[240px] w-[240px] items-center justify-center overflow-hidden md:h-[264px] md:w-full md:max-w-[320px] lg:h-[282px] lg:max-w-[340px]';
+    'mx-auto flex h-[240px] w-[240px] items-center justify-center overflow-hidden rounded-full md:h-[264px] md:w-full md:max-w-[320px] lg:h-[282px] lg:max-w-[340px]';
   const sharedFeatureImageClass = 'h-full w-full object-cover object-center';
-  const soloFeatureImageClass = 'h-full w-full object-contain object-center';
+  const soloFeatureImageClass = 'h-full w-full object-cover object-center';
   const featureTrackGapClass = isPlusAndAboveFeatures
     ? 'flex w-max items-start gap-5 px-5 md:px-0 md:min-w-full md:gap-8 lg:gap-10'
     : 'flex w-max items-start gap-0 md:min-w-full';

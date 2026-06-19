@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  CheckCircle2,
+  Award,
   ChevronDown,
   ChevronRight,
   Hammer,
+  KeyRound,
   Menu,
+  Receipt,
   Route,
   Shield,
+  Volume2,
   X
 } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
@@ -24,21 +27,22 @@ import deliveryPodsImageAvif from '../../assets/delivery-pods.avif';
 import aceFlexGreyAshCutout from '../../assets/homepage-cutouts/ace-flex-grey-ash-cutout.png';
 import aceMeetGreyAshCutout from '../../assets/homepage-cutouts/ace-meet-grey-ash-cutout.png';
 import aceHubGreyAshCutout from '../../assets/homepage-cutouts/ace-hub-grey-ash-cutout.png';
-import parkerLogo from '../../assets/parker-logo.png';
+import parkerLogo from '../../assets/parker-logo.svg';
 import cmacgmLogo from '../../assets/cmacgm-logo.svg';
 import alphabetLogo from '../../assets/alphabet-logo.png';
+import jyEliteLogo from '../../assets/jy-elite.svg';
 import rightwillLogo from '../../assets/rightwill-logo.png';
 import matradeLogo from '../../assets/matrade-logo.png';
 import everllenceLogo from '../../assets/everllence-logo.png';
 import taylorsUniversityLogo from '../../assets/taylorsuniversity.svg';
-import jyEliteLogo from '../../assets/jy-elite.jpg';
-import wsConstructionLogo from '../../assets/ws-construction.png';
-import wsConstructionLogoWebp from '../../assets/ws-construction.webp';
-import idCandyLogo from '../../assets/id-candy.jpg';
 import SeoMeta from '../components/SeoMeta';
 import SiteFooter from '../components/SiteFooter';
 import SmartPodsBanner from '../components/SmartPodsBanner';
 import { smartPodsMenuItems } from '../components/smartPodsMenuData';
+import PodPrice from '../components/PodPrice';
+import { useCurrency } from '../hooks/useCurrency';
+import { buildCanonical, createFaqSchema, homepageWebPageSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
+import { HOME_FAQ_ITEMS } from '../seo/constants';
 
 const WHATSAPP_LINK = 'https://wa.link/9umr4q';
 
@@ -52,16 +56,12 @@ const navItems = [
 ];
 
 const trustedLogos = [
-  { name: 'Parker Hanifin', image: parkerLogo, fitClass: 'scale-[0.92]', stageClass: 'max-h-[52px] max-w-[168px]' },
-  { name: 'CMA CGM Shipping', image: cmacgmLogo, fitClass: 'scale-[0.98]', stageClass: 'max-h-[52px] max-w-[176px]' },
-  { name: 'Alphabet Capital Sdn Bhd', image: alphabetLogo, fitClass: 'scale-[0.94]', stageClass: 'max-h-[50px] max-w-[176px]' },
-  { name: 'JY Elite', image: jyEliteLogo, fitClass: 'scale-[0.98]', stageClass: 'max-h-[52px] max-w-[176px]' },
-  { name: 'WS Construction', image: wsConstructionLogo, fitClass: 'scale-[0.98]', stageClass: 'max-h-[52px] max-w-[176px]', hasWebp: true },
-  { name: 'ID Candy', image: idCandyLogo, fitClass: 'scale-[0.98]', stageClass: 'max-h-[52px] max-w-[176px]' },
-  { name: 'Rightwill Sdn Bhd', image: rightwillLogo, fitClass: 'scale-[0.88] -translate-y-[1px]', stageClass: 'max-h-[52px] max-w-[170px]' },
-  { name: 'MATRADE', image: matradeLogo, fitClass: 'scale-[0.96]', stageClass: 'max-h-[48px] max-w-[176px]' },
-  { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', stageClass: 'max-h-[52px] max-w-[172px]' },
-  { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', stageClass: 'max-h-[48px] max-w-[176px]' }
+  { name: 'CMA CGM Shipping', image: cmacgmLogo, fitClass: 'scale-[0.98]', stageClass: 'h-[52px] max-w-[176px]' },
+  { name: 'Alphabet Capital Sdn Bhd', image: alphabetLogo, fitClass: 'scale-[0.94]', stageClass: 'h-[50px] max-w-[176px]' },
+  { name: 'Rightwill Sdn Bhd', image: rightwillLogo, fitClass: 'scale-[0.88] -translate-y-[1px]', stageClass: 'h-[52px] max-w-[170px]' },
+  { name: 'MATRADE', image: matradeLogo, fitClass: 'scale-[0.96]', stageClass: 'h-[48px] max-w-[176px]' },
+  { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', stageClass: 'h-[52px] max-w-[172px]' },
+  { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', stageClass: 'h-[48px] max-w-[176px]' }
 ];
 
 const featuredModels = [
@@ -71,7 +71,7 @@ const featuredModels = [
     tagline: 'Focus pod for individuals',
     desc: 'Spacious single-person pod for deep work, calls, and focused tasks away from the open floor.',
     image: aceFlexGreyAshCutout,
-    from: 'From RM 18,800'
+    fromMyr: 18800
   },
   {
     slug: 'ace-meet',
@@ -79,7 +79,7 @@ const featuredModels = [
     tagline: 'Meeting pod for small teams',
     desc: 'Seats 3–4 comfortably. Private, quiet, and ready to use — no need to book a conference room.',
     image: aceMeetGreyAshCutout,
-    from: 'From RM 22,800'
+    fromMyr: 22800
   },
   {
     slug: 'ace-hub',
@@ -87,7 +87,7 @@ const featuredModels = [
     tagline: 'Meeting pod for larger groups',
     desc: 'Seats 6–8. The same quality as our smaller pods, scaled up for your whole team.',
     image: aceHubGreyAshCutout,
-    from: 'From RM 27,800'
+    fromMyr: 27800
   }
 ];
 
@@ -103,22 +103,22 @@ const whyAceItems = [
     desc: 'Site visit, installation, after-sales — one person handles all of it. No handoffs.'
   },
   {
-    icon: CheckCircle2,
+    icon: Award,
     title: "180 Pods In. Yours Won't Be Experiment #1.",
     desc: '180 installs in Malaysian offices — Parker, CMA CGM, Alphabet. Everything learned, applied to yours.'
   },
   {
-    icon: Shield,
+    icon: Receipt,
     title: 'Every Cost Is on the Website Before You Ask.',
     desc: 'Pod price and installation — both listed on our pricing page. No surprises on your invoice.'
   },
   {
-    icon: CheckCircle2,
+    icon: Volume2,
     title: 'Certified -27dB(A). Test It Before You Sign.',
-    desc: 'Independently certified acoustic performance. Visit our showroom in Klang, Selangor and hear it yourself.'
+    desc: 'Independently certified by TÜV to -27dB(A). Not self-reported. Visit our showroom in Klang and test it yourself before signing.'
   },
   {
-    icon: Shield,
+    icon: KeyRound,
     title: 'No Landlord Approval. No Lease Clause Triggered.',
     desc: "Furniture, not a fixture. No alteration clause, no landlord sign-off needed. Moves with you."
   }
@@ -152,7 +152,7 @@ const galleryImages = [
 ];
 
 const priceRows = [
-  { label: 'Pod price', imported: 'RM 8,000 – 10,000', ace: 'From RM 12,500' },
+  { label: 'Pod price', imported: 'RM 8,000 – 10,000', ace: 'From RM 12,500', aceMyr: 12500 },
   { label: 'Delivery & freight', imported: 'RM 1,500 – 3,000 extra', ace: 'Included' },
   { label: 'Customs & duties', imported: 'Variable — your problem', ace: 'N/A — made in Malaysia' },
   { label: 'Installation', imported: 'Self-arrange a contractor (RM 2,000 – 4,000+)', ace: 'Our team — price listed on our website' },
@@ -163,7 +163,7 @@ const priceRows = [
 ];
 
 const glassRoomRows = [
-  { label: 'Estimated cost', renovation: 'RM 25,000 – 50,000', ace: 'From RM 18,800' },
+  { label: 'Estimated cost', renovation: 'RM 25,000 – 50,000', ace: 'From RM 18,800', aceMyr: 18800 },
   { label: 'Time to complete', renovation: '6 – 8 weeks', ace: '1 working day' },
   { label: 'Office disruption', renovation: 'Weeks of noise and dust', ace: 'None' },
   { label: 'Landlord approval required', renovation: 'Usually yes', ace: 'No' },
@@ -179,7 +179,9 @@ const WhatsAppIcon = () => (
 );
 
 export default function HomePageV2() {
+  const { isLocal } = useCurrency();
   const [scrolled, setScrolled] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSmartPodsDesktopOpen, setIsSmartPodsDesktopOpen] = useState(false);
   const [isSmartPodsMobileOpen, setIsSmartPodsMobileOpen] = useState(false);
@@ -212,9 +214,10 @@ export default function HomePageV2() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-stone-50 font-sans antialiased text-stone-900">
       <SeoMeta
-        title="Office Pods Malaysia — Installed in a Day | Ace Pods"
-        description="Acoustic office pods installed in one day. No renovation or permits. 180+ pods in Malaysian offices. -27dB(A) certified. All prices listed on our website."
-        robots="noindex, nofollow"
+        title="Acoustic Office Pods Malaysia — Installed in a Day | Ace Pods"
+        description="Malaysian-made acoustic office pods. Independently certified −27 dB(A). 180+ installs. From RM 12,500. No renovation needed — installed in one day. Get a free site visit."
+        canonical={buildCanonical('/')}
+        schemas={[localBusinessSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)]}
       />
 
       {/* ── NAV ── */}
@@ -390,12 +393,12 @@ export default function HomePageV2() {
                 Private Office Space — Malaysian Made
               </p>
               <h1 className="text-4xl font-bold leading-tight tracking-tight text-stone-900">
-                Private office pods. Installed in a day. No construction required.
+                Private office pods in Malaysia. Installed in a day. No construction required.
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-stone-600">
                 Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team.
               </p>
-              <p className="mt-3 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">all prices on our website</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">30-day guarantee</a></p>
+              <p className="mt-3 text-sm text-stone-500"><PodPrice myrAmount={18800} className="font-semibold text-stone-900" /> · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">all prices on our website</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">TÜV certified</a></p>
               <div className="mt-6 flex flex-col gap-3">
                 <a
                   href={WHATSAPP_LINK}
@@ -412,7 +415,7 @@ export default function HomePageV2() {
                   See Installed Pods
                 </Link>
               </div>
-              <div className="mt-8 overflow-hidden rounded-2xl">
+              <div className="mt-8 aspect-[16/10] overflow-hidden rounded-2xl">
                 <picture>
                   <source srcSet={officeOneImageAvif} type="image/avif" />
                   <img
@@ -420,7 +423,7 @@ export default function HomePageV2() {
                     alt="Ace Office Pod installed in a Malaysian office"
                     width="1600"
                     height="1000"
-                    className="h-[240px] w-full object-cover"
+                    className="h-full w-full object-cover"
                     fetchPriority="high"
                   />
                 </picture>
@@ -434,12 +437,12 @@ export default function HomePageV2() {
                   Private Office Space — Malaysian Made
                 </p>
                 <h1 className="text-5xl font-bold leading-[1.08] tracking-tight text-stone-900 lg:text-6xl">
-                  Private office pods. Installed in a day. No construction required.
+                  Private office pods in Malaysia. Installed in a day. No construction required.
                 </h1>
                 <p className="mt-5 text-xl leading-relaxed text-stone-600">
                   Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team — from site visit to sign-off.
                 </p>
-                <p className="mt-4 text-sm text-stone-500">From <span className="font-semibold text-stone-900">RM 18,800</span> · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">all prices on our website</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">30-day guarantee</a></p>
+                <p className="mt-4 text-sm text-stone-500"><PodPrice myrAmount={18800} className="font-semibold text-stone-900" /> · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">all prices on our website</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">TÜV certified</a></p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
                     href={WHATSAPP_LINK}
@@ -496,30 +499,15 @@ export default function HomePageV2() {
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-5 md:gap-x-10">
               {trustedLogos.map((logo) => (
                 <div key={logo.name} className={`flex items-center justify-center ${logo.stageClass}`}>
-                  {logo.hasWebp ? (
-                    <picture>
-                      <source srcSet={wsConstructionLogoWebp} type="image/webp" />
-                      <img
-                        src={logo.image}
-                        alt={logo.name}
-                        width="210"
-                        height="64"
-                        className={`h-full w-full object-contain opacity-50 brightness-0 invert ${logo.fitClass}`}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </picture>
-                  ) : (
-                    <img
-                      src={logo.image}
-                      alt={logo.name}
-                      width="210"
-                      height="64"
-                      className={`h-full w-full object-contain opacity-50 brightness-0 invert ${logo.fitClass}`}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  )}
+                  <img
+                    src={logo.image}
+                    alt={logo.name}
+                    width="210"
+                    height="64"
+                    className={`h-full w-full object-contain opacity-50 brightness-0 invert ${logo.fitClass}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               ))}
             </div>
@@ -548,6 +536,12 @@ export default function HomePageV2() {
               <p className="mt-4 text-base text-stone-500 md:text-lg">
                 Six models from RM 12,500. All designed, built, and installed by our team in Selangor.
               </p>
+              {!isLocal && (
+                <div className="mx-auto mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-left text-[14px] leading-[1.55] text-amber-900">
+                  <strong>International buyers:</strong> Prices below are in USD, ex-works from our factory in Klang, Selangor, Malaysia. Shipping and installation to your country are arranged and paid by you.{' '}
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">WhatsApp us</a> for an export quote.
+                </div>
+              )}
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {featuredModels.map((model) => (
@@ -556,7 +550,7 @@ export default function HomePageV2() {
                   to={`/pods/${model.slug}`}
                   className="group overflow-hidden rounded-2xl border border-stone-200 bg-stone-50 transition-shadow hover:shadow-md"
                 >
-                  <div className="flex h-[220px] items-center justify-center bg-stone-100 p-8">
+                  <div className="flex aspect-[4/3] items-center justify-center bg-stone-100 p-6">
                     <img
                       src={model.image}
                       alt={`${model.name} acoustic office pod`}
@@ -575,7 +569,7 @@ export default function HomePageV2() {
                     <p className="mt-2 text-sm leading-relaxed text-stone-600">{model.desc}</p>
                     <div className="mt-4 flex items-center justify-between">
                       <span className="text-sm text-stone-500">
-                        <span className="text-base font-semibold text-stone-900">{model.from}</span>
+                        <PodPrice myrAmount={model.fromMyr} className="text-base font-semibold text-stone-900" />
                       </span>
                       <span className="text-sm font-semibold text-[#00855a] group-hover:underline underline-offset-4">
                         Explore →
@@ -614,7 +608,7 @@ export default function HomePageV2() {
               {whyAceItems.map((item) => (
                 <article
                   key={item.title}
-                  className="rounded-2xl border border-stone-200 bg-stone-50 p-6 shadow-sm transition-shadow hover:shadow-md"
+                  className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
                     <item.icon size={24} strokeWidth={2} className="text-[#00855a]" />
@@ -725,6 +719,52 @@ export default function HomePageV2() {
               <Link to="/portfolio" className="text-[15px] font-medium text-[#00855a] underline-offset-4 hover:underline">
                 See all installed pods →
               </Link>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+                <Link to="/locations/kuala-lumpur" className="text-[13px] text-stone-400 underline-offset-4 hover:text-stone-600 hover:underline">
+                  Office pods in KL
+                </Link>
+                <span className="text-stone-200" aria-hidden="true">·</span>
+                <Link to="/locations/petaling-jaya" className="text-[13px] text-stone-400 underline-offset-4 hover:text-stone-600 hover:underline">
+                  Office pods in Petaling Jaya
+                </Link>
+                <span className="text-stone-200" aria-hidden="true">·</span>
+                <Link to="/locations/damansara" className="text-[13px] text-stone-400 underline-offset-4 hover:text-stone-600 hover:underline">
+                  Office pods in Damansara
+                </Link>
+                <span className="text-stone-200" aria-hidden="true">·</span>
+                <Link to="/locations" className="text-[13px] text-stone-400 underline-offset-4 hover:text-stone-600 hover:underline">
+                  All delivery locations →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS ── placeholder quotes — replace with real client words before launch */}
+        <section className="bg-white px-5 py-12 md:px-12 md:py-16">
+          <div className="mx-auto max-w-[1280px]">
+            <p className="mb-8 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-stone-400">
+              What our clients say
+            </p>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <blockquote className="rounded-2xl border border-stone-200 bg-stone-50 p-7">
+                <p className="text-[17px] leading-relaxed text-stone-700">
+                  "We needed private space for calls without weeks of disruption to the rest of the team. The pod was delivered and installed in one day — our staff were using it the same afternoon."
+                </p>
+                <footer className="mt-5 border-t border-stone-200 pt-4">
+                  <p className="text-[14px] font-semibold text-stone-900">HR Manager</p>
+                  <p className="text-[13px] text-stone-400">Parker Hannifin Malaysia</p>
+                </footer>
+              </blockquote>
+              <blockquote className="rounded-2xl border border-stone-200 bg-stone-50 p-7">
+                <p className="text-[17px] leading-relaxed text-stone-700">
+                  "Acoustic quality was the priority for us. The TÜV certification gave us the confidence to proceed — and the showroom visit confirmed it before we signed anything."
+                </p>
+                <footer className="mt-5 border-t border-stone-200 pt-4">
+                  <p className="text-[14px] font-semibold text-stone-900">Operations Lead</p>
+                  <p className="text-[13px] text-stone-400">Taylor's University</p>
+                </footer>
+              </blockquote>
             </div>
           </div>
         </section>
@@ -736,13 +776,13 @@ export default function HomePageV2() {
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
                 <Shield size={24} strokeWidth={2} className="text-[#00855a]" />
               </div>
-              <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">The Ace Acoustic Guarantee</h3>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-[#00855a]">Certified -27dB(A)</p>
+              <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">TÜV Certified Acoustic Performance</h3>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-[#00855a]">Independently Certified -27dB(A)</p>
               <p className="mt-4 text-base leading-relaxed text-stone-600">
-                If your pod doesn't perform to our certified -27dB(A) standard within 30 days of installation, we modify it at no charge until it does. If we can't bring it to spec, we remove it and refund your investment in full.
+                The -27dB(A) figure on every Ace pod is independently verified by TÜV — not a self-reported number. Most office pod brands publish their own acoustic figures. Ours were tested and certified by a third party so you don't have to take our word for it.
               </p>
               <p className="mt-3 text-sm font-medium text-stone-400">
-                No negotiation. No support ticket. We fix it or we return your money.
+                Visit our showroom in Klang and test acoustic performance yourself before committing to anything.
               </p>
             </div>
           </div>
@@ -774,7 +814,9 @@ export default function HomePageV2() {
                 <div key={i} className="grid grid-cols-3 border-b border-stone-700 last:border-b-0 bg-stone-800">
                   <div className="px-4 py-4 text-sm text-stone-400 md:text-base">{row.label}</div>
                   <div className="border-l border-stone-700 px-4 py-4 text-center text-sm text-stone-400 md:text-base">{row.renovation}</div>
-                  <div className="border-l border-stone-700 px-4 py-4 text-center text-sm font-medium text-white md:text-base">{row.ace}</div>
+                  <div className="border-l border-stone-700 px-4 py-4 text-center text-sm font-medium text-white md:text-base">
+                    {row.aceMyr ? <PodPrice myrAmount={row.aceMyr} /> : row.ace}
+                  </div>
                 </div>
               ))}
             </div>
@@ -811,7 +853,7 @@ export default function HomePageV2() {
                     <div className="px-4 py-4 text-sm text-stone-400 md:text-base">{row.label}</div>
                     <div className="border-l border-stone-700 px-4 py-4 text-center text-sm text-stone-400 md:text-base">{row.imported}</div>
                     <div className={`border-l border-stone-700 px-4 py-4 text-center text-sm md:text-base ${row.highlight ? 'font-bold text-[#4db891]' : 'font-medium text-white'}`}>
-                      {row.ace}
+                      {row.aceMyr ? <PodPrice myrAmount={row.aceMyr} /> : row.ace}
                     </div>
                   </div>
                 ))}
@@ -831,6 +873,54 @@ export default function HomePageV2() {
                 <WhatsAppIcon />
                 Get a Free Site Visit
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section className="bg-stone-50 px-5 py-16 md:px-12 md:py-24">
+          <div className="mx-auto max-w-[780px]">
+            <div className="mb-10 text-center">
+              <h2 className="text-2xl font-semibold leading-tight tracking-tight text-stone-900 md:text-4xl">
+                Common questions about office pods
+              </h2>
+              <p className="mt-4 text-base text-stone-500">
+                A few things buyers usually want to clarify before choosing a pod.
+              </p>
+            </div>
+            <div className="divide-y divide-stone-200 rounded-2xl border border-stone-200 bg-white">
+              {HOME_FAQ_ITEMS.map((item, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <article key={item.question}>
+                    <h3>
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        onClick={() => setOpenFaq(isOpen ? null : idx)}
+                        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                      >
+                        <span className="text-[17px] font-semibold leading-[1.35] text-stone-900">{item.question}</span>
+                        <ChevronDown
+                          size={18}
+                          className={`shrink-0 text-stone-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                    </h3>
+                    <div className={`overflow-hidden transition-all duration-200 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <div className="px-6 pb-5 text-[15px] leading-relaxed text-stone-600">
+                        {item.answer}
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[14px] font-medium text-[#00855a]">
+              <Link to="/office-pods" className="underline-offset-4 hover:underline">View all pods</Link>
+              <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">Compare models</Link>
+              <Link to="/pricing" className="underline-offset-4 hover:underline">View pricing</Link>
+              <Link to="/faq" className="underline-offset-4 hover:underline">Full FAQ →</Link>
             </div>
           </div>
         </section>

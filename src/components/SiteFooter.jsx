@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import { ChevronDown, Globe, Instagram, Linkedin } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
 import { pushDataLayerEvent } from '../lib/tracking';
+import {
+  SEO_BRAND_EMAIL,
+  SEO_BRAND_PHONE,
+  SEO_BRAND_POSTAL_CODE,
+  SEO_BRAND_SHOWROOM_LOCALITY,
+  SEO_BRAND_SHOWROOM_REGION,
+  SEO_BRAND_STREET_ADDRESS
+} from '../seo/constants';
 
 const footerSocialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/acepodsmy/', Icon: Instagram },
@@ -74,6 +82,16 @@ export default function SiteFooter({ className = 'mt-0' }) {
               <img src={acePodsLogo} alt="Ace Pods" width="32" height="32" className="h-8 w-auto" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
+            <address className="not-italic space-y-1 text-[13px] leading-relaxed text-gray-400">
+              <p>{SEO_BRAND_STREET_ADDRESS},</p>
+              <p>{SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}</p>
+              <p className="pt-1">
+                <a href={`tel:${SEO_BRAND_PHONE}`} className="hover:text-white transition-colors">{SEO_BRAND_PHONE}</a>
+              </p>
+              <p>
+                <a href={`mailto:${SEO_BRAND_EMAIL}`} className="hover:text-white transition-colors">{SEO_BRAND_EMAIL}</a>
+              </p>
+            </address>
             <div className="flex gap-3">
               {footerSocialLinks.map(({ label, href, Icon }) => (
                 <a
@@ -135,11 +153,21 @@ export default function SiteFooter({ className = 'mt-0' }) {
         </div>
 
         <div className="hidden grid-cols-5 gap-8 md:grid">
-          <div className="space-y-6">
+          <div className="space-y-5">
             <div className="inline-flex rounded-[10px] bg-white px-3 py-2">
               <img src={acePodsLogo} alt="Ace Pods" width="56" height="56" className="h-8 w-auto md:h-14" />
             </div>
             <p className="max-w-xs whitespace-pre-line text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
+            <address className="not-italic space-y-1 text-[13px] leading-relaxed text-gray-400">
+              <p>{SEO_BRAND_STREET_ADDRESS},</p>
+              <p>{SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}</p>
+              <p className="pt-1">
+                <a href={`tel:${SEO_BRAND_PHONE}`} className="hover:text-white transition-colors">{SEO_BRAND_PHONE}</a>
+              </p>
+              <p>
+                <a href={`mailto:${SEO_BRAND_EMAIL}`} className="hover:text-white transition-colors">{SEO_BRAND_EMAIL}</a>
+              </p>
+            </address>
             <div className="flex gap-3">
               {footerSocialLinks.map(({ label, href, Icon }) => (
                 <a

@@ -177,6 +177,88 @@ export const locations = [
     ]
   },
   {
+    slug: 'petaling-jaya',
+    city: 'Petaling Jaya',
+    shortName: 'Petaling Jaya (PJ)',
+    eyebrow: 'Office pod delivery and installation in Petaling Jaya',
+    title: 'Office pods in Petaling Jaya (PJ)',
+    metaTitle: 'Office Pods Petaling Jaya | Delivery & Installation | Ace Office Pods',
+    metaDescription:
+      'Office pods in Petaling Jaya (PJ) — acoustic phone booths and meeting pods for SS2, Damansara Jaya, Ara Damansara, Bandar Utama, and surrounding PJ offices. Compare models, pricing, and installation.',
+    intro:
+      'Ace Office Pods supplies and installs acoustic office pods, phone booths, and meeting pods for Petaling Jaya workplaces. We cover offices throughout PJ — from SS2 and Damansara Jaya to Bandar Utama, Ara Damansara, TTDI, and Tropicana. No renovation required; pods are installed in one working day.',
+    serviceSummary:
+      'Petaling Jaya installations are planned around office building access, loading bay arrangements, lift dimensions, floor level, and building management requirements. Many PJ office towers have specific delivery windows and contractor pass requirements — our team confirms all site conditions before the installation date.',
+    localContext:
+      'PJ offices range from heritage SS2 commercial buildings to newer Grade A towers in Damansara Jaya and Tropicana. Whether your team is in a co-working space, a standalone office, or a multi-floor corporate setup, we recommend pods based on daily usage, available floor space, and access conditions. Our showroom in Klang is approximately 25–35 minutes from most PJ locations and is available for viewing by appointment.',
+    projectIntro:
+      'Ace Office Pods delivers and installs acoustic pods across Petaling Jaya. Contact our team to discuss your PJ project requirements, site access, and preferred models.',
+    projects: [],
+    faqs: [
+      {
+        question: 'Do you deliver and install office pods in Petaling Jaya?',
+        answer:
+          'Yes. Ace Office Pods covers delivery and installation across Petaling Jaya, including SS2, Damansara Jaya, Ara Damansara, Bandar Utama, TTDI, and Tropicana. Site access, building management requirements, and installation scope are confirmed before the project date.'
+      },
+      {
+        question: 'How long does it take to install an office pod in a PJ office?',
+        answer:
+          'Most installations are completed within one working day. The exact duration depends on pod size, quantity, floor access, and site conditions. Our team coordinates directly with building management to minimise disruption to your office operations.'
+      },
+      {
+        question: 'Do I need landlord approval to install an office pod in my PJ office?',
+        answer:
+          'In most cases, no. Ace office pods are freestanding furniture — not permanent fixtures — so they do not trigger alteration clauses in standard tenancy agreements. However, we recommend checking your specific lease terms, particularly for branded or managed office buildings.'
+      },
+      {
+        question: 'How much does an office pod cost for a Petaling Jaya office?',
+        answer:
+          'Ace office pods start from RM 12,500 for a one-person model. Final pricing depends on model, quantity, delivery access, floor level, and installation scope. Contact us for a project quote specific to your PJ office.'
+      }
+    ]
+  },
+  {
+    slug: 'damansara',
+    city: 'Damansara',
+    shortName: 'Damansara',
+    eyebrow: 'Office pod delivery and installation in Damansara',
+    title: 'Office pods in Damansara',
+    metaTitle: 'Office Pods Damansara | Delivery & Installation | Ace Office Pods',
+    metaDescription:
+      'Office pods in Damansara — acoustic phone booths and meeting pods for Damansara Utama (Uptown), Damansara Heights, Damansara Perdana, and Kota Damansara offices. Compare models, pricing, and installation.',
+    intro:
+      'Ace Office Pods supplies and installs acoustic office pods and phone booths for Damansara workplaces. We cover offices throughout the Damansara corridor — including Damansara Utama (Uptown), Damansara Heights, Damansara Perdana, Kota Damansara, and Sri Damansara. Pods are delivered and installed in one working day with no renovation required.',
+    serviceSummary:
+      'Damansara installations cover a mix of commercial parks, strata office towers, and standalone corporate buildings — each with different loading, security, and access requirements. Our team reviews site conditions in advance and coordinates with building management to confirm delivery windows, contractor access, and installation timing.',
+    localContext:
+      'The Damansara area is home to a high concentration of MNCs, professional services firms, and regional headquarters. Office pods are frequently used here to add private call and meeting space within open-plan layouts — without the lead time or disruption of a renovation. Our showroom in Klang is approximately 20–30 minutes from most Damansara locations and is available by appointment for buyers who want to test acoustic performance before committing.',
+    projectIntro:
+      'Ace Office Pods delivers and installs acoustic pods across the Damansara corridor. Contact our team to discuss your project requirements, site access, and preferred models.',
+    projects: [],
+    faqs: [
+      {
+        question: 'Do you deliver and install office pods in Damansara?',
+        answer:
+          'Yes. Ace Office Pods covers delivery and installation across the Damansara area, including Damansara Utama, Damansara Heights, Damansara Perdana, Kota Damansara, and Sri Damansara. Site conditions, building access, and installation scope are confirmed before the project date.'
+      },
+      {
+        question: 'Which office pod is suitable for a Damansara corporate office?',
+        answer:
+          'For private calls and focused work, Ace Solo or Ace Plus are commonly used. Ace Meet (3–4 pax) and Ace Hub (up to 6 pax) suit team meetings and collaboration spaces. We recommend based on your floor plan, daily usage patterns, and available space.'
+      },
+      {
+        question: 'Can I test an office pod before ordering?',
+        answer:
+          'Yes. Our showroom in Klang, Selangor is approximately 20–30 minutes from most Damansara offices and is available by appointment. You can compare pod sizes, finishes, ventilation, and practical acoustic performance before confirming your order.'
+      },
+      {
+        question: 'How much does delivery and installation cost for a Damansara office?',
+        answer:
+          'Delivery and installation pricing for Damansara projects depends on pod model, quantity, floor level, lift or loading access, and site-specific requirements. Both pod and installation pricing are listed on our pricing page so you can build a budget proposal before contacting us.'
+      }
+    ]
+  },
+  {
     slug: 'penang',
     city: 'Penang',
     shortName: 'Penang',

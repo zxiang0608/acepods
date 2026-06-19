@@ -47,7 +47,7 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'How soundproof are office pods in real working environments?',
     answer:
-      'Our office pods achieve approximately 27 dBA noise reduction in practical office conditions. This significantly reduces surrounding noise for calls and meetings. They are highly effective for privacy, although no pod is completely 100% soundproof.'
+      'Our office pods achieve an independently certified −27 dB(A) noise reduction. This significantly reduces surrounding noise for calls and meetings. They are highly effective for privacy, although no pod is completely 100% soundproof.'
   },
   {
     question: 'What happens if we need help after delivery?',
@@ -90,7 +90,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'How soundproof are office pods in real working environments?',
     answer:
-      'Our office pods achieve approximately 27 dBA noise reduction in real office use. This reduces surrounding noise significantly and improves privacy for calls and meetings. They are highly effective, but not completely 100% soundproof.'
+      'Our office pods achieve an independently certified −27 dB(A) noise reduction in real office conditions. This reduces surrounding noise significantly and improves privacy for calls and meetings. They are highly effective, but not completely 100% soundproof.'
   },
   {
     question: 'Are office pods suitable for Malaysia office environments (heat and ventilation)?',
@@ -155,7 +155,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'How are Ace pods different from imported office pods?',
     answer:
-      'Ace pods are manufactured locally in Malaysia, which means servicing and warranty support are handled directly by the same team — not routed through a distributor to an overseas factory. Five of our six models also carry a verified 27 dBA noise reduction rating. For buyers who want quality they can verify and support they can actually reach, local manufacturing makes a practical difference.'
+      'Ace pods are manufactured locally in Malaysia, which means servicing and warranty support are handled directly by the same team — not routed through a distributor to an overseas factory. Five of our six models carry an independently certified −27 dB(A) noise reduction rating. For buyers who want quality they can verify and support they can actually reach, local manufacturing makes a practical difference.'
   },
   {
     question: 'What does 27 dBA noise reduction actually mean in practice?',
