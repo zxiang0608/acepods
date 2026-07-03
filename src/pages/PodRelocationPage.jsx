@@ -117,7 +117,7 @@ const RELOCATION_FAQ_ITEMS = [
   },
   {
     question: 'How much does office pod relocation cost?',
-    answer: 'Relocation starts from RM1,499. The final price depends on distance between sites, access conditions, pod model and size, and whether the job is a full relocation or dismantle-only. Contact the team for a written quote after a two-site review.'
+    answer: 'Relocation is quoted per project rather than a fixed price, since cost depends on distance between sites, access conditions, pod model and size, and whether the job is a full relocation or dismantle-only. Contact the team for a written quote after a two-site review.'
   },
   {
     question: 'How long does a pod relocation take?',
@@ -143,7 +143,7 @@ export default function PodRelocationPage() {
     <PageShell>
       <SeoMeta
         title="Office Pod Relocation Service Malaysia | Ace Office Pods"
-        description="Moving offices? Ace relocates office pods from RM1,499 — site assessment, dismantling, transport, reinstallation, and post-move inspection, with a written quote."
+        description="Moving offices? See how Ace relocates office pods — site assessment, dismantling, transport, reinstallation, and post-move inspection, with a written quote."
         canonical={buildCanonical('/pod-relocation')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pod relocation, move office pod, relocate meeting pod`}
         schemas={[organizationSchema, websiteSchema, relocationHowToSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/pod-relocation', RELOCATION_FAQ_ITEMS)]}
@@ -160,10 +160,6 @@ export default function PodRelocationPage() {
         <h1 className="max-w-[34ch] whitespace-normal text-[34px] font-bold leading-[1.08] tracking-tight text-[#14181c] md:max-w-none md:whitespace-nowrap md:text-[54px]">
           Office pod relocation, done properly
         </h1>
-        <p className="mt-4 inline-flex max-w-full flex-wrap items-baseline gap-x-2 gap-y-1 rounded-[10px] border border-[#bfd1cb] bg-[#e6f0ed] px-4 py-2 text-[14px] font-semibold text-[#145b5f]">
-          <span className="whitespace-nowrap">From RM1,499</span>
-          <span className="font-normal text-[#3f6668]">— final quote after a two-site review</span>
-        </p>
         <p className="mt-5 max-w-[72ch] text-[17px] leading-[1.65] text-[#454d56] md:text-[19px]">
           Moving offices doesn't mean leaving your pod behind. Every Ace Office Pod is modular by design, and our installation team can dismantle, transport, and reinstall it at your new location — flexibility that permanent built rooms don't offer. Here's what to expect, what's checked before handover, and how relocation is quoted.
         </p>
@@ -258,10 +254,6 @@ export default function PodRelocationPage() {
             </div>
             <div id="pricing" className="md:pl-4">
               <h3 className="text-[17px] font-semibold text-[#1d232a]">What affects the quote</h3>
-              <p className="mt-2 text-[22px] font-bold text-[#145b5f]">
-                From RM1,499
-                <span className="ml-2 text-[13px] font-semibold text-[#65707a]">final quote confirmed after a two-site review</span>
-              </p>
               <ul className="mt-3 space-y-3 text-[14px] leading-[1.5] text-[#39424c]">
                 {costFactors.map((item) => (
                   <li key={item} className="flex items-start gap-2">
@@ -272,7 +264,7 @@ export default function PodRelocationPage() {
               </ul>
             </div>
           </div>
-          <div className="mt-5 text-[14px] text-[#4d555e]">Relocation starts from RM1,499 and is quoted per project after a review of both locations. Some models, like the Ace Flex Duo, have hidden wheels for short self-moves within the same floor.</div>
+          <div className="mt-5 text-[14px] text-[#4d555e]">Relocation is quoted per project after a review of both locations — no fixed price applies. Some models, like the Ace Flex Duo, have hidden wheels for short self-moves within the same floor.</div>
           <div className="mt-2 border-b border-[#e6e1d9]" />
         </div>
       </section>

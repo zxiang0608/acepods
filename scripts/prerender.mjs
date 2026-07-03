@@ -73,7 +73,7 @@ const RELOCATION_FAQ_ITEMS = [
   },
   {
     question: 'How much does office pod relocation cost?',
-    answer: 'Relocation starts from RM1,499. The final price depends on distance between sites, access conditions, pod model and size, and whether the job is a full relocation or dismantle-only. Contact the team for a written quote after a two-site review.'
+    answer: 'Relocation is quoted per project rather than a fixed price, since cost depends on distance between sites, access conditions, pod model and size, and whether the job is a full relocation or dismantle-only. Contact the team for a written quote after a two-site review.'
   },
   {
     question: 'How long does a pod relocation take?',
@@ -1298,12 +1298,11 @@ const STATIC_PRERENDER_META = {
   '/pod-relocation': {
     title: 'Office Pod Relocation Service Malaysia | Ace Office Pods',
     description:
-      'Moving offices? Ace relocates office pods from RM1,499 — site assessment, dismantling, transport, reinstallation, and post-move inspection, with a written quote.',
+      'Moving offices? See how Ace relocates office pods — site assessment, dismantling, transport, reinstallation, and post-move inspection, with a written quote.',
     keywords: `${SEO_KEYWORDS_COMMON}, office pod relocation, move office pod, relocate meeting pod`,
     h1: 'Office pod relocation, done properly',
     body: [
       "Moving offices doesn't mean leaving your pod behind. Every Ace Office Pod is modular by design and can be dismantled, transported, and reinstalled at a new location.",
-      'From RM1,499, with the final quote confirmed after a review of both locations.',
       'See what is checked before handover and how relocation is quoted.',
       '## How pod relocation works',
       '1. Site assessment and quote — access at both the pickup and destination sites is reviewed before a written quote is issued',
@@ -1320,7 +1319,7 @@ const STATIC_PRERENDER_META = {
         name: 'Office Pod Relocation Service Malaysia',
         url: canonical,
         description:
-          'Moving offices? Ace relocates office pods from RM1,499 — site assessment, dismantling, transport, reinstallation, and post-move inspection, with a written quote.'
+          'Moving offices? See how Ace relocates office pods — site assessment, dismantling, transport, reinstallation, and post-move inspection, with a written quote.'
       },
       {
         '@context': 'https://schema.org',
