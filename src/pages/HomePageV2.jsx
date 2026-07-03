@@ -824,6 +824,11 @@ export default function HomePageV2() {
             <p className="mt-6 text-center text-base font-semibold text-stone-300">
               Against a renovation, a pod isn't the expensive option. It's the obvious one.
             </p>
+            <p className="mt-2 text-center text-base text-stone-400">
+              <Link to="/pod-relocation" className="font-semibold text-[#4db891] underline-offset-4 hover:underline">
+                See how pod relocation works →
+              </Link>
+            </p>
 
             {/* Secondary: vs overseas import */}
             <div className="mt-12 border-t border-stone-700 pt-10">

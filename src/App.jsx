@@ -14,6 +14,7 @@ import {
   Menu,
   Route,
   TrendingUp,
+  Truck,
   VolumeX,
   X
 } from 'lucide-react';
@@ -57,6 +58,7 @@ import { pushDataLayerEvent } from './lib/tracking';
 import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from './seo/constants';
 import { HOME_META } from './seo/pageMeta';
 import { buildCanonical, createFaqSchema, homepageWebPageSchema, localBusinessSchema, serviceOrganizationSchema, websiteSchema } from './seo/schema';
+import CurrencySwitcher from './components/CurrencySwitcher';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
   <div
@@ -73,6 +75,7 @@ const navItems = [
   { label: 'Office Chairs', to: '/office-chairs' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Installation & Support', to: '/installation-support' },
+  { label: 'Pod Relocation', to: '/pod-relocation' },
   { label: 'FAQ', to: '/faq' }
 ];
 
@@ -574,6 +577,7 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-4 md:gap-6">
+            <CurrencySwitcher className="hidden lg:flex" />
             <Link
               to="/installation-support#book-viewing"
               onClick={() =>
@@ -910,6 +914,31 @@ export default function App() {
                 </article>
               ))}
             </div>
+
+            <div className="mx-auto mt-12 flex max-w-[760px] flex-col items-center gap-2 rounded-[14px] border border-[#e0ddd6] bg-[#F6F5F0] px-6 py-6 text-center md:mt-16 md:py-8">
+              <Truck className="h-5 w-5 text-[#145b5f]" aria-hidden="true" />
+              <p className="text-[15px] font-semibold text-[#333333] md:text-[16px]">Your pod moves when you do.</p>
+              <p className="max-w-[56ch] text-[14px] leading-[1.6] text-[#566270] md:text-[15px]">
+                Unlike a built room, a pod can be dismantled, transported, and reinstalled at your next office.
+              </p>
+              <Link to="/pod-relocation" className="mt-1 text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+                See how pod relocation works →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── POD RELOCATION CALLOUT (mobile only — desktop version lives inside the hidden PODS VS RENOVATION section above) ── */}
+        <section className="border-b border-[#f0f0f0] bg-white px-5 pb-10 pt-0 md:hidden">
+          <div className="mx-auto flex max-w-[520px] flex-col items-center gap-2 rounded-[14px] border border-[#e0ddd6] bg-[#F6F5F0] px-6 py-6 text-center">
+            <Truck className="h-5 w-5 text-[#145b5f]" aria-hidden="true" />
+            <p className="text-[15px] font-semibold text-[#333333]">Your pod moves when you do.</p>
+            <p className="max-w-[56ch] text-[14px] leading-[1.6] text-[#566270]">
+              Unlike a built room, a pod can be dismantled, transported, and reinstalled at your next office.
+            </p>
+            <Link to="/pod-relocation" className="mt-1 text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+              See how pod relocation works →
+            </Link>
           </div>
         </section>
 
@@ -1063,7 +1092,7 @@ export default function App() {
         </section>
 
         {/* ── WHY CHOOSE ACE PODS ── differentiate after product consideration */}
-        <section className="bg-[#F6F5F0] px-5 py-16 md:px-12 md:py-32">
+        <section className="bg-white px-5 py-16 md:px-12 md:py-32">
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[960px] text-center">
               <span className="mb-4 block text-[12px] font-bold uppercase tracking-[0.24em] text-[#757d86] md:mb-5 md:text-[13px]">BEYOND THE PRODUCT</span>
@@ -1107,7 +1136,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="border-t border-[#f0f0f0] bg-[#efefef] px-5 py-12 md:px-12 md:py-16">
+        <section className="border-t border-[#f0f0f0] bg-white px-5 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-[1200px] rounded-[16px] bg-[#e6e6e6] px-6 py-12 text-center md:px-12 md:py-16">
             <h2 className="mx-auto max-w-[15ch] text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:max-w-none md:text-[32px]">
               {whyHeading}

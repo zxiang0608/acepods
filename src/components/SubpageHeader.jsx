@@ -12,7 +12,8 @@ const navItems = [
   { label: 'Office Chairs', to: '/office-chairs' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'FAQ', to: '/faq' },
-  { label: 'Installation & Support', to: '/installation-support' }
+  { label: 'Installation & Support', to: '/installation-support' },
+  { label: 'Pod Relocation', to: '/pod-relocation' }
 ];
 
 export default function SubpageHeader() {

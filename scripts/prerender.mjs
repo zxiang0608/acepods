@@ -62,6 +62,33 @@ const INSTALLATION_FAQ_ITEMS = [
   }
 ];
 
+const RELOCATION_FAQ_ITEMS = [
+  {
+    question: 'Can an office pod be relocated after installation?',
+    answer: 'Yes. Ace Office Pods are modular and can be dismantled, transported, and reinstalled at a new location by our installation team. Relocation cost depends on distance and access conditions at both the pickup and destination sites.'
+  },
+  {
+    question: 'Does moving my pod affect the warranty?',
+    answer: 'Relocation should be carried out by an experienced team, and any warranty implications are confirmed in writing as part of the relocation quote before work begins. Contact us before moving a pod yourself to avoid affecting coverage.'
+  },
+  {
+    question: 'How much does office pod relocation cost?',
+    answer: 'Relocation starts from RM1,499. The final price depends on distance between sites, access conditions, pod model and size, and whether the job is a full relocation or dismantle-only. Contact the team for a written quote after a two-site review.'
+  },
+  {
+    question: 'How long does a pod relocation take?',
+    answer: 'Timing depends on distance, access, and pod size. Most single-pod relocations are completed within one to a few working days once the move date is confirmed, similar in scope to a new installation.'
+  },
+  {
+    question: 'What is checked after a pod is moved?',
+    answer: 'After reinstallation, the team inspects panel fit and fasteners, glass and door alignment, acoustic seals, ventilation, lighting, socket and power operation, and stability before handover.'
+  },
+  {
+    question: 'Can I move a pod myself?',
+    answer: 'Some models, such as the Ace Flex Duo, include hidden heavy-duty wheels for convenient short-distance moves within the same floor. For a move between offices or floors, dismantling and reinstallation by the Ace team is recommended to avoid affecting panel fit, seals, or warranty coverage.'
+  }
+];
+
 const DEFAULT_OG_IMAGE = `${SEO_BASE_URL}/og-image.jpg`;
 const NOSCRIPT_BRAND_OWNERSHIP_TEXT =
   'Ace Office Pods is owned by Ace Workplace Solutions and supplies office pods, office booths, office phone booths, and meeting pods in Malaysia.';
@@ -1258,6 +1285,115 @@ const STATIC_PRERENDER_META = {
         '@type': 'FAQPage',
         url: canonical,
         mainEntity: INSTALLATION_FAQ_ITEMS.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer
+          }
+        }))
+      }
+    ]
+  },
+  '/pod-relocation': {
+    title: 'Office Pod Relocation Service Malaysia | Ace Office Pods',
+    description:
+      'Moving offices? Ace relocates office pods from RM1,499 — site assessment, dismantling, transport, reinstallation, and post-move inspection, with a written quote.',
+    keywords: `${SEO_KEYWORDS_COMMON}, office pod relocation, move office pod, relocate meeting pod`,
+    h1: 'Office pod relocation, done properly',
+    body: [
+      "Moving offices doesn't mean leaving your pod behind. Every Ace Office Pod is modular by design and can be dismantled, transported, and reinstalled at a new location.",
+      'From RM1,499, with the final quote confirmed after a review of both locations.',
+      'See what is checked before handover and how relocation is quoted.',
+      '## How pod relocation works',
+      '1. Site assessment and quote — access at both the pickup and destination sites is reviewed before a written quote is issued',
+      '2. Dismantling — the pod is carefully dismantled, protecting panels, glazing, door hardware, and acoustic seals',
+      '3. Transport and reinstallation — components are transported and reassembled to the original specification',
+      '4. Inspection and handover — panel fit, glass and door alignment, acoustic seals, ventilation, and power are checked before handover'
+    ],
+    noscriptFaqHeading: 'Pod relocation questions',
+    noscriptFaqItems: RELOCATION_FAQ_ITEMS,
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Office Pod Relocation Service Malaysia',
+        url: canonical,
+        description:
+          'Moving offices? Ace relocates office pods from RM1,499 — site assessment, dismantling, transport, reinstallation, and post-move inspection, with a written quote.'
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: 'How office pod relocation works',
+        description: 'The step-by-step process for relocating an Ace Office Pod to a new office location, from site assessment to post-move inspection.',
+        url: canonical,
+        step: [
+          {
+            '@type': 'HowToStep',
+            position: 1,
+            name: 'Site Assessment & Quote',
+            text: 'Access at both the pickup and destination locations is reviewed before a written quote is issued.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'Access, distance, and placement are confirmed at both locations.' },
+              { '@type': 'HowToDirection', text: 'Relocation cost is confirmed in writing before work begins.' }
+            ]
+          },
+          {
+            '@type': 'HowToStep',
+            position: 2,
+            name: 'Dismantling',
+            text: 'The Ace installation team dismantles the pod at its current location, protecting panels, glazing, door hardware, and acoustic seals.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'The same team that installs new pods handles disassembly.' },
+              { '@type': 'HowToDirection', text: 'Glass, door mechanisms, and acoustic seals are protected for transport.' }
+            ]
+          },
+          {
+            '@type': 'HowToStep',
+            position: 3,
+            name: 'Transport & Reinstallation',
+            text: 'Components are transported to the new site and reassembled following the original specification.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'Panels and hardware are handled the same way as new production units.' },
+              { '@type': 'HowToDirection', text: 'The pod is rebuilt following its original configuration and finish.' }
+            ]
+          },
+          {
+            '@type': 'HowToStep',
+            position: 4,
+            name: 'Inspection & Handover',
+            text: 'Panel fit, glass and door alignment, acoustic seals, ventilation, lighting, and power are checked before handover.',
+            itemListElement: [
+              { '@type': 'HowToDirection', text: 'A full post-move check is completed before handover.' },
+              { '@type': 'HowToDirection', text: 'Any warranty implications of the move are confirmed in writing.' }
+            ]
+          }
+        ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Pod Relocation',
+            item: canonical
+          }
+        ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        url: canonical,
+        mainEntity: RELOCATION_FAQ_ITEMS.map((item) => ({
           '@type': 'Question',
           name: item.question,
           acceptedAnswer: {

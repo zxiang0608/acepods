@@ -64,6 +64,7 @@ const sourceFilesForRoute = (route) => {
     '/contact': ['src/pages/ContactPage.jsx', 'src/seo/constants.js'],
     '/faq': ['src/pages/FaqPage.jsx', 'src/seo/constants.js'],
     '/installation-support': ['src/pages/InstallationSupportPage.jsx'],
+    '/pod-relocation': ['src/pages/PodRelocationPage.jsx'],
     '/locations': ['src/pages/LocationsPage.jsx', 'src/data/locations.js']
   };
 

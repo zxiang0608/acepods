@@ -306,6 +306,9 @@ export default function InstallationSupportPage() {
           <p className="mt-3 max-w-[72ch] text-[16px] leading-[1.5] text-[#47505a] md:text-[17px]">
             Book a consultation to confirm model fit, site readiness, and installation timing before order confirmation.
           </p>
+          <p className="mt-2 text-[14px] text-[#3f6668]">
+            Moving offices? See how <Link to="/pod-relocation" className="font-semibold underline-offset-4 hover:underline">pod relocation</Link> works.
+          </p>
           <div className="mt-7 flex flex-wrap items-center gap-4">
             <a
               href={whatsappHref}

@@ -92,6 +92,7 @@ const summary = {
     pricing: `${SEO_BASE_URL}/pricing`,
     comparison: `${SEO_BASE_URL}/compare-office-pods`,
     installation: `${SEO_BASE_URL}/installation-support`,
+    relocation: `${SEO_BASE_URL}/pod-relocation`,
     articles: `${SEO_BASE_URL}/articles`,
     llms: `${SEO_BASE_URL}/llms.txt`,
     fullReference: `${SEO_BASE_URL}/llms-full.txt`,
@@ -131,6 +132,11 @@ const service = {
       name: 'Office pod delivery and installation',
       description: 'Site planning, delivery, assembly, handover, and support across Klang Valley and West Malaysia.',
       url: `${SEO_BASE_URL}/installation-support`
+    },
+    {
+      name: 'Office pod relocation',
+      description: 'Dismantling, transport, and reinstallation of an existing office pod at a new office location, with post-move inspection.',
+      url: `${SEO_BASE_URL}/pod-relocation`
     },
     {
       name: 'Showroom consultation',

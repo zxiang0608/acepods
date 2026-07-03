@@ -15,6 +15,7 @@ const STATIC_PUBLIC_ROUTES = [
   '/contact',
   '/faq',
   '/installation-support',
+  '/pod-relocation',
   '/locations',
   '/locations/kuala-lumpur',
   '/locations/shah-alam',
