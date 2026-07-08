@@ -24,7 +24,7 @@ import podsInstallationImage from '../../assets/pods-installation.webp';
 import deliveryPodsImage from '../../assets/delivery-pods.webp';
 import podsInstallationImageAvif from '../../assets/pods-installation.avif';
 import deliveryPodsImageAvif from '../../assets/delivery-pods.avif';
-import aceFlexGreyAshCutout from '../../assets/homepage-cutouts/ace-flex-grey-ash-cutout.png';
+import aceSoloCutout from '../../assets/ace-solo-cutout.png';
 import aceMeetGreyAshCutout from '../../assets/homepage-cutouts/ace-meet-grey-ash-cutout.png';
 import aceHubGreyAshCutout from '../../assets/homepage-cutouts/ace-hub-grey-ash-cutout.png';
 import parkerLogo from '../../assets/parker-logo.svg';
@@ -35,6 +35,8 @@ import rightwillLogo from '../../assets/rightwill-logo.png';
 import matradeLogo from '../../assets/matrade-logo.png';
 import everllenceLogo from '../../assets/everllence-logo.png';
 import taylorsUniversityLogo from '../../assets/taylorsuniversity.svg';
+import amorePacificLogo from '../../assets/amorepacific-logo.svg';
+import brenntagLogo from '../../assets/brenntag-logo.webp';
 import SeoMeta from '../components/SeoMeta';
 import SiteFooter from '../components/SiteFooter';
 import SmartPodsBanner from '../components/SmartPodsBanner';
@@ -61,31 +63,33 @@ const trustedLogos = [
   { name: 'Rightwill Sdn Bhd', image: rightwillLogo, fitClass: 'scale-[0.88] -translate-y-[1px]', stageClass: 'h-[52px] max-w-[170px]' },
   { name: 'MATRADE', image: matradeLogo, fitClass: 'scale-[0.96]', stageClass: 'h-[48px] max-w-[176px]' },
   { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', stageClass: 'h-[52px] max-w-[172px]' },
-  { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', stageClass: 'h-[48px] max-w-[176px]' }
+  { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', stageClass: 'h-[48px] max-w-[176px]' },
+  { name: 'Amore Pacific', image: amorePacificLogo, fitClass: 'scale-[0.95]', stageClass: 'h-[44px] max-w-[176px]' },
+  { name: 'Brenntag', image: brenntagLogo, fitClass: 'scale-[0.95]', stageClass: 'h-[96px] max-w-[280px]' }
 ];
 
 const featuredModels = [
   {
-    slug: 'ace-flex',
-    name: 'Ace Flex',
-    tagline: 'Focus pod for individuals',
-    desc: 'Spacious single-person pod for deep work, calls, and focused tasks away from the open floor.',
-    image: aceFlexGreyAshCutout,
-    fromMyr: 18800
+    slug: 'ace-solo',
+    name: 'Ace Solo',
+    tagline: 'Phone booth for 1 person',
+    desc: 'Compact pod for private calls and focused work. Steps in, door closes, open floor disappears.',
+    image: aceSoloCutout,
+    fromMyr: 12500
   },
   {
     slug: 'ace-meet',
     name: 'Ace Meet',
-    tagline: 'Meeting pod for small teams',
-    desc: 'Seats 3–4 comfortably. Private, quiet, and ready to use — no need to book a conference room.',
+    tagline: 'Meeting pod for 2–4 people',
+    desc: 'Seats 2–4 comfortably. Private, quiet, and ready to use — no need to book a conference room.',
     image: aceMeetGreyAshCutout,
-    fromMyr: 22800
+    fromMyr: 22200
   },
   {
     slug: 'ace-hub',
     name: 'Ace Hub',
-    tagline: 'Meeting pod for larger groups',
-    desc: 'Seats 6–8. The same quality as our smaller pods, scaled up for your whole team.',
+    tagline: 'Meeting pod for up to 6 people',
+    desc: 'Seats up to 6. The same quality as our smaller pods, scaled up for your whole team.',
     image: aceHubGreyAshCutout,
     fromMyr: 27800
   }

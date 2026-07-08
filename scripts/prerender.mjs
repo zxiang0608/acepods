@@ -676,6 +676,14 @@ const STATIC_PRERENDER_META = {
       '- One-person focus pod for longer concentrated work',
       '- Two-person discussion pod for quick collaboration',
       '- Team meeting pod for small group sessions',
+      '## Compare office pod models',
+      '- Ace Solo — 1 person, private calls and short tasks, from RM12,500',
+      '- Ace Plus — 1 person, longer focus and repeated daily calls, 27 dB noise reduction, from RM14,500',
+      '- Ace Flex — 1 person, spacious solo work, 27 dB noise reduction, from RM19,900',
+      '- Ace Flex Duo — 2 people, one-to-one discussions, 27 dB noise reduction, from RM23,900',
+      '- Ace Meet — 2–4 people, small team meetings, 27 dB noise reduction, from RM22,200',
+      '- Ace Hub — up to 6 people, larger group collaboration, 27 dB noise reduction, from RM27,800',
+      'Office pod, office booth, privacy pod, and work pod are overlapping terms for enclosed workspaces. A phone pod or phone booth usually describes a compact one-person model for private calls and focused work. Soundproof office pod claims should be reviewed against the stated acoustic result and the surrounding office conditions.',
       '## What to compare before selecting a model',
       'Compare intended daily usage, team size, available floor space, acoustic expectations, and project budget. This reduces the risk of choosing a pod that is either too small for meetings or oversized for call use.',
       '## Delivery and installation planning in Malaysia',
@@ -687,9 +695,14 @@ const STATIC_PRERENDER_META = {
       '## Procurement scope alignment',
       'For procurement and project stakeholders, clear scope usually includes model selection, selected options, delivery assumptions, installation constraints, and target timeline.',
       'When this scope is confirmed early, supplier comparison becomes clearer and internal approvals are generally faster.',
+      '## Proof for commercial comparison',
+      'Ace Office Pods are manufactured in Selangor and supported through delivery, installation, and after-sales service in Malaysia. Review completed installations, published pricing, and acoustic-test information before finalising a shortlist.',
       '## Related pages',
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
+      '[Compare office phone booth and phone pod options](/office-phone-booth-malaysia)',
+      '[View completed installations](/portfolio)',
+      '[Review supplier comparison criteria](/articles/office-pod-brands-malaysia-comparison)',
       '[Contact our team](/contact)',
       '[Read FAQs](/faq)'
     ],
@@ -732,6 +745,30 @@ const STATIC_PRERENDER_META = {
           acceptedAnswer: {
             '@type': 'Answer',
             text: item.answer
+          }
+        }))
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Office pod models in Malaysia',
+        url: canonical,
+        itemListElement: PRICING_LIST_ITEMS.map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Product',
+            name: item.name,
+            brand: { '@type': 'Brand', name: SEO_BRAND_PRIMARY },
+            category: 'Office pods',
+            url: `${SEO_BASE_URL}${item.path}`,
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'MYR',
+              price: String(item.price),
+              availability: 'https://schema.org/InStock',
+              url: `${SEO_BASE_URL}${item.path}`
+            }
           }
         }))
       }
@@ -812,7 +849,7 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office phone booth malaysia, phone booth office malaysia, call pod malaysia, single person office pod`,
     h1: 'Office phone booth solutions in Malaysia',
     body: [
-      'Compare office phone booth style pods for private calls and focused work.',
+      'Compare office phone booth style pods, phone pods, and privacy booths for private calls and focused work.',
       'Review Ace Solo, Ace Plus, and Ace Flex by space, use case, and project fit.',
       '## What an office phone booth is used for',
       'A phone booth style office pod is usually selected for private calls, short virtual meetings, and focused individual tasks inside open offices. Teams use these pods to create privacy without building permanent rooms.',
@@ -829,11 +866,15 @@ const STATIC_PRERENDER_META = {
       '## How teams use phone booth pods daily',
       'Phone booth style pods are commonly used for client calls, internal check-ins, and focused tasks that need fewer interruptions than open workstations provide.',
       'Where teams face frequent background noise or high call volume, one-person pods can reduce disruption while keeping larger meeting spaces available for group sessions.',
+      '## Phone pod privacy and acoustic performance',
+      'A phone pod, privacy booth, or soundproof phone booth should be compared using its stated acoustic result, ventilation, and intended session length—not name alone. Ace Plus and the larger Ace models carry a stated 27 dB noise-reduction rating; review the relevant model specification and acoustic-test information before final selection.',
       '## Buyer comparison notes',
       'A practical comparison includes footprint, comfort for intended session length, and clarity on delivery and installation scope. This reduces late-stage adjustments during implementation.',
       '## Related pages',
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
+      '[View all office pods](/office-pods)',
+      '[How to compare acoustic claims](/articles/office-pod-brands-malaysia-comparison)',
       '[Contact our team](/contact)',
       '[Read FAQs](/faq)'
     ],
@@ -870,6 +911,21 @@ const STATIC_PRERENDER_META = {
             item: canonical
           }
         ]
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        url: canonical,
+        mainEntity: [
+          ['What is the difference between a phone pod and an office phone booth?', 'The terms are often used interchangeably. Both usually describe a compact enclosed workspace for private calls and focused work; the right choice depends on the model size, ventilation, acoustic performance, and daily usage.'],
+          ['Are phone booth pods soundproof?', 'Phone booth pods reduce surrounding noise and improve speech privacy, but they are not automatically completely soundproof. Review the stated acoustic result for the specific model and consider the surrounding office conditions.'],
+          ['Which phone pod is best for private calls?', 'Ace Solo suits compact call use, while Ace Plus is designed for longer one-person focus and repeated daily calls. The best option depends on space, expected session length, and budget.'],
+          ['What affects office phone booth pricing in Malaysia?', 'Final pricing depends on the model, selected options, quantity, delivery location, and site-access conditions for installation.']
+        ].map(([name, text]) => ({
+          '@type': 'Question',
+          name,
+          acceptedAnswer: { '@type': 'Answer', text }
+        }))
       }
     ]
   },

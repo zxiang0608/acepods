@@ -11,6 +11,7 @@ import alphabetLogo from '../../assets/alphabet-logo.png';
 import cmacgmLogo from '../../assets/cmacgm-logo.svg';
 import everllenceLogo from '../../assets/everllence-logo.png';
 import taylorsLogo from '../../assets/taylorsuniversity.svg';
+import brenntagLogo from '../../assets/brenntag-logo.webp';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -24,7 +25,7 @@ const portfolioImageModules = import.meta.glob('../../assets/Portfolio/**/*.{jpg
 
 const excludedPortfolioBasenames = new Set(['20250624_150024', '20250619_132036', '20250703_111306', '20250703_120024']);
 
-const orderedCompanies = ['Everllence', "Parker Hannafin", 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Others'];
+const orderedCompanies = ['Everllence', "Parker Hannafin", 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Brenntag', 'Others'];
 
 const companyBranding = {
   Everllence: { logo: everllenceLogo, logoAlt: 'Everllence logo', location: 'Kuala Lumpur' },
@@ -32,6 +33,7 @@ const companyBranding = {
   'Alphabet Capital': { logo: alphabetLogo, logoAlt: 'Alphabet Capital logo', location: 'Kuala Lumpur' },
   'CMA CGM': { logo: cmacgmLogo, logoAlt: 'CMA CGM logo', location: 'Bangsar, Kuala Lumpur' },
   "Taylor's College": { logo: taylorsLogo, logoAlt: "Taylor's College logo", location: 'Subang Jaya' },
+  Brenntag: { logo: brenntagLogo, logoAlt: 'Brenntag logo', location: 'Shah Alam, Selangor' },
   Others: { logo: null, logoAlt: '' }
 };
 const companyImageSourceMap = {

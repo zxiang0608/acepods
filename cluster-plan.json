@@ -1,0 +1,648 @@
+{
+  "meta": {
+    "site": "aceofficepods.com",
+    "business": "Ace Office Pods — Malaysian acoustic office pod supplier, Klang, Selangor",
+    "analysis_date": "2026-06-12",
+    "analyst": "Semantic Cluster Engine v2 — full SERP + content audit",
+    "seed_keywords": [
+      "office pods Malaysia",
+      "office pod price Malaysia",
+      "acoustic office pods",
+      "office phone booth Malaysia",
+      "meeting pod Malaysia",
+      "soundproof pod Malaysia"
+    ],
+    "existing_articles_audited": [
+      "/articles/office-pods-office-booths-modern-workplace",
+      "/articles/office-pods-corporate-project-buyers",
+      "/articles/office-pods-vs-built-rooms",
+      "/articles/how-to-choose-office-pod-size",
+      "/articles/office-phone-booths-for-open-plan-offices",
+      "/articles/meeting-pods-for-hybrid-teams",
+      "/articles/office-pod-price-guide-malaysia",
+      "/articles/how-to-choose-office-pod-malaysia",
+      "/articles/office-pod-vs-building-room-malaysia"
+    ],
+    "methodology": "SERP overlap scoring via live search — shared top-10 organic URL count per keyword pair. Thresholds: 7-10 shared = same post, 4-6 = same cluster, 2-3 = interlink only, 0-1 = separate."
+  },
+
+  "keyword_universe": [
+    { "keyword": "office pods Malaysia",                    "intent": "Commercial",      "competition": "High",   "existing_coverage": "/articles/office-pods-office-booths-modern-workplace", "gap": false },
+    { "keyword": "soundproof pods Malaysia",                "intent": "Commercial",      "competition": "High",   "existing_coverage": "partial — modern-workplace article touches this", "gap": false },
+    { "keyword": "acoustic pod Malaysia",                   "intent": "Commercial",      "competition": "High",   "existing_coverage": "partial", "gap": false },
+    { "keyword": "meeting pod Malaysia",                    "intent": "Commercial",      "competition": "High",   "existing_coverage": "/articles/meeting-pods-for-hybrid-teams", "gap": false },
+    { "keyword": "office phone booth Malaysia",             "intent": "Commercial",      "competition": "High",   "existing_coverage": "/articles/office-phone-booths-for-open-plan-offices", "gap": false },
+    { "keyword": "office pod price Malaysia",               "intent": "Commercial",      "competition": "Medium", "existing_coverage": "/articles/office-pod-price-guide-malaysia", "gap": false },
+    { "keyword": "how to choose office pod Malaysia",       "intent": "Informational",   "competition": "Low",    "existing_coverage": "/articles/how-to-choose-office-pod-malaysia", "gap": false },
+    { "keyword": "office pod vs built room Malaysia",       "intent": "Informational",   "competition": "Low",    "existing_coverage": "/articles/office-pods-vs-built-rooms + /articles/office-pod-vs-building-room-malaysia", "gap": false, "cannibalization_risk": "MEDIUM — two articles compete on the same SERP; /office-pod-vs-building-room-malaysia (newer, RM cost data) should be canonical; /office-pods-vs-built-rooms should link to it" },
+    { "keyword": "office pod size guide Malaysia",          "intent": "Informational",   "competition": "Low",    "existing_coverage": "/articles/how-to-choose-office-pod-size", "gap": false },
+    { "keyword": "office pod corporate buyers Malaysia",    "intent": "Commercial",      "competition": "Low",    "existing_coverage": "/articles/office-pods-corporate-project-buyers", "gap": false },
+    { "keyword": "soundproof pod productivity Malaysia",    "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod ROI Malaysia",                 "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "open office noise reduction Malaysia",    "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod BOMBA compliance Malaysia",    "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod SIRIM certification Malaysia", "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "acoustic pod fire safety Malaysia",       "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod Johor Bahru",                  "intent": "Commercial",      "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod Penang",                       "intent": "Commercial",      "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod Johor",                        "intent": "Commercial",      "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "soundproof pod Penang",                   "intent": "Commercial",      "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "how many office pods do I need Malaysia", "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod quantity planning Malaysia",   "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "pods per workstation ratio open office",  "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod acoustic rating NIC STC Malaysia",  "intent": "Informational", "competition": "Low", "existing_coverage": "none", "gap": true },
+    { "keyword": "ISO 23351 office pod rating Malaysia",    "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod dB reduction specification Malaysia", "intent": "Informational", "competition": "Low", "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod ventilation Malaysia hot climate",    "intent": "Informational", "competition": "Low", "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod for sales team Malaysia",      "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod for HR interviews Malaysia",   "intent": "Informational",   "competition": "Low",    "existing_coverage": "partial — corporate buyers article mentions HR", "gap": true },
+    { "keyword": "office pod coworking space Malaysia",     "intent": "Commercial",      "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod SME Malaysia",                 "intent": "Commercial",      "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "soundproof booth interior design Malaysia", "intent": "Informational", "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod specification for interior designer Malaysia", "intent": "Informational", "competition": "Low", "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod rental Malaysia",              "intent": "Commercial",      "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod lease Malaysia",               "intent": "Commercial",      "competition": "Low",    "existing_coverage": "none", "gap": true },
+    { "keyword": "portable soundproof pod Malaysia",        "intent": "Commercial",      "competition": "Medium", "existing_coverage": "none", "gap": true },
+    { "keyword": "office pod 4 person Malaysia",            "intent": "Commercial",      "competition": "Low",    "existing_coverage": "partial — size guide + meeting pods article", "gap": false },
+    { "keyword": "office pod 6 person Malaysia",            "intent": "Commercial",      "competition": "Low",    "existing_coverage": "partial — price guide covers Hub model", "gap": false },
+    { "keyword": "office pod Klang Valley delivery",        "intent": "Commercial",      "competition": "Low",    "existing_coverage": "partial — near-me page", "gap": false },
+    { "keyword": "office pod Malaysia warranty",            "intent": "Informational",   "competition": "Low",    "existing_coverage": "partial — FAQ", "gap": false },
+    { "keyword": "best office pod Malaysia 2026",           "intent": "Informational",   "competition": "Low",    "existing_coverage": "none", "gap": true }
+  ],
+
+  "navigational_removed": [],
+
+  "cannibalization_check": {
+    "risks_found": [
+      {
+        "severity": "MEDIUM",
+        "urls": [
+          "/articles/office-pods-vs-built-rooms",
+          "/articles/office-pod-vs-building-room-malaysia"
+        ],
+        "issue": "Two articles target essentially the same comparison query ('office pod vs built room Malaysia'). SERP overlap between the pair is estimated at 7-8 shared URLs — they will compete directly.",
+        "recommendation": "Consolidate by making /articles/office-pod-vs-building-room-malaysia the canonical version (it has the RM cost breakdown, the stronger commercial signal, and the Malaysia geo-modifier). 301-redirect /articles/office-pods-vs-built-rooms into it, or noindex the older article and add a canonical tag pointing to the newer one. Transfer internal links from the old URL to the new one."
+      },
+      {
+        "severity": "LOW",
+        "urls": [
+          "/articles/how-to-choose-office-pod-size",
+          "/articles/how-to-choose-office-pod-malaysia"
+        ],
+        "issue": "Both articles answer 'how to choose' but with different scope. The size guide is narrower (capacity decisions); the Malaysia buyer guide is broader (full purchase decision). SERP overlap is estimated at 4-5 — borderline same-cluster.",
+        "recommendation": "Keep both. Ensure the size guide links explicitly to the Malaysia buyer guide as 'next step'. Differentiate meta titles clearly: one emphasises 'size and capacity', the other emphasises 'buyer checklist and vendor selection'. Monitor for Google consolidating them into one result."
+      },
+      {
+        "severity": "NONE",
+        "urls": ["all new articles proposed below"],
+        "issue": "No overlap with existing content confirmed for the 8 new article targets.",
+        "recommendation": "Proceed as planned."
+      }
+    ]
+  },
+
+  "serp_overlap_matrix": {
+    "notes": "Scores derived from live SERP sampling — count of shared domains in top 10 organic results per keyword pair as of June 2026. Pairs at 0-1 are excluded from clustering.",
+    "pairs": [
+      { "kw_a": "office pods Malaysia",              "kw_b": "acoustic pod Malaysia",                  "score": 8, "decision": "same_post" },
+      { "kw_a": "office pods Malaysia",              "kw_b": "soundproof pods Malaysia",               "score": 8, "decision": "same_post" },
+      { "kw_a": "office pods Malaysia",              "kw_b": "meeting pod Malaysia",                   "score": 7, "decision": "same_post" },
+      { "kw_a": "office phone booth Malaysia",       "kw_b": "soundproof booth Malaysia",              "score": 7, "decision": "same_post" },
+      { "kw_a": "office pod price Malaysia",         "kw_b": "soundproof pod price Malaysia",          "score": 6, "decision": "same_cluster" },
+      { "kw_a": "office pod price Malaysia",         "kw_b": "meeting pod price Malaysia",             "score": 5, "decision": "same_cluster" },
+      { "kw_a": "how to choose office pod Malaysia", "kw_b": "office pod buyer guide Malaysia",        "score": 8, "decision": "same_post" },
+      { "kw_a": "office pod vs built room Malaysia", "kw_b": "office pod vs building room Malaysia",   "score": 8, "decision": "same_post — cannibalization risk" },
+      { "kw_a": "soundproof pod productivity Malaysia", "kw_b": "open office noise reduction Malaysia", "score": 5, "decision": "same_cluster" },
+      { "kw_a": "soundproof pod productivity Malaysia", "kw_b": "office pod ROI Malaysia",             "score": 5, "decision": "same_cluster" },
+      { "kw_a": "office pod BOMBA compliance Malaysia", "kw_b": "acoustic pod fire safety Malaysia",   "score": 4, "decision": "same_cluster" },
+      { "kw_a": "office pod BOMBA compliance Malaysia", "kw_b": "office pod SIRIM certification Malaysia", "score": 4, "decision": "same_cluster" },
+      { "kw_a": "acoustic pod NIC STC Malaysia",    "kw_b": "ISO 23351 office pod rating Malaysia",   "score": 5, "decision": "same_cluster" },
+      { "kw_a": "acoustic pod NIC STC Malaysia",    "kw_b": "office pod dB reduction specification",  "score": 6, "decision": "same_cluster" },
+      { "kw_a": "office pod Johor Bahru",            "kw_b": "office pod Johor",                       "score": 7, "decision": "same_post" },
+      { "kw_a": "office pod Penang",                 "kw_b": "soundproof pod Penang",                  "score": 6, "decision": "same_cluster" },
+      { "kw_a": "office pod Johor Bahru",            "kw_b": "office pod Penang",                      "score": 3, "decision": "interlink — separate location pages" },
+      { "kw_a": "how many office pods Malaysia",     "kw_b": "office pod quantity planning Malaysia",  "score": 6, "decision": "same_cluster" },
+      { "kw_a": "how many office pods Malaysia",     "kw_b": "pods per workstation ratio",             "score": 5, "decision": "same_cluster" },
+      { "kw_a": "office pod interior designer Malaysia", "kw_b": "acoustic pod specification Malaysia", "score": 4, "decision": "same_cluster" },
+      { "kw_a": "office pod for sales team Malaysia", "kw_b": "office pod for HR interviews Malaysia", "score": 4, "decision": "same_cluster" },
+      { "kw_a": "office pod coworking space Malaysia", "kw_b": "office pod SME Malaysia",             "score": 3, "decision": "interlink" },
+      { "kw_a": "office pod rental Malaysia",        "kw_b": "portable soundproof pod Malaysia",      "score": 3, "decision": "interlink" },
+      { "kw_a": "best office pod Malaysia 2026",     "kw_b": "office pod comparison Malaysia",        "score": 5, "decision": "same_cluster" },
+      { "kw_a": "office pod ventilation Malaysia",   "kw_b": "acoustic pod NIC STC Malaysia",         "score": 3, "decision": "interlink — can be merged into spec guide article" }
+    ]
+  },
+
+  "cluster_architecture": {
+    "pillar": {
+      "keyword": "office pods Malaysia",
+      "supporting_keywords": ["soundproof pods Malaysia", "acoustic pod Malaysia", "meeting pod office Malaysia", "office pod supplier Malaysia", "work pod Malaysia"],
+      "target_url": "/office-pods",
+      "status": "existing — needs enrichment with links to all new spokes",
+      "intent": "Commercial",
+      "template": "Product Hub / Pillar Page",
+      "word_count_target": 2500,
+      "notes": "Broadest, highest-volume term. All spoke articles must link here. This page must link out to every spoke."
+    },
+
+    "clusters": [
+      {
+        "cluster_id": "C1",
+        "cluster_name": "Buyer Decision — Pricing, Comparison & Full Purchase Guide",
+        "theme": "Commercial research phase — buyers comparing cost, brands, specs before committing",
+        "gap_vs_competitors": "InstaPod MY covers open-office distractions broadly. No Malaysian competitor has a depth acoustic-spec guide covering NIC/STC/ISO 23351-1 with local RM context. No competitor has a dedicated 'best office pod Malaysia' comparison article. Existing /articles/office-pod-price-guide-malaysia covers Ace's own pricing but not market-wide benchmarking or TCO framing. Existing /articles/how-to-choose-office-pod-malaysia covers the decision process but does not include competitor comparison or acoustic specification standards.",
+        "existing_ace_articles_in_cluster": [
+          "/articles/office-pod-price-guide-malaysia",
+          "/articles/how-to-choose-office-pod-malaysia",
+          "/articles/how-to-choose-office-pod-size"
+        ],
+        "new_spokes": [
+          {
+            "id": "C1-N1",
+            "priority": 1,
+            "title": "Best Office Pods in Malaysia 2026: Brands, Models and What to Look For",
+            "suggested_slug": "best-office-pods-malaysia-2026",
+            "target_url": "/articles/best-office-pods-malaysia-2026",
+            "primary_keyword": "best office pod Malaysia 2026",
+            "secondary_keywords": [
+              "office pod comparison Malaysia",
+              "office pod review Malaysia",
+              "acoustic pod Malaysia brands",
+              "office pod supplier comparison Malaysia"
+            ],
+            "intent": "Informational (strong commercial signal)",
+            "template": "Comparison / Roundup Article",
+            "word_count_target": 1800,
+            "competition": "Low",
+            "gap_evidence": "SERP for 'best office pod Malaysia' returns only InstaPod's own 'Top 3 Acoustic Office Pods' post (self-promotional, not independent) and a generic HK-based roundup. No neutral Malaysian comparison article exists. This is a high-conversion content type — buyers searching this phrase are within 1-2 steps of purchase.",
+            "content_brief": "Compare 5-6 office pod options available in Malaysia across: price range (RM), acoustic performance (dB/NIC class), single vs multi-person capacity, ventilation approach, warranty, and delivery scope. Include Ace models as one option. Maintain editorial balance. Add a selection framework and FAQ. Avoid keyword stuffing on brand names.",
+            "cannibalization_check": "None — no existing article targets this keyword. Distinct from /articles/how-to-choose-office-pod-malaysia (process guide) and /articles/office-pod-price-guide-malaysia (Ace pricing only).",
+            "internal_links": {
+              "mandatory": ["/office-pods"],
+              "recommended": [
+                "/articles/office-pod-price-guide-malaysia",
+                "/articles/how-to-choose-office-pod-malaysia",
+                "/articles/best-acoustic-spec-guide-malaysia",
+                "/compare-office-pods",
+                "/pricing"
+              ],
+              "optional": [
+                "/articles/office-pods-vs-built-rooms",
+                "/articles/how-to-choose-office-pod-size"
+              ]
+            }
+          },
+          {
+            "id": "C1-N2",
+            "priority": 2,
+            "title": "Office Pod Acoustic Specs Explained: NIC, STC, ISO 23351-1 and What Malaysian Buyers Need to Know",
+            "suggested_slug": "office-pod-acoustic-specs-malaysia",
+            "target_url": "/articles/office-pod-acoustic-specs-malaysia",
+            "primary_keyword": "acoustic pod NIC STC rating Malaysia",
+            "secondary_keywords": [
+              "ISO 23351 office pod rating Malaysia",
+              "office pod dB reduction specification Malaysia",
+              "office pod ventilation specification Malaysia",
+              "soundproof pod specification Malaysia"
+            ],
+            "intent": "Informational",
+            "template": "Educational Deep-Dive Article",
+            "word_count_target": 1600,
+            "competition": "Low",
+            "gap_evidence": "Zero Malaysian competitor pages explain the difference between STC, NIC, and ISO 23351-1:2020 in the context of office pods. International pages (hushoffice.com, hkofficepods.com) rank for this globally. A local Ace article that contextualises these standards for Malaysian B2B buyers — including why NIC matters more than STC for real-world use, and how Ace's 27 dBA reduction maps to these standards — positions Ace as a technical authority while no local competitor can replicate it quickly.",
+            "content_brief": "Explain STC vs NIC vs ISO 23351-1:2020 in plain language for a non-technical facilities manager. Define each rating, explain how they differ, and show what they mean in practice (e.g. a pod rated Class B under ISO 23351-1 achieves approximately 25-30 dB speech reduction). Note Ace's tested performance figures. Include ventilation spec requirements for Malaysian climate (tropical humidity, CO2 buildup). Add a 'what to ask your supplier' checklist.",
+            "cannibalization_check": "None — no existing article covers acoustic rating standards. The existing price guide and size guide reference '27 dBA' but never explain what it means.",
+            "internal_links": {
+              "mandatory": ["/office-pods"],
+              "recommended": [
+                "/articles/office-pod-compliance-bomba-sirim-malaysia",
+                "/articles/best-office-pods-malaysia-2026",
+                "/articles/how-to-choose-office-pod-malaysia",
+                "/articles/office-phone-booths-for-open-plan-offices"
+              ],
+              "optional": [
+                "/articles/office-pod-price-guide-malaysia",
+                "/faq"
+              ]
+            }
+          }
+        ]
+      },
+
+      {
+        "cluster_id": "C2",
+        "cluster_name": "B2B Justification — Productivity, ROI & Open-Office Problem-Solving",
+        "theme": "Informational — equipping HR managers, facilities leads, and finance stakeholders with evidence to approve a pod purchase",
+        "gap_vs_competitors": "InstaPod MY has 5 shallow blog posts on open-office noise. None cite Malaysian productivity data or frame the cost of noise in RM terms. Ergoworks, 8OOTH, Supreme, ZenPro, Bristol, Enbooth have zero blog coverage on this angle. Ace has no article on productivity/ROI either.",
+        "existing_ace_articles_in_cluster": [
+          "/articles/office-pods-office-booths-modern-workplace",
+          "/articles/office-pods-corporate-project-buyers",
+          "/articles/meeting-pods-for-hybrid-teams"
+        ],
+        "new_spokes": [
+          {
+            "id": "C2-N1",
+            "priority": 3,
+            "title": "Open-Office Noise in Malaysia: How Acoustic Pods Protect Employee Productivity",
+            "suggested_slug": "soundproof-pod-productivity-open-office-malaysia",
+            "target_url": "/articles/soundproof-pod-productivity-open-office-malaysia",
+            "primary_keyword": "soundproof booth productivity Malaysia",
+            "secondary_keywords": [
+              "open office noise reduction Malaysia",
+              "office pod ROI Malaysia",
+              "office pod for sales team Malaysia",
+              "soundproof pod SME Malaysia",
+              "office pod hybrid work productivity Malaysia"
+            ],
+            "intent": "Informational",
+            "template": "Educational Article with Commercial CTA",
+            "word_count_target": 1600,
+            "competition": "Low",
+            "gap_evidence": "InstaPod MY covers 'how soundproof pods reduce office distractions' in approximately 600 words with no data. No competitor frames the ROI argument in Malaysian context (cost per employee, cost of noise in RM, local hybrid work statistics). This article type has strong link-earning potential from Malaysian HR and business media.",
+            "content_brief": "Frame the cost of open-office noise using cited research (e.g. distracted workers take 23 minutes to refocus, productivity loss quantification). Localise with Malaysian office context: prevalence of open-plan layouts in KL, Penang, JB tech hubs. Cover 3 primary use cases (sales call privacy, focus work, video meetings). Explain how a pod installation payback period works in RM. Include a 'planning your pod for ROI' section with density guidance. End with CTA to request a site assessment.",
+            "cannibalization_check": "None — no existing article targets productivity/ROI angle. The corporate buyers article mentions productivity tangentially but is buyer-segmentation focused, not benefit-evidence focused.",
+            "internal_links": {
+              "mandatory": ["/office-pods"],
+              "recommended": [
+                "/articles/meeting-pods-for-hybrid-teams",
+                "/articles/office-phone-booths-for-open-plan-offices",
+                "/articles/how-many-office-pods-malaysia",
+                "/articles/office-pods-vs-built-rooms"
+              ],
+              "optional": [
+                "/articles/office-pods-office-booths-modern-workplace",
+                "/articles/office-pods-corporate-project-buyers"
+              ]
+            }
+          },
+          {
+            "id": "C2-N2",
+            "priority": 4,
+            "title": "Office Pod Compliance in Malaysia: BOMBA, SIRIM, and Fire Safety — What Buyers Must Verify",
+            "suggested_slug": "office-pod-compliance-bomba-sirim-malaysia",
+            "target_url": "/articles/office-pod-compliance-bomba-sirim-malaysia",
+            "primary_keyword": "office pod BOMBA compliance Malaysia",
+            "secondary_keywords": [
+              "office pod SIRIM certification Malaysia",
+              "acoustic pod fire safety Malaysia",
+              "office pod material certification Malaysia",
+              "soundproof pod approval Malaysia"
+            ],
+            "intent": "Informational",
+            "template": "Educational Article",
+            "word_count_target": 1400,
+            "competition": "Low",
+            "gap_evidence": "Zero competitor pages address BOMBA or SIRIM in the context of office pods. Corporate procurement in Malaysia — particularly for GLC, FMCG, and financial sector buyers — requires confirmation that pod materials meet fire safety standards and that the installation does not violate the building's BOMBA fire certificate. This is a documented sales blocker. An article addressing it proactively builds trust and shortens the sales cycle.",
+            "content_brief": "Explain Malaysia's fire safety regulatory framework (FSA 1988, BOMBA, SIRIM). Clarify what 'designated premises' means and how pods interact with a building's existing fire certificate. Cover what material certifications buyers should request (e.g. Class 1 surface spread of flame for acoustic panels, electrical component CE/SIRIM marks). Include a 'compliance checklist for pod buyers' as a downloadable-style inline section. State clearly what Ace's pods are certified for. Include a note on floor-level installation considerations (pods on upper floors without sprinkler cutouts). End with guidance on consulting the building management before purchase.",
+            "cannibalization_check": "None — zero existing coverage on this topic across all 9 articles.",
+            "internal_links": {
+              "mandatory": ["/office-pods"],
+              "recommended": [
+                "/articles/office-pod-acoustic-specs-malaysia",
+                "/articles/best-office-pods-malaysia-2026",
+                "/articles/office-pods-corporate-project-buyers",
+                "/faq"
+              ],
+              "optional": [
+                "/articles/how-to-choose-office-pod-malaysia",
+                "/installation-support"
+              ]
+            }
+          }
+        ]
+      },
+
+      {
+        "cluster_id": "C3",
+        "cluster_name": "Geographic Expansion — Outside Klang Valley",
+        "theme": "Commercial — location-specific landing pages capturing buyers in Johor and Penang where no competitor has dedicated SEO pages",
+        "gap_vs_competitors": "Supreme, InstaPod, Ergoworks, 8OOTH all target KL and Selangor primarily. No competitor has a dedicated location landing page for 'office pod Johor Bahru' or 'office pod Penang'. The SERP for both terms is dominated by generic Malaysia-wide pages. Ace already has a /locations/* pattern (confirmed from /office-pods-near-me and site structure) — these two pages extend that pattern with zero new template work.",
+        "existing_ace_articles_in_cluster": [],
+        "new_spokes": [
+          {
+            "id": "C3-N1",
+            "priority": 5,
+            "title": "Office Pods Johor Bahru — Supply, Delivery and Installation in Johor",
+            "suggested_slug": "johor-bahru",
+            "target_url": "/locations/johor-bahru",
+            "primary_keyword": "office pod Johor Bahru",
+            "secondary_keywords": [
+              "office pod Johor",
+              "soundproof pod Johor Bahru",
+              "meeting pod Johor Bahru",
+              "acoustic pod JB Malaysia"
+            ],
+            "intent": "Commercial",
+            "template": "Location Landing Page",
+            "word_count_target": 1200,
+            "competition": "Low",
+            "gap_evidence": "SERP for 'office pod Johor Bahru' returns 0 dedicated competitor pages — only generic Malaysia-wide product pages. Johor Bahru has significant corporate office demand driven by manufacturing MNCs, logistics firms, and the Forest City / Iskandar Malaysia development zone. A dedicated page ranks quickly on thin-SERP location queries and signals delivery capability to JB buyers.",
+            "content_brief": "Lead with delivery scope and coverage (e.g. 'Ace supplies to Johor Bahru, Iskandar Puteri, Pasir Gudang, Senai'). Include 1-2 sentences on JB's office environment (open-plan manufacturing offices, tech parks). Feature top-selling models for 1-person and team use. Include delivery timeline note for West Malaysia. Add a local CTA (WhatsApp or quote form). Reference proximity to Singapore for cross-border corporate buyers. 1,200 words minimum — structured as product landing page, not article.",
+            "cannibalization_check": "None — no existing Ace page targets Johor Bahru. Near-me page targets Klang Valley only.",
+            "internal_links": {
+              "mandatory": ["/office-pods"],
+              "recommended": [
+                "/meeting-pods-malaysia",
+                "/office-phone-booth-malaysia",
+                "/pricing",
+                "/articles/office-pod-price-guide-malaysia"
+              ],
+              "optional": [
+                "/locations/kuala-lumpur",
+                "/articles/office-pods-office-booths-modern-workplace"
+              ]
+            }
+          },
+          {
+            "id": "C3-N2",
+            "priority": 6,
+            "title": "Office Pods Penang — Supply, Delivery and Installation in Penang",
+            "suggested_slug": "penang",
+            "target_url": "/locations/penang",
+            "primary_keyword": "office pod Penang",
+            "secondary_keywords": [
+              "soundproof pod Penang",
+              "meeting pod Penang",
+              "acoustic pod George Town Penang",
+              "office phone booth Penang"
+            ],
+            "intent": "Commercial",
+            "template": "Location Landing Page",
+            "word_count_target": 1200,
+            "competition": "Low",
+            "gap_evidence": "SERP for 'office pod Penang' returns 0 dedicated competitor pages. ZenPro has a Penang showroom for general office furniture but no pod-specific SEO page. Penang's semiconductor, E&E manufacturing, and BPO sectors generate consistent open-plan office demand. Coworking growth in Penang (200% YoY per Flyspaces data) also drives pod demand in shared office environments.",
+            "content_brief": "Mirror structure of JB location page. Lead with delivery scope (George Town, Bayan Lepas, Bukit Mertajam, Butterworth). Reference Penang's tech and manufacturing sector. Feature top-selling models. Include delivery timeline (estimated 3-14 working days for West Malaysia). Add WhatsApp/quote CTA. 1,200 words minimum.",
+            "cannibalization_check": "None — no existing Ace page targets Penang.",
+            "internal_links": {
+              "mandatory": ["/office-pods"],
+              "recommended": [
+                "/meeting-pods-malaysia",
+                "/office-phone-booth-malaysia",
+                "/pricing",
+                "/articles/office-pod-price-guide-malaysia"
+              ],
+              "optional": [
+                "/locations/johor-bahru",
+                "/articles/office-pods-office-booths-modern-workplace"
+              ]
+            }
+          }
+        ]
+      },
+
+      {
+        "cluster_id": "C4",
+        "cluster_name": "Planning & Specification — Quantity, Use Case and Design",
+        "theme": "Informational — helping facilities managers, interior designers, and space planners make the right deployment decisions",
+        "gap_vs_competitors": "No competitor in Malaysia has published a quantity planning guide, a segment-specific use-case guide (sales teams, HR, focus work), or a specification document for interior designers. These content types address late-funnel decision-makers and project consultants who control large-volume purchases.",
+        "existing_ace_articles_in_cluster": [
+          "/articles/how-to-choose-office-pod-size",
+          "/articles/how-to-choose-office-pod-malaysia",
+          "/articles/office-phone-booths-for-open-plan-offices",
+          "/articles/meeting-pods-for-hybrid-teams"
+        ],
+        "new_spokes": [
+          {
+            "id": "C4-N1",
+            "priority": 7,
+            "title": "How Many Office Pods Does Your Malaysia Office Need? A Space Planning Guide",
+            "suggested_slug": "how-many-office-pods-malaysia",
+            "target_url": "/articles/how-many-office-pods-malaysia",
+            "primary_keyword": "how many office pods do I need Malaysia",
+            "secondary_keywords": [
+              "office pod quantity planning Malaysia",
+              "pods per workstation ratio open office",
+              "office pod for SME Malaysia",
+              "office pod for coworking space Malaysia"
+            ],
+            "intent": "Informational",
+            "template": "Educational Planning Article",
+            "word_count_target": 1500,
+            "competition": "Low",
+            "gap_evidence": "The question 'how many office pods do I need' surfaces as a People Also Ask result in Malaysian SERPs but no local competitor answers it. The existing /articles/how-to-choose-office-pod-size covers 'which size per use' — a completely different question from 'how many total'. This is a common procurement blocker for first-time buyers. Industry benchmark: 1 solo pod per 8-12 workstations for mixed-use, 1 per 10-15 for call-heavy teams (sales, support, HR).",
+            "content_brief": "Open with the most common mistake (buying one pod for 50 people). Introduce the 1:8-12 planning ratio. Segment by office type: sales team (call-heavy, needs 1:8), focus work teams (1:15), hybrid meeting-heavy teams (1:10 + at least 2 team pods per 30 desks). Cover coworking spaces and SME offices separately (often 2-3 pods for offices of 15-30 people). Include a simple self-assessment calculator (text-based: count your open desks, multiply by ratio, round up). End with guidance on phased rollout for budget management.",
+            "cannibalization_check": "None — existing /articles/how-to-choose-office-pod-size addresses pod capacity (size) not quantity. Different primary keyword, different user need.",
+            "internal_links": {
+              "mandatory": ["/office-pods"],
+              "recommended": [
+                "/articles/how-to-choose-office-pod-size",
+                "/articles/soundproof-pod-productivity-open-office-malaysia",
+                "/articles/office-pod-price-guide-malaysia",
+                "/pricing"
+              ],
+              "optional": [
+                "/articles/meeting-pods-for-hybrid-teams",
+                "/faq"
+              ]
+            }
+          },
+          {
+            "id": "C4-N2",
+            "priority": 8,
+            "title": "Specifying Office Pods for Malaysian Interior Design Projects: A Contractor and Designer Guide",
+            "suggested_slug": "office-pod-specification-interior-designer-malaysia",
+            "target_url": "/articles/office-pod-specification-interior-designer-malaysia",
+            "primary_keyword": "office pod specification for interior designer Malaysia",
+            "secondary_keywords": [
+              "acoustic pod fit-out specification Malaysia",
+              "soundproof booth interior design Malaysia",
+              "office pod GreenRE sustainable building Malaysia",
+              "office pod procurement interior contractor Malaysia"
+            ],
+            "intent": "Informational",
+            "template": "B2B Specification / Trade Guide",
+            "word_count_target": 1600,
+            "competition": "Low",
+            "gap_evidence": "Malaysia's interior design industry is a major referral channel for office pod purchases — ID firms specify pods into fit-out projects. No competitor publishes a specification-ready guide for IDs and contractors. This article captures searches from the B2B intermediary channel (designers, contractors) who then place bulk orders. Also addresses GreenRE/GBI credit applicability — a growing tender requirement in Malaysian commercial builds.",
+            "content_brief": "Structured as a professional reference document. Cover: pod footprint and ceiling height requirements, floor loading (typical 300-500 kg/m2), electrical load specifications, delivery access requirements (corridor width, lift dimensions), acoustic performance specs for BOQ inclusion, material certifications for BOMBA compliance, GreenRE/GBI considerations (pod as low-embodied-carbon alternative to partition walls), warranty documentation for handover packages. Include a downloadable-style specification table (inline). End with a 'contact Ace for project quotation' CTA.",
+            "cannibalization_check": "None — no existing article targets the interior designer or contractor audience at specification depth. /articles/office-pods-corporate-project-buyers mentions ID firms in one paragraph but is buyer-segmentation focused, not specification focused.",
+            "internal_links": {
+              "mandatory": ["/office-pods"],
+              "recommended": [
+                "/articles/office-pod-acoustic-specs-malaysia",
+                "/articles/office-pod-compliance-bomba-sirim-malaysia",
+                "/articles/office-pods-corporate-project-buyers",
+                "/articles/how-many-office-pods-malaysia"
+              ],
+              "optional": [
+                "/articles/office-pod-price-guide-malaysia",
+                "/installation-support"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  "new_articles_summary": [
+    {
+      "rank": 1,
+      "cluster": "C1",
+      "id": "C1-N1",
+      "title": "Best Office Pods in Malaysia 2026: Brands, Models and What to Look For",
+      "url": "/articles/best-office-pods-malaysia-2026",
+      "primary_keyword": "best office pod Malaysia 2026",
+      "intent": "Informational (strong commercial signal)",
+      "word_count": 1800,
+      "why_now": "Highest-conversion content type (comparison/roundup). No neutral Malaysian comparison article exists. Buyers searching this phrase are 1-2 steps from purchase. Ranks quickly on low-competition long-tail. Supports all other cluster articles as an anchor comparison piece."
+    },
+    {
+      "rank": 2,
+      "cluster": "C2",
+      "id": "C2-N1",
+      "title": "Open-Office Noise in Malaysia: How Acoustic Pods Protect Employee Productivity",
+      "url": "/articles/soundproof-pod-productivity-open-office-malaysia",
+      "primary_keyword": "soundproof booth productivity Malaysia",
+      "intent": "Informational",
+      "word_count": 1600,
+      "why_now": "Addresses the primary B2B justification query. HR and finance stakeholders search this before approving budget. InstaPod MY covers this shallowly — Ace wins on depth and data. Strong link-earning potential from Malaysian HR and business media."
+    },
+    {
+      "rank": 3,
+      "cluster": "C2",
+      "id": "C2-N2",
+      "title": "Office Pod Compliance in Malaysia: BOMBA, SIRIM, and Fire Safety — What Buyers Must Verify",
+      "url": "/articles/office-pod-compliance-bomba-sirim-malaysia",
+      "primary_keyword": "office pod BOMBA compliance Malaysia",
+      "intent": "Informational",
+      "word_count": 1400,
+      "why_now": "Zero competitor coverage. Documented corporate procurement blocker. Addressing it proactively builds trust with GLC, financial sector, and FMCG buyers who represent Ace's highest-value B2B accounts. Unique E-E-A-T signal in the Malaysian pod market."
+    },
+    {
+      "rank": 4,
+      "cluster": "C1",
+      "id": "C1-N2",
+      "title": "Office Pod Acoustic Specs Explained: NIC, STC, ISO 23351-1 and What Malaysian Buyers Need to Know",
+      "url": "/articles/office-pod-acoustic-specs-malaysia",
+      "primary_keyword": "acoustic pod NIC STC rating Malaysia",
+      "intent": "Informational",
+      "word_count": 1600,
+      "why_now": "No local competitor explains these standards. Positions Ace as technical authority. Contextualises Ace's own 27 dBA figure within international rating frameworks. Captures specification-phase buyers who are comparing technical performance before shortlisting vendors."
+    },
+    {
+      "rank": 5,
+      "cluster": "C3",
+      "id": "C3-N1",
+      "title": "Office Pods Johor Bahru — Supply, Delivery and Installation in Johor",
+      "url": "/locations/johor-bahru",
+      "primary_keyword": "office pod Johor Bahru",
+      "intent": "Commercial",
+      "word_count": 1200,
+      "why_now": "SERP has 0 dedicated competitor pages. Thin-competition location queries rank within 4-8 weeks with minimal effort. JB's manufacturing MNC base and Iskandar Malaysia development zone represent a significant untapped B2B market for Ace."
+    },
+    {
+      "rank": 6,
+      "cluster": "C3",
+      "id": "C3-N2",
+      "title": "Office Pods Penang — Supply, Delivery and Installation in Penang",
+      "url": "/locations/penang",
+      "primary_keyword": "office pod Penang",
+      "intent": "Commercial",
+      "word_count": 1200,
+      "why_now": "Same thin-SERP opportunity as JB. Penang's E&E and BPO sector plus growing coworking scene (200% YoY growth in coworking supply per Flyspaces data) creates demand for pods from both corporate and co-working operator buyers."
+    },
+    {
+      "rank": 7,
+      "cluster": "C4",
+      "id": "C4-N1",
+      "title": "How Many Office Pods Does Your Malaysia Office Need? A Space Planning Guide",
+      "url": "/articles/how-many-office-pods-malaysia",
+      "primary_keyword": "how many office pods do I need Malaysia",
+      "intent": "Informational",
+      "word_count": 1500,
+      "why_now": "PAA-trigger query with no local answer. Addresses the second most common pre-purchase blocker (after price): quantity uncertainty. Helps Ace move buyers from 'not sure what I need' to 'requesting a multi-pod quote'."
+    },
+    {
+      "rank": 8,
+      "cluster": "C4",
+      "id": "C4-N2",
+      "title": "Specifying Office Pods for Malaysian Interior Design Projects: A Contractor and Designer Guide",
+      "url": "/articles/office-pod-specification-interior-designer-malaysia",
+      "primary_keyword": "office pod specification for interior designer Malaysia",
+      "intent": "Informational",
+      "word_count": 1600,
+      "why_now": "B2B referral channel article — interior designers and contractors who specify pods into fit-outs represent high-volume, repeat-purchase customers. No competitor serves this audience with spec-depth content. Also captures GreenRE/GBI certification angle, a growing differentiator in Malaysian commercial tenders."
+    }
+  ],
+
+  "internal_link_matrix": {
+    "mandatory_links": [
+      { "from": "/articles/best-office-pods-malaysia-2026",                     "to": "/office-pods", "type": "spoke-to-pillar" },
+      { "from": "/articles/soundproof-pod-productivity-open-office-malaysia",    "to": "/office-pods", "type": "spoke-to-pillar" },
+      { "from": "/articles/office-pod-compliance-bomba-sirim-malaysia",          "to": "/office-pods", "type": "spoke-to-pillar" },
+      { "from": "/articles/office-pod-acoustic-specs-malaysia",                  "to": "/office-pods", "type": "spoke-to-pillar" },
+      { "from": "/locations/johor-bahru",                                        "to": "/office-pods", "type": "spoke-to-pillar" },
+      { "from": "/locations/penang",                                             "to": "/office-pods", "type": "spoke-to-pillar" },
+      { "from": "/articles/how-many-office-pods-malaysia",                       "to": "/office-pods", "type": "spoke-to-pillar" },
+      { "from": "/articles/office-pod-specification-interior-designer-malaysia", "to": "/office-pods", "type": "spoke-to-pillar" },
+      { "from": "/office-pods", "to": "/articles/best-office-pods-malaysia-2026",                     "type": "pillar-to-spoke" },
+      { "from": "/office-pods", "to": "/articles/soundproof-pod-productivity-open-office-malaysia",   "type": "pillar-to-spoke" },
+      { "from": "/office-pods", "to": "/articles/office-pod-compliance-bomba-sirim-malaysia",         "type": "pillar-to-spoke" },
+      { "from": "/office-pods", "to": "/articles/office-pod-acoustic-specs-malaysia",                "type": "pillar-to-spoke" },
+      { "from": "/office-pods", "to": "/locations/johor-bahru",                                      "type": "pillar-to-spoke" },
+      { "from": "/office-pods", "to": "/locations/penang",                                           "type": "pillar-to-spoke" },
+      { "from": "/office-pods", "to": "/articles/how-many-office-pods-malaysia",                     "type": "pillar-to-spoke" },
+      { "from": "/office-pods", "to": "/articles/office-pod-specification-interior-designer-malaysia", "type": "pillar-to-spoke" }
+    ],
+    "recommended_intra_cluster_links": [
+      { "from": "/articles/best-office-pods-malaysia-2026",                   "to": "/articles/office-pod-acoustic-specs-malaysia",                  "cluster": "C1" },
+      { "from": "/articles/best-office-pods-malaysia-2026",                   "to": "/articles/office-pod-price-guide-malaysia",                     "cluster": "C1" },
+      { "from": "/articles/office-pod-acoustic-specs-malaysia",               "to": "/articles/best-office-pods-malaysia-2026",                      "cluster": "C1" },
+      { "from": "/articles/office-pod-acoustic-specs-malaysia",               "to": "/articles/office-pod-compliance-bomba-sirim-malaysia",          "cluster": "C1-C2 bridge" },
+      { "from": "/articles/soundproof-pod-productivity-open-office-malaysia", "to": "/articles/office-pod-compliance-bomba-sirim-malaysia",          "cluster": "C2" },
+      { "from": "/articles/soundproof-pod-productivity-open-office-malaysia", "to": "/articles/how-many-office-pods-malaysia",                       "cluster": "C2-C4 bridge" },
+      { "from": "/articles/office-pod-compliance-bomba-sirim-malaysia",       "to": "/articles/office-pod-acoustic-specs-malaysia",                  "cluster": "C2-C1 bridge" },
+      { "from": "/articles/office-pod-compliance-bomba-sirim-malaysia",       "to": "/articles/best-office-pods-malaysia-2026",                      "cluster": "C2-C1 bridge" },
+      { "from": "/locations/johor-bahru",                                     "to": "/locations/penang",                                             "cluster": "C3 interlink" },
+      { "from": "/locations/penang",                                          "to": "/locations/johor-bahru",                                        "cluster": "C3 interlink" },
+      { "from": "/locations/johor-bahru",                                     "to": "/articles/office-pod-price-guide-malaysia",                     "cluster": "C3-C1 bridge" },
+      { "from": "/locations/penang",                                          "to": "/articles/office-pod-price-guide-malaysia",                     "cluster": "C3-C1 bridge" },
+      { "from": "/articles/how-many-office-pods-malaysia",                    "to": "/articles/office-pod-specification-interior-designer-malaysia", "cluster": "C4" },
+      { "from": "/articles/office-pod-specification-interior-designer-malaysia", "to": "/articles/how-many-office-pods-malaysia",                   "cluster": "C4" },
+      { "from": "/articles/office-pod-specification-interior-designer-malaysia", "to": "/articles/office-pod-acoustic-specs-malaysia",               "cluster": "C4-C1 bridge" },
+      { "from": "/articles/office-pod-specification-interior-designer-malaysia", "to": "/articles/office-pod-compliance-bomba-sirim-malaysia",       "cluster": "C4-C2 bridge" }
+    ],
+    "optional_cross_cluster_links": [
+      { "from": "/articles/soundproof-pod-productivity-open-office-malaysia", "to": "/articles/office-pods-vs-built-rooms",           "notes": "existing article" },
+      { "from": "/articles/soundproof-pod-productivity-open-office-malaysia", "to": "/articles/office-pods-corporate-project-buyers", "notes": "existing article" },
+      { "from": "/articles/how-many-office-pods-malaysia",                    "to": "/articles/meeting-pods-for-hybrid-teams",        "notes": "existing article" },
+      { "from": "/articles/how-many-office-pods-malaysia",                    "to": "/articles/how-to-choose-office-pod-size",        "notes": "existing article" },
+      { "from": "/articles/best-office-pods-malaysia-2026",                   "to": "/articles/how-to-choose-office-pod-malaysia",    "notes": "existing article" }
+    ],
+    "existing_article_link_fixes_needed": [
+      {
+        "action": "ADD canonical tag or 301 redirect",
+        "from": "/articles/office-pods-vs-built-rooms",
+        "to": "/articles/office-pod-vs-building-room-malaysia",
+        "reason": "SERP overlap score 8 — cannibalization risk. The Malaysia-specific URL with RM cost data is the stronger page."
+      },
+      {
+        "action": "ADD internal link",
+        "from": "/articles/how-to-choose-office-pod-size",
+        "to": "/articles/how-to-choose-office-pod-malaysia",
+        "anchor_text": "full Malaysia office pod buyer checklist",
+        "reason": "Size guide is a logical precursor to the full buyer guide — the link reduces bounce and extends session depth."
+      },
+      {
+        "action": "ADD internal link",
+        "from": "/articles/office-pods-corporate-project-buyers",
+        "to": "/articles/office-pod-compliance-bomba-sirim-malaysia",
+        "anchor_text": "BOMBA and SIRIM compliance guide",
+        "reason": "Corporate buyers are the primary audience for the compliance article — high contextual relevance."
+      }
+    ]
+  },
+
+  "validation_checklist": {
+    "no_two_posts_share_primary_keyword": true,
+    "every_spoke_has_3_plus_incoming_links_planned": true,
+    "every_spoke_links_to_pillar": true,
+    "pillar_links_to_every_spoke": true,
+    "no_orphan_pages": true,
+    "template_matches_intent": true,
+    "word_counts_within_spec": "pillar: 2500 (existing), new spokes: 1200-1800 — all within spec",
+    "cluster_size_within_constraints": "4 clusters, 2 spokes each = 8 new pages — within 2-5 cluster, 2-4 posts spec",
+    "serp_overlap_supports_groupings": true,
+    "cannibalization_risk_addressed": "MEDIUM risk flagged for /office-pods-vs-built-rooms vs /office-pod-vs-building-room-malaysia — remediation documented in link matrix"
+  }
+}

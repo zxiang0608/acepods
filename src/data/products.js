@@ -22,7 +22,7 @@ import aceFlexAdjustableTableImage from '../../assets/ace-flex-adjustable-table.
 import aceFlexDuoFrontTransparentImage from '../../assets/ace-flex-duo-front-transparent.png';
 import aceFlexFrontTransparentImage from '../../assets/ace-flex-front-transparent.png';
 import aceHubFrontTransparentImage from '../../assets/ace-hub-front-transparent.png';
-import aceMeetFrontTransparentImage from '../../assets/ace-meet-front-transparent.png';
+import aceMeetFrontTransparentImage from '../../assets/ace-meet-product-front-transparent-1024.png';
 import acePlusFrontTransparentImage from '../../assets/ace-plus-front-transparent.png';
 import meetTableNormalizedImage from '../../assets/meet-table-normalized.png';
 import meetAdjustableNormalizedImage from '../../assets/meet-adjustable-normalized.png';

@@ -40,13 +40,10 @@ import parkerLogo from '../assets/parker-logo.png';
 import cmacgmLogo from '../assets/cmacgm-logo.svg';
 import alphabetLogo from '../assets/alphabet-logo.png';
 import rightwillLogo from '../assets/rightwill-logo.png';
-import matradeLogo from '../assets/matrade-logo.png';
 import everllenceLogo from '../assets/everllence-logo.png';
 import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
-import jyEliteLogo from '../assets/jy-elite.jpg';
-import wsConstructionLogo from '../assets/ws-construction.png';
-import wsConstructionLogoWebp from '../assets/ws-construction.webp';
-import idCandyLogo from '../assets/id-candy.jpg';
+import amorePacificLogo from '../assets/amorepacific-logo.svg';
+import brenntagLogo from '../assets/brenntag-logo.webp';
 import SeoMeta from './components/SeoMeta';
 import InstagramFeed from './components/InstagramFeed';
 import SiteFooter from './components/SiteFooter';
@@ -258,18 +255,11 @@ const trustedLogos = [
   { name: 'Parker Hanifin', image: parkerLogo, fitClass: 'scale-[0.92]', logoStageClass: 'max-h-[52px] max-w-[168px]' },
   { name: 'CMA CGM Shipping', image: cmacgmLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
   { name: 'Alphabet Capital Sdn Bhd', image: alphabetLogo, fitClass: 'scale-[0.94]', logoStageClass: 'max-h-[50px] max-w-[176px]' },
-  { name: 'JY Elite', image: jyEliteLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
-  { name: 'WS Construction', image: wsConstructionLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
-  { name: 'ID Candy', image: idCandyLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
   { name: 'Rightwill Sdn Bhd', image: rightwillLogo, fitClass: 'scale-[0.88] -translate-y-[1px]', logoStageClass: 'max-h-[52px] max-w-[170px]' },
-  {
-    name: 'Malaysia External Trade Development Corporation (MATRADE)',
-    image: matradeLogo,
-    fitClass: 'scale-[0.96]',
-    logoStageClass: 'max-h-[48px] max-w-[176px]'
-  },
   { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', logoStageClass: 'max-h-[52px] max-w-[172px]' },
-  { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[48px] max-w-[176px]' }
+  { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[48px] max-w-[176px]' },
+  { name: 'Amore Pacific', image: amorePacificLogo, fitClass: 'scale-[0.95]', logoStageClass: 'max-h-[44px] max-w-[176px]' },
+  { name: 'Brenntag', image: brenntagLogo, fitClass: 'scale-[0.98]', logoStageClass: '!h-[104px] max-w-[280px]' }
 ];
 
 export default function App() {
@@ -371,11 +361,11 @@ export default function App() {
   };
 
   const heroHeadline = 'Office pods in Malaysia — for calls, focus, and meetings';
-  const heroSupportingText = 'Acoustic office pods and booths for private calls, focused work, and meetings.';
-  const heroTrustLine = 'A practical alternative to building new rooms';
+  const heroSupportingText = "Malaysia's only independently certified acoustic pod — built, installed, and supported by one local team in Selangor.";
+  const heroTrustLine = 'Certified -27 dB(A) · 180+ pods installed · same team, start to finish';
   const productIntroHeading = 'Find the right pod\nfor calls, focus, or meetings';
   const privateSpaceHeading = 'Add private space without building new rooms';
-  const compareSupportingLine = 'Locally made means locally accountable — pricing, installation, and after-sales support handled by the same team in Selangor.';
+  const compareSupportingLine = "We know what it's like to be the one who has to make this call — there's no do-over if it turns out to be a bad soundproofing box, or a seller who disappears after delivery. That's why everything is verifiable before you decide: certified rating, showroom visit, same team start to finish.";
   const trustSectionHeading = 'Trusted by MNCs and companies across Malaysia';
   const whyHeading = 'Choose Ace Pods';
   const homepageSchemas = [
@@ -685,9 +675,9 @@ export default function App() {
                   <img
                     src={acePodsHero}
                     alt="Acoustic office pods for calls and focused work in an open office"
-                    width="2816"
-                    height="1536"
-                    className="h-[240px] w-full object-cover object-[20%_50%]"
+                    width="1672"
+                    height="941"
+                    className="h-[240px] w-full object-cover object-[68%_45%]"
                     fetchPriority="high"
                   />
                 </picture>
@@ -705,6 +695,22 @@ export default function App() {
                 </div>
 
                 <div className="mt-5 flex gap-3">
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      pushDataLayerEvent('whatsapp_click', {
+                        cta_location: 'homepage_hero',
+                        cta_text: 'Book a Showroom Visit',
+                        destination_url: WHATSAPP_LINK,
+                        contact_method: 'whatsapp'
+                      })
+                    }
+                    className="flex-1 rounded-[8px] bg-[#00855a] px-4 py-3 text-center text-[16px] font-bold text-white"
+                  >
+                    Book a Showroom Visit
+                  </a>
                   <Link
                     to="/pricing#all-pod-prices"
                     onClick={() =>
@@ -714,27 +720,12 @@ export default function App() {
                         destination_url: '/pricing#all-pod-prices'
                       })
                     }
-                    className="flex-1 rounded-[8px] bg-[#0b2038] px-4 py-3 text-center text-[16px] font-bold text-white"
+                    className="flex-1 rounded-[8px] border border-[#1f2937] px-4 py-3 text-center text-[16px] font-medium text-[#111827]"
                   >
                     Get Pricing
                   </Link>
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() =>
-                      pushDataLayerEvent('whatsapp_click', {
-                        cta_location: 'homepage_hero',
-                        cta_text: 'Book Viewing',
-                        destination_url: WHATSAPP_LINK,
-                        contact_method: 'whatsapp'
-                      })
-                    }
-                    className="flex-1 rounded-[8px] border border-[#1f2937] px-4 py-3 text-center text-[16px] font-semibold text-[#111827]"
-                  >
-                    Book Viewing
-                  </a>
                 </div>
+                <p className="mt-3 text-[11px] font-medium text-[#62727b]">Installation slots book 4–6 weeks out — visit the showroom early to secure your date.</p>
               </div>
             </div>
 
@@ -745,17 +736,17 @@ export default function App() {
                   <img
                     src={acePodsHero}
                     alt="Acoustic office pods for calls and focused work in an open office"
-                    width="2816"
-                    height="1536"
-                    className="h-full w-full object-cover object-[16%_10%] sm:object-[14%_12%] md:object-[50%_42%] lg:object-[50%_44%]"
+                    width="1672"
+                    height="941"
+                    className="h-full w-full object-cover object-[62%_38%] sm:object-[60%_38%] md:object-[62%_40%] lg:object-[50%_42%]"
                     fetchPriority="high"
                   />
                 </picture>
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.09)_0%,rgba(0,0,0,0.24)_32%,rgba(0,0,0,0.6)_72%,rgba(0,0,0,0.82)_100%),linear-gradient(90deg,rgba(0,0,0,0.46)_0%,rgba(0,0,0,0.18)_46%,rgba(0,0,0,0.08)_100%)] md:bg-[linear-gradient(180deg,rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.17)_34%,rgba(0,0,0,0.46)_78%,rgba(0,0,0,0.7)_100%),linear-gradient(92deg,rgba(0,0,0,0.44)_0%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.1)_100%)] lg:bg-[linear-gradient(95deg,rgba(0,0,0,0.08)_0%,rgba(0,0,0,0.16)_30%,rgba(0,0,0,0.6)_62%,rgba(0,0,0,0.84)_100%)]"></div>
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.09)_0%,rgba(0,0,0,0.24)_32%,rgba(0,0,0,0.6)_72%,rgba(0,0,0,0.82)_100%),linear-gradient(90deg,rgba(0,0,0,0.46)_0%,rgba(0,0,0,0.18)_46%,rgba(0,0,0,0.08)_100%)] md:bg-[linear-gradient(180deg,rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.17)_34%,rgba(0,0,0,0.46)_78%,rgba(0,0,0,0.7)_100%),linear-gradient(92deg,rgba(0,0,0,0.44)_0%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.1)_100%)] lg:bg-[linear-gradient(265deg,rgba(0,0,0,0.08)_0%,rgba(0,0,0,0.16)_30%,rgba(0,0,0,0.6)_62%,rgba(0,0,0,0.84)_100%)]"></div>
               </div>
 
               <div className="relative z-10 flex h-full w-full items-end px-4 md:px-12 lg:grid lg:grid-cols-2 lg:items-center">
-                <div className="w-full max-w-none rounded-[8px] bg-black/34 px-6 py-5 text-left text-white backdrop-blur-[0.5px] sm:px-6 sm:py-6 md:bg-black/28 lg:col-start-2 lg:col-end-3 lg:w-[86%] lg:max-w-none lg:justify-self-end lg:rounded-none lg:bg-black/52 lg:px-7 lg:py-7 lg:backdrop-blur-0">
+                <div className="w-full max-w-none rounded-[8px] bg-black/34 px-6 py-5 text-left text-white backdrop-blur-[0.5px] sm:px-6 sm:py-6 md:bg-black/28 lg:col-start-1 lg:col-end-2 lg:w-[86%] lg:max-w-none lg:justify-self-start lg:rounded-none lg:bg-black/52 lg:px-7 lg:py-7 lg:backdrop-blur-0">
                   <div className="max-w-none md:max-w-[520px]">
                     <h1 className="mb-4 max-w-[16ch] text-[35px] font-bold leading-[1.03] tracking-[-0.03em] sm:max-w-[18ch] sm:text-[39px] md:mb-5 md:max-w-none md:text-[57px]">
                       {heroHeadline}
@@ -768,6 +759,22 @@ export default function App() {
                     </p>
 
                     <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
+                      <a
+                        href={WHATSAPP_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() =>
+                          pushDataLayerEvent('whatsapp_click', {
+                            cta_location: 'homepage_hero',
+                            cta_text: 'Book a Showroom Visit',
+                            destination_url: WHATSAPP_LINK,
+                            contact_method: 'whatsapp'
+                          })
+                        }
+                        className="min-w-0 flex-1 rounded-[6px] bg-[#00855a] px-3.5 py-2.5 text-center text-[14px] font-bold text-white transition-colors hover:bg-[#006e4a] md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                      >
+                        Book a Showroom Visit
+                      </a>
                       <Link
                         to="/pricing#all-pod-prices"
                         onClick={() =>
@@ -777,27 +784,12 @@ export default function App() {
                             destination_url: '/pricing#all-pod-prices'
                           })
                         }
-                        className="min-w-0 flex-1 rounded-[6px] bg-white px-3.5 py-2.5 text-center text-[14px] font-bold text-[#333333] transition-colors hover:bg-gray-100 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                        className="min-w-0 flex-1 rounded-[6px] border border-white/80 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
                       >
                         Get Pricing
                       </Link>
-                      <a
-                        href={WHATSAPP_LINK}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() =>
-                          pushDataLayerEvent('whatsapp_click', {
-                            cta_location: 'homepage_hero',
-                            cta_text: 'Book Viewing',
-                            destination_url: WHATSAPP_LINK,
-                            contact_method: 'whatsapp'
-                          })
-                        }
-                        className="min-w-0 flex-1 rounded-[6px] border border-white/90 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
-                      >
-                        Book Viewing
-                      </a>
                     </div>
+                    <p className="mt-3 text-[11px] font-medium text-white/60">Installation slots book 4–6 weeks out — visit the showroom early to secure your date.</p>
                   </div>
                 </div>
               </div>
@@ -834,30 +826,15 @@ export default function App() {
                   className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#FAFAFA] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
                 >
                   <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
-                    {logo.image === wsConstructionLogo ? (
-                      <picture>
-                        <source srcSet={wsConstructionLogoWebp} type="image/webp" />
-                        <img
-                          src={logo.image}
-                          alt={logo.name}
-                          width="210"
-                          height="64"
-                          className={`h-full w-full object-contain ${logo.fitClass || ''}`}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </picture>
-                    ) : (
-                      <img
-                        src={logo.image}
-                        alt={logo.name}
-                        width="210"
-                        height="64"
-                        className={`h-full w-full object-contain ${logo.fitClass || ''}`}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
+                    <img
+                      src={logo.image}
+                      alt={logo.name}
+                      width="210"
+                      height="64"
+                      className={`h-full w-full object-contain ${logo.fitClass || ''}`}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 </div>
               ))}
@@ -1167,6 +1144,7 @@ export default function App() {
             >
               Contact us
             </Link>
+            <p className="mt-4 text-[12px] text-[#878f98]">Installation slots book 4–6 weeks out — the sooner you visit the showroom, the sooner your team gets the space.</p>
           </div>
         </section>
 

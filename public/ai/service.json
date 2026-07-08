@@ -5,7 +5,7 @@
     "legalName": "ACE WORKPLACE SOLUTIONS",
     "url": "https://aceofficepods.com"
   },
-  "updated": "2026-06-15",
+  "updated": "2026-06-19",
   "services": [
     {
       "name": "Office pod supply",
@@ -16,6 +16,11 @@
       "name": "Office pod delivery and installation",
       "description": "Site planning, delivery, assembly, handover, and support across Klang Valley and West Malaysia.",
       "url": "https://aceofficepods.com/installation-support"
+    },
+    {
+      "name": "Office pod relocation",
+      "description": "Dismantling, transport, and reinstallation of an existing office pod at a new office location, with post-move inspection.",
+      "url": "https://aceofficepods.com/pod-relocation"
     },
     {
       "name": "Showroom consultation",
