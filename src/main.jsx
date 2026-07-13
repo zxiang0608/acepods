@@ -16,6 +16,7 @@ import PodRelocationPage from './pages/PodRelocationPage';
 import PricingPage from './pages/PricingPage';
 import MeetingPodsMalaysiaPage from './pages/MeetingPodsMalaysiaPage';
 import HomePageV2 from './pages/HomePageV2';
+import Demo2Page from './pages/Demo2Page';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -64,6 +65,7 @@ ReactDOM.createRoot(rootElement).render(
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/draft1" element={<HomePageV2 />} />
+          <Route path="/demo2" element={<Demo2Page />} />
           <Route path="/seo/*" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

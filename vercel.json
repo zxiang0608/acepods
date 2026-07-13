@@ -24,6 +24,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/demo2",
+      "destination": "/index.html"
+    },
+    {
       "source": "/draft1",
       "destination": "/index.html"
     }
