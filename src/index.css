@@ -50,6 +50,22 @@ body {
   flex: 0 0 auto;
 }
 
+@keyframes demo2MobileHeroPan {
+  0%, 100% {
+    object-position: 100% 42%;
+  }
+  50% {
+    object-position: 0% 42%;
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .demo2-mobile-hero-pan {
+    animation: demo2MobileHeroPan 24s ease-in-out infinite;
+    will-change: object-position;
+  }
+}
+
 @media (min-width: 768px) {
   .logo-marquee-track {
     gap: 1rem;
