@@ -229,7 +229,7 @@ export default function Demo2Page() {
                     alt={product.title}
                     width="220"
                     height="220"
-                    className={`h-full w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04] ${product.imageClassName || ''}`}
+                    className={`h-full w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04] ${product.imageClassName || ''} ${product.title === 'Ace Plus' ? 'scale-[0.75] md:scale-100' : ''}`}
                     loading="lazy"
                     decoding="async"
                   />
