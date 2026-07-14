@@ -136,9 +136,9 @@ export default function Demo2Page() {
   return (
     <div className="min-h-screen bg-[#f5f3ef] text-[#172126]" style={{ fontFamily: '"Instrument Sans", ui-sans-serif, system-ui, sans-serif' }}>
       <header className="border-b border-[#d9d6ce] bg-[#fbfaf7] px-6 md:px-12">
-        <div className="mx-auto flex h-[80px] max-w-[1440px] items-center justify-between md:h-[74px]">
+        <div className="mx-auto flex h-[64px] max-w-[1440px] items-center justify-between md:h-[74px]">
           <Link to="/" aria-label="Ace Office Pods home">
-            <img src={acePodsLogo} alt="Ace Pods" width="150" height="70" className="h-[52px] w-auto md:h-[48px]" />
+            <img src={acePodsLogo} alt="Ace Pods" width="150" height="70" className="h-[36px] w-auto md:h-[48px]" />
           </Link>
           <div className="hidden items-center gap-5 text-[13px] font-medium text-[#273238] lg:flex xl:gap-7">
             <Link to="/office-pods">Office Pods</Link>
@@ -151,14 +151,14 @@ export default function Demo2Page() {
           </div>
           <div className="flex items-center gap-3">
             <CurrencySwitcher className="hidden xl:flex" />
-            <Link to="/contact" className="bg-[#00855a] px-5 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#006e4a] md:px-5 md:py-2.5 md:text-[14px]">
+            <Link to="/contact" className="bg-[#00855a] px-3.5 py-2 text-[11px] font-semibold text-white transition-colors hover:bg-[#006e4a] md:px-5 md:py-2.5 md:text-[14px]">
               Contact us
             </Link>
           </div>
         </div>
       </header>
 
-      <section className="px-6 pt-4 md:px-12 md:pt-7">
+      <section className="px-0 pt-0 md:px-12 md:pt-7">
         <div className="mx-auto max-w-[1440px] overflow-hidden bg-[#172126]">
           <div className="relative min-h-[610px] overflow-hidden md:min-h-[620px]">
             <picture>
@@ -168,21 +168,17 @@ export default function Demo2Page() {
                 alt="Acoustic office pods in a modern workplace"
                 width="1672"
                 height="941"
-                className="demo2-mobile-hero-pan absolute inset-0 h-full w-full object-cover object-[50%_42%] brightness-[1.05] contrast-[0.94] saturate-[0.82]"
+                className="demo2-mobile-hero-pan absolute inset-0 h-full w-full object-cover object-[50%_42%] brightness-[0.91] contrast-[0.94] saturate-[0.82] md:brightness-[1.05]"
                 fetchpriority="high"
               />
             </picture>
 
             <div className="relative flex min-h-[610px] items-center px-7 md:min-h-[620px] md:px-12 lg:px-16">
-              <div className="relative isolate max-w-[535px] py-10 text-white md:py-12">
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -bottom-8 -left-9 -top-8 -z-10 w-[calc(100%+5.5rem)] bg-[linear-gradient(90deg,rgba(12,22,21,0.68)_0%,rgba(12,22,21,0.60)_70%,rgba(12,22,21,0)_100%)]"
-                />
-                <h1 className="max-w-[15ch] text-[54px] font-semibold leading-[0.96] tracking-[-0.055em] md:text-[64px]">
+              <div className="max-w-[535px] py-10 text-white md:py-12">
+                <h1 className="max-w-[15ch] text-[54px] font-semibold leading-[0.96] tracking-[-0.055em] [text-shadow:0_2px_12px_rgba(0,0,0,0.66),0_1px_2px_rgba(0,0,0,0.72)] md:text-[64px] md:[text-shadow:none]">
                   Less noise.<br />More work done.
                 </h1>
-                <p className="mt-8 max-w-[31ch] text-[19px] font-normal leading-[1.48] text-white/92 md:text-[20px]">
+                <p className="mt-8 max-w-[31ch] text-[19px] font-normal leading-[1.48] text-white/92 [text-shadow:0_1px_8px_rgba(0,0,0,0.75)] md:text-[20px] md:[text-shadow:none]">
                   Give your people the quiet to think clearly, speak privately, and do their best work.
                 </p>
                 <div className="mt-9 flex flex-col gap-3 md:flex-row">
