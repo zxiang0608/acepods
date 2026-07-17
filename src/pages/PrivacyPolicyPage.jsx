@@ -21,20 +21,20 @@ export default function PrivacyPolicyPage() {
       />
 
       <section className="mx-auto w-full max-w-[820px] px-5 pb-16 pt-10 md:px-8 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           / <span>Privacy Policy</span>
         </nav>
 
-        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[44px]">Privacy Policy</h1>
-        <p className="mt-3 text-[14px] text-[#65707a]">Last updated: June 2026</p>
+        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[44px]">Privacy Policy</h1>
+        <p className="mt-3 text-[14px] text-[#68726f]">Last updated: June 2026</p>
 
-        <div className="mt-8 space-y-8 text-[16px] leading-[1.7] text-[#30363d]">
+        <div className="mt-8 space-y-8 text-[16px] leading-[1.7] text-[#172126]">
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">1. About this policy</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">1. About this policy</h2>
             <p>
               Ace Workplace Solutions (operating as Ace Office Pods Malaysia, registration no. 202403171118) operates the website at aceofficepods.com. This policy explains how we collect, use, and protect personal data in accordance with the Personal Data Protection Act 2010 (Malaysia).
             </p>
@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">2. Data we collect</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">2. Data we collect</h2>
             <p>We may collect the following types of personal data:</p>
             <ul className="mt-3 list-disc space-y-1.5 pl-6">
               <li>Name, company name, and contact details provided through enquiry forms, WhatsApp, or email</li>
@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">3. How we use your data</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">3. How we use your data</h2>
             <p>We use your personal data to:</p>
             <ul className="mt-3 list-disc space-y-1.5 pl-6">
               <li>Respond to enquiries about office pods, pricing, and project requirements</li>
@@ -69,27 +69,27 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">4. Cookies and analytics</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">4. Cookies and analytics</h2>
             <p>
               This website uses Google Analytics to collect anonymised data about how visitors use the site, including pages visited, time on site, and device type. This data is used only to improve the website and is not used to identify you personally.
             </p>
             <p className="mt-3">
               You can opt out of Google Analytics tracking by installing the{' '}
-              <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[#145b5f] underline underline-offset-4 hover:no-underline">
+              <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[#007653] underline underline-offset-4 hover:no-underline">
                 Google Analytics Opt-out Browser Add-on
               </a>.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">5. Data retention</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">5. Data retention</h2>
             <p>
               Enquiry and project data is retained for as long as necessary to fulfil the purpose for which it was collected, or as required by applicable Malaysian law. You may request deletion of your personal data at any time by contacting us.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">6. Your rights</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">6. Your rights</h2>
             <p>Under the Personal Data Protection Act 2010 (Malaysia), you have the right to:</p>
             <ul className="mt-3 list-disc space-y-1.5 pl-6">
               <li>Access the personal data we hold about you</li>
@@ -99,39 +99,39 @@ export default function PrivacyPolicyPage() {
             </ul>
             <p className="mt-3">
               To exercise these rights, please contact us at{' '}
-              <a href="mailto:sales@aceofficepods.com" className="text-[#145b5f] underline underline-offset-4 hover:no-underline">
+              <a href="mailto:sales@aceofficepods.com" className="text-[#007653] underline underline-offset-4 hover:no-underline">
                 sales@aceofficepods.com
               </a>.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">7. Third-party links</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">7. Third-party links</h2>
             <p>
               This website may contain links to third-party websites. We are not responsible for the privacy practices of those sites and recommend you read their privacy policies before providing any personal data.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">8. Changes to this policy</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">8. Changes to this policy</h2>
             <p>
               We may update this policy from time to time. The most current version will always be available at aceofficepods.com/privacy. Continued use of the website after any update constitutes acceptance of the revised policy.
             </p>
           </section>
 
           <section>
-            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#14181c]">9. Contact us</h2>
+            <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">9. Contact us</h2>
             <p>For any privacy-related questions or requests:</p>
             <address className="mt-3 not-italic space-y-1">
-              <div className="font-semibold text-[#1d232a]">Ace Workplace Solutions (Ace Office Pods Malaysia)</div>
+              <div className="font-semibold text-[#172126]">Ace Workplace Solutions (Ace Office Pods Malaysia)</div>
               <div>Jalan Gopeng, Kawasan 18, 41400 Klang, Selangor</div>
               <div>
-                <a href="mailto:sales@aceofficepods.com" className="text-[#145b5f] underline underline-offset-4 hover:no-underline">
+                <a href="mailto:sales@aceofficepods.com" className="text-[#007653] underline underline-offset-4 hover:no-underline">
                   sales@aceofficepods.com
                 </a>
               </div>
               <div>
-                <a href="tel:+601154352700" className="text-[#145b5f] underline underline-offset-4 hover:no-underline">
+                <a href="tel:+601154352700" className="text-[#007653] underline underline-offset-4 hover:no-underline">
                   +60 11-5435 2700
                 </a>
               </div>
@@ -140,7 +140,7 @@ export default function PrivacyPolicyPage() {
 
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-4 text-[14px] font-semibold text-[#145b5f]">
+        <div className="mt-10 flex flex-wrap gap-4 text-[14px] font-semibold text-[#007653]">
           <Link to="/terms" className="underline-offset-4 hover:underline">Terms of Use</Link>
           <Link to="/contact" className="underline-offset-4 hover:underline">Contact us</Link>
         </div>

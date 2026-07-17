@@ -215,12 +215,12 @@ const LOCATION_PRERENDER_DATA = [
     geo: { latitude: 3.1390, longitude: 101.6869 },
     title: 'Office Pods Kuala Lumpur | Delivery & Installation',
     description:
-      'Office pods in Kuala Lumpur with completed installations for Everllence, Alphabet Capital, and CMA CGM in Bangsar. Compare models, pricing, delivery, and installation.',
+      'Office pods in Kuala Lumpur with completed installations for Everllence, Parker Hannifin, and CMA CGM in Bangsar. Compare models, pricing, delivery, and installation.',
     intro:
       'Ace Office Pods supplies and installs office phone booths, focus pods, and meeting pods for Kuala Lumpur workplaces.',
     projects: [
       'Everllence — Ace Plus installation in Kuala Lumpur',
-      'Alphabet Capital — Ace Flex Duo installation in Kuala Lumpur',
+      'Parker Hannifin — Ace Flex installation in Kuala Lumpur',
       'CMA CGM — Ace Solo installation in Bangsar, Kuala Lumpur'
     ]
   },
@@ -231,9 +231,9 @@ const LOCATION_PRERENDER_DATA = [
     geo: { latitude: 3.0733, longitude: 101.5185 },
     title: 'Office Pods Shah Alam | Delivery & Installation | Ace Office Pods',
     description:
-      'Office pods in Shah Alam with a completed Parker Hannifin installation. Compare phone booths, acoustic pods, pricing, delivery, and installation support.',
+      'Office pods in Shah Alam with a completed Alphabet Capital installation. Compare phone booths, acoustic pods, pricing, delivery, and installation support.',
     intro: 'Ace Office Pods supplies and installs office phone booths and acoustic work pods for Shah Alam offices.',
-    projects: ['Parker Hannifin — Ace Solo installation in Shah Alam']
+    projects: ['Alphabet Capital — Ace Solo installation in Shah Alam']
   },
   {
     slug: 'subang-jaya',
@@ -1008,10 +1008,10 @@ const STATIC_PRERENDER_META = {
       '## Completed projects',
       '### Everllence — Kuala Lumpur',
       'Model: Ace Plus. Multi-unit installation for a financial advisory firm in Kuala Lumpur. Pods deployed across an open-plan office floor for private client calls and focused analytical work. Project scope included delivery, installation, and post-install acoustic verification.',
-      '### Parker Hannifin — Shah Alam',
-      'Model: Ace Solo. Single-unit installation for an engineering and manufacturing firm in Shah Alam, Selangor. Used for confidential calls in an open engineering workspace.',
-      '### Alphabet Capital — Kuala Lumpur',
-      'Model: Ace Plus. Installation for an investment firm in Kuala Lumpur. Pods positioned in open trading and advisory floor areas requiring high acoustic isolation.',
+      '### Parker Hannifin — Kuala Lumpur',
+      'Model: Ace Flex. One-person pod installation for private calls and focused work.',
+      '### Alphabet Capital — Shah Alam',
+      'Model: Ace Solo. One-person office phone booth installation for private calls and focused work.',
       '### CMA CGM — Bangsar, Kuala Lumpur',
       'Model: Ace Solo. Installation for a global logistics operator at their Malaysia office in Bangsar. Pod deployed for confidential shipping and operations calls in an open-plan office.',
       "### Taylor's College — Subang Jaya",
@@ -1506,10 +1506,10 @@ const STATIC_PRERENDER_META = {
     body: [
       'Explore areas where Ace Office Pods has completed customer installations. Each location page uses real project examples to show the pod models delivered and the local installation context.',
       '## Kuala Lumpur',
-      'Completed projects for Everllence, Alphabet Capital, and CMA CGM in Bangsar.',
+      'Completed projects for Everllence, Parker Hannifin, and CMA CGM in Bangsar.',
       '[View office pod projects in Kuala Lumpur](/locations/kuala-lumpur)',
       '## Shah Alam',
-      'Completed Ace Solo installation for Parker Hannifin.',
+      'Completed Ace Solo installation for Alphabet Capital.',
       '[View office pod projects in Shah Alam](/locations/shah-alam)',
       '## Subang Jaya',
       "Completed Ace Plus installation for Taylor's College.",

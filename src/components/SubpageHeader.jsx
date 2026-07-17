@@ -61,7 +61,7 @@ export default function SubpageHeader() {
               if (item.type === 'smart-pods') {
                 return (
                   <div key={item.label} className="group flex cursor-pointer items-center gap-1.5">
-                    <Link to="/office-pods" onClick={() => setIsSmartPodsDesktopOpen(false)} className="transition-colors group-hover:text-[#145b5f]">
+                    <Link to="/office-pods" onClick={() => setIsSmartPodsDesktopOpen(false)} className="transition-colors group-hover:text-[#007653]">
                       {item.label}
                     </Link>
                     <button
@@ -76,7 +76,7 @@ export default function SubpageHeader() {
                 );
               }
               return (
-                <Link key={item.to} to={item.to} className="transition-colors hover:text-[#145b5f]">
+                <Link key={item.to} to={item.to} className="transition-colors hover:text-[#007653]">
                   {item.label}
                 </Link>
               );
@@ -128,7 +128,7 @@ export default function SubpageHeader() {
                         setIsMenuOpen(false);
                         setIsSmartPodsMobileOpen(false);
                       }}
-                      className="text-[28px] font-bold leading-none tracking-tight text-[#151a1f]"
+                      className="text-[28px] font-bold leading-none tracking-tight text-[#172126]"
                     >
                       {item.label}
                     </Link>
@@ -159,8 +159,8 @@ export default function SubpageHeader() {
                               decoding="async"
                             />
                           </div>
-                          <h3 className="mt-3 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{menuItem.title}</h3>
-                          <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#666666]">{menuItem.description}</p>
+                          <h3 className="mt-3 text-[20px] font-semibold tracking-tight text-[#007653]">{menuItem.title}</h3>
+                          <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#68726f]">{menuItem.description}</p>
                         </Link>
                       ))}
                     </div>
@@ -170,7 +170,7 @@ export default function SubpageHeader() {
             }
             return (
               <Link key={item.to} to={item.to} onClick={() => setIsMenuOpen(false)} className="group flex items-center justify-between">
-                <span className="text-[28px] font-bold leading-none tracking-tight text-[#151a1f]">{item.label}</span>
+                <span className="text-[28px] font-bold leading-none tracking-tight text-[#172126]">{item.label}</span>
                 <ChevronRight className="text-[#00855a]" size={24} />
               </Link>
             );

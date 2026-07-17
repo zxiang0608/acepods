@@ -31,76 +31,76 @@ export default function CompareOfficePodsPage() {
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           / <span>Compare Office Pods</span>
         </nav>
 
-        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">
+        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[48px]">
           What buyers often overlook when comparing office pods
         </h1>
-        <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
+        <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#59635f]">
           Compare more confidently when pricing, installation, and support are clear upfront.
         </p>
       </section>
 
       <section className="mx-auto w-full max-w-[1100px] px-5 md:px-8">
-        <h2 className="text-[22px] font-semibold tracking-tight text-[#14181c]">Office pod model comparison</h2>
+        <h2 className="text-[22px] font-semibold tracking-tight text-[#172126]">Office pod model comparison</h2>
         <div className="mt-4 overflow-x-auto rounded-[10px] border border-[#ddd8cf]">
           <table className="w-full min-w-[560px] border-collapse bg-white text-[14px]">
             <thead>
-              <tr className="border-b border-[#ddd8cf] bg-[#f8f6f2]">
-                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">Model</th>
-                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">Capacity</th>
-                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">W × D</th>
-                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">From</th>
-                <th className="px-4 py-3 text-left font-semibold text-[#14181c]">Best for</th>
+              <tr className="border-b border-[#ddd8cf] bg-[#f7f6f2]">
+                <th className="px-4 py-3 text-left font-semibold text-[#172126]">Model</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#172126]">Capacity</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#172126]">W × D</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#172126]">From</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#172126]">Best for</th>
               </tr>
             </thead>
             <tbody>
               {COMPARISON_ROWS.map((row, i) => (
-                <tr key={row.model} className={`border-b border-[#f0ece5] ${i % 2 === 0 ? '' : 'bg-[#fdfcfa]'}`}>
-                  <td className="px-4 py-3 font-semibold text-[#145b5f]">
+                <tr key={row.model} className={`border-b border-[#f0ece5] ${i % 2 === 0 ? '' : 'bg-[#f7f6f2]'}`}>
+                  <td className="px-4 py-3 font-semibold text-[#007653]">
                     <Link to={row.path} className="hover:underline underline-offset-4">{row.model}</Link>
                   </td>
-                  <td className="px-4 py-3 text-[#30363d]">{row.capacity}</td>
-                  <td className="px-4 py-3 text-[#30363d]">{row.dimensions}</td>
-                  <td className="px-4 py-3 font-semibold text-[#30363d]">{row.from}</td>
-                  <td className="px-4 py-3 text-[#4d555e]">{row.bestFor}</td>
+                  <td className="px-4 py-3 text-[#172126]">{row.capacity}</td>
+                  <td className="px-4 py-3 text-[#172126]">{row.dimensions}</td>
+                  <td className="px-4 py-3 font-semibold text-[#172126]">{row.from}</td>
+                  <td className="px-4 py-3 text-[#59635f]">{row.bestFor}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="mt-2 text-[13px] text-[#6a7683]">All prices are starting prices. Final cost depends on delivery location, installation scope, and selected options.</p>
+        <p className="mt-2 text-[13px] text-[#68726f]">All prices are starting prices. Final cost depends on delivery location, installation scope, and selected options.</p>
       </section>
 
       <section className="mx-auto mt-6 grid w-full max-w-[1100px] gap-5 px-5 md:px-8">
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[25px] font-semibold tracking-tight text-[#14181c]">See the full project price upfront</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[25px] font-semibold tracking-tight text-[#172126]">See the full project price upfront</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Headline price alone is not enough. Review the total project scope including delivery, installation, and selected add-ons before comparing options.
           </p>
         </article>
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[25px] font-semibold tracking-tight text-[#14181c]">Installation matters more than most buyers expect</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[25px] font-semibold tracking-tight text-[#172126]">Installation matters more than most buyers expect</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Access routes, placement constraints, and onsite coordination affect timeline and cost. Installation planning should be part of comparison from the start.
           </p>
         </article>
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[25px] font-semibold tracking-tight text-[#14181c]">Delivery is not the end of the buying experience</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[25px] font-semibold tracking-tight text-[#172126]">Delivery is not the end of the buying experience</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Check what after-sales support and service response are included so the pod remains practical to run after installation.
           </p>
         </article>
       </section>
 
       <section className="mx-auto mt-6 w-full max-w-[1100px] rounded-[10px] border border-[#ddd8cf] bg-white px-6 py-6 md:px-8">
-        <h2 className="text-[24px] font-semibold tracking-tight text-[#14181c]">What to compare before you commit</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-[16px] leading-[1.6] text-[#4d555e]">
+        <h2 className="text-[24px] font-semibold tracking-tight text-[#172126]">What to compare before you commit</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-[16px] leading-[1.6] text-[#59635f]">
           <li>Pod fit for calls, focused work, or meetings</li>
           <li>Installation scope, access, and placement constraints</li>
           <li>After-sales support and warranty coverage</li>
@@ -108,7 +108,7 @@ export default function CompareOfficePodsPage() {
         </ul>
       </section>
 
-      <section className="mx-auto mt-10 flex w-full max-w-[1100px] flex-wrap gap-5 px-5 text-[15px] font-semibold text-[#145b5f] md:px-8">
+      <section className="mx-auto mt-10 flex w-full max-w-[1100px] flex-wrap gap-5 px-5 text-[15px] font-semibold text-[#007653] md:px-8">
         <Link to="/meeting-pods-malaysia" className="underline-offset-4 hover:underline">
           Compare meeting pods
         </Link>

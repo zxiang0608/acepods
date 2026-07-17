@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { isLocalMarket, getCurrencyPref, setCurrencyPref, getRatesSync, fetchRates, CURRENCY_EVENT } from '../lib/currency';
+import { isLocalMarket, getCurrencyPref, setCurrencyPref, getRatesSync, fetchRates, FALLBACK_RATES, CURRENCY_EVENT } from '../lib/currency';
 
 export function useCurrency() {
   const [currency, setCurrencyState] = useState(() => {
@@ -8,7 +8,7 @@ export function useCurrency() {
     return isLocalMarket() ? 'MYR' : 'USD';
   });
 
-  const [rates, setRates] = useState(() => getRatesSync());
+  const [rates, setRates] = useState(() => getRatesSync() || FALLBACK_RATES);
 
   useEffect(() => {
     const handler = () => {

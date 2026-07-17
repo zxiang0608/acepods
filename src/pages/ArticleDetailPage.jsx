@@ -30,13 +30,13 @@ const renderInlineContent = (text) => {
         const [, label, url] = linkMatch;
         if (url.startsWith('/')) {
           tokens.push(
-            <Link key={`link-${tokenKey}`} to={url} className="text-[#145b5f] underline underline-offset-4 hover:no-underline">
+            <Link key={`link-${tokenKey}`} to={url} className="text-[#007653] underline underline-offset-4 hover:no-underline">
               {label}
             </Link>
           );
         } else {
           tokens.push(
-            <a key={`link-${tokenKey}`} href={url} className="text-[#145b5f] underline underline-offset-4 hover:no-underline">
+            <a key={`link-${tokenKey}`} href={url} className="text-[#007653] underline underline-offset-4 hover:no-underline">
               {label}
             </a>
           );
@@ -64,7 +64,7 @@ const renderArticleContent = (content) => {
 
     if (line.startsWith('## ')) {
       elements.push(
-        <h2 key={`h2-${index}`} className="pt-2 text-[28px] font-semibold tracking-tight text-[#14181c]">
+        <h2 key={`h2-${index}`} className="pt-2 text-[28px] font-semibold tracking-tight text-[#172126]">
           {line.slice(3)}
         </h2>
       );
@@ -74,7 +74,7 @@ const renderArticleContent = (content) => {
 
     if (line.startsWith('### ')) {
       elements.push(
-        <h3 key={`h3-${index}`} className="pt-1 text-[22px] font-semibold tracking-tight text-[#1d232a]">
+        <h3 key={`h3-${index}`} className="pt-1 text-[22px] font-semibold tracking-tight text-[#172126]">
           {line.slice(4)}
         </h3>
       );
@@ -89,7 +89,7 @@ const renderArticleContent = (content) => {
         index += 1;
       }
       elements.push(
-        <ul key={`ul-${index}`} className="list-disc space-y-1 pl-6 text-[17px] leading-[1.7] text-[#30363d]">
+        <ul key={`ul-${index}`} className="list-disc space-y-1 pl-6 text-[17px] leading-[1.7] text-[#172126]">
           {items.map((item, itemIndex) => (
             <li key={`li-${itemIndex}`}>{renderInlineContent(item)}</li>
           ))}
@@ -119,11 +119,11 @@ const renderArticleContent = (content) => {
 
       elements.push(
         <div key={`table-${index}`} className="overflow-x-auto rounded-[10px] border border-[#ddd8cf] bg-white">
-          <table className="min-w-full border-collapse text-left text-[15px] leading-[1.55] text-[#30363d]">
+          <table className="min-w-full border-collapse text-left text-[15px] leading-[1.55] text-[#172126]">
             <thead>
-              <tr className="border-b border-[#e7e2d9] bg-[#f7f5f0]">
+              <tr className="border-b border-[#e7e2d9] bg-[#f7f6f2]">
                 {headerCells.map((cell, cellIndex) => (
-                  <th key={`th-${cellIndex}`} className="px-4 py-3 font-semibold text-[#1d232a]">
+                  <th key={`th-${cellIndex}`} className="px-4 py-3 font-semibold text-[#172126]">
                     {renderInlineContent(cell)}
                   </th>
                 ))}
@@ -147,7 +147,7 @@ const renderArticleContent = (content) => {
     }
 
     elements.push(
-      <p key={`p-${index}`} className="text-[17px] leading-[1.7] text-[#30363d]">
+      <p key={`p-${index}`} className="text-[17px] leading-[1.7] text-[#172126]">
         {renderInlineContent(line)}
       </p>
     );
@@ -188,8 +188,8 @@ export default function ArticleDetailPage() {
     return (
       <PageShell>
         <section className="mx-auto w-full max-w-[1200px] px-5 pb-16 pt-14 md:px-8 md:pb-20">
-          <h1 className="text-[34px] font-bold tracking-tight text-[#14181c] md:text-[48px]">Article not found</h1>
-          <Link to="/articles" className="mt-4 inline-flex text-[16px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+          <h1 className="text-[34px] font-bold tracking-tight text-[#172126] md:text-[48px]">Article not found</h1>
+          <Link to="/articles" className="mt-4 inline-flex text-[16px] font-semibold text-[#007653] underline-offset-4 hover:underline">
             Back to articles
           </Link>
         </section>
@@ -264,28 +264,28 @@ export default function ArticleDetailPage() {
       />
 
       <section className="mx-auto w-full max-w-[1000px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           /{' '}
-          <Link to="/articles" className="hover:text-[#145b5f]">
+          <Link to="/articles" className="hover:text-[#007653]">
             Articles
           </Link>{' '}
           / <span>{article.title}</span>
         </nav>
 
-        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#66707a]">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#68726f]">
           {article.category} · {article.date}
         </p>
-        <h1 className="mt-3 text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">{article.title}</h1>
+        <h1 className="mt-3 text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[48px]">{article.title}</h1>
         {article.author && (
-          <p className="mt-3 text-[14px] text-[#65707a]">
-            By <span className="font-semibold text-[#2e3338]">{article.author.name}</span>
+          <p className="mt-3 text-[14px] text-[#68726f]">
+            By <span className="font-semibold text-[#172126]">{article.author.name}</span>
             {article.author.role ? <span> · {article.author.role}</span> : null}
           </p>
         )}
-        <p id={`article-${article.slug}-answer`} className="mt-4 text-[18px] leading-[1.6] text-[#4d555e]">{article.excerpt}</p>
+        <p id={`article-${article.slug}-answer`} className="mt-4 text-[18px] leading-[1.6] text-[#59635f]">{article.excerpt}</p>
       </section>
 
       <section className="mx-auto w-full max-w-[1000px] px-5 md:px-8">
@@ -305,8 +305,8 @@ export default function ArticleDetailPage() {
 
       <section className="mx-auto w-full max-w-[1000px] px-5 pb-8 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[24px] font-semibold tracking-tight text-[#14181c]">Continue your shortlist</h2>
-          <div className="mt-4 flex flex-wrap gap-5 text-[15px] font-semibold text-[#145b5f]">
+          <h2 className="text-[24px] font-semibold tracking-tight text-[#172126]">Continue your shortlist</h2>
+          <div className="mt-4 flex flex-wrap gap-5 text-[15px] font-semibold text-[#007653]">
             <Link to="/office-pods" className="underline-offset-4 hover:underline">
               View office pod models
             </Link>
@@ -321,13 +321,13 @@ export default function ArticleDetailPage() {
       </section>
 
       <section className="mx-auto w-full max-w-[1000px] px-5 pb-16 md:px-8 md:pb-20">
-        <h2 className="text-[24px] font-semibold tracking-tight text-[#14181c]">Related articles</h2>
+        <h2 className="text-[24px] font-semibold tracking-tight text-[#172126]">Related articles</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           {relatedArticles.map((item) => (
             <article key={item.slug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-              <h3 className="text-[20px] font-semibold tracking-tight text-[#1d232a]">{item.title}</h3>
-              <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">{item.excerpt}</p>
-              <Link to={`/articles/${item.slug}`} className="mt-3 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+              <h3 className="text-[20px] font-semibold tracking-tight text-[#172126]">{item.title}</h3>
+              <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">{item.excerpt}</p>
+              <Link to={`/articles/${item.slug}`} className="mt-3 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline">
                 Read article
               </Link>
             </article>

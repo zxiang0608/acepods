@@ -192,7 +192,7 @@ const seoReassuranceItems = [
   },
   {
     icon: VolumeX,
-    label: '27 dBA. Tested.',
+    label: '−27 dB(A) ±5 dB Certified',
     desc: 'Five of our six models carry a verified 27 dBA noise reduction rating — a measured figure, not a marketing claim.'
   },
   {
@@ -252,7 +252,7 @@ const seoCompareItems = [
 ];
 
 const trustedLogos = [
-  { name: 'Parker Hanifin', image: parkerLogo, fitClass: 'scale-[0.92]', logoStageClass: 'max-h-[52px] max-w-[168px]' },
+  { name: 'Parker Hannifin', image: parkerLogo, fitClass: 'scale-[0.92]', logoStageClass: 'max-h-[52px] max-w-[168px]' },
   { name: 'CMA CGM Shipping', image: cmacgmLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[52px] max-w-[176px]' },
   { name: 'Alphabet Capital Sdn Bhd', image: alphabetLogo, fitClass: 'scale-[0.94]', logoStageClass: 'max-h-[50px] max-w-[176px]' },
   { name: 'Rightwill Sdn Bhd', image: rightwillLogo, fitClass: 'scale-[0.88] -translate-y-[1px]', logoStageClass: 'max-h-[52px] max-w-[170px]' },
@@ -360,9 +360,11 @@ export default function App() {
     'ace-hub': 'translate-x-0'
   };
 
-  const heroHeadline = 'Office pods in Malaysia — for calls, focus, and meetings';
-  const heroSupportingText = "Malaysia's only independently certified acoustic pod — built, installed, and supported by one local team in Selangor.";
-  const heroTrustLine = 'Certified -27 dB(A) · 180+ pods installed · same team, start to finish';
+  const heroHeadline = 'Less noise. More work done.';
+  const heroSupportingText = 'Give your people the quiet to think clearly, speak privately, and do their best work.';
+  const heroProofItems = seoReassuranceItems
+    .filter((item) => item.label !== 'Made in Malaysia')
+    .map((item) => (item.label === '180+ pods installed' ? { ...item, label: 'Premium acoustic performance' } : item));
   const productIntroHeading = 'Find the right pod\nfor calls, focus, or meetings';
   const privateSpaceHeading = 'Add private space without building new rooms';
   const compareSupportingLine = "We know what it's like to be the one who has to make this call — there's no do-over if it turns out to be a bad soundproofing box, or a seller who disappears after delivery. That's why everything is verifiable before you decide: certified rating, showroom visit, same team start to finish.";
@@ -431,7 +433,7 @@ export default function App() {
       key={pod.slug}
       to={`/pods/${pod.slug}`}
       onClick={() => trackProductCta(pod, 'Explore', 'homepage_product_card_desktop', `/pods/${pod.slug}`)}
-      className={`group relative min-h-[400px] overflow-hidden rounded-[16px] bg-[#EAEAEA] md:h-[530px] md:rounded-[8px] ${extraClass}`}
+      className={`group relative min-h-[400px] overflow-hidden rounded-[16px] bg-[#eeece7] md:h-[530px] md:rounded-[8px] ${extraClass}`}
     >
       <div className="relative z-10 flex h-full flex-col items-center px-6 pb-8 pt-8 md:pt-10">
         <h3 className="relative -top-1 mb-8 whitespace-pre-line text-center text-[15px] font-semibold tracking-wide text-[#505050] md:text-[15px]">
@@ -457,7 +459,7 @@ export default function App() {
           {pod.cardSupport}
         </p>
         {pod.cardNote && (
-          <p className="mb-6 min-h-[16px] text-center text-[11px] font-medium text-[#999999]">
+          <p className="mb-6 min-h-[16px] text-center text-[11px] font-medium text-[#68726f]">
             {pod.cardNote}
           </p>
         )}
@@ -471,7 +473,7 @@ export default function App() {
   );
 
   const renderMobilePodCard = (pod) => (
-    <div key={`mobile-${pod.slug}`} className="relative min-h-[660px] overflow-hidden rounded-[22px] bg-[#EAEAEA] px-6 pb-8 pt-10">
+    <div key={`mobile-${pod.slug}`} className="relative min-h-[660px] overflow-hidden rounded-[22px] bg-[#eeece7] px-6 pb-8 pt-10">
       <div className="relative z-10 flex h-full flex-col items-center text-center">
         <div className="max-w-[300px]">
           <h3 className="text-[16px] font-semibold tracking-[0.01em] text-[#636a74]">{pod.name}</h3>
@@ -479,7 +481,7 @@ export default function App() {
             {getHomepageCardHeadline(pod)}
           </p>
           <p className="mt-3 text-[15px] font-medium leading-[1.4] text-[#6d7580]">{pod.cardSupport}</p>
-          {pod.cardNote && <p className="mt-2 text-[13px] font-medium leading-[1.4] text-[#7f8792]">{pod.cardNote}</p>}
+          {pod.cardNote && <p className="mt-2 text-[13px] font-medium leading-[1.4] text-[#68726f]">{pod.cardNote}</p>}
         </div>
 
         <div className="mt-auto w-full pt-8">
@@ -509,7 +511,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#333333]">
+    <div className="min-h-screen overflow-x-hidden bg-white font-sans antialiased text-[#172126]">
       <SeoMeta
         title={HOME_META.title}
         description={HOME_META.description}
@@ -533,7 +535,7 @@ export default function App() {
                       <Link
                         to="/office-pods"
                         onClick={() => setIsSmartPodsDesktopOpen(false)}
-                        className="text-[16px] font-medium text-[#333333] transition-colors group-hover:text-[#00855a]"
+                        className="text-[16px] font-medium text-[#172126] transition-colors group-hover:text-[#00855a]"
                       >
                         {item.label}
                       </Link>
@@ -557,7 +559,7 @@ export default function App() {
                     key={item.label}
                     to={item.to}
                     onClick={() => setIsSmartPodsDesktopOpen(false)}
-                    className="text-[16px] font-medium text-[#333333] transition-colors hover:text-[#00855a]"
+                    className="text-[16px] font-medium text-[#172126] transition-colors hover:text-[#00855a]"
                   >
                     {item.label}
                   </Link>
@@ -583,7 +585,7 @@ export default function App() {
             </Link>
 
             <div className="flex items-center gap-4 lg:hidden">
-              <button className="p-1 text-[#333333]" onClick={() => setIsMenuOpen(true)}>
+              <button className="p-1 text-[#172126]" onClick={() => setIsMenuOpen(true)}>
                 <Menu size={27} />
               </button>
             </div>
@@ -644,8 +646,8 @@ export default function App() {
                           <div className="mx-auto h-[260px] w-full max-w-[230px]">
                             <img src={item.image} alt={item.title} className={`h-full w-full object-contain ${item.imageClassName || ''}`} />
                           </div>
-                          <h3 className="mt-4 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{item.title}</h3>
-                          <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#666666]">{item.description}</p>
+                          <h3 className="mt-4 text-[20px] font-semibold tracking-tight text-[#007653]">{item.title}</h3>
+                          <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#68726f]">{item.description}</p>
                         </Link>
                       ))}
                     </div>
@@ -668,33 +670,16 @@ export default function App() {
         <section className="relative bg-white px-5 md:px-12">
           <div className="mx-auto w-full max-w-[1440px]">
             <div className="md:hidden">
-              {/* Full-width hero image */}
-              <div className="overflow-hidden">
-                <picture>
-                  <source srcSet={acePodsHeroAvif} type="image/avif" />
-                  <img
-                    src={acePodsHero}
-                    alt="Acoustic office pods for calls and focused work in an open office"
-                    width="1672"
-                    height="941"
-                    className="h-[240px] w-full object-cover object-[68%_45%]"
-                    fetchPriority="high"
-                  />
-                </picture>
-              </div>
-
-              {/* Text + CTAs flat on white */}
-              <div className="px-5 pb-8 pt-5">
-                <p className="text-[11px] font-bold tracking-[0.18em] text-[#f97316]">PRIVATE OFFICE PODS</p>
-                <div
-                  role="heading"
-                  aria-level="1"
-                  className="mt-2 text-[38px] font-bold leading-[1.0] tracking-[-0.03em] text-[#0f2239]"
-                >
+              {/* Keep the decision path clear on mobile before introducing the image. */}
+              <div className="px-5 pb-7 pt-8">
+                <h1 className="max-w-[11ch] text-[38px] font-bold leading-[1.02] tracking-[-0.03em] text-[#0f2239]">
                   {heroHeadline}
-                </div>
+                </h1>
+                <p className="mt-4 max-w-[31ch] text-[17px] font-medium leading-[1.5] text-[#40505b]">
+                  {heroSupportingText}
+                </p>
 
-                <div className="mt-5 flex gap-3">
+                <div className="mt-6 flex flex-col gap-3">
                   <a
                     href={WHATSAPP_LINK}
                     target="_blank"
@@ -702,14 +687,14 @@ export default function App() {
                     onClick={() =>
                       pushDataLayerEvent('whatsapp_click', {
                         cta_location: 'homepage_hero',
-                        cta_text: 'Book a Showroom Visit',
+                        cta_text: 'Visit the Showroom',
                         destination_url: WHATSAPP_LINK,
                         contact_method: 'whatsapp'
                       })
                     }
-                    className="flex-1 rounded-[8px] bg-[#00855a] px-4 py-3 text-center text-[16px] font-bold text-white"
+                    className="w-full rounded-[6px] bg-[#00855a] px-4 py-3.5 text-center text-[16px] font-bold text-white"
                   >
-                    Book a Showroom Visit
+                    Visit the Showroom
                   </a>
                   <Link
                     to="/pricing#all-pod-prices"
@@ -720,12 +705,25 @@ export default function App() {
                         destination_url: '/pricing#all-pod-prices'
                       })
                     }
-                    className="flex-1 rounded-[8px] border border-[#1f2937] px-4 py-3 text-center text-[16px] font-medium text-[#111827]"
+                    className="w-full rounded-[6px] border border-[#1f2937] px-4 py-3.5 text-center text-[16px] font-semibold text-[#172126]"
                   >
                     Get Pricing
                   </Link>
                 </div>
-                <p className="mt-3 text-[11px] font-medium text-[#62727b]">Installation slots book 4–6 weeks out — visit the showroom early to secure your date.</p>
+              </div>
+
+              <div className="overflow-hidden">
+                <picture>
+                  <source srcSet={acePodsHeroAvif} type="image/avif" />
+                  <img
+                    src={acePodsHero}
+                    alt="Acoustic office pods for calls and focused work in an open office"
+                    width="1672"
+                    height="941"
+                    className="h-[240px] w-full object-cover object-[68%_45%] brightness-[1.04] contrast-[0.95] saturate-[0.84]"
+                    fetchPriority="high"
+                  />
+                </picture>
               </div>
             </div>
 
@@ -738,27 +736,26 @@ export default function App() {
                     alt="Acoustic office pods for calls and focused work in an open office"
                     width="1672"
                     height="941"
-                    className="h-full w-full object-cover object-[62%_38%] sm:object-[60%_38%] md:object-[62%_40%] lg:object-[50%_42%]"
+                    className="h-full w-full object-cover object-[62%_38%] brightness-[1.05] contrast-[0.94] saturate-[0.82] sm:object-[60%_38%] md:object-[62%_40%] lg:object-[50%_42%]"
                     fetchPriority="high"
                   />
                 </picture>
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.09)_0%,rgba(0,0,0,0.24)_32%,rgba(0,0,0,0.6)_72%,rgba(0,0,0,0.82)_100%),linear-gradient(90deg,rgba(0,0,0,0.46)_0%,rgba(0,0,0,0.18)_46%,rgba(0,0,0,0.08)_100%)] md:bg-[linear-gradient(180deg,rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.17)_34%,rgba(0,0,0,0.46)_78%,rgba(0,0,0,0.7)_100%),linear-gradient(92deg,rgba(0,0,0,0.44)_0%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.1)_100%)] lg:bg-[linear-gradient(265deg,rgba(0,0,0,0.08)_0%,rgba(0,0,0,0.16)_30%,rgba(0,0,0,0.6)_62%,rgba(0,0,0,0.84)_100%)]"></div>
               </div>
 
-              <div className="relative z-10 flex h-full w-full items-end px-4 md:px-12 lg:grid lg:grid-cols-2 lg:items-center">
-                <div className="w-full max-w-none rounded-[8px] bg-black/34 px-6 py-5 text-left text-white backdrop-blur-[0.5px] sm:px-6 sm:py-6 md:bg-black/28 lg:col-start-1 lg:col-end-2 lg:w-[86%] lg:max-w-none lg:justify-self-start lg:rounded-none lg:bg-black/52 lg:px-7 lg:py-7 lg:backdrop-blur-0">
+              <div className="relative z-10 flex h-full w-full items-center px-4 md:px-12 lg:grid lg:grid-cols-2">
+                <div className="relative isolate w-full text-left text-white lg:col-start-1 lg:col-end-2 lg:w-[86%] lg:justify-self-start">
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -inset-x-10 -inset-y-9 -z-10 bg-[radial-gradient(ellipse_at_38%_48%,rgba(5,13,18,0.68)_0%,rgba(5,13,18,0.46)_42%,rgba(5,13,18,0.16)_62%,transparent_78%)] blur-[5px]"
+                  />
                   <div className="max-w-none md:max-w-[520px]">
-                    <h1 className="mb-4 max-w-[16ch] text-[35px] font-bold leading-[1.03] tracking-[-0.03em] sm:max-w-[18ch] sm:text-[39px] md:mb-5 md:max-w-none md:text-[57px]">
+                    <h1 className="mb-5 max-w-[10ch] text-[45px] font-bold leading-[1.02] tracking-[-0.035em] [text-shadow:0_3px_18px_rgba(0,0,0,0.58)] md:text-[58px] lg:text-[62px]">
                       {heroHeadline}
                     </h1>
-                    <p className="mb-5 max-w-[32ch] text-[18px] font-semibold leading-[1.5] text-white/92 sm:max-w-[36ch] sm:text-[20px] md:mb-3 md:max-w-lg md:text-[24px]">
+                    <p className="mb-7 max-w-[29ch] text-[18px] font-medium leading-[1.48] text-white/92 [text-shadow:0_2px_14px_rgba(0,0,0,0.54)] md:text-[20px]">
                       {heroSupportingText}
                     </p>
-                    <p className="mb-6 max-w-none whitespace-nowrap text-[12px] font-semibold leading-[1.4] tracking-[0.01em] text-white/78 sm:text-[13px] md:mb-7 md:text-[15px]">
-                      {heroTrustLine}
-                    </p>
-
-                    <div className="flex flex-row items-stretch justify-start gap-3 md:flex-row md:items-center md:gap-4">
+                    <div className="flex flex-row items-stretch justify-start gap-3 md:items-center md:gap-4">
                       <a
                         href={WHATSAPP_LINK}
                         target="_blank"
@@ -766,14 +763,14 @@ export default function App() {
                         onClick={() =>
                           pushDataLayerEvent('whatsapp_click', {
                             cta_location: 'homepage_hero',
-                            cta_text: 'Book a Showroom Visit',
+                            cta_text: 'Visit the Showroom',
                             destination_url: WHATSAPP_LINK,
                             contact_method: 'whatsapp'
                           })
                         }
-                        className="min-w-0 flex-1 rounded-[6px] bg-[#00855a] px-3.5 py-2.5 text-center text-[14px] font-bold text-white transition-colors hover:bg-[#006e4a] md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                        className="min-w-0 flex-1 whitespace-nowrap rounded-[6px] bg-[#00855a] px-3.5 py-2.5 text-center text-[14px] font-bold text-white transition-colors hover:bg-[#006e4a] md:min-w-[205px] md:flex-none md:rounded-full md:px-8 md:py-3 md:text-[18px]"
                       >
-                        Book a Showroom Visit
+                        Visit the Showroom
                       </a>
                       <Link
                         to="/pricing#all-pod-prices"
@@ -784,12 +781,11 @@ export default function App() {
                             destination_url: '/pricing#all-pod-prices'
                           })
                         }
-                        className="min-w-0 flex-1 rounded-[6px] border border-white/80 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:flex-1 md:rounded-full md:px-8 md:py-3 md:text-[18px]"
+                        className="min-w-0 flex-1 rounded-[6px] border border-white/80 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:min-w-[170px] md:flex-none md:rounded-full md:px-8 md:py-3 md:text-[18px]"
                       >
                         Get Pricing
                       </Link>
                     </div>
-                    <p className="mt-3 text-[11px] font-medium text-white/60">Installation slots book 4–6 weeks out — visit the showroom early to secure your date.</p>
                   </div>
                 </div>
               </div>
@@ -801,9 +797,9 @@ export default function App() {
         <div className="h-4 bg-white md:hidden" />
         <section className="bg-[#0b1e30] px-5 py-3.5 md:px-12">
           <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
-            {activeReassuranceItems.map((item) => (
+            {heroProofItems.map((item) => (
               <div key={item.label} className="flex items-center gap-2">
-                <item.icon size={14} strokeWidth={2} className="shrink-0 text-[#4db891]" />
+                <item.icon size={14} strokeWidth={2} className="shrink-0 text-[#007653]" />
                 <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/90">{item.label}</span>
               </div>
             ))}
@@ -815,7 +811,7 @@ export default function App() {
 
         {/* ── LOGO MARQUEE ── moved up for early social proof */}
         <section className="overflow-hidden bg-white py-16 md:py-24">
-          <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#333333] md:mb-12 md:text-[32px]">
+          <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#172126] md:mb-12 md:text-[32px]">
             {trustSectionHeading}
           </h2>
           <div className="logo-marquee px-5 pb-6">
@@ -823,7 +819,7 @@ export default function App() {
               {[...trustedLogos, ...trustedLogos].map((logo, idx) => (
                 <div
                   key={`${logo.name}-${idx}`}
-                  className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#FAFAFA] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
+                  className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#f7f6f2] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
                 >
                   <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
                     <img
@@ -846,13 +842,13 @@ export default function App() {
         <section className="hidden border-b border-[#f0f0f0] bg-white px-5 pt-8 pb-16 md:block md:px-12 md:pt-16 md:pb-32">
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-12 max-w-none text-center md:mb-24">
-              <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#666666] md:mb-6 md:text-[11px]">
+              <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#68726f] md:mb-6 md:text-[11px]">
                 Pods instead of renovation
               </span>
-              <h2 className="mb-6 text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">
+              <h2 className="mb-6 text-[22px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[32px]">
                 {privateSpaceHeading}
               </h2>
-              <p className="mx-auto max-w-[760px] text-[15px] leading-[1.6] text-[#555555] md:text-[17px] xl:max-w-none xl:whitespace-nowrap">
+              <p className="mx-auto max-w-[760px] text-[15px] leading-[1.6] text-[#59635f] md:text-[17px] xl:max-w-none xl:whitespace-nowrap">
                 A more practical way to create quiet, usable office space for calls, focus, and meetings.
               </p>
             </div>
@@ -860,7 +856,7 @@ export default function App() {
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-10 lg:gap-14">
               {activeRenovationPoints.map((item) => (
                 <article key={item.num} className="flex flex-col">
-                  <div className="aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#eceae3]">
+                  <div className="aspect-[16/10] w-full overflow-hidden rounded-[18px] bg-[#e9e7e1]">
                     <picture>
                       <source
                         srcSet={
@@ -885,20 +881,20 @@ export default function App() {
                   </div>
                   <div className="mt-6 border-t border-[#717171] pt-6 md:mt-7 md:pt-7">
                     <span className="mb-3 block text-[12px] font-extrabold tracking-widest text-[#00855a] md:mb-5 md:text-[13px]">{item.num}</span>
-                    <h3 className="mb-3 text-[20px] font-bold leading-[1.25] tracking-tight text-[#333333] md:mb-4 md:text-[26px]">{item.title}</h3>
-                    <p className="text-[15px] leading-[1.65] text-[#555555] md:text-[16px]">{item.desc}</p>
+                    <h3 className="mb-3 text-[20px] font-bold leading-[1.25] tracking-tight text-[#172126] md:mb-4 md:text-[26px]">{item.title}</h3>
+                    <p className="text-[15px] leading-[1.65] text-[#59635f] md:text-[16px]">{item.desc}</p>
                   </div>
                 </article>
               ))}
             </div>
 
-            <div className="mx-auto mt-12 flex max-w-[760px] flex-col items-center gap-2 rounded-[14px] border border-[#e0ddd6] bg-[#F6F5F0] px-6 py-6 text-center md:mt-16 md:py-8">
-              <Truck className="h-5 w-5 text-[#145b5f]" aria-hidden="true" />
-              <p className="text-[15px] font-semibold text-[#333333] md:text-[16px]">Your pod moves when you do.</p>
-              <p className="max-w-[56ch] text-[14px] leading-[1.6] text-[#566270] md:text-[15px]">
+            <div className="mx-auto mt-12 flex max-w-[760px] flex-col items-center gap-2 rounded-[14px] border border-[#e0ddd6] bg-[#eeece7] px-6 py-6 text-center md:mt-16 md:py-8">
+              <Truck className="h-5 w-5 text-[#007653]" aria-hidden="true" />
+              <p className="text-[15px] font-semibold text-[#172126] md:text-[16px]">Your pod moves when you do.</p>
+              <p className="max-w-[56ch] text-[14px] leading-[1.6] text-[#59635f] md:text-[15px]">
                 Unlike a built room, a pod can be dismantled, transported, and reinstalled at your next office.
               </p>
-              <Link to="/pod-relocation" className="mt-1 text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+              <Link to="/pod-relocation" className="mt-1 text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline">
                 See how pod relocation works →
               </Link>
             </div>
@@ -907,27 +903,27 @@ export default function App() {
 
         {/* ── POD RELOCATION CALLOUT (mobile only — desktop version lives inside the hidden PODS VS RENOVATION section above) ── */}
         <section className="border-b border-[#f0f0f0] bg-white px-5 pb-10 pt-0 md:hidden">
-          <div className="mx-auto flex max-w-[520px] flex-col items-center gap-2 rounded-[14px] border border-[#e0ddd6] bg-[#F6F5F0] px-6 py-6 text-center">
-            <Truck className="h-5 w-5 text-[#145b5f]" aria-hidden="true" />
-            <p className="text-[15px] font-semibold text-[#333333]">Your pod moves when you do.</p>
-            <p className="max-w-[56ch] text-[14px] leading-[1.6] text-[#566270]">
+          <div className="mx-auto flex max-w-[520px] flex-col items-center gap-2 rounded-[14px] border border-[#e0ddd6] bg-[#eeece7] px-6 py-6 text-center">
+            <Truck className="h-5 w-5 text-[#007653]" aria-hidden="true" />
+            <p className="text-[15px] font-semibold text-[#172126]">Your pod moves when you do.</p>
+            <p className="max-w-[56ch] text-[14px] leading-[1.6] text-[#59635f]">
               Unlike a built room, a pod can be dismantled, transported, and reinstalled at your next office.
             </p>
-            <Link to="/pod-relocation" className="mt-1 text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+            <Link to="/pod-relocation" className="mt-1 text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline">
               See how pod relocation works →
             </Link>
           </div>
         </section>
 
         {/* ── WHY PODS MAKE SENSE ── educate before product grid */}
-        <section className="bg-[#F6F5F0] px-5 pt-12 pb-16 md:px-12 md:py-24">
+        <section className="bg-[#eeece7] px-5 pt-12 pb-16 md:px-12 md:py-24">
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[760px] text-center">
-              <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#62727b] md:text-[12px]">DOES THIS SOUND FAMILIAR?</span>
-              <h2 className="text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">
+              <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.2em] text-[#68726f] md:text-[12px]">DOES THIS SOUND FAMILIAR?</span>
+              <h2 className="text-[22px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[32px]">
                 Is your office dealing with this?
               </h2>
-              <p className="mx-auto mt-5 hidden text-[15px] leading-[1.6] text-[#62727b] md:block md:text-[16px]">
+              <p className="mx-auto mt-5 hidden text-[15px] leading-[1.6] text-[#68726f] md:block md:text-[16px]">
                 Hover each card to see how a pod fixes it.
               </p>
             </div>
@@ -944,10 +940,10 @@ export default function App() {
                       aria-expanded={isOpen}
                     >
                       <item.icon size={20} strokeWidth={2} className="shrink-0 text-[#00855a]" />
-                      <span className="flex-1 text-[15px] font-bold text-[#333333]">{item.title}</span>
+                      <span className="flex-1 text-[15px] font-bold text-[#172126]">{item.title}</span>
                       <svg
                         width="16" height="16" viewBox="0 0 16 16" fill="none"
-                        className={`shrink-0 text-[#62727b] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        className={`shrink-0 text-[#68726f] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                         aria-hidden="true"
                       >
                         <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
@@ -955,7 +951,7 @@ export default function App() {
                     </button>
                     <div className={`grid transition-all duration-200 ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                       <div className="overflow-hidden">
-                        <p className="px-5 pb-4 text-[14px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
+                        <p className="px-5 pb-4 text-[14px] leading-[1.65] text-[#59635f]">{item.desc}</p>
                       </div>
                     </div>
                   </div>
@@ -966,14 +962,14 @@ export default function App() {
             {/* Desktop: hover cards */}
             <div className="mt-12 hidden grid-cols-2 gap-3 md:grid lg:grid-cols-3">
               {activeOfficeSenseItems.map((item) => (
-                <article key={item.title} className="group cursor-default rounded-[8px] border border-[#dddddd] bg-[#f8f8f8] p-6 transition-all duration-200 hover:border-[#c0c0c0] hover:bg-white hover:shadow-sm">
+                <article key={item.title} className="group cursor-default rounded-[8px] border border-[#dddddd] bg-[#f7f6f2] p-6 transition-all duration-200 hover:border-[#c0c0c0] hover:bg-white hover:shadow-sm">
                   <div className="flex items-center gap-3">
                     <item.icon size={22} strokeWidth={2} className="shrink-0 text-[#00855a]" />
-                    <h3 className="text-[17px] font-bold leading-snug tracking-tight text-[#333333] md:text-[18px]">{item.title}</h3>
+                    <h3 className="text-[17px] font-bold leading-snug tracking-tight text-[#172126] md:text-[18px]">{item.title}</h3>
                   </div>
                   <div className="grid grid-rows-[0fr] transition-all duration-300 group-hover:grid-rows-[1fr]">
                     <div className="overflow-hidden">
-                      <p className="mt-3 text-[14px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
+                      <p className="mt-3 text-[14px] leading-[1.65] text-[#59635f]">{item.desc}</p>
                     </div>
                   </div>
                 </article>
@@ -987,17 +983,17 @@ export default function App() {
           <div className="mx-auto max-w-[1440px]">
             <div className="mb-10 flex flex-col items-center justify-center gap-4 text-center md:mb-12">
               <div className="mx-auto max-w-[980px]">
-                <h2 className="whitespace-pre-line text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">
+                <h2 className="whitespace-pre-line text-[22px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[32px]">
                   {productIntroHeading}
                 </h2>
 
                 {/* Mobile: short version */}
-                <p id="home-answer" className="mt-4 text-left text-[14px] leading-[1.6] text-[#555555] md:hidden">
+                <p id="home-answer" className="mt-4 text-left text-[14px] leading-[1.6] text-[#59635f] md:hidden">
                   100% made in Malaysia — same team from factory to installation. 27 dBA noise reduction, verified. 180+ pods installed across Malaysia since 2023.
                 </p>
 
                 {/* Desktop: full paragraph */}
-                <p className="mx-auto mt-4 hidden max-w-[760px] text-center text-[15px] leading-[1.6] text-[#555555] md:block md:text-[17px]">
+                <p className="mx-auto mt-4 hidden max-w-[760px] text-center text-[15px] leading-[1.6] text-[#59635f] md:block md:text-[17px]">
                   Ace Office Pods — 100% made in Malaysia, factory and showroom in Selangor. Five of our six models achieve 27 dBA noise reduction, tested and verified. The same local team handles production, installation, and post-installation support. 180+ pods installed across Malaysia since 2023.
                 </p>
               </div>
@@ -1022,8 +1018,8 @@ export default function App() {
                 aria-label="Previous pod"
                 onClick={goToPrevPod}
                 disabled={activePodIndex === 0}
-                className={`absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#d9d9d9]/90 p-3 text-[#4f555d] transition ${
-                  activePodIndex === 0 ? 'pointer-events-none opacity-45' : 'hover:bg-[#d2d2d2]'
+                className={`absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#eeece7]/90 p-3 text-[#59635f] transition ${
+                  activePodIndex === 0 ? 'pointer-events-none opacity-45' : 'hover:bg-[#eeece7]'
                 }`}
               >
                 <ChevronLeft size={24} />
@@ -1033,8 +1029,8 @@ export default function App() {
                 aria-label="Next pod"
                 onClick={goToNextPod}
                 disabled={activePodIndex === products.length - 1}
-                className={`absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#d9d9d9]/90 p-3 text-[#4f555d] transition ${
-                  activePodIndex === products.length - 1 ? 'pointer-events-none opacity-45' : 'hover:bg-[#d2d2d2]'
+                className={`absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#eeece7]/90 p-3 text-[#59635f] transition ${
+                  activePodIndex === products.length - 1 ? 'pointer-events-none opacity-45' : 'hover:bg-[#eeece7]'
                 }`}
               >
                 <ChevronRight size={24} />
@@ -1073,13 +1069,13 @@ export default function App() {
           <div className="mx-auto max-w-[1240px]">
             <div className="mx-auto max-w-[960px] text-center">
               <span className="mb-4 block text-[12px] font-bold uppercase tracking-[0.24em] text-[#757d86] md:mb-5 md:text-[13px]">BEYOND THE PRODUCT</span>
-              <h2 className="text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">Why Choose Ace Pods</h2>
+              <h2 className="text-[22px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[32px]">Why Choose Ace Pods</h2>
               <p className="mx-auto mt-5 max-w-[760px] text-[15px] leading-[1.6] text-[#4c545d] md:text-[17px]">{compareSupportingLine}</p>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
               {activeCompareItems.map((item) => (
-                <article key={item.title} className="overflow-hidden rounded-[22px] border border-[#e5e5e2] bg-[#f2f2f0] shadow-[0_6px_18px_rgba(0,0,0,0.06)]">
+                <article key={item.title} className="overflow-hidden rounded-[22px] border border-[#e5e5e2] bg-[#eeece7] shadow-[0_6px_18px_rgba(0,0,0,0.06)]">
                   <div className="aspect-[5/3] w-full">
                     <picture>
                       <source
@@ -1104,8 +1100,8 @@ export default function App() {
                     </picture>
                   </div>
                   <div className="px-6 pb-8 pt-5 text-left">
-                    <h3 className="text-[33px] font-bold leading-[1.12] tracking-tight text-[#333333] md:text-[30px]">{item.title}</h3>
-                    <p className="mt-3 text-[15px] leading-[1.65] text-[#4f5660]">{item.desc}</p>
+                    <h3 className="text-[33px] font-bold leading-[1.12] tracking-tight text-[#172126] md:text-[30px]">{item.title}</h3>
+                    <p className="mt-3 text-[15px] leading-[1.65] text-[#59635f]">{item.desc}</p>
                   </div>
                 </article>
               ))}
@@ -1114,8 +1110,8 @@ export default function App() {
         </section>
 
         <section className="border-t border-[#f0f0f0] bg-white px-5 py-12 md:px-12 md:py-16">
-          <div className="mx-auto max-w-[1200px] rounded-[16px] bg-[#e6e6e6] px-6 py-12 text-center md:px-12 md:py-16">
-            <h2 className="mx-auto max-w-[15ch] text-[22px] font-bold leading-[1.1] tracking-tight text-[#333333] md:max-w-none md:text-[32px]">
+          <div className="mx-auto max-w-[1200px] rounded-[16px] bg-[#eeece7] px-6 py-12 text-center md:px-12 md:py-16">
+            <h2 className="mx-auto max-w-[15ch] text-[22px] font-bold leading-[1.1] tracking-tight text-[#172126] md:max-w-none md:text-[32px]">
               {whyHeading}
             </h2>
 
@@ -1123,10 +1119,10 @@ export default function App() {
               {activeReassuranceItems.map((item) => (
                 <article key={item.label} className="flex w-full flex-col items-center rounded-[12px] bg-white/50 px-4 py-6 text-center">
                   <item.icon size={38} strokeWidth={1.5} className="text-[#4a9078]" />
-                  <h3 className="mt-4 text-[11px] font-bold uppercase tracking-[0.12em] text-[#333333]">
+                  <h3 className="mt-4 text-[11px] font-bold uppercase tracking-[0.12em] text-[#172126]">
                     {item.label}
                   </h3>
-                  <p className="mt-2 text-[13px] leading-[1.6] text-[#666]">{item.desc}</p>
+                  <p className="mt-2 text-[13px] leading-[1.6] text-[#68726f]">{item.desc}</p>
                 </article>
               ))}
             </div>
@@ -1140,22 +1136,21 @@ export default function App() {
                   destination_url: '/contact'
                 })
               }
-              className="mt-14 inline-flex items-center rounded-full bg-[#4a9078] px-10 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#3f7e69] md:mt-16 md:px-14 md:py-4 md:text-[17px]"
+              className="mt-14 inline-flex items-center rounded-full bg-[#007653] px-10 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#00855a] md:mt-16 md:px-14 md:py-4 md:text-[17px]"
             >
               Contact us
             </Link>
-            <p className="mt-4 text-[12px] text-[#878f98]">Installation slots book 4–6 weeks out — the sooner you visit the showroom, the sooner your team gets the space.</p>
           </div>
         </section>
 
         <section className="bg-white px-5 py-14 md:px-12 md:py-20">
           <div className="mx-auto max-w-[1360px]">
             <div className="mx-auto max-w-[780px] text-center">
-              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#333333] md:text-[32px]">Common questions about office pods</h2>
-              <p className="mt-3 text-[15px] leading-[1.6] text-[#505964] md:text-[17px]">
+              <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[32px]">Common questions about office pods</h2>
+              <p className="mt-3 text-[15px] leading-[1.6] text-[#59635f] md:text-[17px]">
                 A few things buyers usually want to clarify before choosing a pod.
               </p>
-              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[14px] font-medium text-[#145b5f] md:text-[15px]">
+              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[14px] font-medium text-[#007653] md:text-[15px]">
                 <Link to="/office-pods" className="underline-offset-4 hover:underline">
                   View office pods
                 </Link>
@@ -1211,7 +1206,7 @@ export default function App() {
                         onClick={() => setOpenHomepageFaq(isOpen ? null : idx)}
                         className="flex w-full items-center justify-between gap-4 py-5 text-left md:py-6"
                       >
-                        <span className="text-[19px] font-semibold leading-[1.35] tracking-tight text-[#333333] md:text-[20px]">{item.question}</span>
+                        <span className="text-[19px] font-semibold leading-[1.35] tracking-tight text-[#172126] md:text-[20px]">{item.question}</span>
                         <ChevronDown
                           size={20}
                           className={`mt-1 shrink-0 text-[#4a545f] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
@@ -1236,7 +1231,7 @@ export default function App() {
                     destination_url: '/installation-support#book-viewing'
                   })
                 }
-                className="inline-flex items-center rounded-[8px] bg-[#145b5f] px-8 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#104c4f]"
+                className="inline-flex items-center rounded-[8px] bg-[#00855a] px-8 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#172126]"
               >
                 Contact us
               </Link>

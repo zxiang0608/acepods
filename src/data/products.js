@@ -9,7 +9,7 @@ import aceDuoHero from '../../assets/ace-duo.png';
 import aceFlexDuoHero from '../../assets/ace-flex-duo-hero.png';
 import aceMeetingHero from '../../assets/ace-meeting.png';
 import aceMeetingXLHero from '../../assets/ace-meeting-XL.png';
-import aceSolo2d from '../../assets/2D images/1. Ace Solo.png';
+import aceSolo2d from '../../assets/2D images/ace-solo-corrected-dimensions.png';
 import aceSoloPlus2d from '../../assets/2D images/2. Ace Plus.png';
 import aceDuo2d from '../../assets/2D images/3. Ace Flex.png';
 import aceMeeting2d from '../../assets/2D images/4. Ace Meet with Sofa and Table.png';
@@ -18,6 +18,7 @@ import aceMeetSofaImage from '../../assets/sofa.png';
 import aceFlexSofaImage from '../../assets/ace-flex-sofa.png';
 import aceHubLShapeSofaImage from '../../assets/L-shape-sofa.png';
 import officeChairImage from '../../assets/office-chair.png';
+import aceFlexOfficeChairPreviewImage from '../../assets/POD images/S POD + - Ace Solo Pro/s pod+ with eco chair.png';
 import aceFlexAdjustableTableImage from '../../assets/ace-flex-adjustable-table.png';
 import aceFlexDuoFrontTransparentImage from '../../assets/ace-flex-duo-front-transparent.png';
 import aceFlexFrontTransparentImage from '../../assets/ace-flex-front-transparent.png';
@@ -200,7 +201,13 @@ const deliveryDefaults = {
 };
 
 const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290, image: barStoolBlack };
-const officeChairAddon = { id: 'office-chair', label: 'Office chair', amount: 199, image: officeChairImage, previewImage: officeChairImage };
+const officeChairAddon = {
+  id: 'office-chair',
+  label: 'Office chair',
+  amount: 199,
+  image: officeChairImage,
+  previewImage: aceFlexOfficeChairPreviewImage
+};
 const meetingOfficeChairAddon = {
   id: 'office-chair',
   label: 'Office chair',

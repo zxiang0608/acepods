@@ -48,17 +48,17 @@ export default function QuoteForm({ defaultPod = '' }) {
   };
 
   const inputClass =
-    'w-full rounded-[6px] border border-[#d0d3d7] bg-white px-3 py-2.5 text-[14px] text-[#1e2227] placeholder-[#9aa0a8] outline-none transition-colors focus:border-[#145b5f] focus:ring-1 focus:ring-[#145b5f]/30';
+    'w-full rounded-[6px] border border-[#d0d3d7] bg-white px-3 py-2.5 text-[14px] text-[#172126] placeholder-[#9aa0a8] outline-none transition-colors focus:border-[#00855a] focus:ring-1 focus:ring-[#007653]/30';
 
   return (
     <section className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-      <h2 className="text-[20px] font-semibold tracking-tight text-[#14181c]">Request a quote</h2>
-      <p className="mt-1 text-[14px] text-[#6a7683]">Fill in your details and we'll get back to you within one business day.</p>
+      <h2 className="text-[20px] font-semibold tracking-tight text-[#172126]">Request a quote</h2>
+      <p className="mt-1 text-[14px] text-[#68726f]">Fill in your details and we'll get back to you within one business day.</p>
 
       <form onSubmit={handleSubmit} className="mt-4 space-y-3" noValidate>
         <div className="grid gap-3 sm:grid-cols-2">
           <div>
-            <label htmlFor="qf-name" className="mb-1 block text-[13px] font-medium text-[#2e3338]">Name <span aria-hidden="true" className="text-[#c0392b]">*</span></label>
+            <label htmlFor="qf-name" className="mb-1 block text-[13px] font-medium text-[#172126]">Name <span aria-hidden="true" className="text-[#c0392b]">*</span></label>
             <input
               id="qf-name"
               name="name"
@@ -72,7 +72,7 @@ export default function QuoteForm({ defaultPod = '' }) {
             />
           </div>
           <div>
-            <label htmlFor="qf-company" className="mb-1 block text-[13px] font-medium text-[#2e3338]">Company</label>
+            <label htmlFor="qf-company" className="mb-1 block text-[13px] font-medium text-[#172126]">Company</label>
             <input
               id="qf-company"
               name="company"
@@ -87,7 +87,7 @@ export default function QuoteForm({ defaultPod = '' }) {
         </div>
 
         <div>
-          <label htmlFor="qf-whatsapp" className="mb-1 block text-[13px] font-medium text-[#2e3338]">WhatsApp number <span aria-hidden="true" className="text-[#c0392b]">*</span></label>
+          <label htmlFor="qf-whatsapp" className="mb-1 block text-[13px] font-medium text-[#172126]">WhatsApp number <span aria-hidden="true" className="text-[#c0392b]">*</span></label>
           <input
             id="qf-whatsapp"
             name="whatsapp"
@@ -102,7 +102,7 @@ export default function QuoteForm({ defaultPod = '' }) {
         </div>
 
         <div>
-          <label htmlFor="qf-pod" className="mb-1 block text-[13px] font-medium text-[#2e3338]">Pod of interest</label>
+          <label htmlFor="qf-pod" className="mb-1 block text-[13px] font-medium text-[#172126]">Pod of interest</label>
           <select
             id="qf-pod"
             name="pod"
@@ -117,7 +117,7 @@ export default function QuoteForm({ defaultPod = '' }) {
         </div>
 
         <div>
-          <label htmlFor="qf-message" className="mb-1 block text-[13px] font-medium text-[#2e3338]">Message (optional)</label>
+          <label htmlFor="qf-message" className="mb-1 block text-[13px] font-medium text-[#172126]">Message (optional)</label>
           <textarea
             id="qf-message"
             name="message"
@@ -131,11 +131,11 @@ export default function QuoteForm({ defaultPod = '' }) {
 
         <button
           type="submit"
-          className="w-full rounded-[6px] bg-[#145b5f] px-6 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#0f4b4e] sm:w-auto"
+          className="w-full rounded-[6px] bg-[#00855a] px-6 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#172126] sm:w-auto"
         >
           Send enquiry
         </button>
-        <p className="text-[12px] text-[#6a7683]">This will open your email app pre-filled. Alternatively, WhatsApp us at +60 11-5435 2700.</p>
+        <p className="text-[12px] text-[#68726f]">This will open your email app pre-filled. Alternatively, WhatsApp us at +60 11-5435 2700.</p>
       </form>
     </section>
   );

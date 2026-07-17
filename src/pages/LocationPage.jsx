@@ -69,21 +69,21 @@ export default function LocationPage() {
       />
 
       <section className="mx-auto w-full max-w-[1120px] px-5 pb-10 pt-10 md:px-8 md:pb-14 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           /{' '}
-          <Link to="/locations" className="hover:text-[#145b5f]">
+          <Link to="/locations" className="hover:text-[#007653]">
             Locations
           </Link>{' '}
           / <span>{location.city}</span>
         </nav>
-        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#145b5f]">{location.eyebrow}</p>
-        <h1 className="mt-3 max-w-[20ch] text-[34px] font-bold leading-[1.08] tracking-tight text-[#14181c] md:text-[52px]">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#007653]">{location.eyebrow}</p>
+        <h1 className="mt-3 max-w-[20ch] text-[34px] font-bold leading-[1.08] tracking-tight text-[#172126] md:text-[52px]">
           {location.title}
         </h1>
-        <p id={`location-${location.slug}-answer`} className="mt-4 max-w-[74ch] text-[17px] leading-[1.65] text-[#454d56] md:text-[18px]">{location.intro}</p>
+        <p id={`location-${location.slug}-answer`} className="mt-4 max-w-[74ch] text-[17px] leading-[1.65] text-[#59635f] md:text-[18px]">{location.intro}</p>
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
           <Link
             to="/pricing#all-pod-prices"
@@ -94,7 +94,7 @@ export default function LocationPage() {
                 destination_url: '/pricing#all-pod-prices'
               })
             }
-            className="inline-flex min-h-[48px] items-center justify-center rounded-[4px] bg-[#0b2038] px-5 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#122f4e]"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-[4px] bg-[#172126] px-5 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#172126]"
           >
             View office pod prices
           </Link>
@@ -110,7 +110,7 @@ export default function LocationPage() {
                 contact_method: 'whatsapp'
               })
             }
-            className="inline-flex min-h-[48px] items-center justify-center rounded-[4px] border border-[#1f2937] px-5 py-3 text-[15px] font-semibold text-[#111827] transition-colors hover:border-[#145b5f] hover:text-[#145b5f]"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-[4px] border border-[#1f2937] px-5 py-3 text-[15px] font-semibold text-[#172126] transition-colors hover:border-[#00855a] hover:text-[#007653]"
           >
             Request a {location.city} quote
           </a>
@@ -119,16 +119,16 @@ export default function LocationPage() {
 
       <section className="border-y border-[#d8d3c8] bg-white">
         <div className="mx-auto w-full max-w-[1120px] px-5 py-10 md:px-8 md:py-14">
-          <h2 className="text-[28px] font-semibold tracking-tight text-[#14181c]">
+          <h2 className="text-[28px] font-semibold tracking-tight text-[#172126]">
             {location.projects.length > 0 ? `Completed office pod projects in ${location.city}` : `Office pod delivery and installation in ${location.city}`}
           </h2>
-          <p className="mt-3 max-w-[72ch] text-[16px] leading-[1.65] text-[#4d555e]">{location.projectIntro}</p>
+          <p className="mt-3 max-w-[72ch] text-[16px] leading-[1.65] text-[#59635f]">{location.projectIntro}</p>
 
           {location.projects.length > 0 ? (
             <div className="mt-7 space-y-10">
               {location.projects.map((project, index) => (
                 <article key={project.company} className="grid gap-5 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-8">
-                  <div className={`overflow-hidden rounded-[4px] bg-[#e9e7e0] ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <div className={`overflow-hidden rounded-[4px] bg-[#e9e7e1] ${index % 2 === 1 ? 'md:order-2' : ''}`}>
                     <picture className="block h-full w-full">
                       {getGalleryAvifSource(project.image) ? <source srcSet={getGalleryAvifSource(project.image)} type="image/avif" /> : null}
                       <img
@@ -142,13 +142,13 @@ export default function LocationPage() {
                     </picture>
                   </div>
                   <div className={index % 2 === 1 ? 'md:order-1' : ''}>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#65707a]">{project.area}</p>
-                    <h3 className="mt-2 text-[25px] font-semibold tracking-tight text-[#14181c]">{project.company}</h3>
-                    <p className="mt-2 text-[15px] font-semibold text-[#145b5f]">{project.model} installation</p>
-                    <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">{project.summary}</p>
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#68726f]">{project.area}</p>
+                    <h3 className="mt-2 text-[25px] font-semibold tracking-tight text-[#172126]">{project.company}</h3>
+                    <p className="mt-2 text-[15px] font-semibold text-[#007653]">{project.model} installation</p>
+                    <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">{project.summary}</p>
                     <Link
                       to={`/pods/${project.productSlug}`}
-                      className="mt-5 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+                      className="mt-5 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
                     >
                       View {project.model}
                     </Link>
@@ -157,7 +157,7 @@ export default function LocationPage() {
               ))}
             </div>
           ) : null}
-          <Link to="/portfolio" className="mt-9 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+          <Link to="/portfolio" className="mt-9 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline">
             View the full installation portfolio
           </Link>
         </div>
@@ -165,37 +165,37 @@ export default function LocationPage() {
 
       <section className="mx-auto grid w-full max-w-[1120px] gap-8 px-5 py-12 md:grid-cols-2 md:px-8 md:py-16">
         <div>
-          <h2 className="text-[27px] font-semibold tracking-tight text-[#14181c]">Delivery and installation planning</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">{location.serviceSummary}</p>
+          <h2 className="text-[27px] font-semibold tracking-tight text-[#172126]">Delivery and installation planning</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">{location.serviceSummary}</p>
           <Link
             to="/installation-support"
-            className="mt-5 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+            className="mt-5 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
           >
             See the delivery and installation process
           </Link>
         </div>
         <div className="border-l-0 border-[#d8d3c8] md:border-l md:pl-8">
-          <h2 className="text-[27px] font-semibold tracking-tight text-[#14181c]">Choosing a pod for {location.city}</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">{location.localContext}</p>
+          <h2 className="text-[27px] font-semibold tracking-tight text-[#172126]">Choosing a pod for {location.city}</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">{location.localContext}</p>
           <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[14px] font-semibold">
-            <Link to="/office-pods" className="text-[#145b5f] underline-offset-4 hover:underline">
+            <Link to="/office-pods" className="text-[#007653] underline-offset-4 hover:underline">
               Compare pod models
             </Link>
-            <Link to="/contact" className="text-[#145b5f] underline-offset-4 hover:underline">
+            <Link to="/contact" className="text-[#007653] underline-offset-4 hover:underline">
               Book showroom viewing
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[#d8d3c8] bg-[#ece9e1]">
+      <section className="border-y border-[#d8d3c8] bg-[#e9e7e1]">
         <div className="mx-auto w-full max-w-[1120px] px-5 py-10 md:px-8 md:py-12">
-          <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Common questions about office pods in {location.city}</h2>
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Common questions about office pods in {location.city}</h2>
           <div className="mt-5 grid gap-x-8 gap-y-6 md:grid-cols-2">
             {location.faqs.map((item) => (
               <article key={item.question} className="border-t border-[#c9c4b8] pt-4">
-                <h3 className="text-[18px] font-semibold leading-[1.35] text-[#1d232a]">{item.question}</h3>
-                <p className="mt-2 text-[15px] leading-[1.65] text-[#4d555e]">{item.answer}</p>
+                <h3 className="text-[18px] font-semibold leading-[1.35] text-[#172126]">{item.question}</h3>
+                <p className="mt-2 text-[15px] leading-[1.65] text-[#59635f]">{item.answer}</p>
               </article>
             ))}
           </div>
@@ -203,13 +203,13 @@ export default function LocationPage() {
       </section>
 
       <section className="mx-auto w-full max-w-[1120px] px-5 py-12 md:px-8 md:py-14">
-        <h2 className="text-[24px] font-semibold tracking-tight text-[#14181c]">Other project locations</h2>
+        <h2 className="text-[24px] font-semibold tracking-tight text-[#172126]">Other project locations</h2>
         <div className="mt-4 flex flex-wrap gap-3">
           {relatedLocations.map((item) => (
             <Link
               key={item.slug}
               to={`/locations/${item.slug}`}
-              className="inline-flex min-h-[44px] items-center border border-[#cfcac0] bg-white px-4 py-2 text-[14px] font-semibold text-[#30363d] hover:border-[#145b5f] hover:text-[#145b5f]"
+              className="inline-flex min-h-[44px] items-center border border-[#cfcac0] bg-white px-4 py-2 text-[14px] font-semibold text-[#172126] hover:border-[#00855a] hover:text-[#007653]"
             >
               Office pods in {item.city}
             </Link>

@@ -25,19 +25,19 @@ const portfolioImageModules = import.meta.glob('../../assets/Portfolio/**/*.{jpg
 
 const excludedPortfolioBasenames = new Set(['20250624_150024', '20250619_132036', '20250703_111306', '20250703_120024']);
 
-const orderedCompanies = ['Everllence', "Parker Hannafin", 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Brenntag', 'Others'];
+const orderedCompanies = ['Everllence', 'Parker Hannifin', 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Brenntag', 'Others'];
 
 const companyBranding = {
   Everllence: { logo: everllenceLogo, logoAlt: 'Everllence logo', location: 'Kuala Lumpur' },
-  'Parker Hannafin': { logo: parkerLogo, logoAlt: 'Parker Hannafin logo', location: 'Shah Alam' },
-  'Alphabet Capital': { logo: alphabetLogo, logoAlt: 'Alphabet Capital logo', location: 'Kuala Lumpur' },
+  'Parker Hannifin': { logo: parkerLogo, logoAlt: 'Parker Hannifin logo', location: 'Kuala Lumpur' },
+  'Alphabet Capital': { logo: alphabetLogo, logoAlt: 'Alphabet Capital logo', location: 'Shah Alam' },
   'CMA CGM': { logo: cmacgmLogo, logoAlt: 'CMA CGM logo', location: 'Bangsar, Kuala Lumpur' },
   "Taylor's College": { logo: taylorsLogo, logoAlt: "Taylor's College logo", location: 'Subang Jaya' },
   Brenntag: { logo: brenntagLogo, logoAlt: 'Brenntag logo', location: 'Shah Alam, Selangor' },
   Others: { logo: null, logoAlt: '' }
 };
 const companyImageSourceMap = {
-  'Parker Hannafin': 'Alphabet Capital',
+  'Parker Hannifin': 'Alphabet Capital',
   'Alphabet Capital': 'Parker Hannafin'
 };
 
@@ -122,14 +122,14 @@ export default function PortfolioPage() {
       />
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-6 pt-10 md:px-8 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           / <span>Portfolio</span>
         </nav>
 
-        <h1 className="text-[34px] font-bold leading-[1.08] tracking-tight text-[#14181c] md:text-[48px]">Past office pod projects across Malaysia</h1>
+        <h1 className="text-[34px] font-bold leading-[1.08] tracking-tight text-[#172126] md:text-[48px]">Past office pod projects across Malaysia</h1>
       </section>
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-16 md:px-8 md:pb-20">
@@ -148,8 +148,8 @@ export default function PortfolioPage() {
                   </div>
                 ) : null}
                 <div>
-                  <h2 className="text-[18px] font-semibold tracking-tight text-[#14181c] md:text-[20px]">{section.companyName}</h2>
-                  {section.branding?.location ? <p className="mt-0.5 text-[12px] text-[#65707a]">{section.branding.location}</p> : null}
+                  <h2 className="text-[18px] font-semibold tracking-tight text-[#172126] md:text-[20px]">{section.companyName}</h2>
+                  {section.branding?.location ? <p className="mt-0.5 text-[12px] text-[#68726f]">{section.branding.location}</p> : null}
                 </div>
               </div>
 
@@ -158,7 +158,7 @@ export default function PortfolioPage() {
                   <button
                     key={image.src}
                     type="button"
-                    className="aspect-[4/3] overflow-hidden rounded-[6px] bg-[#eceae3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#145b5f]"
+                    className="aspect-[4/3] overflow-hidden rounded-[6px] bg-[#e9e7e1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#145b5f]"
                     aria-label={`Open ${section.companyName} project image ${imageIndex + 1}`}
                     onClick={() =>
                       setActiveGallery({
@@ -207,7 +207,7 @@ export default function PortfolioPage() {
           <button
             type="button"
             aria-label="Previous project image"
-            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-[#14181c] hover:bg-white md:left-7"
+            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-[#172126] hover:bg-white md:left-7"
             onClick={(event) => {
               event.stopPropagation();
               moveGallery(-1);
@@ -235,7 +235,7 @@ export default function PortfolioPage() {
           <button
             type="button"
             aria-label="Next project image"
-            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-[#14181c] hover:bg-white md:right-7"
+            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-[#172126] hover:bg-white md:right-7"
             onClick={(event) => {
               event.stopPropagation();
               moveGallery(1);

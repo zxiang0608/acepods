@@ -34,21 +34,21 @@ export default function MeetingPodsMalaysiaPage() {
       />
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           / <span>Meeting Pods Malaysia</span>
         </nav>
 
-        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">
+        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[48px]">
           Meeting pods in Malaysia for small-team collaboration
         </h1>
-        <p className="mt-4 max-w-[72ch] text-[18px] leading-[1.6] text-[#454d56]">
+        <p className="mt-4 max-w-[72ch] text-[18px] leading-[1.6] text-[#59635f]">
           Compare meeting pods for 2–6 pax team discussions and hybrid calls. Use this page to shortlist the right model by team size, layout fit, and project requirements.
         </p>
         <div className="mt-6 flex flex-wrap gap-4 text-[15px] font-semibold">
-          <Link to="/office-pods" className="rounded-[8px] bg-[#145b5f] px-4 py-2 text-white hover:bg-[#10494d]">
+          <Link to="/office-pods" className="rounded-[8px] bg-[#00855a] px-4 py-2 text-white hover:bg-[#172126]">
             View meeting pod models
           </Link>
           <Link
@@ -60,7 +60,7 @@ export default function MeetingPodsMalaysiaPage() {
                 destination_url: '/pricing'
               })
             }
-            className="rounded-[8px] border border-[#145b5f] px-4 py-2 text-[#145b5f] hover:bg-[#f4fbfb]"
+            className="rounded-[8px] border border-[#00855a] px-4 py-2 text-[#007653] hover:bg-[#f7f6f2]"
           >
             View pricing
           </Link>
@@ -74,9 +74,9 @@ export default function MeetingPodsMalaysiaPage() {
 
           return (
             <article key={item.productSlug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-              <h2 className="text-[23px] font-semibold tracking-tight text-[#1d232a]">{item.title}</h2>
-              <p className="mt-2 text-[16px] leading-[1.6] text-[#4d555e]">
-                <span className="font-semibold text-[#1d232a]">{product.name}:</span> {product.shortDesc}
+              <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">{item.title}</h2>
+              <p className="mt-2 text-[16px] leading-[1.6] text-[#59635f]">
+                <span className="font-semibold text-[#172126]">{product.name}:</span> {product.shortDesc}
               </p>
               <p className="mt-2 text-[15px] font-medium text-[#5b636c]">{product.pricing.amount}</p>
               <Link
@@ -90,7 +90,7 @@ export default function MeetingPodsMalaysiaPage() {
                     product_slug: product.slug
                   })
                 }
-                className="mt-3 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+                className="mt-3 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
               >
                 View {product.name}
               </Link>
@@ -101,11 +101,11 @@ export default function MeetingPodsMalaysiaPage() {
 
       <section className="mx-auto mt-8 w-full max-w-[1200px] px-5 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[25px] font-semibold tracking-tight text-[#14181c]">Ace Meet vs Ace Hub</h2>
+          <h2 className="text-[25px] font-semibold tracking-tight text-[#172126]">Ace Meet vs Ace Hub</h2>
           <div className="mt-4 overflow-x-auto">
-            <table className="min-w-full border-collapse text-left text-[15px] text-[#4d555e]">
+            <table className="min-w-full border-collapse text-left text-[15px] text-[#59635f]">
               <thead>
-                <tr className="border-b border-[#e4dfd6] text-[14px] uppercase tracking-[0.04em] text-[#6b7279]">
+                <tr className="border-b border-[#e4dfd6] text-[14px] uppercase tracking-[0.04em] text-[#68726f]">
                   <th className="px-2 py-3">Model</th>
                   <th className="px-2 py-3">Capacity</th>
                   <th className="px-2 py-3">Best for</th>
@@ -118,7 +118,7 @@ export default function MeetingPodsMalaysiaPage() {
                   const capacityRow = product.specs.find((row) => row.label === 'Capacity');
                   return (
                     <tr key={product.slug} className="border-b border-[#efebe3]">
-                      <td className="px-2 py-3 font-semibold text-[#1d232a]">
+                      <td className="px-2 py-3 font-semibold text-[#172126]">
                         <Link
                           to={`/pods/${product.slug}`}
                           onClick={() =>
@@ -149,8 +149,8 @@ export default function MeetingPodsMalaysiaPage() {
 
       <section className="mx-auto mt-8 grid w-full max-w-[1200px] gap-5 px-5 md:grid-cols-2 md:px-8">
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[23px] font-semibold tracking-tight text-[#1d232a]">Pricing and configuration factors</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">Pricing and configuration factors</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Final pricing depends on model, quantity, configuration options, and site access conditions. Review full scope before final confirmation.
           </p>
           <Link
@@ -162,17 +162,17 @@ export default function MeetingPodsMalaysiaPage() {
                 destination_url: '/pricing'
               })
             }
-            className="mt-4 inline-flex text-[15px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+            className="mt-4 inline-flex text-[15px] font-semibold text-[#007653] underline-offset-4 hover:underline"
           >
             View office pod pricing
           </Link>
         </article>
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[23px] font-semibold tracking-tight text-[#1d232a]">Delivery, installation, and site access notes</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">Delivery, installation, and site access notes</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Delivery and installation planning should include access route checks and placement constraints. Areas outside Klang Valley and restricted-access handling are quoted separately based on site conditions.
           </p>
-          <Link to="/installation-support" className="mt-4 inline-flex text-[15px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+          <Link to="/installation-support" className="mt-4 inline-flex text-[15px] font-semibold text-[#007653] underline-offset-4 hover:underline">
             Learn about installation and support
           </Link>
         </article>
@@ -180,20 +180,20 @@ export default function MeetingPodsMalaysiaPage() {
 
       <section className="mx-auto mt-8 grid w-full max-w-[1200px] gap-5 px-5 md:grid-cols-3 md:px-8">
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-          <h2 className="text-[21px] font-semibold tracking-tight text-[#1d232a]">What is a meeting pod?</h2>
-          <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">
+          <h2 className="text-[21px] font-semibold tracking-tight text-[#172126]">What is a meeting pod?</h2>
+          <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">
             A meeting pod is a dedicated enclosed workspace for small-team discussions, hybrid calls, and quieter collaboration in open offices.
           </p>
         </article>
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-          <h2 className="text-[21px] font-semibold tracking-tight text-[#1d232a]">Which model should I choose for team size?</h2>
-          <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">
+          <h2 className="text-[21px] font-semibold tracking-tight text-[#172126]">Which model should I choose for team size?</h2>
+          <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">
             Ace Meet fits most 2–4 pax collaboration use cases. Ace Hub is suitable when you need more room for up to 6 pax sessions.
           </p>
         </article>
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-          <h2 className="text-[21px] font-semibold tracking-tight text-[#1d232a]">How much does a meeting pod cost in Malaysia?</h2>
-          <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">
+          <h2 className="text-[21px] font-semibold tracking-tight text-[#172126]">How much does a meeting pod cost in Malaysia?</h2>
+          <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">
             Entry pricing starts from RM22,200 for Ace Meet and RM27,800 for Ace Hub. Final quote depends on selected options and site conditions.
           </p>
         </article>
@@ -219,16 +219,16 @@ export default function MeetingPodsMalaysiaPage() {
           }
         ].map((item) => (
           <article key={item.q} className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-            <h2 className="text-[22px] font-semibold tracking-tight text-[#1d232a]">{item.q}</h2>
-            <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">{item.a}</p>
+            <h2 className="text-[22px] font-semibold tracking-tight text-[#172126]">{item.q}</h2>
+            <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">{item.a}</p>
           </article>
         ))}
       </section>
 
       <section className="mx-auto mt-10 w-full max-w-[1200px] px-5 pb-16 md:px-8 md:pb-20">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[24px] font-semibold tracking-tight text-[#14181c]">Talk to our team</h2>
-          <div className="mt-4 flex flex-wrap gap-5 text-[15px] font-semibold text-[#145b5f]">
+          <h2 className="text-[24px] font-semibold tracking-tight text-[#172126]">Talk to our team</h2>
+          <div className="mt-4 flex flex-wrap gap-5 text-[15px] font-semibold text-[#007653]">
             <Link to="/compare-office-pods" className="underline-offset-4 hover:underline">
               Compare office pods
             </Link>

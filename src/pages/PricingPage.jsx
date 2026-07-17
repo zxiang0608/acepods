@@ -84,17 +84,16 @@ export default function PricingPage() {
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           / <span>Pricing</span>
         </nav>
 
-        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">How much does an office pod cost?</h1>
-        <p id="office-pod-price-answer" className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
-          Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on
-          model size, quantity, delivery location, installation access, and optional add-ons.
+        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[48px]">How much does an office pod cost?</h1>
+        <p id="office-pod-price-answer" className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#59635f]">
+          Ace Office Pods start from <PodPrice myrAmount={12500} prefix="" /> for a one-person pod and from <PodPrice myrAmount={22200} prefix="" /> for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.
         </p>
         {!isLocal && (
           <div className="mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-[14px] leading-[1.55] text-amber-900">
@@ -105,8 +104,8 @@ export default function PricingPage() {
 
       <section className="mx-auto w-full max-w-[1100px] px-5 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">What is included in the price?</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">What is included in the price?</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             The full project price can include the pod, delivery, installation, and selected add-ons. Scope is confirmed clearly before final quote acceptance.
           </p>
         </div>
@@ -114,11 +113,11 @@ export default function PricingPage() {
 
       <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Office pod starting prices in Malaysia</h2>
-          <ul className="mt-4 space-y-2 text-[16px] leading-[1.6] text-[#30363d]">
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Office pod starting prices in Malaysia</h2>
+          <ul className="mt-4 space-y-2 text-[16px] leading-[1.6] text-[#172126]">
             {products.map((product) => (
               <li key={`price-list-${product.slug}`}>
-                <span className="font-semibold text-[#1d232a]">{product.name}</span> -{' '}
+                <span className="font-semibold text-[#172126]">{product.name}</span> -{' '}
                 <PodPrice myrAmount={product.pdpPricing.baseConfigurations[0].price} />
               </li>
             ))}
@@ -129,11 +128,11 @@ export default function PricingPage() {
       <section id="all-pod-prices" className="mx-auto mt-8 grid w-full max-w-[1100px] gap-4 px-5 md:grid-cols-2 md:px-8">
         {products.map((product) => (
           <article key={product.slug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-            <h3 className="text-[24px] font-semibold tracking-tight text-[#1d232a]">{product.name}</h3>
-            <p className="mt-2 text-[17px] font-semibold text-[#145b5f]">
+            <h3 className="text-[24px] font-semibold tracking-tight text-[#172126]">{product.name}</h3>
+            <p className="mt-2 text-[17px] font-semibold text-[#007653]">
               <PodPrice myrAmount={product.pdpPricing.baseConfigurations[0].price} />
             </p>
-            <p className="mt-2 text-[14px] leading-[1.55] text-[#5a616a]">{product.pricing.note}</p>
+            <p className="mt-2 text-[14px] leading-[1.55] text-[#59635f]">{product.pricing.note}</p>
             <Link
               to={`/pods/${product.slug}`}
               onClick={() =>
@@ -145,7 +144,7 @@ export default function PricingPage() {
                   product_slug: product.slug
                 })
               }
-              className="mt-4 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+              className="mt-4 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
             >
               View pod details
             </Link>
@@ -159,8 +158,8 @@ export default function PricingPage() {
 
       <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">What affects the final price?</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">What affects the final price?</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Final pricing may vary depending on pod model, quantity, delivery location, floor/access conditions, installation scope, optional
             furniture, finishes, power requirements, and project timeline.
           </p>
@@ -169,8 +168,8 @@ export default function PricingPage() {
 
       <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Bulk and project pricing</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Bulk and project pricing</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Corporate buyers, procurement teams, contractors, interior designers, dealers, resellers, and project buyers can request project pricing
             or bulk pricing depending on quantity, model mix, location, and installation scope.
           </p>
@@ -178,18 +177,18 @@ export default function PricingPage() {
       </section>
 
       <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
-        <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Common pricing questions</h2>
+        <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Common pricing questions</h2>
         <div className="mt-4 space-y-3">
           {PRICING_FAQ_ITEMS.map((item) => (
             <article key={item.question} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-              <h3 className="text-[18px] font-semibold leading-[1.35] text-[#1d232a]">{item.question}</h3>
-              <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">{item.answer}</p>
+              <h3 className="text-[18px] font-semibold leading-[1.35] text-[#172126]">{item.question}</h3>
+              <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">{item.answer}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto mt-10 flex w-full max-w-[1100px] flex-wrap gap-5 px-5 text-[15px] font-semibold text-[#145b5f] md:px-8">
+      <section className="mx-auto mt-10 mb-16 flex w-full max-w-[1100px] flex-wrap gap-x-6 gap-y-4 px-5 text-[15px] font-semibold text-[#007653] md:mb-24 md:px-8">
         <Link to="/meeting-pods-malaysia" className="underline-offset-4 hover:underline">
           Compare meeting pods
         </Link>

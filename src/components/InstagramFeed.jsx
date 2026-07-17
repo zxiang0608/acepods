@@ -42,7 +42,7 @@ export default function InstagramFeed() {
           <h2 className="text-[28px] font-bold leading-[1.1] tracking-tight text-[#15191d] sm:text-[36px] md:text-[48px]">
             Follow Ace Office Pods on Instagram
           </h2>
-          <p className="mt-3 text-[16px] leading-[1.6] text-[#505964] md:text-[20px]">
+          <p className="mt-3 text-[16px] leading-[1.6] text-[#59635f] md:text-[20px]">
             See recent office pod installations, product finishes, and workplace project photos.
           </p>
         </div>

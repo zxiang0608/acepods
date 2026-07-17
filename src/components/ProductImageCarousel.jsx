@@ -15,7 +15,7 @@ export default function ProductImageCarousel({
 
   return (
     <section
-      className="rounded-[8px] border border-[#d8dbe0] bg-[#ececec] p-4 md:p-6"
+      className="rounded-[8px] border border-[#d8dbe0] bg-[#eeece7] p-4 md:p-6"
       tabIndex={0}
       onKeyDown={onKeyDown}
       onTouchStart={onTouchStart}
@@ -62,7 +62,7 @@ export default function ProductImageCarousel({
                 onClick={() => setActiveIndex(index)}
                 aria-label={`View ${slide.label}`}
                 className={`h-[52px] w-[70px] shrink-0 overflow-hidden rounded-[5px] border bg-white transition-colors md:h-[60px] md:w-[82px] ${
-                  selected ? 'border-[#145b5f] ring-1 ring-[#145b5f]/35' : 'border-[#d0d3d7] hover:border-[#9da7b1]'
+                  selected ? 'border-[#00855a] ring-1 ring-[#007653]/35' : 'border-[#d0d3d7] hover:border-[#9da7b1]'
                 }`}
               >
                 <img src={slide.src} alt={slide.alt || slide.label} className="h-full w-full object-cover" />

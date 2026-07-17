@@ -119,11 +119,11 @@ Payment: 50% deposit to start production, balance before delivery.
 
 ## Completed Client Installations
 
-- Parker Hannifin — Ace Solo, Shah Alam
+- Parker Hannifin — Ace Flex, Kuala Lumpur
 - CMA CGM — Ace Solo, Bangsar, Kuala Lumpur
 - Taylor's College — Ace Plus, Subang Jaya
 - Everllence — Ace Plus, Kuala Lumpur
-- Alphabet Capital — Ace Flex Duo, Kuala Lumpur
+- Alphabet Capital — Ace Solo, Shah Alam
 - MATRADE — Kuala Lumpur
 - WS Construction — Malaysia
 - ID Candy — Malaysia
@@ -229,8 +229,8 @@ For many workplaces, office pods are a faster and less disruptive way to add pri
 
 ## Delivery Locations
 
-- **Kuala Lumpur** — Completed installations for Everllence, Alphabet Capital, CMA CGM (Bangsar)
-- **Shah Alam** — Completed Parker Hannifin installation
+- **Kuala Lumpur** — Completed installations for Everllence, Parker Hannifin, CMA CGM (Bangsar)
+- **Shah Alam** — Completed Alphabet Capital installation
 - **Subang Jaya** — Completed Taylor's College installation
 - Other Klang Valley areas: Petaling Jaya, Puchong, Cyberjaya, Putrajaya, Klang, Damansara, Sunway, USJ
 - West Malaysia delivery available — quoted based on distance, access, and installation scope
@@ -254,8 +254,8 @@ Physical showroom: Jalan Gopeng, Kawasan 18, 41400 Klang, Selangor. Viewing by a
 | Client | Location | Model | Use case |
 |---|---|---|---|
 | Everllence | Kuala Lumpur | Ace Plus | Private client calls, focused financial advisory work |
-| Parker Hannifin | Shah Alam, Selangor | Ace Solo | Confidential calls in open engineering workspace |
-| Alphabet Capital | Kuala Lumpur | Ace Plus | Investment advisory floor, high acoustic isolation required |
+| Parker Hannifin | Kuala Lumpur | Ace Flex | Private calls and focused work |
+| Alphabet Capital | Shah Alam, Selangor | Ace Solo | Private calls and focused work |
 | CMA CGM | Bangsar, Kuala Lumpur | Ace Solo | Confidential logistics and shipping operations calls |
 | Taylor's College | Subang Jaya, Selangor | Ace Plus | Student advisory and administrative private sessions |
 | JY Elite | Kuala Lumpur | Ace Plus | Corporate office, private meeting and call use |

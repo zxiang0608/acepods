@@ -43,17 +43,17 @@ export default function OfficePodsPage() {
       />
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-10 pt-10 md:px-8 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           / <span>Office Pods</span>
         </nav>
 
-        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#14181c] md:text-[48px]">
+        <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[48px]">
           Office pods and office booths for calls, focus, and meetings
         </h1>
-        <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#454d56]">
+        <p className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#59635f]">
           Ace Office Pods by Ace Workplace Solutions offers acoustic office pods and office booths in Malaysia for private calls, focused work, hybrid meetings, and small team discussions. In workplace planning, “office pods” and “office booths” are often used interchangeably for enclosed acoustic spaces designed for calls, focused work, and small meetings.
         </p>
         <p className="mt-3 max-w-[70ch] text-[16px] leading-[1.65] text-[#58616b]">
@@ -73,10 +73,10 @@ export default function OfficePodsPage() {
               loading="lazy"
               decoding="async"
             />
-            <h2 className="mt-4 text-[22px] font-semibold tracking-tight text-[#1d232a]">{product.name}</h2>
-            <p className="mt-2 text-[15px] leading-[1.6] text-[#4d555e]">{product.shortDesc}</p>
-            <p className="mt-3 text-[14px] font-medium text-[#626a72]">{product.cardSupport}</p>
-            <p className="mt-4 text-[16px] font-semibold text-[#145b5f]">{product.pricing.amount}</p>
+            <h2 className="mt-4 text-[22px] font-semibold tracking-tight text-[#172126]">{product.name}</h2>
+            <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">{product.shortDesc}</p>
+            <p className="mt-3 text-[14px] font-medium text-[#68726f]">{product.cardSupport}</p>
+            <p className="mt-4 text-[16px] font-semibold text-[#007653]">{product.pricing.amount}</p>
             <Link
               to={`/pods/${product.slug}`}
               onClick={() =>
@@ -88,7 +88,7 @@ export default function OfficePodsPage() {
                   product_slug: product.slug
                 })
               }
-              className="mt-4 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+              className="mt-4 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
             >
               View {product.name}
             </Link>
@@ -98,13 +98,13 @@ export default function OfficePodsPage() {
 
       <section className="mx-auto mt-10 w-full max-w-[1200px] px-5 md:px-8">
         <div className="overflow-x-auto rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[25px] font-semibold tracking-tight text-[#14181c]">Compare office pod models</h2>
-          <p className="mt-2 max-w-[75ch] text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[25px] font-semibold tracking-tight text-[#172126]">Compare office pod models</h2>
+          <p className="mt-2 max-w-[75ch] text-[16px] leading-[1.65] text-[#59635f]">
             Compare office pods, office booths, privacy pods, and work pods by capacity, intended use, acoustic performance, and starting price. A soundproof office pod should always be assessed against its stated test result and the surrounding office conditions.
           </p>
-          <table className="mt-5 min-w-[760px] border-collapse text-left text-[14px] text-[#4d555e]">
+          <table className="mt-5 min-w-[760px] border-collapse text-left text-[14px] text-[#59635f]">
             <thead>
-              <tr className="border-b border-[#e4dfd6] text-[13px] uppercase tracking-[0.04em] text-[#6b7279]">
+              <tr className="border-b border-[#e4dfd6] text-[13px] uppercase tracking-[0.04em] text-[#68726f]">
                 <th className="px-2 py-3">Model</th>
                 <th className="px-2 py-3">Capacity</th>
                 <th className="px-2 py-3">Best for</th>
@@ -115,7 +115,7 @@ export default function OfficePodsPage() {
             <tbody>
               {products.map((product) => (
                 <tr key={product.slug} className="border-b border-[#efebe3]">
-                  <td className="px-2 py-3 font-semibold text-[#1d232a]"><Link to={`/pods/${product.slug}`} className="underline-offset-4 hover:underline">{product.name}</Link></td>
+                  <td className="px-2 py-3 font-semibold text-[#172126]"><Link to={`/pods/${product.slug}`} className="underline-offset-4 hover:underline">{product.name}</Link></td>
                   <td className="px-2 py-3">{getProductSpec(product, 'Capacity')}</td>
                   <td className="px-2 py-3">{getProductSpec(product, 'Best for')}</td>
                   <td className="px-2 py-3">{getProductSpec(product, 'Noise reduction')}</td>
@@ -129,18 +129,18 @@ export default function OfficePodsPage() {
 
       <section className="mx-auto mt-8 grid w-full max-w-[1200px] gap-5 px-5 md:grid-cols-2 md:px-8">
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[23px] font-semibold tracking-tight text-[#1d232a]">Office pod, office booth, phone pod, or phone booth?</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">Office pod, office booth, phone pod, or phone booth?</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             These terms overlap. An office pod is the broader category; an office booth or privacy pod usually describes a compact enclosed space; and a phone pod or phone booth is typically a one-person model for calls and focused work. Use the intended daily activity and team size to choose the right format.
           </p>
-          <Link to="/office-phone-booth-malaysia" className="mt-4 inline-flex text-[15px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">Compare office phone booth and phone pod options</Link>
+          <Link to="/office-phone-booth-malaysia" className="mt-4 inline-flex text-[15px] font-semibold text-[#007653] underline-offset-4 hover:underline">Compare office phone booth and phone pod options</Link>
         </article>
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[23px] font-semibold tracking-tight text-[#1d232a]">Proof for commercial comparison</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">Proof for commercial comparison</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Ace Office Pods are manufactured in Selangor and supported through delivery, installation, and after-sales service in Malaysia. Review completed installations, published pricing, and acoustic-test information before finalising a shortlist.
           </p>
-          <div className="mt-4 flex flex-wrap gap-4 text-[15px] font-semibold text-[#145b5f]">
+          <div className="mt-4 flex flex-wrap gap-4 text-[15px] font-semibold text-[#007653]">
             <Link to="/portfolio" className="underline-offset-4 hover:underline">View completed installations</Link>
             <Link to="/articles/office-pod-brands-malaysia-comparison" className="underline-offset-4 hover:underline">Review supplier comparison criteria</Link>
           </div>
@@ -148,23 +148,23 @@ export default function OfficePodsPage() {
       </section>
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-2 pt-8 md:px-8 md:pt-10">
-        <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Common questions about office pods and office booths</h2>
+        <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Common questions about office pods and office booths</h2>
       </section>
       <section className="mx-auto grid w-full max-w-[1200px] gap-4 px-5 md:px-8">
         {OFFICE_PODS_FAQ_ITEMS.map((item) => (
           <article key={item.question} className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-            <h3 className="text-[22px] font-semibold tracking-tight text-[#1d232a]">{item.question}</h3>
-            <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">{item.answer}</p>
+            <h3 className="text-[22px] font-semibold tracking-tight text-[#172126]">{item.question}</h3>
+            <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">{item.answer}</p>
           </article>
         ))}
       </section>
 
       <section className="mx-auto mt-12 w-full max-w-[1200px] rounded-[10px] border border-[#ddd8cf] bg-white px-5 py-8 md:px-8">
-        <h2 className="text-[26px] font-semibold tracking-tight text-[#14181c]">Need help choosing?</h2>
-        <p className="mt-3 text-[16px] leading-[1.6] text-[#4d555e]">
+        <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Need help choosing?</h2>
+        <p className="mt-3 text-[16px] leading-[1.6] text-[#59635f]">
           Compare office pods and office booths by use case first: calls, focused work, or meetings. Then review installation, support, and final project pricing before you decide.
         </p>
-        <div className="mt-5 flex flex-wrap gap-5 text-[15px] font-semibold text-[#145b5f]">
+        <div className="mt-5 flex flex-wrap gap-5 text-[15px] font-semibold text-[#007653]">
           <Link to="/meeting-pods-malaysia" className="underline-offset-4 hover:underline">
             Meeting pods in Malaysia
           </Link>

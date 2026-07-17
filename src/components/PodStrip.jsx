@@ -28,7 +28,7 @@ export default function PodStrip() {
             <Link
               key={item.to}
               to={item.to}
-              className={`group flex min-w-[148px] flex-col items-center px-3 py-5 text-center transition-colors hover:bg-[#f4f4f4] md:min-w-0 ${
+              className={`group flex min-w-[148px] flex-col items-center px-3 py-5 text-center transition-colors hover:bg-[#f7f6f2] md:min-w-0 ${
                 idx < stripItems.length - 1 ? 'border-r border-[#ebebeb]' : ''
               }`}
             >
@@ -44,7 +44,7 @@ export default function PodStrip() {
                 />
               </div>
               <p className="mt-3 text-[13px] font-bold leading-tight text-[#111]">{item.name}</p>
-              <p className="mt-1 text-[11px] leading-snug text-[#666]">{item.support}</p>
+              <p className="mt-1 text-[11px] leading-snug text-[#68726f]">{item.support}</p>
               <p className="mt-2 text-[11px] font-semibold text-[#00855a]">{item.price}</p>
             </Link>
           ))}

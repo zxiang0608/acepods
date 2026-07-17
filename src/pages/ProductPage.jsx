@@ -159,7 +159,7 @@ const PDP_QUICK_ANSWER_COPY = {
 
 const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false }) => (
   <div>
-    {!hideHeading && <h3 className="mb-3 text-[16px] font-semibold text-[#1e2227]">{label}</h3>}
+    {!hideHeading && <h3 className="mb-3 text-[16px] font-semibold text-[#172126]">{label}</h3>}
     <div className="flex flex-wrap gap-2">
       {options.map((color) => {
         const selected = color.id === selectedId;
@@ -177,7 +177,7 @@ const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false
         );
       })}
     </div>
-    <p className="mt-2 text-[12px] font-medium text-[#666]">{options.find((option) => option.id === selectedId)?.label}</p>
+    <p className="mt-2 text-[12px] font-medium text-[#68726f]">{options.find((option) => option.id === selectedId)?.label}</p>
   </div>
 );
 
@@ -308,7 +308,7 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <main className="min-h-screen bg-[#f4f4f4] px-6 py-16 text-[#1e2227]">
+      <main className="min-h-screen bg-[#f7f6f2] px-6 py-16 text-[#172126]">
         <SeoMeta
           title="Pod not found | Ace Office Pods"
           description="The requested office pod page is not available."
@@ -319,10 +319,10 @@ export default function ProductPage() {
         />
         <div className="mx-auto max-w-[900px] rounded-[16px] border border-[#dedede] bg-white p-8 text-center">
           <h1 className="text-[32px] font-bold tracking-tight">Pod not found</h1>
-          <p className="mx-auto mt-3 max-w-[46ch] text-[16px] text-[#666]">The product page you requested does not exist or is not available yet.</p>
+          <p className="mx-auto mt-3 max-w-[46ch] text-[16px] text-[#68726f]">The product page you requested does not exist or is not available yet.</p>
           <Link
             to="/"
-            className="mt-8 inline-flex items-center gap-2 rounded-[6px] border border-[#1e2227] px-5 py-3 text-[14px] font-semibold text-[#1e2227] transition-colors hover:bg-[#1e2227] hover:text-white"
+            className="mt-8 inline-flex items-center gap-2 rounded-[6px] border border-[#1e2227] px-5 py-3 text-[14px] font-semibold text-[#172126] transition-colors hover:bg-[#172126] hover:text-white"
           >
             <ArrowLeft size={16} />
             Back to homepage
@@ -733,8 +733,8 @@ export default function ProductPage() {
     ? 'flex w-max items-start gap-5 px-5 md:px-0 md:min-w-full md:gap-8 lg:gap-10'
     : 'flex w-max items-start gap-0 md:min-w-full';
   const sharedFeatureTitleClass =
-    'mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#1f232a] md:mt-1.5 md:text-[18px]';
-  const sharedFeatureDescClass = 'mx-auto mt-1.5 max-w-[28ch] text-left text-[14px] leading-[1.45] text-[#4f5660] md:mt-2 md:text-[15px]';
+    'mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#172126] md:mt-1.5 md:text-[18px]';
+  const sharedFeatureDescClass = 'mx-auto mt-1.5 max-w-[28ch] text-left text-[14px] leading-[1.45] text-[#59635f] md:mt-2 md:text-[15px]';
   const getGalleryThumbAlt = (galleryItem) =>
     galleryItem?.type === 'photo' ? `${product.name} office pod installation photo` : `${product.name} office pod product image`;
   const scrollFeatureTrack = (direction) => {
@@ -897,7 +897,7 @@ export default function ProductPage() {
 
   return (
     <div>
-    <main className="min-h-screen bg-[#efefef] text-[#1e2227]">
+    <main className="min-h-screen bg-[#eeece7] text-[#172126]">
       <SeoMeta
         title={seoTitle}
         description={seoDescription}
@@ -913,7 +913,7 @@ export default function ProductPage() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,56fr)_minmax(0,44fr)] lg:items-stretch lg:gap-10">
             <div className="min-w-0">
               <div className="lg:hidden">
-                <p className="mb-3 text-[13px] font-medium text-[#1c6e72]">
+                <p className="mb-3 text-[13px] font-medium text-[#007653]">
                   Home / {product.breadcrumbLabel || 'Ace Pods'} / {product.displayTitle || product.name}
                 </p>
                 <div
@@ -923,10 +923,10 @@ export default function ProductPage() {
                 >
                   {product.displayTitle || product.name}
                 </div>
-                <p className="mt-3 text-[16px] font-semibold leading-tight text-[#145b5f] md:text-[20px]">
+                <p className="mt-3 text-[16px] font-semibold leading-tight text-[#007653] md:text-[20px]">
                   Starting from {startingPriceText}
                 </p>
-                <p className="mt-4 max-w-[42ch] text-[17px] leading-[1.5] text-[#2e3136]">{product.shortDesc}</p>
+                <p className="mt-4 max-w-[42ch] text-[17px] leading-[1.5] text-[#172126]">{product.shortDesc}</p>
               </div>
               <div className="relative mt-6 h-[380px] w-full sm:h-[460px] md:h-[620px] lg:mt-[56px] lg:h-[600px]">
                 {productDisplayItems.length > 1 && (
@@ -934,7 +934,7 @@ export default function ProductPage() {
                     type="button"
                     onClick={goToPrevImage}
                     aria-label={`Previous image for ${product.name}`}
-                    className="absolute left-0 top-1/2 z-[2] -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/85 p-1.5 text-[#2f3439] shadow-sm backdrop-blur-sm transition-colors hover:bg-white md:left-1"
+                    className="absolute left-0 top-1/2 z-[2] -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/85 p-1.5 text-[#172126] shadow-sm backdrop-blur-sm transition-colors hover:bg-white md:left-1"
                   >
                     <ChevronLeft size={26} strokeWidth={2.25} />
                   </button>
@@ -970,7 +970,7 @@ export default function ProductPage() {
                     type="button"
                     onClick={goToNextImage}
                     aria-label={`Next image for ${product.name}`}
-                    className="absolute right-0 top-1/2 z-[2] -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/85 p-1.5 text-[#2f3439] shadow-sm backdrop-blur-sm transition-colors hover:bg-white md:right-1"
+                    className="absolute right-0 top-1/2 z-[2] -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/85 p-1.5 text-[#172126] shadow-sm backdrop-blur-sm transition-colors hover:bg-white md:right-1"
                   >
                     <ChevronRight size={26} strokeWidth={2.25} />
                   </button>
@@ -993,7 +993,7 @@ export default function ProductPage() {
                         onClick={() => scrollThumbnailTrack(-1)}
                         aria-label="Scroll thumbnails left"
                         disabled={!canScrollThumbnailsLeft}
-                        className={`absolute left-0 top-1/2 z-[2] hidden -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/90 p-1.5 text-[#2f3439] shadow-sm backdrop-blur-sm transition-colors md:block ${
+                        className={`absolute left-0 top-1/2 z-[2] hidden -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/90 p-1.5 text-[#172126] shadow-sm backdrop-blur-sm transition-colors md:block ${
                           canScrollThumbnailsLeft ? 'hover:bg-white' : 'cursor-not-allowed opacity-35'
                         }`}
                       >
@@ -1004,7 +1004,7 @@ export default function ProductPage() {
                         onClick={() => scrollThumbnailTrack(1)}
                         aria-label="Scroll thumbnails right"
                         disabled={!canScrollThumbnailsRight}
-                        className={`absolute right-0 top-1/2 z-[2] hidden -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/90 p-1.5 text-[#2f3439] shadow-sm backdrop-blur-sm transition-colors md:block ${
+                        className={`absolute right-0 top-1/2 z-[2] hidden -translate-y-1/2 rounded-full border border-[#d4d8dd] bg-white/90 p-1.5 text-[#172126] shadow-sm backdrop-blur-sm transition-colors md:block ${
                           canScrollThumbnailsRight ? 'hover:bg-white' : 'cursor-not-allowed opacity-35'
                         }`}
                       >
@@ -1021,7 +1021,7 @@ export default function ProductPage() {
                             key={preview.id}
                             type="button"
                             onClick={() => setSelectedImage(preview.image)}
-                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f5f6f8] transition-all ${
+                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f7f6f2] transition-all ${
                               selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
                             }`}
                             aria-label={`Available pod colours preview image ${preview.id.replace('preview-', '')}`}
@@ -1035,7 +1035,7 @@ export default function ProductPage() {
                             />
                             {selected && (
                               <span className="absolute inset-0 border border-[#1e2227]">
-                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#1e2227]" />
+                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#172126]" />
                               </span>
                             )}
                           </button>
@@ -1048,7 +1048,7 @@ export default function ProductPage() {
                             key={`left-color-${color.id}`}
                             type="button"
                             onClick={() => handleExteriorSelect(color.id)}
-                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f5f6f8] transition-all ${
+                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f7f6f2] transition-all ${
                               selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
                             }`}
                             aria-label={`Available pod colours: ${color.label}`}
@@ -1089,7 +1089,7 @@ export default function ProductPage() {
                               }
                               setSelectedImage(item.image);
                             }}
-                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f5f6f8] transition-all ${
+                            className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f7f6f2] transition-all ${
                               selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
                             }`}
                             aria-label={`Available pod colours option: ${item.label}`}
@@ -1109,7 +1109,7 @@ export default function ProductPage() {
                             />
                             {selected && (
                               <span className="absolute inset-0 border border-[#1e2227]">
-                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#1e2227]" />
+                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#172126]" />
                               </span>
                             )}
                           </button>
@@ -1143,7 +1143,7 @@ export default function ProductPage() {
                             <img src={chair.image} alt={chair.label} width="36" height="36" className="h-9 w-9 object-contain object-center mix-blend-multiply" />
                             {selected && (
                               <span className="absolute inset-0 border border-[#1e2227]">
-                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#1e2227]" />
+                                <Check size={12} className="absolute right-0.5 top-0.5 text-[#172126]" />
                               </span>
                             )}
                           </button>
@@ -1158,12 +1158,12 @@ export default function ProductPage() {
 
             <div className="min-w-0 lg:flex lg:h-[760px] lg:flex-col">
               <div className="hidden lg:block text-left">
-                <p className="mb-3 text-[13px] font-medium text-[#1c6e72]">
+                <p className="mb-3 text-[13px] font-medium text-[#007653]">
                   Home / {product.breadcrumbLabel || 'Ace Pods'} / {product.displayTitle || product.name}
                 </p>
                 <h1 className="text-[56px] font-semibold leading-[1.03] tracking-tight">{product.displayTitle || product.name}</h1>
-                <p id={`${product.slug}-answer`} className="mt-2 text-[22px] leading-tight text-[#2e3136]">{product.shortDesc}</p>
-                <p className="mt-2 text-[24px] font-semibold leading-tight text-[#145b5f]">Starting from {startingPriceText}</p>
+                <p id={`${product.slug}-answer`} className="mt-2 text-[22px] leading-tight text-[#172126]">{product.shortDesc}</p>
+                <p className="mt-2 text-[24px] font-semibold leading-tight text-[#007653]">Starting from {startingPriceText}</p>
               </div>
 
               <div className="mt-6 py-6 md:py-7 lg:flex-1">
@@ -1174,7 +1174,7 @@ export default function ProductPage() {
                       {hasSplitInteriorSections ? (
                         <div className="space-y-6">
                           <div>
-                            <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#1e2227]">
+                            <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#172126]">
                               Interior Wall Colour Options (Melamine Faced Chipboard / MDF)
                             </h3>
                             <SwatchGroup
@@ -1187,7 +1187,7 @@ export default function ProductPage() {
                           </div>
 
                           <div className="border-t border-[#e4e7eb] pt-4">
-                            <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#1e2227]">PET Fabric Interior Wall Colour</h3>
+                            <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#172126]">PET Fabric Interior Wall Colour</h3>
                             <SwatchGroup
                               hideHeading
                               label="PET Fabric Interior Wall Colour"
@@ -1206,13 +1206,13 @@ export default function ProductPage() {
                   <div className="flex h-full flex-col gap-4">
                     <div className="rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
                       <div className="relative mb-4 border-b border-[#e8eaed] pb-4" ref={addonMenuRef}>
-                        <h3 className="mb-2 text-[15px] font-semibold text-[#1e2227]">Add-ons</h3>
+                        <h3 className="mb-2 text-[15px] font-semibold text-[#172126]">Add-ons</h3>
                         <button
                           type="button"
                           onClick={() => setIsAddonMenuOpen((prev) => !prev)}
                           aria-expanded={isAddonMenuOpen}
                           aria-controls="addons-menu"
-                          className="flex w-full items-center justify-between rounded-[6px] border border-[#d8d8d8] bg-[#fbfbfb] px-3 py-2.5 text-left text-[13px] font-medium text-[#333941] transition-colors hover:bg-white"
+                          className="flex w-full items-center justify-between rounded-[6px] border border-[#d8d8d8] bg-[#f7f6f2] px-3 py-2.5 text-left text-[13px] font-medium text-[#172126] transition-colors hover:bg-white"
                         >
                           <span>
                             {selectedOptionLabels.length > 0
@@ -1222,7 +1222,7 @@ export default function ProductPage() {
                           <span className="text-[12px] text-[#67707a]">{isAddonMenuOpen ? '▲' : '▼'}</span>
                         </button>
                         {selectedOptionLabels.length > 0 && (
-                          <p className="mt-2 line-clamp-2 text-[12px] leading-[1.4] text-[#5d6670]">{selectedOptionLabels.join(', ')}</p>
+                          <p className="mt-2 line-clamp-2 text-[12px] leading-[1.4] text-[#68726f]">{selectedOptionLabels.join(', ')}</p>
                         )}
 
                         {isAddonMenuOpen && (
@@ -1234,12 +1234,12 @@ export default function ProductPage() {
                               <div>
                                 {product.slug === 'ace-flex-duo' ? (
                                   <div>
-                                    <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#66707a]">Configuration included</p>
-                                    <p className="px-2 py-1.5 text-[13px] font-medium text-[#333941]">Bar-height table included as standard</p>
+                                    <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#68726f]">Configuration included</p>
+                                    <p className="px-2 py-1.5 text-[13px] font-medium text-[#172126]">Bar-height table included as standard</p>
                                   </div>
                                 ) : (
                                   <div>
-                                    <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#66707a]">Configuration options</p>
+                                    <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#68726f]">Configuration options</p>
                                     <div className="grid gap-1.5">
                                       {configurationOptions.length > 0 ? (
                                         configurationOptions.map((configuration) => {
@@ -1247,23 +1247,23 @@ export default function ProductPage() {
                                           return (
                                             <label
                                               key={configuration.id}
-                                              className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f9fafb]"
+                                              className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f7f6f2]"
                                             >
-                                              <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
+                                              <span className="flex items-center gap-2 text-[13px] font-medium text-[#172126]">
                                                 <input
                                                   type="checkbox"
                                                   checked={checked}
                                                   onChange={() => toggleConfigurationOption(configuration.id)}
-                                                  className="h-4 w-4 accent-[#145b5f]"
+                                                  className="h-4 w-4 accent-[#007653]"
                                                 />
                                                 {configuration.label}
                                               </span>
-                                              <span className="text-[12px] font-semibold tabular-nums text-[#59606a]">{formatRM(configuration.amount)}</span>
+                                              <span className="text-[12px] font-semibold tabular-nums text-[#59635f]">{formatRM(configuration.amount)}</span>
                                             </label>
                                           );
                                         })
                                       ) : (
-                                        <p className="px-2 py-1.5 text-[12px] text-[#6b727b]">No configuration upgrades for this pod.</p>
+                                        <p className="px-2 py-1.5 text-[12px] text-[#68726f]">No configuration upgrades for this pod.</p>
                                       )}
                                     </div>
                                   </div>
@@ -1271,7 +1271,7 @@ export default function ProductPage() {
                               </div>
 
                               <div className="border-t border-[#e4e7eb] pt-2.5">
-                                <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#66707a]">Other add-ons</p>
+                                <p className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#68726f]">Other add-ons</p>
                                 <div className="grid gap-1.5">
                                   {availableAddons.length > 0 ? (
                                     availableAddons.map((addon) => {
@@ -1279,23 +1279,23 @@ export default function ProductPage() {
                                       return (
                                         <label
                                           key={addon.id}
-                                          className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f9fafb]"
+                                          className="flex cursor-pointer items-center justify-between rounded-[4px] border border-transparent px-2 py-1.5 transition-colors hover:border-[#d5dade] hover:bg-[#f7f6f2]"
                                         >
-                                          <span className="flex items-center gap-2 text-[13px] font-medium text-[#333941]">
+                                          <span className="flex items-center gap-2 text-[13px] font-medium text-[#172126]">
                                             <input
                                               type="checkbox"
                                               checked={checked}
                                               onChange={() => toggleAddon(addon.id)}
-                                              className="h-4 w-4 accent-[#145b5f]"
+                                              className="h-4 w-4 accent-[#007653]"
                                             />
                                             {addon.label}
                                           </span>
-                                          <span className="text-[12px] font-semibold tabular-nums text-[#59606a]">{formatRM(addon.amount)}</span>
+                                          <span className="text-[12px] font-semibold tabular-nums text-[#59635f]">{formatRM(addon.amount)}</span>
                                         </label>
                                       );
                                     })
                                   ) : (
-                                    <p className="px-2 py-1.5 text-[12px] text-[#6b727b]">No additional add-ons for this pod.</p>
+                                    <p className="px-2 py-1.5 text-[12px] text-[#68726f]">No additional add-ons for this pod.</p>
                                   )}
                                 </div>
                               </div>
@@ -1303,20 +1303,20 @@ export default function ProductPage() {
                           </div>
                         )}
                       </div>
-                      <p className="text-[16px] font-semibold leading-tight text-[#1e2227]">Pricing overview</p>
+                      <p className="text-[16px] font-semibold leading-tight text-[#172126]">Pricing overview</p>
                       <dl className="mt-3 text-[14px]">
                         <div className="space-y-0">
                           {pricingRows.map((row) => (
                             <div key={row.label} className="grid grid-cols-[1fr_auto] items-center border-b border-[#e8eaed] py-2.5">
                               <dt className="whitespace-pre-line font-medium leading-[1.35] text-[#414850]">{row.label}</dt>
-                              <dd className="text-right font-semibold tabular-nums text-[#1f232a]">{row.amountLabel || formatRM(row.amount)}</dd>
+                              <dd className="text-right font-semibold tabular-nums text-[#172126]">{row.amountLabel || formatRM(row.amount)}</dd>
                             </div>
                           ))}
                         </div>
                         <div className="mt-3 border-t border-[#d3d9df] pt-3">
                           <div className="grid grid-cols-[1fr_auto] items-center">
-                            <dt className="text-[16px] font-semibold text-[#1f232a]">Total</dt>
-                            <dd className="text-right text-[18px] font-bold tabular-nums text-[#1f232a]">{computedTotalText}</dd>
+                            <dt className="text-[16px] font-semibold text-[#172126]">Total</dt>
+                            <dd className="text-right text-[18px] font-bold tabular-nums text-[#172126]">{computedTotalText}</dd>
                           </div>
                         </div>
                       </dl>
@@ -1341,7 +1341,7 @@ export default function ProductPage() {
                           }}
                           aria-expanded={isContactChooserOpen}
                           aria-controls="contact-chooser"
-                          className="w-full rounded-[4px] border border-[#145b5f] bg-white px-4 py-3 text-[15px] font-semibold text-[#145b5f] transition-colors hover:bg-[#f1f6f6]"
+                          className="w-full rounded-[4px] border border-[#00855a] bg-white px-4 py-3 text-[15px] font-semibold text-[#007653] transition-colors hover:bg-[#f7f6f2]"
                         >
                           Contact Us
                         </button>
@@ -1365,7 +1365,7 @@ export default function ProductPage() {
                                   product_slug: product.slug
                                 })
                               }
-                              className="block rounded-[6px] bg-[#145b5f] px-3 py-2.5 text-center text-[14px] font-semibold text-white hover:bg-[#0f4b4e]"
+                              className="block rounded-[6px] bg-[#00855a] px-3 py-2.5 text-center text-[14px] font-semibold text-white hover:bg-[#172126]"
                             >
                               WhatsApp Us
                             </a>
@@ -1381,10 +1381,10 @@ export default function ProductPage() {
                                   product_slug: product.slug
                                 })
                               }
-                              className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center hover:bg-[#f5f6f7]"
+                              className="mt-2 block rounded-[6px] border border-[#cdd1d5] px-3 py-2.5 text-center hover:bg-[#f7f6f2]"
                             >
-                              <span className="block text-[14px] font-semibold text-[#1e2227]">Email Us</span>
-                              <span className="mt-0.5 block text-[12px] font-medium text-[#5d6670]">sales@aceofficepods.com</span>
+                              <span className="block text-[14px] font-semibold text-[#172126]">Email Us</span>
+                              <span className="mt-0.5 block text-[12px] font-medium text-[#68726f]">sales@aceofficepods.com</span>
                             </a>
                           </div>
                         )}
@@ -1399,8 +1399,8 @@ export default function ProductPage() {
 
           {hasFeatureRows && (
             <section className="py-12 md:py-14">
-              <h2 className="text-center text-[28px] font-semibold tracking-tight text-[#1e2227]">Key Features</h2>
-              <p className="mt-1 text-center text-[12px] text-[#888] md:hidden">Swipe to see all →</p>
+              <h2 className="text-center text-[28px] font-semibold tracking-tight text-[#172126]">Key Features</h2>
+              <p className="mt-1 text-center text-[12px] text-[#68726f] md:hidden">Swipe to see all →</p>
 
               <div className="mt-4 md:mt-7">
                 <div className="relative">
@@ -1409,8 +1409,8 @@ export default function ProductPage() {
                     aria-label="Scroll features left"
                     onClick={() => scrollFeatureTrack(-1)}
                     disabled={!canScrollFeaturesLeft}
-                    className={`absolute left-0 top-[72px] z-10 hidden -translate-x-1/2 rounded-full border border-[#cfd4d8] bg-white p-2 text-[#2a3138] shadow-sm transition md:block ${
-                      canScrollFeaturesLeft ? 'hover:bg-[#f5f7f8]' : 'pointer-events-none opacity-40'
+                    className={`absolute left-0 top-[72px] z-10 hidden -translate-x-1/2 rounded-full border border-[#cfd4d8] bg-white p-2 text-[#172126] shadow-sm transition md:block ${
+                      canScrollFeaturesLeft ? 'hover:bg-[#f7f6f2]' : 'pointer-events-none opacity-40'
                     }`}
                   >
                     <ChevronLeft size={18} />
@@ -1420,8 +1420,8 @@ export default function ProductPage() {
                     aria-label="Scroll features right"
                     onClick={() => scrollFeatureTrack(1)}
                     disabled={!canScrollFeaturesRight}
-                    className={`absolute right-0 top-[72px] z-10 hidden translate-x-1/2 rounded-full border border-[#cfd4d8] bg-white p-2 text-[#2a3138] shadow-sm transition md:block ${
-                      canScrollFeaturesRight ? 'hover:bg-[#f5f7f8]' : 'pointer-events-none opacity-40'
+                    className={`absolute right-0 top-[72px] z-10 hidden translate-x-1/2 rounded-full border border-[#cfd4d8] bg-white p-2 text-[#172126] shadow-sm transition md:block ${
+                      canScrollFeaturesRight ? 'hover:bg-[#f7f6f2]' : 'pointer-events-none opacity-40'
                     }`}
                   >
                     <ChevronRight size={18} />
@@ -1468,42 +1468,42 @@ export default function ProductPage() {
                   <div className="mt-3 space-y-3">
                     {pdpQuickAnswerCopy?.intro && (
                       <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
-                        <p className="text-[#4e535a]">{pdpQuickAnswerCopy.intro}</p>
+                        <p className="text-[#59635f]">{pdpQuickAnswerCopy.intro}</p>
                       </div>
                     )}
                     {quickAnswerDimensionsText && (
                       <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
-                        <h3 className="font-semibold text-[#1f232a]">Dimensions &amp; fit</h3>
-                        <p className="mt-1 text-[#4e535a]">{quickAnswerDimensionsText}</p>
+                        <h3 className="font-semibold text-[#172126]">Dimensions &amp; fit</h3>
+                        <p className="mt-1 text-[#59635f]">{quickAnswerDimensionsText}</p>
                       </div>
                     )}
                     {quickAnswerAcousticText && (
                       <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
-                        <h3 className="font-semibold text-[#1f232a]">Acoustic performance</h3>
-                        <p className="mt-1 text-[#4e535a]">{quickAnswerAcousticText}</p>
+                        <h3 className="font-semibold text-[#172126]">Acoustic performance</h3>
+                        <p className="mt-1 text-[#59635f]">{quickAnswerAcousticText}</p>
                       </div>
                     )}
                     {quickAnswerDeliveryText && (
                       <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
-                        <h3 className="font-semibold text-[#1f232a]">Delivery &amp; installation</h3>
-                        <p className="mt-1 text-[#4e535a]">{quickAnswerDeliveryText}</p>
+                        <h3 className="font-semibold text-[#172126]">Delivery &amp; installation</h3>
+                        <p className="mt-1 text-[#59635f]">{quickAnswerDeliveryText}</p>
                       </div>
                     )}
                     {quickAnswerPowerText && (
                       <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
-                        <h3 className="font-semibold text-[#1f232a]">Power &amp; connectivity</h3>
-                        <p className="mt-1 text-[#4e535a]">{quickAnswerPowerText}</p>
+                        <h3 className="font-semibold text-[#172126]">Power &amp; connectivity</h3>
+                        <p className="mt-1 text-[#59635f]">{quickAnswerPowerText}</p>
                       </div>
                     )}
                     {quickAnswerAddOnsText && (
                       <div className="border-b border-[#d9d9d9] pb-2 text-[14px]">
-                        <h3 className="font-semibold text-[#1f232a]">Add-ons</h3>
-                        <p className="mt-1 text-[#4e535a]">{quickAnswerAddOnsText}</p>
+                        <h3 className="font-semibold text-[#172126]">Add-ons</h3>
+                        <p className="mt-1 text-[#59635f]">{quickAnswerAddOnsText}</p>
                       </div>
                     )}
                     <div className="text-[14px]">
-                      <h3 className="font-semibold text-[#1f232a]">Need help choosing?</h3>
-                      <p className="mt-1 text-[#4e535a]">{quickAnswerHelpText}</p>
+                      <h3 className="font-semibold text-[#172126]">Need help choosing?</h3>
+                      <p className="mt-1 text-[#59635f]">{quickAnswerHelpText}</p>
                     </div>
                   </div>
                 </div>
@@ -1513,8 +1513,8 @@ export default function ProductPage() {
                   <dl className="mt-3 grid gap-y-2">
                     {visibleTechnicalSpecRows.map((spec) => (
                       <div key={spec.label} className="flex items-start justify-between gap-4 border-b border-[#d9d9d9] pb-2 text-[14px]">
-                        <dt className="font-medium text-[#4e535a]">{spec.label}</dt>
-                        <dd className="max-w-[70%] text-right font-semibold text-[#1f232a]">{spec.value}</dd>
+                        <dt className="font-medium text-[#59635f]">{spec.label}</dt>
+                        <dd className="max-w-[70%] text-right font-semibold text-[#172126]">{spec.value}</dd>
                       </div>
                     ))}
                   </dl>
@@ -1523,7 +1523,7 @@ export default function ProductPage() {
                       <button
                         type="button"
                         onClick={() => setIsSpecsExpanded((prev) => !prev)}
-                        className="text-[13px] font-medium text-[#4e535a] underline underline-offset-2 transition-colors hover:text-[#1f232a]"
+                        className="text-[13px] font-medium text-[#59635f] underline underline-offset-2 transition-colors hover:text-[#172126]"
                       >
                         {isSpecsExpanded ? 'See less' : 'See more'}
                       </button>
@@ -1533,7 +1533,7 @@ export default function ProductPage() {
 
                 <div>
                   <h3 className="text-[20px] font-semibold tracking-tight">Best for</h3>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-[14px] text-[#3d4147]">
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-[14px] text-[#172126]">
                     {product.useCases.map((useCase) => (
                       <li key={useCase}>{useCase}</li>
                     ))}
@@ -1543,10 +1543,10 @@ export default function ProductPage() {
                 {pdpQuickAnswerCopy && (
                   <div>
                     <h3 className="text-[20px] font-semibold tracking-tight">{pdpQuickAnswerCopy.heading}</h3>
-                    <div className="mt-2 space-y-2 text-[14px] text-[#3d4147]">
+                    <div className="mt-2 space-y-2 text-[14px] text-[#172126]">
                       {pdpQuickAnswerCopy.items.map((item) => (
                         <p key={item.q}>
-                          <span className="font-semibold text-[#1f232a]">Q: {item.q}</span>
+                          <span className="font-semibold text-[#172126]">Q: {item.q}</span>
                           <br />
                           A: {typeof item.a === 'function' ? item.a({ startingPriceText }) : item.a}
                         </p>
@@ -1559,13 +1559,13 @@ export default function ProductPage() {
 
             <div className="min-w-0">
               <div className="h-full">
-                <h2 className="text-[18px] font-semibold tracking-tight text-[#1e2227]">Dimensions</h2>
+                <h2 className="text-[18px] font-semibold tracking-tight text-[#172126]">Dimensions</h2>
                 <div className="mt-3 w-full">
                   {product.drawing2dImage ? (
                     <button
                       type="button"
                       onClick={() => setIsDimensionsModalOpen(true)}
-                      className="inline-flex max-w-full items-center justify-center overflow-hidden rounded-[6px] border border-[#d9d9d9] bg-[#f3f3f3] p-0.5 text-left transition-colors hover:border-[#b8bec5]"
+                      className="inline-flex max-w-full items-center justify-center overflow-hidden rounded-[6px] border border-[#d9d9d9] bg-[#f7f6f2] p-0.5 text-left transition-colors hover:border-[#b8bec5]"
                       aria-label={`View detailed dimensions for ${product.name}`}
                     >
                       <img
@@ -1575,7 +1575,7 @@ export default function ProductPage() {
                       />
                     </button>
                   ) : (
-                    <div className="flex min-h-[180px] w-full items-center justify-center rounded-[6px] border border-[#d9d9d9] bg-[#f3f3f3] text-center text-[13px] font-medium text-[#6e737a]">
+                    <div className="flex min-h-[180px] w-full items-center justify-center rounded-[6px] border border-[#d9d9d9] bg-[#f7f6f2] text-center text-[13px] font-medium text-[#6e737a]">
                       Dimensions will be added soon
                     </div>
                   )}
@@ -1586,7 +1586,7 @@ export default function ProductPage() {
 
           {shouldShowThumbnails && (
             <div className="w-full pt-10">
-              <h3 className="mb-12 text-center text-[36px] font-semibold tracking-tight text-[#1e2227] md:text-[40px]">Our Past Projects</h3>
+              <h3 className="mb-12 text-center text-[36px] font-semibold tracking-tight text-[#172126] md:text-[40px]">Our Past Projects</h3>
               <div className="w-full overflow-x-auto pb-2">
                 <div className="flex w-max min-w-full justify-center gap-4 md:gap-5">
                   {customerGalleryItems.map((item, index) => {
@@ -1597,7 +1597,7 @@ export default function ProductPage() {
                         type="button"
                         onClick={() => handleThumbnailSelect(item, index)}
                         className={`flex h-[112px] w-[112px] shrink-0 items-center justify-center overflow-hidden rounded-[10px] border bg-white transition sm:h-[124px] sm:w-[124px] md:h-[132px] md:w-[132px] ${
-                          isActive ? 'border-[#145b5f] ring-1 ring-[#145b5f]/40' : 'border-[#d0d3d7] hover:border-[#98a2ac]'
+                          isActive ? 'border-[#00855a] ring-1 ring-[#007653]/40' : 'border-[#d0d3d7] hover:border-[#98a2ac]'
                         }`}
                         aria-label={`Open gallery image ${index + 1} for ${product.name}`}
                       >
@@ -1634,7 +1634,7 @@ export default function ProductPage() {
                     product_slug: product.slug
                   })
                 }
-                className="inline-flex w-full items-center justify-center rounded-[6px] bg-[#145b5f] px-6 py-3 text-[16px] font-semibold text-white transition-colors hover:bg-[#0f4b4e] sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-[6px] bg-[#00855a] px-6 py-3 text-[16px] font-semibold text-white transition-colors hover:bg-[#172126] sm:w-auto"
               >
                 WhatsApp us
               </a>
@@ -1692,7 +1692,7 @@ export default function ProductPage() {
               <button
                 type="button"
                 onClick={goToPrevModalImage}
-                className="absolute left-2 z-20 rounded-full bg-white/90 p-2 text-[#1e2227] transition hover:bg-white"
+                className="absolute left-2 z-20 rounded-full bg-white/90 p-2 text-[#172126] transition hover:bg-white"
                 aria-label="Previous gallery image"
               >
                 <ChevronLeft size={28} />
@@ -1714,7 +1714,7 @@ export default function ProductPage() {
               <button
                 type="button"
                 onClick={goToNextModalImage}
-                className="absolute right-2 z-20 rounded-full bg-white/90 p-2 text-[#1e2227] transition hover:bg-white"
+                className="absolute right-2 z-20 rounded-full bg-white/90 p-2 text-[#172126] transition hover:bg-white"
                 aria-label="Next gallery image"
               >
                 <ChevronRight size={28} />

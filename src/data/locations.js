@@ -1,4 +1,4 @@
-import alphabetProjectImage from '../../assets/locations/kuala-lumpur-alphabet-capital-ace-flex-duo.jpg';
+import parkerFlexProjectImage from '../../assets/locations/kuala-lumpur-alphabet-capital-ace-flex-duo.jpg';
 import cmaProjectImage from '../../assets/locations/bangsar-cma-cgm-ace-solo.jpg';
 import everllenceProjectImage from '../../assets/locations/kuala-lumpur-everllence-ace-plus.jpg';
 import parkerProjectImage from '../../assets/locations/shah-alam-parker-hannifin-ace-solo.jpg';
@@ -13,9 +13,9 @@ export const locations = [
     title: 'Office pods in Kuala Lumpur (KL)',
     metaTitle: 'Office Pods Kuala Lumpur | Delivery & Installation',
     metaDescription:
-      'Office pods in Kuala Lumpur with completed installations for Everllence, Alphabet Capital, and CMA CGM in Bangsar. Compare models, pricing, delivery, and installation.',
+      'Office pods in Kuala Lumpur with completed installations for Everllence, Parker Hannifin, and CMA CGM in Bangsar. Compare models, pricing, delivery, and installation.',
     intro:
-      'Ace Office Pods supplies and installs office phone booths, focus pods, and meeting pods for Kuala Lumpur workplaces. Our completed KL projects include installations for Everllence, Alphabet Capital, and CMA CGM in Bangsar.',
+      'Ace Office Pods supplies and installs office phone booths, focus pods, and meeting pods for Kuala Lumpur workplaces. Our completed KL projects include installations for Everllence, Parker Hannifin, and CMA CGM in Bangsar.',
     serviceSummary:
       'Kuala Lumpur projects are planned around building access, loading arrangements, lift dimensions, floor protection, working-hour restrictions, and final pod placement. We confirm these details before delivery so the installation scope is clear.',
     localContext:
@@ -33,13 +33,13 @@ export const locations = [
         summary: 'A one-person Ace Plus pod installed within an active open-plan office for private calls and focused work.'
       },
       {
-        company: 'Alphabet Capital',
+        company: 'Parker Hannifin',
         area: 'Kuala Lumpur',
-        model: 'Ace Flex Duo',
-        productSlug: 'ace-flex-duo',
-        image: alphabetProjectImage,
-        imageAlt: 'Ace Flex Duo office pod installation for Alphabet Capital in Kuala Lumpur',
-        summary: 'A two-person office pod installation supporting private discussions and compact collaborative work.'
+        model: 'Ace Flex',
+        productSlug: 'ace-flex',
+        image: parkerFlexProjectImage,
+        imageAlt: 'Ace Flex office pod installation for Parker Hannifin in Kuala Lumpur',
+        summary: 'A one-person Ace Flex pod installation supporting private calls and focused work.'
       },
       {
         company: 'CMA CGM',
@@ -60,7 +60,7 @@ export const locations = [
       {
         question: 'Can I see examples of office pods installed in KL?',
         answer:
-          'Yes. This page includes completed Kuala Lumpur installations for Everllence, Alphabet Capital, and CMA CGM in Bangsar. More installation photos are available in the portfolio.'
+          'Yes. This page includes completed Kuala Lumpur installations for Everllence, Parker Hannifin, and CMA CGM in Bangsar. More installation photos are available in the portfolio.'
       },
       {
         question: 'Where is the nearest Ace Office Pods showroom to Kuala Lumpur?',
@@ -82,9 +82,9 @@ export const locations = [
     title: 'Office pods in Shah Alam',
     metaTitle: 'Office Pods Shah Alam | Delivery & Installation | Ace Office Pods',
     metaDescription:
-      'Office pods in Shah Alam with a completed Parker Hannifin installation. Compare phone booths, acoustic pods, pricing, delivery, and installation support.',
+      'Office pods in Shah Alam with a completed Alphabet Capital installation. Compare phone booths, acoustic pods, pricing, delivery, and installation support.',
     intro:
-      'Ace Office Pods supplies and installs office phone booths and acoustic work pods for Shah Alam offices. Our local project evidence includes a completed one-person pod installation for Parker Hannifin.',
+      'Ace Office Pods supplies and installs office phone booths and acoustic work pods for Shah Alam offices. Our local project evidence includes a completed one-person pod installation for Alphabet Capital.',
     serviceSummary:
       'Shah Alam installations are planned around the office floor, loading access, lift or staircase clearance, placement, and operating-hour requirements. The team confirms delivery and setup conditions before the project date.',
     localContext:
@@ -93,12 +93,12 @@ export const locations = [
       'This completed project shows how a compact office pod can be integrated into a working Shah Alam office.',
     projects: [
       {
-        company: 'Parker Hannifin',
+        company: 'Alphabet Capital',
         area: 'Shah Alam',
         model: 'Ace Solo',
         productSlug: 'ace-solo',
         image: parkerProjectImage,
-        imageAlt: 'Ace Solo office phone booth installed for Parker Hannifin in Shah Alam',
+        imageAlt: 'Ace Solo office phone booth installed for Alphabet Capital in Shah Alam',
         summary: 'A one-person Ace Solo phone booth installed to create a dedicated space for private calls and focused work.'
       }
     ],

@@ -52,15 +52,15 @@ export default function ContactPage() {
       />
 
       <section className="mx-auto w-full max-w-[1100px] px-5 pb-14 pt-10 md:px-8 md:pb-20 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           / <span>Contact</span>
         </nav>
 
-        <h1 className="max-w-[20ch] text-[34px] font-bold leading-[1.08] tracking-tight text-[#14181c] md:text-[52px]">Contact Ace Office Pods</h1>
-        <p className="mt-4 max-w-[72ch] text-[16px] leading-[1.6] text-[#4d555e] md:text-[18px]">
+        <h1 className="max-w-[20ch] text-[34px] font-bold leading-[1.08] tracking-tight text-[#172126] md:text-[52px]">Contact Ace Office Pods</h1>
+        <p className="mt-4 max-w-[72ch] text-[16px] leading-[1.6] text-[#59635f] md:text-[18px]">
           Speak with our team about office pod models, project scope, and commercial enquiries.
         </p>
 
@@ -77,10 +77,10 @@ export default function ContactPage() {
                 contact_method: 'whatsapp'
               })
             }
-            className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#145b5f]"
+            className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#00855a]"
           >
-            <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#6a7683]">WhatsApp</p>
-            <p className="mt-2 text-[17px] font-semibold text-[#14181c]">Chat with sales</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#68726f]">WhatsApp</p>
+            <p className="mt-2 text-[17px] font-semibold text-[#172126]">Chat with sales</p>
           </a>
 
           <a
@@ -93,10 +93,10 @@ export default function ContactPage() {
                 contact_method: 'phone'
               })
             }
-            className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#145b5f]"
+            className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#00855a]"
           >
-            <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#6a7683]">Phone</p>
-            <p className="mt-2 text-[17px] font-semibold text-[#14181c]">{SEO_BRAND_PHONE}</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#68726f]">Phone</p>
+            <p className="mt-2 text-[17px] font-semibold text-[#172126]">{SEO_BRAND_PHONE}</p>
           </a>
 
           <a
@@ -109,26 +109,26 @@ export default function ContactPage() {
                 contact_method: 'email'
               })
             }
-            className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#145b5f]"
+            className="rounded-[12px] border border-[#d6ddd9] bg-white px-5 py-5 transition-colors hover:border-[#00855a]"
           >
-            <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#6a7683]">Email</p>
-            <p className="mt-2 text-[17px] font-semibold text-[#14181c] break-all">{SEO_BRAND_EMAIL}</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#68726f]">Email</p>
+            <p className="mt-2 text-[17px] font-semibold text-[#172126] break-all">{SEO_BRAND_EMAIL}</p>
           </a>
         </div>
 
         <section className="mt-8 grid gap-5 border-y border-[#d8d3c8] py-7 md:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#145b5f]">Showroom</p>
-            <h2 className="mt-2 text-[24px] font-semibold tracking-tight text-[#14181c]">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#007653]">Showroom</p>
+            <h2 className="mt-2 text-[24px] font-semibold tracking-tight text-[#172126]">
               {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}
             </h2>
-            <p className="mt-2 text-[15px] font-semibold leading-[1.55] text-[#1d232a]">
+            <p className="mt-2 text-[15px] font-semibold leading-[1.55] text-[#172126]">
               {SEO_BRAND_STREET_ADDRESS}, {SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}
             </p>
-            <p className="mt-2 text-[14px] text-[#4d555e]">
-              <span className="font-semibold text-[#14181c]">Hours:</span> Mon–Fri, 9am–6pm (showroom by appointment)
+            <p className="mt-2 text-[14px] text-[#59635f]">
+              <span className="font-semibold text-[#172126]">Hours:</span> Mon–Fri, 9am–6pm (showroom by appointment)
             </p>
-            <p className="mt-3 text-[15px] leading-[1.65] text-[#4d555e]">
+            <p className="mt-3 text-[15px] leading-[1.65] text-[#59635f]">
               Showroom viewing is available by appointment for buyers who want to compare office pod size, finish, comfort, and acoustic performance
               before confirming a quote.
             </p>
@@ -146,8 +146,8 @@ export default function ContactPage() {
             </div>
           </div>
           <div>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#145b5f]">Service areas</p>
-            <p className="mt-2 text-[15px] leading-[1.65] text-[#4d555e]">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#007653]">Service areas</p>
+            <p className="mt-2 text-[15px] leading-[1.65] text-[#59635f]">
               Ace Office Pods supports office pod enquiries, delivery planning, and installation coordination across Klang Valley and West Malaysia.
               Common project areas include Klang, Shah Alam, Petaling Jaya, Subang Jaya, Kuala Lumpur, Puchong, Cyberjaya, and Putrajaya.
             </p>

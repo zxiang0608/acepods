@@ -349,7 +349,7 @@ export default function HomePageV2() {
                                 className={`h-full w-full object-contain ${menuItem.imageClassName || ''}`}
                               />
                             </div>
-                            <h3 className="mt-4 text-[20px] font-semibold tracking-tight text-[#0e5a60]">{menuItem.title}</h3>
+                            <h3 className="mt-4 text-[20px] font-semibold tracking-tight text-[#007653]">{menuItem.title}</h3>
                             <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-stone-500">{menuItem.description}</p>
                           </Link>
                         ))}
@@ -495,7 +495,7 @@ export default function HomePageV2() {
                 { num: '1', label: 'team, start to finish' },
               ].map((stat) => (
                 <div key={stat.label} className="flex items-baseline gap-1.5">
-                  <span className="text-2xl font-bold text-[#4db891]">{stat.num}</span>
+                  <span className="text-2xl font-bold text-[#007653]">{stat.num}</span>
                   <span className="text-[13px] text-stone-400">{stat.label}</span>
                 </div>
               ))}
@@ -614,7 +614,7 @@ export default function HomePageV2() {
                   key={item.title}
                   className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e9e7e1]">
                     <item.icon size={24} strokeWidth={2} className="text-[#00855a]" />
                   </div>
                   <h3 className="mb-2 text-lg font-semibold text-stone-900">{item.title}</h3>
@@ -777,7 +777,7 @@ export default function HomePageV2() {
         <section id="guarantee" className="bg-stone-50 px-5 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-[800px]">
             <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm md:p-12">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e6f5f0]">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e9e7e1]">
                 <Shield size={24} strokeWidth={2} className="text-[#00855a]" />
               </div>
               <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">TÜV Certified Acoustic Performance</h3>
@@ -810,7 +810,7 @@ export default function HomePageV2() {
                 <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-stone-400">
                   Glass room / partition
                 </div>
-                <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-[#4db891]">
+                <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-[#007653]">
                   Ace Office Pod
                 </div>
               </div>
@@ -829,7 +829,7 @@ export default function HomePageV2() {
               Against a renovation, a pod isn't the expensive option. It's the obvious one.
             </p>
             <p className="mt-2 text-center text-base text-stone-400">
-              <Link to="/pod-relocation" className="font-semibold text-[#4db891] underline-offset-4 hover:underline">
+              <Link to="/pod-relocation" className="font-semibold text-[#007653] underline-offset-4 hover:underline">
                 See how pod relocation works →
               </Link>
             </p>
@@ -848,7 +848,7 @@ export default function HomePageV2() {
                   <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-stone-400">
                     Imported pod
                   </div>
-                  <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-[#4db891]">
+                  <div className="border-l border-stone-700 px-4 py-4 text-center text-[12px] font-bold uppercase tracking-widest text-[#007653]">
                     Ace Office Pod
                   </div>
                 </div>
@@ -861,7 +861,7 @@ export default function HomePageV2() {
                   >
                     <div className="px-4 py-4 text-sm text-stone-400 md:text-base">{row.label}</div>
                     <div className="border-l border-stone-700 px-4 py-4 text-center text-sm text-stone-400 md:text-base">{row.imported}</div>
-                    <div className={`border-l border-stone-700 px-4 py-4 text-center text-sm md:text-base ${row.highlight ? 'font-bold text-[#4db891]' : 'font-medium text-white'}`}>
+                    <div className={`border-l border-stone-700 px-4 py-4 text-center text-sm md:text-base ${row.highlight ? 'font-bold text-[#007653]' : 'font-medium text-white'}`}>
                       {row.aceMyr ? <PodPrice myrAmount={row.aceMyr} /> : row.ace}
                     </div>
                   </div>

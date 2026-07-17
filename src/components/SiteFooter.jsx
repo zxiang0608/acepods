@@ -75,7 +75,7 @@ export default function SiteFooter({ className = 'mt-0' }) {
   };
 
   return (
-    <footer className={`${className} bg-[#121212] px-5 pb-12 pt-14 text-left text-white md:px-12 md:pt-20`}>
+    <footer className={`${className} bg-[#172126] px-5 pb-12 pt-14 text-left text-white md:px-12 md:pt-20`}>
       <div className="mx-auto max-w-[1280px]">
         <div className="space-y-6 md:hidden">
           <div className="space-y-4">

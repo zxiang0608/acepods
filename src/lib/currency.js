@@ -3,6 +3,8 @@ const CACHE_TTL = 24 * 60 * 60 * 1000;
 const PREF_KEY = 'ace_currency_pref';
 const CURRENCY_EVENT = 'ace_currency_change';
 
+export const FALLBACK_RATES = { usd: 0.22, sgd: 0.29 };
+
 export function isLocalMarket() {
   try {
     return Intl.DateTimeFormat().resolvedOptions().timeZone === 'Asia/Kuala_Lumpur';
@@ -44,7 +46,7 @@ export async function fetchRates() {
     localStorage.setItem(CACHE_KEY, JSON.stringify({ usd, sgd, ts: Date.now() }));
     return { usd, sgd };
   } catch {
-    return null;
+    return FALLBACK_RATES;
   }
 }
 

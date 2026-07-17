@@ -39,17 +39,17 @@ export default function LocationsPage() {
       />
 
       <section className="mx-auto w-full max-w-[1120px] px-5 pb-10 pt-10 md:px-8 md:pb-14 md:pt-12">
-        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#65707a]">
-          <Link to="/" className="hover:text-[#145b5f]">
+        <nav aria-label="Breadcrumb" className="mb-5 text-[13px] text-[#68726f]">
+          <Link to="/" className="hover:text-[#007653]">
             Home
           </Link>{' '}
           / <span>Locations</span>
         </nav>
-        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#145b5f]">Project-backed service areas</p>
-        <h1 className="mt-3 max-w-[18ch] text-[34px] font-bold leading-[1.08] tracking-tight text-[#14181c] md:text-[50px]">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#007653]">Project-backed service areas</p>
+        <h1 className="mt-3 max-w-[18ch] text-[34px] font-bold leading-[1.08] tracking-tight text-[#172126] md:text-[50px]">
           Office pod delivery locations
         </h1>
-        <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65] text-[#454d56] md:text-[18px]">
+        <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65] text-[#59635f] md:text-[18px]">
           Explore areas where Ace Office Pods has completed customer installations. Each location page uses real project examples to show the pod
           models delivered and the local installation context.
         </p>
@@ -62,16 +62,16 @@ export default function LocationsPage() {
               key={location.slug}
               className={`py-7 md:px-6 md:py-9 ${index > 0 ? 'border-t border-[#d8d3c8] md:border-l md:border-t-0' : ''}`}
             >
-              <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#65707a]">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#68726f]">
                 {location.projects.length} completed {location.projects.length === 1 ? 'project' : 'projects'}
               </p>
-              <h2 className="mt-2 text-[25px] font-semibold tracking-tight text-[#14181c]">{location.shortName}</h2>
+              <h2 className="mt-2 text-[25px] font-semibold tracking-tight text-[#172126]">{location.shortName}</h2>
               <p className="mt-3 text-[15px] leading-[1.6] text-[#505860]">
                 {location.projects.map((project) => project.company).join(', ')}
               </p>
               <Link
                 to={`/locations/${location.slug}`}
-                className="mt-5 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline"
+                className="mt-5 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
               >
                 View office pod projects in {location.city}
               </Link>
@@ -82,22 +82,22 @@ export default function LocationsPage() {
 
       <section className="mx-auto grid w-full max-w-[1120px] gap-8 px-5 py-12 md:grid-cols-2 md:px-8 md:py-16">
         <div>
-          <h2 className="text-[27px] font-semibold tracking-tight text-[#14181c]">Delivery beyond these project locations</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[27px] font-semibold tracking-tight text-[#172126]">Delivery beyond these project locations</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             Ace Office Pods also supports enquiries across Klang Valley and West Malaysia. Locations listed here are the first dedicated pages
             because they are supported by completed customer installations and usable project photography.
           </p>
-          <Link to="/office-pods-near-me" className="mt-5 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+          <Link to="/office-pods-near-me" className="mt-5 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline">
             See broader service coverage
           </Link>
         </div>
         <div className="border-l-0 border-[#d8d3c8] md:border-l md:pl-8">
-          <h2 className="text-[27px] font-semibold tracking-tight text-[#14181c]">Showroom in Klang</h2>
-          <p className="mt-3 text-[16px] leading-[1.65] text-[#4d555e]">
+          <h2 className="text-[27px] font-semibold tracking-tight text-[#172126]">Showroom in Klang</h2>
+          <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
             These are delivery and installation areas, not separate Ace branches. The physical showroom remains in Klang, Selangor, with viewing
             available by appointment.
           </p>
-          <Link to="/contact" className="mt-5 inline-flex text-[14px] font-semibold text-[#145b5f] underline-offset-4 hover:underline">
+          <Link to="/contact" className="mt-5 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline">
             Book a showroom appointment
           </Link>
         </div>
