@@ -1417,8 +1417,6 @@ export const ARTICLES = [
       '## Frequently asked questions',
       '### How do I compare acoustic ratings between office pod brands in Malaysia?',
       'First confirm the measurement standard used by each brand — STC, NIC, and dB(A) are different measurements and cannot be directly compared. Then check whether the figure is independently certified by a named testing body or self-reported by the manufacturer. Only compare figures using the same standard from credible independent certifiers. A certified −27 dB(A) figure from TÜV is a verifiable, comparable benchmark.',
-      '### Is InstaPod a good office pod brand in Malaysia?',
-      'InstaPod is an established supplier with documented installation history and more than 126 Google reviews — a genuine reputation signal. Before shortlisting any supplier, including InstaPod, apply the standard criteria: request the acoustic test certificate, confirm the full installed price to your location, and ask for a local client reference in a similar environment.',
       '### What is the difference between Malaysian-made and imported office pods?',
       'Locally manufactured pods typically offer faster lead times, lower logistics costs, and a clearer local support path. Imported pods may carry premium finishes or international certification marks. The relevant questions are: who handles a warranty claim (local or overseas?), who installs the product, and what is the realistic lead time from deposit to installation? These matter more than country of origin.',
       '### Should I visit a showroom before buying an office pod in Malaysia?',
