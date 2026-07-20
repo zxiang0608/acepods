@@ -667,142 +667,75 @@ export default function App() {
       </div>
 
       <div className="pt-[64px] md:pt-[80px]">
-        <section className="relative bg-white px-5 md:px-12">
-          <div className="mx-auto w-full max-w-[1440px]">
-            <div className="md:hidden">
-              {/* Keep the decision path clear on mobile before introducing the image. */}
-              <div className="px-5 pb-7 pt-8">
-                <h1 className="max-w-[11ch] text-[38px] font-bold leading-[1.02] tracking-[-0.03em] text-[#0f2239]">
-                  {heroHeadline}
-                </h1>
-                <p className="mt-4 max-w-[31ch] text-[17px] font-medium leading-[1.5] text-[#40505b]">
-                  {heroSupportingText}
-                </p>
+        <section className="px-0 pt-0 md:px-12 md:pt-7">
+          <div className="mx-auto max-w-[1440px] overflow-hidden bg-[#172126]">
+            <div className="relative min-h-[610px] overflow-hidden md:min-h-[620px]">
+              <picture>
+                <source srcSet={acePodsHeroAvif} type="image/avif" />
+                <img
+                  src={acePodsHero}
+                  alt="Acoustic office pods for calls and focused work in an open office"
+                  width="1672"
+                  height="941"
+                  className="demo2-mobile-hero-pan absolute inset-0 h-full w-full object-cover object-[50%_42%] brightness-[0.91] contrast-[0.94] saturate-[0.82] md:brightness-[1.05]"
+                  fetchPriority="high"
+                />
+              </picture>
 
-                <div className="mt-6 flex flex-col gap-3">
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() =>
-                      pushDataLayerEvent('whatsapp_click', {
-                        cta_location: 'homepage_hero',
-                        cta_text: 'Visit the Showroom',
-                        destination_url: WHATSAPP_LINK,
-                        contact_method: 'whatsapp'
-                      })
-                    }
-                    className="w-full rounded-[6px] bg-[#00855a] px-4 py-3.5 text-center text-[16px] font-bold text-white"
-                  >
-                    Visit the Showroom
-                  </a>
-                  <Link
-                    to="/pricing#all-pod-prices"
-                    onClick={() =>
-                      pushDataLayerEvent('pricing_cta_click', {
-                        cta_location: 'homepage_hero',
-                        cta_text: 'Get Pricing',
-                        destination_url: '/pricing#all-pod-prices'
-                      })
-                    }
-                    className="w-full rounded-[6px] border border-[#1f2937] px-4 py-3.5 text-center text-[16px] font-semibold text-[#172126]"
-                  >
-                    Get Pricing
-                  </Link>
-                </div>
-              </div>
-
-              <div className="overflow-hidden">
-                <picture>
-                  <source srcSet={acePodsHeroAvif} type="image/avif" />
-                  <img
-                    src={acePodsHero}
-                    alt="Acoustic office pods for calls and focused work in an open office"
-                    width="1672"
-                    height="941"
-                    className="h-[240px] w-full object-cover object-[68%_45%] brightness-[1.04] contrast-[0.95] saturate-[0.84]"
-                    fetchPriority="high"
-                  />
-                </picture>
-              </div>
-            </div>
-
-            <div className="relative hidden h-[520px] w-full overflow-hidden pb-8 sm:h-[560px] sm:pb-8 md:block lg:h-[600px] lg:pb-0">
-              <div className="absolute inset-0 z-0">
-                <picture>
-                  <source srcSet={acePodsHeroAvif} type="image/avif" />
-                  <img
-                    src={acePodsHero}
-                    alt="Acoustic office pods for calls and focused work in an open office"
-                    width="1672"
-                    height="941"
-                    className="h-full w-full object-cover object-[62%_38%] brightness-[1.05] contrast-[0.94] saturate-[0.82] sm:object-[60%_38%] md:object-[62%_40%] lg:object-[50%_42%]"
-                    fetchPriority="high"
-                  />
-                </picture>
-              </div>
-
-              <div className="relative z-10 flex h-full w-full items-center px-4 md:px-12 lg:grid lg:grid-cols-2">
-                <div className="relative isolate w-full text-left text-white lg:col-start-1 lg:col-end-2 lg:w-[86%] lg:justify-self-start">
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -inset-x-10 -inset-y-9 -z-10 bg-[radial-gradient(ellipse_at_38%_48%,rgba(5,13,18,0.68)_0%,rgba(5,13,18,0.46)_42%,rgba(5,13,18,0.16)_62%,transparent_78%)] blur-[5px]"
-                  />
-                  <div className="max-w-none md:max-w-[520px]">
-                    <h1 className="mb-5 max-w-[10ch] text-[45px] font-bold leading-[1.02] tracking-[-0.035em] [text-shadow:0_3px_18px_rgba(0,0,0,0.58)] md:text-[58px] lg:text-[62px]">
-                      {heroHeadline}
-                    </h1>
-                    <p className="mb-7 max-w-[29ch] text-[18px] font-medium leading-[1.48] text-white/92 [text-shadow:0_2px_14px_rgba(0,0,0,0.54)] md:text-[20px]">
-                      {heroSupportingText}
-                    </p>
-                    <div className="flex flex-row items-stretch justify-start gap-3 md:items-center md:gap-4">
-                      <a
-                        href={WHATSAPP_LINK}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() =>
-                          pushDataLayerEvent('whatsapp_click', {
-                            cta_location: 'homepage_hero',
-                            cta_text: 'Visit the Showroom',
-                            destination_url: WHATSAPP_LINK,
-                            contact_method: 'whatsapp'
-                          })
-                        }
-                        className="min-w-0 flex-1 whitespace-nowrap rounded-[6px] bg-[#00855a] px-3.5 py-2.5 text-center text-[14px] font-bold text-white transition-colors hover:bg-[#006e4a] md:min-w-[205px] md:flex-none md:rounded-full md:px-8 md:py-3 md:text-[18px]"
-                      >
-                        Visit the Showroom
-                      </a>
-                      <Link
-                        to="/pricing#all-pod-prices"
-                        onClick={() =>
-                          pushDataLayerEvent('pricing_cta_click', {
-                            cta_location: 'homepage_hero',
-                            cta_text: 'Get Pricing',
-                            destination_url: '/pricing#all-pod-prices'
-                          })
-                        }
-                        className="min-w-0 flex-1 rounded-[6px] border border-white/80 bg-transparent px-3.5 py-2.5 text-center text-[14px] font-semibold text-white transition-colors hover:bg-white/10 md:min-w-[170px] md:flex-none md:rounded-full md:px-8 md:py-3 md:text-[18px]"
-                      >
-                        Get Pricing
-                      </Link>
-                    </div>
+              <div className="absolute inset-0 bg-black/40 md:hidden" />
+              <div className="relative flex min-h-[610px] items-center px-7 md:min-h-[620px] md:px-12 lg:px-16">
+                <div className="max-w-[535px] py-10 text-white md:py-12">
+                  <h1 className="max-w-[15ch] text-[54px] font-semibold leading-[0.96] tracking-[-0.055em] [text-shadow:0_2px_16px_rgba(0,0,0,0.55),0_1px_4px_rgba(0,0,0,0.45)] md:text-[64px]">
+                    Less noise.<br />More work done.
+                  </h1>
+                  <p className="mt-8 max-w-[31ch] text-[19px] font-normal leading-[1.48] text-white/92 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] md:text-[20px]">
+                    {heroSupportingText}
+                  </p>
+                  <div className="mt-9 flex flex-col gap-3 md:flex-row">
+                    <a
+                      href={WHATSAPP_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        pushDataLayerEvent('whatsapp_click', {
+                          cta_location: 'homepage_hero',
+                          cta_text: 'Visit the Showroom',
+                          destination_url: WHATSAPP_LINK,
+                          contact_method: 'whatsapp'
+                        })
+                      }
+                      className="w-full bg-[#00855a] px-7 py-4 text-center text-[16px] font-semibold text-white transition-colors hover:bg-[#006e4a] md:w-auto md:py-3.5"
+                    >
+                      Visit the Showroom
+                    </a>
+                    <Link
+                      to="/pricing#all-pod-prices"
+                      onClick={() =>
+                        pushDataLayerEvent('pricing_cta_click', {
+                          cta_location: 'homepage_hero',
+                          cta_text: 'Get Pricing',
+                          destination_url: '/pricing#all-pod-prices'
+                        })
+                      }
+                      className="w-full border border-white/70 px-7 py-4 text-center text-[16px] font-semibold text-white transition-colors hover:bg-white/10 md:w-auto md:py-3.5 md:font-medium"
+                    >
+                      Get Pricing
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* ── TRUST BAR ── */}
-        <div className="h-4 bg-white md:hidden" />
-        <section className="bg-[#0b1e30] px-5 py-3.5 md:px-12">
-          <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
-            {heroProofItems.map((item) => (
-              <div key={item.label} className="flex items-center gap-2">
-                <item.icon size={14} strokeWidth={2} className="shrink-0 text-[#007653]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/90">{item.label}</span>
+            <div className="border-t border-white/12 bg-[#132126] px-7 py-6 md:px-12 md:py-5">
+              <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
+                {heroProofItems.map((item) => (
+                  <div key={item.label} className="flex items-center gap-2">
+                    <item.icon size={14} strokeWidth={2} className="shrink-0 text-[#007653]" />
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/90">{item.label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </section>
 
