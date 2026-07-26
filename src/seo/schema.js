@@ -33,6 +33,11 @@ export const organizationSchema = {
   identifier: SEO_BRAND_IDENTIFIER,
   url: SEO_BASE_URL,
   logo: SEO_BRAND_LOGO,
+  founder: {
+    '@type': 'Person',
+    name: 'ZX Tay',
+    jobTitle: 'Co-Founder'
+  },
   email: SEO_BRAND_EMAIL,
   telephone: SEO_BRAND_PHONE,
   areaServed: {

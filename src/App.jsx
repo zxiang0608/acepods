@@ -21,6 +21,7 @@ import {
 import acePodsLogo from '../Logos/ace pods logo.png';
 import acePodsHero from '../assets/hero-pods.webp';
 import acePodsHeroAvif from '../assets/hero-pods.avif';
+import zxTayPhoto from '../assets/zx-tay.webp';
 import aceFlexGreyAshCutout from '../assets/homepage-cutouts/ace-flex-grey-ash-cutout.png';
 import aceMeetGreyAshCutout from '../assets/homepage-cutouts/ace-meet-grey-ash-cutout.png';
 import aceHubGreyAshCutout from '../assets/homepage-cutouts/ace-hub-grey-ash-cutout.png';
@@ -1004,6 +1005,25 @@ export default function App() {
               <span className="mb-4 block text-[12px] font-bold uppercase tracking-[0.24em] text-[#757d86] md:mb-5 md:text-[13px]">BEYOND THE PRODUCT</span>
               <h2 className="text-[22px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[32px]">Why Choose Ace Pods</h2>
               <p className="mx-auto mt-5 max-w-[760px] text-[15px] leading-[1.6] text-[#4c545d] md:text-[17px]">{compareSupportingLine}</p>
+              <div className="mx-auto mt-9 flex max-w-[600px] flex-col items-center gap-5 border-t border-[#e4e2dc] pt-9 sm:flex-row sm:items-center sm:gap-6 sm:text-left">
+                <img
+                  src={zxTayPhoto}
+                  alt="ZX Tay, co-founder of Ace Office Pods"
+                  width="84"
+                  height="84"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-[84px] w-[84px] shrink-0 rounded-full object-cover ring-1 ring-black/10"
+                />
+                <div>
+                  <p className="text-[15px] leading-[1.6] text-[#3f4750] [text-wrap:pretty] md:text-[16px]">
+                    “Too many teams get sold a box and left alone after delivery. I&nbsp;started Ace so one local team handles everything&nbsp;— delivery, installation, and after-sales support. If something&rsquo;s ever not right, you know exactly who to call.”
+                  </p>
+                  <p className="mt-3 text-[13px] font-semibold tracking-wide text-[#172126]">
+                    ZX Tay <span className="font-normal text-[#757d86]">· Co-Founder, Ace Office Pods</span>
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 lg:grid-cols-3">

@@ -1,0 +1,8 @@
+# Internal working files — never deploy to the build context
+.claude
+.agents
+memory
+skills-lock.json
+whatsapp_analysis.md
+# Large unused source original (only the optimized webp is imported)
+assets/JSN09633.jpg
