@@ -1495,7 +1495,7 @@ export const ARTICLES = [
     category: "Buyer's Guide",
     date: '2026-07-18',
     seoTitle: 'Comparing Office Pods Malaysia: How to Shortlist Correctly',
-    seoDescription: 'Most buyers compare office pods in Malaysia on price and photos. This guide covers the three things that actually matter: acoustic certification, installed cost, and after-sales support.',
+    seoDescription: 'Most buyers compare office pods in Malaysia on price and photos. The three things that actually matter: acoustic certification, installed cost, and after-sales support.',
     content: [
       'Most buyers comparing office pods in Malaysia start with the wrong criteria. They look at product photos, read marketing specification sheets, and shortlist based on unit price. These inputs feel useful, but they miss the factors that determine whether a pod actually performs after installation.',
       'This guide covers the three mistakes buyers commonly make when comparing office pods in Malaysia, and the criteria that produce a more reliable shortlist.',
