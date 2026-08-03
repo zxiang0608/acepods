@@ -18,13 +18,11 @@ import aceFlexFrontTransparentImage from '../../assets/ace-flex-front-transparen
 import aceHubFrontTransparentImage from '../../assets/ace-hub-front-transparent.png';
 import aceMeetFrontTransparentImage from '../../assets/ace-meet-product-front-transparent-1024.png';
 import acePlusFrontTransparentImage from '../../assets/ace-plus-front-transparent.png';
-import aceUnoLinenSandImage from '../../assets/products/ace-uno/source/ace-uno-linen-sand.jpeg';
-import aceUnoSoftTurquoiseImage from '../../assets/products/ace-uno/source/ace-uno-soft-turquoise.jpeg';
-import aceUnoForestWhisperImage from '../../assets/products/ace-uno/source/ace-uno-forest-whisper.jpeg';
-import aceUnoSesameBlackImage from '../../assets/products/ace-uno/source/ace-uno-sesame-black.jpeg';
 import aceUnoDimensionsImage from '../../assets/products/ace-uno/source/ace-uno-dimensions.jpeg';
-import aceUnoColoursImage from '../../assets/products/ace-uno/source/ace-uno-colours.jpeg';
 import aceUnoCatalogImage from '../../assets/products/catalog/ace-uno.png';
+import aceUnoForestWhisperCatalogImage from '../../assets/products/catalog/ace-uno-forest-whisper.png';
+import aceUnoSesameBlackCatalogImage from '../../assets/products/catalog/ace-uno-sesame-black.png';
+import aceUnoSoftTurquoiseCatalogImage from '../../assets/products/catalog/ace-uno-soft-turquoise.png';
 import acePlusCatalogImage from '../../assets/products/catalog/ace-plus.png';
 import aceFlexCatalogImage from '../../assets/products/catalog/ace-flex.png';
 import aceFlexDuoCatalogImage from '../../assets/products/catalog/ace-flex-duo.png';
@@ -413,11 +411,11 @@ export const products = [
     name: 'Ace Uno',
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-uno'].shortDesc,
-    heroImage: aceUnoLinenSandImage,
+    heroImage: aceUnoCatalogImage,
     thumbImage: aceUnoCatalogImage,
     catalogImage: aceUnoCatalogImage,
     catalogImageClassName: 'mix-blend-multiply',
-    extraPreviewImages: [aceUnoCatalogImage, aceUnoColoursImage],
+    extraPreviewImages: [],
     customerPhotos: [],
     drawing2dImage: aceUnoDimensionsImage,
     cardSupport: 'Primary pod for private calls and focus',
@@ -433,12 +431,12 @@ export const products = [
       addOnOptions: [highBarStoolAddon]
     },
     colorImageMap: {
-      default: aceUnoLinenSandImage,
+      default: aceUnoCatalogImage,
       byExterior: {
-        'finish-linen-sand': aceUnoLinenSandImage,
-        'finish-forest-whisper': aceUnoForestWhisperImage,
-        'finish-sesame-black': aceUnoSesameBlackImage,
-        'finish-soft-turquoise': aceUnoSoftTurquoiseImage
+        'finish-linen-sand': aceUnoCatalogImage,
+        'finish-forest-whisper': aceUnoForestWhisperCatalogImage,
+        'finish-sesame-black': aceUnoSesameBlackCatalogImage,
+        'finish-soft-turquoise': aceUnoSoftTurquoiseCatalogImage
       }
     },
     hideThumbnailsOnColorMode: true,

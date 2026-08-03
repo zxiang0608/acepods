@@ -12,6 +12,21 @@ const products = [
     source: 'assets/products/ace-uno/source/ace-uno-linen-sand.jpeg',
     contentMode: 'non-white'
   },
+  {
+    slug: 'ace-uno-forest-whisper',
+    source: 'assets/products/ace-uno/source/ace-uno-forest-whisper.jpeg',
+    contentMode: 'non-white'
+  },
+  {
+    slug: 'ace-uno-sesame-black',
+    source: 'assets/products/ace-uno/source/ace-uno-sesame-black.jpeg',
+    contentMode: 'non-white'
+  },
+  {
+    slug: 'ace-uno-soft-turquoise',
+    source: 'assets/products/ace-uno/source/ace-uno-soft-turquoise.jpeg',
+    contentMode: 'non-white'
+  },
   { slug: 'ace-plus', source: 'assets/ace-plus-front-transparent.png' },
   { slug: 'ace-flex', source: 'assets/ace-flex-front-transparent.png' },
   { slug: 'ace-flex-duo', source: 'assets/ace-flex-duo-front-transparent.png' },

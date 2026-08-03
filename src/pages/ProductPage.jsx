@@ -157,10 +157,10 @@ const PDP_QUICK_ANSWER_COPY = {
   }
 };
 
-const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false }) => (
+const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false, showOptionLabels = false }) => (
   <div>
     {!hideHeading && <h3 className="mb-3 text-[16px] font-semibold text-[#172126]">{label}</h3>}
-    <div className="flex flex-wrap gap-2">
+    <div className={showOptionLabels ? 'grid grid-cols-2 gap-2' : 'flex flex-wrap gap-2'}>
       {options.map((color) => {
         const selected = color.id === selectedId;
         return (
@@ -168,16 +168,35 @@ const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false
             key={color.id}
             type="button"
             onClick={() => onSelect(color.id)}
-            className={`relative h-10 w-10 border transition-all ${selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#c9c9c9]'}`}
-            style={{ backgroundColor: color.hex }}
+            className={
+              showOptionLabels
+                ? `relative flex min-h-[52px] items-center gap-2 rounded-[4px] border bg-[#faf9f6] px-2 py-2 text-left transition-all ${
+                    selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d0d3d7] hover:border-[#9da7b1]'
+                  }`
+                : `relative h-10 w-10 border transition-all ${selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#c9c9c9]'}`
+            }
+            style={showOptionLabels ? undefined : { backgroundColor: color.hex }}
             aria-label={`${label}: ${color.label}`}
           >
-            {selected && <Check size={14} className="absolute right-1 top-1 text-white drop-shadow-[0_0_2px_rgba(0,0,0,0.75)]" />}
+            {showOptionLabels ? (
+              <>
+                <span
+                  className="relative h-7 w-7 shrink-0 border border-black/10"
+                  style={{ backgroundColor: color.hex }}
+                  aria-hidden="true"
+                >
+                  {selected && <Check size={13} className="absolute right-0.5 top-0.5 text-white drop-shadow-[0_0_2px_rgba(0,0,0,0.75)]" />}
+                </span>
+                <span className="text-[11px] font-medium leading-[1.25] text-[#3b3f45]">{color.label}</span>
+              </>
+            ) : (
+              selected && <Check size={14} className="absolute right-1 top-1 text-white drop-shadow-[0_0_2px_rgba(0,0,0,0.75)]" />
+            )}
           </button>
         );
       })}
     </div>
-    <p className="mt-2 text-[12px] font-medium text-[#68726f]">{options.find((option) => option.id === selectedId)?.label}</p>
+    {!showOptionLabels && <p className="mt-2 text-[12px] font-medium text-[#68726f]">{options.find((option) => option.id === selectedId)?.label}</p>}
   </div>
 );
 
@@ -1171,7 +1190,13 @@ export default function ProductPage() {
               <div className="mt-6 py-6 md:py-7 lg:flex-1">
                 <div className="grid gap-6 md:grid-cols-2 md:items-stretch md:gap-8">
                   <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
-                    <SwatchGroup label={exteriorLabel} options={product.exteriorColors} selectedId={selectedExterior} onSelect={handleExteriorSelect} />
+                    <SwatchGroup
+                      label={exteriorLabel}
+                      options={product.exteriorColors}
+                      selectedId={selectedExterior}
+                      onSelect={handleExteriorSelect}
+                      showOptionLabels={isAceUno}
+                    />
                     <div className="mt-6 border-t border-[#d8d8d8] pt-6">
                       {hasSplitInteriorSections ? (
                         <div className="space-y-6">
