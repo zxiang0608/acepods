@@ -11,15 +11,21 @@
 
 ## Product Specifications
 
-### Ace Solo
-- **Category:** 1-person compact call / focus pod
+### Ace Uno
+- **Category:** 1-person acoustic office pod
 - **Capacity:** 1 person
-- **Starting price:** From RM12,500
-- **External dimensions:** 1200mm × 1000mm (W × D), 2250mm height
-- **Internal dimensions:** 1078mm × 939mm (W × D), 2207mm height
-- **Room height requirement:** 2400mm minimum
-- **Best for:** Private phone calls, video meetings (Zoom/Teams), HR screening interviews, short focused work in open-plan offices
-- **Includes:** Built-in lighting, ventilation, power sockets
+- **Pod-only price:** RM8,800
+- **Standard Klang Valley installation:** RM500
+- **Standard Klang Valley delivery:** RM350
+- **Default Klang Valley total:** RM9,650
+- **External dimensions:** 1418mm × 1018mm (W × D), 2185mm height
+- **Best for:** Private calls, video meetings, and focused individual work
+- **Acoustic rating:** No published dB rating in the supplied Ace Uno product sheet
+- **Exterior colours:** Forest Whisper, Sesame Black, Soft Turquoise, Linen Sand
+- **Interior:** Linen Sand PET
+- **Worktop:** Natural Oak MFC
+- **Includes:** 4000K 6W LED, dual 108 CFM fans, universal power socket, USB Type-A, and USB Type-C
+- **Construction:** Steel frame with MFC, 9mm polyester fibre acoustic panels, 10mm clear tempered-glass door, laminated safety-glass rear panel
 - **Lead time:** Approximately 3–6 weeks after 50% deposit
 - **Manufacturing:** 100% locally made in Malaysia
 
@@ -93,14 +99,14 @@
 
 | Model | Capacity | W × D (mm) | From |
 |---|---|---|---|
-| Ace Solo | 1 pax | 1200 × 1000 | RM12,500 |
+| Ace Uno | 1 pax | 1418 × 1018 | RM8,800 pod only |
 | Ace Plus | 1 pax | 1000 × 1000 | RM14,500 |
 | Ace Flex | 1 pax | 1600 × 1200 | RM19,900 |
 | Ace Flex Duo | 2 pax | 1600 × 1200 | RM23,900 |
 | Ace Meet | 2–4 pax | 2200 × 1200 | RM22,200 |
 | Ace Hub | Up to 6 pax | 2200 × 1500 | RM27,800 |
 
-Final pricing depends on model, quantity, delivery location, site access, installation scope, finishes, and optional add-ons.
+Ace Uno's standard Klang Valley total is RM9,650: RM8,800 pod, RM500 installation, and RM350 delivery. Other final pricing depends on model, quantity, delivery location, site access, installation scope, finishes, and optional add-ons.
 
 ---
 
@@ -120,10 +126,10 @@ Payment: 50% deposit to start production, balance before delivery.
 ## Completed Client Installations
 
 - Parker Hannifin — Ace Flex, Kuala Lumpur
-- CMA CGM — Ace Solo, Bangsar, Kuala Lumpur
+- CMA CGM — Legacy Ace Solo, Bangsar, Kuala Lumpur
 - Taylor's College — Ace Plus, Subang Jaya
 - Everllence — Ace Plus, Kuala Lumpur
-- Alphabet Capital — Ace Solo, Shah Alam
+- Alphabet Capital — Legacy Ace Solo, Shah Alam
 - MATRADE — Kuala Lumpur
 - WS Construction — Malaysia
 - ID Candy — Malaysia
@@ -135,19 +141,19 @@ Payment: 50% deposit to start production, balance before delivery.
 ## Frequently Asked Questions
 
 ### How much does an office pod cost in Malaysia?
-Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons. Contact the team for an accurate project quotation.
+Ace Office Pods start from RM8,800 for the one-person Ace Uno pod and from RM22,200 for a meeting pod in Malaysia. Ace Uno's standard Klang Valley total is RM9,650 after RM500 installation and RM350 delivery. Other project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.
 
 ### What is included in the office pod price?
-Our office pod price in Malaysia typically includes the full pod unit, built-in lighting, ventilation, power sockets, and interior furniture based on model type. Delivery and installation within Klang Valley are included under the agreed project scope. We confirm inclusions clearly before final approval.
+Inclusions vary by model. Ace Uno's RM8,800 price is for the pod only and includes its worktop, lighting, ventilation, power, and USB charging. Standard Klang Valley delivery and installation are itemised at RM350 and RM500. We confirm other model and project inclusions before final approval.
 
 ### What affects the final office pod price?
 The final office pod price depends on pod size, model type, order quantity, customization, and site access conditions. For example, lift access and staircase handling can affect installation complexity and cost. These factors are reviewed early so buyers can compare confidently.
 
 ### Which office pod is suitable for calls, focused work, or meetings?
-Ace Solo and Ace Plus are suited for calls, Zoom meetings, and focused solo work. Ace Flex supports one-to-one discussions and shared focused tasks. Ace Meet and Ace Hub are designed for small team meetings and collaboration.
+Ace Uno and Ace Plus suit calls, video meetings, and focused individual work. Ace Flex is a more spacious one-person option. Ace Flex Duo supports two-person discussions, while Ace Meet and Ace Hub are designed for team meetings and collaboration.
 
 ### How soundproof are office pods in real working environments?
-Our office pods achieve approximately 27 dBA noise reduction in real office use. This reduces surrounding noise significantly and improves privacy for calls and meetings. They are highly effective, but not completely 100% soundproof.
+Acoustic performance is model-specific and no pod should be treated as completely soundproof. Ace Uno's supplied product sheet does not publish a dB rating. Review the stated specification and applicable test documentation for the model being considered.
 
 ### Are office pods suitable for Malaysia office environments (heat and ventilation)?
 Yes. Our office pods are designed with built-in ventilation and steady airflow for Malaysia office conditions. This helps maintain comfort even during longer usage periods.
@@ -255,12 +261,12 @@ Physical showroom: Jalan Gopeng, Kawasan 18, 41400 Klang, Selangor. Viewing by a
 |---|---|---|---|
 | Everllence | Kuala Lumpur | Ace Plus | Private client calls, focused financial advisory work |
 | Parker Hannifin | Kuala Lumpur | Ace Flex | Private calls and focused work |
-| Alphabet Capital | Shah Alam, Selangor | Ace Solo | Private calls and focused work |
-| CMA CGM | Bangsar, Kuala Lumpur | Ace Solo | Confidential logistics and shipping operations calls |
+| Alphabet Capital | Shah Alam, Selangor | Legacy Ace Solo | Private calls and focused work |
+| CMA CGM | Bangsar, Kuala Lumpur | Legacy Ace Solo | Confidential logistics and shipping operations calls |
 | Taylor's College | Subang Jaya, Selangor | Ace Plus | Student advisory and administrative private sessions |
 | JY Elite | Kuala Lumpur | Ace Plus | Corporate office, private meeting and call use |
-| MATRADE | Kuala Lumpur | Ace Solo | Government trade promotion agency, open-plan office |
-| WS Construction | Selangor | Ace Solo | Site management office, private call zone |
+| MATRADE | Kuala Lumpur | Legacy Ace Solo | Government trade promotion agency, open-plan office |
+| WS Construction | Selangor | Legacy Ace Solo | Site management office, private call zone |
 | ID Candy | Kuala Lumpur | Ace Plus | Interior design studio, client consultation privacy |
 | Rightwill | Kuala Lumpur | Ace Plus | Corporate advisory, confidential meeting pod |
 

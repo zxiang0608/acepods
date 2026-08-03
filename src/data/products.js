@@ -1,15 +1,8 @@
-import aceSoloCutout from '../../assets/ace-solo-cutout.png';
-import aceSoloPlusCutout from '../../assets/ace-solo-plus-cutout.png';
-import aceDuoCutout from '../../assets/ace-duo-cutout.png';
-import aceMeetingCutout from '../../assets/ace-meeting-cutout.png';
-import aceMeetingXLCutout from '../../assets/ace-meeting-XL-cutout.png';
-import aceSoloHero from '../../assets/ace-solo.png';
 import aceSoloPlusHero from '../../assets/ace-solo-plus.png';
 import aceDuoHero from '../../assets/ace-duo.png';
 import aceFlexDuoHero from '../../assets/ace-flex-duo-hero.png';
 import aceMeetingHero from '../../assets/ace-meeting.png';
 import aceMeetingXLHero from '../../assets/ace-meeting-XL.png';
-import aceSolo2d from '../../assets/2D images/ace-solo-corrected-dimensions.png';
 import aceSoloPlus2d from '../../assets/2D images/2. Ace Plus.png';
 import aceDuo2d from '../../assets/2D images/3. Ace Flex.png';
 import aceMeeting2d from '../../assets/2D images/4. Ace Meet with Sofa and Table.png';
@@ -25,6 +18,18 @@ import aceFlexFrontTransparentImage from '../../assets/ace-flex-front-transparen
 import aceHubFrontTransparentImage from '../../assets/ace-hub-front-transparent.png';
 import aceMeetFrontTransparentImage from '../../assets/ace-meet-product-front-transparent-1024.png';
 import acePlusFrontTransparentImage from '../../assets/ace-plus-front-transparent.png';
+import aceUnoLinenSandImage from '../../assets/products/ace-uno/source/ace-uno-linen-sand.jpeg';
+import aceUnoSoftTurquoiseImage from '../../assets/products/ace-uno/source/ace-uno-soft-turquoise.jpeg';
+import aceUnoForestWhisperImage from '../../assets/products/ace-uno/source/ace-uno-forest-whisper.jpeg';
+import aceUnoSesameBlackImage from '../../assets/products/ace-uno/source/ace-uno-sesame-black.jpeg';
+import aceUnoDimensionsImage from '../../assets/products/ace-uno/source/ace-uno-dimensions.jpeg';
+import aceUnoColoursImage from '../../assets/products/ace-uno/source/ace-uno-colours.jpeg';
+import aceUnoCatalogImage from '../../assets/products/catalog/ace-uno.png';
+import acePlusCatalogImage from '../../assets/products/catalog/ace-plus.png';
+import aceFlexCatalogImage from '../../assets/products/catalog/ace-flex.png';
+import aceFlexDuoCatalogImage from '../../assets/products/catalog/ace-flex-duo.png';
+import aceMeetCatalogImage from '../../assets/products/catalog/ace-meet.png';
+import aceHubCatalogImage from '../../assets/products/catalog/ace-hub.png';
 import meetTableNormalizedImage from '../../assets/meet-table-normalized.png';
 import meetAdjustableNormalizedImage from '../../assets/meet-adjustable-normalized.png';
 import meetTableWhiteboardNormalizedImage from '../../assets/meet-table-whiteboard-normalized.png';
@@ -36,21 +41,8 @@ import hubTableNormalizedImage from '../../assets/hub-table-normalized.png';
 import hubCentreTableWhiteboardNormalizedImage from '../../assets/hub-centre-table-whiteboard-normalized.png';
 import greyAsh01NormalizedImage from '../../assets/grey-ash-01-normalized.png';
 import hubTableSofaWhiteboardNormalizedImage from '../../assets/hub-table-sofa-whiteboard-normalized.png';
-import podsInstallation from '../../assets/pods-installation.webp';
-import deliveryPods from '../../assets/delivery-pods.webp';
-import openOffice from '../../assets/open-office.webp';
 import barStoolBlack from '../../assets/bar-stool-black.png';
 import barStoolWhite from '../../assets/bar-stool-white.png';
-import soloFeature01 from '../../assets/features/For ace solo only/to post-01.png';
-import soloFeature02 from '../../assets/features/For ace solo only/to post-02.png';
-import soloFeature03 from '../../assets/features/For ace solo only/to post-03.png';
-import soloFeature04 from '../../assets/features/For ace solo only/to post-04.png';
-import soloFeature05 from '../../assets/features/For ace solo only/to post-05.png';
-import soloFeature06 from '../../assets/features/For ace solo only/to post-06.png';
-import soloFeature07 from '../../assets/features/For ace solo only/to post-07.png';
-import soloFeature08 from '../../assets/features/For ace solo only/to post-08.png';
-import soloFeature09 from '../../assets/features/For ace solo only/to post-09.png';
-import soloFeature10 from '../../assets/features/For ace solo only/to post-10.png';
 import plusFeature11 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/11-trimmed.png';
 import plusFeature12 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/12-trimmed.png';
 import plusFeature21 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/21-normalized-v2.png';
@@ -58,7 +50,6 @@ import plusFeature14 from '../../assets/features/For ace plus and above/pictures
 import plusFeature15 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/15-trimmed.png';
 import plusFeature16 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/16-trimmed.png';
 import plusFeature17 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/17-trimmed.png';
-import plusFeature18 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/18-trimmed.png';
 import plusFeature19 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/19-trimmed.png';
 import plusFeature20 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/20-trimmed.png';
 import plusFeature22 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/22-trimmed.png';
@@ -69,50 +60,6 @@ import plusFeature26 from '../../assets/features/For ace plus and above/pictures
 import plusFeature27 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/27-trimmed.png';
 import plusFeature28 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/28-trimmed.png';
 import plusFeature29 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/29-trimmed.png';
-import aceSoloShimoAshImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ss-04-03.webp';
-import aceSoloCrossMetalImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/ss-04-01.webp';
-import aceSoloLarixPearlImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/ss-04-02.webp';
-import aceSoloShimoAshBlueImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-blue.png';
-import aceSoloShimoAshMoonlightGreyImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-dark grey.png';
-import aceSoloShimoAshTangerineImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/shimo ash - orange.png';
-import aceSoloShimoAshLightPlumImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-plum.png';
-import aceSoloShimoAshVividRedImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-red.png';
-import aceSoloShimoAshCreamyWhiteImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-white.png';
-import aceSoloShimoAshSesameBlackImage from '../../assets/POD images/ECO POD - Ace Solo/Shimo Ash/ash-black.png';
-import aceSoloCrossMetalSkyBlueImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-blue.png';
-import aceSoloCrossMetalMoonlightGreyImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-midnight grey.png';
-import aceSoloCrossMetalTangerineImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-orange.png';
-import aceSoloCrossMetalLightPlumImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-plum.png';
-import aceSoloCrossMetalCreamyWhiteImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-creamywhite.png';
-import aceSoloCrossMetalSesameBlackImage from '../../assets/POD images/ECO POD - Ace Solo/Cross Metal/grey-black.png';
-import aceSoloLarixPearlSkyBlueImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-sky blue.png';
-import aceSoloLarixPearlMoonlightGreyImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-dark grey.png';
-import aceSoloLarixPearlTangerineImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-orange.png';
-import aceSoloLarixPearlLightPlumImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-plum.png';
-import aceSoloLarixPearlCreamyWhiteImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-creamywhite.png';
-import aceSoloLarixPearlSesameBlackImage from '../../assets/POD images/ECO POD - Ace Solo/Larix Pearl/larix-black.png';
-import aceSoloCrossMetalCreamyWhiteImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalCreamyWhiteImage-normalized.png';
-import aceSoloCrossMetalImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalImage-normalized.png';
-import aceSoloCrossMetalLightPlumImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalLightPlumImage-normalized.png';
-import aceSoloCrossMetalMoonlightGreyImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalMoonlightGreyImage-normalized.png';
-import aceSoloCrossMetalSesameBlackImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalSesameBlackImage-normalized.png';
-import aceSoloCrossMetalSkyBlueImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalSkyBlueImage-normalized.png';
-import aceSoloCrossMetalTangerineImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloCrossMetalTangerineImage-normalized.png';
-import aceSoloLarixPearlCreamyWhiteImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlCreamyWhiteImage-normalized.png';
-import aceSoloLarixPearlImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlImage-normalized.png';
-import aceSoloLarixPearlLightPlumImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlLightPlumImage-normalized.png';
-import aceSoloLarixPearlMoonlightGreyImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlMoonlightGreyImage-normalized.png';
-import aceSoloLarixPearlSesameBlackImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlSesameBlackImage-normalized.png';
-import aceSoloLarixPearlSkyBlueImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlSkyBlueImage-normalized.png';
-import aceSoloLarixPearlTangerineImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloLarixPearlTangerineImage-normalized.png';
-import aceSoloShimoAshBlueImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshBlueImage-normalized.png';
-import aceSoloShimoAshCreamyWhiteImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshCreamyWhiteImage-normalized.png';
-import aceSoloShimoAshImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshImage-normalized.png';
-import aceSoloShimoAshLightPlumImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshLightPlumImage-normalized.png';
-import aceSoloShimoAshMoonlightGreyImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshMoonlightGreyImage-normalized.png';
-import aceSoloShimoAshSesameBlackImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshSesameBlackImage-normalized.png';
-import aceSoloShimoAshTangerineImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshTangerineImage-normalized.png';
-import aceSoloShimoAshVividRedImageNormalized from '../../assets/products/ace-solo/normalized/aceSoloShimoAshVividRedImage-normalized.png';
 import aceSoloPlusOrangeSquashImage from '../../assets/ace-plus-cutouts/ace-plus-orange-squash.png';
 import aceSoloPlusMustardYellowImage from '../../assets/ace-plus-cutouts/ace-plus-mustard-yellow.png';
 import aceSoloPlusGreenMossImage from '../../assets/ace-plus-cutouts/ace-plus-green-moss.png';
@@ -137,8 +84,6 @@ import aceMeetingGreenExteriorImage from '../../assets/POD images/Team Pod 4 sea
 import aceMeetingOceanBlueImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/ocean blue.png';
 import aceMeetingGreyAshImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/Grey ash.png';
 import aceMeetingCharcoalGreyImage from '../../assets/POD images/Team Pod 4 seater - Ace Meeting/All colours/charcoal grey.png';
-import aceMeetingXLDarkExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/6 pods.png';
-import aceMeetingXLFallbackExteriorImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/xl fallback normalized.png';
 import aceMeetingXLOrangeSquashImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/orange squash.png';
 import aceMeetingXLMustardYellowImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/mustard yellow.png';
 import aceMeetingXLGreenMossImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/Moss green.png';
@@ -156,8 +101,6 @@ import portfolioAlphabet05 from '../../assets/Portfolio/Alphabet Capital/ace-duo
 import portfolioAlphabet06 from '../../assets/Portfolio/Alphabet Capital/handle.jpg';
 import portfolioAlphabet07 from '../../assets/Portfolio/Alphabet Capital/knob.jpg';
 import portfolioAlphabet08 from '../../assets/Portfolio/Alphabet Capital/wall-inside-2.jpg';
-import portfolioCma02 from '../../assets/Portfolio/CMA CGM/20250703_114411.jpg';
-import portfolioCma03 from '../../assets/Portfolio/CMA CGM/20250703_120131.jpg';
 import portfolioTaylorPods from "../../assets/Portfolio/Taylor's College/20260209_143054.jpg";
 import portfolioTaylorFeature from "../../assets/Portfolio/Taylor's College/20260224_102358.jpg";
 import portfolioTaylorInstallation from "../../assets/Portfolio/Taylor's College/20260224_102416.jpg";
@@ -175,12 +118,6 @@ import portfolioOthers10 from '../../assets/Portfolio/Others/IMG-20250818-WA0015
 import portfolioOthers11 from '../../assets/Portfolio/Others/IMG-20250818-WA0016.jpg';
 import portfolioOthers12 from '../../assets/Portfolio/Others/IMG-20250818-WA0017.jpg';
 import portfolioOthers13 from '../../assets/Portfolio/Others/telepodklcc_1.webp';
-import portfolioParker01 from '../../assets/Portfolio/Parker Hannafin/20250702_125051.jpg';
-import portfolioParker02 from '../../assets/Portfolio/Parker Hannafin/20250702_130902.jpg';
-import portfolioParker03 from '../../assets/Portfolio/Parker Hannafin/20250702_130908.jpg';
-import portfolioParker04 from '../../assets/Portfolio/Parker Hannafin/20250702_130917.jpg';
-import portfolioParker05 from '../../assets/Portfolio/Parker Hannafin/20250702_131006.jpg';
-import portfolioParker06 from '../../assets/Portfolio/Parker Hannafin/20250702_131028.jpg';
 import portfolioAceHub01 from '../../assets/Portfolio/Ace hub/20260313_145941.jpg';
 import portfolioAceHub02 from '../../assets/Portfolio/Ace hub/20260313_145945.jpg';
 import portfolioAceHub03 from '../../assets/Portfolio/Ace hub/20260313_145948.jpg';
@@ -237,18 +174,6 @@ const meetingXLLShapeSofaAddon = {
   image: aceHubLShapeSofaImage,
   previewImage: aceHubLShapeSofaImage
 };
-const aceSoloPortfolioPhotos = [
-  portfolioCma02,
-  portfolioCma03,
-  portfolioParker01,
-  portfolioParker02,
-  portfolioParker03,
-  portfolioParker04,
-  portfolioParker05,
-  portfolioParker06,
-  barStoolBlack,
-  barStoolWhite
-];
 const acePlusPortfolioPhotos = [
   portfolioTaylorPods,
   portfolioTaylorFeature,
@@ -300,16 +225,6 @@ const aceHubPortfolioPhotos = [
   portfolioAceHub06,
   barStoolBlack,
   barStoolWhite
-];
-const soloFeatureRows = [
-  [soloFeature01, soloFeature02, soloFeature03, soloFeature04, soloFeature05, soloFeature06].map((image, index) => ({
-    id: `solo-feature-${index + 1}`,
-    image
-  })),
-  [soloFeature07, soloFeature08, soloFeature09, soloFeature10].map((image, index) => ({
-    id: `solo-feature-${index + 7}`,
-    image
-  }))
 ];
 const plusAndAboveFeatureItems = [
   {
@@ -490,130 +405,90 @@ const meetingXLExteriorImageMap = {
   'finish-charcoal-grey': aceMeetingXLCharcoalGreyImage
 };
 
-const aceFlexDuoExteriorImageMap = {
-  'finish-orange-squash': aceFlexDuoOrangeSquashImage,
-  'finish-mustard-yellow': aceFlexDuoMustardYellowImage,
-  'finish-green-moss': aceFlexDuoGreenMossImage,
-  'finish-ocean-blue': aceFlexDuoOceanBlueImage,
-  'finish-grey-ash': aceFlexDuoGreyAshImage,
-  'finish-charcoal-grey': aceFlexDuoCharcoalGreyImage
-};
-
 const formatFromPrice = (amount) => `From RM${amount.toLocaleString('en-MY')}`;
 
 export const products = [
   {
-    slug: 'ace-solo',
-    name: 'Ace Solo',
+    slug: 'ace-uno',
+    name: 'Ace Uno',
     breadcrumbLabel: 'Ace Pods',
-    shortDesc: POD_SEO_BY_SLUG['ace-solo'].shortDesc,
-    heroImage: aceSoloHero,
-    thumbImage: aceSoloCutout,
-    customerPhotos: aceSoloPortfolioPhotos,
-    drawing2dImage: aceSolo2d,
-    imageScale: 'scale-[1.30]',
-    hoverImg: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop',
-    cardSupport: 'Ideal for short daily use',
+    shortDesc: POD_SEO_BY_SLUG['ace-uno'].shortDesc,
+    heroImage: aceUnoLinenSandImage,
+    thumbImage: aceUnoCatalogImage,
+    catalogImage: aceUnoCatalogImage,
+    catalogImageClassName: 'mix-blend-multiply',
+    extraPreviewImages: [aceUnoCatalogImage, aceUnoColoursImage],
+    customerPhotos: [],
+    drawing2dImage: aceUnoDimensionsImage,
+    cardSupport: 'Primary pod for private calls and focus',
     pricing: {
-      amount: formatFromPrice(POD_SEO_BY_SLUG['ace-solo'].startingPrice),
-      note: 'Indicative pricing, final quote depends on finish and site conditions.'
+      amount: formatFromPrice(POD_SEO_BY_SLUG['ace-uno'].startingPrice),
+      note: 'Pod only. Delivery and installation are itemised separately.'
     },
     pdpPricing: {
-      baseConfigurations: [{ id: 'solo-unit', label: 'Unit only', price: POD_SEO_BY_SLUG['ace-solo'].startingPrice }],
+      baseConfigurations: [{ id: 'uno-unit', label: 'Pod only', price: POD_SEO_BY_SLUG['ace-uno'].startingPrice }],
       configurationOptions: [],
-      installationPerUnit: 350,
+      installationPerUnit: 500,
       delivery: deliveryDefaults,
       addOnOptions: [highBarStoolAddon]
     },
     colorImageMap: {
-      default: aceSoloShimoAshImageNormalized,
+      default: aceUnoLinenSandImage,
       byExterior: {
-        'finish-shimo-ash': aceSoloShimoAshImageNormalized,
-        'finish-cross-metal': aceSoloCrossMetalImageNormalized,
-        'finish-larix-pearl': aceSoloLarixPearlImageNormalized
-      },
-      byInterior: {
-        'int-shimo-ash': aceSoloShimoAshImageNormalized,
-        'int-sky-blue': aceSoloShimoAshBlueImageNormalized,
-        'int-moonlight-grey': aceSoloShimoAshMoonlightGreyImageNormalized,
-        'int-tangerine': aceSoloShimoAshTangerineImageNormalized,
-        'int-light-plum': aceSoloShimoAshLightPlumImageNormalized,
-        'int-vivid-red': aceSoloShimoAshVividRedImageNormalized,
-        'int-creamy-white': aceSoloShimoAshCreamyWhiteImageNormalized,
-        'int-sesame-black': aceSoloShimoAshSesameBlackImageNormalized
-      },
-      byPair: {
-        'finish-shimo-ash|int-shimo-ash': aceSoloShimoAshImageNormalized,
-        'finish-shimo-ash|int-sky-blue': aceSoloShimoAshBlueImageNormalized,
-        'finish-shimo-ash|int-moonlight-grey': aceSoloShimoAshMoonlightGreyImageNormalized,
-        'finish-shimo-ash|int-tangerine': aceSoloShimoAshTangerineImageNormalized,
-        'finish-shimo-ash|int-light-plum': aceSoloShimoAshLightPlumImageNormalized,
-        'finish-shimo-ash|int-vivid-red': aceSoloShimoAshVividRedImageNormalized,
-        'finish-shimo-ash|int-creamy-white': aceSoloShimoAshCreamyWhiteImageNormalized,
-        'finish-shimo-ash|int-sesame-black': aceSoloShimoAshSesameBlackImageNormalized,
-        'finish-cross-metal|int-shimo-ash': aceSoloCrossMetalImageNormalized,
-        'finish-cross-metal|int-sky-blue': aceSoloCrossMetalSkyBlueImageNormalized,
-        'finish-cross-metal|int-moonlight-grey': aceSoloCrossMetalMoonlightGreyImageNormalized,
-        'finish-cross-metal|int-tangerine': aceSoloCrossMetalTangerineImageNormalized,
-        'finish-cross-metal|int-light-plum': aceSoloCrossMetalLightPlumImageNormalized,
-        'finish-cross-metal|int-vivid-red': aceSoloCrossMetalMoonlightGreyImageNormalized,
-        'finish-cross-metal|int-creamy-white': aceSoloCrossMetalCreamyWhiteImageNormalized,
-        'finish-cross-metal|int-sesame-black': aceSoloCrossMetalSesameBlackImageNormalized,
-        'finish-larix-pearl|int-shimo-ash': aceSoloLarixPearlImageNormalized,
-        'finish-larix-pearl|int-sky-blue': aceSoloLarixPearlSkyBlueImageNormalized,
-        'finish-larix-pearl|int-moonlight-grey': aceSoloLarixPearlMoonlightGreyImageNormalized,
-        'finish-larix-pearl|int-tangerine': aceSoloLarixPearlTangerineImageNormalized,
-        'finish-larix-pearl|int-light-plum': aceSoloLarixPearlLightPlumImageNormalized,
-        'finish-larix-pearl|int-vivid-red': aceSoloLarixPearlMoonlightGreyImageNormalized,
-        'finish-larix-pearl|int-creamy-white': aceSoloLarixPearlCreamyWhiteImageNormalized,
-        'finish-larix-pearl|int-sesame-black': aceSoloLarixPearlSesameBlackImageNormalized
+        'finish-linen-sand': aceUnoLinenSandImage,
+        'finish-forest-whisper': aceUnoForestWhisperImage,
+        'finish-sesame-black': aceUnoSesameBlackImage,
+        'finish-soft-turquoise': aceUnoSoftTurquoiseImage
       }
     },
     hideThumbnailsOnColorMode: true,
+    exteriorLabel: 'Exterior PET Colour',
     technicalSpecifications: {
       capacity: '1 person',
-      externalDimensions: '1200mm × 1000mm (47.24" × 39.37")',
-      internalDimensions: '1078mm × 939mm (42.44" × 36.96")',
-      internalHeight: '2207mm (86.88")',
-      externalHeight: '2250mm (88.58")',
-      roomHeightRequirement: '2400mm (94.48")',
-      weight: '335kg ±',
-      boothFacilities: ['Standing height table', 'Power socket'],
-      extraRows: [{ label: 'Category', value: '1-person compact call / focus pod' }]
+      externalDimensions: '1418W × 1018D × 2185H mm',
+      externalHeight: '2185 mm',
+      boothFacilities: ['Integrated worktop', 'Universal power socket', 'USB Type-A and USB Type-C charging'],
+      extraRows: [
+        { label: 'Category', value: 'Single-person acoustic office pod' },
+        { label: 'Work surface', value: 'Natural Oak MFC worktop' },
+        { label: 'Acoustic panels', value: '9 mm polyester fibre' },
+        { label: 'Frame construction', value: 'Steel frame with MFC structure' },
+        { label: 'Door', value: '10 mm clear tempered glass' },
+        { label: 'Rear panel', value: 'Laminated safety glass' },
+        { label: 'Interior colour', value: 'Linen Sand' },
+        { label: 'Lighting', value: 'Round LED ceiling light, 4000K, 6W' },
+        { label: 'Ventilation', value: 'Dual quiet airflow fans' },
+        { label: 'Airflow', value: '108 CFM per fan' },
+        { label: 'Power socket', value: 'Universal socket with USB Type-A and USB Type-C' },
+        { label: 'Electrical input', value: 'AC 100–240V' },
+        { label: 'Levelling', value: 'Adjustable floor levellers' },
+        { label: 'Installation', value: 'Freestanding plug-and-play design' }
+      ]
     },
-    featureRows: soloFeatureRows,
-    featureStripItems: sharedFeatureStripItems,
-    featureAvailabilityNote: '* Eco Pod does not include these features',
+    featureRows: [],
     specs: [
       { label: 'Capacity', value: '1 person' },
-      { label: 'Best for', value: 'Calls and short focus sessions' },
-      { label: 'Ventilation', value: 'Continuous airflow for daily use' },
-      { label: 'Power', value: 'Integrated lighting + power access' }
+      { label: 'Best for', value: 'Private calls, video meetings, and focused individual work' },
+      { label: 'Ventilation', value: 'Dual quiet fans, 108 CFM per fan' },
+      { label: 'Power', value: 'Universal socket with USB Type-A and USB Type-C' }
     ],
     useCases: [
-      'Private calls and video meetings in open-plan offices (Malaysia)',
-      'Focused work without distractions in busy workplaces',
-      'Corporate offices and SMEs needing instant privacy for one person'
+      'Private calls and video meetings in open-plan workplaces',
+      'Focused individual work away from surrounding activity',
+      'A freestanding private workspace without permanent renovation'
     ],
     exteriorColors: [
-      { id: 'finish-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
-      { id: 'finish-cross-metal', label: 'Cross Metal', hex: '#7d838b' },
-      { id: 'finish-larix-pearl', label: 'Larix Pearl', hex: '#cbbca7' }
+      { id: 'finish-linen-sand', label: 'Linen Sand', hex: '#d7c8ae' },
+      { id: 'finish-forest-whisper', label: 'Forest Whisper', hex: '#66806a' },
+      { id: 'finish-sesame-black', label: 'Sesame Black', hex: '#252827' },
+      { id: 'finish-soft-turquoise', label: 'Soft Turquoise', hex: '#6fabb3' }
     ],
-    interiorColors: [
-      { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
-      { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
-      { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
-      { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
-      { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
-      { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
-      { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
-    ],
-    defaultExterior: 'finish-shimo-ash',
-    defaultInterior: 'int-sky-blue',
+    interiorColors: [{ id: 'int-linen-sand', label: 'Linen Sand', hex: '#d7c8ae' }],
+    defaultExterior: 'finish-linen-sand',
+    defaultInterior: 'int-linen-sand',
     faq: [
-      { q: 'How fast can Ace Solo be installed?', a: 'Typical projects are scheduled after a site review and final confirmation.' },
-      { q: 'Can it be moved later?', a: 'Yes. The unit can be relocated with proper handling and planning.' }
+      { q: 'What is included with Ace Uno?', a: 'The standard pod includes its worktop, LED light, dual ventilation fans, universal power socket, USB Type-A and USB Type-C charging.' },
+      { q: 'Does RM8,800 include delivery and installation?', a: 'No. RM8,800 is the pod-only starting price. Standard Klang Valley installation is RM500 and delivery is RM350.' }
     ]
   },
   {
@@ -622,11 +497,11 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-plus'].shortDesc,
     heroImage: aceSoloPlusHero,
-    thumbImage: aceSoloPlusCutout,
-    extraPreviewImages: [acePlusFrontTransparentImage],
+    thumbImage: acePlusCatalogImage,
+    catalogImage: acePlusCatalogImage,
+    extraPreviewImages: [acePlusCatalogImage, acePlusFrontTransparentImage],
     customerPhotos: acePlusPortfolioPhotos,
     drawing2dImage: aceSoloPlus2d,
-    imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For one-person focused work',
     pricing: {
@@ -789,11 +664,11 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-flex'].shortDesc,
     heroImage: aceDuoHero,
-    thumbImage: aceDuoCutout,
-    extraPreviewImages: [aceFlexFrontTransparentImage],
+    thumbImage: aceFlexCatalogImage,
+    catalogImage: aceFlexCatalogImage,
+    extraPreviewImages: [aceFlexCatalogImage, aceFlexFrontTransparentImage],
     customerPhotos: aceFlexAlphabetPhotos,
     drawing2dImage: aceDuo2d,
-    imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'Extra room for longer sessions',
     pricing: {
@@ -956,11 +831,11 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-flex-duo'].shortDesc,
     heroImage: aceFlexDuoHero,
-    thumbImage: aceFlexDuoHero,
-    extraPreviewImages: [aceFlexDuoFrontTransparentImage],
+    thumbImage: aceFlexDuoCatalogImage,
+    catalogImage: aceFlexDuoCatalogImage,
+    extraPreviewImages: [aceFlexDuoCatalogImage, aceFlexDuoFrontTransparentImage],
     customerPhotos: aceFlexDuoGalleryPhotos,
     drawing2dImage: aceDuo2d,
-    imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 2 people and hybrid calls',
     pricing: {
@@ -1123,11 +998,11 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-meet'].shortDesc,
     heroImage: aceMeetingHero,
-    thumbImage: aceMeetingCutout,
-    extraPreviewImages: [aceMeetFrontTransparentImage],
+    thumbImage: aceMeetCatalogImage,
+    catalogImage: aceMeetCatalogImage,
+    extraPreviewImages: [aceMeetCatalogImage, aceMeetFrontTransparentImage],
     customerPhotos: aceMeetPortfolioPhotos,
     drawing2dImage: aceMeeting2d,
-    imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 4 people and hybrid calls',
     pricing: {
@@ -1233,11 +1108,11 @@ export const products = [
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-hub'].shortDesc,
     heroImage: aceMeetingXLHero,
-    thumbImage: aceMeetingXLCutout,
-    extraPreviewImages: [aceHubFrontTransparentImage],
+    thumbImage: aceHubCatalogImage,
+    catalogImage: aceHubCatalogImage,
+    extraPreviewImages: [aceHubCatalogImage, aceHubFrontTransparentImage],
     customerPhotos: aceHubPortfolioPhotos,
     drawing2dImage: aceMeetingXL2d,
-    imageScale: 'scale-[1.40]',
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 6 people and hybrid calls',
     pricing: {

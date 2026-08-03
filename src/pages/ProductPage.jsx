@@ -17,26 +17,26 @@ import barStoolBlack from '../../assets/bar-stool-black.png';
 import barStoolWhite from '../../assets/bar-stool-white.png';
 
 const PDP_QUICK_ANSWER_COPY = {
-  'ace-solo': {
-    intro: 'Designed for open-plan offices, Ace Solo adds a private call and focus point without building a permanent room.',
-    heading: 'Quick answers about Ace Solo',
+  'ace-uno': {
+    intro: 'Ace Uno creates a dedicated one-person space for private calls, video meetings, and focused work without permanent renovation.',
+    heading: 'Quick answers about Ace Uno',
     items: [
       {
-        q: 'What is Ace Solo?',
-        a: 'Ace Solo is a compact one-person acoustic office pod that creates an enclosed workspace inside an existing office.'
+        q: 'What is Ace Uno?',
+        a: 'Ace Uno is a single-person acoustic office pod with an integrated worktop, lighting, ventilation, power, and USB charging.'
       },
       {
-        q: 'How much does Ace Solo cost in Malaysia?',
+        q: 'How much does Ace Uno cost in Malaysia?',
         a: ({ startingPriceText }) =>
-          `Ace Solo's base unit starts from ${startingPriceText}. The calculator estimates the total with selected add-ons plus Klang Valley delivery and installation.`
+          `Ace Uno starts from ${startingPriceText} for the pod only. Standard Klang Valley installation is RM500 and delivery is RM350.`
       },
       {
-        q: 'What is Ace Solo best for?',
-        a: 'It is best for phone calls, video meetings, and short solo work sessions where teams need privacy close to their desks.'
+        q: 'What is Ace Uno best for?',
+        a: 'It is best for one-person phone calls, video meetings, and focused individual work in open-plan workplaces.'
       },
       {
-        q: 'Does Ace Solo include delivery and installation?',
-        a: 'Delivery and installation are shown as separate Klang Valley line items in the calculator. Other areas may be subject to different delivery and installation charges.'
+        q: 'What are the external dimensions?',
+        a: 'Ace Uno measures 1418 mm wide, 1018 mm deep, and 2185 mm high.'
       }
     ]
   },
@@ -357,10 +357,11 @@ export default function ProductPage() {
   const computedTotal = baseUnitPrice + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
 
   const isAceFlexDuo = product.slug === 'ace-flex-duo';
+  const isAceUno = product.slug === 'ace-uno';
   const pricingRows = useMemo(
     () => [
       {
-        label: isAceFlexDuo ? 'Base unit' : 'Base unit\n(empty pod)',
+        label: isAceUno ? 'Pod only' : isAceFlexDuo ? 'Base unit' : 'Base unit\n(empty pod)',
         amount: baseUnitPrice,
         amountLabel: hasBaseUnitPrice ? null : product.pricing?.amount || 'Contact for price'
       },
@@ -375,6 +376,7 @@ export default function ProductPage() {
       hasBaseUnitPrice,
       installationAmount,
       isAceFlexDuo,
+      isAceUno,
       product.pricing?.amount,
       selectedAddonsAmount,
       selectedConfigurationAmount
@@ -606,13 +608,8 @@ export default function ProductPage() {
     .filter(Boolean);
   const hasSplitInteriorSections = mdfInteriorOptions.length > 0 && petInteriorOptions.length > 0;
   const featureRows = product.featureRows || [];
-  const isPlusAndAboveFeatures = product.slug !== 'ace-solo';
-  const displayFeatureRows = (() => {
-    if (product.slug !== 'ace-solo') return featureRows;
-    const flatFeatures = featureRows.flat();
-    if (flatFeatures.length < 10) return featureRows;
-    return [flatFeatures.slice(0, 3), flatFeatures.slice(3, 6), flatFeatures.slice(6, 10)];
-  })();
+  const isPlusAndAboveFeatures = true;
+  const displayFeatureRows = featureRows;
   const hasFeatureRows = displayFeatureRows.some((row) => row.length > 0);
   const allFeatureItems = displayFeatureRows.flat();
   const pdpQuickAnswerCopy = PDP_QUICK_ANSWER_COPY[product.slug] || null;
@@ -656,7 +653,10 @@ export default function ProductPage() {
     ...(currentChairAddon ? [barStoolBlack, barStoolWhite] : [])
   ];
   const isAddonPreviewImage = addonPreviewImages.includes(mainImage);
-  const shouldUseMultiplyBlend = product.slug !== 'ace-plus' || isAddonPreviewImage;
+  const shouldUseMultiplyBlend =
+    product.slug === 'ace-uno' ||
+    (product.slug !== 'ace-plus' && mainImage !== product.catalogImage) ||
+    isAddonPreviewImage;
   const hasMultipleExteriorColors = (product.exteriorColors || []).length > 1;
   const exteriorThumbnailItems = (product.exteriorColors || []).map((color) => {
     const exteriorPairKey = `${color.id}|${selectedInterior}`;
@@ -689,7 +689,7 @@ export default function ProductPage() {
         if (option.id === 'high-bar-stool') {
           return null;
         }
-        if (option.id === 'office-chair' && ['ace-plus', 'ace-solo', 'ace-flex'].includes(product.slug)) {
+        if (option.id === 'office-chair' && ['ace-plus', 'ace-flex'].includes(product.slug)) {
           return null;
         }
         const image = getPreviewImageForOption(option);
@@ -926,6 +926,7 @@ export default function ProductPage() {
                 <p className="mt-3 text-[16px] font-semibold leading-tight text-[#007653] md:text-[20px]">
                   Starting from {startingPriceText}
                 </p>
+                {isAceUno && <p className="mt-1 text-[13px] text-[#68726f]">Pod only; delivery and installation are separate.</p>}
                 <p className="mt-4 max-w-[42ch] text-[17px] leading-[1.5] text-[#172126]">{product.shortDesc}</p>
               </div>
               <div className="relative mt-6 h-[380px] w-full sm:h-[460px] md:h-[620px] lg:mt-[56px] lg:h-[600px]">
@@ -1164,6 +1165,7 @@ export default function ProductPage() {
                 <h1 className="text-[56px] font-semibold leading-[1.03] tracking-tight">{product.displayTitle || product.name}</h1>
                 <p id={`${product.slug}-answer`} className="mt-2 text-[22px] leading-tight text-[#172126]">{product.shortDesc}</p>
                 <p className="mt-2 text-[24px] font-semibold leading-tight text-[#007653]">Starting from {startingPriceText}</p>
+                {isAceUno && <p className="mt-1 text-[13px] text-[#68726f]">Pod only; delivery and installation are itemised below.</p>}
               </div>
 
               <div className="mt-6 py-6 md:py-7 lg:flex-1">

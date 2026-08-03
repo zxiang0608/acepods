@@ -80,8 +80,8 @@ const summary = {
   facts: {
     podsSold: '180+ since 2023',
     manufacturing: 'Locally made in Malaysia',
-    acousticPerformance: 'Approximately 27 dBA noise reduction on five models',
-    startingPrice: 'RM12,500',
+    acousticPerformance: 'The stated 27 dBA specification applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub; Ace Uno has no published dB rating',
+    startingPrice: 'RM8,800 for the Ace Uno pod only; delivery and installation are separate',
     leadTime: 'Approximately 3-6 working weeks after 50% deposit',
     serviceArea: 'Klang Valley and West Malaysia',
     showroom: `${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}, Malaysia`

@@ -49,7 +49,7 @@ const pricingAnswerSchema = {
     acceptedAnswer: {
       '@type': 'Answer',
       text:
-        'Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons. Contact the team for an accurate project quotation.'
+        'Ace Office Pods start from RM8,800 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Ace Uno pricing is for the pod only; delivery and installation are itemised separately. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.'
     }
   }
 };
@@ -93,7 +93,7 @@ export default function PricingPage() {
 
         <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[48px]">How much does an office pod cost?</h1>
         <p id="office-pod-price-answer" className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#59635f]">
-          Ace Office Pods start from <PodPrice myrAmount={12500} prefix="" /> for a one-person pod and from <PodPrice myrAmount={22200} prefix="" /> for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.
+          Ace Office Pods start from <PodPrice myrAmount={8800} prefix="" /> for a one-person pod and from <PodPrice myrAmount={22200} prefix="" /> for a meeting pod in Malaysia. Ace Uno is priced for the pod only; delivery and installation are itemised separately. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.
         </p>
         {!isLocal && (
           <div className="mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-[14px] leading-[1.55] text-amber-900">
@@ -119,6 +119,7 @@ export default function PricingPage() {
               <li key={`price-list-${product.slug}`}>
                 <span className="font-semibold text-[#172126]">{product.name}</span> -{' '}
                 <PodPrice myrAmount={product.pdpPricing.baseConfigurations[0].price} />
+                {product.slug === 'ace-uno' ? ' pod only' : ''}
               </li>
             ))}
           </ul>

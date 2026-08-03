@@ -1,6 +1,6 @@
 import { ARTICLE_SLUGS } from '../src/data/articles.js';
 
-const POD_SLUGS = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'];
+const POD_SLUGS = ['ace-uno', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'];
 
 const STATIC_PUBLIC_ROUTES = [
   '/',

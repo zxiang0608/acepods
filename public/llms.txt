@@ -8,7 +8,7 @@
 
 ## Products
 
-- [Ace Solo](/pods/ace-solo): 1-person compact call and focus pod. From RM12,500.
+- [Ace Uno](/pods/ace-uno): 1-person pod for calls, video meetings, and focused work. RM8,800 for the pod only.
 - [Ace Plus](/pods/ace-plus): 1-person phone and focus pod, independently certified −27 dB(A) noise reduction. From RM14,500.
 - [Ace Flex](/pods/ace-flex): Spacious 1-person focus pod. From RM19,900.
 - [Ace Flex Duo](/pods/ace-flex-duo): 2-person focus and discussion pod. From RM23,900.
@@ -17,7 +17,7 @@
 
 ## Key facts
 
-- Noise reduction: independently certified −27 dB(A)
+- Acoustic performance: model-specific; Ace Uno has no published dB rating in its supplied product sheet
 - Construction: 100% locally made in Malaysia
 - Lead time: approximately 3–6 working weeks after 50% deposit
 - Payment: 50% deposit, balance before delivery
@@ -39,7 +39,7 @@
 
 ## Pricing
 
-- [Full pricing page](/pricing): starts from RM12,500 for one-person pod
+- [Full pricing page](/pricing): Ace Uno starts at RM8,800 for the pod only; standard Klang Valley delivery and installation bring the default total to RM9,650
 - [Compare office pods](/compare-office-pods)
 
 ## Optional

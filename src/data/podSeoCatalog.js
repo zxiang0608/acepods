@@ -1,29 +1,30 @@
 export const POD_SEO_BY_SLUG = {
-  'ace-solo': {
-    name: 'Ace Solo',
-    shortDesc: 'Compact pod for calls and quick tasks',
-    startingPrice: 12500,
+  'ace-uno': {
+    name: 'Ace Uno',
+    shortDesc: 'Single-person acoustic pod for calls and focused work',
+    startingPrice: 8800,
+    priceBasis: 'pod only',
     schemaProperties: [
       { name: 'Capacity', value: '1 person' },
-      { name: 'Category', value: '1-person compact call / focus pod' },
-      { name: 'External dimensions', value: '1200mm × 1000mm (47.24" × 39.37")' },
-      { name: 'Internal dimensions', value: '1078mm × 939mm (42.44" × 36.96")' },
-      { name: 'Internal height', value: '2207mm (86.88")' },
-      { name: 'External height', value: '2250mm (88.58")' },
-      { name: 'Room height requirement', value: '2400mm (94.48")' }
+      { name: 'Category', value: 'Single-person acoustic office pod' },
+      { name: 'External dimensions', value: '1418W × 1018D × 2185H mm' },
+      { name: 'Exterior and interior finish', value: '9 mm polyester fibre acoustic panels' },
+      { name: 'Door', value: '10 mm clear tempered glass' },
+      { name: 'Rear panel', value: 'Laminated safety glass' },
+      { name: 'Ventilation', value: 'Dual quiet airflow fans, 108 CFM per fan' },
+      { name: 'Power', value: 'Universal socket with USB Type-A and USB Type-C' }
     ],
     useCases: [
-      'The Ace Solo is a one-person office pod designed for private phone calls, video meetings, and short focused work sessions in open-plan offices.',
-      'It is the most compact pod in the Ace range, making it well suited for offices with limited floor space that still need a dedicated enclosed call area.',
-      'Common uses include sales calls, HR screening interviews, Zoom and Teams sessions, and any task that requires a quieter environment away from the open floor.',
-      'The Ace Solo includes built-in lighting, ventilation, and power access. It starts from RM12,500 and is locally manufactured in Malaysia.',
-      'Delivery and installation are available across Klang Valley, with standard lead time of approximately 3 to 6 weeks after deposit confirmation.'
+      'Ace Uno is a one-person acoustic office pod designed for private phone calls, video meetings, and focused individual work in open-plan workplaces.',
+      'Its 1418 mm by 1018 mm footprint provides an integrated Natural Oak work surface without requiring permanent renovation or built-in construction.',
+      'The standard configuration includes a clear tempered-glass door, laminated safety-glass rear panel, neutral-white LED lighting, dual quiet ventilation fans, universal power, and USB charging.',
+      'Ace Uno starts from RM8,800 for the pod only. Delivery and installation are itemised separately according to location and site conditions.'
     ],
     faqItems: [
-      { question: 'What is the Ace Solo office pod used for?', answer: 'The Ace Solo is used for private phone calls, video meetings, HR interviews, and focused solo work in open-plan offices. It provides an enclosed, quieter space without requiring permanent construction.' },
-      { question: 'How much does the Ace Solo cost in Malaysia?', answer: 'The Ace Solo starts from RM12,500. Final pricing depends on delivery location, installation scope, and any customisation options. Contact the team for a project quotation.' },
-      { question: 'Is the Ace Solo soundproof?', answer: 'The Ace Solo significantly reduces surrounding noise, making calls and focused work more private. Like all office pods, it is not completely soundproof but provides practical acoustic improvement for daily use in open-plan environments.' },
-      { question: 'How long does delivery take for the Ace Solo?', answer: 'Standard lead time is approximately 3 to 6 weeks after deposit confirmation. Delivery and installation are available across Klang Valley and West Malaysia.' }
+      { question: 'What is the Ace Uno office pod used for?', answer: 'Ace Uno is a single-person acoustic office pod for private calls, video meetings, and focused individual work in open-plan workplaces.' },
+      { question: 'How much does Ace Uno cost in Malaysia?', answer: 'Ace Uno starts from RM8,800 for the pod only. Klang Valley installation is RM500 and delivery is RM350 under the standard scope, while outstation and restricted-access projects are quoted separately.' },
+      { question: 'What are the external dimensions of Ace Uno?', answer: 'Ace Uno measures 1418 mm wide, 1018 mm deep, and 2185 mm high.' },
+      { question: 'What is included with Ace Uno?', answer: 'The standard pod includes an integrated Natural Oak worktop, LED ceiling light, dual quiet airflow fans, a universal socket, USB Type-A and USB Type-C charging, a tempered-glass door, and a laminated safety-glass rear panel.' }
     ]
   },
   'ace-plus': {
@@ -49,7 +50,7 @@ export const POD_SEO_BY_SLUG = {
     ],
     faqItems: [
       { question: 'What noise reduction does the Ace Plus achieve?', answer: 'The Ace Plus achieves approximately 27 dBA noise reduction in real office conditions. This is sufficient for private calls, video meetings, and confidential conversations in most open-plan office environments.' },
-      { question: 'What is the difference between Ace Solo and Ace Plus?', answer: 'The Ace Plus offers higher acoustic performance (approximately 27 dBA noise reduction), better ventilation with 155 CFM airflow, and Italian pivot hinges for improved door sealing. It is designed for users who spend more time in the pod and need more consistent sound privacy.' },
+      { question: 'What is the difference between Ace Uno and Ace Plus?', answer: 'Ace Uno is the wider, lower-priced one-person pod with an integrated worktop, dual 108 CFM fans, and USB Type-A and Type-C charging. Ace Plus has a smaller 1000 by 1000 mm footprint and carries the stated 27 dBA specification used on the existing Plus range.' },
       { question: 'How much does the Ace Plus cost?', answer: 'The Ace Plus starts from RM14,500 in Malaysia. Final pricing depends on delivery location, installation requirements, and any customisation. Contact the team for a full quotation.' },
       { question: 'Is the Ace Plus suitable for all-day use?', answer: 'Yes. The Ace Plus is designed for extended daily use with steady 155 CFM airflow, which maintains air quality and comfort during longer sessions. It is well suited for Malaysia office conditions.' }
     ]
@@ -75,7 +76,7 @@ export const POD_SEO_BY_SLUG = {
       'Delivery and installation are available across Klang Valley and West Malaysia with approximately 3 to 6 weeks lead time.'
     ],
     faqItems: [
-      { question: 'What is the Ace Flex office pod used for?', answer: 'The Ace Flex is a spacious one-person pod suited for extended solo work sessions, document-intensive tasks, executive calls, and situations where a compact phone booth feels too confined. It offers more internal working space than the Ace Solo or Ace Plus.' },
+      { question: 'What is the Ace Flex office pod used for?', answer: 'The Ace Flex is a spacious one-person pod suited for extended solo work sessions, document-intensive tasks, executive calls, and situations where a smaller phone booth feels too confined. It offers more internal working space than Ace Uno or Ace Plus.' },
       { question: 'How does the Ace Flex differ from Ace Plus?', answer: 'The Ace Flex is physically larger, providing more internal workspace (1452mm × 1100mm vs 853mm × 918mm). It is the right choice when the user needs room to work across documents, multiple devices, or longer sessions. The Ace Plus is more compact and focused on acoustic performance for call-heavy users.' },
       { question: 'How much does the Ace Flex cost?', answer: 'The Ace Flex starts from RM19,900 in Malaysia. Contact the team for delivery and installation quotation based on your office location.' },
       { question: 'Can the Ace Flex fit in a standard open-plan office?', answer: 'Yes. The Ace Flex external footprint is 1600mm × 1200mm, which fits comfortably in most open-plan office layouts. Allow at least 800mm clearance on all sides for comfortable entry and exit.' }

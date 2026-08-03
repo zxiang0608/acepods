@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import App from './App';
 import CompareOfficePodsPage from './pages/CompareOfficePodsPage';
 import ContactPage from './pages/ContactPage';
@@ -61,11 +61,13 @@ ReactDOM.createRoot(rootElement).render(
           <Route path="/pod-relocation" element={<PodRelocationPage />} />
           <Route path="/locations" element={<LocationsPage />} />
           <Route path="/locations/:slug" element={<LocationPage />} />
+          <Route path="/pods/ace-solo" element={<Navigate replace to="/pods/ace-uno" />} />
           <Route path="/pods/:slug" element={<ProductPage />} />
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/draft1" element={<HomePageV2 />} />
           <Route path="/demo2" element={<Demo2Page />} />
+          <Route path="/demo3" element={<Demo2Page mobilePodMenu />} />
           <Route path="/seo/*" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

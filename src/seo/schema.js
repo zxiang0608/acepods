@@ -68,7 +68,7 @@ export const localBusinessSchema = {
   '@id': `${SEO_BASE_URL}/#organization`,
   name: SEO_BRAND_PRIMARY,
   foundingDate: '2023',
-  priceRange: 'RM12,500+',
+  priceRange: 'RM8,800+',
   image: [
     SEO_BRAND_LOGO,
     `${SEO_BASE_URL}/og-image.jpg`

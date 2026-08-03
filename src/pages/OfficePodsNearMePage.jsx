@@ -48,7 +48,7 @@ const localFaqItems = [
   {
     question: 'How much do office pods near me cost?',
     answer:
-      'Ace Office Pods start from RM12,500 for a one-person pod. Final project pricing depends on the model, quantity, delivery location, installation access, add-ons, and selected configuration.'
+      'Ace Office Pods start from RM8,800 for the Ace Uno pod only. Final project pricing depends on the model, quantity, delivery location, installation access, add-ons, and selected configuration.'
   }
 ];
 

@@ -44,11 +44,11 @@ export const locations = [
       {
         company: 'CMA CGM',
         area: 'Bangsar, Kuala Lumpur',
-        model: 'Ace Solo',
+        model: 'Legacy Ace Solo',
         productSlug: 'ace-solo',
         image: cmaProjectImage,
-        imageAlt: 'Ace Solo office phone booth installed for CMA CGM in Bangsar Kuala Lumpur',
-        summary: 'A compact one-person phone booth added to a Bangsar workplace for calls and video meetings.'
+        imageAlt: 'Legacy Ace Solo office phone booth installed for CMA CGM in Bangsar Kuala Lumpur',
+        summary: 'A completed legacy Ace Solo installation added to a Bangsar workplace for calls and video meetings.'
       }
     ],
     faqs: [
@@ -70,7 +70,7 @@ export const locations = [
       {
         question: 'How much does an office pod in Kuala Lumpur cost?',
         answer:
-          'Ace office pods start from RM12,500. Final pricing depends on model, quantity, options, delivery access, installation scope, and site conditions.'
+          'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, access, and site conditions.'
       }
     ]
   },
@@ -95,11 +95,11 @@ export const locations = [
       {
         company: 'Alphabet Capital',
         area: 'Shah Alam',
-        model: 'Ace Solo',
+        model: 'Legacy Ace Solo',
         productSlug: 'ace-solo',
         image: parkerProjectImage,
-        imageAlt: 'Ace Solo office phone booth installed for Alphabet Capital in Shah Alam',
-        summary: 'A one-person Ace Solo phone booth installed to create a dedicated space for private calls and focused work.'
+        imageAlt: 'Legacy Ace Solo office phone booth installed for Alphabet Capital in Shah Alam',
+        summary: 'A completed legacy Ace Solo phone booth installation that created dedicated space for private calls and focused work.'
       }
     ],
     faqs: [
@@ -111,7 +111,7 @@ export const locations = [
       {
         question: 'Which office pod is suitable for a Shah Alam office?',
         answer:
-          'Ace Solo and Ace Plus suit one-person calls and focused work. Ace Flex Duo supports two-person discussions, while Ace Meet and Ace Hub are intended for larger meetings.'
+          'Ace Uno and Ace Plus suit one-person calls and focused work. Ace Flex Duo supports two-person discussions, while Ace Meet and Ace Hub are intended for larger meetings.'
       },
       {
         question: 'Can I visit the showroom from Shah Alam?',
@@ -213,7 +213,7 @@ export const locations = [
       {
         question: 'How much does an office pod cost for a Petaling Jaya office?',
         answer:
-          'Ace office pods start from RM 12,500 for a one-person model. Final pricing depends on model, quantity, delivery access, floor level, and installation scope. Contact us for a project quote specific to your PJ office.'
+          'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, access, floor level, and installation scope.'
       }
     ]
   },
@@ -244,7 +244,7 @@ export const locations = [
       {
         question: 'Which office pod is suitable for a Damansara corporate office?',
         answer:
-          'For private calls and focused work, Ace Solo or Ace Plus are commonly used. Ace Meet (3–4 pax) and Ace Hub (up to 6 pax) suit team meetings and collaboration spaces. We recommend based on your floor plan, daily usage patterns, and available space.'
+          'For private calls and focused work, Ace Uno or Ace Plus are commonly used. Ace Meet (3–4 pax) and Ace Hub (up to 6 pax) suit team meetings and collaboration spaces. We recommend based on your floor plan, daily usage patterns, and available space.'
       },
       {
         question: 'Can I test an office pod before ordering?',
@@ -285,12 +285,12 @@ export const locations = [
       {
         question: 'How much does an office pod cost in Penang?',
         answer:
-          'Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, delivery distance, and site installation requirements. Contact us for a project quote.'
+          'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
       },
       {
         question: 'Which office pod models are available for Penang delivery?',
         answer:
-          'All six Ace Office Pod models are available for Penang delivery — Ace Solo, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
+          'All six Ace Office Pod models are available for Penang delivery — Ace Uno, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
       },
       {
         question: 'How long does delivery to Penang take?',
@@ -326,12 +326,12 @@ export const locations = [
       {
         question: 'How much does an office pod cost in Johor Bahru?',
         answer:
-          'Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, delivery distance, and site installation requirements. Contact us for a project quote.'
+          'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
       },
       {
         question: 'Which office pod models are available for JB delivery?',
         answer:
-          'All six Ace Office Pod models are available for Johor Bahru delivery — Ace Solo, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
+          'All six Ace Office Pod models are available for Johor Bahru delivery — Ace Uno, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
       },
       {
         question: 'How long does delivery to Johor Bahru take?',

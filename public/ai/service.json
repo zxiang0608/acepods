@@ -5,7 +5,7 @@
     "legalName": "ACE WORKPLACE SOLUTIONS",
     "url": "https://aceofficepods.com"
   },
-  "updated": "2026-06-19",
+  "updated": "2026-07-21",
   "services": [
     {
       "name": "Office pod supply",
@@ -35,12 +35,12 @@
   ],
   "products": [
     {
-      "name": "Ace Solo",
-      "url": "https://aceofficepods.com/pods/ace-solo",
-      "description": "Compact pod for calls and quick tasks",
+      "name": "Ace Uno",
+      "url": "https://aceofficepods.com/pods/ace-uno",
+      "description": "Single-person acoustic pod for calls and focused work",
       "startingPrice": {
         "currency": "MYR",
-        "value": 12500
+        "value": 8800
       }
     },
     {

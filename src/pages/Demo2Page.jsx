@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
 import acePodsHero from '../../assets/hero-pods.webp';
 import acePodsHeroAvif from '../../assets/hero-pods.avif';
@@ -42,7 +42,7 @@ const demoProducts = smartPodsMenuItems.map((item) => {
 
 const proofPoints = [
   'Showroom open in Klang Valley',
-  '−27 dB(A) ±5 dB certified',
+  'Acoustic data shown by model',
   'Same team. Start to finish.'
 ];
 
@@ -162,7 +162,7 @@ const howItWorks = [
 
 const reassurancePoints = [
   ['Made in Malaysia', 'One local team — builds it, delivers it, installs it.'],
-  ['−27 dB(A) ±5 dB certified', 'Measured acoustic performance — not a vague soundproofing claim.'],
+  ['Model-specific acoustic data', 'Published only where a rating is available for that model.'],
   ['Up and running in 3–4 weeks', 'From confirmed order to installed pod, ready to use.'],
   ['Built for hours, not quick calls', 'Silent fans, adjustable lighting, and built-in power — your team can stay as long as needed.']
 ];
@@ -177,8 +177,9 @@ const mobileNavItems = [
   { label: 'FAQ', to: '/faq' }
 ];
 
-export default function Demo2Page() {
+export default function Demo2Page({ mobilePodMenu = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPodsOpen, setIsPodsOpen] = useState(mobilePodMenu);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
@@ -212,17 +213,66 @@ export default function Demo2Page() {
         </div>
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain p-8 pb-14 [-webkit-overflow-scrolling:touch]">
           <div className="space-y-7">
-            {mobileNavItems.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                onClick={() => setIsMenuOpen(false)}
-                className="flex items-center justify-between"
-              >
-                <span className="text-[24px] font-bold tracking-tight text-[#172126]">{item.label}</span>
-                <ChevronRight size={20} className="text-[#007653]" />
-              </Link>
-            ))}
+            {mobileNavItems.map((item) => {
+              if (mobilePodMenu && item.label === 'Office Pods') {
+                return (
+                  <div key={item.label}>
+                    <button
+                      type="button"
+                      onClick={() => setIsPodsOpen((current) => !current)}
+                      aria-expanded={isPodsOpen}
+                      aria-controls="demo3-mobile-pod-menu"
+                      className="flex min-h-[44px] w-full items-center justify-between text-left"
+                    >
+                      <span className="text-[24px] font-bold tracking-tight text-[#172126]">Office Pods</span>
+                      <ChevronDown
+                        size={22}
+                        className={`text-[#007653] transition-transform ${isPodsOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+
+                    {isPodsOpen && (
+                      <div id="demo3-mobile-pod-menu" className="mt-3 border-y border-[#e5e3dc] py-1">
+                        {products.map((product) => (
+                          <Link
+                            key={product.slug}
+                            to={`/pods/${product.slug}`}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="flex min-h-[44px] items-center justify-between border-b border-[#efede8] py-2.5 last:border-b-0"
+                          >
+                            <span className="text-[16px] font-semibold text-[#172126]">{product.name}</span>
+                            <span className="flex items-center gap-2 text-[12px] font-medium text-[#68726f]">
+                              {product.technicalSpecifications?.capacity || ''}
+                              <ChevronRight size={16} className="text-[#007653]" />
+                            </span>
+                          </Link>
+                        ))}
+                        <Link
+                          to="/office-pods"
+                          onClick={() => setIsMenuOpen(false)}
+                          className="mt-1 flex min-h-[44px] items-center justify-between py-2.5 text-[14px] font-semibold text-[#007653]"
+                        >
+                          View all pods
+                          <ChevronRight size={17} />
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-between"
+                >
+                  <span className="text-[24px] font-bold tracking-tight text-[#172126]">{item.label}</span>
+                  <ChevronRight size={20} className="text-[#007653]" />
+                </Link>
+              );
+            })}
           </div>
           <div className="mt-10 space-y-3 border-t border-[#e9e7e1] pt-8">
             <div className="flex items-center gap-2 text-[14px] text-[#59635f]">
@@ -263,7 +313,10 @@ export default function Demo2Page() {
             </Link>
             <button
               type="button"
-              onClick={() => setIsMenuOpen(true)}
+              onClick={() => {
+                setIsPodsOpen(mobilePodMenu);
+                setIsMenuOpen(true);
+              }}
               aria-label="Open navigation menu"
               className="p-1 text-[#172126] lg:hidden"
             >
@@ -350,7 +403,7 @@ export default function Demo2Page() {
                     alt={product.title}
                     width="220"
                     height="220"
-                    className={`h-full w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04] ${product.imageClassName || ''} ${product.title === 'Ace Plus' ? 'scale-[0.75] md:scale-100' : ''}`}
+                    className={`h-full w-full object-contain object-bottom transition-transform duration-300 group-hover:scale-[1.04] ${product.imageClassName || ''}`}
                     loading="lazy"
                     decoding="async"
                   />
@@ -442,7 +495,7 @@ export default function Demo2Page() {
                   {type.products.map((product) => (
                     <Link key={product.to} to={product.to} className="group/item border-b border-r border-white/15 p-3 transition-colors hover:bg-white/[0.05]">
                       <div className="flex h-[142px] items-center justify-center bg-[#eeece7] md:h-[150px]">
-                        <img src={product.image} alt={product.title} className={`h-full w-full object-contain mix-blend-multiply p-3 transition-transform duration-300 group-hover/item:scale-[1.04] ${product.imageClassName || ''}`} loading="lazy" decoding="async" />
+                        <img src={product.image} alt={product.title} className={`h-full w-full object-contain object-bottom p-3 transition-transform duration-300 group-hover/item:scale-[1.04] ${product.imageClassName || ''}`} loading="lazy" decoding="async" />
                       </div>
                       <p className="mt-3 text-[15px] font-semibold text-white">{product.title}</p>
                     </Link>

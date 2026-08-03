@@ -4,24 +4,24 @@
   "legalName": "ACE WORKPLACE SOLUTIONS",
   "url": "https://aceofficepods.com",
   "description": "Malaysian supplier and local manufacturer of acoustic office pods, phone booths, focus pods, and meeting pods for calls, focused work, interviews, and small meetings.",
-  "updated": "2026-06-19",
+  "updated": "2026-07-21",
   "facts": {
     "podsSold": "180+ since 2023",
     "manufacturing": "Locally made in Malaysia",
-    "acousticPerformance": "Approximately 27 dBA noise reduction on five models",
-    "startingPrice": "RM12,500",
+    "acousticPerformance": "The stated 27 dBA specification applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub; Ace Uno has no published dB rating",
+    "startingPrice": "RM8,800 for the Ace Uno pod only; delivery and installation are separate",
     "leadTime": "Approximately 3-6 working weeks after 50% deposit",
     "serviceArea": "Klang Valley and West Malaysia",
     "showroom": "Klang, Selangor, Malaysia"
   },
   "products": [
     {
-      "name": "Ace Solo",
-      "url": "https://aceofficepods.com/pods/ace-solo",
-      "description": "Compact pod for calls and quick tasks",
+      "name": "Ace Uno",
+      "url": "https://aceofficepods.com/pods/ace-uno",
+      "description": "Single-person acoustic pod for calls and focused work",
       "startingPrice": {
         "currency": "MYR",
-        "value": 12500
+        "value": 8800
       }
     },
     {

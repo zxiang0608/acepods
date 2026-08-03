@@ -14,7 +14,7 @@ export default function SmartPodsBanner({ items, onItemClick, maxWidthClass = 'm
                   alt={item.title}
                   width="320"
                   height="320"
-                  className={`h-full w-full object-contain ${item.imageClassName || ''}`}
+                  className={`h-full w-full object-contain object-bottom ${item.imageClassName || ''}`}
                   loading="lazy"
                   decoding="async"
                 />

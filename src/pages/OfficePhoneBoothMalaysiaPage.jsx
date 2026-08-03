@@ -12,7 +12,7 @@ const breadcrumbs = [
   { name: 'Office Phone Booth Malaysia', path: '/office-phone-booth-malaysia' }
 ];
 
-const phoneBoothSlugs = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-flex-duo'];
+const phoneBoothSlugs = ['ace-uno', 'ace-plus', 'ace-flex', 'ace-flex-duo'];
 const phoneBoothPods = phoneBoothSlugs
   .map((slug) => products.find((product) => product.slug === slug))
   .filter(Boolean);
@@ -20,7 +20,7 @@ const phoneBoothPods = phoneBoothSlugs
 const PHONE_BOOTH_FAQS = [
   { question: 'What is the difference between a phone pod and an office phone booth?', answer: 'The terms are often used interchangeably. Both usually describe a compact enclosed workspace for private calls and focused work; the right choice depends on the model size, ventilation, acoustic performance, and daily usage.' },
   { question: 'Are phone booth pods soundproof?', answer: 'Phone booth pods reduce surrounding noise and improve speech privacy, but they are not automatically completely soundproof. Review the stated acoustic result for the specific model and consider the surrounding office conditions.' },
-  { question: 'Which phone pod is best for private calls?', answer: 'Ace Solo suits compact call use, while Ace Plus is designed for longer one-person focus and repeated daily calls. The best option depends on space, expected session length, and budget.' },
+  { question: 'Which phone pod is best for private calls?', answer: 'Ace Uno is the primary one-person option for private calls, video meetings, and focused work. Ace Plus offers a smaller footprint for repeated daily use, while Ace Flex provides more internal room.' },
   { question: 'What affects office phone booth pricing in Malaysia?', answer: 'Final pricing depends on the model, selected options, quantity, delivery location, and site-access conditions for installation.' }
 ];
 
@@ -29,7 +29,7 @@ export default function OfficePhoneBoothMalaysiaPage() {
     <PageShell>
       <SeoMeta
         title="Office Phone Booth Malaysia for Calls and Focus | Ace Office Pods"
-        description="Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Solo, Ace Plus, and Ace Flex by space, use case, and pricing."
+        description="Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Uno, Ace Plus, and Ace Flex by space, use case, and pricing."
         canonical={buildCanonical('/office-phone-booth-malaysia')}
         keywords={`${SEO_KEYWORDS_COMMON}, office phone booth malaysia, phone booth office malaysia, phone pod malaysia, privacy booth malaysia, soundproof phone booth malaysia, call pod malaysia, single person office pod`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/office-phone-booth-malaysia', PHONE_BOOTH_FAQS)]}
@@ -70,7 +70,7 @@ export default function OfficePhoneBoothMalaysiaPage() {
       <section className="mx-auto grid w-full max-w-[1200px] gap-5 px-5 md:grid-cols-3 md:px-8">
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
           <h2 className="text-[22px] font-semibold tracking-tight text-[#172126]">Best for calls</h2>
-          <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">Ace Solo is a compact option for private calls and quick daily tasks.</p>
+          <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">Ace Uno is the primary one-person option for private calls, video meetings, and focused work.</p>
         </article>
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
           <h2 className="text-[22px] font-semibold tracking-tight text-[#172126]">Best for longer focus</h2>
@@ -84,7 +84,7 @@ export default function OfficePhoneBoothMalaysiaPage() {
 
       <section className="mx-auto mt-8 w-full max-w-[1200px] px-5 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[25px] font-semibold tracking-tight text-[#172126]">Ace Solo vs Ace Plus vs Ace Flex</h2>
+          <h2 className="text-[25px] font-semibold tracking-tight text-[#172126]">Ace Uno vs Ace Plus vs Ace Flex</h2>
           <div className="mt-4 overflow-x-auto">
             <table className="min-w-full border-collapse text-left text-[15px] text-[#59635f]">
               <thead>
@@ -178,7 +178,7 @@ export default function OfficePhoneBoothMalaysiaPage() {
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
           <h2 className="text-[21px] font-semibold tracking-tight text-[#172126]">Which model should I choose first?</h2>
           <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">
-            Start with Ace Solo for compact call use, Ace Plus for longer one-person focus, and Ace Flex when you need extra internal room.
+            Start with Ace Uno for a complete one-person call and focus pod, Ace Plus when the smallest footprint matters, and Ace Flex when you need extra internal room.
           </p>
         </article>
       </section>

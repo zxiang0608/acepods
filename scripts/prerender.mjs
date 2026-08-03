@@ -31,7 +31,7 @@ import { HOME_META, getProductMeta, getProductPublicImage } from '../src/seo/pag
 let PRELOAD_FONT_400 = '';
 let PRELOAD_HERO_AVIF = '';
 
-const POD_ROUTE_ORDER = ['ace-solo', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'];
+const POD_ROUTE_ORDER = ['ace-uno', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'];
 const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
   slug,
   name: POD_SEO_BY_SLUG[slug].name,
@@ -131,7 +131,7 @@ const buildLocalBusinessSchema = () => ({
   '@type': ['Organization', 'LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
   '@id': `${SEO_BASE_URL}/#organization`,
   foundingDate: '2024',
-  priceRange: 'RM12,500+',
+  priceRange: 'RM8,800+',
   image: [SEO_BRAND_LOGO, `${SEO_BASE_URL}/og-image.jpg`],
   address: {
     '@type': 'PostalAddress',
@@ -221,7 +221,7 @@ const LOCATION_PRERENDER_DATA = [
     projects: [
       'Everllence — Ace Plus installation in Kuala Lumpur',
       'Parker Hannifin — Ace Flex installation in Kuala Lumpur',
-      'CMA CGM — Ace Solo installation in Bangsar, Kuala Lumpur'
+      'CMA CGM — Legacy Ace Solo installation in Bangsar, Kuala Lumpur'
     ]
   },
   {
@@ -233,7 +233,7 @@ const LOCATION_PRERENDER_DATA = [
     description:
       'Office pods in Shah Alam with a completed Alphabet Capital installation. Compare phone booths, acoustic pods, pricing, delivery, and installation support.',
     intro: 'Ace Office Pods supplies and installs office phone booths and acoustic work pods for Shah Alam offices.',
-    projects: ['Alphabet Capital — Ace Solo installation in Shah Alam']
+    projects: ['Alphabet Capital — Legacy Ace Solo installation in Shah Alam']
   },
   {
     slug: 'subang-jaya',
@@ -413,7 +413,7 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`,
     h1: 'How much does an office pod cost?',
     body: [
-      'Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.',
+      'Ace Office Pods start from RM8,800 for the Ace Uno pod only and from RM22,200 for a meeting pod in Malaysia. Delivery and installation are itemised separately.',
       '## Office pod starting prices in Malaysia',
       ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - From RM${item.price.toLocaleString('en-MY')}`),
       '## What affects the final price?',
@@ -526,7 +526,7 @@ const STATIC_PRERENDER_META = {
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons. Contact the team for an accurate project quotation.'
+              'Ace Office Pods start from RM8,800 for the Ace Uno pod only and from RM22,200 for a meeting pod in Malaysia. Delivery and installation are itemised separately. Contact the team for an accurate project quotation.'
           }
         }
       },
@@ -589,7 +589,7 @@ const STATIC_PRERENDER_META = {
       {
         question: 'How much do office pods near me cost?',
         answer:
-          'Ace Office Pods start from RM12,500 for a one-person pod. Final project pricing depends on the model, quantity, delivery location, installation access, add-ons, and selected configuration.'
+          'Ace Office Pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final project pricing depends on the model, quantity, location, access, add-ons, and selected configuration.'
       }
     ],
     schemas: (canonical) => [
@@ -677,7 +677,7 @@ const STATIC_PRERENDER_META = {
       '- Two-person discussion pod for quick collaboration',
       '- Team meeting pod for small group sessions',
       '## Compare office pod models',
-      '- Ace Solo — 1 person, private calls and short tasks, from RM12,500',
+      '- Ace Uno — 1 person, private calls, video meetings, and focused work, pod only from RM8,800',
       '- Ace Plus — 1 person, longer focus and repeated daily calls, 27 dB noise reduction, from RM14,500',
       '- Ace Flex — 1 person, spacious solo work, 27 dB noise reduction, from RM19,900',
       '- Ace Flex Duo — 2 people, one-to-one discussions, 27 dB noise reduction, from RM23,900',
@@ -845,12 +845,12 @@ const STATIC_PRERENDER_META = {
   '/office-phone-booth-malaysia': {
     title: 'Office Phone Booth Malaysia for Calls and Focus | Ace Office Pods',
     description:
-      'Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Solo, Ace Plus, and Ace Flex by space, use case, and pricing.',
+      'Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Uno, Ace Plus, and Ace Flex by space, use case, and pricing.',
     keywords: `${SEO_KEYWORDS_COMMON}, office phone booth malaysia, phone booth office malaysia, call pod malaysia, single person office pod`,
     h1: 'Office phone booth solutions in Malaysia',
     body: [
       'Compare office phone booth style pods, phone pods, and privacy booths for private calls and focused work.',
-      'Review Ace Solo, Ace Plus, and Ace Flex by space, use case, and project fit.',
+      'Review Ace Uno, Ace Plus, and Ace Flex by space, use case, and project fit.',
       '## What an office phone booth is used for',
       'A phone booth style office pod is usually selected for private calls, short virtual meetings, and focused individual tasks inside open offices. Teams use these pods to create privacy without building permanent rooms.',
       '## How to compare one-person pod models',
@@ -892,7 +892,7 @@ const STATIC_PRERENDER_META = {
         name: 'Office Phone Booth Malaysia for Calls and Focus',
         url: canonical,
         description:
-          'Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Solo, Ace Plus, and Ace Flex by space, use case, and pricing.'
+          'Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Uno, Ace Plus, and Ace Flex by space, use case, and pricing.'
       },
       {
         '@context': 'https://schema.org',
@@ -919,7 +919,7 @@ const STATIC_PRERENDER_META = {
         mainEntity: [
           ['What is the difference between a phone pod and an office phone booth?', 'The terms are often used interchangeably. Both usually describe a compact enclosed workspace for private calls and focused work; the right choice depends on the model size, ventilation, acoustic performance, and daily usage.'],
           ['Are phone booth pods soundproof?', 'Phone booth pods reduce surrounding noise and improve speech privacy, but they are not automatically completely soundproof. Review the stated acoustic result for the specific model and consider the surrounding office conditions.'],
-          ['Which phone pod is best for private calls?', 'Ace Solo suits compact call use, while Ace Plus is designed for longer one-person focus and repeated daily calls. The best option depends on space, expected session length, and budget.'],
+          ['Which phone pod is best for private calls?', 'Ace Uno is the primary one-person option for private calls, video meetings, and focused work. Ace Plus offers a smaller footprint, while Ace Flex provides more internal room.'],
           ['What affects office phone booth pricing in Malaysia?', 'Final pricing depends on the model, selected options, quantity, delivery location, and site-access conditions for installation.']
         ].map(([name, text]) => ({
           '@type': 'Question',
@@ -1011,9 +1011,9 @@ const STATIC_PRERENDER_META = {
       '### Parker Hannifin — Kuala Lumpur',
       'Model: Ace Flex. One-person pod installation for private calls and focused work.',
       '### Alphabet Capital — Shah Alam',
-      'Model: Ace Solo. One-person office phone booth installation for private calls and focused work.',
+      'Model: Legacy Ace Solo. One-person office phone booth installation for private calls and focused work.',
       '### CMA CGM — Bangsar, Kuala Lumpur',
-      'Model: Ace Solo. Installation for a global logistics operator at their Malaysia office in Bangsar. Pod deployed for confidential shipping and operations calls in an open-plan office.',
+      'Model: Legacy Ace Solo. Installation for a global logistics operator at their Malaysia office in Bangsar. Pod deployed for confidential shipping and operations calls in an open-plan office.',
       "### Taylor's College — Subang Jaya",
       "Model: Ace Plus. Installation for Taylor's College Subang Jaya campus. Pod deployed in a student services or administrative area for private advising and support sessions.",
       '## What these projects demonstrate',
@@ -1104,7 +1104,7 @@ const STATIC_PRERENDER_META = {
       'Compare models beyond headline pricing with practical buying factors in one view.',
       'Review installation, support, and office fit before making a final decision.',
       '## Office pod model comparison',
-      '- Ace Solo — 1 pax, 1200 × 1000 mm, from RM12,500 — best for calls and quick focus',
+      '- Ace Uno — 1 pax, 1418 × 1018 mm, pod only from RM8,800 — best for calls, video meetings, and focus',
       '- Ace Plus — 1 pax, 1000 × 1000 mm, from RM14,500 — best for extended daily use, 27 dBA',
       '- Ace Flex — 1 pax, 1600 × 1200 mm, from RM19,900 — best for spacious solo work',
       '- Ace Flex Duo — 2 pax, 1600 × 1200 mm, from RM23,900 — best for one-to-one discussions',
@@ -1509,7 +1509,7 @@ const STATIC_PRERENDER_META = {
       'Completed projects for Everllence, Parker Hannifin, and CMA CGM in Bangsar.',
       '[View office pod projects in Kuala Lumpur](/locations/kuala-lumpur)',
       '## Shah Alam',
-      'Completed Ace Solo installation for Alphabet Capital.',
+      'Completed legacy Ace Solo installation for Alphabet Capital.',
       '[View office pod projects in Shah Alam](/locations/shah-alam)',
       '## Subang Jaya',
       "Completed Ace Plus installation for Taylor's College.",
@@ -1564,13 +1564,13 @@ const STATIC_PRERENDER_META = {
       'Ace Office Pods supplies and delivers acoustic office pods and phone booths to Penang workplaces.',
       'Our range covers one-person focus pods and phone booths through to four and six-person meeting pods, with delivery and installation coordination available for Penang Island and Seberang Perai sites.',
       '## Models available for Penang delivery',
-      'All six Ace Office Pod models are available — Ace Solo (from RM12,500), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
+      'All six Ace Office Pod models are available — Ace Uno (pod only from RM8,800), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
       '## Delivery and installation planning',
       'Penang deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
       '## Areas served in Penang',
       'Ace Office Pods delivers to offices across Penang including George Town, Bayan Lepas, Bukit Mertajam, Butterworth, Penang Hill area, and surrounding commercial areas on Penang Island and Seberang Perai.',
       '## Frequently asked questions',
-      'How much does an office pod cost in Penang? Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, and site installation requirements.',
+      'How much does an office pod cost in Penang? Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation depend on location, quantity, options, and site requirements.',
       'How long does delivery to Penang take? Standard lead time is approximately 3 to 6 working weeks from order confirmation. Penang logistics are confirmed with the quotation.',
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
@@ -1600,7 +1600,7 @@ const STATIC_PRERENDER_META = {
           {
             '@type': 'Question',
             name: 'How much does an office pod cost in Penang?',
-            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, delivery distance, and site installation requirements.' }
+            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation depend on model, quantity, options, delivery distance, and site requirements.' }
           },
           {
             '@type': 'Question',
@@ -1639,13 +1639,13 @@ const STATIC_PRERENDER_META = {
       'Ace Office Pods supplies and delivers acoustic office pods and phone booths to Johor Bahru workplaces.',
       'Our range covers one-person focus pods and phone booths through to four and six-person meeting pods, with delivery and installation coordination available for JB sites.',
       '## Models available for Johor Bahru delivery',
-      'All six Ace Office Pod models are available — Ace Solo (from RM12,500), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
+      'All six Ace Office Pod models are available — Ace Uno (pod only from RM8,800), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
       '## Delivery and installation planning',
       'Johor Bahru deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
       '## Areas served in Johor Bahru',
       'Ace Office Pods delivers to offices across Johor Bahru including the city centre, Iskandar Puteri, Medini, Bukit Indah, Johor Jaya, and surrounding commercial areas.',
       '## Frequently asked questions',
-      'How much does an office pod cost in Johor Bahru? Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, and site installation requirements.',
+      'How much does an office pod cost in Johor Bahru? Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation depend on location, quantity, options, and site requirements.',
       'How long does delivery to JB take? Standard lead time is approximately 3 to 6 working weeks from order confirmation. Johor Bahru logistics are confirmed with the quotation.',
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
@@ -1675,7 +1675,7 @@ const STATIC_PRERENDER_META = {
           {
             '@type': 'Question',
             name: 'How much does an office pod cost in Johor Bahru?',
-            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM12,500 for a one-person model. Final pricing depends on model, quantity, options, delivery distance, and site installation requirements.' }
+            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation depend on model, quantity, options, delivery distance, and site requirements.' }
           },
           {
             '@type': 'Question',
@@ -1924,7 +1924,7 @@ return ({
   keywords: `${SEO_KEYWORDS_COMMON}, ${productMeta.name}, ${route.split('/').pop().replaceAll('-', ' ')}`,
   h1: productMeta.name,
   body: [
-    `Starting from ${formatRM(productMeta.startingPrice)}`,
+    `Starting from ${formatRM(productMeta.startingPrice)}${productMeta.priceBasis === 'pod only' ? ' for the pod only' : ''}`,
     productMeta.shortDesc,
     ...(productMeta.useCases ?? []),
     ...(productMeta.schemaProperties?.map((p) => `${p.name}: ${p.value}`) ?? [])

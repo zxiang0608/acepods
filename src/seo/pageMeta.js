@@ -7,10 +7,11 @@ export const HOME_META = {
 export const getProductMeta = (product) => {
   const name = product.displayTitle || product.name;
   const price = product.pricing?.amount || `From RM${product.startingPrice?.toLocaleString('en-MY')}`;
+  const priceContext = product.priceBasis === 'pod only' || product.slug === 'ace-uno' ? `${price} for the pod only` : `${price} in Malaysia`;
 
   return {
     title: `${name} Office Pod Price & Specs | Ace Office Pods`,
-    description: `${name}: ${product.shortDesc}. ${price} in Malaysia. View colours, options, delivery, and installation details.`
+    description: `${name}: ${product.shortDesc}. ${priceContext}. View colours, options, delivery, and installation details.`
   };
 };
 

@@ -22,9 +22,6 @@ import acePodsLogo from '../Logos/ace pods logo.png';
 import acePodsHero from '../assets/hero-pods.webp';
 import acePodsHeroAvif from '../assets/hero-pods.avif';
 import zxTayPhoto from '../assets/zx-tay.webp';
-import aceFlexGreyAshCutout from '../assets/homepage-cutouts/ace-flex-grey-ash-cutout.png';
-import aceMeetGreyAshCutout from '../assets/homepage-cutouts/ace-meet-grey-ash-cutout.png';
-import aceHubGreyAshCutout from '../assets/homepage-cutouts/ace-hub-grey-ash-cutout.png';
 import officeOneImage from '../assets/Office-1.webp';
 import officeTwoImage from '../assets/office-2.webp';
 import officeThreeImage from '../assets/office-3.webp';
@@ -344,22 +341,6 @@ export default function App() {
   const activeReassuranceItems = seoReassuranceItems;
   const desktopTopPodCards = products.slice(0, 3);
   const desktopBottomPodCards = products.slice(3);
-  const displayScaleBySlug = {
-    'ace-solo': 'scale-[0.90]',
-    'ace-plus': 'scale-[0.88]',
-    'ace-flex': 'scale-[0.96]',
-    'ace-flex-duo': 'scale-[0.96]',
-    'ace-meet': 'scale-[1.15]',
-    'ace-hub': 'scale-[1.18]'
-  };
-  const mobileImageOffsetBySlug = {
-    'ace-solo': '-translate-x-1',
-    'ace-plus': '-translate-x-[5px]',
-    'ace-flex': '-translate-x-1',
-    'ace-flex-duo': 'translate-x-1',
-    'ace-meet': 'translate-x-0',
-    'ace-hub': 'translate-x-0'
-  };
 
   const heroHeadline = 'Less noise. More work done.';
   const heroSupportingText = 'Give your people the quiet to think clearly, speak privately, and do their best work.';
@@ -398,29 +379,15 @@ export default function App() {
     });
   };
   const getHomepagePodImageClassName = (pod) => {
-    const scaleClass = displayScaleBySlug[pod.slug] || '';
-    return `h-full w-full object-contain ${scaleClass}`.trim();
-  };
-  const getMenuPodItemBySlug = (slug) => smartPodsMenuItems.find((item) => item.to === `/pods/${slug}`) || null;
-  const getHomepagePodImageBlendClassName = (pod) => {
-    if (['ace-flex', 'ace-meet', 'ace-hub'].includes(pod.slug)) return '';
-    const menuItem = getMenuPodItemBySlug(pod.slug);
-    if (menuItem?.imageClassName?.includes('mix-blend-multiply')) return 'mix-blend-multiply';
-    return '';
+    const blendClass = pod.catalogImageClassName || '';
+    return `h-full w-full object-contain object-bottom ${blendClass}`.trim();
   };
   const getHomepagePodCardImage = (pod) => {
-    if (pod.slug === 'ace-flex') return aceFlexGreyAshCutout;
-    if (pod.slug === 'ace-meet') return aceMeetGreyAshCutout;
-    if (pod.slug === 'ace-hub') return aceHubGreyAshCutout;
-    const menuItem = getMenuPodItemBySlug(pod.slug);
-    return menuItem?.image || pod.thumbImage;
+    return pod.catalogImage || pod.thumbImage;
   };
-  const getMobileHomepagePodImageClassName = (pod) => {
-    const offsetClass = mobileImageOffsetBySlug[pod.slug] || 'translate-x-0';
-    return `${getHomepagePodImageClassName(pod)} ${offsetClass} ${getHomepagePodImageBlendClassName(pod)}`.trim();
-  };
+  const getMobileHomepagePodImageClassName = (pod) => getHomepagePodImageClassName(pod);
   const homepageCardHeadlineBySlug = {
-    'ace-solo': 'Compact pod for calls\nand quick tasks',
+    'ace-uno': 'Acoustic pod for calls\nand focused work',
     'ace-plus': 'Built for privacy, focus\nand sound control',
     'ace-flex': 'Spacious pod for comfort\nand focus',
     'ace-flex-duo': 'Two-person pod for\nfocused work',
@@ -492,7 +459,7 @@ export default function App() {
               alt={`${pod.name} acoustic office pod`}
               width="990"
               height="990"
-              className={`${getHomepagePodImageClassName(pod)} ${getHomepagePodImageBlendClassName(pod)}`.trim()}
+              className={getHomepagePodImageClassName(pod)}
               loading="lazy"
               decoding="async"
             />

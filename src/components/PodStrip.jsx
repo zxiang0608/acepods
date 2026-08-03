@@ -38,7 +38,7 @@ export default function PodStrip() {
                   alt={item.name}
                   width="136"
                   height="136"
-                  className={`h-full w-full object-contain ${item.imageClassName}`}
+                  className={`h-full w-full object-contain object-bottom ${item.imageClassName}`}
                   loading="lazy"
                   decoding="async"
                 />

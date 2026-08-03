@@ -26,7 +26,7 @@ const footerLinkGroups = [
     key: 'products',
     title: 'Products',
     links: [
-      { label: 'Ace Solo', to: '/pods/ace-solo' },
+      { label: 'Ace Uno', to: '/pods/ace-uno' },
       { label: 'Ace Plus', to: '/pods/ace-plus' },
       { label: 'Ace Flex', to: '/pods/ace-flex' }
     ]

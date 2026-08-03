@@ -42,7 +42,7 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'Which office pod is suitable for calls, focused work, or meetings?',
     answer:
-      'Ace Solo and Ace Plus are best for private calls, video meetings, and focused individual work. Ace Flex is suitable for one-to-one discussions, while Ace Meet and Ace Hub are built for team meetings and collaboration. We recommend based on your real daily usage and team flow.'
+      'Ace Uno and Ace Plus are best for private calls, video meetings, and focused individual work. Ace Flex is a more spacious one-person option, while Ace Flex Duo, Ace Meet, and Ace Hub support collaborative use. We recommend based on your real daily usage and team flow.'
   },
   {
     question: 'How soundproof are office pods in real working environments?',
@@ -85,7 +85,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'Which office pod is suitable for calls, focused work, or meetings?',
     answer:
-      'Ace Solo and Ace Plus are suited for calls, Zoom meetings, and focused solo work. Ace Flex supports one-to-one discussions and shared focused tasks. Ace Meet and Ace Hub are designed for small team meetings and collaboration.'
+      'Ace Uno and Ace Plus are suited for calls, Zoom meetings, and focused individual work. Ace Flex provides more room for one person, while Ace Flex Duo, Ace Meet, and Ace Hub support discussions and team collaboration.'
   },
   {
     question: 'How soundproof are office pods in real working environments?',
@@ -160,7 +160,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'What does 27 dBA noise reduction actually mean in practice?',
     answer:
-      'A typical open office runs at around 60–65 dB. With 27 dBA reduction, the noise level inside the pod drops to approximately 35–38 dB — similar to a quiet library. In practical terms, a colleague standing two desks away cannot make out what you are saying inside the pod. The 27 dBA rating applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Ace Solo does not carry this rating.'
+      'The stated 27 dBA rating applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Ace Uno does not carry a published dB rating, so it should be compared using its stated materials, ventilation, dimensions, and intended one-person use.'
   }
 ];
 
@@ -191,7 +191,7 @@ export const PRICING_FAQ_ITEMS = [
   {
     question: 'How much does an office pod cost in Malaysia?',
     answer:
-      'Ace Office Pods start from RM12,500 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons. Contact the team for an accurate project quotation.'
+      'Ace Office Pods start from RM8,800 for the Ace Uno pod only and from RM22,200 for a meeting pod in Malaysia. Delivery and installation are itemised separately. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.'
   },
   {
     question: 'What affects the final office pod price?',

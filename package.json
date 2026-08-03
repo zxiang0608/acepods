@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "product-images": "node scripts/normalize-product-images.mjs",
     "images": "node scripts/prepare-seo-images.mjs",
     "build:spa": "vite build",
     "geo-discovery": "node scripts/generate-geo-discovery.mjs",

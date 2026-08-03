@@ -13,7 +13,7 @@ const BRAND = 'Ace Office Pods';
 const PRODUCT_TYPE = 'Office Pods > Acoustic Office Booths';
 
 const PRODUCT_ORDER = [
-  'ace-solo',
+  'ace-uno',
   'ace-plus',
   'ace-flex',
   'ace-flex-duo',

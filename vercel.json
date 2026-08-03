@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/pods/ace-solo",
+      "destination": "https://aceofficepods.com/pods/ace-uno",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

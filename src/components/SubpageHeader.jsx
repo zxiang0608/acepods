@@ -154,7 +154,7 @@ export default function SubpageHeader() {
                               alt={menuItem.title}
                               width="320"
                               height="320"
-                              className={`h-full w-full object-contain ${menuItem.imageClassName || ''}`}
+                              className={`h-full w-full object-contain object-bottom ${menuItem.imageClassName || ''}`}
                               loading="lazy"
                               decoding="async"
                             />
