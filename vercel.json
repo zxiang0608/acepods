@@ -33,6 +33,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/demo3",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/demo3/:path*",
+      "destination": "/index.html"
+    },
+    {
       "source": "/draft1",
       "destination": "/index.html"
     }
