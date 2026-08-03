@@ -440,7 +440,7 @@ export const products = [
       }
     },
     hideThumbnailsOnColorMode: true,
-    exteriorLabel: 'Exterior PET Colour',
+    exteriorLabel: 'Fabric Exterior Colour Options',
     technicalSpecifications: {
       capacity: '1 person',
       externalDimensions: '1418W × 1018D × 2185H mm',
