@@ -73,10 +73,10 @@ const featuredModels = [
     slug: 'ace-uno',
     name: 'Ace Uno',
     tagline: 'Phone booth for 1 person',
-    desc: 'Single-person acoustic pod for private calls, video meetings, and focused work.',
+    desc: 'Freestanding call pod for private calls and video meetings.',
     image: aceUnoCatalogImage,
     imageClassName: 'mix-blend-multiply',
-    fromMyr: 8800
+    fromMyr: 8850
   },
   {
     slug: 'ace-meet',
@@ -157,7 +157,7 @@ const galleryImages = [
 ];
 
 const priceRows = [
-  { label: 'Pod price', imported: 'RM 8,000 – 10,000', ace: 'From RM 8,800', aceMyr: 8800 },
+  { label: 'Pod price', imported: 'RM 8,000 – 10,000', ace: 'From RM 8,850', aceMyr: 8850 },
   { label: 'Delivery & freight', imported: 'RM 1,500 – 3,000 extra', ace: 'Included' },
   { label: 'Customs & duties', imported: 'Variable — your problem', ace: 'N/A — made in Malaysia' },
   { label: 'Installation', imported: 'Self-arrange a contractor (RM 2,000 – 4,000+)', ace: 'Our team — price listed on our website' },
@@ -220,7 +220,7 @@ export default function HomePageV2() {
     <div className="min-h-screen overflow-x-hidden bg-stone-50 font-sans antialiased text-stone-900">
       <SeoMeta
         title="Acoustic Office Pods Malaysia — Installed in a Day | Ace Pods"
-        description="Malaysian-made acoustic office pods for private calls, focused work, and meetings. 180+ installs. From RM 8,800 for the pod only. Get a free site visit."
+        description="Malaysian-made acoustic office pods for private calls, focused work, and meetings. 180+ installs. From RM 8,850 for the pod only. Get a free site visit."
         canonical={buildCanonical('/')}
         schemas={[localBusinessSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)]}
       />
@@ -539,7 +539,7 @@ export default function HomePageV2() {
                 Find the right acoustic office pod for your team
               </h2>
               <p className="mt-4 text-base text-stone-500 md:text-lg">
-                Six models from RM 8,800. Ace Uno pricing is for the pod only; delivery and installation are itemised separately.
+                Six models from RM 8,850. Ace Uno pricing is for the pod only; delivery and installation are itemised separately.
               </p>
               {!isLocal && (
                 <div className="mx-auto mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-left text-[14px] leading-[1.55] text-amber-900">

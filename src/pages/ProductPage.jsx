@@ -9,34 +9,37 @@ import { POD_SEO_BY_SLUG } from '../data/podSeoCatalog';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { getGalleryAvifSource } from '../lib/galleryImages';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
-import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createFaqSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { getProductMeta, getProductPublicImage } from '../seo/pageMeta';
 import QuoteForm from '../components/QuoteForm';
 import highResPodCert from '../../assets/high-res-pod-cert.png';
 import barStoolBlack from '../../assets/bar-stool-black.png';
 import barStoolWhite from '../../assets/bar-stool-white.png';
 
+const EMPTY_PRESENTATION_GALLERY = [];
+
 const PDP_QUICK_ANSWER_COPY = {
   'ace-uno': {
-    intro: 'Ace Uno creates a dedicated one-person space for private calls, video meetings, and focused work without permanent renovation.',
+    intro:
+      'Ace Uno gives your team somewhere to step in for a private call and step out — without booking a room, building a wall, or disrupting the floor. It is a freestanding, plug-and-play call pod with ventilation, lighting, power, and a work surface. Ready to use in under an hour. Designed for high-frequency, short-duration use: the kind of calls and video meetings that happen five times a day but do not need a dedicated office.',
     heading: 'Quick answers about Ace Uno',
     items: [
       {
         q: 'What is Ace Uno?',
-        a: 'Ace Uno is a single-person acoustic office pod with an integrated worktop, lighting, ventilation, power, and USB charging.'
+        a: 'Ace Uno is a freestanding call pod for one person — with a built-in worktop, LED lighting, dual ventilation fans, power socket, and USB charging. It plugs in and works immediately, no renovation needed.'
       },
       {
         q: 'How much does Ace Uno cost in Malaysia?',
         a: ({ startingPriceText }) =>
-          `Ace Uno starts from ${startingPriceText} for the pod only. Standard Klang Valley installation is RM500 and delivery is RM350.`
+          `Ace Uno starts from ${startingPriceText} for the pod only. Standard Klang Valley installation is RM350 and delivery is RM350.`
       },
       {
         q: 'What is Ace Uno best for?',
-        a: 'It is best for one-person phone calls, video meetings, and focused individual work in open-plan workplaces.'
+        a: 'Ace Uno works best for short, frequent calls and video meetings in open-plan offices — the kind of privacy you need multiple times a day but do not need a full room for.'
       },
       {
-        q: 'What are the external dimensions?',
-        a: 'Ace Uno measures 1418 mm wide, 1018 mm deep, and 2185 mm high.'
+        q: 'How is Ace Uno different from Ace Plus?',
+        a: 'Ace Uno is built for calls — step in, take your call, step out. It is lighter, more spacious inside, and priced for offices that want to place several pods across the floor. Ace Plus is built for longer focused work sessions with heavier construction and fuller acoustic performance. If your team mostly needs quick call privacy, start with Uno. If they need a quiet workspace to sit in for hours, look at Plus.'
       }
     ]
   },
@@ -460,6 +463,8 @@ export default function ProductPage() {
     .map((addon) => addon.label);
   const selectedOptionLabels = [...selectedConfigurationLabels, ...selectedAddonLabels];
   const colorImageMap = product.colorImageMap || null;
+  const colorGalleryMap = product.colorGalleryMap || null;
+  const presentationGallery = product.presentationGallery || EMPTY_PRESENTATION_GALLERY;
   const pairKey = `${selectedExterior}|${selectedInterior}`;
   const mappedImage =
     colorImageMap?.byPair?.[pairKey] ||
@@ -538,29 +543,53 @@ export default function ProductPage() {
       });
     };
 
-    if (primaryGalleryImage) {
-      addProductImage(primaryGalleryImage, {
-        label: `${selectedExterior} + ${selectedInterior}`,
-        exteriorId: selectedExterior,
-        interiorId: selectedInterior
+    if (presentationGallery.length > 0) {
+      presentationGallery.forEach((entry, index) => {
+        const galleryItem = typeof entry === 'string' ? { image: entry } : entry;
+        addProductImage(galleryItem.image, {
+          label: galleryItem.label || `${product.name} product view ${index + 1}`,
+          exteriorId: galleryItem.exteriorId,
+          interiorId: galleryItem.interiorId
+        });
       });
     }
 
-    Object.entries(colorImageMap?.byPair || {}).forEach(([pair, image]) => {
-      const [exteriorId, interiorId] = pair.split('|');
-      if (!exteriorId || !interiorId) return;
-      addProductImage(image, {
-        label: `${exteriorId} + ${interiorId}`,
-        exteriorId,
-        interiorId
-      });
-    });
+    const selectedColourGallery = presentationGallery.length === 0 ? colorGalleryMap?.byExterior?.[selectedExterior] || [] : [];
 
-    (product.extraPreviewImages || []).forEach((image) => {
-      addProductImage(image, {
-        label: `${product.name} front view`
+    if (selectedColourGallery.length > 0) {
+      [...selectedColourGallery, ...(colorGalleryMap?.shared || [])].forEach((entry, index) => {
+        const galleryItem = typeof entry === 'string' ? { image: entry } : entry;
+        addProductImage(galleryItem.image, {
+          label: galleryItem.label || `${product.name} product view ${index + 1}`,
+          exteriorId: index < selectedColourGallery.length ? selectedExterior : undefined,
+          interiorId: index < selectedColourGallery.length ? selectedInterior : undefined
+        });
       });
-    });
+    } else if (presentationGallery.length === 0) {
+      if (primaryGalleryImage) {
+        addProductImage(primaryGalleryImage, {
+          label: `${selectedExterior} + ${selectedInterior}`,
+          exteriorId: selectedExterior,
+          interiorId: selectedInterior
+        });
+      }
+
+      Object.entries(colorImageMap?.byPair || {}).forEach(([pair, image]) => {
+        const [exteriorId, interiorId] = pair.split('|');
+        if (!exteriorId || !interiorId) return;
+        addProductImage(image, {
+          label: `${exteriorId} + ${interiorId}`,
+          exteriorId,
+          interiorId
+        });
+      });
+
+      (product.extraPreviewImages || []).forEach((image) => {
+        addProductImage(image, {
+          label: `${product.name} front view`
+        });
+      });
+    }
 
     if (items.length === 0 && podPrimaryImage) {
       addProductImage(podPrimaryImage, {
@@ -573,6 +602,8 @@ export default function ProductPage() {
     return items;
   }, [
     colorImageMap,
+    colorGalleryMap,
+    presentationGallery,
     podPrimaryImage,
     primaryGalleryImage,
     product.extraPreviewImages,
@@ -613,6 +644,15 @@ export default function ProductPage() {
   const hasFeatureRows = displayFeatureRows.some((row) => row.length > 0);
   const allFeatureItems = displayFeatureRows.flat();
   const pdpQuickAnswerCopy = PDP_QUICK_ANSWER_COPY[product.slug] || null;
+  const faqSchema = pdpQuickAnswerCopy?.items?.length
+    ? createFaqSchema(
+        canonicalPath,
+        pdpQuickAnswerCopy.items.map((item) => ({
+          question: item.q,
+          answer: typeof item.a === 'function' ? item.a({ startingPriceText }) : item.a
+        }))
+      )
+    : null;
   const productMeta = getProductMeta(product);
   const seoTitle = productMeta.title;
   const seoDescription = productMeta.description;
@@ -635,6 +675,7 @@ export default function ProductPage() {
       { name: 'Ace Pods', path: '/office-pods' },
       { name: product.displayTitle || product.name, path: canonicalPath }
     ]),
+    ...(faqSchema ? [faqSchema] : []),
     {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
@@ -654,9 +695,9 @@ export default function ProductPage() {
   ];
   const isAddonPreviewImage = addonPreviewImages.includes(mainImage);
   const shouldUseMultiplyBlend =
-    product.slug === 'ace-uno' ||
-    (product.slug !== 'ace-plus' && mainImage !== product.catalogImage) ||
-    isAddonPreviewImage;
+    isAddonPreviewImage ||
+    (!product.disableProductImageBlend &&
+      (product.slug === 'ace-uno' || (product.slug !== 'ace-plus' && mainImage !== product.catalogImage)));
   const hasMultipleExteriorColors = (product.exteriorColors || []).length > 1;
   const exteriorThumbnailItems = (product.exteriorColors || []).map((color) => {
     const exteriorPairKey = `${color.id}|${selectedInterior}`;
@@ -667,10 +708,27 @@ export default function ProductPage() {
       thumbnailImage
     };
   });
-  const previewThumbnailItems = (product.extraPreviewImages || []).map((image, index) => ({
-    id: `preview-${index}`,
-    image
-  }));
+  const usesPresentationGallery = presentationGallery.length > 0;
+  const previewThumbnailItems = usesPresentationGallery
+    ? productDisplayItems.map((item, index) => ({
+        id: `gallery-${index}`,
+        image: item.image,
+        label: item.label,
+        exteriorId: item.exteriorId,
+        interiorId: item.interiorId
+      }))
+    : product.showGalleryPreviewsInThumbnailStrip
+      ? productDisplayItems.slice(1).map((item, index) => ({
+          id: `preview-${index}`,
+          image: item.image,
+          label: item.label
+        }))
+      : (product.extraPreviewImages || []).map((image, index) => ({
+          id: `preview-${index}`,
+          image,
+          label: `${product.name} front view`
+        }));
+  const visibleExteriorThumbnailItems = usesPresentationGallery ? [] : exteriorThumbnailItems;
   const optionThumbnailItems = [
     ...configurationOptions
       .map((option) => {
@@ -719,7 +777,10 @@ export default function ProductPage() {
   const aceHubConfigurationPreviewImages =
     product.slug === 'ace-hub' ? configurationOptions.map((option) => getPreviewImageForOption(option)).filter(Boolean) : [];
   const isAceHubConfigurationPreviewImage = product.slug === 'ace-hub' && aceHubConfigurationPreviewImages.includes(mainImage);
-  const mainProductAlt = `${product.name} acoustic office pod`;
+  const activeProductImage = productDisplayItems.find((item) => item.image === mainImage);
+  const mainProductAlt = activeProductImage?.label
+    ? `${product.name}: ${activeProductImage.label}`
+    : `${product.name} acoustic office pod`;
   const getFeatureAlt = (featureItem) =>
     featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
   const sharedFeatureCardClass = 'flex w-[244px] shrink-0 flex-col text-center md:w-[320px]';
@@ -770,16 +831,23 @@ export default function ProductPage() {
     }
   };
 
+  const selectProductDisplayItem = (item) => {
+    if (!item) return;
+    if (item.exteriorId) setSelectedExterior(item.exteriorId);
+    if (item.interiorId) setSelectedInterior(item.interiorId);
+    setSelectedImage(item.image);
+  };
+
   const goToPrevImage = () => {
     if (productDisplayItems.length < 2) return;
     const nextIndex = (activeGalleryIndex - 1 + productDisplayItems.length) % productDisplayItems.length;
-    setSelectedImage(productDisplayItems[nextIndex].image);
+    selectProductDisplayItem(productDisplayItems[nextIndex]);
   };
 
   const goToNextImage = () => {
     if (productDisplayItems.length < 2) return;
     const nextIndex = (activeGalleryIndex + 1) % productDisplayItems.length;
-    setSelectedImage(productDisplayItems[nextIndex].image);
+    selectProductDisplayItem(productDisplayItems[nextIndex]);
   };
 
   useEffect(() => {
@@ -987,7 +1055,9 @@ export default function ProductPage() {
               {hasMultipleExteriorColors && (
                 <div className="mt-1 block">
                   <div className="px-0 py-1">
-                    <p className="mb-2 text-center text-[12px] font-semibold tracking-[0.03em] text-[#3b3f45]">Available pod colours</p>
+                    <p className="mb-2 text-center text-[12px] font-semibold tracking-[0.03em] text-[#3b3f45]">
+                      {product.thumbnailStripLabel || 'Available pod colours'}
+                    </p>
                     <div className="relative">
                       <button
                         type="button"
@@ -1013,7 +1083,7 @@ export default function ProductPage() {
                       </button>
                       <div
                         ref={thumbnailScrollRef}
-                        className="flex max-w-full flex-nowrap justify-center gap-2 overflow-x-auto overflow-y-hidden px-0 pb-1 md:px-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                        className="flex max-w-full flex-nowrap justify-start gap-2 overflow-x-auto overflow-y-hidden px-0 pb-1 md:justify-center md:px-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                       >
                       {previewThumbnailItems.map((preview) => {
                         const selected = mainImage === preview.image;
@@ -1021,15 +1091,15 @@ export default function ProductPage() {
                           <button
                             key={preview.id}
                             type="button"
-                            onClick={() => setSelectedImage(preview.image)}
+                            onClick={() => selectProductDisplayItem(preview)}
                             className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-[8px] border bg-[#f7f6f2] transition-all ${
                               selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
                             }`}
-                            aria-label={`Available pod colours preview image ${preview.id.replace('preview-', '')}`}
+                            aria-label={preview.label || `Product preview image ${preview.id.replace('preview-', '')}`}
                           >
                             <img
                               src={preview.image}
-                              alt={`${product.name} front view`}
+                              alt={preview.label ? `${product.name}: ${preview.label}` : `${product.name} product view`}
                               width="56"
                               height="56"
                               className="h-full w-full object-contain object-center"
@@ -1042,7 +1112,7 @@ export default function ProductPage() {
                           </button>
                         );
                       })}
-                      {exteriorThumbnailItems.map((color) => {
+                      {visibleExteriorThumbnailItems.map((color) => {
                         const selected = color.id === selectedExterior;
                         return (
                           <button

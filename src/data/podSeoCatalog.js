@@ -1,12 +1,12 @@
 export const POD_SEO_BY_SLUG = {
   'ace-uno': {
     name: 'Ace Uno',
-    shortDesc: 'Single-person acoustic pod for calls and focused work',
-    startingPrice: 8800,
+    shortDesc: 'A private space for calls. No renovation required.',
+    startingPrice: 8850,
     priceBasis: 'pod only',
     schemaProperties: [
       { name: 'Capacity', value: '1 person' },
-      { name: 'Category', value: 'Single-person acoustic office pod' },
+      { name: 'Category', value: 'Single-person privacy call pod' },
       { name: 'External dimensions', value: '1418W × 1018D × 2185H mm' },
       { name: 'Exterior and interior finish', value: '9 mm polyester fibre acoustic panels' },
       { name: 'Door', value: '10 mm clear tempered glass' },
@@ -15,14 +15,14 @@ export const POD_SEO_BY_SLUG = {
       { name: 'Power', value: 'Universal socket with USB Type-A and USB Type-C' }
     ],
     useCases: [
-      'Ace Uno is a one-person acoustic office pod designed for private phone calls, video meetings, and focused individual work in open-plan workplaces.',
+      'Ace Uno is a freestanding one-person call pod designed for private phone calls and video meetings in open-plan workplaces.',
       'Its 1418 mm by 1018 mm footprint provides an integrated Natural Oak work surface without requiring permanent renovation or built-in construction.',
       'The standard configuration includes a clear tempered-glass door, laminated safety-glass rear panel, neutral-white LED lighting, dual quiet ventilation fans, universal power, and USB charging.',
-      'Ace Uno starts from RM8,800 for the pod only. Delivery and installation are itemised separately according to location and site conditions.'
+      'Ace Uno starts from RM8,850 for the pod only. Delivery and installation are itemised separately according to location and site conditions.'
     ],
     faqItems: [
-      { question: 'What is the Ace Uno office pod used for?', answer: 'Ace Uno is a single-person acoustic office pod for private calls, video meetings, and focused individual work in open-plan workplaces.' },
-      { question: 'How much does Ace Uno cost in Malaysia?', answer: 'Ace Uno starts from RM8,800 for the pod only. Klang Valley installation is RM500 and delivery is RM350 under the standard scope, while outstation and restricted-access projects are quoted separately.' },
+      { question: 'What is the Ace Uno office pod used for?', answer: 'Ace Uno is a freestanding single-person call pod for private calls and video meetings in open-plan workplaces.' },
+      { question: 'How much does Ace Uno cost in Malaysia?', answer: 'Ace Uno starts from RM8,850 for the pod only. Klang Valley installation is RM350 and delivery is RM350 under the standard scope, while outstation and restricted-access projects are quoted separately.' },
       { question: 'What are the external dimensions of Ace Uno?', answer: 'Ace Uno measures 1418 mm wide, 1018 mm deep, and 2185 mm high.' },
       { question: 'What is included with Ace Uno?', answer: 'The standard pod includes an integrated Natural Oak worktop, LED ceiling light, dual quiet airflow fans, a universal socket, USB Type-A and USB Type-C charging, a tempered-glass door, and a laminated safety-glass rear panel.' }
     ]

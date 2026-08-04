@@ -65,7 +65,7 @@ const footerLinkGroups = [
 
 export default function SiteFooter({ className = 'mt-0' }) {
   const [openFooterGroup, setOpenFooterGroup] = useState('products');
-  const footerBrandLine = 'Silent acoustic office pods\nFor calls, focus, and meetings';
+  const footerBrandLine = 'Office pods for calls, focus, and meetings';
   const trackFooterClick = (label, destinationUrl, area) => {
     pushDataLayerEvent('footer_cta_click', {
       cta_location: area,

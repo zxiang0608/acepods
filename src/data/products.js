@@ -20,9 +20,14 @@ import aceMeetFrontTransparentImage from '../../assets/ace-meet-product-front-tr
 import acePlusFrontTransparentImage from '../../assets/ace-plus-front-transparent.png';
 import aceUnoDimensionsImage from '../../assets/products/ace-uno/source/ace-uno-dimensions.jpeg';
 import aceUnoCatalogImage from '../../assets/products/catalog/ace-uno.png';
-import aceUnoForestWhisperCatalogImage from '../../assets/products/catalog/ace-uno-forest-whisper.png';
-import aceUnoSesameBlackCatalogImage from '../../assets/products/catalog/ace-uno-sesame-black.png';
-import aceUnoSoftTurquoiseCatalogImage from '../../assets/products/catalog/ace-uno-soft-turquoise.png';
+import aceUnoPineGreenCatalogImage from '../../assets/products/catalog/ace-uno-pine-green.png';
+import aceUnoShadowGreyCatalogImage from '../../assets/products/catalog/ace-uno-shadow-grey.png';
+import aceUnoDustyTurquoiseCatalogImage from '../../assets/products/catalog/ace-uno-dusty-turquoise.png';
+import aceUnoInteriorImage from '../../assets/products/ace-uno/gallery/ace-uno-interior.webp';
+import aceUnoWarmSandFrontImage from '../../assets/products/ace-uno/gallery/ace-uno-warm-sand-front.webp';
+import aceUnoPineGreenFrontImage from '../../assets/products/ace-uno/gallery/ace-uno-pine-green-front.webp';
+import aceUnoShadowGreyFrontImage from '../../assets/products/ace-uno/gallery/ace-uno-shadow-grey-front.webp';
+import aceUnoDustyTurquoiseFrontImage from '../../assets/products/ace-uno/gallery/ace-uno-dusty-turquoise-front.webp';
 import acePlusCatalogImage from '../../assets/products/catalog/ace-plus.png';
 import aceFlexCatalogImage from '../../assets/products/catalog/ace-flex.png';
 import aceFlexDuoCatalogImage from '../../assets/products/catalog/ace-flex-duo.png';
@@ -136,6 +141,7 @@ const deliveryDefaults = {
 };
 
 const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290, image: barStoolBlack };
+const aceUnoBarStoolAddon = { ...highBarStoolAddon, amount: 250 };
 const officeChairAddon = {
   id: 'office-chair',
   label: 'Office chair',
@@ -411,14 +417,20 @@ export const products = [
     name: 'Ace Uno',
     breadcrumbLabel: 'Ace Pods',
     shortDesc: POD_SEO_BY_SLUG['ace-uno'].shortDesc,
+    metaTitle: 'Ace Uno Call Pod — Price & Specs | Ace Office Pods',
+    metaDescription:
+      'Ace Uno: A freestanding call pod for one person. From RM8,850 pod only. Plug-and-play, no renovation. View specs, colours, delivery, and installation.',
     heroImage: aceUnoCatalogImage,
     thumbImage: aceUnoCatalogImage,
     catalogImage: aceUnoCatalogImage,
     catalogImageClassName: 'mix-blend-multiply',
     extraPreviewImages: [],
+    thumbnailStripLabel: 'Ace Uno views and colours',
+    showGalleryPreviewsInThumbnailStrip: true,
+    disableProductImageBlend: true,
     customerPhotos: [],
     drawing2dImage: aceUnoDimensionsImage,
-    cardSupport: 'Primary pod for private calls and focus',
+    cardSupport: 'Step-in call pod for open-plan offices',
     pricing: {
       amount: formatFromPrice(POD_SEO_BY_SLUG['ace-uno'].startingPrice),
       note: 'Pod only. Delivery and installation are itemised separately.'
@@ -426,19 +438,26 @@ export const products = [
     pdpPricing: {
       baseConfigurations: [{ id: 'uno-unit', label: 'Pod only', price: POD_SEO_BY_SLUG['ace-uno'].startingPrice }],
       configurationOptions: [],
-      installationPerUnit: 500,
+      installationPerUnit: 350,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon]
+      addOnOptions: [aceUnoBarStoolAddon]
     },
     colorImageMap: {
-      default: aceUnoCatalogImage,
+      default: aceUnoWarmSandFrontImage,
       byExterior: {
-        'finish-linen-sand': aceUnoCatalogImage,
-        'finish-forest-whisper': aceUnoForestWhisperCatalogImage,
-        'finish-sesame-black': aceUnoSesameBlackCatalogImage,
-        'finish-soft-turquoise': aceUnoSoftTurquoiseCatalogImage
+        'finish-warm-sand': aceUnoWarmSandFrontImage,
+        'finish-pine-green': aceUnoPineGreenFrontImage,
+        'finish-shadow-grey': aceUnoShadowGreyFrontImage,
+        'finish-dusty-turquoise': aceUnoDustyTurquoiseFrontImage
       }
     },
+    presentationGallery: [
+      { image: aceUnoWarmSandFrontImage, label: 'Warm Sand front view', exteriorId: 'finish-warm-sand' },
+      { image: aceUnoPineGreenFrontImage, label: 'Pine Green front view', exteriorId: 'finish-pine-green' },
+      { image: aceUnoShadowGreyFrontImage, label: 'Shadow Grey front view', exteriorId: 'finish-shadow-grey' },
+      { image: aceUnoDustyTurquoiseFrontImage, label: 'Dusty Turquoise front view', exteriorId: 'finish-dusty-turquoise' },
+      { image: aceUnoInteriorImage, label: 'Interior worktop, power and lighting' }
+    ],
     hideThumbnailsOnColorMode: true,
     exteriorLabel: 'Fabric Exterior Colour Options',
     technicalSpecifications: {
@@ -447,13 +466,13 @@ export const products = [
       externalHeight: '2185 mm',
       boothFacilities: ['Integrated worktop', 'Universal power socket', 'USB Type-A and USB Type-C charging'],
       extraRows: [
-        { label: 'Category', value: 'Single-person acoustic office pod' },
+        { label: 'Category', value: 'Single-person privacy call pod' },
         { label: 'Work surface', value: 'Natural Oak MFC worktop' },
         { label: 'Acoustic panels', value: '9 mm polyester fibre' },
         { label: 'Frame construction', value: 'Steel frame with MFC structure' },
         { label: 'Door', value: '10 mm clear tempered glass' },
         { label: 'Rear panel', value: 'Laminated safety glass' },
-        { label: 'Interior colour', value: 'Linen Sand' },
+        { label: 'Interior colour', value: 'Soft Sand' },
         { label: 'Lighting', value: 'Round LED ceiling light, 4000K, 6W' },
         { label: 'Ventilation', value: 'Dual quiet airflow fans' },
         { label: 'Airflow', value: '108 CFM per fan' },
@@ -466,27 +485,27 @@ export const products = [
     featureRows: [],
     specs: [
       { label: 'Capacity', value: '1 person' },
-      { label: 'Best for', value: 'Private calls, video meetings, and focused individual work' },
+      { label: 'Best for', value: 'Quick private calls and video meetings' },
       { label: 'Ventilation', value: 'Dual quiet fans, 108 CFM per fan' },
       { label: 'Power', value: 'Universal socket with USB Type-A and USB Type-C' }
     ],
     useCases: [
-      'Private calls and video meetings in open-plan workplaces',
-      'Focused individual work away from surrounding activity',
-      'A freestanding private workspace without permanent renovation'
+      'Quick private calls and video meetings in open-plan offices',
+      'Offices that need multiple call spaces without building new rooms',
+      'A plug-and-play solution that moves with your layout'
     ],
     exteriorColors: [
-      { id: 'finish-linen-sand', label: 'Linen Sand', hex: '#d7c8ae' },
-      { id: 'finish-forest-whisper', label: 'Forest Whisper', hex: '#66806a' },
-      { id: 'finish-sesame-black', label: 'Sesame Black', hex: '#252827' },
-      { id: 'finish-soft-turquoise', label: 'Soft Turquoise', hex: '#6fabb3' }
+      { id: 'finish-warm-sand', label: 'Warm Sand', hex: '#d7c8ae' },
+      { id: 'finish-pine-green', label: 'Pine Green', hex: '#66806a' },
+      { id: 'finish-shadow-grey', label: 'Shadow Grey', hex: '#252827' },
+      { id: 'finish-dusty-turquoise', label: 'Dusty Turquoise', hex: '#6fabb3' }
     ],
-    interiorColors: [{ id: 'int-linen-sand', label: 'Linen Sand', hex: '#d7c8ae' }],
-    defaultExterior: 'finish-linen-sand',
-    defaultInterior: 'int-linen-sand',
+    interiorColors: [{ id: 'int-soft-sand', label: 'Soft Sand', hex: '#d7c8ae' }],
+    defaultExterior: 'finish-warm-sand',
+    defaultInterior: 'int-soft-sand',
     faq: [
       { q: 'What is included with Ace Uno?', a: 'The standard pod includes its worktop, LED light, dual ventilation fans, universal power socket, USB Type-A and USB Type-C charging.' },
-      { q: 'Does RM8,800 include delivery and installation?', a: 'No. RM8,800 is the pod-only starting price. Standard Klang Valley installation is RM500 and delivery is RM350.' }
+      { q: 'Does RM8,850 include delivery and installation?', a: 'No. RM8,850 is the pod-only starting price. Standard Klang Valley installation is RM350 and delivery is RM350.' }
     ]
   },
   {

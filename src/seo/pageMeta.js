@@ -10,8 +10,10 @@ export const getProductMeta = (product) => {
   const priceContext = product.priceBasis === 'pod only' || product.slug === 'ace-uno' ? `${price} for the pod only` : `${price} in Malaysia`;
 
   return {
-    title: `${name} Office Pod Price & Specs | Ace Office Pods`,
-    description: `${name}: ${product.shortDesc}. ${priceContext}. View colours, options, delivery, and installation details.`
+    title: product.metaTitle || `${name} Office Pod Price & Specs | Ace Office Pods`,
+    description:
+      product.metaDescription ||
+      `${name}: ${product.shortDesc}. ${priceContext}. View colours, options, delivery, and installation details.`
   };
 };
 

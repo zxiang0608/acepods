@@ -387,7 +387,7 @@ export default function App() {
   };
   const getMobileHomepagePodImageClassName = (pod) => getHomepagePodImageClassName(pod);
   const homepageCardHeadlineBySlug = {
-    'ace-uno': 'Acoustic pod for calls\nand focused work',
+    'ace-uno': 'Step-in call pod for\nopen-plan offices',
     'ace-plus': 'Built for privacy, focus\nand sound control',
     'ace-flex': 'Spacious pod for comfort\nand focus',
     'ace-flex-duo': 'Two-person pod for\nfocused work',
