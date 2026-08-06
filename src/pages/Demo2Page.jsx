@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import acePodsLogo from '../../Logos/ace pods logo.png';
 import acePodsHero from '../../assets/hero-pods.webp';
 import acePodsHeroAvif from '../../assets/hero-pods.avif';
+import aceUnoHomepageFrontImage from '../../assets/products/catalog/ace-uno-homepage-front.png';
 import officeOneImage from '../../assets/Office-1.webp';
 import officeTwoImage from '../../assets/office-2.webp';
 import officeThreeImage from '../../assets/office-3.webp';
@@ -35,6 +36,8 @@ const demoProducts = smartPodsMenuItems.map((item) => {
   const product = products.find((entry) => entry.slug === item.to.replace('/pods/', ''));
   return {
     ...item,
+    image: product?.slug === 'ace-uno' ? aceUnoHomepageFrontImage : item.image,
+    imageClassName: product?.slug === 'ace-uno' ? '' : item.imageClassName,
     basePrice: product?.pdpPricing?.baseConfigurations?.[0]?.price || null,
     support: product?.cardSupport || ''
   };
@@ -43,7 +46,7 @@ const demoProducts = smartPodsMenuItems.map((item) => {
 const proofPoints = [
   'Showroom open in Klang Valley',
   'Acoustic data shown by model',
-  'Same team. Start to finish.'
+  'Delivery and installation itemised'
 ];
 
 const trustedLogos = [
@@ -91,7 +94,7 @@ const workTypes = [
   {
     label: 'Calls',
     title: 'Private calls, without taking a meeting room.',
-    description: 'For phone calls, video calls, interviews, and confidential one-to-one conversations.',
+    description: 'For phone calls, video calls, interviews, and one-to-one conversations.',
     products: demoProducts.slice(0, 2),
     to: '/office-phone-booth-malaysia'
   },
@@ -156,15 +159,15 @@ const howItWorks = [
   {
     number: '05',
     title: 'Delivery and installation',
-    description: '3–4 weeks from confirmation. Same team delivers, installs, and inspects. Usually one day.'
+    description: 'Delivery timing, site access, installation scope, and handover are confirmed in the quotation.'
   }
 ];
 
 const reassurancePoints = [
-  ['Made in Malaysia', 'One local team — builds it, delivers it, installs it.'],
+  ['Malaysia delivery and support', 'Delivery, installation, and support scope are confirmed for your project.'],
   ['Model-specific acoustic data', 'Published only where a rating is available for that model.'],
-  ['Up and running in 3–4 weeks', 'From confirmed order to installed pod, ready to use.'],
-  ['Built for hours, not quick calls', 'Silent fans, adjustable lighting, and built-in power — your team can stay as long as needed.']
+  ['Project timing confirmed upfront', 'Scheduling depends on the model, quantity, site access, and approved scope.'],
+  ['Configured for intended use', 'Compare ventilation, lighting, power, size, and furniture by model.']
 ];
 
 const mobileNavItems = [
@@ -295,7 +298,7 @@ export default function Demo2Page({ mobilePodMenu = false }) {
       <header className="border-b border-[#d9d6ce] bg-[#fbfaf7] px-6 md:px-12">
         <div className="mx-auto flex h-[64px] max-w-[1440px] items-center justify-between md:h-[74px]">
           <Link to="/" aria-label="Ace Office Pods home">
-            <img src={acePodsLogo} alt="Ace Pods" width="150" height="70" className="h-[36px] w-auto md:h-[48px]" />
+            <img src={acePodsLogo} alt="Ace Pods" width="100" height="56" className="h-8 w-auto md:h-14" />
           </Link>
           <div className="hidden items-center gap-5 text-[13px] font-medium text-[#273238] lg:flex xl:gap-7">
             <Link to="/office-pods">Office Pods</Link>

@@ -72,3 +72,11 @@ The page should not feel like:
 
 It should feel like:
 - a serious, premium B2B product site with strong visual discipline
+
+## Product and portfolio additions
+- Before adding or changing a product, product image, logo, or portfolio gallery, read `PRODUCT_PAGE_SOURCE_OF_TRUTH.md` and `IMAGE_ASSET_WORKFLOW.md`.
+- Use only images supplied in the designated format and approved gallery order.
+- “Designated format” means listed as approved in the relevant media manifest; folder placement alone is insufficient.
+- Do not publish an additional angle, detail, chart, render, logo treatment, or portfolio photo without explicit user approval.
+- Run `npm run product-images` for catalogue images and verify the shared visible height and baseline before publishing.
+- Do not call a claim, feature set, certification, or media rule “verified” unless its evidence/status is recorded in the source-of-truth data.

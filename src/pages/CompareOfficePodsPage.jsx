@@ -6,8 +6,8 @@ import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const COMPARISON_ROWS = [
-  { model: 'Ace Uno',      path: '/pods/ace-uno',      capacity: '1 pax',        dimensions: '1418 × 1018 mm', from: 'RM8,800 pod only',  bestFor: 'Calls, video meetings, focus' },
-  { model: 'Ace Plus',     path: '/pods/ace-plus',     capacity: '1 pax',        dimensions: '1000 × 1000 mm', from: 'RM14,500', bestFor: 'Extended daily use, 27 dBA' },
+  { model: 'Ace Uno',      path: '/pods/ace-uno',      capacity: '1 pax',        dimensions: '1418 × 1018 mm', from: 'RM8,850 pod only',  bestFor: 'Calls, video meetings, focus' },
+  { model: 'Ace Plus',     path: '/pods/ace-plus',     capacity: '1 pax',        dimensions: '1000 × 1000 mm', from: 'RM14,500', bestFor: 'Extended use; unverified first-party ~27 dB(A) claim' },
   { model: 'Ace Flex',     path: '/pods/ace-flex',     capacity: '1 pax',        dimensions: '1600 × 1200 mm', from: 'RM19,900', bestFor: 'Spacious solo work' },
   { model: 'Ace Flex Duo', path: '/pods/ace-flex-duo', capacity: '2 pax',        dimensions: '1600 × 1200 mm', from: 'RM23,900', bestFor: 'One-to-one discussions' },
   { model: 'Ace Meet',     path: '/pods/ace-meet',     capacity: '2–4 pax',      dimensions: '2200 × 1200 mm', from: 'RM22,200', bestFor: 'Small team meetings' },

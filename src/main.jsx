@@ -44,7 +44,7 @@ ReactDOM.createRoot(rootElement).render(
       <ScrollToTop />
       <Suspense fallback={null}>
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<Demo2Page mobilePodMenu />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />

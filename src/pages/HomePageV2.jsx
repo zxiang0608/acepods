@@ -119,8 +119,8 @@ const whyAceItems = [
   },
   {
     icon: Volume2,
-    title: 'Certified -27dB(A). Test It Before You Sign.',
-    desc: 'Independently certified by TÜV to -27dB(A). Not self-reported. Visit our showroom in Klang and test it yourself before signing.'
+    title: 'Check Acoustic Claims by Model.',
+    desc: 'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document has been provided.'
   },
   {
     icon: KeyRound,
@@ -152,29 +152,29 @@ const galleryImages = [
   { src: officeTwoImage, srcAvif: officeTwoImageAvif, alt: 'Meeting pod in an open-plan office', caption: 'MNC office, Kuala Lumpur' },
   { src: officeThreeImage, srcAvif: officeThreeImageAvif, alt: 'Office pod installation in Selangor', caption: 'Office installation, Selangor' },
   { src: podsInstallationImage, srcAvif: podsInstallationImageAvif, alt: 'Ace Pods installation team at work', caption: 'Our installation team at work' },
-  { src: deliveryPodsImage, srcAvif: deliveryPodsImageAvif, alt: 'Ace Pods delivery and setup', caption: 'Delivery from our Selangor factory' },
+  { src: deliveryPodsImage, srcAvif: deliveryPodsImageAvif, alt: 'Ace Pods delivery and setup', caption: 'Office pod delivery and setup' },
   { src: officeTwoImage, srcAvif: officeTwoImageAvif, alt: 'Acoustic office pod in a corporate office, Kuala Lumpur', caption: 'Corporate office, Kuala Lumpur' }
 ];
 
 const priceRows = [
   { label: 'Pod price', imported: 'RM 8,000 – 10,000', ace: 'From RM 8,850', aceMyr: 8850 },
-  { label: 'Delivery & freight', imported: 'RM 1,500 – 3,000 extra', ace: 'Included' },
-  { label: 'Customs & duties', imported: 'Variable — your problem', ace: 'N/A — made in Malaysia' },
+  { label: 'Delivery & freight', imported: 'Varies by supplier and location', ace: 'Itemised by location and scope' },
+  { label: 'Customs & duties', imported: 'Confirm with supplier', ace: 'Confirm in the quotation' },
   { label: 'Installation', imported: 'Self-arrange a contractor (RM 2,000 – 4,000+)', ace: 'Our team — price listed on our website' },
   { label: 'Local warranty', imported: '✕  None', ace: '✓  Included' },
-  { label: 'After-sales support', imported: '✕  No local contact', ace: '✓  Same team, Selangor' },
+  { label: 'After-sales support', imported: 'Confirm the responsible contact', ace: 'Scope and contact confirmed in writing' },
   { label: 'Risk if something fails', imported: 'You figure it out', ace: 'We come to you' },
   { label: 'True total cost', imported: 'RM 11,500 – 17,000+ with hidden risk', ace: 'Pod + installation — every cost listed on our website', highlight: true }
 ];
 
 const glassRoomRows = [
-  { label: 'Estimated cost', renovation: 'RM 25,000 – 50,000', ace: 'From RM 18,800', aceMyr: 18800 },
+  { label: 'Entry price', renovation: 'Request a site-specific quotation', ace: 'RM 8,850 pod only; RM 9,550 standard Klang Valley installed total', aceMyr: 8850 },
   { label: 'Time to complete', renovation: '6 – 8 weeks', ace: '1 working day' },
   { label: 'Office disruption', renovation: 'Weeks of noise and dust', ace: 'None' },
   { label: 'Landlord approval required', renovation: 'Usually yes', ace: 'No' },
   { label: 'Can you relocate it?', renovation: '✕  No — permanent fixture', ace: '✓  Yes — move when you move' },
-  { label: 'Acoustic certification', renovation: '✕  None — depends on contractor', ace: '✓  Certified -27dB(A)' },
-  { label: 'Accountable contact', renovation: 'General contractor', ace: '✓  Same team, forever' },
+  { label: 'Acoustic evidence', renovation: 'Depends on the specified build', ace: 'Model-specific; Plus has an unverified first-party ~27 dB(A) claim' },
+  { label: 'Accountable contact', renovation: 'Confirm in contract', ace: 'Confirmed in quotation and handover scope' },
 ];
 
 const WhatsAppIcon = () => (
@@ -219,8 +219,8 @@ export default function HomePageV2() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-stone-50 font-sans antialiased text-stone-900">
       <SeoMeta
-        title="Acoustic Office Pods Malaysia — Installed in a Day | Ace Pods"
-        description="Malaysian-made acoustic office pods for private calls, focused work, and meetings. 180+ installs. From RM 8,850 for the pod only. Get a free site visit."
+        title="Acoustic Office Pods Malaysia | Ace Pods"
+        description="Acoustic office pods for calls, focused work, and meetings. Ace Uno from RM 8,850 for the pod only. Get a site-specific quote."
         canonical={buildCanonical('/')}
         schemas={[localBusinessSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)]}
       />
@@ -395,15 +395,15 @@ export default function HomePageV2() {
             {/* Mobile: stacked */}
             <div className="md:hidden">
               <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#00855a]">
-                Private Office Space — Malaysian Made
+                Enclosed Office Pods in Malaysia
               </p>
               <h1 className="text-4xl font-bold leading-tight tracking-tight text-stone-900">
-                Private office pods in Malaysia. Installed in a day. No construction required.
+                Enclosed office pods in Malaysia, with delivery and installation quoted by project.
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-stone-600">
-                Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team.
+                Add enclosed space for calls, focused work, and meetings. Compare the model, site requirements, delivery, and installation scope before ordering.
               </p>
-              <p className="mt-3 text-sm text-stone-500"><PodPrice myrAmount={18800} className="font-semibold text-stone-900" /> · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">all prices on our website</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">TÜV certified</a></p>
+              <p className="mt-3 text-sm text-stone-500"><PodPrice myrAmount={8850} className="font-semibold text-stone-900" /> pod only · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">see delivery and installation pricing</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">model-specific acoustic information</a></p>
               <div className="mt-6 flex flex-col gap-3">
                 <a
                   href={WHATSAPP_LINK}
@@ -439,15 +439,15 @@ export default function HomePageV2() {
             <div className="hidden md:grid md:grid-cols-2 md:items-center md:gap-12 lg:gap-20">
               <div>
                 <p className="mb-4 text-[12px] font-bold uppercase tracking-[0.2em] text-[#00855a]">
-                  Private Office Space — Malaysian Made
+                  Enclosed Office Pods in Malaysia
                 </p>
                 <h1 className="text-5xl font-bold leading-[1.08] tracking-tight text-stone-900 lg:text-6xl">
-                  Private office pods in Malaysia. Installed in a day. No construction required.
+                  Enclosed office pods in Malaysia, with delivery and installation quoted by project.
                 </h1>
                 <p className="mt-5 text-xl leading-relaxed text-stone-600">
-                  Give your team quiet, private space — without renovation, permits, or weeks of disruption. Designed, built, installed, and supported by one Malaysian team — from site visit to sign-off.
+                  Add enclosed space for calls, focused work, and meetings. Compare the model, site requirements, delivery, and installation scope before ordering.
                 </p>
-                <p className="mt-4 text-sm text-stone-500"><PodPrice myrAmount={18800} className="font-semibold text-stone-900" /> · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">all prices on our website</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">TÜV certified</a></p>
+                <p className="mt-4 text-sm text-stone-500"><PodPrice myrAmount={8850} className="font-semibold text-stone-900" /> pod only · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">see delivery and installation pricing</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">model-specific acoustic information</a></p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
                     href={WHATSAPP_LINK}
@@ -490,7 +490,7 @@ export default function HomePageV2() {
             </p>
             <div className="mb-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:gap-x-12">
               {[
-                { num: '180+', label: 'pods installed' },
+                { num: '6', label: 'pod models' },
                 { num: '2023', label: 'first install' },
                 { num: '100%', label: 'Malaysian-made' },
                 { num: '1', label: 'team, start to finish' },
@@ -539,11 +539,11 @@ export default function HomePageV2() {
                 Find the right acoustic office pod for your team
               </h2>
               <p className="mt-4 text-base text-stone-500 md:text-lg">
-                Six models from RM 8,850. Ace Uno pricing is for the pod only; delivery and installation are itemised separately.
+                Six models from RM 8,850. Ace Uno is RM 8,850 pod only; standard Klang Valley delivery and installation are RM 350 each, for an RM 9,550 standard installed total before the optional stool.
               </p>
               {!isLocal && (
                 <div className="mx-auto mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-left text-[14px] leading-[1.55] text-amber-900">
-                  <strong>International buyers:</strong> Prices below are in USD, ex-works from our factory in Klang, Selangor, Malaysia. Shipping and installation to your country are arranged and paid by you.{' '}
+                  <strong>International buyers:</strong> Prices below are in USD. Shipping, delivery terms, and installation are confirmed separately in the quotation.{' '}
                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">WhatsApp us</a> for an export quote.
                 </div>
               )}
@@ -677,7 +677,7 @@ export default function HomePageV2() {
                 WhatsApp Us Now
               </a>
               <p className="mt-4 text-xs text-stone-400">
-                Installation slots book 4–6 weeks out. If you have a target date, now is the right time to start.
+                If you have a target date, ask for the current delivery and installation schedule before ordering.
               </p>
               <p className="mt-3 text-xs text-stone-400">
                 Questions about the process? <Link to="/installation-support" className="underline-offset-2 hover:underline">See our installation & support guide →</Link>
@@ -691,7 +691,7 @@ export default function HomePageV2() {
           <div className="mx-auto max-w-[1280px]">
             <div className="mb-10 text-center">
               <h2 className="text-2xl font-semibold leading-tight tracking-tight text-stone-900 md:text-4xl">
-                180+ Pods in Malaysian Offices
+                Office Pods for Malaysian Workplaces
               </h2>
               <p className="mt-3 text-base text-stone-500">
                 From MNCs to universities in Malaysia — every pod delivered and installed by our own Selangor team.
@@ -745,35 +745,6 @@ export default function HomePageV2() {
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ── placeholder quotes — replace with real client words before launch */}
-        <section className="bg-white px-5 py-12 md:px-12 md:py-16">
-          <div className="mx-auto max-w-[1280px]">
-            <p className="mb-8 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-stone-400">
-              What our clients say
-            </p>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <blockquote className="rounded-2xl border border-stone-200 bg-stone-50 p-7">
-                <p className="text-[17px] leading-relaxed text-stone-700">
-                  "We needed private space for calls without weeks of disruption to the rest of the team. The pod was delivered and installed in one day — our staff were using it the same afternoon."
-                </p>
-                <footer className="mt-5 border-t border-stone-200 pt-4">
-                  <p className="text-[14px] font-semibold text-stone-900">HR Manager</p>
-                  <p className="text-[13px] text-stone-400">Parker Hannifin Malaysia</p>
-                </footer>
-              </blockquote>
-              <blockquote className="rounded-2xl border border-stone-200 bg-stone-50 p-7">
-                <p className="text-[17px] leading-relaxed text-stone-700">
-                  "Acoustic quality was the priority for us. The TÜV certification gave us the confidence to proceed — and the showroom visit confirmed it before we signed anything."
-                </p>
-                <footer className="mt-5 border-t border-stone-200 pt-4">
-                  <p className="text-[14px] font-semibold text-stone-900">Operations Lead</p>
-                  <p className="text-[13px] text-stone-400">Taylor's University</p>
-                </footer>
-              </blockquote>
-            </div>
-          </div>
-        </section>
-
         {/* ── GUARANTEE ── */}
         <section id="guarantee" className="bg-stone-50 px-5 py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-[800px]">
@@ -781,10 +752,10 @@ export default function HomePageV2() {
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#e9e7e1]">
                 <Shield size={24} strokeWidth={2} className="text-[#00855a]" />
               </div>
-              <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">TÜV Certified Acoustic Performance</h3>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-[#00855a]">Independently Certified -27dB(A)</p>
+              <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">Model-specific acoustic information</h3>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-[#00855a]">Plus: unverified first-party ~27 dB(A) claim</p>
               <p className="mt-4 text-base leading-relaxed text-stone-600">
-                The -27dB(A) figure on every Ace pod is independently verified by TÜV — not a self-reported number. Most office pod brands publish their own acoustic figures. Ours were tested and certified by a third party so you don't have to take our word for it.
+                Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided, so the figure is not applied to Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, or Ace Hub.
               </p>
               <p className="mt-3 text-sm font-medium text-stone-400">
                 Visit our showroom in Klang and test acoustic performance yourself before committing to anything.
@@ -802,7 +773,7 @@ export default function HomePageV2() {
               The fastest way to add private space to your office isn't a renovation.
             </h2>
             <p className="mb-10 text-center text-base leading-relaxed text-stone-400">
-              A glass room or partition costs RM 25,000–50,000, takes 6–8 weeks, and needs landlord approval. An Ace pod is installed in one day.
+              Compare a pod quotation with a project-specific partition or room quotation, including access, installation, approvals, reinstatement, and the evidence supporting any acoustic claim.
             </p>
 
             <div className="overflow-hidden rounded-2xl border border-stone-700">
@@ -964,7 +935,7 @@ export default function HomePageV2() {
               </Link>
             </div>
             <p className="mt-5 text-sm text-white/60">
-              Free site visit · No obligation · Installation slots book 4–6 weeks out
+              Site visit by arrangement · No obligation · Confirm the current installation schedule
             </p>
           </div>
         </section>

@@ -134,8 +134,8 @@ const officeSenseItems = [
   },
   {
     icon: LockKeyhole,
-    title: 'Privacy & Confidentiality',
-    desc: 'Create enclosed spaces for client calls, HR discussions, interviews, and sensitive conversations.'
+    title: 'Enclosed Conversations',
+    desc: 'Create enclosed spaces for client calls, HR discussions, interviews, and one-to-one conversations.'
   },
   {
     icon: TrendingUp,
@@ -185,18 +185,18 @@ const reassuranceItems = [
 const seoReassuranceItems = [
   {
     icon: Hammer,
-    label: 'Made in Malaysia',
-    desc: 'Built in Selangor, Malaysia. Factory and showroom available for visit before purchase.'
+    label: 'Malaysia delivery and support',
+    desc: 'Delivery, installation, and after-sales scope are confirmed for each project.'
   },
   {
     icon: VolumeX,
-    label: '−27 dB(A) ±5 dB Certified',
-    desc: 'Five of our six models carry a verified 27 dBA noise reduction rating — a measured figure, not a marketing claim.'
+    label: 'Model-specific acoustic claims',
+    desc: 'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided.'
   },
   {
     icon: CheckCircle2,
-    label: '180+ pods installed',
-    desc: 'Delivered and installed across Malaysia since 2023, for MNCs, SMEs, and corporate teams.'
+    label: 'Six-model range',
+    desc: 'Options cover one-person calls and focus through larger team meetings.'
   },
   {
     icon: Route,
@@ -345,11 +345,11 @@ export default function App() {
   const heroHeadline = 'Less noise. More work done.';
   const heroSupportingText = 'Give your people the quiet to think clearly, speak privately, and do their best work.';
   const heroProofItems = seoReassuranceItems
-    .filter((item) => item.label !== 'Made in Malaysia')
-    .map((item) => (item.label === '180+ pods installed' ? { ...item, label: 'Premium acoustic performance' } : item));
+    .filter((item) => item.label !== 'Malaysia delivery and support')
+    .map((item) => (item.label === 'Six-model range' ? { ...item, label: 'Model-specific options' } : item));
   const productIntroHeading = 'Find the right pod\nfor calls, focus, or meetings';
   const privateSpaceHeading = 'Add private space without building new rooms';
-  const compareSupportingLine = "We know what it's like to be the one who has to make this call — there's no do-over if it turns out to be a bad soundproofing box, or a seller who disappears after delivery. That's why everything is verifiable before you decide: certified rating, showroom visit, same team start to finish.";
+  const compareSupportingLine = "Compare model-specific specifications, delivery scope, installation, and after-sales support before you decide. Acoustic figures should be checked against the applicable model documentation.";
   const trustSectionHeading = 'Trusted by MNCs and companies across Malaysia';
   const whyHeading = 'Choose Ace Pods';
   const homepageSchemas = [
@@ -890,12 +890,12 @@ export default function App() {
 
                 {/* Mobile: short version */}
                 <p id="home-answer" className="mt-4 text-left text-[14px] leading-[1.6] text-[#59635f] md:hidden">
-                  100% made in Malaysia — same team from factory to installation. 27 dBA noise reduction, verified. 180+ pods installed across Malaysia since 2023.
+                  Six office pod models for calls, focus, and meetings, with delivery, installation, and after-sales support available in Malaysia.
                 </p>
 
                 {/* Desktop: full paragraph */}
                 <p className="mx-auto mt-4 hidden max-w-[760px] text-center text-[15px] leading-[1.6] text-[#59635f] md:block md:text-[17px]">
-                  Ace Office Pods — 100% made in Malaysia, factory and showroom in Selangor. Five of our six models achieve 27 dBA noise reduction, tested and verified. The same local team handles production, installation, and post-installation support. 180+ pods installed across Malaysia since 2023.
+                  Ace Office Pods offers six models for calls, focus, and meetings. Delivery, installation, and post-installation support are available in Malaysia. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided.
                 </p>
               </div>
             </div>

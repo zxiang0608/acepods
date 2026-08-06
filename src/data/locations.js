@@ -70,7 +70,7 @@ export const locations = [
       {
         question: 'How much does an office pod in Kuala Lumpur cost?',
         answer:
-          'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, access, and site conditions.'
+          'Ace Uno is RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Restricted-access and non-standard scopes are quoted separately.'
       }
     ]
   },
@@ -186,7 +186,7 @@ export const locations = [
     metaDescription:
       'Office pods in Petaling Jaya (PJ) — acoustic phone booths and meeting pods for SS2, Damansara Jaya, Ara Damansara, Bandar Utama, and surrounding PJ offices. Compare models, pricing, and installation.',
     intro:
-      'Ace Office Pods supplies and installs acoustic office pods, phone booths, and meeting pods for Petaling Jaya workplaces. We cover offices throughout PJ — from SS2 and Damansara Jaya to Bandar Utama, Ara Damansara, TTDI, and Tropicana. No renovation required; pods are installed in one working day.',
+      'Ace Office Pods supplies acoustic office pods, phone booths, and meeting pods for Petaling Jaya workplaces. Delivery timing and installation duration depend on the model, quantity, building access, and approved scope.',
     serviceSummary:
       'Petaling Jaya installations are planned around office building access, loading bay arrangements, lift dimensions, floor level, and building management requirements. Many PJ office towers have specific delivery windows and contractor pass requirements — our team confirms all site conditions before the installation date.',
     localContext:
@@ -203,7 +203,7 @@ export const locations = [
       {
         question: 'How long does it take to install an office pod in a PJ office?',
         answer:
-          'Most installations are completed within one working day. The exact duration depends on pod size, quantity, floor access, and site conditions. Our team coordinates directly with building management to minimise disruption to your office operations.'
+          'Installation duration depends on pod size, quantity, floor access, building rules, and site conditions. Confirm the provider, expected duration, and operational restrictions in the quotation.'
       },
       {
         question: 'Do I need landlord approval to install an office pod in my PJ office?',
@@ -213,7 +213,7 @@ export const locations = [
       {
         question: 'How much does an office pod cost for a Petaling Jaya office?',
         answer:
-          'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, access, floor level, and installation scope.'
+          'Ace Uno is RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Restricted-access and non-standard scopes are quoted separately.'
       }
     ]
   },
@@ -227,7 +227,7 @@ export const locations = [
     metaDescription:
       'Office pods in Damansara — acoustic phone booths and meeting pods for Damansara Utama (Uptown), Damansara Heights, Damansara Perdana, and Kota Damansara offices. Compare models, pricing, and installation.',
     intro:
-      'Ace Office Pods supplies and installs acoustic office pods and phone booths for Damansara workplaces. We cover offices throughout the Damansara corridor — including Damansara Utama (Uptown), Damansara Heights, Damansara Perdana, Kota Damansara, and Sri Damansara. Pods are delivered and installed in one working day with no renovation required.',
+      'Ace Office Pods supplies acoustic office pods and phone booths for Damansara workplaces. Delivery timing and installation duration depend on the model, quantity, building access, and approved scope.',
     serviceSummary:
       'Damansara installations cover a mix of commercial parks, strata office towers, and standalone corporate buildings — each with different loading, security, and access requirements. Our team reviews site conditions in advance and coordinates with building management to confirm delivery windows, contractor access, and installation timing.',
     localContext:
@@ -244,7 +244,7 @@ export const locations = [
       {
         question: 'Which office pod is suitable for a Damansara corporate office?',
         answer:
-          'For private calls and focused work, Ace Uno or Ace Plus are commonly used. Ace Meet (3–4 pax) and Ace Hub (up to 6 pax) suit team meetings and collaboration spaces. We recommend based on your floor plan, daily usage patterns, and available space.'
+          'For calls and focused work, Ace Uno or Ace Plus are commonly used. Ace Meet (3–4 pax) and Ace Hub (up to 6 pax) suit team meetings and collaboration spaces. We recommend based on your floor plan, daily usage patterns, and available space.'
       },
       {
         question: 'Can I test an office pod before ordering?',
@@ -285,7 +285,7 @@ export const locations = [
       {
         question: 'How much does an office pod cost in Penang?',
         answer:
-          'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
+          'Ace office pods start from RM8,850 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
       },
       {
         question: 'Which office pod models are available for Penang delivery?',
@@ -326,7 +326,7 @@ export const locations = [
       {
         question: 'How much does an office pod cost in Johor Bahru?',
         answer:
-          'Ace office pods start from RM8,800 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
+          'Ace office pods start from RM8,850 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
       },
       {
         question: 'Which office pod models are available for JB delivery?',

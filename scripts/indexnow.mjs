@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 
-const KEY = '4f8c9b6d2a1e7f305c84b9d61a2e73f0';
+const KEY = '570e4db31801b90351dd6554fc4983b9';
 const HOST = 'aceofficepods.com';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 

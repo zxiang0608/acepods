@@ -12,7 +12,6 @@ import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createFaqSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { getProductMeta, getProductPublicImage } from '../seo/pageMeta';
 import QuoteForm from '../components/QuoteForm';
-import highResPodCert from '../../assets/high-res-pod-cert.png';
 import barStoolBlack from '../../assets/bar-stool-black.png';
 import barStoolWhite from '../../assets/bar-stool-white.png';
 
@@ -21,25 +20,25 @@ const EMPTY_PRESENTATION_GALLERY = [];
 const PDP_QUICK_ANSWER_COPY = {
   'ace-uno': {
     intro:
-      'Ace Uno gives your team somewhere to step in for a private call and step out — without booking a room, building a wall, or disrupting the floor. It is a freestanding, plug-and-play call pod with ventilation, lighting, power, and a work surface. Ready to use in under an hour. Designed for high-frequency, short-duration use: the kind of calls and video meetings that happen five times a day but do not need a dedicated office.',
+      'Ace Uno is an enclosed one-person acoustic pod for calls, video meetings, and focused work. It includes ventilation, lighting, power, and a work surface, without requiring a permanent built room. Delivery timing and installation scope are confirmed for each site.',
     heading: 'Quick answers about Ace Uno',
     items: [
       {
         q: 'What is Ace Uno?',
-        a: 'Ace Uno is a freestanding call pod for one person — with a built-in worktop, LED lighting, dual ventilation fans, power socket, and USB charging. It plugs in and works immediately, no renovation needed.'
+        a: 'Ace Uno is a freestanding call and focus pod for one person, with a built-in worktop, LED lighting, dual ventilation fans, power socket, and USB charging. It is installed without building a permanent room.'
       },
       {
         q: 'How much does Ace Uno cost in Malaysia?',
         a: ({ startingPriceText }) =>
-          `Ace Uno starts from ${startingPriceText} for the pod only. Standard Klang Valley installation is RM350 and delivery is RM350.`
+          `Ace Uno starts from ${startingPriceText} for the pod only. Standard Klang Valley installation is RM350 and delivery is RM350, making RM9,550 before the optional stool or RM9,800 with the optional RM250 high bar stool.`
       },
       {
         q: 'What is Ace Uno best for?',
-        a: 'Ace Uno works best for short, frequent calls and video meetings in open-plan offices — the kind of privacy you need multiple times a day but do not need a full room for.'
+        a: 'Ace Uno works best for short, frequent calls, video meetings, and focused work in open-plan offices when a permanent room is not required.'
       },
       {
         q: 'How is Ace Uno different from Ace Plus?',
-        a: 'Ace Uno is built for calls — step in, take your call, step out. It is lighter, more spacious inside, and priced for offices that want to place several pods across the floor. Ace Plus is built for longer focused work sessions with heavier construction and fuller acoustic performance. If your team mostly needs quick call privacy, start with Uno. If they need a quiet workspace to sit in for hours, look at Plus.'
+        a: 'Ace Uno is the lower-priced enclosed call and focus pod with a wider footprint. Ace Plus has a smaller footprint and a separate unverified first-party approximately 27 dB(A) claim. Compare dimensions, intended session length, ventilation, and verified documentation before choosing.'
       }
     ]
   },
@@ -488,7 +487,7 @@ export default function ProductPage() {
               ? `${specifications.externalHeight} (room height required: ${specifications.roomHeightRequirement})`
               : specifications.externalHeight
         },
-        { label: 'Certified tested dBA (A-weighted decibels)', value: specifications.certifiedTestedDba },
+        { label: 'Published acoustic claim', value: specifications.publishedAcousticClaim },
         { label: 'Weight', value: specifications.weight },
         ...(specifications.extraRows || [])
       ].filter((row) => row?.label && row?.value);
@@ -501,8 +500,8 @@ export default function ProductPage() {
     technicalSpecifications.roomHeightRequirement ? `Recommended room height: ${technicalSpecifications.roomHeightRequirement}` : null
   ].filter(Boolean);
   const quickAnswerDimensionsText = quickAnswerDimensionParts.length > 0 ? quickAnswerDimensionParts.join('. ') + '.' : null;
-  const quickAnswerAcousticText = technicalSpecifications.certifiedTestedDba
-    ? `Certified tested acoustic performance: ${technicalSpecifications.certifiedTestedDba}.`
+  const quickAnswerAcousticText = technicalSpecifications.publishedAcousticClaim
+    ? `Published acoustic claim: ${technicalSpecifications.publishedAcousticClaim}.`
     : null;
   const quickAnswerDeliveryParts = [
     installationAmount > 0 ? `Installation (Klang Valley): ${formatRM(installationAmount)}` : null,
@@ -1044,13 +1043,6 @@ export default function ProductPage() {
                     <ChevronRight size={26} strokeWidth={2.25} />
                   </button>
                 )}
-              </div>
-              <div className="mt-1 hidden lg:block">
-                <div className="h-[72px] w-full">
-                  <div className="flex h-full w-full items-center justify-center overflow-hidden">
-                    <img src={highResPodCert} alt="AcePods certifications" className="h-[140%] w-auto max-w-none object-contain" />
-                  </div>
-                </div>
               </div>
               {hasMultipleExteriorColors && (
                 <div className="mt-1 block">

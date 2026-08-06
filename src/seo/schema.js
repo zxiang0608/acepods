@@ -67,8 +67,7 @@ export const localBusinessSchema = {
   '@type': ['Organization', 'LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
   '@id': `${SEO_BASE_URL}/#organization`,
   name: SEO_BRAND_PRIMARY,
-  foundingDate: '2023',
-  priceRange: 'RM8,800+',
+  priceRange: 'RM8,850+',
   image: [
     SEO_BRAND_LOGO,
     `${SEO_BASE_URL}/og-image.jpg`
@@ -107,13 +106,7 @@ export const localBusinessSchema = {
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod showroom viewing by appointment' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation across Malaysia' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' } }
-  ],
-  additionalProperty: {
-    '@type': 'QuantitativeValue',
-    name: 'Office pods sold',
-    value: '180+',
-    description: 'Acoustic office pods and office booths sold in Malaysia since 2023'
-  }
+  ]
 };
 
 export const websiteSchema = {
@@ -134,7 +127,7 @@ export const homepageWebPageSchema = {
   name: 'Ace Office Pods by Ace Workplace Solutions',
   url: SEO_BASE_URL,
   description:
-    'Ace Office Pods (Ace Workplace Solutions), supplier of office pods and office booths for calls, focus, and meetings. 100% locally made in Malaysia.',
+    'Ace Office Pods (Ace Workplace Solutions), supplier of office pods and office booths for calls, focus, and meetings in Malaysia.',
   isPartOf: {
     '@id': `${SEO_BASE_URL}/#website`
   },
@@ -197,7 +190,6 @@ export const createPricingItemListSchema = (path, items) => ({
         '@type': 'Offer',
         priceCurrency: item.priceCurrency || 'MYR',
         price: String(item.price),
-        availability: 'https://schema.org/InStock',
         url: buildCanonical(item.path),
         seller: {
           '@id': `${SEO_BASE_URL}/#organization`
@@ -246,7 +238,6 @@ export const createProductSchema = ({
             url: buildCanonical(path),
             priceCurrency,
             price: String(price),
-            availability: 'https://schema.org/InStock',
             seller: {
               '@id': `${SEO_BASE_URL}/#organization`
             }

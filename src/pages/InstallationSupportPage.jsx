@@ -44,30 +44,30 @@ const processJourneySteps = [
   },
   {
     num: '3',
-    phase: 'Production & Scheduling',
-    summary: 'Build and plan',
-    desc: 'Units are built to your approved specification. Most standard orders complete production within 3 to 6 weeks. During this period we coordinate the delivery schedule with your facilities or operations team to find a window that keeps office disruption low.',
+    phase: 'Order Preparation & Scheduling',
+    summary: 'Confirm and plan',
+    desc: 'The approved specification, commercial terms, delivery requirements, and installation window are confirmed against the current project schedule.',
     tp1: {
-      title: 'Quality Manufacturing',
-      desc: 'Each unit is built to the confirmed project specification, including finish colour, interior configuration, and add-on selections.'
+      title: 'Specification Check',
+      desc: 'The confirmed project specification records finish colour, interior configuration, and approved add-on selections.'
     },
     tp2: {
       title: 'Flexible Scheduling',
-      desc: 'Delivery and installation can be timed for early morning, off-peak hours, or weekends depending on office requirements.'
+      desc: 'Available delivery and installation windows depend on the project schedule, access rules, and agreed scope.'
     }
   },
   {
     num: '4',
     phase: 'Delivery & Installation',
     summary: 'Install safely',
-    desc: 'On the confirmed date, the Ace installation team arrives with all components, tools, and materials needed to assemble the pod in one visit. No structural work or renovation is required — just access to the placement area and a nearby power point.',
+    desc: 'On the confirmed date, the installation scope follows the agreed access route, placement plan, building requirements, and power-point requirements.',
     tp1: {
       title: 'Professional Assembly',
-      desc: 'Installation is handled by the trained Ace team. Typical single-pod installation completes within one working day.'
+      desc: 'The quotation identifies the installation provider, scope, expected duration, and handover requirements.'
     },
     tp2: {
       title: 'Minimal Disruption',
-      desc: 'Adjacent areas remain operational throughout installation. The team cleans up fully before leaving.'
+      desc: 'Any effect on adjacent work areas and the required protection or access controls are confirmed before delivery.'
     }
   },
   {
@@ -132,15 +132,15 @@ const INSTALLATION_FAQ_ITEMS = [
   },
   {
     question: 'How long does delivery take after deposit?',
-    answer: 'Lead time starts after the 50% deposit is received. Most standard orders are completed within 3 to 6 weeks, depending on model, quantity, and site access conditions. The confirmed delivery date is communicated once the pod enters production and the installation window is agreed with the client.'
+    answer: 'Delivery timing depends on the model, quantity, current schedule, site access, and agreed installation scope. The applicable commercial terms and confirmed delivery window are stated in the quotation.'
   },
   {
     question: 'Will installation disrupt office operations?',
-    answer: 'Installation is planned to minimize disruption. The team coordinates access timing, delivery windows, and assembly sequencing with the client before installation day. Most pod installations are completed within one working day per unit. Normal office operations can typically continue in adjacent areas during the process.'
+    answer: 'Installation timing and sequencing depend on the model, quantity, access route, building rules, and approved scope. The expected duration and any operational restrictions are confirmed before delivery.'
   },
   {
     question: 'What support is available after handover?',
-    answer: 'After handover, clients receive warranty-related support for manufacturing defects, usage guidance for ventilation and lighting controls, and follow-up assistance for post-installation adjustments. A clear contact path to the Ace team is provided at handover so any issues can be raised and resolved promptly.'
+    answer: 'The quotation and handover documents should state the applicable warranty, usage guidance, post-installation support scope, and contact path. Confirm these terms in writing before ordering.'
   }
 ];
 
@@ -171,7 +171,7 @@ export default function InstallationSupportPage() {
           Clear delivery, installation, and after-sales support
         </h1>
         <p className="mt-5 max-w-[72ch] text-[17px] leading-[1.65] text-[#59635f] md:text-[19px]">
-          Every Ace Office Pod project follows a five-stage process from first contact to handover. Lead time is typically 3 to 6 weeks from deposit. The team coordinates site access, delivery timing, and installation to minimise disruption to your office.
+          Every project is scoped from first contact to handover. Delivery timing, site access, installation duration, commercial terms, and after-sales support depend on the approved quotation and should be confirmed in writing before ordering.
         </p>
         <div className="mt-6 flex flex-wrap gap-5 text-[14px] font-semibold text-[#007653]">
           <a href="#process" className="underline-offset-4 hover:underline">How it works</a>

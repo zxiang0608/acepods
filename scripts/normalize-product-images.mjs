@@ -9,22 +9,26 @@ const BASELINE_Y = 1100;
 const products = [
   {
     slug: 'ace-uno',
-    source: 'assets/products/ace-uno/source/ace-uno-linen-sand.jpeg',
+    source: 'assets/products/ace-uno/gallery/ace-uno-warm-sand-three-quarter.webp',
     contentMode: 'non-white'
   },
   {
-    slug: 'ace-uno-forest-whisper',
-    source: 'assets/products/ace-uno/source/ace-uno-forest-whisper.jpeg',
+    slug: 'ace-uno-homepage-front',
+    source: 'assets/products/ace-uno/gallery/ace-uno-warm-sand-front-transparent.png'
+  },
+  {
+    slug: 'ace-uno-pine-green',
+    source: 'assets/products/ace-uno/gallery/ace-uno-pine-green-three-quarter.webp',
     contentMode: 'non-white'
   },
   {
-    slug: 'ace-uno-sesame-black',
-    source: 'assets/products/ace-uno/source/ace-uno-sesame-black.jpeg',
+    slug: 'ace-uno-shadow-grey',
+    source: 'assets/products/ace-uno/gallery/ace-uno-shadow-grey-three-quarter.webp',
     contentMode: 'non-white'
   },
   {
-    slug: 'ace-uno-soft-turquoise',
-    source: 'assets/products/ace-uno/source/ace-uno-soft-turquoise.jpeg',
+    slug: 'ace-uno-dusty-turquoise',
+    source: 'assets/products/ace-uno/gallery/ace-uno-dusty-turquoise-three-quarter.webp',
     contentMode: 'non-white'
   },
   { slug: 'ace-plus', source: 'assets/ace-plus-front-transparent.png' },

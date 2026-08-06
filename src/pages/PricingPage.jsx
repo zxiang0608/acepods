@@ -9,6 +9,7 @@ import QuoteForm from '../components/QuoteForm';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
 import PodPrice from '../components/PodPrice';
 import { useCurrency } from '../hooks/useCurrency';
+import { ACE_UNO_PRICING } from '../data/podSeoCatalog';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -49,7 +50,7 @@ const pricingAnswerSchema = {
     acceptedAnswer: {
       '@type': 'Answer',
       text:
-        'Ace Office Pods start from RM8,800 for a one-person pod and from RM22,200 for a meeting pod in Malaysia. Ace Uno pricing is for the pod only; delivery and installation are itemised separately. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.'
+        'Ace Uno is the entry model at RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Meeting pods start from RM22,200.'
     }
   }
 };
@@ -93,7 +94,7 @@ export default function PricingPage() {
 
         <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[48px]">How much does an office pod cost?</h1>
         <p id="office-pod-price-answer" className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#59635f]">
-          Ace Office Pods start from <PodPrice myrAmount={8800} prefix="" /> for a one-person pod and from <PodPrice myrAmount={22200} prefix="" /> for a meeting pod in Malaysia. Ace Uno is priced for the pod only; delivery and installation are itemised separately. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.
+          Ace Uno is the entry model at <PodPrice myrAmount={ACE_UNO_PRICING.podOnly} prefix="" /> for the pod only. Standard Klang Valley delivery is <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyDelivery} prefix="" /> and installation is <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyInstallation} prefix="" />, making the standard installed total <PodPrice myrAmount={ACE_UNO_PRICING.standardInstalledTotal} prefix="" /> before the optional stool. Meeting pods start from <PodPrice myrAmount={22200} prefix="" />.
         </p>
         {!isLocal && (
           <div className="mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-[14px] leading-[1.55] text-amber-900">
@@ -104,9 +105,9 @@ export default function PricingPage() {
 
       <section className="mx-auto w-full max-w-[1100px] px-5 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">What is included in the price?</h2>
+          <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Ace Uno standard Klang Valley price</h2>
           <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
-            The full project price can include the pod, delivery, installation, and selected add-ons. Scope is confirmed clearly before final quote acceptance.
+            Pod: <PodPrice myrAmount={ACE_UNO_PRICING.podOnly} prefix="" />. Delivery: <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyDelivery} prefix="" />. Installation: <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyInstallation} prefix="" />. Standard installed total: <PodPrice myrAmount={ACE_UNO_PRICING.standardInstalledTotal} prefix="" /> before the optional stool. Outstation, restricted-access, and non-standard scopes are quoted separately.
           </p>
         </div>
       </section>

@@ -32,7 +32,7 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'What is included in the office pod price?',
     answer:
-      'Our office pod price typically includes the pod unit, built-in lighting, ventilation, power access, and model-specific table or seating setup. Delivery and installation within Klang Valley are included under the agreed project scope. We confirm inclusions clearly before final confirmation.'
+      'Inclusions vary by model. Ace Uno is RM8,850 for the pod only; standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Other model and project scopes are confirmed in the quotation.'
   },
   {
     question: 'What affects the final office pod price?',
@@ -42,12 +42,12 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'Which office pod is suitable for calls, focused work, or meetings?',
     answer:
-      'Ace Uno and Ace Plus are best for private calls, video meetings, and focused individual work. Ace Flex is a more spacious one-person option, while Ace Flex Duo, Ace Meet, and Ace Hub support collaborative use. We recommend based on your real daily usage and team flow.'
+      'Ace Uno and Ace Plus are suited to calls, video meetings, and focused individual work. Ace Flex is a more spacious one-person option, while Ace Flex Duo, Ace Meet, and Ace Hub support collaborative use. We recommend based on your real daily usage and team flow.'
   },
   {
     question: 'How soundproof are office pods in real working environments?',
     answer:
-      'Our office pods achieve an independently certified −27 dB(A) noise reduction. This significantly reduces surrounding noise for calls and meetings. They are highly effective for privacy, although no pod is completely 100% soundproof.'
+      'Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub do not have a published dB rating on this site and should not be treated as soundproof.'
   },
   {
     question: 'What happens if we need help after delivery?',
@@ -60,14 +60,14 @@ export const HOME_FAQ_ITEMS = [
       'For many workplaces, office pods are a faster and less disruptive way to add private space for calls, focused work, and meetings. They can also be relocated if your office layout changes. For fully permanent structural needs, building new rooms may still be the better fit.'
   },
   {
-    question: 'Are Ace Office Pods made in Malaysia?',
+    question: 'How can buyers verify Ace Office Pods product claims?',
     answer:
-      'Yes. All Ace Office Pods are manufactured in Selangor, Malaysia. You can visit our factory showroom to inspect build quality and test soundproofing before placing an order. Local manufacturing also means local support — the same team handles production, installation, and post-installation servicing.'
+      'Ask for model-specific product specifications and the applicable evidence for any acoustic, certification, origin, or performance claim. Do not assume a claim for one model applies to another.'
   },
   {
     question: 'What does 27 dBA noise reduction actually mean?',
     answer:
-      'A typical open office has around 60–65 dB of background noise. With 27 dBA reduction, the level inside the pod drops to approximately 35–38 dB — similar to a quiet library. In practical terms, someone standing two desks away cannot make out your words. The 27 dBA rating applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub.'
+      'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided, so the figure should not be described as independently certified or applied to other models.'
   }
 ];
 
@@ -75,7 +75,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'What is included in the office pod price in Malaysia?',
     answer:
-      'Our office pod price in Malaysia typically includes the full pod unit, built-in lighting, ventilation, power sockets, and interior furniture based on model type. Delivery and installation within Klang Valley are included under the agreed project scope. We confirm inclusions clearly before final approval.'
+      'Inclusions vary by model. Ace Uno is RM8,850 for the pod only; standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Other model and project scopes are confirmed in the quotation.'
   },
   {
     question: 'What affects the final office pod price?',
@@ -90,7 +90,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'How soundproof are office pods in real working environments?',
     answer:
-      'Our office pods achieve an independently certified −27 dB(A) noise reduction in real office conditions. This reduces surrounding noise significantly and improves privacy for calls and meetings. They are highly effective, but not completely 100% soundproof.'
+      'Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document has been provided. The figure does not apply to Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, or Ace Hub.'
   },
   {
     question: 'Are office pods suitable for Malaysia office environments (heat and ventilation)?',
@@ -100,7 +100,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'How long does delivery take for office pods in Klang Valley or Malaysia?',
     answer:
-      'Standard lead time is approximately 3 to 6 weeks, depending on model, quantity, and project requirements. Final timeline is confirmed after project scope and site conditions are reviewed.'
+      'Delivery timing depends on model, quantity, current schedule, site access, and installation scope. The confirmed delivery window and commercial terms are stated in the quotation.'
   },
   {
     question: 'Do office pods require renovation or hacking?',
@@ -148,19 +148,19 @@ export const FAQ_PAGE_ITEMS = [
       'For one to two-person private spaces, office pods often deliver better cost certainty than building equivalent acoustic rooms. Pods also retain relocation value if the office moves or layout changes, which reduces long-term risk on short-term leases. For fully permanent needs, built rooms may still suit some projects better.'
   },
   {
-    question: 'Are Ace Office Pods made in Malaysia?',
+    question: 'How can buyers verify Ace Office Pods product claims?',
     answer:
-      'Yes. All Ace Office Pods are manufactured in Selangor, Malaysia. You can visit our showroom to inspect build quality and test soundproofing before placing an order. Local manufacturing means local parts, local warranty support, and a team you can reach directly — without going through a distributor to an overseas factory.'
+      'Ask for model-specific product specifications and the applicable evidence for any acoustic, certification, origin, or performance claim. Do not assume a claim for one model applies to another.'
   },
   {
-    question: 'How are Ace pods different from imported office pods?',
+    question: 'How should Ace pods be compared with imported office pods?',
     answer:
-      'Ace pods are manufactured locally in Malaysia, which means servicing and warranty support are handled directly by the same team — not routed through a distributor to an overseas factory. Five of our six models carry an independently certified −27 dB(A) noise reduction rating. For buyers who want quality they can verify and support they can actually reach, local manufacturing makes a practical difference.'
+      'Compare the specific model, quoted delivery and installation scope, after-sales contact, footprint, ventilation, and model-specific acoustic evidence. Origin or acoustic claims should be supported by documents rather than assumed from brand-level marketing.'
   },
   {
     question: 'What does 27 dBA noise reduction actually mean in practice?',
     answer:
-      'The stated 27 dBA rating applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Ace Uno does not carry a published dB rating, so it should be compared using its stated materials, ventilation, dimensions, and intended one-person use.'
+      'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub do not carry that claim.'
   }
 ];
 
@@ -178,7 +178,7 @@ export const OFFICE_PODS_FAQ_ITEMS = [
   {
     question: 'Are office booths soundproof?',
     answer:
-      'Office booths are designed to reduce noise and improve privacy, but they should not be treated as fully soundproof unless supported by specific acoustic test data. Acoustic performance depends on the model, materials, seals, ventilation, placement, and surrounding office noise.'
+      'Office booths are designed to manage sound, but they should not be treated as soundproof unless supported by model-specific acoustic test data. Acoustic performance depends on the model, materials, seals, ventilation, placement, and surrounding office noise.'
   },
   {
     question: 'Which office pod size should I choose?',
@@ -191,7 +191,7 @@ export const PRICING_FAQ_ITEMS = [
   {
     question: 'How much does an office pod cost in Malaysia?',
     answer:
-      'Ace Office Pods start from RM8,800 for the Ace Uno pod only and from RM22,200 for a meeting pod in Malaysia. Delivery and installation are itemised separately. Final project pricing depends on model size, quantity, delivery location, installation access, and optional add-ons.'
+      'Ace Uno is the entry model at RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Meeting pods start from RM22,200.'
   },
   {
     question: 'What affects the final office pod price?',
@@ -201,7 +201,7 @@ export const PRICING_FAQ_ITEMS = [
   {
     question: 'Do prices include delivery and installation?',
     answer:
-      'Delivery and installation within the agreed project scope are typically included in the final quotation for Klang Valley projects. For locations outside Klang Valley or projects with complex access requirements, delivery and installation costs are confirmed separately. Share your office location, floor access, quantity, and preferred models when requesting a quotation for accurate pricing.'
+      'For Ace Uno, standard Klang Valley delivery is RM350 and installation is RM350; neither is included in the RM8,850 pod-only price. Other models, outstation delivery, and projects with complex access requirements are confirmed separately in the quotation.'
   },
   {
     question: 'Is bulk pricing available for corporate or project orders?',

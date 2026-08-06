@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { ARTICLES } from '../src/data/articles.js';
-import { POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
+import { ACE_UNO_PRICING, POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
 import {
   HOME_FAQ_ITEMS,
   SEO_BASE_URL,
@@ -35,6 +35,47 @@ const products = Object.entries(POD_SEO_BY_SLUG).map(([slug, product]) => ({
     value: product.startingPrice
   }
 }));
+
+const aceUno = POD_SEO_BY_SLUG['ace-uno'];
+const aceUnoUrl = `${SEO_BASE_URL}/pods/ace-uno`;
+const latestContentDate = aceUno.factsReviewedOn > latestArticleDate ? aceUno.factsReviewedOn : latestArticleDate;
+const aceUnoFacts = {
+  schemaVersion: '1.0',
+  recordType: 'ProductFacts',
+  name: aceUno.name,
+  canonicalUrl: aceUnoUrl,
+  factsReviewedOn: aceUno.factsReviewedOn,
+  definition: aceUno.geoDefinition,
+  category: 'Single-person acoustic call and focus pod',
+  intendedUse: ['Phone calls', 'Video meetings', 'Focused individual work'],
+  capacity: '1 person',
+  pricing: {
+    currency: 'MYR',
+    podOnly: ACE_UNO_PRICING.podOnly,
+    standardKlangValleyDelivery: ACE_UNO_PRICING.standardKlangValleyDelivery,
+    standardKlangValleyInstallation: ACE_UNO_PRICING.standardKlangValleyInstallation,
+    standardInstalledTotalBeforeOptionalStool: ACE_UNO_PRICING.standardInstalledTotal,
+    optionalHighBarStool: ACE_UNO_PRICING.optionalHighBarStool,
+    standardInstalledTotalWithOptionalStool: ACE_UNO_PRICING.standardInstalledTotalWithStool,
+    scopeNote: 'Outstation delivery, restricted-access sites, and non-standard project requirements are quoted separately.'
+  },
+  acousticPerformance: aceUno.acousticPerformance,
+  specifications: Object.fromEntries(aceUno.schemaProperties.map(({ name, value }) => [name, value])),
+  productFacts: aceUno.useCases,
+  faq: aceUno.faqItems,
+  legacyRoute: {
+    ...aceUno.legacyRoute,
+    legacyUrl: `${SEO_BASE_URL}${aceUno.legacyRoute.legacyPath}`,
+    canonicalUrl: `${SEO_BASE_URL}${aceUno.legacyRoute.canonicalPath}`,
+    redirectStatus: 301
+  },
+  sources: {
+    productPage: aceUnoUrl,
+    pricingPage: `${SEO_BASE_URL}/pricing`,
+    comparisonPage: `${SEO_BASE_URL}/compare-office-pods`,
+    fullReference: `${SEO_BASE_URL}/llms-full.txt`
+  }
+};
 
 const buildFeed = () => {
   const items = [...ARTICLES]
@@ -75,14 +116,11 @@ const summary = {
   legalName: SEO_BRAND_LEGAL,
   url: SEO_BASE_URL,
   description:
-    'Malaysian supplier and local manufacturer of acoustic office pods, phone booths, focus pods, and meeting pods for calls, focused work, interviews, and small meetings.',
-  updated: latestArticleDate,
+    'Malaysian supplier of acoustic office pods, phone booths, focus pods, and meeting pods for calls, focused work, interviews, and small meetings.',
+  updated: latestContentDate,
   facts: {
-    podsSold: '180+ since 2023',
-    manufacturing: 'Locally made in Malaysia',
-    acousticPerformance: 'The stated 27 dBA specification applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub; Ace Uno has no published dB rating',
-    startingPrice: 'RM8,800 for the Ace Uno pod only; delivery and installation are separate',
-    leadTime: 'Approximately 3-6 working weeks after 50% deposit',
+    acousticPerformance: 'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub have no published dB rating on this site',
+    startingPrice: 'Ace Uno: RM8,850 pod only; standard Klang Valley delivery RM350; standard Klang Valley installation RM350; standard installed total RM9,550 before the optional stool',
     serviceArea: 'Klang Valley and West Malaysia',
     showroom: `${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}, Malaysia`
   },
@@ -97,7 +135,8 @@ const summary = {
     llms: `${SEO_BASE_URL}/llms.txt`,
     fullReference: `${SEO_BASE_URL}/llms-full.txt`,
     sitemap: `${SEO_BASE_URL}/sitemap.xml`,
-    feed: `${SEO_BASE_URL}/feed.xml`
+    feed: `${SEO_BASE_URL}/feed.xml`,
+    aceUnoFacts: `${SEO_BASE_URL}/ai/products/ace-uno.json`
   },
   contact: {
     phone: SEO_BRAND_PHONE,
@@ -110,7 +149,7 @@ const faq = {
   schemaVersion: '1.0',
   name: `${SEO_BRAND_PRIMARY} frequently asked questions`,
   url: `${SEO_BASE_URL}/faq`,
-  updated: latestArticleDate,
+  updated: latestContentDate,
   questions: HOME_FAQ_ITEMS.map(({ question, answer }) => ({ question, answer }))
 };
 
@@ -121,7 +160,7 @@ const service = {
     legalName: SEO_BRAND_LEGAL,
     url: SEO_BASE_URL
   },
-  updated: latestArticleDate,
+  updated: latestContentDate,
   services: [
     {
       name: 'Office pod supply',
@@ -140,7 +179,7 @@ const service = {
     },
     {
       name: 'Showroom consultation',
-      description: 'Product viewing and acoustic testing at the Klang showroom by appointment.',
+      description: 'Product viewing and a subjective acoustic demonstration in Klang by appointment; demonstrations do not replace model-specific test documentation.',
       url: `${SEO_BASE_URL}/contact`
     }
   ],
@@ -157,6 +196,7 @@ Full reference: ${SEO_BASE_URL}/llms-full.txt
 Summary: ${SEO_BASE_URL}/ai/summary.json
 FAQ: ${SEO_BASE_URL}/ai/faq.json
 Services: ${SEO_BASE_URL}/ai/service.json
+Ace Uno facts: ${SEO_BASE_URL}/ai/products/ace-uno.json
 Articles feed: ${SEO_BASE_URL}/feed.xml
 
 AI search and citation crawlers may access public pages. Product prices are starting prices in MYR and should be verified on the linked product or pricing page. Contact ${SEO_BRAND_EMAIL} for current project quotations.
@@ -165,12 +205,14 @@ AI search and citation crawlers may access public pages. Product prices are star
 const run = async () => {
   await mkdir('public/.well-known', { recursive: true });
   await mkdir('public/ai', { recursive: true });
+  await mkdir('public/ai/products', { recursive: true });
   await Promise.all([
     writeFile('public/feed.xml', buildFeed(), 'utf8'),
     writeFile('public/.well-known/ai.txt', aiTxt, 'utf8'),
     writeFile('public/ai/summary.json', `${JSON.stringify(summary, null, 2)}\n`, 'utf8'),
     writeFile('public/ai/faq.json', `${JSON.stringify(faq, null, 2)}\n`, 'utf8'),
-    writeFile('public/ai/service.json', `${JSON.stringify(service, null, 2)}\n`, 'utf8')
+    writeFile('public/ai/service.json', `${JSON.stringify(service, null, 2)}\n`, 'utf8'),
+    writeFile('public/ai/products/ace-uno.json', `${JSON.stringify(aceUnoFacts, null, 2)}\n`, 'utf8')
   ]);
 };
 

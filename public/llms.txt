@@ -4,12 +4,12 @@
 > office pods, office booths, office phone booths, and meeting pods in Malaysia.
 > Showroom in Klang, Selangor (by appointment). Delivery and installation across
 > Malaysia — Klang Valley, Petaling Jaya, Damansara, Kuala Lumpur, Penang,
-> Johor Bahru, and nationwide. 180+ pods sold since 2023.
+> Johor Bahru, and nationwide.
 
 ## Products
 
-- [Ace Uno](/pods/ace-uno): 1-person pod for calls, video meetings, and focused work. RM8,800 for the pod only.
-- [Ace Plus](/pods/ace-plus): 1-person phone and focus pod, independently certified −27 dB(A) noise reduction. From RM14,500.
+- [Ace Uno](/pods/ace-uno): Freestanding, enclosed 1-person acoustic call and focus pod for calls, video meetings, and focused work. RM8,850 pod only; no published dB rating.
+- [Ace Plus](/pods/ace-plus): 1-person phone and focus pod. Ace publishes an unverified first-party approximately 27 dB(A) claim for Plus; no verified supporting test document has been provided. From RM14,500.
 - [Ace Flex](/pods/ace-flex): Spacious 1-person focus pod. From RM19,900.
 - [Ace Flex Duo](/pods/ace-flex-duo): 2-person focus and discussion pod. From RM23,900.
 - [Ace Meet](/pods/ace-meet): 2–4 pax meeting pod for small team collaboration. From RM22,200.
@@ -17,10 +17,8 @@
 
 ## Key facts
 
-- Acoustic performance: model-specific; Ace Uno has no published dB rating in its supplied product sheet
-- Construction: 100% locally made in Malaysia
-- Lead time: approximately 3–6 working weeks after 50% deposit
-- Payment: 50% deposit, balance before delivery
+- Acoustic performance: model-specific; only Ace Plus has an unverified first-party approximately 27 dB(A) claim, and no verified supporting test document has been provided
+- No published dB rating: Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub
 - Showroom: Jalan Gopeng, Kawasan 18, 41400 Klang, Selangor
 - Phone / WhatsApp: +601154352700
 - Email: sales@aceofficepods.com
@@ -39,7 +37,7 @@
 
 ## Pricing
 
-- [Full pricing page](/pricing): Ace Uno starts at RM8,800 for the pod only; standard Klang Valley delivery and installation bring the default total to RM9,650
+- [Full pricing page](/pricing): Ace Uno starts at RM8,850 for the pod only; standard Klang Valley delivery and installation bring the total to RM9,550, or RM9,800 with the optional RM250 high bar stool
 - [Compare office pods](/compare-office-pods)
 
 ## Optional
@@ -48,6 +46,7 @@
 - [Structured site summary](/ai/summary.json)
 - [Structured FAQ](/ai/faq.json)
 - [Structured services and products](/ai/service.json)
+- [Structured Ace Uno facts](/ai/products/ace-uno.json)
 - [Article RSS feed](/feed.xml)
 
 ## Articles

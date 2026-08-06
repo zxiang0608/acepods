@@ -20,7 +20,7 @@ const phoneBoothPods = phoneBoothSlugs
 const PHONE_BOOTH_FAQS = [
   { question: 'What is the difference between a phone pod and an office phone booth?', answer: 'The terms are often used interchangeably. Both usually describe a compact enclosed workspace for private calls and focused work; the right choice depends on the model size, ventilation, acoustic performance, and daily usage.' },
   { question: 'Are phone booth pods soundproof?', answer: 'Phone booth pods reduce surrounding noise and improve speech privacy, but they are not automatically completely soundproof. Review the stated acoustic result for the specific model and consider the surrounding office conditions.' },
-  { question: 'Which phone pod is best for private calls?', answer: 'Ace Uno is the primary one-person option for private calls, video meetings, and focused work. Ace Plus offers a smaller footprint for repeated daily use, while Ace Flex provides more internal room.' },
+  { question: 'Which phone pod is best for calls?', answer: 'Ace Uno is the entry one-person acoustic pod for calls, video meetings, and focused work. Ace Plus offers a smaller footprint for repeated daily use, while Ace Flex provides more internal room.' },
   { question: 'What affects office phone booth pricing in Malaysia?', answer: 'Final pricing depends on the model, selected options, quantity, delivery location, and site-access conditions for installation.' }
 ];
 
@@ -29,7 +29,7 @@ export default function OfficePhoneBoothMalaysiaPage() {
     <PageShell>
       <SeoMeta
         title="Office Phone Booth Malaysia for Calls and Focus | Ace Office Pods"
-        description="Find office phone booth solutions in Malaysia for private calls and focused work. Compare Ace Uno, Ace Plus, and Ace Flex by space, use case, and pricing."
+        description="Find enclosed office phone booth solutions in Malaysia for calls and focused work. Compare Ace Uno, Ace Plus, and Ace Flex by space, use case, and pricing."
         canonical={buildCanonical('/office-phone-booth-malaysia')}
         keywords={`${SEO_KEYWORDS_COMMON}, office phone booth malaysia, phone booth office malaysia, phone pod malaysia, privacy booth malaysia, soundproof phone booth malaysia, call pod malaysia, single person office pod`}
         schemas={[organizationSchema, websiteSchema, createBreadcrumbSchema(breadcrumbs), createFaqSchema('/office-phone-booth-malaysia', PHONE_BOOTH_FAQS)]}
@@ -70,7 +70,7 @@ export default function OfficePhoneBoothMalaysiaPage() {
       <section className="mx-auto grid w-full max-w-[1200px] gap-5 px-5 md:grid-cols-3 md:px-8">
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
           <h2 className="text-[22px] font-semibold tracking-tight text-[#172126]">Best for calls</h2>
-          <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">Ace Uno is the primary one-person option for private calls, video meetings, and focused work.</p>
+          <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">Ace Uno is the entry one-person acoustic pod for calls, video meetings, and focused work.</p>
         </article>
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
           <h2 className="text-[22px] font-semibold tracking-tight text-[#172126]">Best for longer focus</h2>
@@ -187,7 +187,7 @@ export default function OfficePhoneBoothMalaysiaPage() {
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
           <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">Phone pod privacy and acoustic performance</h2>
           <p className="mt-3 max-w-[80ch] text-[16px] leading-[1.65] text-[#59635f]">
-            A phone pod, privacy booth, or soundproof phone booth should be compared using its stated acoustic result, ventilation, and intended session length—not name alone. Ace Plus and the larger Ace models carry a stated 27 dB noise-reduction rating; review the relevant model specification and acoustic-test information before final selection.
+            A phone pod or office phone booth should be compared using its model-specific acoustic information, ventilation, and intended session length—not name alone. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided. Ace Uno and Ace Flex have no published dB rating on this site.
           </p>
           <div className="mt-4 flex flex-wrap gap-4 text-[15px] font-semibold text-[#007653]">
             <Link to="/pods/ace-plus" className="underline-offset-4 hover:underline">View Ace Plus specifications</Link>

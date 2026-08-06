@@ -73,7 +73,7 @@
       ]
     },
     {
-      "source": "/(robots.txt|sitemap.xml|llms.txt|llms-full.txt|feed.xml|.well-known/ai.txt|ai/summary.json|ai/faq.json|ai/service.json)",
+      "source": "/(robots.txt|sitemap.xml|llms.txt|llms-full.txt|feed.xml|.well-known/ai.txt|ai/summary.json|ai/faq.json|ai/service.json|ai/products/ace-uno.json)",
       "headers": [
         {
           "key": "Cache-Control",

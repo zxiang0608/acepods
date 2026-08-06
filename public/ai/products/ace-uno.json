@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "ProductFacts",
+  "name": "Ace Uno",
+  "canonicalUrl": "https://aceofficepods.com/pods/ace-uno",
+  "factsReviewedOn": "2026-08-06",
+  "definition": "Ace Uno is a freestanding, enclosed one-person acoustic call and focus pod for phone calls, video meetings, and focused work, with an integrated worktop, ventilation, lighting, power, and USB charging.",
+  "category": "Single-person acoustic call and focus pod",
+  "intendedUse": [
+    "Phone calls",
+    "Video meetings",
+    "Focused individual work"
+  ],
+  "capacity": "1 person",
+  "pricing": {
+    "currency": "MYR",
+    "podOnly": 8850,
+    "standardKlangValleyDelivery": 350,
+    "standardKlangValleyInstallation": 350,
+    "standardInstalledTotalBeforeOptionalStool": 9550,
+    "optionalHighBarStool": 250,
+    "standardInstalledTotalWithOptionalStool": 9800,
+    "scopeNote": "Outstation delivery, restricted-access sites, and non-standard project requirements are quoted separately."
+  },
+  "acousticPerformance": {
+    "publishedDbRating": null,
+    "statement": "Ace Uno has no published dB rating.",
+    "limitations": [
+      "Do not describe Ace Uno as soundproof.",
+      "Do not promise speech confidentiality or apply the Ace Plus acoustic claim to Ace Uno."
+    ]
+  },
+  "specifications": {
+    "Capacity": "1 person",
+    "Category": "Single-person acoustic call and focus pod",
+    "External dimensions": "1418W × 1018D × 2185H mm",
+    "Exterior and interior finish": "9 mm polyester fibre acoustic panels",
+    "Door": "10 mm clear tempered glass",
+    "Rear panel": "Laminated safety glass",
+    "Ventilation": "Dual quiet airflow fans, 108 CFM per fan",
+    "Power": "Universal socket with USB Type-A and USB Type-C"
+  },
+  "productFacts": [
+    "Ace Uno is a freestanding one-person acoustic pod designed for phone calls, video meetings, and focused work in open-plan workplaces.",
+    "Its 1418 mm by 1018 mm footprint provides an integrated Natural Oak work surface without requiring permanent renovation or built-in construction.",
+    "The standard configuration includes a clear tempered-glass door, laminated safety-glass rear panel, neutral-white LED lighting, dual quiet ventilation fans, universal power, and USB charging.",
+    "Ace Uno costs RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, for a standard installed total of RM9,550 before the optional stool. Adding the optional RM250 high bar stool makes the total RM9,800."
+  ],
+  "faq": [
+    {
+      "question": "What is the Ace Uno office pod used for?",
+      "answer": "Ace Uno is a freestanding single-person acoustic pod for calls, video meetings, and focused work in open-plan workplaces."
+    },
+    {
+      "question": "How much does Ace Uno cost in Malaysia?",
+      "answer": "Ace Uno starts from RM8,850 for the pod only. Standard Klang Valley installation is RM350 and delivery is RM350, making RM9,550 before the optional stool or RM9,800 with the optional RM250 high bar stool. Outstation and restricted-access projects are quoted separately."
+    },
+    {
+      "question": "What are the external dimensions of Ace Uno?",
+      "answer": "Ace Uno measures 1418 mm wide, 1018 mm deep, and 2185 mm high."
+    },
+    {
+      "question": "What is included with Ace Uno?",
+      "answer": "The standard pod includes an integrated Natural Oak worktop, LED ceiling light, dual quiet airflow fans, a universal socket, USB Type-A and USB Type-C charging, a tempered-glass door, and a laminated safety-glass rear panel."
+    }
+  ],
+  "legacyRoute": {
+    "legacyModel": "Ace Solo",
+    "legacyPath": "/pods/ace-solo",
+    "canonicalPath": "/pods/ace-uno",
+    "legacyUrl": "https://aceofficepods.com/pods/ace-solo",
+    "canonicalUrl": "https://aceofficepods.com/pods/ace-uno",
+    "redirectStatus": 301
+  },
+  "sources": {
+    "productPage": "https://aceofficepods.com/pods/ace-uno",
+    "pricingPage": "https://aceofficepods.com/pricing",
+    "comparisonPage": "https://aceofficepods.com/compare-office-pods",
+    "fullReference": "https://aceofficepods.com/llms-full.txt"
+  }
+}

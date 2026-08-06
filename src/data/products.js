@@ -132,7 +132,7 @@ import portfolioEverllenceInterior from '../../assets/Portfolio/Everllence/everl
 import portfolioEverllenceOfficeWide01 from '../../assets/Portfolio/Everllence/everllence-ace-plus-office-wide-01.jpg';
 import portfolioEverllenceOfficeWide03 from '../../assets/Portfolio/Everllence/everllence-ace-plus-office-wide-03.jpg';
 import portfolioEverllenceBrandedFront from '../../assets/Portfolio/Everllence/everllence-ace-plus-branded-front.jpg';
-import { POD_SEO_BY_SLUG } from './podSeoCatalog';
+import { ACE_PLUS_ACOUSTIC_CLAIM, ACE_UNO_PRICING, POD_SEO_BY_SLUG } from './podSeoCatalog';
 
 const deliveryDefaults = {
   default: 350,
@@ -241,7 +241,7 @@ const plusAndAboveFeatureItems = [
     id: 'plus-feature-superb-ventilation-system',
     image: plusFeature21,
     title: 'Superb Ventilation System',
-    desc: "Low-noise air ventilation system ensures rapid circulation of fresh air within minutes, all the while preserving the booth's exceptional soundproofing characteristics."
+    desc: 'Low-noise air ventilation supports air circulation while the pod is in use.'
   },
   {
     id: 'plus-feature-adjustable-lights-fan',
@@ -438,7 +438,7 @@ export const products = [
     pdpPricing: {
       baseConfigurations: [{ id: 'uno-unit', label: 'Pod only', price: POD_SEO_BY_SLUG['ace-uno'].startingPrice }],
       configurationOptions: [],
-      installationPerUnit: 350,
+      installationPerUnit: ACE_UNO_PRICING.standardKlangValleyInstallation,
       delivery: deliveryDefaults,
       addOnOptions: [aceUnoBarStoolAddon]
     },
@@ -466,7 +466,7 @@ export const products = [
       externalHeight: '2185 mm',
       boothFacilities: ['Integrated worktop', 'Universal power socket', 'USB Type-A and USB Type-C charging'],
       extraRows: [
-        { label: 'Category', value: 'Single-person privacy call pod' },
+        { label: 'Category', value: 'Single-person acoustic call and focus pod' },
         { label: 'Work surface', value: 'Natural Oak MFC worktop' },
         { label: 'Acoustic panels', value: '9 mm polyester fibre' },
         { label: 'Frame construction', value: 'Steel frame with MFC structure' },
@@ -485,12 +485,12 @@ export const products = [
     featureRows: [],
     specs: [
       { label: 'Capacity', value: '1 person' },
-      { label: 'Best for', value: 'Quick private calls and video meetings' },
+      { label: 'Best for', value: 'Calls, video meetings, and focused work' },
       { label: 'Ventilation', value: 'Dual quiet fans, 108 CFM per fan' },
       { label: 'Power', value: 'Universal socket with USB Type-A and USB Type-C' }
     ],
     useCases: [
-      'Quick private calls and video meetings in open-plan offices',
+      'Calls, video meetings, and focused work in open-plan offices',
       'Offices that need multiple call spaces without building new rooms',
       'A plug-and-play solution that moves with your layout'
     ],
@@ -604,7 +604,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '27 dBA',
+      publishedAcousticClaim: ACE_PLUS_ACOUSTIC_CLAIM.qualifiedDisplay,
       weight: '335 kg without crate / 455 kg with crate',
       boothFacilities: ['Standing table'],
       extraRows: [
@@ -631,7 +631,7 @@ export const products = [
         { label: 'Socket detail', value: 'Netbox M 2-gang, 2 universal power sockets' },
         { label: 'Power consumption', value: 'LED lights 22.4W; quiet fan 4.8W; exhaust fan 3.12W' },
         { label: 'Airflow', value: '155 CFM, complete air exchange at 100% fan power' },
-        { label: 'Noise reduction', value: '27 dB' }
+        { label: 'Published acoustic claim', value: ACE_PLUS_ACOUSTIC_CLAIM.qualifiedDisplay }
       ]
     },
     featureRows: plusAndAboveFeatureRows,
@@ -774,7 +774,6 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '27 dBA',
       weight: '523 kg without crate / 663 kg with crate',
       boothFacilities: ['Fixed table / height-adjustable table (HAT)'],
       extraRows: [
@@ -801,7 +800,6 @@ export const products = [
         { label: 'Socket detail', value: 'Netbox M 2-gang, 1 universal power socket, 1 USB charging port, 1 Type-C charging port' },
         { label: 'Power consumption', value: 'LED lights 22.4W; quiet fan 4.8W; exhaust fan 3.12W' },
         { label: 'Airflow', value: '155 CFM, complete air exchange at 100% fan power' },
-        { label: 'Noise reduction', value: '27 dB' }
       ]
     },
     featureRows: plusAndAboveFeatureRows,
@@ -941,7 +939,6 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '27 dBA',
       weight: '523 kg without crate / 663 kg with crate',
       boothFacilities: ['Fixed table / height-adjustable table (HAT)'],
       extraRows: [
@@ -968,7 +965,6 @@ export const products = [
         { label: 'Socket detail', value: 'Netbox M 2-gang, 1 universal power socket, 1 USB charging port, 1 Type-C charging port' },
         { label: 'Power consumption', value: 'LED lights 22.4W; quiet fan 4.8W; exhaust fan 3.12W' },
         { label: 'Airflow', value: '155 CFM, complete air exchange at 100% fan power' },
-        { label: 'Noise reduction', value: '27 dB' }
       ]
     },
     featureRows: plusAndAboveFeatureRows,
@@ -1060,7 +1056,6 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '27 dBA',
       weight: '636 kg without crate / 826 kg with crate',
       boothFacilities: ['Empty / sofa / chair optional'],
       extraRows: [
@@ -1087,7 +1082,6 @@ export const products = [
         { label: 'Socket detail', value: 'Netbox M 2-gang, 1 universal power socket, 1 USB charging port, 1 Type-C charging port' },
         { label: 'Power consumption', value: 'LED lights 22.4W; downlights 3W; quiet fan 4.8W; exhaust fan 3.12W' },
         { label: 'Airflow', value: '310 CFM, complete air exchange at 100% fan power' },
-        { label: 'Noise reduction', value: '27 dB' }
       ]
     },
     featureRows: plusAndAboveFeatureRows,
@@ -1174,7 +1168,6 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      certifiedTestedDba: '27 dBA',
       weight: '469 kg without crate / 679 kg with crate',
       boothFacilities: ['Empty / sofa / chair optional'],
       extraRows: [
@@ -1202,7 +1195,6 @@ export const products = [
         { label: 'Socket detail', value: 'Mount on table, Netbox Smart 2-gang, 1 universal power socket, 1 USB charging port, 1 Type-C charging port' },
         { label: 'Power consumption', value: 'LED lights 22.4W; downlights 3W; quiet fan 4.8W; exhaust fan 3.12W' },
         { label: 'Airflow', value: '310 CFM, complete air exchange at 100% fan power' },
-        { label: 'Noise reduction', value: '27 dB' }
       ]
     },
     featureRows: plusAndAboveFeatureRows,

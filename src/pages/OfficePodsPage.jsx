@@ -140,7 +140,7 @@ export default function OfficePodsPage() {
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
           <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">Proof for commercial comparison</h2>
           <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
-            Ace Office Pods are manufactured in Selangor and supported through delivery, installation, and after-sales service in Malaysia. Review completed installations, published pricing, and acoustic-test information before finalising a shortlist.
+            Ace Office Pods supports delivery, installation, and after-sales service in Malaysia. Review completed installations, published pricing, and model-specific acoustic information before finalising a shortlist.
           </p>
           <div className="mt-4 flex flex-wrap gap-4 text-[15px] font-semibold text-[#007653]">
             <Link to="/portfolio" className="underline-offset-4 hover:underline">View completed installations</Link>

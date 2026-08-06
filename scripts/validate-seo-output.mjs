@@ -87,6 +87,37 @@ const run = async () => {
     }
   }
 
+  try {
+    const robots = await readFile(path.resolve('dist/robots.txt'), 'utf8');
+    const requiredCrawlerRules = [
+      'OAI-SearchBot',
+      'ChatGPT-User',
+      'Claude-SearchBot',
+      'Claude-User',
+      'Googlebot',
+      'Google-Extended'
+    ];
+
+    for (const crawler of requiredCrawlerRules) {
+      const escapedCrawler = crawler.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const allowedCrawler = new RegExp(
+        `User-agent:\\s*${escapedCrawler}\\s*(?:\\r?\\n)+Allow:\\s*/(?:\\s|$)`,
+        'i'
+      );
+      const wildcardAllowsAll = /User-agent:\s*\*\s*(?:\r?\n)+Allow:\s*\/(?:\s|$)/i.test(robots);
+
+      if (!allowedCrawler.test(robots) && !wildcardAllowsAll) {
+        errors.push(`dist/robots.txt: ${crawler} is not allowed to crawl the site`);
+      }
+    }
+
+    if (!/Sitemap:\s*https:\/\/aceofficepods\.com\/sitemap\.xml/i.test(robots)) {
+      errors.push('dist/robots.txt: missing canonical sitemap declaration');
+    }
+  } catch (error) {
+    errors.push(`dist/robots.txt: ${error.message}`);
+  }
+
   if (errors.length) {
     throw new Error(`SEO validation failed:\n- ${errors.join('\n- ')}`);
   }

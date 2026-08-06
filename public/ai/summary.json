@@ -3,14 +3,11 @@
   "name": "Ace Office Pods",
   "legalName": "ACE WORKPLACE SOLUTIONS",
   "url": "https://aceofficepods.com",
-  "description": "Malaysian supplier and local manufacturer of acoustic office pods, phone booths, focus pods, and meeting pods for calls, focused work, interviews, and small meetings.",
-  "updated": "2026-07-21",
+  "description": "Malaysian supplier of acoustic office pods, phone booths, focus pods, and meeting pods for calls, focused work, interviews, and small meetings.",
+  "updated": "2026-08-06",
   "facts": {
-    "podsSold": "180+ since 2023",
-    "manufacturing": "Locally made in Malaysia",
-    "acousticPerformance": "The stated 27 dBA specification applies to Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub; Ace Uno has no published dB rating",
-    "startingPrice": "RM8,800 for the Ace Uno pod only; delivery and installation are separate",
-    "leadTime": "Approximately 3-6 working weeks after 50% deposit",
+    "acousticPerformance": "Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub have no published dB rating on this site",
+    "startingPrice": "Ace Uno: RM8,850 pod only; standard Klang Valley delivery RM350; standard Klang Valley installation RM350; standard installed total RM9,550 before the optional stool",
     "serviceArea": "Klang Valley and West Malaysia",
     "showroom": "Klang, Selangor, Malaysia"
   },
@@ -18,10 +15,10 @@
     {
       "name": "Ace Uno",
       "url": "https://aceofficepods.com/pods/ace-uno",
-      "description": "Single-person acoustic pod for calls and focused work",
+      "description": "Enclosed one-person acoustic pod for calls and focus",
       "startingPrice": {
         "currency": "MYR",
-        "value": 8800
+        "value": 8850
       }
     },
     {
@@ -80,7 +77,8 @@
     "llms": "https://aceofficepods.com/llms.txt",
     "fullReference": "https://aceofficepods.com/llms-full.txt",
     "sitemap": "https://aceofficepods.com/sitemap.xml",
-    "feed": "https://aceofficepods.com/feed.xml"
+    "feed": "https://aceofficepods.com/feed.xml",
+    "aceUnoFacts": "https://aceofficepods.com/ai/products/ace-uno.json"
   },
   "contact": {
     "phone": "+601154352700",

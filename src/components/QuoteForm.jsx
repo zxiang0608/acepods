@@ -3,7 +3,7 @@ import { pushDataLayerEvent } from '../lib/tracking';
 
 const POD_OPTIONS = [
   { value: '', label: 'Select a pod (optional)' },
-  { value: 'Ace Uno', label: 'Ace Uno — 1 pax, pod only from RM8,800' },
+  { value: 'Ace Uno', label: 'Ace Uno — 1 pax, pod only from RM8,850' },
   { value: 'Ace Plus', label: 'Ace Plus — 1 pax, from RM14,500' },
   { value: 'Ace Flex', label: 'Ace Flex — 1 pax, from RM19,900' },
   { value: 'Ace Flex Duo', label: 'Ace Flex Duo — 2 pax, from RM23,900' },

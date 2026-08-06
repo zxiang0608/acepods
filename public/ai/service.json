@@ -5,7 +5,7 @@
     "legalName": "ACE WORKPLACE SOLUTIONS",
     "url": "https://aceofficepods.com"
   },
-  "updated": "2026-07-21",
+  "updated": "2026-08-06",
   "services": [
     {
       "name": "Office pod supply",
@@ -24,7 +24,7 @@
     },
     {
       "name": "Showroom consultation",
-      "description": "Product viewing and acoustic testing at the Klang showroom by appointment.",
+      "description": "Product viewing and a subjective acoustic demonstration in Klang by appointment; demonstrations do not replace model-specific test documentation.",
       "url": "https://aceofficepods.com/contact"
     }
   ],
@@ -37,10 +37,10 @@
     {
       "name": "Ace Uno",
       "url": "https://aceofficepods.com/pods/ace-uno",
-      "description": "Single-person acoustic pod for calls and focused work",
+      "description": "Enclosed one-person acoustic pod for calls and focus",
       "startingPrice": {
         "currency": "MYR",
-        "value": 8800
+        "value": 8850
       }
     },
     {
