@@ -177,6 +177,7 @@ export const createPricingItemListSchema = (path, items) => ({
     item: {
       '@type': 'Product',
       name: item.name,
+      ...(item.image ? { image: [buildAbsoluteUrl(item.image)] } : {}),
       brand: {
         '@type': 'Brand',
         name: SEO_BRAND_PRIMARY

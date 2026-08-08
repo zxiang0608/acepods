@@ -62,7 +62,8 @@ export default function PricingPage() {
     return {
       name: product.name,
       path: `/pods/${product.slug}`,
-      price: basePrice
+      price: basePrice,
+      image: product.heroImage
     };
   });
 

@@ -91,7 +91,8 @@ export default function OfficePodsNearMePage() {
   const pricingListItems = products.map((product) => ({
     name: product.name,
     path: `/pods/${product.slug}`,
-    price: product.pdpPricing?.baseConfigurations?.[0]?.price
+    price: product.pdpPricing?.baseConfigurations?.[0]?.price,
+    image: product.heroImage
   }));
 
   return (

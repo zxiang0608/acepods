@@ -38,7 +38,8 @@ const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
   slug,
   name: POD_SEO_BY_SLUG[slug].name,
   price: POD_SEO_BY_SLUG[slug].startingPrice,
-  path: `/pods/${slug}`
+  path: `/pods/${slug}`,
+  image: `${SEO_BASE_URL}${getProductPublicImage(slug)}`
 }));
 
 const PRERENDER_NAV_LINKS = [
@@ -510,6 +511,7 @@ const STATIC_PRERENDER_META = {
           item: {
             '@type': 'Product',
             name: item.name,
+            image: [item.image],
             brand: {
               '@type': 'Brand',
               name: SEO_BRAND_PRIMARY
@@ -659,6 +661,7 @@ const STATIC_PRERENDER_META = {
           item: {
             '@type': 'Product',
             name: item.name,
+            image: [item.image],
             brand: {
               '@type': 'Brand',
               name: SEO_BRAND_PRIMARY
@@ -776,6 +779,7 @@ const STATIC_PRERENDER_META = {
           item: {
             '@type': 'Product',
             name: item.name,
+            image: [item.image],
             brand: { '@type': 'Brand', name: SEO_BRAND_PRIMARY },
             category: 'Office pods',
             url: `${SEO_BASE_URL}${item.path}`,
