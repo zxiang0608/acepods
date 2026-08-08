@@ -1,4 +1,5 @@
 export const SEO_BASE_URL = 'https://aceofficepods.com';
+export const SEO_FACTS_REVIEWED_ON = '2026-08-06';
 export const SEO_BRAND_PRIMARY = 'Ace Office Pods';
 export const SEO_BRAND_LEGAL = 'ACE WORKPLACE SOLUTIONS';
 export const SEO_BRAND_ALTERNATE_NAMES = [

@@ -8,6 +8,31 @@
       "permanent": true
     },
     {
+      "source": "/pods/ace-solo-plus",
+      "destination": "https://aceofficepods.com/pods/ace-plus",
+      "permanent": true
+    },
+    {
+      "source": "/pods/ace-solo-pro",
+      "destination": "https://aceofficepods.com/pods/ace-flex",
+      "permanent": true
+    },
+    {
+      "source": "/pods/ace-duo",
+      "destination": "https://aceofficepods.com/pods/ace-flex",
+      "permanent": true
+    },
+    {
+      "source": "/pods/ace-meeting",
+      "destination": "https://aceofficepods.com/pods/ace-meet",
+      "permanent": true
+    },
+    {
+      "source": "/pods/ace-meeting-xl",
+      "destination": "https://aceofficepods.com/pods/ace-hub",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

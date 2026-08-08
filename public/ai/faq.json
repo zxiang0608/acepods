@@ -36,5 +36,39 @@
       "question": "What does 27 dBA noise reduction actually mean?",
       "answer": "Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided, so the figure should not be described as independently certified or applied to other models."
     }
+  ],
+  "faqs": [
+    {
+      "question": "What is included in the office pod price?",
+      "answer": "Inclusions vary by model. Ace Uno is RM8,850 for the pod only; standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Other model and project scopes are confirmed in the quotation."
+    },
+    {
+      "question": "What affects the final office pod price?",
+      "answer": "Final pricing depends on pod size, model type, quantity, custom options, and site access conditions. For example, lift access, staircase handling, and installation complexity can affect project cost. These factors are reviewed early so pricing is clear before commitment."
+    },
+    {
+      "question": "Which office pod is suitable for calls, focused work, or meetings?",
+      "answer": "Ace Uno and Ace Plus are suited to calls, video meetings, and focused individual work. Ace Flex is a more spacious one-person option, while Ace Flex Duo, Ace Meet, and Ace Hub support collaborative use. We recommend based on your real daily usage and team flow."
+    },
+    {
+      "question": "How soundproof are office pods in real working environments?",
+      "answer": "Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub do not have a published dB rating on this site and should not be treated as soundproof."
+    },
+    {
+      "question": "What happens if we need help after delivery?",
+      "answer": "After delivery, our team can support follow-up adjustments, servicing needs, and practical usage guidance based on the agreed support scope. You will have a clear contact path for post-installation support. This helps keep the pod reliable for daily operation."
+    },
+    {
+      "question": "Are office pods better than building new rooms?",
+      "answer": "For many workplaces, office pods are a faster and less disruptive way to add private space for calls, focused work, and meetings. They can also be relocated if your office layout changes. For fully permanent structural needs, building new rooms may still be the better fit."
+    },
+    {
+      "question": "How can buyers verify Ace Office Pods product claims?",
+      "answer": "Ask for model-specific product specifications and the applicable evidence for any acoustic, certification, origin, or performance claim. Do not assume a claim for one model applies to another."
+    },
+    {
+      "question": "What does 27 dBA noise reduction actually mean?",
+      "answer": "Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided, so the figure should not be described as independently certified or applied to other models."
+    }
   ]
 }

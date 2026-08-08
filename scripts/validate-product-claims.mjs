@@ -88,19 +88,39 @@ assert(unoCatalog.useCases.some((text) => /RM9,800/.test(text)), 'Ace Uno crawla
 assert(unoCatalog.faqItems.some(({ answer }) => /RM250/.test(answer) && /RM9,800/.test(answer)), 'Ace Uno FAQ must expose the approved optional stool price and total.');
 
 const vercelConfig = JSON.parse(await readFile('vercel.json', 'utf8'));
-const soloRedirect = vercelConfig.redirects?.find((redirect) => redirect.source === '/pods/ace-solo');
-assert(soloRedirect?.destination === 'https://aceofficepods.com/pods/ace-uno' && soloRedirect?.permanent === true, 'Vercel must permanently redirect Ace Solo to the canonical Ace Uno URL.');
+const expectedLegacyRedirects = {
+  '/pods/ace-solo': '/pods/ace-uno',
+  '/pods/ace-solo-plus': '/pods/ace-plus',
+  '/pods/ace-solo-pro': '/pods/ace-flex',
+  '/pods/ace-duo': '/pods/ace-flex',
+  '/pods/ace-meeting': '/pods/ace-meet',
+  '/pods/ace-meeting-xl': '/pods/ace-hub'
+};
+for (const [source, destinationPath] of Object.entries(expectedLegacyRedirects)) {
+  const redirect = vercelConfig.redirects?.find((entry) => entry.source === source);
+  assert(
+    redirect?.destination === `https://aceofficepods.com${destinationPath}` && redirect?.permanent === true,
+    `Vercel must permanently redirect ${source} to ${destinationPath}.`
+  );
+}
 const discoveryHeaders = vercelConfig.headers?.find((entry) => entry.source?.includes('ai/summary.json'));
 assert(discoveryHeaders?.source?.includes('ai/products/ace-uno.json'), 'Vercel discovery cache headers must include the Ace Uno facts endpoint.');
 
 const mainSource = await readFile('src/main.jsx', 'utf8');
-assert(mainSource.includes('<Route path="/pods/ace-solo" element={<Navigate replace to="/pods/ace-uno" />} />'), 'SPA fallback must redirect Ace Solo to Ace Uno.');
+for (const [source, destinationPath] of Object.entries(expectedLegacyRedirects)) {
+  assert(
+    mainSource.includes(`<Route path="${source}" element={<Navigate replace to="${destinationPath}" />} />`),
+    `SPA fallback must redirect ${source} to ${destinationPath}.`
+  );
+}
 
 const schemaSource = await readFile('src/seo/schema.js', 'utf8');
 const prerenderSource = await readFile('scripts/prerender.mjs', 'utf8');
 assert(!schemaSource.includes('schema.org/InStock'), 'Product schema must not claim InStock without current inventory evidence.');
 assert(!prerenderSource.includes('schema.org/InStock'), 'Prerendered product schema must not claim InStock without current inventory evidence.');
 assert(!prerenderSource.includes('priceValidUntil'), 'Prerendered product schema must not invent a price-validity date.');
+assert(!schemaSource.includes("itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' }"), 'Organization schema must not emit an incomplete generic Product item.');
+assert(!prerenderSource.includes("itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' }"), 'Prerendered organization schema must not emit an incomplete generic Product item.');
 
 const sitemap = await readFile('public/sitemap.xml', 'utf8');
 assert(sitemap.includes('https://aceofficepods.com/pods/ace-uno'), 'Sitemap must contain the Ace Uno canonical URL.');

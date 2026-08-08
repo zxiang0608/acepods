@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import App from './App';
 import CompareOfficePodsPage from './pages/CompareOfficePodsPage';
 import ContactPage from './pages/ContactPage';
 import FaqPage from './pages/FaqPage';
@@ -15,7 +14,6 @@ import OfficePodsPage from './pages/OfficePodsPage';
 import PodRelocationPage from './pages/PodRelocationPage';
 import PricingPage from './pages/PricingPage';
 import MeetingPodsMalaysiaPage from './pages/MeetingPodsMalaysiaPage';
-import HomePageV2 from './pages/HomePageV2';
 import Demo2Page from './pages/Demo2Page';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
@@ -62,12 +60,17 @@ ReactDOM.createRoot(rootElement).render(
           <Route path="/locations" element={<LocationsPage />} />
           <Route path="/locations/:slug" element={<LocationPage />} />
           <Route path="/pods/ace-solo" element={<Navigate replace to="/pods/ace-uno" />} />
+          <Route path="/pods/ace-solo-plus" element={<Navigate replace to="/pods/ace-plus" />} />
+          <Route path="/pods/ace-solo-pro" element={<Navigate replace to="/pods/ace-flex" />} />
+          <Route path="/pods/ace-duo" element={<Navigate replace to="/pods/ace-flex" />} />
+          <Route path="/pods/ace-meeting" element={<Navigate replace to="/pods/ace-meet" />} />
+          <Route path="/pods/ace-meeting-xl" element={<Navigate replace to="/pods/ace-hub" />} />
           <Route path="/pods/:slug" element={<ProductPage />} />
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="/terms" element={<TermsPage />} />
-          <Route path="/draft1" element={<HomePageV2 />} />
-          <Route path="/demo2" element={<Demo2Page />} />
-          <Route path="/demo3" element={<Demo2Page mobilePodMenu />} />
+          <Route path="/draft1" element={<Navigate replace to="/" />} />
+          <Route path="/demo2" element={<Navigate replace to="/" />} />
+          <Route path="/demo3" element={<Navigate replace to="/" />} />
           <Route path="/seo/*" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

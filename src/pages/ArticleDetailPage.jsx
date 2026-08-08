@@ -4,6 +4,7 @@ import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import { ARTICLES, findArticleBySlug } from '../data/articles';
 import { getArticleImageAltBySlug, getArticleImageBySlug } from '../lib/articleImages';
+import { getRelatedArticles } from '../lib/articleRelations';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 
@@ -200,7 +201,7 @@ export default function ArticleDetailPage() {
   const canonicalPath = `/articles/${article.slug}`;
   const articleImage = getArticleImageBySlug(article.slug);
   const articleFaqs = extractArticleFaqs(article.content);
-  const relatedArticles = ARTICLES.filter((item) => item.slug !== article.slug).slice(0, 3);
+  const relatedArticles = getRelatedArticles(ARTICLES, article.slug);
   const breadcrumbs = [
     { name: 'Home', path: '/' },
     { name: 'Articles', path: '/articles' },
@@ -228,7 +229,10 @@ export default function ArticleDetailPage() {
             description: article.seoDescription || article.excerpt,
             image: buildAbsoluteUrl(articleImage),
             datePublished: article.date,
+            dateModified: article.date,
+            mainEntityOfPage: buildCanonical(canonicalPath),
             url: buildCanonical(canonicalPath),
+            ...(article.citations?.length ? { citation: article.citations } : {}),
             publisher: {
               '@type': 'Organization',
               name: 'Ace Office Pods',

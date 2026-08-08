@@ -44,7 +44,7 @@ const demoProducts = smartPodsMenuItems.map((item) => {
 });
 
 const proofPoints = [
-  'Showroom open in Klang Valley',
+  'Showroom viewing by appointment in Klang',
   'Acoustic data shown by model',
   'Delivery and installation itemised'
 ];
@@ -129,7 +129,7 @@ const buyingConfidence = [
   },
   {
     title: 'Local support that is actually local',
-    description: 'When you need support, you reach the team that built your pod — no distributor chain, no overseas wait.',
+    description: 'Your quotation and handover identify the contact responsible for the agreed support scope.',
     image: deliveryPodsImage,
     alt: 'Office pod support and post-delivery use'
   }
@@ -149,7 +149,7 @@ const howItWorks = [
   {
     number: '03',
     title: 'Visit the showroom',
-    description: 'Appointment only, in Klang. Step inside, test the acoustics, ask hard questions before you commit.'
+    description: 'Appointment only, in Klang. Compare available models and experience their acoustics; a showroom demonstration is not a formal test.'
   },
   {
     number: '04',
@@ -351,7 +351,7 @@ export default function Demo2Page({ mobilePodMenu = false }) {
                   Less noise.<br />More work done.
                 </h1>
                 <p className="mt-8 max-w-[31ch] text-[19px] font-normal leading-[1.48] text-white/92 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] md:text-[20px]">
-                  Give your people the quiet to think clearly, speak privately, and do their best work.
+                  Give your people an enclosed place for calls, focused work, and small meetings.
                 </p>
                 <div className="mt-9 flex flex-col gap-3 md:flex-row">
                   <a
@@ -424,7 +424,7 @@ export default function Demo2Page({ mobilePodMenu = false }) {
 
       <section className="border-y border-[#dfdbd3] bg-[#f7f6f2] px-6 py-16 md:px-12 md:py-20">
         <div className="mx-auto max-w-[1280px]">
-          <p className="text-center text-[12px] font-semibold uppercase tracking-[0.15em] text-[#68726f] md:text-[11px] md:tracking-[0.16em]">Trusted by local and international companies</p>
+          <p className="text-center text-[12px] font-semibold uppercase tracking-[0.15em] text-[#68726f] md:text-[11px] md:tracking-[0.16em]">Selected project and customer references</p>
           <div className="mt-10 grid grid-cols-2 border-l border-t border-[#e4e0d9] sm:grid-cols-4">
             {trustedLogos.map((logo) => (
               <div key={logo.name} className="flex h-[104px] items-center justify-center border-b border-r border-[#e4e0d9] px-6 md:h-[112px] md:px-8">
@@ -432,7 +432,7 @@ export default function Demo2Page({ mobilePodMenu = false }) {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-center text-[14px] font-medium tracking-[-0.01em] text-[#68726f]">And many more companies across Malaysia.</p>
+          <p className="mt-6 text-center text-[14px] font-medium tracking-[-0.01em] text-[#68726f]">Ask for the project reference and publication status applicable to your review.</p>
         </div>
       </section>
 
@@ -516,7 +516,7 @@ export default function Demo2Page({ mobilePodMenu = false }) {
           <div className="border-t border-[#aeb3ac] pt-6 md:pt-8">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#68726f]">Beyond the product</p>
             <h2 className="mt-3 text-[35px] font-semibold leading-[1.02] tracking-[-0.045em] text-[#172126] md:text-[48px]">Why choose Ace Pods</h2>
-            <p className="mt-5 max-w-[68ch] text-[17px] leading-[1.58] text-[#53605d] [text-wrap:pretty] md:text-[18px]">What matters can be checked before you decide: measured acoustic performance, a showroom visit, and one local team that stays accountable after delivery.</p>
+            <p className="mt-5 max-w-[68ch] text-[17px] leading-[1.58] text-[#53605d] [text-wrap:pretty] md:text-[18px]">What matters can be checked before you decide: model-specific acoustic information, a showroom visit, and the support scope stated in writing.</p>
           </div>
           <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-3 md:gap-7">
             {buyingConfidence.map((item) => (

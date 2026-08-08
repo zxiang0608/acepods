@@ -1,11 +1,18 @@
 {
   "schemaVersion": "1.0",
+  "name": "Ace Office Pods services",
   "provider": {
     "name": "Ace Office Pods",
     "legalName": "ACE WORKPLACE SOLUTIONS",
     "url": "https://aceofficepods.com"
   },
   "updated": "2026-08-06",
+  "capabilities": [
+    "Office pod supply",
+    "Office pod delivery and installation",
+    "Office pod relocation",
+    "Showroom consultation"
+  ],
   "services": [
     {
       "name": "Office pod supply",
@@ -30,8 +37,7 @@
   ],
   "serviceArea": [
     "Klang Valley",
-    "West Malaysia",
-    "Malaysia"
+    "West Malaysia"
   ],
   "products": [
     {

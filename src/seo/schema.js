@@ -13,7 +13,8 @@ import {
   SEO_BRAND_SAME_AS,
   SEO_BRAND_SHOWROOM_LOCALITY,
   SEO_BRAND_SHOWROOM_REGION,
-  SEO_BRAND_STREET_ADDRESS
+  SEO_BRAND_STREET_ADDRESS,
+  SEO_FACTS_REVIEWED_ON
 } from './constants';
 
 export const buildCanonical = (path) => `${SEO_BASE_URL}${path}`;
@@ -33,11 +34,6 @@ export const organizationSchema = {
   identifier: SEO_BRAND_IDENTIFIER,
   url: SEO_BASE_URL,
   logo: SEO_BRAND_LOGO,
-  founder: {
-    '@type': 'Person',
-    name: 'ZX Tay',
-    jobTitle: 'Co-Founder'
-  },
   email: SEO_BRAND_EMAIL,
   telephone: SEO_BRAND_PHONE,
   areaServed: {
@@ -104,8 +100,7 @@ export const localBusinessSchema = {
   ],
   makesOffer: [
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod showroom viewing by appointment' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation across Malaysia' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' } }
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation in Klang Valley and West Malaysia' } }
   ]
 };
 
@@ -128,6 +123,7 @@ export const homepageWebPageSchema = {
   url: SEO_BASE_URL,
   description:
     'Ace Office Pods (Ace Workplace Solutions), supplier of office pods and office booths for calls, focus, and meetings in Malaysia.',
+  dateModified: SEO_FACTS_REVIEWED_ON,
   isPartOf: {
     '@id': `${SEO_BASE_URL}/#website`
   },

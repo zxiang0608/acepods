@@ -21,9 +21,11 @@ import {
   SEO_BRAND_SHOWROOM_LOCALITY,
   SEO_BRAND_SHOWROOM_REGION,
   SEO_BRAND_STREET_ADDRESS,
+  SEO_FACTS_REVIEWED_ON,
   SEO_KEYWORDS_COMMON
 } from '../src/seo/constants.js';
 import { ARTICLES } from '../src/data/articles.js';
+import { getRelatedArticles } from '../src/lib/articleRelations.js';
 import { POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
 import { HOME_META, getProductMeta, getProductPublicImage } from '../src/seo/pageMeta.js';
 
@@ -38,6 +40,28 @@ const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
   price: POD_SEO_BY_SLUG[slug].startingPrice,
   path: `/pods/${slug}`
 }));
+
+const PRERENDER_NAV_LINKS = [
+  ['Office pods', '/office-pods'],
+  ['Ace Uno', '/pods/ace-uno'],
+  ['Ace Plus', '/pods/ace-plus'],
+  ['Ace Flex', '/pods/ace-flex'],
+  ['Ace Flex Duo', '/pods/ace-flex-duo'],
+  ['Ace Meet', '/pods/ace-meet'],
+  ['Ace Hub', '/pods/ace-hub'],
+  ['Pricing', '/pricing'],
+  ['Compare models', '/compare-office-pods'],
+  ['Meeting pods', '/meeting-pods-malaysia'],
+  ['Office phone booths', '/office-phone-booth-malaysia'],
+  ['Office pods near me', '/office-pods-near-me'],
+  ['Locations', '/locations'],
+  ['Portfolio', '/portfolio'],
+  ['Installation and support', '/installation-support'],
+  ['Pod relocation', '/pod-relocation'],
+  ['Articles', '/articles'],
+  ['FAQ', '/faq'],
+  ['Contact', '/contact']
+];
 
 const INSTALLATION_FAQ_ITEMS = [
   {
@@ -161,8 +185,7 @@ const buildLocalBusinessSchema = () => ({
   ],
   makesOffer: [
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod showroom viewing by appointment' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation in Klang Valley' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Acoustic office pods and office booths' } }
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Office pod delivery and installation in Klang Valley' } }
   ]
 });
 
@@ -184,6 +207,7 @@ const buildHomepageWebPageSchema = () => ({
   name: 'Ace Office Pods by Ace Workplace Solutions',
   url: SEO_BASE_URL,
   description: 'Ace Office Pods (Ace Workplace Solutions), supplying office pods and office booths for calls, focus, and meetings in Malaysia.',
+  dateModified: SEO_FACTS_REVIEWED_ON,
   isPartOf: {
     '@id': `${SEO_BASE_URL}/#website`
   },
@@ -1053,7 +1077,9 @@ const STATIC_PRERENDER_META = {
     h1: 'Office pod articles and planning guides',
     body: [
       'Explore practical guidance on office pods and office booths, including use-case planning, sizing, and workspace fit.',
-      'Read topic-specific articles to shortlist the right pod setup for calls, focused work, and team collaboration.'
+      'Read topic-specific articles to shortlist the right pod setup for calls, focused work, and team collaboration.',
+      '## All office pod articles',
+      ...ARTICLES.map((article) => `[${article.title}](/articles/${article.slug})`)
     ],
     schemas: (canonical) => [
       {
@@ -1831,7 +1857,10 @@ const buildFallbackBody = ({ h1, body = [], noscriptFaqHeading, noscriptFaqItems
           .map((item) => `<article><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></article>`)
           .join('')}</section>`
       : '';
-  return `<main><section><h1>${escapeHtml(h1)}</h1><p>${escapeHtml(NOSCRIPT_BRAND_OWNERSHIP_TEXT)}</p>${structuredBody}</section>${faqBlock}</main>`;
+  const navigation = `<nav aria-label="Site navigation"><h2>Explore Ace Office Pods</h2><ul>${PRERENDER_NAV_LINKS
+    .map(([label, href]) => `<li><a href="${href}">${escapeHtml(label)}</a></li>`)
+    .join('')}</ul></nav>`;
+  return `<main><section><h1>${escapeHtml(h1)}</h1><p>${escapeHtml(NOSCRIPT_BRAND_OWNERSHIP_TEXT)}</p>${structuredBody}</section>${faqBlock}${navigation}</main>`;
 };
 
 const injectSeoHtml = (html, route, meta) => {
@@ -2045,6 +2074,7 @@ const extractArticleFaqs = (content) => {
 
 const buildArticlePrerenderMeta = (route, articleMeta) => {
   const faqItems = extractArticleFaqs(articleMeta.content);
+  const relatedArticles = getRelatedArticles(ARTICLES, articleMeta.slug);
   const articleImage = `${SEO_BASE_URL}/articles/images/${articleMeta.slug}.webp`;
   return {
   title: articleMeta.seoTitle || `${articleMeta.title} | Ace Office Pods`,
@@ -2054,7 +2084,11 @@ const buildArticlePrerenderMeta = (route, articleMeta) => {
   ogPublishedTime: articleMeta.date,
   keywords: `${SEO_KEYWORDS_COMMON}, office pod article`,
   h1: articleMeta.title,
-  body: articleMeta.content,
+  body: [
+    ...articleMeta.content,
+    '## Related office pod guides',
+    ...relatedArticles.map((article) => `[${article.title}](/articles/${article.slug})`)
+  ],
   ...(faqItems.length ? { noscriptFaqHeading: 'Frequently asked questions', noscriptFaqItems: faqItems } : {}),
   schemas: (canonical) => [
     {
@@ -2065,6 +2099,7 @@ const buildArticlePrerenderMeta = (route, articleMeta) => {
       image: articleImage,
       datePublished: articleMeta.date,
       dateModified: articleMeta.date,
+      ...(articleMeta.citations?.length ? { citation: articleMeta.citations } : {}),
       mainEntityOfPage: canonical,
       author: {
         '@type': 'Organization',

@@ -3,6 +3,11 @@ import { readFile } from 'node:fs/promises';
 import { getRouteManifest } from './route-manifest.mjs';
 import { SEO_BASE_URL } from '../src/seo/constants.js';
 
+const outputPathForRoute = (route) =>
+  route === '/'
+    ? path.resolve('dist/index.html')
+    : path.resolve('dist', route.replace(/^\/+/, ''), 'index.html');
+
 const extractOne = (html, pattern, label, route) => {
   const match = html.match(pattern);
   if (!match) throw new Error(`${route}: missing ${label}`);
@@ -10,10 +15,7 @@ const extractOne = (html, pattern, label, route) => {
 };
 
 const validateRoute = async (route) => {
-  const outputPath =
-    route === '/'
-      ? path.resolve('dist/index.html')
-      : path.resolve('dist', route.replace(/^\/+/, ''), 'index.html');
+  const outputPath = outputPathForRoute(route);
   const html = await readFile(outputPath, 'utf8');
   const errors = [];
   const title = extractOne(html, /<title>([\s\S]*?)<\/title>/i, 'title', route);
@@ -40,6 +42,9 @@ const validateRoute = async (route) => {
   if (canonical.includes('www.') || !canonical.startsWith('https://')) {
     errors.push('canonical must use the HTTPS apex domain');
   }
+  if (!/<nav aria-label="Site navigation">/i.test(html)) {
+    errors.push('missing crawlable static site navigation');
+  }
 
   const schemaMatches = [...html.matchAll(/<script type="application\/ld\+json" data-seo-schema="true">([\s\S]*?)<\/script>/g)];
   for (const [, schemaText] of schemaMatches) {
@@ -58,13 +63,20 @@ const validateRoute = async (route) => {
         errors.push(`${schema['@type']} schema uses the generic social image`);
       }
     }
+    if (
+      route === '/articles/open-office-noise-productivity-research' &&
+      schema['@type'] === 'Article' &&
+      (!Array.isArray(schema.citation) || schema.citation.length === 0)
+    ) {
+      errors.push('research Article schema has no external citations');
+    }
   }
 
   return errors.map((error) => `${route}: ${error}`);
 };
 
 const run = async () => {
-  const { PUBLIC_ROUTES } = await getRouteManifest();
+  const { INDEXABLE_ROUTES, PUBLIC_ROUTES } = await getRouteManifest();
   const results = await Promise.all(PUBLIC_ROUTES.map(validateRoute));
   const errors = results.flat();
   const discoveryFiles = [
@@ -81,7 +93,22 @@ const run = async () => {
     try {
       const content = await readFile(path.resolve(file), 'utf8');
       if (!content.trim()) errors.push(`${file}: file is empty`);
-      if (file.endsWith('.json')) JSON.parse(content);
+      if (file.endsWith('.json')) {
+        const data = JSON.parse(content);
+        if (file.endsWith('/faq.json')) {
+          if (!Array.isArray(data.faqs) || data.faqs.length === 0) {
+            errors.push(`${file}: must expose a non-empty faqs array for AI discovery clients`);
+          }
+        }
+        if (file.endsWith('/service.json')) {
+          if (typeof data.name !== 'string' || data.name.length < 3) {
+            errors.push(`${file}: must expose a top-level service name`);
+          }
+          if (!Array.isArray(data.capabilities) || data.capabilities.length === 0) {
+            errors.push(`${file}: must expose a non-empty capabilities array`);
+          }
+        }
+      }
     } catch (error) {
       errors.push(`${file}: ${error.message}`);
     }
@@ -116,6 +143,26 @@ const run = async () => {
     }
   } catch (error) {
     errors.push(`dist/robots.txt: ${error.message}`);
+  }
+
+  const indexableRouteSet = new Set(INDEXABLE_ROUTES);
+  const inboundLinks = new Map(INDEXABLE_ROUTES.map((route) => [route, new Set()]));
+  for (const sourceRoute of INDEXABLE_ROUTES) {
+    const html = await readFile(outputPathForRoute(sourceRoute), 'utf8');
+    const hrefs = [...html.matchAll(/<a\b[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+    for (const href of hrefs) {
+      if (!href.startsWith('/') || href.startsWith('//')) continue;
+      const targetRoute = href.split(/[?#]/)[0].replace(/\/$/, '') || '/';
+      if (indexableRouteSet.has(targetRoute) && targetRoute !== sourceRoute) {
+        inboundLinks.get(targetRoute).add(sourceRoute);
+      }
+    }
+  }
+
+  for (const [route, sources] of inboundLinks) {
+    if (route !== '/' && sources.size === 0) {
+      errors.push(`${route}: no crawlable inbound link from another indexable page`);
+    }
   }
 
   if (errors.length) {

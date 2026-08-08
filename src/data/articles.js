@@ -7,6 +7,13 @@ export const ARTICLES = [
       'A review of peer-reviewed research on how open-plan office noise affects cognitive performance, concentration, and employee wellbeing — and what acoustic design can do about it.',
     category: 'Research & Workplace Design',
     date: '2026-07-21',
+    citations: [
+      'https://doi.org/10.1016/j.jenvp.2013.06.007',
+      'https://doi.org/10.1080/00140130412331311390',
+      'https://doi.org/10.1145/1357054.1357072',
+      'https://doi.org/10.1098/rstb.2017.0239',
+      'https://doi.org/10.1177/0013916507307459'
+    ],
     seoTitle: 'Open Office Noise and Productivity: Research Review | Ace Office Pods',
     seoDescription:
       'A review of peer-reviewed research on how open-plan office noise affects concentration, cognitive performance, and wellbeing — with evidence-based acoustic design recommendations.',
@@ -108,17 +115,17 @@ export const ARTICLES = [
 
       '## References',
 
-      'Banbury, S. P., & Berry, D. C. (2005). Office noise and employee concentration: Identifying causes of disruption and potential improvements. *Ergonomics*, 48(1–2), 25–37.',
+      '[Banbury, S. P., & Berry, D. C. (2005). Office noise and employee concentration: Identifying causes of disruption and potential improvements. *Ergonomics*, 48(1–2), 25–37.](https://doi.org/10.1080/00140130412331311390)',
 
-      'Bernstein, E. S., & Turban, S. (2018). The impact of the \'open\' workspace on human collaboration. *Philosophical Transactions of the Royal Society B: Biological Sciences*, 373(1753), 20170239.',
+      '[Bernstein, E. S., & Turban, S. (2018). The impact of the \'open\' workspace on human collaboration. *Philosophical Transactions of the Royal Society B: Biological Sciences*, 373(1753), 20170239.](https://doi.org/10.1098/rstb.2017.0239)',
 
-      'Bodin Danielsson, C., & Bodin, L. (2008). Office type in relation to health, well-being, and job satisfaction among employees. *Environment and Behavior*, 40(5), 636–668.',
+      '[Bodin Danielsson, C., & Bodin, L. (2008). Office type in relation to health, well-being, and job satisfaction among employees. *Environment and Behavior*, 40(5), 636–668.](https://doi.org/10.1177/0013916507307459)',
 
       'Haapakangas, A., Helenius, R., Keskinen, E., & Hongisto, V. (2008). Perceived acoustic environment, work performance and well-being — survey results from Finnish offices. *Proceedings of the 9th International Congress on Noise as a Public Health Problem* (ICBEN), Foxwoods, CT.',
 
-      'Kim, J., & de Dear, R. (2013). Workspace satisfaction: The privacy-communication trade-off in open-plan offices. *Journal of Environmental Psychology*, 36, 18–26.',
+      '[Kim, J., & de Dear, R. (2013). Workspace satisfaction: The privacy-communication trade-off in open-plan offices. *Journal of Environmental Psychology*, 36, 18–26.](https://doi.org/10.1016/j.jenvp.2013.06.007)',
 
-      'Mark, G., Gudith, D., & Klocke, U. (2008). The cost of interrupted work: More speed and stress. *Proceedings of the SIGCHI Conference on Human Factors in Computing Systems* (CHI \'08), 107–110.',
+      '[Mark, G., Gudith, D., & Klocke, U. (2008). The cost of interrupted work: More speed and stress. *Proceedings of the SIGCHI Conference on Human Factors in Computing Systems* (CHI \'08), 107–110.](https://doi.org/10.1145/1357054.1357072)',
 
       'Oseland, N., & Hodsman, P. (2019). A psychoacoustical approach to resolving office noise distraction. *Journal of Corporate Real Estate*, 21(1), 37–52.',
     ],

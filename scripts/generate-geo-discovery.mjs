@@ -145,22 +145,31 @@ const summary = {
   }
 };
 
+const faqItems = HOME_FAQ_ITEMS.map(({ question, answer }) => ({ question, answer }));
 const faq = {
   schemaVersion: '1.0',
   name: `${SEO_BRAND_PRIMARY} frequently asked questions`,
   url: `${SEO_BASE_URL}/faq`,
   updated: latestContentDate,
-  questions: HOME_FAQ_ITEMS.map(({ question, answer }) => ({ question, answer }))
+  questions: faqItems,
+  faqs: faqItems
 };
 
 const service = {
   schemaVersion: '1.0',
+  name: `${SEO_BRAND_PRIMARY} services`,
   provider: {
     name: SEO_BRAND_PRIMARY,
     legalName: SEO_BRAND_LEGAL,
     url: SEO_BASE_URL
   },
   updated: latestContentDate,
+  capabilities: [
+    'Office pod supply',
+    'Office pod delivery and installation',
+    'Office pod relocation',
+    'Showroom consultation'
+  ],
   services: [
     {
       name: 'Office pod supply',
@@ -183,7 +192,7 @@ const service = {
       url: `${SEO_BASE_URL}/contact`
     }
   ],
-  serviceArea: ['Klang Valley', 'West Malaysia', 'Malaysia'],
+  serviceArea: ['Klang Valley', 'West Malaysia'],
   products
 };
 
