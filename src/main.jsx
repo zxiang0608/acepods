@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import AboutPage from './pages/AboutPage';
 import CompareOfficePodsPage from './pages/CompareOfficePodsPage';
 import ContactPage from './pages/ContactPage';
 import FaqPage from './pages/FaqPage';
@@ -15,6 +16,7 @@ import PodRelocationPage from './pages/PodRelocationPage';
 import PricingPage from './pages/PricingPage';
 import MeetingPodsMalaysiaPage from './pages/MeetingPodsMalaysiaPage';
 import Demo2Page from './pages/Demo2Page';
+import EditorialPolicyPage from './pages/EditorialPolicyPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -54,6 +56,8 @@ ReactDOM.createRoot(rootElement).render(
           <Route path="/compare-office-pods" element={<CompareOfficePodsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/editorial-policy" element={<EditorialPolicyPage />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/installation-support" element={<InstallationSupportPage />} />
           <Route path="/pod-relocation" element={<PodRelocationPage />} />

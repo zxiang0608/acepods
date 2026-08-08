@@ -59,6 +59,8 @@ const PRERENDER_NAV_LINKS = [
   ['Installation and support', '/installation-support'],
   ['Pod relocation', '/pod-relocation'],
   ['Articles', '/articles'],
+  ['About', '/about'],
+  ['Editorial policy', '/editorial-policy'],
   ['FAQ', '/faq'],
   ['Contact', '/contact']
 ];
@@ -1472,6 +1474,84 @@ const STATIC_PRERENDER_META = {
             text: item.answer
           }
         }))
+      }
+    ]
+  },
+  '/about': {
+    title: 'About Ace Office Pods | Ace Workplace Solutions',
+    description: 'Learn about Ace Office Pods by Ace Workplace Solutions, our Klang showroom, West Malaysia service area, and approach to clear product information.',
+    h1: 'About Ace Office Pods',
+    body: [
+      'Ace Office Pods is operated by ACE WORKPLACE SOLUTIONS (registration no. 202403171118), a Malaysian supplier of enclosed office pods for calls, focused work, interviews, and small meetings.',
+      '## Company and service details',
+      'The Ace showroom is in Klang, Selangor, with visits by appointment. Delivery and installation enquiries are supported across Klang Valley and West Malaysia, with project scope confirmed in the quotation.',
+      '## What we supply',
+      'The Ace range covers one-person call and focus pods, two-person pods, and meeting pods for small teams. Product pages state the intended use, starting price, and available model-specific specifications.',
+      '[View the office pod range](/office-pods)',
+      '[See starting prices](/pricing)',
+      '## How we handle product claims',
+      'Acoustic performance and other technical claims are treated as model-specific. A claim shown for one pod is not automatically applied to another. Where supporting test documentation has not been recorded, the website labels the claim as unverified instead of presenting it as independently certified.',
+      'Prices shown online are starting or stated-scope prices. Delivery, installation, access constraints, optional items, and outstation work are confirmed in the written quotation.',
+      '[Read the editorial and product information policy](/editorial-policy)',
+      '[Contact Ace Office Pods](/contact)'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'About Ace Office Pods',
+        url: canonical,
+        dateModified: '2026-08-08',
+        isPartOf: { '@id': `${SEO_BASE_URL}/#website` },
+        about: { '@id': `${SEO_BASE_URL}/#organization` }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SEO_BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'About', item: canonical }
+        ]
+      }
+    ]
+  },
+  '/editorial-policy': {
+    title: 'Editorial & Product Information Policy | Ace Office Pods',
+    description: 'How Ace Office Pods reviews product facts, pricing scope, evidence, article sources, updates, and corrections.',
+    h1: 'Editorial and product information policy',
+    body: [
+      'This policy explains how Ace Office Pods handles product facts, pricing, evidence, articles, and corrections on aceofficepods.com.',
+      '## Who publishes the website',
+      'Product pages and articles are published by the Ace Office Pods team at Ace Workplace Solutions. The content is commercial information about Ace products and services.',
+      '## Product facts and evidence',
+      'We use model-specific product records for dimensions, capacity, included features, starting prices, and technical claims. A claim for one model is not treated as evidence for another model. If supporting documentation has not been recorded, the website labels the claim as unverified or avoids presenting it as independently certified.',
+      '## Prices and quotations',
+      'Online prices are starting prices or prices for the scope stated on the relevant page. A written project quotation is the controlling commercial reference.',
+      '## Articles and external sources',
+      'When an article relies on external research, regulations, standards, or third-party technical information, the relevant source should be linked or named. Commercial opinion and model-specific first-party claims should not be presented as independent evidence.',
+      '## Review and corrections',
+      'Pages are updated when product data, prices, evidence status, or service information changes. To report an error, email sales@aceofficepods.com with the page URL and statement to review.',
+      '[About Ace Office Pods](/about)',
+      '[Browse articles](/articles)',
+      '[Contact us](/contact)'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Ace Office Pods Editorial and Product Information Policy',
+        url: canonical,
+        dateModified: '2026-08-08',
+        isPartOf: { '@id': `${SEO_BASE_URL}/#website` },
+        publisher: { '@id': `${SEO_BASE_URL}/#organization` }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SEO_BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Editorial Policy', item: canonical }
+        ]
       }
     ]
   },

@@ -13,6 +13,7 @@
   },
   "products": [
     {
+      "slug": "ace-uno",
       "name": "Ace Uno",
       "url": "https://aceofficepods.com/pods/ace-uno",
       "description": "Enclosed one-person acoustic pod for calls and focus",
@@ -22,6 +23,7 @@
       }
     },
     {
+      "slug": "ace-plus",
       "name": "Ace Plus",
       "url": "https://aceofficepods.com/pods/ace-plus",
       "description": "Built for privacy, focus, and sound control",
@@ -31,6 +33,7 @@
       }
     },
     {
+      "slug": "ace-flex",
       "name": "Ace Flex",
       "url": "https://aceofficepods.com/pods/ace-flex",
       "description": "Spacious pod for comfort and focus",
@@ -40,6 +43,7 @@
       }
     },
     {
+      "slug": "ace-flex-duo",
       "name": "Ace Flex Duo",
       "url": "https://aceofficepods.com/pods/ace-flex-duo",
       "description": "Two-person pod for focused work",
@@ -49,6 +53,7 @@
       }
     },
     {
+      "slug": "ace-meet",
       "name": "Ace Meet",
       "url": "https://aceofficepods.com/pods/ace-meet",
       "description": "Meeting pod for small teams",
@@ -58,6 +63,7 @@
       }
     },
     {
+      "slug": "ace-hub",
       "name": "Ace Hub",
       "url": "https://aceofficepods.com/pods/ace-hub",
       "description": "Meeting pod for larger teams",
@@ -74,6 +80,8 @@
     "installation": "https://aceofficepods.com/installation-support",
     "relocation": "https://aceofficepods.com/pod-relocation",
     "articles": "https://aceofficepods.com/articles",
+    "about": "https://aceofficepods.com/about",
+    "editorialPolicy": "https://aceofficepods.com/editorial-policy",
     "llms": "https://aceofficepods.com/llms.txt",
     "fullReference": "https://aceofficepods.com/llms-full.txt",
     "sitemap": "https://aceofficepods.com/sitemap.xml",

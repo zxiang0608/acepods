@@ -4,6 +4,8 @@ Canonical: https://aceofficepods.com
 Sitemap: https://aceofficepods.com/sitemap.xml
 LLMs: https://aceofficepods.com/llms.txt
 Full reference: https://aceofficepods.com/llms-full.txt
+About: https://aceofficepods.com/about
+Editorial policy: https://aceofficepods.com/editorial-policy
 Summary: https://aceofficepods.com/ai/summary.json
 FAQ: https://aceofficepods.com/ai/faq.json
 Services: https://aceofficepods.com/ai/service.json

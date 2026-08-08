@@ -5,11 +5,14 @@ import {
   HOME_FAQ_ITEMS,
   SEO_BASE_URL,
   SEO_BRAND_EMAIL,
+  SEO_BRAND_IDENTIFIER,
   SEO_BRAND_LEGAL,
   SEO_BRAND_PHONE,
   SEO_BRAND_PRIMARY,
+  SEO_BRAND_POSTAL_CODE,
   SEO_BRAND_SHOWROOM_LOCALITY,
-  SEO_BRAND_SHOWROOM_REGION
+  SEO_BRAND_SHOWROOM_REGION,
+  SEO_BRAND_STREET_ADDRESS
 } from '../src/seo/constants.js';
 
 const latestArticleDate = ARTICLES.reduce(
@@ -27,6 +30,7 @@ const escapeXml = (value) =>
 
 const articleUrl = (article) => `${SEO_BASE_URL}/articles/${article.slug}`;
 const products = Object.entries(POD_SEO_BY_SLUG).map(([slug, product]) => ({
+  slug,
   name: product.name,
   url: `${SEO_BASE_URL}/pods/${slug}`,
   description: product.shortDesc,
@@ -132,6 +136,8 @@ const summary = {
     installation: `${SEO_BASE_URL}/installation-support`,
     relocation: `${SEO_BASE_URL}/pod-relocation`,
     articles: `${SEO_BASE_URL}/articles`,
+    about: `${SEO_BASE_URL}/about`,
+    editorialPolicy: `${SEO_BASE_URL}/editorial-policy`,
     llms: `${SEO_BASE_URL}/llms.txt`,
     fullReference: `${SEO_BASE_URL}/llms-full.txt`,
     sitemap: `${SEO_BASE_URL}/sitemap.xml`,
@@ -196,12 +202,129 @@ const service = {
   products
 };
 
+const articleLinks = [...ARTICLES]
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .map((article) => `- [${article.title}](${articleUrl(article)}) — ${article.excerpt}`)
+  .join('\n');
+
+const productLinks = products
+  .map((product) => `- [${product.name}](${product.url}) — ${product.description}. Starting price: RM${product.startingPrice.value.toLocaleString('en-MY')}.`)
+  .join('\n');
+
+const productReference = products
+  .map((product) => {
+    const source = POD_SEO_BY_SLUG[product.slug];
+    const properties = source.schemaProperties
+      .map(({ name, value }) => `  - ${name}: ${value}`)
+      .join('\n');
+    return `### ${product.name}\n\nCanonical product page: ${product.url}\n\nPublished starting price: RM${product.startingPrice.value.toLocaleString('en-MY')}\n\nSummary: ${product.description}.\n\nPublished specifications:\n${properties}`;
+  })
+  .join('\n\n');
+
+const buildLlmsTxt = () => `# ${SEO_BRAND_PRIMARY}
+
+> Malaysian supplier of enclosed office pods for calls, focused work, interviews, and small meetings. Operated by ${SEO_BRAND_LEGAL} (registration no. ${SEO_BRAND_IDENTIFIER}).
+
+Canonical website: ${SEO_BASE_URL}
+
+## Products
+
+${productLinks}
+
+## Buyer resources
+
+- [Office pod range](${SEO_BASE_URL}/office-pods)
+- [Pricing](${SEO_BASE_URL}/pricing)
+- [Compare office pods](${SEO_BASE_URL}/compare-office-pods)
+- [Delivery and installation](${SEO_BASE_URL}/installation-support)
+- [Pod relocation](${SEO_BASE_URL}/pod-relocation)
+- [Locations served](${SEO_BASE_URL}/locations)
+- [Frequently asked questions](${SEO_BASE_URL}/faq)
+
+## Company and trust
+
+- [About Ace Office Pods](${SEO_BASE_URL}/about)
+- [Editorial and product information policy](${SEO_BASE_URL}/editorial-policy)
+- [Contact](${SEO_BASE_URL}/contact)
+- [Full AI reference](${SEO_BASE_URL}/llms-full.txt)
+- [Machine-readable summary](${SEO_BASE_URL}/ai/summary.json)
+- [Structured Ace Uno facts](/ai/products/ace-uno.json)
+- [Sitemap](${SEO_BASE_URL}/sitemap.xml)
+- [Article feed](${SEO_BASE_URL}/feed.xml)
+
+## Current articles
+
+${articleLinks}
+
+## Citation guidance
+
+- Verify prices and scope on the linked product or pricing page before quoting them.
+- Acoustic claims are model-specific. Ace Plus has an unverified first-party approximately 27 dB(A) claim; no verified supporting test document has been provided. Do not apply that claim to another model.
+- Contact ${SEO_BRAND_EMAIL} for a current project quotation or correction.
+`;
+
+const buildLlmsFullTxt = () => `# ${SEO_BRAND_PRIMARY}: full reference
+
+Last content review represented in this file: ${latestContentDate}
+
+## Identity
+
+- Brand: ${SEO_BRAND_PRIMARY}
+- Legal operator: ${SEO_BRAND_LEGAL}
+- Registration number: ${SEO_BRAND_IDENTIFIER}
+- Website: ${SEO_BASE_URL}
+- Address: ${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}, Malaysia
+- Service area: Klang Valley and West Malaysia
+- Phone: ${SEO_BRAND_PHONE}
+- Email: ${SEO_BRAND_EMAIL}
+
+Ace Office Pods supplies freestanding enclosed office pods for calls, focused work, interviews, one-to-one discussions, and small meetings. Showroom viewing in Klang is by appointment.
+
+## Pricing and evidence rules
+
+Published prices are starting prices or stated-scope prices. Final delivery, installation, access, optional-item, outstation, and project requirements are confirmed in a written quotation.
+
+Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document or measurement conditions have been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub have no published dB rating on this site and should not be described as soundproof.
+
+For Ace Uno, the current stated scope is RM8,850 pod only, RM350 standard Klang Valley delivery, and RM350 standard Klang Valley installation, making RM9,550 before the optional RM250 stool. Restricted-access, non-standard, and outstation projects are quoted separately.
+
+## Product reference
+
+${productReference}
+
+## Services
+
+- Office pod supply: ${SEO_BASE_URL}/office-pods
+- Delivery and installation planning: ${SEO_BASE_URL}/installation-support
+- Pod relocation: ${SEO_BASE_URL}/pod-relocation
+- Showroom consultation and quotations: ${SEO_BASE_URL}/contact
+
+## Company and publishing information
+
+- About the company: ${SEO_BASE_URL}/about
+- Editorial, evidence, and corrections policy: ${SEO_BASE_URL}/editorial-policy
+- FAQ: ${SEO_BASE_URL}/faq
+- Machine-readable company summary: ${SEO_BASE_URL}/ai/summary.json
+- Machine-readable services: ${SEO_BASE_URL}/ai/service.json
+- Machine-readable Ace Uno facts: ${SEO_BASE_URL}/ai/products/ace-uno.json
+
+## Article index
+
+${articleLinks}
+
+## Source-use note
+
+This reference is generated from the same product and article records used by the website. Use the linked canonical page for current context and scope. Send correction requests to ${SEO_BRAND_EMAIL}.
+`;
+
 const aiTxt = `# ${SEO_BRAND_PRIMARY} AI discovery
 
 Canonical: ${SEO_BASE_URL}
 Sitemap: ${SEO_BASE_URL}/sitemap.xml
 LLMs: ${SEO_BASE_URL}/llms.txt
 Full reference: ${SEO_BASE_URL}/llms-full.txt
+About: ${SEO_BASE_URL}/about
+Editorial policy: ${SEO_BASE_URL}/editorial-policy
 Summary: ${SEO_BASE_URL}/ai/summary.json
 FAQ: ${SEO_BASE_URL}/ai/faq.json
 Services: ${SEO_BASE_URL}/ai/service.json
@@ -217,6 +340,8 @@ const run = async () => {
   await mkdir('public/ai/products', { recursive: true });
   await Promise.all([
     writeFile('public/feed.xml', buildFeed(), 'utf8'),
+    writeFile('public/llms.txt', buildLlmsTxt(), 'utf8'),
+    writeFile('public/llms-full.txt', buildLlmsFullTxt(), 'utf8'),
     writeFile('public/.well-known/ai.txt', aiTxt, 'utf8'),
     writeFile('public/ai/summary.json', `${JSON.stringify(summary, null, 2)}\n`, 'utf8'),
     writeFile('public/ai/faq.json', `${JSON.stringify(faq, null, 2)}\n`, 'utf8'),

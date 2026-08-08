@@ -13,6 +13,8 @@ const STATIC_PUBLIC_ROUTES = [
   '/compare-office-pods',
   '/pricing',
   '/contact',
+  '/about',
+  '/editorial-policy',
   '/faq',
   '/installation-support',
   '/pod-relocation',

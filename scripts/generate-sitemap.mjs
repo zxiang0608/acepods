@@ -62,6 +62,8 @@ const sourceFilesForRoute = (route) => {
     '/compare-office-pods': ['src/pages/CompareOfficePodsPage.jsx'],
     '/pricing': ['src/pages/PricingPage.jsx'],
     '/contact': ['src/pages/ContactPage.jsx', 'src/seo/constants.js'],
+    '/about': ['src/pages/AboutPage.jsx', 'src/seo/constants.js'],
+    '/editorial-policy': ['src/pages/EditorialPolicyPage.jsx', 'src/seo/constants.js'],
     '/faq': ['src/pages/FaqPage.jsx', 'src/seo/constants.js'],
     '/installation-support': ['src/pages/InstallationSupportPage.jsx'],
     '/pod-relocation': ['src/pages/PodRelocationPage.jsx'],

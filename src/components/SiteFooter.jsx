@@ -55,6 +55,7 @@ const footerLinkGroups = [
     title: 'Support',
     links: [
       { label: 'Contact us', to: '/contact' },
+      { label: 'About Ace', to: '/about' },
       { label: 'Articles', to: '/articles' },
       { label: 'Installation & delivery', to: '/installation-support' },
       { label: 'After-sales support', to: '/installation-support#after-sales-support' },
@@ -237,6 +238,7 @@ export default function SiteFooter({ className = 'mt-0' }) {
             <div className="flex gap-4 text-[11px] font-medium normal-case tracking-normal text-gray-600">
               <Link to="/privacy" className="transition-colors hover:text-white">Privacy Policy</Link>
               <Link to="/terms" className="transition-colors hover:text-white">Terms of Use</Link>
+              <Link to="/editorial-policy" className="transition-colors hover:text-white">Editorial Policy</Link>
             </div>
           </div>
           <div className="flex items-center gap-2 text-gray-500">
