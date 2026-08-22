@@ -715,18 +715,18 @@ export default function App() {
           <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#172126] md:mb-12 md:text-[32px]">
             {trustSectionHeading}
           </h2>
-          <div className="logo-marquee px-5 pb-6">
-            <div className="logo-marquee-track">
-              {[...trustedLogos, ...trustedLogos].map((logo, idx) => (
+          <div className="px-5 pb-6">
+            <div className="logo-grid mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-3 md:gap-4">
+              {trustedLogos.map((logo) => (
                 <div
-                  key={`${logo.name}-${idx}`}
-                  className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#f7f6f2] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
+                  key={logo.name}
+                  className="logo-grid-card flex min-h-[84px] min-w-[160px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#f7f6f2] px-4 md:min-h-[96px] md:min-w-[200px] md:px-5"
                 >
                   <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
                     <img
                       src={logo.image}
                       alt={logo.name}
-                      width="210"
+                      width="200"
                       height="64"
                       className={`h-full w-full object-contain ${logo.fitClass || ''}`}
                       loading="lazy"

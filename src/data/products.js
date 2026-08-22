@@ -196,8 +196,7 @@ const acePlusPortfolioPhotos = [
   portfolioEverllenceInterior,
   portfolioEverllenceOfficeWide01,
   portfolioEverllenceOfficeWide03,
-  barStoolBlack,
-  barStoolWhite
+
 ];
 const aceFlexAlphabetPhotos = [
   portfolioAlphabet02,
@@ -207,8 +206,7 @@ const aceFlexAlphabetPhotos = [
   portfolioAlphabet06,
   portfolioAlphabet07,
   portfolioAlphabet08,
-  barStoolBlack,
-  barStoolWhite
+
 ];
 const aceFlexDuoGalleryPhotos = [aceFlexDuoGallery01, aceFlexDuoGallery02, aceFlexDuoGallery03, aceFlexDuoGallery04];
 const aceMeetPortfolioPhotos = [
@@ -216,13 +214,11 @@ const aceMeetPortfolioPhotos = [
   portfolioAceHub02,
   portfolioAceHub03,
   portfolioAceHub04,
-  barStoolBlack,
-  barStoolWhite
+
 ];
 const aceHubPortfolioPhotos = [
   portfolioAceHub06,
-  barStoolBlack,
-  barStoolWhite
+
 ];
 const plusAndAboveFeatureItems = [
   {
@@ -428,7 +424,7 @@ export const products = [
       configurationOptions: [],
       installationPerUnit: 500,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon]
+      addOnOptions: []
     },
     colorImageMap: {
       default: aceUnoCatalogImage,
@@ -511,7 +507,7 @@ export const products = [
       configurationOptions: [],
       installationPerUnit: 500,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon]
+      addOnOptions: []
     },
     colorImageMap: {
       default: aceSoloPlusGreyAshImage,
@@ -848,7 +844,7 @@ export const products = [
       ],
       installationPerUnit: 550,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon]
+      addOnOptions: []
     },
     colorImageMap: {
       default: aceFlexDuoGreyAshImage,

@@ -71,3 +71,15 @@ body {
     gap: 1rem;
   }
 }
+
+/* Static logo grid: greyscale until hover (ZX spec 22.5.2026, ref jalexinternational) */
+.logo-grid-card img {
+  filter: grayscale(1);
+  opacity: 0.72;
+  transition: filter 220ms ease, opacity 220ms ease;
+}
+.logo-grid-card:hover img,
+.logo-grid-card:focus-within img {
+  filter: grayscale(0);
+  opacity: 1;
+}
