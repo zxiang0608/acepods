@@ -1,7 +1,7 @@
-import parkerFlexProjectImage from '../../assets/locations/kuala-lumpur-alphabet-capital-ace-flex-duo.jpg';
+import parkerFlexProjectImage from '../../assets/locations/kuala-lumpur-parker-ace-flex.jpg';
 import cmaProjectImage from '../../assets/locations/bangsar-cma-cgm-ace-solo.jpg';
 import everllenceProjectImage from '../../assets/locations/kuala-lumpur-everllence-ace-plus.jpg';
-import parkerProjectImage from '../../assets/locations/shah-alam-parker-hannifin-ace-solo.jpg';
+import parkerProjectImage from '../../assets/locations/shah-alam-alphabet-capital-ace-solo.jpg';
 import taylorsProjectImage from '../../assets/locations/subang-jaya-taylors-college-ace-plus.jpg';
 
 export const locations = [
