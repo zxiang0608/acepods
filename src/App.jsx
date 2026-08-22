@@ -66,9 +66,11 @@ const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder'
 
 const navItems = [
   { label: 'Office Pods', type: 'smart-pods' },
+  { label: 'Open Pods', to: '/open-pods' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Office Chairs', to: '/office-chairs' },
   { label: 'Pricing', to: '/pricing' },
+  { label: 'Sound', to: '/sound' },
   { label: 'Installation & Support', to: '/installation-support' },
   { label: 'Pod Relocation', to: '/pod-relocation' },
   { label: 'FAQ', to: '/faq' }

@@ -9,6 +9,8 @@ import InstallationSupportPage from './pages/InstallationSupportPage';
 import LocationsPage from './pages/LocationsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OfficeChairsPage from './pages/OfficeChairsPage';
+import SoundPage from './pages/SoundPage';
+import OpenPodsPage from './pages/OpenPodsPage';
 import OfficePhoneBoothMalaysiaPage from './pages/OfficePhoneBoothMalaysiaPage';
 import OfficePodsNearMePage from './pages/OfficePodsNearMePage';
 import OfficePodsPage from './pages/OfficePodsPage';
@@ -49,6 +51,8 @@ ReactDOM.createRoot(rootElement).render(
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />
           <Route path="/office-chairs" element={<OfficeChairsPage />} />
+          <Route path="/sound" element={<SoundPage />} />
+          <Route path="/open-pods" element={<OpenPodsPage />} />
           <Route path="/office-pods" element={<OfficePodsPage />} />
           <Route path="/office-pods-near-me" element={<OfficePodsNearMePage />} />
           <Route path="/meeting-pods-malaysia" element={<MeetingPodsMalaysiaPage />} />
