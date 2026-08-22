@@ -199,7 +199,9 @@ const acePlusPortfolioPhotos = [
   barStoolBlack,
   barStoolWhite
 ];
+import aceFlexSofaPhoto from '../../assets/ace-flex-sofa.png';
 const aceFlexAlphabetPhotos = [
+  aceFlexSofaPhoto,
   portfolioAlphabet02,
   portfolioAlphabet03,
   portfolioAlphabet04,
