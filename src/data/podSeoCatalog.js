@@ -85,7 +85,7 @@ export const POD_SEO_BY_SLUG = {
   'ace-flex-duo': {
     name: 'Ace Flex Duo',
     shortDesc: 'Two-person pod for focused work',
-    startingPrice: 23900,
+    startingPrice: 21500,
     schemaProperties: [
       { name: 'Capacity', value: '2 pax' },
       { name: 'Category', value: '2-person collaboration / focus pod' },
@@ -99,13 +99,13 @@ export const POD_SEO_BY_SLUG = {
       'The Ace Flex Duo is a two-person office pod designed for one-to-one meetings, HR interviews, coaching sessions, and collaborative calls where two people need to be in the same enclosed space.',
       'It reduces pressure on larger meeting rooms by handling short, recurring two-person interactions without requiring a full boardroom booking.',
       'Common uses include manager check-ins, performance reviews, paired client calls, and shared focused tasks where two team members work side by side.',
-      'The Ace Flex Duo includes built-in lighting, ventilation, and power access for two users. It starts from RM23,900 and is locally made in Malaysia.',
+      'The Ace Flex Duo includes built-in lighting, ventilation, and power access for two users. It starts from RM21,500 and is locally made in Malaysia.',
       'Delivery and installation are available across Klang Valley and West Malaysia with approximately 3 to 6 weeks lead time.'
     ],
     faqItems: [
       { question: 'What is the Ace Flex Duo used for?', answer: 'The Ace Flex Duo is used for two-person meetings, HR interviews, coaching sessions, one-to-one manager discussions, and collaborative calls where two team members need to be in the same enclosed, private space.' },
       { question: 'How many people can use the Ace Flex Duo at once?', answer: 'The Ace Flex Duo is rated for 2 people. It provides comfortable seating and working space for two users in a private acoustic environment.' },
-      { question: 'How much does the Ace Flex Duo cost?', answer: 'The Ace Flex Duo starts from RM23,900 in Malaysia. Final pricing depends on delivery location, installation scope, and any customisation options.' },
+      { question: 'How much does the Ace Flex Duo cost?', answer: 'The Ace Flex Duo starts from RM21,500 in Malaysia. Final pricing depends on delivery location, installation scope, and any customisation options.' },
       { question: 'When should I choose Ace Flex Duo over a meeting pod?', answer: 'Choose the Ace Flex Duo when the typical group size is consistently two people. For groups of three or more, the Ace Meet is more appropriate. The Flex Duo is compact and efficient for one-to-one interactions without occupying the footprint of a larger meeting pod.' }
     ]
   },
