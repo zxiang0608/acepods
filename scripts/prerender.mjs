@@ -1705,6 +1705,69 @@ const STATIC_PRERENDER_META = {
       }
     ]
   },
+  '/office-chairs/ace-monarch': {
+    title: 'Ace Monarch Office Chair | Ace Office Pods',
+    description: 'Ace Monarch — executive office chair, list price RM2,270. Delivered and installed with your Ace pod project across Klang Valley.',
+    robots: 'noindex, follow',
+    keywords: `${SEO_KEYWORDS_COMMON}, ace monarch, office chair malaysia`,
+    h1: 'Ace Monarch',
+    body: ['Ace Monarch is an Ace executive office chair. List price RM2,270; project quantities are quoted separately.', 'Delivered and installed by the same team as our pods — one project, one contact. Ask about Ace Monarch on WhatsApp.'],
+    schemas: []
+  },
+  '/office-chairs/ace-regal': {
+    title: 'Ace Regal Office Chair | Ace Office Pods',
+    description: 'Ace Regal — executive office chair, list price RM1,800. Delivered and installed with your Ace pod project across Klang Valley.',
+    robots: 'noindex, follow',
+    keywords: `${SEO_KEYWORDS_COMMON}, ace regal, office chair malaysia`,
+    h1: 'Ace Regal',
+    body: ['Ace Regal is an Ace executive office chair. List price RM1,800; project quantities are quoted separately.', 'Delivered and installed by the same team as our pods — one project, one contact. Ask about Ace Regal on WhatsApp.'],
+    schemas: []
+  },
+  '/office-chairs/ace-apex': {
+    title: 'Ace Apex Office Chair | Ace Office Pods',
+    description: 'Ace Apex — managerial office chair, list price RM1,350. Delivered and installed with your Ace pod project across Klang Valley.',
+    robots: 'noindex, follow',
+    keywords: `${SEO_KEYWORDS_COMMON}, ace apex, office chair malaysia`,
+    h1: 'Ace Apex',
+    body: ['Ace Apex is an Ace managerial office chair. List price RM1,350; project quantities are quoted separately.', 'Delivered and installed by the same team as our pods — one project, one contact. Ask about Ace Apex on WhatsApp.'],
+    schemas: []
+  },
+  '/office-chairs/ace-crest': {
+    title: 'Ace Crest Office Chair | Ace Office Pods',
+    description: 'Ace Crest — managerial office chair, list price RM1,470. Delivered and installed with your Ace pod project across Klang Valley.',
+    robots: 'noindex, follow',
+    keywords: `${SEO_KEYWORDS_COMMON}, ace crest, office chair malaysia`,
+    h1: 'Ace Crest',
+    body: ['Ace Crest is an Ace managerial office chair. List price RM1,470; project quantities are quoted separately.', 'Delivered and installed by the same team as our pods — one project, one contact. Ask about Ace Crest on WhatsApp.'],
+    schemas: []
+  },
+  '/office-chairs/ace-pace': {
+    title: 'Ace Pace Office Chair | Ace Office Pods',
+    description: 'Ace Pace — daily workstation office chair, list price RM820. Delivered and installed with your Ace pod project across Klang Valley.',
+    robots: 'noindex, follow',
+    keywords: `${SEO_KEYWORDS_COMMON}, ace pace, office chair malaysia`,
+    h1: 'Ace Pace',
+    body: ['Ace Pace is an Ace daily workstation office chair. List price RM820; project quantities are quoted separately.', 'Delivered and installed by the same team as our pods — one project, one contact. Ask about Ace Pace on WhatsApp.'],
+    schemas: []
+  },
+  '/office-chairs/ace-guest': {
+    title: 'Ace Guest Office Chair | Ace Office Pods',
+    description: 'Ace Guest — visitor office chair, list price RM790. Delivered and installed with your Ace pod project across Klang Valley.',
+    robots: 'noindex, follow',
+    keywords: `${SEO_KEYWORDS_COMMON}, ace guest, office chair malaysia`,
+    h1: 'Ace Guest',
+    body: ['Ace Guest is an Ace visitor office chair. List price RM790; project quantities are quoted separately.', 'Delivered and installed by the same team as our pods — one project, one contact. Ask about Ace Guest on WhatsApp.'],
+    schemas: []
+  },
+  '/office-chairs/ace-lite': {
+    title: 'Ace Lite Office Chair | Ace Office Pods',
+    description: 'Ace Lite — visitor office chair, list price RM370. Delivered and installed with your Ace pod project across Klang Valley.',
+    robots: 'noindex, follow',
+    keywords: `${SEO_KEYWORDS_COMMON}, ace lite, office chair malaysia`,
+    h1: 'Ace Lite',
+    body: ['Ace Lite is an Ace visitor office chair. List price RM370; project quantities are quoted separately.', 'Delivered and installed by the same team as our pods — one project, one contact. Ask about Ace Lite on WhatsApp.'],
+    schemas: []
+  },
   '/office-chairs': {
     title: 'Office Chairs | Ace Office Pods',
     description: 'Office chair collection from Ace Office Pods is coming soon. Contact our team for updates and early project support.',

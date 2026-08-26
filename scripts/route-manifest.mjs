@@ -23,6 +23,13 @@ const STATIC_PUBLIC_ROUTES = [
   '/locations/penang',
   '/locations/johor-bahru',
   '/office-chairs',
+  '/office-chairs/ace-monarch',
+  '/office-chairs/ace-regal',
+  '/office-chairs/ace-apex',
+  '/office-chairs/ace-crest',
+  '/office-chairs/ace-pace',
+  '/office-chairs/ace-guest',
+  '/office-chairs/ace-lite',
   '/privacy',
   '/terms'
 ];

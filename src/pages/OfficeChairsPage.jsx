@@ -51,22 +51,29 @@ export default function OfficeChairsPage() {
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((chair) => (
                 <article key={chair.id} id={chair.id}>
-                  <div className="flex aspect-square items-center justify-center overflow-hidden rounded-[8px] border border-[#e4e7e5] bg-[#f6f6f2] p-6">
-                    <img
-                      src={chair.image}
-                      alt={`${chair.name} office chair`}
-                      loading="lazy"
-                      decoding="async"
-                      className="max-h-full max-w-full object-contain mix-blend-multiply"
-                    />
-                  </div>
+                  <Link to={`/office-chairs/${chair.id}`} className="block">
+                    <div className="flex aspect-square items-center justify-center overflow-hidden rounded-[8px] border border-[#e4e7e5] bg-[#f6f6f2] p-6 transition-colors group-hover:border-[#007653]">
+                      <img
+                        src={chair.image}
+                        alt={`${chair.name} office chair`}
+                        loading="lazy"
+                        decoding="async"
+                        className="max-h-full max-w-full object-contain mix-blend-multiply"
+                      />
+                    </div>
+                  </Link>
                   <div className="mt-4 flex items-baseline justify-between gap-3">
-                    <h3 className="text-[17px] font-semibold text-[#172126]">{chair.name}</h3>
+                    <h3 className="text-[17px] font-semibold text-[#172126]">
+                      <Link to={`/office-chairs/${chair.id}`} className="hover:text-[#007653]">{chair.name}</Link>
+                    </h3>
                     <span className="whitespace-nowrap text-[15px] font-bold text-[#00855a]">
                       {formatChairPrice(chair.price)}
                     </span>
                   </div>
                   <p className="mt-1 text-[14px] leading-relaxed text-[#59635f]">{chair.blurb}</p>
+                  <Link to={`/office-chairs/${chair.id}`} className="mt-2 inline-block text-[13.5px] font-semibold text-[#007653] hover:underline">
+                    View details →
+                  </Link>
                 </article>
               ))}
             </div>

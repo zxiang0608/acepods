@@ -19,6 +19,7 @@ import PricingPage from './pages/PricingPage';
 import MeetingPodsMalaysiaPage from './pages/MeetingPodsMalaysiaPage';
 import HomePageV2 from './pages/HomePageV2';
 import Demo2Page from './pages/Demo2Page';
+import ChairDetailPage from './pages/ChairDetailPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -51,6 +52,7 @@ ReactDOM.createRoot(rootElement).render(
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />
           <Route path="/office-chairs" element={<OfficeChairsPage />} />
+          <Route path="/office-chairs/:slug" element={<ChairDetailPage />} />
           <Route path="/sound" element={<SoundPage />} />
           <Route path="/open-pods" element={<OpenPodsPage />} />
           <Route path="/office-pods" element={<OfficePodsPage />} />
