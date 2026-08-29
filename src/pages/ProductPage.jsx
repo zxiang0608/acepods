@@ -12,6 +12,7 @@ import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createFaqSchema, createProductSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { getProductMeta, getProductPublicImage } from '../seo/pageMeta';
 import QuoteForm from '../components/QuoteForm';
+import { getProductMaterialMarks } from '../data/productMaterialMarks';
 import barStoolBlack from '../../assets/bar-stool-black.png';
 import barStoolWhite from '../../assets/bar-stool-white.png';
 
@@ -186,6 +187,7 @@ const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false
 export default function ProductPage() {
   const { slug } = useParams();
   const product = useMemo(() => getProductBySlug(slug), [slug]);
+  const productMaterialMarks = useMemo(() => getProductMaterialMarks(slug), [slug]);
 
   const [selectedImage, setSelectedImage] = useState('');
   const [selectedExterior, setSelectedExterior] = useState('');
@@ -1216,6 +1218,20 @@ export default function ProductPage() {
                     </div>
                   </div>
                 </div>
+              )}
+              {productMaterialMarks && (
+                <aside
+                  className="mt-5 border-y border-[#d7d9d7] py-3"
+                  aria-label="Ace product material and certification marks"
+                >
+                  <img
+                    src={productMaterialMarks.image}
+                    alt={productMaterialMarks.alt}
+                    width="2200"
+                    height="675"
+                    className="mx-auto h-auto w-full max-w-[560px] object-contain"
+                  />
+                </aside>
               )}
             </div>
 
