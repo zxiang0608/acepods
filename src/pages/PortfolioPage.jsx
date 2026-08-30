@@ -6,12 +6,14 @@ import SeoMeta from '../components/SeoMeta';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { getGalleryAvifSource } from '../lib/galleryImages';
+import { portfolioProjectMedia } from '../data/portfolioMedia';
 import parkerLogo from '../../assets/parker-logo.png';
 import alphabetLogo from '../../assets/alphabet-logo.png';
 import cmacgmLogo from '../../assets/cmacgm-logo.svg';
 import everllenceLogo from '../../assets/everllence-logo.png';
 import taylorsLogo from '../../assets/taylorsuniversity.svg';
 import brenntagLogo from '../../assets/brenntag-logo.webp';
+import amorepacificLogo from '../../assets/amorepacific-logo.svg';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -25,15 +27,16 @@ const portfolioImageModules = import.meta.glob('../../assets/Portfolio/**/*.{jpg
 
 const excludedPortfolioBasenames = new Set(['20250624_150024', '20250619_132036', '20250703_111306', '20250703_120024']);
 
-const orderedCompanies = ['Everllence', 'Parker Hannifin', 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Brenntag', 'Others'];
+const orderedCompanies = ['Everllence', 'Amorepacific', 'Brenntag', 'Parker Hannifin', 'Alphabet Capital', 'CMA CGM', "Taylor's College", 'Others'];
 
 const companyBranding = {
   Everllence: { logo: everllenceLogo, logoAlt: 'Everllence logo', location: 'Kuala Lumpur' },
+  Amorepacific: { logo: amorepacificLogo, logoAlt: 'Amorepacific logo' },
+  Brenntag: { logo: brenntagLogo, logoAlt: 'Brenntag logo', location: 'Shah Alam, Selangor' },
   'Parker Hannifin': { logo: parkerLogo, logoAlt: 'Parker Hannifin logo', location: 'Kuala Lumpur' },
   'Alphabet Capital': { logo: alphabetLogo, logoAlt: 'Alphabet Capital logo', location: 'Shah Alam' },
   'CMA CGM': { logo: cmacgmLogo, logoAlt: 'CMA CGM logo', location: 'Bangsar, Kuala Lumpur' },
   "Taylor's College": { logo: taylorsLogo, logoAlt: "Taylor's College logo", location: 'Subang Jaya' },
-  Brenntag: { logo: brenntagLogo, logoAlt: 'Brenntag logo', location: 'Shah Alam, Selangor' },
   Others: { logo: null, logoAlt: '' }
 };
 const companyImageSourceMap = {
@@ -65,7 +68,10 @@ export default function PortfolioPage() {
   const [activeGallery, setActiveGallery] = useState(null);
   const companySections = orderedCompanies
     .map((companyName) => {
-      const images = groupedPortfolio[companyImageSourceMap[companyName] || companyName] || [];
+      const approvedProject = portfolioProjectMedia[companyName];
+      const images = approvedProject
+        ? approvedProject.images.map((image) => ({ ...image, avifSrc: getGalleryAvifSource(image.src) }))
+        : groupedPortfolio[companyImageSourceMap[companyName] || companyName] || [];
 
       return {
         companyName,
@@ -172,9 +178,7 @@ export default function PortfolioPage() {
                       {image.avifSrc ? <source srcSet={image.avifSrc} type="image/avif" /> : null}
                       <img
                         src={image.src}
-                        alt={
-                          section.companyName ? `Ace Pods office pod installation for ${section.companyName}` : 'Ace Pods office pod installation project'
-                        }
+                        alt={image.alt || (section.companyName ? `Ace Pods office pod installation for ${section.companyName}` : 'Ace Pods office pod installation project')}
                         className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
                         loading="lazy"
                       />
