@@ -26,29 +26,19 @@ body {
   scrollbar-width: none;
 }
 
-@keyframes logoMarquee {
-  0% {
-    transform: translateX(0);
+/* Homepage client logo wall: greyscale at rest, brand colours on hover.
+   Mouse devices only; touch screens have no hover, so they always show colour. */
+@media (hover: hover) and (pointer: fine) {
+  .logo-wall-img {
+    filter: grayscale(1);
+    opacity: 0.72;
+    transition: filter 200ms ease, opacity 200ms ease;
   }
-  100% {
-    transform: translateX(-50%);
+
+  .logo-wall-cell:hover .logo-wall-img {
+    filter: none;
+    opacity: 1;
   }
-}
-
-.logo-marquee {
-  overflow: hidden;
-}
-
-.logo-marquee-track {
-  display: flex;
-  width: max-content;
-  gap: 0.75rem;
-  /* 12 logos: 4s per logo keeps the scroll speed the same as the original 8-logo strip. */
-  animation: logoMarquee 48s linear infinite;
-}
-
-.logo-marquee-card {
-  flex: 0 0 auto;
 }
 
 @keyframes demo2MobileHeroPan {
@@ -64,11 +54,5 @@ body {
   .demo2-mobile-hero-pan {
     animation: demo2MobileHeroPan 24s ease-in-out infinite;
     will-change: object-position;
-  }
-}
-
-@media (min-width: 768px) {
-  .logo-marquee-track {
-    gap: 1rem;
   }
 }

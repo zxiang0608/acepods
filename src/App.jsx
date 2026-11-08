@@ -41,7 +41,7 @@ import rightwillLogo from '../assets/rightwill-logo.png';
 import everllenceLogo from '../assets/everllence-logo.png';
 import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
 import amorePacificLogo from '../assets/amorepacific-logo.svg';
-import brenntagLogo from '../assets/brenntag-logo.webp';
+import brenntagLogo from '../assets/brenntag-logo-tight.webp';
 import sfExpressLogo from '../assets/customer-logos/sf-express-logo.webp';
 import ihDesignLogo from '../assets/customer-logos/ihdesign-logo.webp';
 import clickAsiaLogo from '../assets/customer-logos/clickasia-logo.webp';
@@ -263,12 +263,12 @@ const trustedLogos = [
   { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', logoStageClass: 'max-h-[52px] max-w-[172px]' },
   { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[48px] max-w-[176px]' },
   { name: 'Amore Pacific', image: amorePacificLogo, fitClass: 'scale-[0.95]', logoStageClass: 'max-h-[44px] max-w-[176px]' },
-  { name: 'Brenntag', image: brenntagLogo, fitClass: 'scale-[0.98]', logoStageClass: '!h-[104px] max-w-[280px]' },
+  { name: 'Brenntag', image: brenntagLogo, fitClass: '', logoStageClass: 'max-h-[30px] max-w-[156px]' },
   // Owner-approved 2026-11-08 (Drive: Images files > Portfolio pictures). White-background files blend into the card.
   { name: 'SF Express', image: sfExpressLogo, fitClass: 'mix-blend-multiply', logoStageClass: 'max-h-[50px] max-w-[160px]' },
-  { name: 'IH Design', image: ihDesignLogo, fitClass: '', logoStageClass: 'max-h-[44px] max-w-[110px]' },
+  { name: 'IH Design', image: ihDesignLogo, fitClass: '', logoStageClass: 'max-h-[32px] max-w-[76px] md:max-h-[40px] md:max-w-[96px]' },
   { name: 'ClickAsia', image: clickAsiaLogo, fitClass: 'mix-blend-multiply', logoStageClass: 'max-h-[40px] max-w-[176px]' },
-  { name: 'BJAK', image: bjakLogo, fitClass: '', logoStageClass: 'max-h-[48px] max-w-[132px]' }
+  { name: 'BJAK', image: bjakLogo, fitClass: '', logoStageClass: 'max-h-[40px] max-w-[112px]' }
 ];
 
 export default function App() {
@@ -730,32 +730,32 @@ export default function App() {
         {/* ── POD STRIP ── */}
         <PodStrip />
 
-        {/* ── LOGO MARQUEE ── moved up for early social proof */}
-        <section className="overflow-hidden bg-white py-16 md:py-24">
+        {/* ── CLIENT LOGO WALL ── moved up for early social proof; static grid, colour on hover */}
+        <section className="bg-white py-16 md:py-24">
           <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#172126] md:mb-12 md:text-[32px]">
             {trustSectionHeading}
           </h2>
-          <div className="logo-marquee px-5 pb-6">
-            <div className="logo-marquee-track">
-              {[...trustedLogos, ...trustedLogos].map((logo, idx) => (
-                <div
-                  key={`${logo.name}-${idx}`}
-                  className="logo-marquee-card flex min-h-[88px] min-w-[170px] items-center justify-center rounded-[6px] border border-[#e8e8e8] bg-[#f7f6f2] px-4 md:min-h-[98px] md:min-w-[210px] md:px-5"
+          <div className="mx-auto max-w-[1200px] px-5 md:px-12">
+            <ul className="grid grid-cols-3 gap-px overflow-hidden border border-[#e4e2dc] bg-[#e4e2dc] md:grid-cols-4 lg:grid-cols-6">
+              {trustedLogos.map((logo) => (
+                <li
+                  key={logo.name}
+                  className="logo-wall-cell flex h-[84px] items-center justify-center overflow-hidden bg-white px-3 md:h-[112px] md:px-6"
                 >
-                  <div className={`flex h-[60px] w-full items-center justify-center overflow-hidden md:h-[64px] ${logo.logoStageClass || ''}`}>
+                  <div className={`flex h-[44px] w-full items-center justify-center overflow-hidden md:h-[56px] ${logo.logoStageClass || ''}`}>
                     <img
                       src={logo.image}
                       alt={logo.name}
                       width="210"
                       height="64"
-                      className={`h-full w-full object-contain ${logo.fitClass || ''}`}
+                      className={`logo-wall-img h-full w-full object-contain ${logo.fitClass || ''}`}
                       loading="lazy"
                       decoding="async"
                     />
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
