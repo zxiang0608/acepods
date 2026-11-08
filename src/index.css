@@ -26,16 +26,40 @@ body {
   scrollbar-width: none;
 }
 
-/* Homepage client logo wall: greyscale at rest, brand colours on hover.
+/* Homepage client logo strip (ClientLogoMarquee): scrolls by itself, and visitors can drag,
+   swipe or trackpad-scroll it. Scrollbar hidden; position is driven from JS, so no smooth scrolling. */
+.logo-marquee {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-behavior: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.logo-marquee::-webkit-scrollbar {
+  display: none;
+}
+
+/* Logos rest in greyscale and show brand colours on hover.
    Mouse devices only; touch screens have no hover, so they always show colour. */
 @media (hover: hover) and (pointer: fine) {
-  .logo-wall-img {
+  .logo-marquee {
+    cursor: grab;
+  }
+
+  .logo-marquee.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .logo-marquee-img {
     filter: grayscale(1);
     opacity: 0.72;
     transition: filter 200ms ease, opacity 200ms ease;
   }
 
-  .logo-wall-cell:hover .logo-wall-img {
+  .logo-marquee-card:hover .logo-marquee-img {
     filter: none;
     opacity: 1;
   }

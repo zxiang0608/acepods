@@ -50,6 +50,7 @@ import SeoMeta from './components/SeoMeta';
 import InstagramFeed from './components/InstagramFeed';
 import SiteFooter from './components/SiteFooter';
 import SmartPodsBanner from './components/SmartPodsBanner';
+import ClientLogoMarquee from './components/ClientLogoMarquee';
 import PodStrip from './components/PodStrip';
 import { homepageSmartPodsMenuItems } from './components/smartPodsMenuData';
 import { products, publishedProducts } from './data/products';
@@ -730,33 +731,12 @@ export default function App() {
         {/* ── POD STRIP ── */}
         <PodStrip />
 
-        {/* ── CLIENT LOGO WALL ── moved up for early social proof; static grid, colour on hover */}
-        <section className="bg-white py-16 md:py-24">
+        {/* ── CLIENT LOGO STRIP ── moved up for early social proof; auto-scrolls, visitors can drag or swipe */}
+        <section className="overflow-hidden bg-white py-16 md:py-24">
           <h2 className="mb-10 px-5 text-center text-[22px] font-bold leading-[1.3] tracking-tight text-[#172126] md:mb-12 md:text-[32px]">
             {trustSectionHeading}
           </h2>
-          <div className="mx-auto max-w-[1200px] px-5 md:px-12">
-            <ul className="grid grid-cols-3 gap-px overflow-hidden border border-[#e4e2dc] bg-[#e4e2dc] md:grid-cols-4 lg:grid-cols-6">
-              {trustedLogos.map((logo) => (
-                <li
-                  key={logo.name}
-                  className="logo-wall-cell flex h-[84px] items-center justify-center overflow-hidden bg-white px-3 md:h-[112px] md:px-6"
-                >
-                  <div className={`flex h-[44px] w-full items-center justify-center overflow-hidden md:h-[56px] ${logo.logoStageClass || ''}`}>
-                    <img
-                      src={logo.image}
-                      alt={logo.name}
-                      width="210"
-                      height="64"
-                      className={`logo-wall-img h-full w-full object-contain ${logo.fitClass || ''}`}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ClientLogoMarquee logos={trustedLogos} label="Client logos" />
         </section>
 
         {/* ── PODS VS RENOVATION ── problem framing before product grid */}
