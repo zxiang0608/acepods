@@ -11,6 +11,8 @@ const OUTPUT_PATH = path.join(PUBLIC_DIR, 'google-merchant-feed.xml');
 const SITE_URL = 'https://aceofficepods.com';
 const BRAND = 'Ace Office Pods';
 const PRODUCT_TYPE = 'Office Pods > Acoustic Office Booths';
+// Google product taxonomy: acoustic pods are enclosed office furniture.
+const GOOGLE_PRODUCT_CATEGORY = 'Furniture > Office Furniture';
 
 const PRODUCT_ORDER = [
   'ace-uno',
@@ -65,6 +67,8 @@ const buildFeedXml = () => {
       <g:brand>${xmlEscape(BRAND)}</g:brand>
       <g:condition>new</g:condition>
       <g:product_type>${xmlEscape(PRODUCT_TYPE)}</g:product_type>
+      <g:google_product_category>${xmlEscape(GOOGLE_PRODUCT_CATEGORY)}</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
     </item>`;
   }).join('\n');
 

@@ -7,10 +7,7 @@ import { pushDataLayerEvent } from '../lib/tracking';
 import {
   SEO_BRAND_EMAIL,
   SEO_BRAND_PHONE,
-  SEO_BRAND_POSTAL_CODE,
-  SEO_BRAND_SHOWROOM_LOCALITY,
-  SEO_BRAND_SHOWROOM_REGION,
-  SEO_BRAND_STREET_ADDRESS,
+  SEO_BRAND_ADDRESS,
   SEO_KEYWORDS_COMMON
 } from '../seo/constants';
 import {
@@ -33,12 +30,12 @@ const localFaqItems = [
   {
     question: 'Where can I find office pods near me in Malaysia?',
     answer:
-      'Ace Office Pods supplies acoustic office pods and office booths from Klang, Selangor, with delivery and installation planning across Klang Valley and West Malaysia. Showroom viewing is available by appointment.'
+      'Ace Office Pods supplies acoustic office pods and office booths from Kuala Lumpur, with delivery and installation planning across Klang Valley and West Malaysia. Showroom viewing is available by appointment.'
   },
   {
     question: 'Can I view an office pod before buying?',
     answer:
-      'Yes. Buyers can arrange a showroom viewing in Klang to compare office pod models, check size, review finishes, and understand acoustic performance before confirming a quote.'
+      'Yes. Buyers can arrange a showroom viewing in Kuala Lumpur to compare office pod models, check size, review finishes, and understand acoustic performance before confirming a quote.'
   },
   {
     question: 'Do you install office pods near Kuala Lumpur, Selangor, and Klang Valley?',
@@ -48,7 +45,7 @@ const localFaqItems = [
   {
     question: 'How much do office pods near me cost?',
     answer:
-      'Ace Office Pods start from RM8,850 for the Ace Uno pod only. Final project pricing depends on the model, quantity, delivery location, installation access, add-ons, and selected configuration.'
+      'Ace Office Pods start from RM9,150 for the Ace Uno pod only. Final project pricing depends on the model, quantity, delivery location, installation access, add-ons, and selected configuration.'
   }
 ];
 
@@ -58,7 +55,7 @@ const localWebPageSchema = {
   name: 'Office Pods Near Me in Klang Valley and Malaysia',
   url: buildCanonical('/office-pods-near-me'),
   description:
-    'Find office pods near you in Malaysia. Ace Office Pods offers showroom viewing by appointment in Klang, with office pod delivery and installation planning across Klang Valley and West Malaysia.',
+    'Find office pods near you in Malaysia. Ace Office Pods offers showroom viewing by appointment in Kuala Lumpur, with office pod delivery and installation planning across Klang Valley and West Malaysia.',
   isPartOf: {
     '@id': `${buildCanonical('/')}#website`
   },
@@ -91,15 +88,15 @@ export default function OfficePodsNearMePage() {
   const pricingListItems = products.map((product) => ({
     name: product.name,
     path: `/pods/${product.slug}`,
-    price: product.pdpPricing?.baseConfigurations?.[0]?.price,
+    price: product.pdpPricing?.finalPrice ?? product.pdpPricing?.baseConfigurations?.[0]?.price,
     image: product.heroImage
   }));
 
   return (
     <PageShell>
       <SeoMeta
-        title="Office Pods Near Me | Klang Valley Showroom"
-        description="View office pods by appointment in Klang, with pricing, delivery, and installation support across Klang Valley and West Malaysia."
+        title="Office Pods Near Me | Kuala Lumpur Showroom"
+        description="View office pods by appointment in Kuala Lumpur, with pricing, delivery, and installation support across Klang Valley and West Malaysia."
         canonical={buildCanonical('/office-pods-near-me')}
         keywords={`${SEO_KEYWORDS_COMMON}, office pods near me, office pods near me Malaysia, office pods Klang Valley, office pods Selangor, office pods Kuala Lumpur`}
         schemas={[
@@ -125,7 +122,7 @@ export default function OfficePodsNearMePage() {
           Office pods near me
         </h1>
         <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65] text-[#59635f] md:text-[18px]">
-          Ace Office Pods supplies acoustic office pods and office booths from Klang, Selangor, with showroom viewing by appointment and project
+          Ace Office Pods supplies acoustic office pods and office booths from Kuala Lumpur, with showroom viewing by appointment and project
           support across Klang Valley and West Malaysia.
         </p>
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -176,7 +173,7 @@ export default function OfficePodsNearMePage() {
             <div>
               <dt className="font-semibold text-[#172126]">Showroom</dt>
               <dd>
-                {SEO_BRAND_STREET_ADDRESS}, {SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}. Viewing by
+                {SEO_BRAND_ADDRESS}. Viewing by
                 appointment.
               </dd>
             </div>
@@ -220,14 +217,29 @@ export default function OfficePodsNearMePage() {
         <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Starting prices</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {products.map((product) => (
-            <article key={product.slug} className="border border-[#ddd8cf] bg-white p-5">
-              <h3 className="text-[22px] font-semibold tracking-tight text-[#172126]">{product.name}</h3>
-              <p className="mt-2 text-[16px] font-semibold text-[#007653]">{product.pricing.amount}</p>
-              <p className="mt-2 text-[14px] leading-[1.55] text-[#59635f]">{product.shortDesc}</p>
-              <Link to={`/pods/${product.slug}`} className="mt-4 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline">
-                View {product.name}
-              </Link>
-            </article>
+            <Link
+              key={product.slug}
+              to={`/pods/${product.slug}`}
+              onClick={() =>
+                pushDataLayerEvent('product_cta_click', {
+                  cta_location: 'office_pods_near_me_product_card',
+                  cta_text: `View ${product.name}`,
+                  destination_url: `/pods/${product.slug}`,
+                  product_name: product.name,
+                  product_slug: product.slug
+                })
+              }
+              className="group block h-full rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2"
+            >
+              <article className="h-full border border-[#ddd8cf] bg-white p-5 transition-colors group-hover:border-[#c6c1b7]">
+                <h3 className="text-[22px] font-semibold tracking-tight text-[#172126]">{product.name}</h3>
+                <p className="mt-2 text-[16px] font-semibold text-[#007653]">{product.pricing.amount}</p>
+                <p className="mt-2 text-[14px] leading-[1.55] text-[#59635f]">{product.shortDesc}</p>
+                <span className="mt-4 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 group-hover:underline">
+                  View {product.name}
+                </span>
+              </article>
+            </Link>
           ))}
         </div>
       </section>

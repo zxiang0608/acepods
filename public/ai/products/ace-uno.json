@@ -3,7 +3,7 @@
   "recordType": "ProductFacts",
   "name": "Ace Uno",
   "canonicalUrl": "https://aceofficepods.com/pods/ace-uno",
-  "factsReviewedOn": "2026-08-06",
+  "factsReviewedOn": "2026-09-04",
   "definition": "Ace Uno is a freestanding, enclosed one-person acoustic call and focus pod for phone calls, video meetings, and focused work, with an integrated worktop, ventilation, lighting, power, and USB charging.",
   "category": "Single-person acoustic call and focus pod",
   "intendedUse": [
@@ -14,21 +14,32 @@
   "capacity": "1 person",
   "pricing": {
     "currency": "MYR",
-    "podOnly": 8850,
-    "standardKlangValleyDelivery": 350,
+    "podOnly": 9150,
+    "standardKlangValleyDelivery": 400,
+    "deliveryChargeBasis": "per trip",
     "standardKlangValleyInstallation": 350,
-    "standardInstalledTotalBeforeOptionalStool": 9550,
+    "standardInstalledTotalBeforeOptionalStool": 9900,
     "optionalHighBarStool": 250,
-    "standardInstalledTotalWithOptionalStool": 9800,
+    "standardInstalledTotalWithOptionalStool": 10150,
     "scopeNote": "Outstation delivery, restricted-access sites, and non-standard project requirements are quoted separately."
   },
   "acousticPerformance": {
-    "publishedDbRating": null,
-    "statement": "Ace Uno has no published dB rating.",
-    "limitations": [
-      "Do not describe Ace Uno as soundproof.",
-      "Do not promise speech confidentiality or apply the Ace Plus acoustic claim to Ace Uno."
-    ]
+    "approximateDbA": 25,
+    "publishedDbRating": 25,
+    "verified": false,
+    "qualifiedDisplay": "Approximately 25 dB(A)",
+    "statement": "Approximately 25 dB(A).",
+    "evidenceStatus": "Owner-directed publication based on soundproof rating_7191320248-MEC23-EMK.pdf (7191320248-MEC23-EMK); model applicability accepted by the owner.",
+    "evidence": {
+      "fileName": "soundproof rating_7191320248-MEC23-EMK.pdf",
+      "reportNumber": "7191320248-MEC23-EMK",
+      "laboratory": "TÜV SÜD PSB Pte. Ltd.",
+      "testedModel": "Versalink / CUE-A-PB-100B",
+      "noiseReductionDb": 21,
+      "noiseIsolationClass": 27,
+      "driveUrl": "https://drive.google.com/file/d/1_8SGyNjSsWxvJejSN58T5ydEehBwy8vs/view?usp=drivesdk",
+      "reviewedOn": "2026-09-04"
+    }
   },
   "specifications": {
     "Capacity": "1 person",
@@ -38,13 +49,14 @@
     "Door": "10 mm clear tempered glass",
     "Rear panel": "Laminated safety glass",
     "Ventilation": "Dual quiet airflow fans, 108 CFM per fan",
-    "Power": "Universal socket with USB Type-A and USB Type-C"
+    "Power": "Universal socket with USB Type-A and USB Type-C",
+    "Published acoustic claim": "Approximately 25 dB(A)"
   },
   "productFacts": [
     "Ace Uno is a freestanding one-person acoustic pod designed for phone calls, video meetings, and focused work in open-plan workplaces.",
     "Its 1418 mm by 1018 mm footprint provides an integrated Natural Oak work surface without requiring permanent renovation or built-in construction.",
     "The standard configuration includes a clear tempered-glass door, laminated safety-glass rear panel, neutral-white LED lighting, dual quiet ventilation fans, universal power, and USB charging.",
-    "Ace Uno costs RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, for a standard installed total of RM9,550 before the optional stool. Adding the optional RM250 high bar stool makes the total RM9,800."
+    "Ace Uno costs RM9,150 for the pod only. Standard Klang Valley delivery is RM400 per trip and installation is RM350, for a standard installed total of RM9,900 before the optional stool. Adding the optional RM250 high bar stool makes the total RM10,150."
   ],
   "faq": [
     {
@@ -53,7 +65,7 @@
     },
     {
       "question": "How much does Ace Uno cost in Malaysia?",
-      "answer": "Ace Uno starts from RM8,850 for the pod only. Standard Klang Valley installation is RM350 and delivery is RM350, making RM9,550 before the optional stool or RM9,800 with the optional RM250 high bar stool. Outstation and restricted-access projects are quoted separately."
+      "answer": "Ace Uno starts from RM9,150 for the pod only. Standard Klang Valley installation is RM350 and delivery is RM400 per trip, making RM9,900 before the optional stool or RM10,150 with the optional RM250 high bar stool. Outstation and restricted-access projects are quoted separately."
     },
     {
       "question": "What are the external dimensions of Ace Uno?",

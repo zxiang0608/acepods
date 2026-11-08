@@ -3,13 +3,15 @@ import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import acePodsLogo from '../../Logos/ace pods logo.png';
 import SmartPodsBanner from './SmartPodsBanner';
-import { smartPodsMenuItems } from './smartPodsMenuData';
+import { publishedSmartPodsMenuItems } from './smartPodsMenuData';
 import { pushDataLayerEvent } from '../lib/tracking';
+import ProductMediaPending from './ProductMediaPending';
 
 const navItems = [
   { label: 'Office Pods', type: 'smart-pods' },
-  { label: 'Portfolio', to: '/portfolio' },
+  { label: 'Open Pods', to: '/open-pods' },
   { label: 'Office Chairs', to: '/office-chairs' },
+  { label: 'Portfolio', to: '/portfolio' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Installation & Support', to: '/installation-support' },
@@ -85,17 +87,17 @@ export default function SubpageHeader() {
 
           <div className="flex items-center gap-4">
             <Link
-              to="/installation-support#book-viewing"
+              to="/get-a-quote"
               onClick={() =>
                 pushDataLayerEvent('header_contact_click', {
                   cta_location: 'subpage_header',
-                  cta_text: 'Contact us',
-                  destination_url: '/installation-support#book-viewing'
+                  cta_text: 'Get a quote',
+                  destination_url: '/get-a-quote'
                 })
               }
               className="hidden rounded-[4px] bg-[#00855a] px-5 py-2 text-[14px] font-semibold text-white transition-colors hover:bg-[#006e4a] md:inline-flex"
             >
-              Contact us
+              Get a quote
             </Link>
 
             <button type="button" className="p-1 text-[#111111] lg:hidden" onClick={() => setIsMenuOpen(true)} aria-label="Open menu">
@@ -103,7 +105,7 @@ export default function SubpageHeader() {
             </button>
           </div>
         </div>
-        {isSmartPodsDesktopOpen && <SmartPodsBanner items={smartPodsMenuItems} onItemClick={() => setIsSmartPodsDesktopOpen(false)} maxWidthClass="max-w-[1200px]" />}
+        {isSmartPodsDesktopOpen && <SmartPodsBanner items={publishedSmartPodsMenuItems} onItemClick={() => setIsSmartPodsDesktopOpen(false)} maxWidthClass="max-w-[1200px]" />}
       </header>
 
       <div
@@ -138,7 +140,7 @@ export default function SubpageHeader() {
                   </div>
                   {isSmartPodsMobileOpen && (
                     <div className="space-y-8 border-t border-[#d9d9d9] pt-5">
-                      {smartPodsMenuItems.map((menuItem) => (
+                      {publishedSmartPodsMenuItems.map((menuItem) => (
                         <Link
                           key={menuItem.title}
                           to={menuItem.to}
@@ -149,15 +151,19 @@ export default function SubpageHeader() {
                           className="block text-center"
                         >
                           <div className="mx-auto h-[200px] w-full max-w-[200px]">
-                            <img
-                              src={menuItem.image}
-                              alt={menuItem.title}
-                              width="320"
-                              height="320"
-                              className={`h-full w-full object-contain object-bottom ${menuItem.imageClassName || ''}`}
-                              loading="lazy"
-                              decoding="async"
-                            />
+                            {menuItem.menuImage || menuItem.image ? (
+                              <img
+                                src={menuItem.menuImage || menuItem.image}
+                                alt={menuItem.title}
+                                width="320"
+                                height="320"
+                                className={`h-full w-full object-contain object-bottom ${menuItem.imageClassName || ''}`}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            ) : (
+                              <ProductMediaPending productName={menuItem.title} variant="menu" />
+                            )}
                           </div>
                           <h3 className="mt-3 text-[20px] font-semibold tracking-tight text-[#007653]">{menuItem.title}</h3>
                           <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#68726f]">{menuItem.description}</p>

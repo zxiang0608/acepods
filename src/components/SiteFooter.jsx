@@ -8,7 +8,6 @@ import {
   SEO_BRAND_PHONE,
   SEO_BRAND_POSTAL_CODE,
   SEO_BRAND_SHOWROOM_LOCALITY,
-  SEO_BRAND_SHOWROOM_REGION,
   SEO_BRAND_STREET_ADDRESS
 } from '../seo/constants';
 
@@ -28,14 +27,14 @@ const footerLinkGroups = [
     links: [
       { label: 'Ace Uno', to: '/pods/ace-uno' },
       { label: 'Ace Plus', to: '/pods/ace-plus' },
-      { label: 'Ace Flex', to: '/pods/ace-flex' }
+      { label: 'Ace Flex', to: '/pods/ace-flex' },
+      { label: 'Ace Flex Duo', to: '/pods/ace-flex-duo' }
     ]
   },
   {
     key: 'products-more',
     title: 'Products',
     links: [
-      { label: 'Ace Flex Duo', to: '/pods/ace-flex-duo' },
       { label: 'Ace Meet', to: '/pods/ace-meet' },
       { label: 'Ace Hub', to: '/pods/ace-hub' }
     ]
@@ -54,6 +53,7 @@ const footerLinkGroups = [
     key: 'support',
     title: 'Support',
     links: [
+      { label: 'Get a quote', to: '/get-a-quote' },
       { label: 'Contact us', to: '/contact' },
       { label: 'About Ace', to: '/about' },
       { label: 'Articles', to: '/articles' },
@@ -86,7 +86,7 @@ export default function SiteFooter({ className = 'mt-0' }) {
             <p className="max-w-xs whitespace-pre-line text-[13px] leading-relaxed text-gray-400">{footerBrandLine}</p>
             <address className="not-italic space-y-1 text-[13px] leading-relaxed text-gray-400">
               <p>{SEO_BRAND_STREET_ADDRESS},</p>
-              <p>{SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}</p>
+              <p>{SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}</p>
               <p className="pt-1">
                 <a href={`tel:${SEO_BRAND_PHONE}`} className="hover:text-white transition-colors">{SEO_BRAND_PHONE}</a>
               </p>
@@ -162,7 +162,7 @@ export default function SiteFooter({ className = 'mt-0' }) {
             <p className="max-w-xs whitespace-pre-line text-[14px] leading-relaxed text-gray-400">{footerBrandLine}</p>
             <address className="not-italic space-y-1 text-[13px] leading-relaxed text-gray-400">
               <p>{SEO_BRAND_STREET_ADDRESS},</p>
-              <p>{SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}</p>
+              <p>{SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}</p>
               <p className="pt-1">
                 <a href={`tel:${SEO_BRAND_PHONE}`} className="hover:text-white transition-colors">{SEO_BRAND_PHONE}</a>
               </p>

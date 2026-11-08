@@ -16,10 +16,12 @@ import cmacgmLogo from '../../assets/cmacgm-logo.svg';
 import alphabetLogo from '../../assets/alphabet-logo.png';
 import rightwillLogo from '../../assets/rightwill-logo.png';
 import everllenceLogo from '../../assets/everllence-logo.png';
-import taylorsUniversityLogo from '../../assets/taylorsuniversity.svg';
+import taylorsUniversityLogo from '../../assets/taylorsuniversity-tight.webp';
 import amorePacificLogo from '../../assets/amorepacific-logo.svg';
-import brenntagLogo from '../../assets/brenntag-logo.webp';
-import { smartPodsMenuItems } from '../components/smartPodsMenuData';
+import brenntagLogo from '../../assets/brenntag-logo-tight.webp';
+import { homepageSmartPodsMenuItems } from '../components/smartPodsMenuData';
+import SmartPodsBanner from '../components/SmartPodsBanner';
+import CustomerLogoStage from '../components/CustomerLogoStage';
 import { products } from '../data/products';
 import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
 import InstagramFeed from '../components/InstagramFeed';
@@ -29,35 +31,66 @@ import PodPrice from '../components/PodPrice';
 import SeoMeta from '../components/SeoMeta';
 import { HOME_META } from '../seo/pageMeta';
 import { buildCanonical, createFaqSchema, homepageWebPageSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
+import ProductMediaPending from '../components/ProductMediaPending';
 
 const WHATSAPP_LINK = 'https://wa.link/9umr4q';
 
-const demoProducts = smartPodsMenuItems.map((item) => {
-  const product = products.find((entry) => entry.slug === item.to.replace('/pods/', ''));
+const getFrontImage = (product, item = {}) => {
+  if (product?.slug === 'ace-uno') return aceUnoHomepageFrontImage;
+
+  return product?.presentationGallery?.find((galleryItem) => galleryItem.view === 'front')?.image
+    || item.image
+    || product?.catalogImage
+    || product?.thumbImage;
+};
+
+const buildDemoProduct = (product, item = {}) => {
+  const isPrelaunch = product?.publicationStatus === 'prelaunch';
+  const price = isPrelaunch
+    ? product?.pdpPricing?.finalPrice
+    : product?.pdpPricing?.baseConfigurations?.[0]?.price;
+
   return {
     ...item,
-    image: product?.slug === 'ace-uno' ? aceUnoHomepageFrontImage : item.image,
-    imageClassName: product?.slug === 'ace-uno' ? '' : item.imageClassName,
-    basePrice: product?.pdpPricing?.baseConfigurations?.[0]?.price || null,
-    support: product?.cardSupport || ''
+    title: product.name,
+    description: product.shortDesc,
+    to: `/pods/${product.slug}`,
+    image: getFrontImage(product, item),
+    imageClassName: ['ace-uno', 'ace-meet', 'ace-pod-one', 'ace-pod-four'].includes(product.slug)
+      ? ''
+      : item.imageClassName || product.catalogImageClassName || '',
+    basePrice: price || null,
+    pricePrefix: isPrelaunch ? '' : 'From ',
+    support: [product.cardSupport, ...(isPrelaunch && product.cardNote ? [product.cardNote] : [])]
+      .filter(Boolean)
+      .join(' · ')
   };
+};
+
+const demoProducts = homepageSmartPodsMenuItems.map((item) => {
+  const product = products.find((entry) => entry.slug === item.to.replace('/pods/', ''));
+  return buildDemoProduct(product, item);
 });
 
+const prelaunchDemoProducts = products
+  .filter((product) => product.publicationStatus === 'prelaunch')
+  .map((product) => buildDemoProduct(product));
+
 const proofPoints = [
-  'Showroom viewing by appointment in Klang',
+  'Showroom viewing by appointment in Kuala Lumpur',
   'Acoustic data shown by model',
   'Delivery and installation itemised'
 ];
 
 const trustedLogos = [
-  { name: 'Parker Hannifin', image: parkerLogo, className: 'scale-[0.98]' },
-  { name: 'CMA CGM', image: cmacgmLogo, className: 'scale-[1.02]' },
-  { name: 'Alphabet Capital', image: alphabetLogo, className: 'scale-[1.02]' },
-  { name: 'Rightwill', image: rightwillLogo, className: 'scale-[1.02]' },
-  { name: "Taylor's University", image: taylorsUniversityLogo, className: 'scale-[1.02]' },
-  { name: 'Everllence', image: everllenceLogo, className: 'scale-[1.02]' },
-  { name: 'Amore Pacific', image: amorePacificLogo, className: 'scale-[1.02]' },
-  { name: 'Brenntag', image: brenntagLogo, className: 'scale-[1.72]' }
+  { name: 'Parker Hannifin', image: parkerLogo, opticalWidth: 132, opticalHeight: 48 },
+  { name: 'CMA CGM', image: cmacgmLogo, opticalWidth: 160, opticalHeight: 46 },
+  { name: 'Alphabet Capital', image: alphabetLogo, opticalWidth: 188, opticalHeight: 40 },
+  { name: 'Rightwill', image: rightwillLogo, opticalWidth: 126, opticalHeight: 56 },
+  { name: "Taylor's University", image: taylorsUniversityLogo, opticalWidth: 132, opticalHeight: 54 },
+  { name: 'Everllence', image: everllenceLogo, opticalWidth: 182, opticalHeight: 36 },
+  { name: 'Amore Pacific', image: amorePacificLogo, opticalWidth: 228, opticalHeight: 28 },
+  { name: 'Brenntag', image: brenntagLogo, opticalWidth: 175, opticalHeight: 36 }
 ];
 
 const renovationPoints = [
@@ -149,7 +182,7 @@ const howItWorks = [
   {
     number: '03',
     title: 'Visit the showroom',
-    description: 'Appointment only, in Klang. Compare available models and experience their acoustics; a showroom demonstration is not a formal test.'
+    description: 'Appointment only, in Kuala Lumpur. Compare available models and experience their acoustics; a showroom demonstration is not a formal test.'
   },
   {
     number: '04',
@@ -172,17 +205,22 @@ const reassurancePoints = [
 
 const mobileNavItems = [
   { label: 'Office Pods', to: '/office-pods' },
-  { label: 'Portfolio', to: '/portfolio' },
+  { label: 'Open Pods', to: '/open-pods' },
   { label: 'Office Chairs', to: '/office-chairs' },
+  { label: 'Portfolio', to: '/portfolio' },
   { label: 'Pricing', to: '/pricing' },
+  { label: 'FAQ', to: '/faq' },
   { label: 'Installation & Support', to: '/installation-support' },
-  { label: 'Pod Relocation', to: '/pod-relocation' },
-  { label: 'FAQ', to: '/faq' }
+  { label: 'Pod Relocation', to: '/pod-relocation' }
 ];
 
-export default function Demo2Page({ mobilePodMenu = false }) {
+export default function Demo2Page({ mobilePodMenu = false, showPrelaunchProducts = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPodsOpen, setIsPodsOpen] = useState(mobilePodMenu);
+  const [isDesktopPodsOpen, setIsDesktopPodsOpen] = useState(false);
+  const visibleDemoProducts = showPrelaunchProducts
+    ? [...demoProducts, ...prelaunchDemoProducts]
+    : demoProducts;
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
@@ -236,16 +274,31 @@ export default function Demo2Page({ mobilePodMenu = false }) {
 
                     {isPodsOpen && (
                       <div id="demo3-mobile-pod-menu" className="mt-3 border-y border-[#e5e3dc] py-1">
-                        {products.map((product) => (
+                        {visibleDemoProducts.map((product) => (
                           <Link
-                            key={product.slug}
-                            to={`/pods/${product.slug}`}
+                            key={product.to}
+                            to={product.to}
                             onClick={() => setIsMenuOpen(false)}
-                            className="flex min-h-[44px] items-center justify-between border-b border-[#efede8] py-2.5 last:border-b-0"
+                            className="flex min-h-[64px] items-center gap-3 border-b border-[#efede8] py-2.5 last:border-b-0"
                           >
-                            <span className="text-[16px] font-semibold text-[#172126]">{product.name}</span>
-                            <span className="flex items-center gap-2 text-[12px] font-medium text-[#68726f]">
-                              {product.technicalSpecifications?.capacity || ''}
+                            <span className="flex h-[52px] w-[58px] shrink-0 items-center justify-center bg-[#eeece7]">
+                              {product.image ? (
+                                <img
+                                  src={product.image}
+                                  alt=""
+                                  width="80"
+                                  height="80"
+                                  className={`h-full w-full object-contain object-bottom ${product.imageClassName || ''}`}
+                                  loading="lazy"
+                                  decoding="async"
+                                />
+                              ) : (
+                                <ProductMediaPending productName={product.title} variant="menu" />
+                              )}
+                            </span>
+                            <span className="min-w-0 flex-1 text-[16px] font-semibold text-[#172126]">{product.title}</span>
+                            <span className="flex shrink-0 items-center gap-2 text-[12px] font-medium text-[#68726f]">
+                              {product.support || ''}
                               <ChevronRight size={16} className="text-[#007653]" />
                             </span>
                           </Link>
@@ -295,29 +348,44 @@ export default function Demo2Page({ mobilePodMenu = false }) {
         </div>
       </div>
 
-      <header className="border-b border-[#d9d6ce] bg-[#fbfaf7] px-6 md:px-12">
+      <header className="relative z-40 border-b border-[#d9d6ce] bg-[#fbfaf7] px-6 md:px-12">
         <div className="mx-auto flex h-[64px] max-w-[1440px] items-center justify-between md:h-[74px]">
           <Link to="/" aria-label="Ace Office Pods home">
             <img src={acePodsLogo} alt="Ace Pods" width="100" height="56" className="h-8 w-auto md:h-14" />
           </Link>
           <div className="hidden items-center gap-5 text-[13px] font-medium text-[#273238] lg:flex xl:gap-7">
-            <Link to="/office-pods">Office Pods</Link>
-            <Link to="/portfolio">Portfolio</Link>
+            <div className="relative flex items-center gap-1">
+              <Link to="/office-pods" onClick={() => setIsDesktopPodsOpen(false)}>Office Pods</Link>
+              {showPrelaunchProducts && (
+                <button
+                  type="button"
+                  aria-label={`${isDesktopPodsOpen ? 'Close' : 'Open'} Office Pods menu`}
+                  aria-expanded={isDesktopPodsOpen}
+                  onClick={() => setIsDesktopPodsOpen((current) => !current)}
+                  className="inline-flex items-center text-[#00855a]"
+                >
+                  <ChevronDown size={16} className={`transition-transform ${isDesktopPodsOpen ? 'rotate-180' : ''}`} />
+                </button>
+              )}
+            </div>
+            <Link to="/open-pods">Open Pods</Link>
             <Link to="/office-chairs">Office Chairs</Link>
+            <Link to="/portfolio">Portfolio</Link>
             <Link to="/pricing">Pricing</Link>
+            <Link to="/faq">FAQ</Link>
             <Link to="/installation-support">Installation &amp; Support</Link>
             <Link to="/pod-relocation">Pod Relocation</Link>
-            <Link to="/faq">FAQ</Link>
           </div>
           <div className="flex items-center gap-3">
             <CurrencySwitcher className="hidden xl:flex" />
-            <Link to="/contact" className="hidden bg-[#00855a] px-3.5 py-2 text-[11px] font-semibold text-white transition-colors hover:bg-[#006e4a] lg:inline-flex md:px-5 md:py-2.5 md:text-[14px]">
-              Contact us
+            <Link to="/get-a-quote" className="hidden bg-[#00855a] px-3.5 py-2 text-[11px] font-semibold text-white transition-colors hover:bg-[#006e4a] lg:inline-flex md:px-5 md:py-2.5 md:text-[14px]">
+              Get a quote
             </Link>
             <button
               type="button"
               onClick={() => {
                 setIsPodsOpen(mobilePodMenu);
+                setIsDesktopPodsOpen(false);
                 setIsMenuOpen(true);
               }}
               aria-label="Open navigation menu"
@@ -327,6 +395,13 @@ export default function Demo2Page({ mobilePodMenu = false }) {
             </button>
           </div>
         </div>
+        {showPrelaunchProducts && isDesktopPodsOpen && (
+          <SmartPodsBanner
+            items={visibleDemoProducts}
+            onItemClick={() => setIsDesktopPodsOpen(false)}
+            gridClassName="grid-cols-4"
+          />
+        )}
       </header>
 
       <section className="px-0 pt-0 md:px-12 md:pt-7">
@@ -362,8 +437,8 @@ export default function Demo2Page({ mobilePodMenu = false }) {
                   >
                     Visit the Showroom
                   </a>
-                  <Link to="/pricing#all-pod-prices" className="w-full border border-white/70 px-7 py-4 text-center text-[16px] font-semibold text-white transition-colors hover:bg-white/10 md:w-auto md:py-3.5 md:font-medium">
-                    Get Pricing
+                  <Link to="/get-a-quote" className="w-full border border-white/70 px-7 py-4 text-center text-[16px] font-semibold text-white transition-colors hover:bg-white/10 md:w-auto md:py-3.5 md:font-medium">
+                    Get a Quote
                   </Link>
                 </div>
               </div>
@@ -388,33 +463,37 @@ export default function Demo2Page({ mobilePodMenu = false }) {
           <div className="mb-7 flex items-end justify-between md:mb-9">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#67736f]">The Ace range</p>
-              <h2 className="mt-1 text-[27px] font-semibold leading-[1.06] tracking-[-0.03em] text-[#1c2529] md:text-[30px]">Six pods.<br />One considered system.</h2>
+                  <h2 className="mt-1 text-[27px] font-semibold leading-[1.06] tracking-[-0.03em] text-[#1c2529] md:text-[30px]">{showPrelaunchProducts ? 'Eight pods.' : 'Six pods.'}<br />One considered system.</h2>
             </div>
             <Link to="/office-pods" className="hidden text-[14px] font-semibold text-[#006e4a] md:block">Compare all models →</Link>
           </div>
 
           <div className="grid grid-cols-2 border-l border-t border-[#d7d2ca] md:grid-cols-3">
-            {demoProducts.map((product) => (
+            {visibleDemoProducts.map((product) => (
               <Link
                 key={product.to}
                 to={product.to}
                 className="group flex min-w-0 flex-col border-b border-r border-[#d7d2ca] px-4 py-7 transition-colors hover:bg-white/45 md:px-9 md:py-9"
               >
                 <div className="flex h-[158px] items-center justify-center md:h-[205px]">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    width="220"
-                    height="220"
-                    className={`h-full w-full object-contain object-bottom transition-transform duration-300 group-hover:scale-[1.04] ${product.imageClassName || ''}`}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  {product.image ? (
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      width="220"
+                      height="220"
+                      className={`h-full w-full object-contain object-bottom transition-transform duration-300 group-hover:scale-[1.04] ${product.imageClassName || ''}`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <ProductMediaPending productName={product.title} variant="card" />
+                  )}
                 </div>
                 <div className="mt-5 border-t border-[#d9d5ce] pt-3.5 md:mt-7">
                   <p className="text-[16px] font-semibold tracking-[-0.015em] text-[#172126] md:text-[17px]">{product.title}</p>
                   <p className="mt-1 min-h-[38px] text-[13px] leading-[1.42] text-[#65706f] md:text-[13px]">{product.support}</p>
-                  {product.basePrice && <PodPrice myrAmount={product.basePrice} className="mt-4 block text-[13px] font-semibold text-[#007653]" />}
+                  {product.basePrice && <PodPrice myrAmount={product.basePrice} prefix={product.pricePrefix} className="mt-4 block text-[13px] font-semibold text-[#007653]" />}
                 </div>
               </Link>
             ))}
@@ -422,13 +501,19 @@ export default function Demo2Page({ mobilePodMenu = false }) {
         </div>
       </section>
 
-      <section className="border-y border-[#dfdbd3] bg-[#f7f6f2] px-6 py-16 md:px-12 md:py-20">
+      <section id="customer-references" className="scroll-mt-20 border-y border-[#dfdbd3] bg-[#f7f6f2] px-6 py-16 md:px-12 md:py-20">
         <div className="mx-auto max-w-[1280px]">
           <p className="text-center text-[12px] font-semibold uppercase tracking-[0.15em] text-[#68726f] md:text-[11px] md:tracking-[0.16em]">Selected project and customer references</p>
           <div className="mt-10 grid grid-cols-2 border-l border-t border-[#e4e0d9] sm:grid-cols-4">
             {trustedLogos.map((logo) => (
-              <div key={logo.name} className="flex h-[104px] items-center justify-center border-b border-r border-[#e4e0d9] px-6 md:h-[112px] md:px-8">
-                <img src={logo.image} alt={logo.name} className={`h-[50px] w-full object-contain ${logo.className}`} loading="lazy" decoding="async" />
+              <div key={logo.name} className="group flex h-[104px] items-center justify-center border-b border-r border-[#e4e0d9] px-6 md:h-[112px] md:px-8">
+                <CustomerLogoStage
+                  src={logo.image}
+                  alt={logo.name}
+                  opticalWidth={logo.opticalWidth}
+                  opticalHeight={logo.opticalHeight}
+                  imageClassName="grayscale transition-[filter] duration-300 ease-out group-hover:grayscale-0 group-focus-within:grayscale-0"
+                />
               </div>
             ))}
           </div>
@@ -498,7 +583,11 @@ export default function Demo2Page({ mobilePodMenu = false }) {
                   {type.products.map((product) => (
                     <Link key={product.to} to={product.to} className="group/item border-b border-r border-white/15 p-3 transition-colors hover:bg-white/[0.05]">
                       <div className="flex h-[142px] items-center justify-center bg-[#eeece7] md:h-[150px]">
-                        <img src={product.image} alt={product.title} className={`h-full w-full object-contain object-bottom p-3 transition-transform duration-300 group-hover/item:scale-[1.04] ${product.imageClassName || ''}`} loading="lazy" decoding="async" />
+                        {product.image ? (
+                          <img src={product.image} alt={product.title} className={`h-full w-full object-contain object-bottom p-3 transition-transform duration-300 group-hover/item:scale-[1.04] ${product.imageClassName || ''}`} loading="lazy" decoding="async" />
+                        ) : (
+                          <ProductMediaPending productName={product.title} variant="card" />
+                        )}
                       </div>
                       <p className="mt-3 text-[15px] font-semibold text-white">{product.title}</p>
                     </Link>
@@ -579,7 +668,7 @@ export default function Demo2Page({ mobilePodMenu = false }) {
                 </article>
               ))}
             </div>
-            <Link to="/contact" className="mt-10 flex w-full justify-center bg-[#00855a] px-7 py-4 text-[16px] font-semibold text-white transition-colors hover:bg-[#006e4a] md:inline-flex md:w-auto md:py-3.5 md:text-[15px]">Talk to our team</Link>
+            <Link to="/get-a-quote" className="mt-10 flex w-full justify-center bg-[#00855a] px-7 py-4 text-[16px] font-semibold text-white transition-colors hover:bg-[#006e4a] md:inline-flex md:w-auto md:py-3.5 md:text-[15px]">Get a project quote</Link>
           </div>
         </div>
       </section>

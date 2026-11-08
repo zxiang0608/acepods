@@ -15,16 +15,18 @@ export const SEO_BRAND_IDENTIFIER = '202403171118';
 export const SEO_BRAND_EMAIL = 'sales@aceofficepods.com';
 export const SEO_BRAND_PHONE = '+601154352700';
 export const SEO_BRAND_AREA_SERVED = 'West Malaysia';
-export const SEO_BRAND_STREET_ADDRESS = 'Jalan Gopeng, Kawasan 18';
-export const SEO_BRAND_SHOWROOM_LOCALITY = 'Klang';
-export const SEO_BRAND_SHOWROOM_REGION = 'Selangor';
-export const SEO_BRAND_POSTAL_CODE = '41400';
+export const SEO_BRAND_STREET_ADDRESS = 'Jalan Seri Wangsa 2, Taman Sri Rampai';
+export const SEO_BRAND_SHOWROOM_LOCALITY = 'Kuala Lumpur';
+export const SEO_BRAND_SHOWROOM_REGION = 'Kuala Lumpur';
+export const SEO_BRAND_POSTAL_CODE = '53300';
 export const SEO_BRAND_COUNTRY = 'MY';
+export const SEO_BRAND_ADDRESS = `${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}`;
+export const SEO_BRAND_MAP_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SEO_BRAND_ADDRESS)}`;
+export const SEO_BRAND_MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(SEO_BRAND_ADDRESS)}&output=embed`;
 export const SEO_BRAND_LOGO = `${SEO_BASE_URL}/ace-pods-logo.png`;
 export const SEO_BRAND_SAME_AS = [
   'https://www.instagram.com/acepodsmy/',
-  'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/',
-  'https://maps.app.goo.gl/nJHHvTLD5YEov9e4A'
+  'https://www.linkedin.com/company/ace-workplace-solutions-ace-office-pods-malaysia/'
 ];
 export const SEO_KEYWORDS_COMMON =
   'Ace Workplace Solutions, Ace Office Pods, AcePods, office pod, office booth, acoustic office pods, office pods Malaysia, office booths Malaysia';
@@ -33,7 +35,7 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'What is included in the office pod price?',
     answer:
-      'Inclusions vary by model. Ace Uno is RM8,850 for the pod only; standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Other model and project scopes are confirmed in the quotation.'
+      'Inclusions vary by model. Ace Uno is RM9,150 for the pod only; standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Outstation, restricted-access, and non-standard scopes are confirmed in the quotation.'
   },
   {
     question: 'What affects the final office pod price?',
@@ -48,7 +50,7 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'How soundproof are office pods in real working environments?',
     answer:
-      'Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub do not have a published dB rating on this site and should not be treated as soundproof.'
+      'Acoustic performance is model-specific. Ace Uno carries an approximately 25 dB(A) claim, while the six media-ready models carry verified acoustic status in their product records. These products should not be described as completely soundproof.'
   },
   {
     question: 'What happens if we need help after delivery?',
@@ -68,7 +70,7 @@ export const HOME_FAQ_ITEMS = [
   {
     question: 'What does 27 dBA noise reduction actually mean?',
     answer:
-      'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided, so the figure should not be described as independently certified or applied to other models.'
+      'Ace Uno is listed with an approximately 25 dB(A) acoustic claim. The six media-ready models carry verified acoustic status in their product records; Ask the team for the applicable report and installation conditions for a project-specific review.'
   }
 ];
 
@@ -76,7 +78,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'What is included in the office pod price in Malaysia?',
     answer:
-      'Inclusions vary by model. Ace Uno is RM8,850 for the pod only; standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Other model and project scopes are confirmed in the quotation.'
+      'Inclusions vary by model. Ace Uno is RM9,150 for the pod only; standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Outstation, restricted-access, and non-standard scopes are confirmed in the quotation.'
   },
   {
     question: 'What affects the final office pod price?',
@@ -86,12 +88,12 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'Which office pod is suitable for calls, focused work, or meetings?',
     answer:
-      'Ace Uno and Ace Plus are suited for calls, Zoom meetings, and focused individual work. Ace Flex provides more room for one person, while Ace Flex Duo, Ace Meet, and Ace Hub support discussions and team collaboration.'
+      'Ace Uno and Ace Plus are suited for calls, video meetings, and focused individual work. Ace Flex provides more room for one person, while Ace Flex Duo, Ace Meet, and Ace Hub support discussions and team collaboration.'
   },
   {
     question: 'How soundproof are office pods in real working environments?',
     answer:
-      'Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document has been provided. The figure does not apply to Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, or Ace Hub.'
+      'Acoustic performance is model-specific. Ace Uno carries an approximately 25 dB(A) claim, while the six media-ready models carry verified acoustic status in their product records. Confirm the applicable report and installation conditions for the project.'
   },
   {
     question: 'Are office pods suitable for Malaysia office environments (heat and ventilation)?',
@@ -161,7 +163,7 @@ export const FAQ_PAGE_ITEMS = [
   {
     question: 'What does 27 dBA noise reduction actually mean in practice?',
     answer:
-      'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub do not carry that claim.'
+      'Ace Uno is listed with an approximately 25 dB(A) acoustic claim. The six media-ready models carry verified acoustic status in their product records; Ask the team for the applicable report and installation conditions for a project-specific review.'
   }
 ];
 
@@ -192,7 +194,7 @@ export const PRICING_FAQ_ITEMS = [
   {
     question: 'How much does an office pod cost in Malaysia?',
     answer:
-      'Ace Uno is the entry model at RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Meeting pods start from RM22,200.'
+      'Ace Uno is the entry model at RM9,150 for the pod only. Standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Meeting pods start from RM22,200.'
   },
   {
     question: 'What affects the final office pod price?',
@@ -202,7 +204,7 @@ export const PRICING_FAQ_ITEMS = [
   {
     question: 'Do prices include delivery and installation?',
     answer:
-      'For Ace Uno, standard Klang Valley delivery is RM350 and installation is RM350; neither is included in the RM8,850 pod-only price. Other models, outstation delivery, and projects with complex access requirements are confirmed separately in the quotation.'
+      'For Ace Uno, standard Klang Valley delivery is RM400 per trip and installation is RM350; neither is included in the RM9,150 pod-only price. Outstation delivery and projects with complex access requirements are confirmed separately in the quotation.'
   },
   {
     question: 'Is bulk pricing available for corporate or project orders?',

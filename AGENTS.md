@@ -1,5 +1,11 @@
 # Ace Workplace Solutions — Codex Guardrails
 
+## COS activity logging
+- After meaningful work or important progress in this workspace, update the existing `AI Activity Log.md` in the user's Obsidian vault. Locate it first; a likely vault is `/Users/tayzixiang/Documents/Ideaverse Obsidian`. Preserve the existing format and avoid duplicate entries.
+- Record Malaysia date and time, project, actual accomplishment, status (DONE / IN PROGRESS / BLOCKED), next step, and a reference to the run or output. Use run records as evidence when accessible; do not infer completion or invent details.
+- If the vault is inaccessible, tell the user and retain a clearly marked pending entry in the workspace for later reconciliation. Review `COS_ACTIVITY_LOG_PENDING.md` and remove entries only after confirming they are in the vault.
+- This instruction applies to this workspace; it does not guarantee logging in other projects or sessions without access to these instructions and the vault.
+
 ## This is a refinement task
 Do not redesign the homepage.
 Keep the homepage structure and messaging architecture unchanged.

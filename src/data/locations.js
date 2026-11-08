@@ -19,7 +19,7 @@ export const locations = [
     serviceSummary:
       'Kuala Lumpur projects are planned around building access, loading arrangements, lift dimensions, floor protection, working-hour restrictions, and final pod placement. We confirm these details before delivery so the installation scope is clear.',
     localContext:
-      'For offices in Bangsar, KLCC, KL Sentral, Mont Kiara, Bukit Jalil, Mid Valley, and surrounding Kuala Lumpur areas, the right pod depends on daily use, available floor space, access conditions, and required capacity. Showroom viewing remains available by appointment at our Klang showroom.',
+      'For offices in Bangsar, KLCC, KL Sentral, Mont Kiara, Bukit Jalil, Mid Valley, and surrounding Kuala Lumpur areas, the right pod depends on daily use, available floor space, access conditions, and required capacity. Showroom viewing remains available by appointment at our Kuala Lumpur showroom.',
     projectIntro:
       'These completed installations provide real examples of Ace office pods used inside Kuala Lumpur workplaces.',
     projects: [
@@ -65,12 +65,12 @@ export const locations = [
       {
         question: 'Where is the nearest Ace Office Pods showroom to Kuala Lumpur?',
         answer:
-          'The Ace Office Pods showroom is in Klang, Selangor. Viewing is available by appointment so buyers can compare pod size, finishes, ventilation, and practical acoustic performance.'
+          'The Ace Office Pods showroom is in Kuala Lumpur. Viewing is available by appointment so buyers can compare pod size, finishes, ventilation, and practical acoustic performance.'
       },
       {
         question: 'How much does an office pod in Kuala Lumpur cost?',
         answer:
-          'Ace Uno is RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Restricted-access and non-standard scopes are quoted separately.'
+          'Ace Uno is RM9,150 for the pod only. Standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Restricted-access and non-standard scopes are quoted separately.'
       }
     ]
   },
@@ -88,7 +88,7 @@ export const locations = [
     serviceSummary:
       'Shah Alam installations are planned around the office floor, loading access, lift or staircase clearance, placement, and operating-hour requirements. The team confirms delivery and setup conditions before the project date.',
     localContext:
-      'Shah Alam offices often need compact private spaces without permanent renovation. One-person phone booths can support calls and video meetings, while larger pods provide space for discussions and team meetings. Buyers can arrange a showroom viewing in nearby Klang by appointment.',
+      'Shah Alam offices often need compact private spaces without permanent renovation. One-person phone booths can support calls and video meetings, while larger pods provide space for discussions and team meetings. Buyers can arrange a showroom viewing in Kuala Lumpur by appointment.',
     projectIntro:
       'This completed project shows how a compact office pod can be integrated into a working Shah Alam office.',
     projects: [
@@ -116,7 +116,7 @@ export const locations = [
       {
         question: 'Can I visit the showroom from Shah Alam?',
         answer:
-          'Yes. The showroom is in Klang, Selangor, and is available by appointment. Visitors can compare pod sizes, finishes, ventilation, and practical acoustic performance.'
+          'Yes. The showroom is in Kuala Lumpur, and is available by appointment. Visitors can compare pod sizes, finishes, ventilation, and practical acoustic performance.'
       },
       {
         question: 'What affects office pod delivery cost in Shah Alam?',
@@ -139,7 +139,7 @@ export const locations = [
     serviceSummary:
       'Subang Jaya projects are coordinated around access routes, lift or staircase clearance, loading points, floor protection, delivery timing, and final placement. Education and commercial sites may also require installation timing outside peak operating periods.',
     localContext:
-      'Teams in Subang Jaya, USJ, Sunway, and nearby areas can select one-person pods for calls and focused work or larger models for discussions and meetings. Showroom viewing is available by appointment at the Ace Office Pods showroom in Klang.',
+      'Teams in Subang Jaya, USJ, Sunway, and nearby areas can select one-person pods for calls and focused work or larger models for discussions and meetings. Showroom viewing is available by appointment at the Ace Office Pods showroom in Kuala Lumpur.',
     projectIntro:
       'This completed installation demonstrates how an office pod can add a private workspace within a busy education environment.',
     projects: [
@@ -167,7 +167,7 @@ export const locations = [
       {
         question: 'Can Subang Jaya buyers test an office pod before ordering?',
         answer:
-          'Yes. Showroom viewing is available by appointment in Klang. Buyers can compare sizes, finishes, ventilation, and practical acoustic performance before selecting a model.'
+          'Yes. Showroom viewing is available by appointment in Kuala Lumpur. Buyers can compare sizes, finishes, ventilation, and practical acoustic performance before selecting a model.'
       },
       {
         question: 'How long does office pod delivery take?',
@@ -190,7 +190,7 @@ export const locations = [
     serviceSummary:
       'Petaling Jaya installations are planned around office building access, loading bay arrangements, lift dimensions, floor level, and building management requirements. Many PJ office towers have specific delivery windows and contractor pass requirements — our team confirms all site conditions before the installation date.',
     localContext:
-      'PJ offices range from heritage SS2 commercial buildings to newer Grade A towers in Damansara Jaya and Tropicana. Whether your team is in a co-working space, a standalone office, or a multi-floor corporate setup, we recommend pods based on daily usage, available floor space, and access conditions. Our showroom in Klang is approximately 25–35 minutes from most PJ locations and is available for viewing by appointment.',
+      'PJ offices range from heritage SS2 commercial buildings to newer Grade A towers in Damansara Jaya and Tropicana. Whether your team is in a co-working space, a standalone office, or a multi-floor corporate setup, we recommend pods based on daily usage, available floor space, and access conditions. Our showroom in Kuala Lumpur is available for viewing by appointment.',
     projectIntro:
       'Ace Office Pods delivers and installs acoustic pods across Petaling Jaya. Contact our team to discuss your PJ project requirements, site access, and preferred models.',
     projects: [],
@@ -213,7 +213,7 @@ export const locations = [
       {
         question: 'How much does an office pod cost for a Petaling Jaya office?',
         answer:
-          'Ace Uno is RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Restricted-access and non-standard scopes are quoted separately.'
+          'Ace Uno is RM9,150 for the pod only. Standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Restricted-access and non-standard scopes are quoted separately.'
       }
     ]
   },
@@ -231,7 +231,7 @@ export const locations = [
     serviceSummary:
       'Damansara installations cover a mix of commercial parks, strata office towers, and standalone corporate buildings — each with different loading, security, and access requirements. Our team reviews site conditions in advance and coordinates with building management to confirm delivery windows, contractor access, and installation timing.',
     localContext:
-      'The Damansara area is home to a high concentration of MNCs, professional services firms, and regional headquarters. Office pods are frequently used here to add private call and meeting space within open-plan layouts — without the lead time or disruption of a renovation. Our showroom in Klang is approximately 20–30 minutes from most Damansara locations and is available by appointment for buyers who want to test acoustic performance before committing.',
+      'The Damansara area is home to a high concentration of MNCs, professional services firms, and regional headquarters. Office pods are frequently used here to add private call and meeting space within open-plan layouts — without the lead time or disruption of a renovation. Our showroom in Kuala Lumpur is available by appointment for buyers who want to test acoustic performance before committing.',
     projectIntro:
       'Ace Office Pods delivers and installs acoustic pods across the Damansara corridor. Contact our team to discuss your project requirements, site access, and preferred models.',
     projects: [],
@@ -249,7 +249,7 @@ export const locations = [
       {
         question: 'Can I test an office pod before ordering?',
         answer:
-          'Yes. Our showroom in Klang, Selangor is approximately 20–30 minutes from most Damansara offices and is available by appointment. You can compare pod sizes, finishes, ventilation, and practical acoustic performance before confirming your order.'
+          'Yes. Our showroom in Kuala Lumpur is available by appointment. You can compare pod sizes, finishes, ventilation, and practical acoustic performance before confirming your order.'
       },
       {
         question: 'How much does delivery and installation cost for a Damansara office?',
@@ -272,7 +272,7 @@ export const locations = [
     serviceSummary:
       'Penang deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
     localContext:
-      'Offices in George Town, Bayan Lepas, Bukit Mertajam, Butterworth, and surrounding Penang areas can select from the full Ace Office Pods range. One-person pods suit private calls and focused work; two to six-person models are available for team discussions and meetings. Showroom viewing is available by appointment at our Klang, Selangor showroom.',
+      'Offices in George Town, Bayan Lepas, Bukit Mertajam, Butterworth, and surrounding Penang areas can select from the full Ace Office Pods range. One-person pods suit private calls and focused work; two to six-person models are available for team discussions and meetings. Showroom viewing is available by appointment at our Kuala Lumpur showroom.',
     projectIntro:
       'Ace Office Pods delivers and installs acoustic pods for Penang businesses. Contact our team to discuss your Penang project requirements, site access, and preferred models.',
     projects: [],
@@ -285,12 +285,12 @@ export const locations = [
       {
         question: 'How much does an office pod cost in Penang?',
         answer:
-          'Ace office pods start from RM8,850 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
+          'Ace office pods start from RM9,150 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
       },
       {
         question: 'Which office pod models are available for Penang delivery?',
         answer:
-          'All six Ace Office Pod models are available for Penang delivery — Ace Uno, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
+          'The six media-ready Ace Office Pod models are available for Penang delivery — Ace Uno, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
       },
       {
         question: 'How long does delivery to Penang take?',
@@ -313,7 +313,7 @@ export const locations = [
     serviceSummary:
       'Johor Bahru deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
     localContext:
-      'Johor Bahru offices in the city centre, Iskandar Puteri, Medini, Bukit Indah, Johor Jaya, and surrounding areas can select from the full Ace Office Pods range. One-person pods suit private calls and focused work; two to six-person models are available for team discussions and meetings. Showroom viewing is available by appointment at our Klang, Selangor showroom.',
+      'Johor Bahru offices in the city centre, Iskandar Puteri, Medini, Bukit Indah, Johor Jaya, and surrounding areas can select from the full Ace Office Pods range. One-person pods suit private calls and focused work; two to six-person models are available for team discussions and meetings. Showroom viewing is available by appointment at our Kuala Lumpur showroom.',
     projectIntro:
       'Ace Office Pods delivers and installs acoustic pods for Johor Bahru businesses. Contact our team to discuss your JB project requirements, site access, and preferred models.',
     projects: [],
@@ -326,12 +326,12 @@ export const locations = [
       {
         question: 'How much does an office pod cost in Johor Bahru?',
         answer:
-          'Ace office pods start from RM8,850 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
+          'Ace office pods start from RM9,150 for the Ace Uno pod only. Delivery and installation are itemised separately, and final pricing depends on model, quantity, options, delivery distance, and site requirements.'
       },
       {
         question: 'Which office pod models are available for JB delivery?',
         answer:
-          'All six Ace Office Pod models are available for Johor Bahru delivery — Ace Uno, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
+          'The six media-ready Ace Office Pod models are available for Johor Bahru delivery — Ace Uno, Ace Plus, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub. Model choice depends on capacity, use case, and available floor space.'
       },
       {
         question: 'How long does delivery to Johor Bahru take?',

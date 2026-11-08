@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
+import { SEO_BRAND_ADDRESS } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const breadcrumbs = [
@@ -111,7 +112,7 @@ export default function TermsPage() {
             <h2 className="mb-3 text-[22px] font-semibold tracking-tight text-[#172126]">10. Contact</h2>
             <address className="mt-1 not-italic space-y-1">
               <div className="font-semibold text-[#172126]">Ace Workplace Solutions (Ace Office Pods Malaysia)</div>
-              <div>Jalan Gopeng, Kawasan 18, 41400 Klang, Selangor</div>
+              <div>{SEO_BRAND_ADDRESS}</div>
               <div>
                 <a href="mailto:sales@aceofficepods.com" className="text-[#007653] underline underline-offset-4 hover:no-underline">
                   sales@aceofficepods.com

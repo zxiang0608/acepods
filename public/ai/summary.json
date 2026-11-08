@@ -4,12 +4,12 @@
   "legalName": "ACE WORKPLACE SOLUTIONS",
   "url": "https://aceofficepods.com",
   "description": "Malaysian supplier of acoustic office pods, phone booths, focus pods, and meeting pods for calls, focused work, interviews, and small meetings.",
-  "updated": "2026-08-08",
+  "updated": "2026-09-04",
   "facts": {
-    "acousticPerformance": "Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub have no published dB rating on this site",
-    "startingPrice": "Ace Uno: RM8,850 pod only; standard Klang Valley delivery RM350; standard Klang Valley installation RM350; standard installed total RM9,550 before the optional stool",
+    "acousticPerformance": "Ace Uno carries an approximately 25 dB(A) acoustic claim; the six media-ready models carry verified acoustic status in their product records",
+    "startingPrice": "Ace Uno: RM9,150 pod only; standard Klang Valley delivery RM400 per trip; standard Klang Valley installation RM350; standard installed total RM9,900 before the optional stool",
     "serviceArea": "Klang Valley and West Malaysia",
-    "showroom": "Klang, Selangor, Malaysia"
+    "showroom": "Kuala Lumpur, Malaysia"
   },
   "products": [
     {
@@ -17,9 +17,10 @@
       "name": "Ace Uno",
       "url": "https://aceofficepods.com/pods/ace-uno",
       "description": "Enclosed one-person acoustic pod for calls and focus",
+      "priceBasis": "pod only",
       "startingPrice": {
         "currency": "MYR",
-        "value": 8850
+        "value": 9150
       }
     },
     {

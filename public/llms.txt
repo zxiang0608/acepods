@@ -6,7 +6,7 @@ Canonical website: https://aceofficepods.com
 
 ## Products
 
-- [Ace Uno](https://aceofficepods.com/pods/ace-uno) — Enclosed one-person acoustic pod for calls and focus. Starting price: RM8,850.
+- [Ace Uno](https://aceofficepods.com/pods/ace-uno) — Enclosed one-person acoustic pod for calls and focus. Starting price: RM9,150.
 - [Ace Plus](https://aceofficepods.com/pods/ace-plus) — Built for privacy, focus, and sound control. Starting price: RM14,500.
 - [Ace Flex](https://aceofficepods.com/pods/ace-flex) — Spacious pod for comfort and focus. Starting price: RM19,900.
 - [Ace Flex Duo](https://aceofficepods.com/pods/ace-flex-duo) — Two-person pod for focused work. Starting price: RM23,900.
@@ -36,10 +36,10 @@ Canonical website: https://aceofficepods.com
 
 ## Current articles
 
-- [Ace Uno Price and Quality Guide: What RM8,850 Includes](https://aceofficepods.com/articles/ace-uno-price-quality-guide) — Ace Uno costs RM8,850 for the pod alone. This guide explains the verified construction, ventilation, power and finish details included at that price, plus the standard Klang Valley installed total.
+- [Ace Uno Price and Quality Guide: What RM9,150 Includes](https://aceofficepods.com/articles/ace-uno-price-quality-guide) — Ace Uno costs RM9,150 for the pod alone. This guide explains the verified construction, ventilation, power and finish details included at that price, plus the standard Klang Valley installed total.
 - [Office Pod Under RM10,000 in Malaysia: A Practical Buyer Guide](https://aceofficepods.com/articles/office-pod-price-guide-malaysia) — Ace Uno is a one-person office pod that stays under RM10,000 on the standard Klang Valley installed scope. See the exact total, inclusions, limits and quote checks.
-- [Is an RM8,850 Office Pod Worth It for a Malaysian Office?](https://aceofficepods.com/articles/are-office-pods-worth-the-cost-malaysia) — Ace Uno can be worth RM8,850 when it solves a frequent one-person call or focus-space problem. Use this decision framework to judge fit, utilisation and total installed cost.
-- [Office Pod Price in Malaysia: Pod-Only vs Installed Cost](https://aceofficepods.com/articles/office-pod-price-malaysia) — A pod-only price is not the same as a ready-to-use project total. See the Ace Uno RM8,850 price broken into delivery, installation, optional seating and site-dependent costs.
+- [Is an RM9,150 Office Pod Worth It for a Malaysian Office?](https://aceofficepods.com/articles/are-office-pods-worth-the-cost-malaysia) — Ace Uno can be worth RM9,150 when it solves a frequent one-person call or focus-space problem. Use this decision framework to judge fit, utilisation and total installed cost.
+- [Office Pod Price in Malaysia: Pod-Only vs Installed Cost](https://aceofficepods.com/articles/office-pod-price-malaysia) — A pod-only price is not the same as a ready-to-use project total. See the Ace Uno RM9,150 price broken into delivery, installation, optional seating and site-dependent costs.
 - [How to Judge the Quality of a 1-Person Office Pod in Malaysia](https://aceofficepods.com/articles/1-seater-office-pod-malaysia) — Judge a one-person office pod by documented materials, door fit, ventilation, worktop, power, site fit and evidence—not by price or an unsupported soundproof claim.
 - [Open Office Noise and Productivity: What the Research Shows](https://aceofficepods.com/articles/open-office-noise-productivity-research) — A review of peer-reviewed research on how open-plan office noise affects cognitive performance, concentration, and employee wellbeing — and what acoustic design can do about it.
 - [Comparing Office Pods in Malaysia: What Buyers Get Wrong](https://aceofficepods.com/articles/comparing-office-pods-malaysia) — Most buyers compare office pods in Malaysia on price and product photos. The three things that actually determine whether a pod performs — acoustic certification method, total installed cost, and after-sales support — are rarely on the shortlist. This guide covers how to compare correctly.
@@ -57,7 +57,7 @@ Canonical website: https://aceofficepods.com
 - [Office Phone Booth vs Office Pod: What Is the Difference?](https://aceofficepods.com/articles/office-phone-booth-vs-office-pod) — An office phone booth is normally a compact one-person pod for calls, while office pod is the broader category covering solo focus booths, two-person pods, and meeting pods.
 - [How Long Do Office Pods Last?](https://aceofficepods.com/articles/how-long-do-office-pods-last) — A commercial office pod can remain useful for many years when its structure, seals, ventilation, lighting, and moving parts are maintained. Actual lifespan depends on build quality, usage, environment, and servicing.
 - [How to Choose an Office Pod in Malaysia: A Practical Buyer's Guide](https://aceofficepods.com/articles/how-to-choose-office-pod-malaysia) — Choosing the right office pod comes down to four decisions: use case, capacity, available floor space, and delivery access. This guide walks through each step for Malaysian office buyers.
-- [Office Pod vs Building a Room in Malaysia: Total Cost Comparison](https://aceofficepods.com/articles/office-pod-vs-building-room-malaysia) — Building a small private room in a Malaysian office costs RM12,000 to RM24,000 before reinstatement. An office pod starts from RM8,850 and avoids renovation disruption, building approval, and end-of-lease demolition costs.
+- [Office Pod vs Building a Room in Malaysia: Total Cost Comparison](https://aceofficepods.com/articles/office-pod-vs-building-room-malaysia) — Building a small private room in a Malaysian office costs RM12,000 to RM24,000 before reinstatement. An office pod starts from RM9,150 and avoids renovation disruption, building approval, and end-of-lease demolition costs.
 - [Meeting Pods for Hybrid Teams: Layout and Workflow Essentials](https://aceofficepods.com/articles/meeting-pods-for-hybrid-teams) — Plan meeting pod placement and capacity around hybrid call frequency, circulation paths, and team collaboration behavior.
 - [Office Phone Booths for Open-Plan Offices: What to Prioritize](https://aceofficepods.com/articles/office-phone-booths-for-open-plan-offices) — Evaluate acoustic comfort, ventilation, power access, and placement so phone-booth style pods perform well in daily office use.
 - [How to Choose the Right Office Pod Size for Your Team](https://aceofficepods.com/articles/how-to-choose-office-pod-size) — Use team workflow and meeting patterns to select a one-person, two-person, or larger meeting pod without overbuying space.
@@ -68,5 +68,5 @@ Canonical website: https://aceofficepods.com
 ## Citation guidance
 
 - Verify prices and scope on the linked product or pricing page before quoting them.
-- Acoustic claims are model-specific. Ace Plus has an unverified first-party approximately 27 dB(A) claim; no verified supporting test document has been provided. Do not apply that claim to another model.
+- Acoustic claims are model-specific. Ace Uno carries an approximately 25 dB(A) claim; the six media-ready models carry verified acoustic status in their product records.
 - Contact sales@aceofficepods.com for a current project quotation or correction.

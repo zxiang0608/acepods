@@ -1,5 +1,10 @@
 import { readFile } from 'node:fs/promises';
-import { ACE_PLUS_ACOUSTIC_CLAIM, ACE_UNO_PRICING, POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
+import {
+  ACE_ACOUSTIC_CLAIMS_BY_SLUG,
+  ACE_ACOUSTIC_TEST_REPORT,
+  ACE_UNO_PRICING,
+  POD_SEO_BY_SLUG
+} from '../src/data/podSeoCatalog.js';
 
 const WEB_ROOTS = ['src', 'public', 'scripts'];
 const TEXT_EXTENSIONS = new Set(['.js', '.jsx', '.mjs', '.json', '.txt', '.xml', '.html', '.csv']);
@@ -25,27 +30,51 @@ const assert = (condition, message) => {
 };
 
 assert(POD_SEO_BY_SLUG['ace-uno']?.startingPrice === ACE_UNO_PRICING.podOnly, 'Ace Uno canonical starting price must equal the pod-only price.');
-assert(POD_SEO_BY_SLUG['ace-uno']?.acousticPerformance?.publishedDbRating === null, 'Ace Uno must not expose a published dB rating.');
+assert(POD_SEO_BY_SLUG['ace-uno']?.acousticPerformance?.publishedDbRating === 25, 'Ace Uno acoustic claim must expose the approved approximate 25 dB(A) figure.');
+assert(POD_SEO_BY_SLUG['ace-uno']?.acousticPerformance?.statement === 'Approximately 25 dB(A).', 'Ace Uno acoustic claim must use the approved approximate display wording.');
 assert(/^Ace Uno is .{100,260}$/i.test(POD_SEO_BY_SLUG['ace-uno']?.geoDefinition || ''), 'Ace Uno must retain a standalone, citation-ready GEO definition.');
-assert(ACE_UNO_PRICING.podOnly === 8850, 'Ace Uno pod-only price must be RM8,850.');
-assert(ACE_UNO_PRICING.standardKlangValleyDelivery === 350, 'Ace Uno standard Klang Valley delivery must be RM350.');
+assert(ACE_UNO_PRICING.podOnly === 9150, 'Ace Uno pod-only price must be RM9,150.');
+assert(ACE_UNO_PRICING.standardKlangValleyDelivery === 400, 'Ace Uno standard Klang Valley delivery must be RM400 per trip.');
 assert(ACE_UNO_PRICING.standardKlangValleyInstallation === 350, 'Ace Uno standard Klang Valley installation must be RM350.');
 assert(
   ACE_UNO_PRICING.podOnly + ACE_UNO_PRICING.standardKlangValleyDelivery + ACE_UNO_PRICING.standardKlangValleyInstallation === ACE_UNO_PRICING.standardInstalledTotal,
   'Ace Uno standard installed total must equal pod + delivery + installation.'
 );
-assert(ACE_UNO_PRICING.standardInstalledTotal === 9550, 'Ace Uno standard installed total must be RM9,550.');
+assert(ACE_UNO_PRICING.standardInstalledTotal === 9900, 'Ace Uno standard installed total must be RM9,900.');
 assert(ACE_UNO_PRICING.optionalHighBarStool === 250, 'Ace Uno optional high bar stool must be RM250.');
-assert(ACE_UNO_PRICING.standardInstalledTotalWithStool === 9800, 'Ace Uno standard installed total with the optional stool must be RM9,800.');
-assert(ACE_PLUS_ACOUSTIC_CLAIM.approximateDbA === 27, 'Ace Plus public acoustic claim must remain approximately 27 dB(A).');
-assert(ACE_PLUS_ACOUSTIC_CLAIM.verified === false, 'Ace Plus 27 dB(A) claim must remain explicitly unverified.');
-assert(/no verified.*test document provided/i.test(ACE_PLUS_ACOUSTIC_CLAIM.qualifiedDisplay), 'Ace Plus acoustic copy must disclose that no verified test document was provided.');
+assert(ACE_UNO_PRICING.standardInstalledTotalWithStool === 10150, 'Ace Uno standard installed total with the optional stool must be RM10,150.');
+assert(ACE_ACOUSTIC_TEST_REPORT.reportNumber === '7191320248-MEC23-EMK', 'Acoustic claim evidence must retain the reviewed report number.');
+assert(ACE_ACOUSTIC_TEST_REPORT.driveUrl.includes('1_8SGyNjSsWxvJejSN58T5ydEehBwy8vs'), 'Acoustic claim evidence must retain the Drive report link.');
+const expectedAcousticDisplays = {
+  'ace-uno': 'Approximately 25 dB(A)',
+  'ace-plus': 'Verified — 27 dB(A), TÜV SÜD',
+  'ace-flex': 'Verified — 27 dB(A), TÜV SÜD',
+  'ace-flex-duo': 'Verified — 27 dB(A), TÜV SÜD',
+  'ace-meet': 'Verified — 27 dB(A), TÜV SÜD',
+  'ace-hub': 'Verified — 27 dB(A), TÜV SÜD'
+};
+for (const [slug, display] of Object.entries(expectedAcousticDisplays)) {
+  const claim = ACE_ACOUSTIC_CLAIMS_BY_SLUG[slug];
+  assert(claim?.qualifiedDisplay === display, `${slug} acoustic claim must display ${display}.`);
+  assert(claim?.publishedDbRating === (slug === 'ace-uno' ? 25 : 27), `${slug} acoustic claim must retain its approved report result.`);
+  assert(POD_SEO_BY_SLUG[slug]?.acousticPerformance?.qualifiedDisplay === display, `${slug} canonical acoustic record must expose ${display}.`);
+  assert(POD_SEO_BY_SLUG[slug]?.schemaProperties?.some(({ name, value }) => name === 'Published acoustic claim' && value === display), `${slug} SEO schema must expose the approved acoustic claim display.`);
+}
 
 const files = (await Promise.all(WEB_ROOTS.map(walk))).flat().filter((file) => !SKIP_FILES.has(file));
 const legacyPricePatterns = [
   /RM\s*8,?800\b/i,
   /RM\s*9,?650\b/i,
-  /RM\s*12,?500\b/i
+  /RM\s*12,?500\b/i,
+  /RM\s*9,?850\b/i,
+  /RM\s*10,?100\b/i,
+  /RM\s*15,?500\b/i,
+  /RM\s*31,?500\b/i
+];
+const retiredDeliveryPatterns = [
+  /RM\s*350\s+(?:standard\s+)?(?:Klang Valley\s+)?delivery/i,
+  /delivery(?:\s+(?:is|at)|\s*[:|])\s*RM\s*350/i,
+  /delivery and installation[^.\n]{0,20}RM\s*350\s+each/i
 ];
 const forbiddenClaimPatterns = [
   { pattern: /certifiedTestedDba/i, reason: 'legacy template field would present an unverified certification' },
@@ -61,15 +90,18 @@ for (const file of files) {
   for (const pattern of legacyPricePatterns) {
     if (pattern.test(text)) fail(`${file}: contains a retired Ace Uno price (${pattern}).`);
   }
+  for (const pattern of retiredDeliveryPatterns) {
+    if (pattern.test(text)) fail(`${file}: contains the superseded RM350 delivery charge.`);
+  }
   for (const { pattern, reason } of forbiddenClaimPatterns) {
     if (pattern.test(text)) fail(`${file}: ${reason}.`);
   }
   for (const line of text.split('\n')) {
     if (
       /27\s*dB/i.test(line) &&
-      !/(?:unverified|first-party|no verified|approximateDbA|question["']?\s*:)/i.test(line)
+      !/(?:unverified|first-party|no verified|approximateDbA|approximately|owner-directed|TÜV|question["']?\s*:)/i.test(line)
     ) {
-      fail(`${file}: every 27 dB(A) reference must identify the figure as unverified/first-party or disclose that no verified document was provided.`);
+      fail(`${file}: every 27 dB(A) reference must identify the figure as approximate or retain its evidence qualifier.`);
     }
   }
 }
@@ -80,12 +112,12 @@ for (const field of ['podOnly', 'standardKlangValleyDelivery', 'standardKlangVal
 }
 
 const productsSource = await readFile('src/data/products.js', 'utf8');
-assert(productsSource.includes('publishedAcousticClaim: ACE_PLUS_ACOUSTIC_CLAIM.qualifiedDisplay'), 'Ace Plus product data must use the canonical qualified acoustic claim.');
-assert((productsSource.match(/publishedAcousticClaim:/g) || []).length === 1, 'Exactly one product may expose a published acoustic claim.');
+assert(productsSource.includes("publishedAcousticClaim: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-uno'].qualifiedDisplay"), 'Ace Uno product data must use the canonical acoustic claim.');
+assert((productsSource.match(/publishedAcousticClaim:/g) || []).length === Object.keys(expectedAcousticDisplays).length, 'Every current product must expose one canonical acoustic claim.');
 
 const unoCatalog = POD_SEO_BY_SLUG['ace-uno'];
-assert(unoCatalog.useCases.some((text) => /RM9,800/.test(text)), 'Ace Uno crawlable product facts must expose the approved RM9,800 total with stool.');
-assert(unoCatalog.faqItems.some(({ answer }) => /RM250/.test(answer) && /RM9,800/.test(answer)), 'Ace Uno FAQ must expose the approved optional stool price and total.');
+assert(unoCatalog.useCases.some((text) => /RM10,150/.test(text)), 'Ace Uno crawlable product facts must expose the approved RM10,150 total with stool.');
+assert(unoCatalog.faqItems.some(({ answer }) => /RM250/.test(answer) && /RM10,150/.test(answer)), 'Ace Uno FAQ must expose the approved optional stool price and total.');
 
 const vercelConfig = JSON.parse(await readFile('vercel.json', 'utf8'));
 const expectedLegacyRedirects = {
@@ -128,34 +160,34 @@ assert(!sitemap.includes('/pods/ace-solo'), 'Sitemap must not contain the legacy
 
 const merchantFeed = await readFile('public/google-merchant-feed.xml', 'utf8');
 const merchantProductIds = [...merchantFeed.matchAll(/<g:id>([^<]+)<\/g:id>/g)].map((match) => match[1]);
-const currentProductSlugs = Object.keys(POD_SEO_BY_SLUG);
+const merchantEligibleProductSlugs = ['ace-uno', 'ace-plus', 'ace-flex', 'ace-flex-duo', 'ace-meet', 'ace-hub'];
 assert(
-  merchantProductIds.length === currentProductSlugs.length && currentProductSlugs.every((slug) => merchantProductIds.includes(slug)),
-  'Merchant feed must contain exactly the six current Ace pod models.'
+  merchantProductIds.length === merchantEligibleProductSlugs.length && merchantEligibleProductSlugs.every((slug) => merchantProductIds.includes(slug)),
+  'Merchant feed must contain exactly the six media-ready Ace pod models.'
 );
 assert(!merchantFeed.includes('<g:id>ace-solo</g:id>'), 'Merchant feed must exclude the legacy Ace Solo model.');
-assert((merchantFeed.match(/<g:availability>in_stock<\/g:availability>/g) || []).length === currentProductSlugs.length, 'Every current Ace pod model must be marked in stock in the Merchant feed.');
+assert((merchantFeed.match(/<g:availability>in_stock<\/g:availability>/g) || []).length === merchantEligibleProductSlugs.length, 'Every media-ready Ace pod model must be marked in stock in the Merchant feed.');
 
 for (const file of ['public/ai/summary.json', 'public/ai/service.json']) {
   const data = JSON.parse(await readFile(file, 'utf8'));
   const products = data.products || [];
   const uno = products.find((product) => product.name === 'Ace Uno');
   assert(uno?.url === 'https://aceofficepods.com/pods/ace-uno', `${file}: Ace Uno must use its canonical URL.`);
-  assert(uno?.startingPrice?.value === ACE_UNO_PRICING.podOnly, `${file}: Ace Uno price must be RM8,850.`);
+  assert(uno?.startingPrice?.value === ACE_UNO_PRICING.podOnly, `${file}: Ace Uno price must be RM9,150.`);
 }
 
 const unoGeo = JSON.parse(await readFile('public/ai/products/ace-uno.json', 'utf8'));
 assert(unoGeo.canonicalUrl === 'https://aceofficepods.com/pods/ace-uno', 'Ace Uno GEO record must use the canonical product URL.');
 assert(unoGeo.definition === POD_SEO_BY_SLUG['ace-uno'].geoDefinition, 'Ace Uno GEO definition must come from the canonical product catalog.');
-assert(unoGeo.pricing?.podOnly === ACE_UNO_PRICING.podOnly, 'Ace Uno GEO pod-only price must be RM8,850.');
-assert(unoGeo.pricing?.standardKlangValleyDelivery === ACE_UNO_PRICING.standardKlangValleyDelivery, 'Ace Uno GEO delivery price must be RM350.');
+assert(unoGeo.pricing?.podOnly === ACE_UNO_PRICING.podOnly, 'Ace Uno GEO pod-only price must be RM9,150.');
+assert(unoGeo.pricing?.standardKlangValleyDelivery === ACE_UNO_PRICING.standardKlangValleyDelivery, 'Ace Uno GEO delivery price must be RM400 per trip.');
+assert(unoGeo.pricing?.deliveryChargeBasis === 'per trip', 'Ace Uno GEO delivery must identify its per-trip basis.');
 assert(unoGeo.pricing?.standardKlangValleyInstallation === ACE_UNO_PRICING.standardKlangValleyInstallation, 'Ace Uno GEO installation price must be RM350.');
-assert(unoGeo.pricing?.standardInstalledTotalBeforeOptionalStool === ACE_UNO_PRICING.standardInstalledTotal, 'Ace Uno GEO installed total must be RM9,550.');
+assert(unoGeo.pricing?.standardInstalledTotalBeforeOptionalStool === ACE_UNO_PRICING.standardInstalledTotal, 'Ace Uno GEO installed total must be RM9,900.');
 assert(unoGeo.pricing?.optionalHighBarStool === ACE_UNO_PRICING.optionalHighBarStool, 'Ace Uno GEO optional stool price must be RM250.');
-assert(unoGeo.pricing?.standardInstalledTotalWithOptionalStool === ACE_UNO_PRICING.standardInstalledTotalWithStool, 'Ace Uno GEO installed total with stool must be RM9,800.');
-assert(unoGeo.acousticPerformance?.publishedDbRating === null, 'Ace Uno GEO record must explicitly expose no published dB rating.');
-assert(/no published dB rating/i.test(unoGeo.acousticPerformance?.statement || ''), 'Ace Uno GEO acoustic statement must disclose the lack of a published dB rating.');
-assert(!/27\s*dB/i.test(JSON.stringify(unoGeo)), 'Ace Uno GEO record must not inherit the Ace Plus 27 dB(A) figure.');
+assert(unoGeo.pricing?.standardInstalledTotalWithOptionalStool === ACE_UNO_PRICING.standardInstalledTotalWithStool, 'Ace Uno GEO installed total with stool must be RM10,150.');
+assert(unoGeo.acousticPerformance?.publishedDbRating === 25, 'Ace Uno GEO record must expose the approved approximate 25 dB(A) figure.');
+assert(unoGeo.acousticPerformance?.statement === 'Approximately 25 dB(A).', 'Ace Uno GEO acoustic statement must use the approved approximate display wording.');
 assert(unoGeo.legacyRoute?.legacyPath === '/pods/ace-solo' && unoGeo.legacyRoute?.canonicalPath === '/pods/ace-uno' && unoGeo.legacyRoute?.redirectStatus === 301, 'Ace Uno GEO record must preserve the permanent Solo-to-Uno redirect context.');
 
 const summaryGeo = JSON.parse(await readFile('public/ai/summary.json', 'utf8'));
@@ -171,4 +203,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log('Product claim validation passed: Uno pricing, Plus-only acoustic attribution, evidence qualifiers, and Solo redirects are consistent.');
+console.log('Product claim validation passed: acoustic claim displays, evidence record, Uno pricing, and Solo redirects are consistent.');

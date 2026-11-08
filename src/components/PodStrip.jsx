@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { smartPodsMenuItems } from './smartPodsMenuData';
+import { publishedSmartPodsMenuItems } from './smartPodsMenuData';
 import { products } from '../data/products';
+import ProductMediaPending from './ProductMediaPending';
 
-const stripItems = smartPodsMenuItems.map((item) => {
+const stripItems = publishedSmartPodsMenuItems.map((item) => {
   const slug = item.to.replace('/pods/', '');
   const product = products.find((p) => p.slug === slug);
   return {
     to: item.to,
-    image: item.image,
+    image: item.menuImage || item.image,
     imageClassName: item.imageClassName || '',
     name: item.title,
     support: product?.cardSupport || '',
@@ -33,15 +34,19 @@ export default function PodStrip() {
               }`}
             >
               <div className="flex h-[68px] w-[68px] items-center justify-center">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  width="136"
-                  height="136"
-                  className={`h-full w-full object-contain object-bottom ${item.imageClassName}`}
-                  loading="lazy"
-                  decoding="async"
-                />
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    width="136"
+                    height="136"
+                    className={`h-full w-full object-contain object-bottom ${item.imageClassName}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <ProductMediaPending productName={item.name} variant="menu" />
+                )}
               </div>
               <p className="mt-3 text-[13px] font-bold leading-tight text-[#111]">{item.name}</p>
               <p className="mt-1 text-[11px] leading-snug text-[#68726f]">{item.support}</p>

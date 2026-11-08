@@ -25,7 +25,7 @@ import deliveryPodsImage from '../../assets/delivery-pods.webp';
 import podsInstallationImageAvif from '../../assets/pods-installation.avif';
 import deliveryPodsImageAvif from '../../assets/delivery-pods.avif';
 import aceUnoCatalogImage from '../../assets/products/catalog/ace-uno.png';
-import aceMeetCatalogImage from '../../assets/products/catalog/ace-meet.png';
+import aceMeetHomepageImage from '../../assets/products/catalog/ace-meet-menu-sofa.png';
 import aceHubCatalogImage from '../../assets/products/catalog/ace-hub.png';
 import parkerLogo from '../../assets/parker-logo.svg';
 import cmacgmLogo from '../../assets/cmacgm-logo.svg';
@@ -40,10 +40,11 @@ import brenntagLogo from '../../assets/brenntag-logo.webp';
 import SeoMeta from '../components/SeoMeta';
 import SiteFooter from '../components/SiteFooter';
 import SmartPodsBanner from '../components/SmartPodsBanner';
-import { smartPodsMenuItems } from '../components/smartPodsMenuData';
+import { homepageSmartPodsMenuItems } from '../components/smartPodsMenuData';
 import PodPrice from '../components/PodPrice';
 import { useCurrency } from '../hooks/useCurrency';
 import { buildCanonical, createFaqSchema, homepageWebPageSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
+import ProductMediaPending from '../components/ProductMediaPending';
 import { HOME_FAQ_ITEMS } from '../seo/constants';
 
 const WHATSAPP_LINK = 'https://wa.link/9umr4q';
@@ -76,14 +77,14 @@ const featuredModels = [
     desc: 'Freestanding call pod for private calls and video meetings.',
     image: aceUnoCatalogImage,
     imageClassName: 'mix-blend-multiply',
-    fromMyr: 8850
+    fromMyr: 9150
   },
   {
     slug: 'ace-meet',
     name: 'Ace Meet',
     tagline: 'Meeting pod for 2–4 people',
     desc: 'Seats 2–4 comfortably. Private, quiet, and ready to use — no need to book a conference room.',
-    image: aceMeetCatalogImage,
+    image: aceMeetHomepageImage,
     fromMyr: 22200
   },
   {
@@ -120,7 +121,7 @@ const whyAceItems = [
   {
     icon: Volume2,
     title: 'Check Acoustic Claims by Model.',
-    desc: 'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document has been provided.'
+    desc: 'Ace Uno carries an approximately 25 dB(A) acoustic claim; the six media-ready models carry verified acoustic status.'
   },
   {
     icon: KeyRound,
@@ -157,7 +158,7 @@ const galleryImages = [
 ];
 
 const priceRows = [
-  { label: 'Pod price', imported: 'RM 8,000 – 10,000', ace: 'From RM 8,850', aceMyr: 8850 },
+  { label: 'Pod price', imported: 'RM 8,000 – 10,000', ace: 'From RM 9,150', aceMyr: 9150 },
   { label: 'Delivery & freight', imported: 'Varies by supplier and location', ace: 'Itemised by location and scope' },
   { label: 'Customs & duties', imported: 'Confirm with supplier', ace: 'Confirm in the quotation' },
   { label: 'Installation', imported: 'Self-arrange a contractor (RM 2,000 – 4,000+)', ace: 'Our team — price listed on our website' },
@@ -168,12 +169,12 @@ const priceRows = [
 ];
 
 const glassRoomRows = [
-  { label: 'Entry price', renovation: 'Request a site-specific quotation', ace: 'RM 8,850 pod only; RM 9,550 standard Klang Valley installed total', aceMyr: 8850 },
+  { label: 'Entry price', renovation: 'Request a site-specific quotation', ace: 'RM 9,150 pod only; RM 9,900 standard Klang Valley installed total', aceMyr: 9150 },
   { label: 'Time to complete', renovation: '6 – 8 weeks', ace: '1 working day' },
   { label: 'Office disruption', renovation: 'Weeks of noise and dust', ace: 'None' },
   { label: 'Landlord approval required', renovation: 'Usually yes', ace: 'No' },
   { label: 'Can you relocate it?', renovation: '✕  No — permanent fixture', ace: '✓  Yes — move when you move' },
-  { label: 'Acoustic evidence', renovation: 'Depends on the specified build', ace: 'Model-specific; Plus has an unverified first-party ~27 dB(A) claim' },
+  { label: 'Acoustic evidence', renovation: 'Depends on the specified build', ace: 'Model-specific; Uno is approximately 25 dB(A), other models are verified' },
   { label: 'Accountable contact', renovation: 'Confirm in contract', ace: 'Confirmed in quotation and handover scope' },
 ];
 
@@ -220,7 +221,7 @@ export default function HomePageV2() {
     <div className="min-h-screen overflow-x-hidden bg-stone-50 font-sans antialiased text-stone-900">
       <SeoMeta
         title="Acoustic Office Pods Malaysia | Ace Pods"
-        description="Acoustic office pods for calls, focused work, and meetings. Ace Uno from RM 8,850 for the pod only. Get a site-specific quote."
+        description="Acoustic office pods for calls, focused work, and meetings. Ace Uno from RM 9,150 for the pod only. Get a site-specific quote."
         canonical={buildCanonical('/')}
         schemas={[localBusinessSchema, websiteSchema, homepageWebPageSchema, createFaqSchema('/', HOME_FAQ_ITEMS)]}
       />
@@ -295,7 +296,7 @@ export default function HomePageV2() {
           </div>
         </div>
         {isSmartPodsDesktopOpen && (
-          <SmartPodsBanner items={smartPodsMenuItems} onItemClick={() => setIsSmartPodsDesktopOpen(false)} />
+          <SmartPodsBanner items={homepageSmartPodsMenuItems} onItemClick={() => setIsSmartPodsDesktopOpen(false)} />
         )}
       </nav>
 
@@ -336,7 +337,7 @@ export default function HomePageV2() {
                     </div>
                     {isSmartPodsMobileOpen && (
                       <div className="space-y-10 border-t border-stone-200 pt-6">
-                        {smartPodsMenuItems.map((menuItem) => (
+                        {homepageSmartPodsMenuItems.map((menuItem) => (
                           <Link
                             key={menuItem.title}
                             to={menuItem.to}
@@ -344,11 +345,15 @@ export default function HomePageV2() {
                             className="block text-center"
                           >
                             <div className="mx-auto h-[260px] w-full max-w-[230px]">
-                              <img
-                                src={menuItem.image}
-                                alt={menuItem.title}
-                                className={`h-full w-full object-contain object-bottom ${menuItem.imageClassName || ''}`}
-                              />
+                              {menuItem.menuImage || menuItem.image ? (
+                                <img
+                                  src={menuItem.menuImage || menuItem.image}
+                                  alt={menuItem.title}
+                                  className={`h-full w-full object-contain object-bottom ${menuItem.imageClassName || ''}`}
+                                />
+                              ) : (
+                                <ProductMediaPending productName={menuItem.title} variant="menu" />
+                              )}
                             </div>
                             <h3 className="mt-4 text-[20px] font-semibold tracking-tight text-[#007653]">{menuItem.title}</h3>
                             <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-stone-500">{menuItem.description}</p>
@@ -403,7 +408,7 @@ export default function HomePageV2() {
               <p className="mt-4 text-lg leading-relaxed text-stone-600">
                 Add enclosed space for calls, focused work, and meetings. Compare the model, site requirements, delivery, and installation scope before ordering.
               </p>
-              <p className="mt-3 text-sm text-stone-500"><PodPrice myrAmount={8850} className="font-semibold text-stone-900" /> pod only · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">see delivery and installation pricing</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">model-specific acoustic information</a></p>
+              <p className="mt-3 text-sm text-stone-500"><PodPrice myrAmount={9150} className="font-semibold text-stone-900" /> pod only · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">see delivery and installation pricing</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">model-specific acoustic information</a></p>
               <div className="mt-6 flex flex-col gap-3">
                 <a
                   href={WHATSAPP_LINK}
@@ -447,7 +452,7 @@ export default function HomePageV2() {
                 <p className="mt-5 text-xl leading-relaxed text-stone-600">
                   Add enclosed space for calls, focused work, and meetings. Compare the model, site requirements, delivery, and installation scope before ordering.
                 </p>
-                <p className="mt-4 text-sm text-stone-500"><PodPrice myrAmount={8850} className="font-semibold text-stone-900" /> pod only · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">see delivery and installation pricing</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">model-specific acoustic information</a></p>
+                <p className="mt-4 text-sm text-stone-500"><PodPrice myrAmount={9150} className="font-semibold text-stone-900" /> pod only · <Link to="/pricing" className="underline underline-offset-2 hover:text-stone-700">see delivery and installation pricing</Link> · <a href="#guarantee" className="underline underline-offset-2 hover:text-stone-700">model-specific acoustic information</a></p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
                     href={WHATSAPP_LINK}
@@ -539,7 +544,7 @@ export default function HomePageV2() {
                 Find the right acoustic office pod for your team
               </h2>
               <p className="mt-4 text-base text-stone-500 md:text-lg">
-                Six models from RM 8,850. Ace Uno is RM 8,850 pod only; standard Klang Valley delivery and installation are RM 350 each, for an RM 9,550 standard installed total before the optional stool.
+                Six media-ready models. The range starts from RM 9,150. Ace Uno is RM 9,150 pod only; standard Klang Valley delivery is RM 400 per trip and installation is RM 350 per pod, for an RM 9,900 standard installed total before the optional stool.
               </p>
               {!isLocal && (
                 <div className="mx-auto mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-left text-[14px] leading-[1.55] text-amber-900">
@@ -753,12 +758,12 @@ export default function HomePageV2() {
                 <Shield size={24} strokeWidth={2} className="text-[#00855a]" />
               </div>
               <h3 className="text-xl font-semibold text-stone-900 md:text-2xl">Model-specific acoustic information</h3>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-[#00855a]">Plus: unverified first-party ~27 dB(A) claim</p>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-[#00855a]">Uno: approximately 25 dB(A); other models: verified</p>
               <p className="mt-4 text-base leading-relaxed text-stone-600">
-                Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided, so the figure is not applied to Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, or Ace Hub.
+                Ace Uno carries an approximately 25 dB(A) acoustic claim. The six media-ready models carry verified acoustic status in their product records.
               </p>
               <p className="mt-3 text-sm font-medium text-stone-400">
-                Visit our showroom in Klang and test acoustic performance yourself before committing to anything.
+                Visit our showroom in Kuala Lumpur and test acoustic performance yourself before committing to anything.
               </p>
             </div>
           </div>

@@ -6,10 +6,9 @@ import { pushDataLayerEvent } from '../lib/tracking';
 import {
   SEO_BRAND_EMAIL,
   SEO_BRAND_PHONE,
-  SEO_BRAND_POSTAL_CODE,
+  SEO_BRAND_ADDRESS,
+  SEO_BRAND_MAP_EMBED_URL,
   SEO_BRAND_SHOWROOM_LOCALITY,
-  SEO_BRAND_SHOWROOM_REGION,
-  SEO_BRAND_STREET_ADDRESS,
   SEO_KEYWORDS_COMMON
 } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, localBusinessSchema, websiteSchema } from '../seo/schema';
@@ -120,10 +119,10 @@ export default function ContactPage() {
           <div>
             <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#007653]">Showroom</p>
             <h2 className="mt-2 text-[24px] font-semibold tracking-tight text-[#172126]">
-              {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}
+              {SEO_BRAND_SHOWROOM_LOCALITY}
             </h2>
             <p className="mt-2 text-[15px] font-semibold leading-[1.55] text-[#172126]">
-              {SEO_BRAND_STREET_ADDRESS}, {SEO_BRAND_POSTAL_CODE} {SEO_BRAND_SHOWROOM_LOCALITY}, {SEO_BRAND_SHOWROOM_REGION}
+              {SEO_BRAND_ADDRESS}
             </p>
             <p className="mt-2 text-[14px] text-[#59635f]">
               <span className="font-semibold text-[#172126]">Hours:</span> Mon–Fri, 9am–6pm (showroom by appointment)
@@ -135,7 +134,7 @@ export default function ContactPage() {
             <div className="mt-4 overflow-hidden rounded-[8px] border border-[#d8d3c8]">
               <iframe
                 title="Ace Office Pods showroom location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8!2d101.44187!3d3.07523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMsKwMDQnMzAuOCJOIDEwMcKwMjYnMzAuNyJF!5e0!3m2!1sen!2smy!4v1"
+                src={SEO_BRAND_MAP_EMBED_URL}
                 width="100%"
                 height="280"
                 style={{ border: 0, display: 'block' }}

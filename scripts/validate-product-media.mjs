@@ -5,8 +5,13 @@ const EXPECTED_VISIBLE_HEIGHT = 1000;
 const EXPECTED_BASELINE = 1100;
 
 const catalogueFiles = [
+  'assets/products/catalog/ace-pod-one.png',
+  'assets/products/catalog/ace-pod-four.png',
   'assets/products/catalog/ace-uno.png',
   'assets/products/catalog/ace-uno-homepage-front.png',
+  'assets/products/catalog/ace-uno-dusty-turquoise-front.png',
+  'assets/products/catalog/ace-uno-pine-green-front.png',
+  'assets/products/catalog/ace-uno-shadow-grey-front.png',
   'assets/products/catalog/ace-uno-pine-green.png',
   'assets/products/catalog/ace-uno-shadow-grey.png',
   'assets/products/catalog/ace-uno-dusty-turquoise.png',
@@ -14,7 +19,15 @@ const catalogueFiles = [
   'assets/products/catalog/ace-flex.png',
   'assets/products/catalog/ace-flex-duo.png',
   'assets/products/catalog/ace-meet.png',
+  'assets/products/catalog/ace-meet-menu-sofa.png',
   'assets/products/catalog/ace-hub.png'
+];
+
+const transparentGalleryFiles = [
+  'assets/products/ace-pod-one/gallery/ace-pod-one-front.png',
+  'assets/products/ace-pod-one/gallery/ace-pod-one-angle.png',
+  'assets/products/ace-pod-four/gallery/ace-pod-four-front.png',
+  'assets/products/ace-pod-four/gallery/ace-pod-four-angle.png'
 ];
 
 const getVisibleBounds = async (file) => {
@@ -32,6 +45,18 @@ const getVisibleBounds = async (file) => {
 
   if (bottom < top) throw new Error(`${file} has no visible product pixels`);
   return { width: info.width, height: info.height, top, bottom, visibleHeight: bottom - top + 1 };
+};
+
+const getTransparencyStats = async (file) => {
+  const metadata = await sharp(file).metadata();
+  const { data, info } = await sharp(file).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  let transparentPixels = 0;
+
+  for (let offset = 3; offset < data.length; offset += 4) {
+    if (data[offset] === 0) transparentPixels += 1;
+  }
+
+  return { hasAlpha: metadata.hasAlpha === true, transparentPixels, totalPixels: info.width * info.height };
 };
 
 const failures = [];
@@ -53,10 +78,23 @@ for (const file of catalogueFiles) {
   }
 }
 
+for (const file of transparentGalleryFiles) {
+  try {
+    const stats = await getTransparencyStats(file);
+    if (!stats.hasAlpha || stats.transparentPixels === 0) {
+      failures.push(`${file}: expected a transparent alpha channel`);
+    }
+  } catch (error) {
+    failures.push(`${file}: ${error.message}`);
+  }
+}
+
 if (failures.length > 0) {
   console.error('Product media validation failed:\n');
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
 
-console.log(`Validated ${catalogueFiles.length} catalogue images: shared canvas, visible height, and baseline match.`);
+console.log(
+  `Validated ${catalogueFiles.length} catalogue images and ${transparentGalleryFiles.length} transparent product-gallery cutouts.`
+);

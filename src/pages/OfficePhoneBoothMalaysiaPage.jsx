@@ -187,7 +187,7 @@ export default function OfficePhoneBoothMalaysiaPage() {
         <article className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
           <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">Phone pod privacy and acoustic performance</h2>
           <p className="mt-3 max-w-[80ch] text-[16px] leading-[1.65] text-[#59635f]">
-            A phone pod or office phone booth should be compared using its model-specific acoustic information, ventilation, and intended session length—not name alone. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided. Ace Uno and Ace Flex have no published dB rating on this site.
+            A phone pod or office phone booth should be compared using its model-specific acoustic information, ventilation, and intended session length—not name alone. Ace Uno carries an approximately 25 dB(A) acoustic claim, while the six media-ready models carry verified acoustic status in their product records.
           </p>
           <div className="mt-4 flex flex-wrap gap-4 text-[15px] font-semibold text-[#007653]">
             <Link to="/pods/ace-plus" className="underline-offset-4 hover:underline">View Ace Plus specifications</Link>

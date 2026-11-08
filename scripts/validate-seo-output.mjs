@@ -2,6 +2,7 @@ import path from 'node:path';
 import { readFile } from 'node:fs/promises';
 import { getRouteManifest } from './route-manifest.mjs';
 import { SEO_BASE_URL } from '../src/seo/constants.js';
+import { POD_SEO_BY_SLUG } from '../src/data/podSeoCatalog.js';
 
 const outputPathForRoute = (route) =>
   route === '/'
@@ -58,7 +59,11 @@ const validateRoute = async (route) => {
 
     if (['Product', 'Article'].includes(schema['@type'])) {
       const images = Array.isArray(schema.image) ? schema.image : [schema.image].filter(Boolean);
-      if (!images.length) errors.push(`${schema['@type']} schema has no image`);
+      const productSlug = route.startsWith('/pods/') ? route.split('/').pop() : null;
+      const isPrelaunchProduct = productSlug ? POD_SEO_BY_SLUG[productSlug]?.publicationStatus === 'prelaunch' : false;
+      if (!images.length && !(schema['@type'] === 'Product' && isPrelaunchProduct)) {
+        errors.push(`${schema['@type']} schema has no image`);
+      }
       if (images.some((image) => String(image).endsWith('/og-image.jpg'))) {
         errors.push(`${schema['@type']} schema uses the generic social image`);
       }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
-import { products } from '../data/products';
+import { publishedProducts } from '../data/products';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { PRICING_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
 import QuoteForm from '../components/QuoteForm';
@@ -50,15 +50,15 @@ const pricingAnswerSchema = {
     acceptedAnswer: {
       '@type': 'Answer',
       text:
-        'Ace Uno is the entry model at RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Meeting pods start from RM22,200.'
+        'Ace Uno is the entry model at RM9,150 for the pod only. Standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Meeting pods start from RM22,200.'
     }
   }
 };
 
 export default function PricingPage() {
   const { isLocal } = useCurrency();
-  const pricingListItems = products.map((product) => {
-    const basePrice = product.pdpPricing?.baseConfigurations?.[0]?.price;
+  const pricingListItems = publishedProducts.map((product) => {
+    const basePrice = product.pdpPricing?.finalPrice ?? product.pdpPricing?.baseConfigurations?.[0]?.price;
     return {
       name: product.name,
       path: `/pods/${product.slug}`,
@@ -95,7 +95,7 @@ export default function PricingPage() {
 
         <h1 className="text-[34px] font-bold leading-[1.1] tracking-tight text-[#172126] md:text-[48px]">How much does an office pod cost?</h1>
         <p id="office-pod-price-answer" className="mt-4 max-w-[70ch] text-[18px] leading-[1.6] text-[#59635f]">
-          Ace Uno is the entry model at <PodPrice myrAmount={ACE_UNO_PRICING.podOnly} prefix="" /> for the pod only. Standard Klang Valley delivery is <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyDelivery} prefix="" /> and installation is <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyInstallation} prefix="" />, making the standard installed total <PodPrice myrAmount={ACE_UNO_PRICING.standardInstalledTotal} prefix="" /> before the optional stool. Meeting pods start from <PodPrice myrAmount={22200} prefix="" />.
+          Ace Uno is the entry model at <PodPrice myrAmount={ACE_UNO_PRICING.podOnly} prefix="" /> for the pod only. Standard Klang Valley delivery is <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyDelivery} prefix="" /> per trip and installation is <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyInstallation} prefix="" /> per pod, making the standard single-pod installed total <PodPrice myrAmount={ACE_UNO_PRICING.standardInstalledTotal} prefix="" /> before the optional stool. Meeting pods start from <PodPrice myrAmount={22200} prefix="" />.
         </p>
         {!isLocal && (
           <div className="mt-5 max-w-[70ch] rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3 text-[14px] leading-[1.55] text-amber-900">
@@ -108,19 +108,19 @@ export default function PricingPage() {
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
           <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Ace Uno standard Klang Valley price</h2>
           <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
-            Pod: <PodPrice myrAmount={ACE_UNO_PRICING.podOnly} prefix="" />. Delivery: <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyDelivery} prefix="" />. Installation: <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyInstallation} prefix="" />. Standard installed total: <PodPrice myrAmount={ACE_UNO_PRICING.standardInstalledTotal} prefix="" /> before the optional stool. Outstation, restricted-access, and non-standard scopes are quoted separately.
+            Pod: <PodPrice myrAmount={ACE_UNO_PRICING.podOnly} prefix="" />. Delivery per trip: <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyDelivery} prefix="" />. Installation per pod: <PodPrice myrAmount={ACE_UNO_PRICING.standardKlangValleyInstallation} prefix="" />. Standard single-pod installed total: <PodPrice myrAmount={ACE_UNO_PRICING.standardInstalledTotal} prefix="" /> before the optional stool. Outstation, restricted-access, and non-standard scopes are quoted separately.
           </p>
         </div>
       </section>
 
       <section className="mx-auto mt-8 w-full max-w-[1100px] px-5 md:px-8">
         <div className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-          <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Office pod starting prices in Malaysia</h2>
+        <h2 className="text-[26px] font-semibold tracking-tight text-[#172126]">Office pod prices in Malaysia</h2>
           <ul className="mt-4 space-y-2 text-[16px] leading-[1.6] text-[#172126]">
-            {products.map((product) => (
+            {publishedProducts.map((product) => (
               <li key={`price-list-${product.slug}`}>
                 <span className="font-semibold text-[#172126]">{product.name}</span> -{' '}
-                <PodPrice myrAmount={product.pdpPricing.baseConfigurations[0].price} />
+                <PodPrice myrAmount={product.pdpPricing.finalPrice ?? product.pdpPricing.baseConfigurations[0].price} prefix={product.pdpPricing.finalPrice || product.pdpPricing.pricingIncludesDeliveryAndInstallation ? '' : 'From '} />
                 {product.slug === 'ace-uno' ? ' pod only' : ''}
               </li>
             ))}
@@ -129,29 +129,32 @@ export default function PricingPage() {
       </section>
 
       <section id="all-pod-prices" className="mx-auto mt-8 grid w-full max-w-[1100px] gap-4 px-5 md:grid-cols-2 md:px-8">
-        {products.map((product) => (
-          <article key={product.slug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-            <h3 className="text-[24px] font-semibold tracking-tight text-[#172126]">{product.name}</h3>
-            <p className="mt-2 text-[17px] font-semibold text-[#007653]">
-              <PodPrice myrAmount={product.pdpPricing.baseConfigurations[0].price} />
-            </p>
-            <p className="mt-2 text-[14px] leading-[1.55] text-[#59635f]">{product.pricing.note}</p>
-            <Link
-              to={`/pods/${product.slug}`}
-              onClick={() =>
-                pushDataLayerEvent('product_cta_click', {
-                  cta_location: 'pricing_page_product_card',
-                  cta_text: 'View pod details',
-                  destination_url: `/pods/${product.slug}`,
-                  product_name: product.name,
-                  product_slug: product.slug
-                })
-              }
-              className="mt-4 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
-            >
-              View pod details
-            </Link>
-          </article>
+        {publishedProducts.map((product) => (
+          <Link
+            key={product.slug}
+            to={`/pods/${product.slug}`}
+            onClick={() =>
+              pushDataLayerEvent('product_cta_click', {
+                cta_location: 'pricing_page_product_card',
+                cta_text: 'View pod details',
+                destination_url: `/pods/${product.slug}`,
+                product_name: product.name,
+                product_slug: product.slug
+              })
+            }
+            className="group block h-full rounded-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2"
+          >
+            <article className="h-full rounded-[10px] border border-[#ddd8cf] bg-white p-5 transition-colors group-hover:border-[#c6c1b7]">
+              <h3 className="text-[24px] font-semibold tracking-tight text-[#172126]">{product.name}</h3>
+              <p className="mt-2 text-[17px] font-semibold text-[#007653]">
+                <PodPrice myrAmount={product.pdpPricing.finalPrice ?? product.pdpPricing.baseConfigurations[0].price} prefix={product.pdpPricing.finalPrice || product.pdpPricing.pricingIncludesDeliveryAndInstallation ? '' : 'From '} />
+              </p>
+              <p className="mt-2 text-[14px] leading-[1.55] text-[#59635f]">{product.pricing.note}</p>
+              <span className="mt-4 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 group-hover:underline">
+                View pod details
+              </span>
+            </article>
+          </Link>
         ))}
       </section>
 
@@ -207,7 +210,7 @@ export default function PricingPage() {
         <Link to="/faq" className="underline-offset-4 hover:underline">
           Read common questions about office pods
         </Link>
-        <Link to="/contact" className="underline-offset-4 hover:underline">
+        <Link to="/get-a-quote" className="underline-offset-4 hover:underline">
           Request a project quote
         </Link>
       </section>

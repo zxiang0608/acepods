@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "product-images": "node scripts/normalize-product-images.mjs",
+    "product-gallery-images": "node scripts/normalize-pod-gallery-images.mjs",
     "product-media:validate": "node scripts/validate-product-media.mjs",
     "images": "node scripts/prepare-seo-images.mjs",
     "build:spa": "vite build",
@@ -17,7 +18,7 @@
     "indexnow": "node scripts/indexnow.mjs",
     "postdeploy:indexnow": "INDEXNOW_STRICT=1 node scripts/indexnow.mjs",
     "seo:validate": "node scripts/validate-seo-output.mjs",
-    "build": "npm run product-media:validate && npm run images && npm run geo-discovery && npm run merchant-feed && npm run sitemap && npm run claims:validate && npm run build:spa && npm run prerender && npm run seo:validate",
+    "build": "npm run product-gallery-images && npm run product-media:validate && npm run images && npm run geo-discovery && npm run merchant-feed && npm run sitemap && npm run claims:validate && npm run build:spa && npm run prerender && npm run seo:validate",
     "preview": "vite preview"
   },
   "dependencies": {

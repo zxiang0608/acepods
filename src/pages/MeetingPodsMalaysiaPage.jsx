@@ -73,28 +73,31 @@ export default function MeetingPodsMalaysiaPage() {
           if (!product) return null;
 
           return (
-            <article key={item.productSlug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-6">
-              <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">{item.title}</h2>
-              <p className="mt-2 text-[16px] leading-[1.6] text-[#59635f]">
-                <span className="font-semibold text-[#172126]">{product.name}:</span> {product.shortDesc}
-              </p>
-              <p className="mt-2 text-[15px] font-medium text-[#5b636c]">{product.pricing.amount}</p>
-              <Link
-                to={`/pods/${product.slug}`}
-                onClick={() =>
-                  pushDataLayerEvent('product_cta_click', {
-                    cta_location: 'meeting_pods_malaysia_quick_answers',
-                    cta_text: `View ${product.name}`,
-                    destination_url: `/pods/${product.slug}`,
-                    product_name: product.name,
-                    product_slug: product.slug
-                  })
-                }
-                className="mt-3 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
-              >
-                View {product.name}
-              </Link>
-            </article>
+            <Link
+              key={item.productSlug}
+              to={`/pods/${product.slug}`}
+              onClick={() =>
+                pushDataLayerEvent('product_cta_click', {
+                  cta_location: 'meeting_pods_malaysia_quick_answers',
+                  cta_text: `View ${product.name}`,
+                  destination_url: `/pods/${product.slug}`,
+                  product_name: product.name,
+                  product_slug: product.slug
+                })
+              }
+              className="group block h-full rounded-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2"
+            >
+              <article className="h-full rounded-[10px] border border-[#ddd8cf] bg-white p-6 transition-colors group-hover:border-[#c6c1b7]">
+                <h2 className="text-[23px] font-semibold tracking-tight text-[#172126]">{item.title}</h2>
+                <p className="mt-2 text-[16px] leading-[1.6] text-[#59635f]">
+                  <span className="font-semibold text-[#172126]">{product.name}:</span> {product.shortDesc}
+                </p>
+                <p className="mt-2 text-[15px] font-medium text-[#5b636c]">{product.pricing.amount}</p>
+                <span className="mt-3 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 group-hover:underline">
+                  View {product.name}
+                </span>
+              </article>
+            </Link>
           );
         })}
       </section>

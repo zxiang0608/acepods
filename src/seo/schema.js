@@ -7,6 +7,7 @@ import {
   SEO_BRAND_IDENTIFIER,
   SEO_BRAND_LEGAL,
   SEO_BRAND_LOGO,
+  SEO_BRAND_MAP_URL,
   SEO_BRAND_PHONE,
   SEO_BRAND_POSTAL_CODE,
   SEO_BRAND_PRIMARY,
@@ -64,7 +65,7 @@ export const localBusinessSchema = {
   '@type': ['Organization', 'LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
   '@id': `${SEO_BASE_URL}/#organization`,
   name: SEO_BRAND_PRIMARY,
-  priceRange: 'RM8,850+',
+  priceRange: 'RM9,150+',
   image: [
     SEO_BRAND_LOGO,
     `${SEO_BASE_URL}/og-image.jpg`
@@ -77,12 +78,7 @@ export const localBusinessSchema = {
     postalCode: SEO_BRAND_POSTAL_CODE,
     addressCountry: SEO_BRAND_COUNTRY
   },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 3.07523,
-    longitude: 101.44187
-  },
-  hasMap: 'https://maps.app.goo.gl/nJHHvTLD5YEov9e4A',
+  hasMap: SEO_BRAND_MAP_URL,
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',

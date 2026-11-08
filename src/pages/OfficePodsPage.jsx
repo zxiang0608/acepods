@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SeoMeta from '../components/SeoMeta';
 import PageShell from '../components/PageShell';
-import { products } from '../data/products';
+import { publishedProducts } from '../data/products';
 import { pushDataLayerEvent } from '../lib/tracking';
 import { OFFICE_PODS_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, createFaqSchema, createPricingItemListSchema, organizationSchema, websiteSchema } from '../seo/schema';
+import ProductMediaPending from '../components/ProductMediaPending';
+import aceMeetOfficePodsImage from '../../assets/products/catalog/ace-meet-menu-sofa.png';
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
@@ -24,10 +26,10 @@ const officePodsCollectionSchema = {
 const getProductSpec = (product, label) => product.specs.find((spec) => spec.label === label)?.value || 'See product page';
 const officePodsItemListSchema = createPricingItemListSchema(
   '/office-pods',
-  products.map((product) => ({
+  publishedProducts.map((product) => ({
     name: product.name,
     path: `/pods/${product.slug}`,
-    price: product.pdpPricing.baseConfigurations[0].price,
+    price: product.pdpPricing.finalPrice ?? product.pdpPricing.baseConfigurations[0].price,
     image: product.heroImage
   }))
 );
@@ -63,39 +65,46 @@ export default function OfficePodsPage() {
       </section>
 
       <section className="mx-auto grid w-full max-w-[1200px] gap-5 px-5 md:grid-cols-2 md:px-8 lg:grid-cols-4">
-        {products.map((product) => (
-          <article key={product.slug} className="rounded-[10px] border border-[#ddd8cf] bg-white p-5">
-            <img
-              src={product.catalogImage || product.thumbImage}
-              alt={`${product.name} office pod`}
-              width="990"
-              height="990"
-              className={`mx-auto h-[180px] w-full object-contain object-bottom ${product.catalogImageClassName || ''}`}
-              loading="lazy"
-              decoding="async"
-            />
-            <h2 className="mt-4 text-[22px] font-semibold tracking-tight text-[#172126]">{product.name}</h2>
-            <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">{product.shortDesc}</p>
-            <p className="mt-3 text-[14px] font-medium text-[#68726f]">{product.cardSupport}</p>
-            <p className="mt-4 text-[16px] font-semibold text-[#007653]">
-              {product.pricing.amount}{product.slug === 'ace-uno' ? ' (pod only)' : ''}
-            </p>
-            <Link
-              to={`/pods/${product.slug}`}
-              onClick={() =>
-                pushDataLayerEvent('product_cta_click', {
-                  cta_location: 'office_pods_page_card',
-                  cta_text: `View ${product.name}`,
-                  destination_url: `/pods/${product.slug}`,
-                  product_name: product.name,
-                  product_slug: product.slug
-                })
-              }
-              className="mt-4 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline"
-            >
-              View {product.name}
-            </Link>
-          </article>
+        {publishedProducts.map((product) => (
+          <Link
+            key={product.slug}
+            to={`/pods/${product.slug}`}
+            onClick={() =>
+              pushDataLayerEvent('product_cta_click', {
+                cta_location: 'office_pods_page_card',
+                cta_text: `View ${product.name}`,
+                destination_url: `/pods/${product.slug}`,
+                product_name: product.name,
+                product_slug: product.slug
+              })
+            }
+            className="group block h-full rounded-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2"
+          >
+            <article className="h-full rounded-[10px] border border-[#ddd8cf] bg-white p-5 transition-colors group-hover:border-[#c6c1b7]">
+              {product.catalogImage || product.thumbImage ? (
+                <img
+                  src={product.slug === 'ace-meet' ? aceMeetOfficePodsImage : product.catalogImage || product.thumbImage}
+                  alt={product.slug === 'ace-meet' ? 'Ace Meet office pod with sofa' : `${product.name} office pod`}
+                  width="990"
+                  height="990"
+                  className={`mx-auto h-[180px] w-full object-contain object-bottom ${product.catalogImageClassName || ''}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <ProductMediaPending productName={product.name} variant="card" />
+              )}
+              <h2 className="mt-4 text-[22px] font-semibold tracking-tight text-[#172126]">{product.name}</h2>
+              <p className="mt-2 text-[15px] leading-[1.6] text-[#59635f]">{product.shortDesc}</p>
+              <p className="mt-3 text-[14px] font-medium text-[#68726f]">{product.cardSupport}</p>
+              <p className="mt-4 text-[16px] font-semibold text-[#007653]">
+                {product.pricing.amount}
+              </p>
+              <span className="mt-4 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 group-hover:underline">
+                View {product.name}
+              </span>
+            </article>
+          </Link>
         ))}
       </section>
 
@@ -112,17 +121,17 @@ export default function OfficePodsPage() {
                 <th className="px-2 py-3">Capacity</th>
                 <th className="px-2 py-3">Best for</th>
                 <th className="px-2 py-3">Noise reduction</th>
-                <th className="px-2 py-3">From price</th>
+                <th className="px-2 py-3">Price</th>
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {publishedProducts.map((product) => (
                 <tr key={product.slug} className="border-b border-[#efebe3]">
                   <td className="px-2 py-3 font-semibold text-[#172126]"><Link to={`/pods/${product.slug}`} className="underline-offset-4 hover:underline">{product.name}</Link></td>
                   <td className="px-2 py-3">{getProductSpec(product, 'Capacity')}</td>
                   <td className="px-2 py-3">{getProductSpec(product, 'Best for')}</td>
                   <td className="px-2 py-3">{getProductSpec(product, 'Noise reduction')}</td>
-                  <td className="px-2 py-3">{product.pricing.amount}{product.slug === 'ace-uno' ? ' (pod only)' : ''}</td>
+                  <td className="px-2 py-3">{product.pricing.amount}</td>
                 </tr>
               ))}
             </tbody>

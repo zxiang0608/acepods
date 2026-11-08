@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import PageShell from '../components/PageShell';
+import CustomerLogoStage from '../components/CustomerLogoStage';
 import SeoMeta from '../components/SeoMeta';
 import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import { getGalleryAvifSource } from '../lib/galleryImages';
+import { filterPortfolioProjects } from '../lib/portfolioFilters';
 import { portfolioProjectMedia } from '../data/portfolioMedia';
 import parkerLogo from '../../assets/parker-logo.png';
 import alphabetLogo from '../../assets/alphabet-logo.png';
 import cmacgmLogo from '../../assets/cmacgm-logo.svg';
 import everllenceLogo from '../../assets/everllence-logo.png';
-import taylorsLogo from '../../assets/taylorsuniversity.svg';
-import brenntagLogo from '../../assets/brenntag-logo.webp';
+import taylorsLogo from '../../assets/taylorsuniversity-tight.webp';
+import brenntagLogo from '../../assets/brenntag-logo-tight.webp';
 import amorepacificLogo from '../../assets/amorepacific-logo.svg';
 
 const breadcrumbs = [
@@ -43,6 +45,7 @@ const companyImageSourceMap = {
   'Parker Hannifin': 'Alphabet Capital',
   'Alphabet Capital': 'Parker Hannafin'
 };
+const portfolioImageSourceNames = new Set([...orderedCompanies, ...Object.values(companyImageSourceMap)]);
 
 const groupedPortfolio = Object.entries(portfolioImageModules)
   .filter(([path]) => !excludedPortfolioBasenames.has(path.split('/').pop().replace(/\.[^.]+$/, '')))
@@ -52,7 +55,7 @@ const groupedPortfolio = Object.entries(portfolioImageModules)
     const companyName = segments[segments.length - 2];
     return { src, avifSrc: getGalleryAvifSource(src), filename, companyName };
   })
-  .filter((item) => orderedCompanies.includes(item.companyName))
+  .filter((item) => portfolioImageSourceNames.has(item.companyName))
   .sort((a, b) => a.filename.localeCompare(b.filename))
   .reduce((acc, item) => {
     if (!acc[item.companyName]) {
@@ -66,6 +69,8 @@ const getVisiblePortfolioImages = (images) => (images.length > 9 ? images.slice(
 
 export default function PortfolioPage() {
   const [activeGallery, setActiveGallery] = useState(null);
+  const [selectedCompany, setSelectedCompany] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const companySections = orderedCompanies
     .map((companyName) => {
       const approvedProject = portfolioProjectMedia[companyName];
@@ -80,6 +85,12 @@ export default function PortfolioPage() {
       };
     })
     .filter((section) => section.images.length > 0);
+  const visibleSections = filterPortfolioProjects(companySections, selectedCompany, searchQuery);
+  const hasFilters = Boolean(selectedCompany || searchQuery);
+  const clearFilters = () => {
+    setSelectedCompany('');
+    setSearchQuery('');
+  };
 
   useEffect(() => {
     if (!activeGallery) return undefined;
@@ -139,19 +150,42 @@ export default function PortfolioPage() {
       </section>
 
       <section className="mx-auto w-full max-w-[1200px] px-5 pb-16 md:px-8 md:pb-20">
-        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-14">
-          {companySections.map((section) => (
+        <div role="search" aria-label="Find portfolio projects" className="mb-8 border-y border-[#d9d6cf] py-5">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label htmlFor="portfolio-client" className="mb-2 block text-[13px] font-semibold text-[#172126]">Client / project</label>
+              <select id="portfolio-client" value={selectedCompany} onChange={(event) => setSelectedCompany(event.target.value)} aria-controls="portfolio-results" className="min-h-11 w-full rounded-[4px] border border-[#bcbfb9] bg-white px-3 text-[14px] text-[#172126] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#145b5f]">
+                <option value="">All projects ({companySections.length})</option>
+                {companySections.map((section) => <option key={section.companyName} value={section.companyName}>{section.companyName}</option>)}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="portfolio-search" className="mb-2 block text-[13px] font-semibold text-[#172126]">Search by client name</label>
+              <input id="portfolio-search" type="search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} aria-controls="portfolio-results" placeholder="Enter a client name" className="min-h-11 w-full rounded-[4px] border border-[#bcbfb9] bg-white px-3 text-[14px] text-[#172126] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#145b5f]" />
+            </div>
+          </div>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+            <p role="status" aria-live="polite" aria-atomic="true" className="text-[13px] text-[#68726f]">Showing {visibleSections.length} of {companySections.length} projects</p>
+            {hasFilters ? <button type="button" onClick={clearFilters} className="min-h-11 text-[13px] font-semibold text-[#007653] underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#145b5f]">Clear filters</button> : null}
+          </div>
+        </div>
+        <div id="portfolio-results" className="grid gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-14">
+          {visibleSections.length === 0 ? (
+            <div className="py-8 md:col-span-2">
+              <h2 className="text-[20px] font-semibold text-[#172126]">No projects match these filters</h2>
+              <p className="mt-2 text-[14px] text-[#68726f]">Try another client name or clear the filters to see all projects.</p>
+            </div>
+          ) : null}
+          {visibleSections.map((section) => (
             <article key={section.companyName} className="min-w-0">
               <div className="mb-4 flex min-h-[52px] items-center gap-3 border-b border-[#d9d6cf] pb-3">
                 {section.branding?.logo ? (
-                  <div className="flex h-[36px] w-[112px] shrink-0 items-center justify-start overflow-hidden">
-                    <img
-                      src={section.branding.logo}
-                      alt={section.branding.logoAlt}
-                      className="h-full w-full object-contain object-left mix-blend-multiply"
-                      loading="lazy"
-                    />
-                  </div>
+                  <CustomerLogoStage
+                    src={section.branding.logo}
+                    alt={section.branding.logoAlt}
+                    stageClassName="h-[36px] w-[112px] justify-start"
+                    imageClassName="object-left mix-blend-multiply"
+                  />
                 ) : null}
                 <div>
                   <h2 className="text-[18px] font-semibold tracking-tight text-[#172126] md:text-[20px]">{section.companyName}</h2>

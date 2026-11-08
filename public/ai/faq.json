@@ -2,11 +2,11 @@
   "schemaVersion": "1.0",
   "name": "Ace Office Pods frequently asked questions",
   "url": "https://aceofficepods.com/faq",
-  "updated": "2026-08-08",
+  "updated": "2026-09-04",
   "questions": [
     {
       "question": "What is included in the office pod price?",
-      "answer": "Inclusions vary by model. Ace Uno is RM8,850 for the pod only; standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Other model and project scopes are confirmed in the quotation."
+      "answer": "Inclusions vary by model. Ace Uno is RM9,150 for the pod only; standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Outstation, restricted-access, and non-standard scopes are confirmed in the quotation."
     },
     {
       "question": "What affects the final office pod price?",
@@ -18,7 +18,7 @@
     },
     {
       "question": "How soundproof are office pods in real working environments?",
-      "answer": "Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub do not have a published dB rating on this site and should not be treated as soundproof."
+      "answer": "Acoustic performance is model-specific. Ace Uno carries an approximately 25 dB(A) claim, while the six media-ready models carry verified acoustic status in their product records. These products should not be described as completely soundproof."
     },
     {
       "question": "What happens if we need help after delivery?",
@@ -34,13 +34,13 @@
     },
     {
       "question": "What does 27 dBA noise reduction actually mean?",
-      "answer": "Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided, so the figure should not be described as independently certified or applied to other models."
+      "answer": "Ace Uno is listed with an approximately 25 dB(A) acoustic claim. The six media-ready models carry verified acoustic status in their product records; Ask the team for the applicable report and installation conditions for a project-specific review."
     }
   ],
   "faqs": [
     {
       "question": "What is included in the office pod price?",
-      "answer": "Inclusions vary by model. Ace Uno is RM8,850 for the pod only; standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Other model and project scopes are confirmed in the quotation."
+      "answer": "Inclusions vary by model. Ace Uno is RM9,150 for the pod only; standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Outstation, restricted-access, and non-standard scopes are confirmed in the quotation."
     },
     {
       "question": "What affects the final office pod price?",
@@ -52,7 +52,7 @@
     },
     {
       "question": "How soundproof are office pods in real working environments?",
-      "answer": "Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub do not have a published dB rating on this site and should not be treated as soundproof."
+      "answer": "Acoustic performance is model-specific. Ace Uno carries an approximately 25 dB(A) claim, while the six media-ready models carry verified acoustic status in their product records. These products should not be described as completely soundproof."
     },
     {
       "question": "What happens if we need help after delivery?",
@@ -68,7 +68,7 @@
     },
     {
       "question": "What does 27 dBA noise reduction actually mean?",
-      "answer": "Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only. No verified supporting test document or measurement conditions have been provided, so the figure should not be described as independently certified or applied to other models."
+      "answer": "Ace Uno is listed with an approximately 25 dB(A) acoustic claim. The six media-ready models carry verified acoustic status in their product records; Ask the team for the applicable report and installation conditions for a project-specific review."
     }
   ]
 }

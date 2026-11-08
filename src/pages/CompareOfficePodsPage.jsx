@@ -6,8 +6,8 @@ import { SEO_KEYWORDS_COMMON } from '../seo/constants';
 import { buildCanonical, createBreadcrumbSchema, organizationSchema, websiteSchema } from '../seo/schema';
 
 const COMPARISON_ROWS = [
-  { model: 'Ace Uno',      path: '/pods/ace-uno',      capacity: '1 pax',        dimensions: '1418 × 1018 mm', from: 'RM8,850 pod only',  bestFor: 'Calls, video meetings, focus' },
-  { model: 'Ace Plus',     path: '/pods/ace-plus',     capacity: '1 pax',        dimensions: '1000 × 1000 mm', from: 'RM14,500', bestFor: 'Extended use; unverified first-party ~27 dB(A) claim' },
+  { model: 'Ace Uno',      path: '/pods/ace-uno',      capacity: '1 pax',        dimensions: '1418 × 1018 mm', from: 'RM9,150 pod only',  bestFor: 'Calls, video meetings, focus' },
+  { model: 'Ace Plus',     path: '/pods/ace-plus',     capacity: '1 pax',        dimensions: '1000 × 1000 mm', from: 'RM14,500', bestFor: 'Extended use; verified acoustic claim' },
   { model: 'Ace Flex',     path: '/pods/ace-flex',     capacity: '1 pax',        dimensions: '1600 × 1200 mm', from: 'RM19,900', bestFor: 'Spacious solo work' },
   { model: 'Ace Flex Duo', path: '/pods/ace-flex-duo', capacity: '2 pax',        dimensions: '1600 × 1200 mm', from: 'RM23,900', bestFor: 'One-to-one discussions' },
   { model: 'Ace Meet',     path: '/pods/ace-meet',     capacity: '2–4 pax',      dimensions: '2200 × 1200 mm', from: 'RM22,200', bestFor: 'Small team meetings' },
@@ -55,7 +55,7 @@ export default function CompareOfficePodsPage() {
                 <th className="px-4 py-3 text-left font-semibold text-[#172126]">Model</th>
                 <th className="px-4 py-3 text-left font-semibold text-[#172126]">Capacity</th>
                 <th className="px-4 py-3 text-left font-semibold text-[#172126]">W × D</th>
-                <th className="px-4 py-3 text-left font-semibold text-[#172126]">From</th>
+                <th className="px-4 py-3 text-left font-semibold text-[#172126]">Price</th>
                 <th className="px-4 py-3 text-left font-semibold text-[#172126]">Best for</th>
               </tr>
             </thead>
@@ -74,7 +74,7 @@ export default function CompareOfficePodsPage() {
             </tbody>
           </table>
         </div>
-        <p className="mt-2 text-[13px] text-[#68726f]">All prices are starting prices. Final cost depends on delivery location, installation scope, and selected options.</p>
+        <p className="mt-2 text-[13px] text-[#68726f]">Most published prices are starting prices; outstation, restricted-access, and non-standard scopes may vary.</p>
       </section>
 
       <section className="mx-auto mt-6 grid w-full max-w-[1100px] gap-5 px-5 md:px-8">

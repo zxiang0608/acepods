@@ -9,7 +9,7 @@ import aceMeeting2d from '../../assets/2D images/4. Ace Meet with Sofa and Table
 import aceMeetingXL2d from '../../assets/2D images/8. Ace Hub with Table and Sofa.png';
 import aceMeetSofaImage from '../../assets/sofa.png';
 import aceFlexSofaImage from '../../assets/ace-flex-sofa.png';
-import aceHubLShapeSofaImage from '../../assets/L-shape-sofa.png';
+import hubLShapeSofaNormalizedImage from '../../assets/hub-l-shape-sofa-normalized.png';
 import officeChairImage from '../../assets/office-chair.png';
 import aceFlexOfficeChairPreviewImage from '../../assets/POD images/S POD + - Ace Solo Pro/s pod+ with eco chair.png';
 import aceFlexAdjustableTableImage from '../../assets/ace-flex-adjustable-table.png';
@@ -23,11 +23,21 @@ import aceUnoCatalogImage from '../../assets/products/catalog/ace-uno.png';
 import aceUnoPineGreenCatalogImage from '../../assets/products/catalog/ace-uno-pine-green.png';
 import aceUnoShadowGreyCatalogImage from '../../assets/products/catalog/ace-uno-shadow-grey.png';
 import aceUnoDustyTurquoiseCatalogImage from '../../assets/products/catalog/ace-uno-dusty-turquoise.png';
+import aceUnoHomepageFrontImage from '../../assets/products/catalog/ace-uno-homepage-front.png';
+import aceUnoDustyTurquoiseFrontImage from '../../assets/products/catalog/ace-uno-dusty-turquoise-front.png';
+import aceUnoPineGreenFrontImage from '../../assets/products/catalog/ace-uno-pine-green-front.png';
+import aceUnoShadowGreyFrontImage from '../../assets/products/catalog/ace-uno-shadow-grey-front.png';
 import aceUnoInteriorImage from '../../assets/products/ace-uno/gallery/ace-uno-interior.webp';
-import aceUnoWarmSandFrontImage from '../../assets/products/ace-uno/gallery/ace-uno-warm-sand-front.webp';
-import aceUnoPineGreenFrontImage from '../../assets/products/ace-uno/gallery/ace-uno-pine-green-front.webp';
-import aceUnoShadowGreyFrontImage from '../../assets/products/ace-uno/gallery/ace-uno-shadow-grey-front.webp';
-import aceUnoDustyTurquoiseFrontImage from '../../assets/products/ace-uno/gallery/ace-uno-dusty-turquoise-front.webp';
+import aceUnoPowerControlsFeature from '../../assets/features/ace-uno/ace-uno-power-controls.png';
+import acePodOneCatalogImage from '../../assets/products/catalog/ace-pod-one.png';
+import acePodOneFrontImage from '../../assets/products/ace-pod-one/gallery/ace-pod-one-front.png';
+import acePodOneAngleImage from '../../assets/products/ace-pod-one/gallery/ace-pod-one-angle.png';
+import acePodOneDimensionsImage from '../../assets/products/ace-pod-one/technical-drawing/ace-pod-one-dimensions.png';
+import acePodFourCatalogImage from '../../assets/products/catalog/ace-pod-four.png';
+import acePodFourFrontImage from '../../assets/products/ace-pod-four/gallery/ace-pod-four-front.png';
+import acePodFourAngleImage from '../../assets/products/ace-pod-four/gallery/ace-pod-four-angle.png';
+import acePodFourLifestyleImage from '../../assets/products/ace-pod-four/gallery/ace-pod-four-lifestyle.png';
+import acePodFourDimensionsImage from '../../assets/products/ace-pod-four/technical-drawing/ace-pod-four-dimensions.png';
 import acePlusCatalogImage from '../../assets/products/catalog/ace-plus.png';
 import aceFlexCatalogImage from '../../assets/products/catalog/ace-flex.png';
 import aceFlexDuoCatalogImage from '../../assets/products/catalog/ace-flex-duo.png';
@@ -44,8 +54,8 @@ import hubTableNormalizedImage from '../../assets/hub-table-normalized.png';
 import hubCentreTableWhiteboardNormalizedImage from '../../assets/hub-centre-table-whiteboard-normalized.png';
 import greyAsh01NormalizedImage from '../../assets/grey-ash-01-normalized.png';
 import hubTableSofaWhiteboardNormalizedImage from '../../assets/hub-table-sofa-whiteboard-normalized.png';
-import barStoolBlack from '../../assets/bar-stool-black.png';
-import barStoolWhite from '../../assets/bar-stool-white.png';
+import barStoolBlack from '../../assets/bar-stool-black-normalized.png';
+import barStoolWhite from '../../assets/bar-stool-white-normalized.png';
 import plusFeature11 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/11-trimmed.png';
 import plusFeature12 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/12-trimmed.png';
 import plusFeature21 from '../../assets/features/For ace plus and above/pictures only (high res)/trimmed/21-normalized-v2.png';
@@ -93,55 +103,54 @@ import aceMeetingXLGreenMossImage from '../../assets/POD images/TEAM POD 6 Seate
 import aceMeetingXLOceanBlueImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/ocean blue.jpg';
 import aceMeetingXLGreyAshImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/Grey ash-01.png';
 import aceMeetingXLCharcoalGreyImage from '../../assets/POD images/TEAM POD 6 Seaters - Ace Meeting XL/All colours/charcoal grey.png';
-import aceFlexDuoGallery01 from '../../assets/POD images/Ace Flex Duo/flexduo1.jpeg';
-import aceFlexDuoGallery02 from '../../assets/POD images/Ace Flex Duo/flexduo2.jpeg';
-import aceFlexDuoGallery03 from '../../assets/POD images/Ace Flex Duo/flexduo3.jpeg';
-import aceFlexDuoGallery04 from '../../assets/POD images/Ace Flex Duo/2 seaters.png';
-import portfolioAlphabet02 from '../../assets/Portfolio/Alphabet Capital/20250619_140819.jpg';
-import portfolioAlphabet03 from '../../assets/Portfolio/Alphabet Capital/20250619_141013.jpg';
-import portfolioAlphabet04 from '../../assets/Portfolio/Alphabet Capital/ace-duo-2.jpg';
-import portfolioAlphabet05 from '../../assets/Portfolio/Alphabet Capital/ace-duo-4.jpg';
-import portfolioAlphabet06 from '../../assets/Portfolio/Alphabet Capital/handle.jpg';
-import portfolioAlphabet07 from '../../assets/Portfolio/Alphabet Capital/knob.jpg';
-import portfolioAlphabet08 from '../../assets/Portfolio/Alphabet Capital/wall-inside-2.jpg';
-import portfolioTaylorPods from "../../assets/Portfolio/Taylor's College/20260209_143054.jpg";
-import portfolioTaylorFeature from "../../assets/Portfolio/Taylor's College/20260224_102358.jpg";
-import portfolioTaylorInstallation from "../../assets/Portfolio/Taylor's College/20260224_102416.jpg";
-import portfolioTaylorAddons from "../../assets/Portfolio/Taylor's College/20260224_102417.jpg";
-import portfolioOthers01 from '../../assets/Portfolio/Others/IMG-20250604-WA0022.jpg';
-import portfolioOthers02 from '../../assets/Portfolio/Others/IMG-20250604-WA0023.jpg';
-import portfolioOthers03 from '../../assets/Portfolio/Others/IMG-20250604-WA0024(1).jpg';
-import portfolioOthers04 from '../../assets/Portfolio/Others/IMG-20250818-WA0001.jpg';
-import portfolioOthers05 from '../../assets/Portfolio/Others/IMG-20250818-WA0002.jpg';
-import portfolioOthers06 from '../../assets/Portfolio/Others/IMG-20250818-WA0007.jpg';
-import portfolioOthers07 from '../../assets/Portfolio/Others/IMG-20250818-WA0008.jpg';
-import portfolioOthers08 from '../../assets/Portfolio/Others/IMG-20250818-WA0011.jpg';
-import portfolioOthers09 from '../../assets/Portfolio/Others/IMG-20250818-WA0014.jpg';
-import portfolioOthers10 from '../../assets/Portfolio/Others/IMG-20250818-WA0015.jpg';
-import portfolioOthers11 from '../../assets/Portfolio/Others/IMG-20250818-WA0016.jpg';
-import portfolioOthers12 from '../../assets/Portfolio/Others/IMG-20250818-WA0017.jpg';
-import portfolioOthers13 from '../../assets/Portfolio/Others/telepodklcc_1.webp';
-import portfolioAceHub01 from '../../assets/Portfolio/Ace hub/20260313_145941.jpg';
-import portfolioAceHub02 from '../../assets/Portfolio/Ace hub/20260313_145945.jpg';
-import portfolioAceHub03 from '../../assets/Portfolio/Ace hub/20260313_145948.jpg';
-import portfolioAceHub04 from '../../assets/Portfolio/Ace hub/20260313_145950.jpg';
-import portfolioAceHub06 from '../../assets/Portfolio/Ace hub/YYC_advisor_4.webp';
-import portfolioEverllenceOpenDoor from '../../assets/Portfolio/Everllence/everllence-ace-plus-open-door.jpg';
-import portfolioEverllenceInUse from '../../assets/Portfolio/Everllence/everllence-ace-plus-in-use.jpg';
-import portfolioEverllenceInterior from '../../assets/Portfolio/Everllence/everllence-ace-plus-interior.jpg';
-import portfolioEverllenceOfficeWide01 from '../../assets/Portfolio/Everllence/everllence-ace-plus-office-wide-01.jpg';
-import portfolioEverllenceOfficeWide03 from '../../assets/Portfolio/Everllence/everllence-ace-plus-office-wide-03.jpg';
-import portfolioEverllenceBrandedFront from '../../assets/Portfolio/Everllence/everllence-ace-plus-branded-front.jpg';
-import { ACE_PLUS_ACOUSTIC_CLAIM, ACE_UNO_PRICING, POD_SEO_BY_SLUG } from './podSeoCatalog';
+// Ace Hub previews owner-approved 2026-11-08 (see PRODUCT_PAGE_SOURCE_OF_TRUTH.md, "Ace Hub empty pod, L-shape sofa and entertainment previews").
+import aceHubGreyAshEmptyImage from '../../assets/products/ace-hub/preview/ace-hub-grey-ash-empty-normalized.png';
+import aceHubLShapeGreyAshImage from '../../assets/products/ace-hub/preview/ace-hub-l-shape-sofa-grey-ash-normalized.png';
+import aceHubLShapeMustardYellowImage from '../../assets/products/ace-hub/preview/ace-hub-l-shape-sofa-mustard-yellow-normalized.png';
+import aceHubLShapeOceanBlueImage from '../../assets/products/ace-hub/preview/ace-hub-l-shape-sofa-ocean-blue-normalized.png';
+import aceHubLShapeCharcoalGreyImage from '../../assets/products/ace-hub/preview/ace-hub-l-shape-sofa-charcoal-grey-normalized.png';
+import aceHubLShapeGreenMossImage from '../../assets/products/ace-hub/preview/ace-hub-l-shape-sofa-green-moss-normalized.png';
+import aceHubLShapeOrangeSquashImage from '../../assets/products/ace-hub/preview/ace-hub-l-shape-sofa-orange-squash-normalized.png';
+import aceHubEntertainmentGreyAshImage from '../../assets/products/ace-hub/preview/ace-hub-entertainment-grey-ash-normalized.png';
+import aceHubEntertainmentMustardYellowImage from '../../assets/products/ace-hub/preview/ace-hub-entertainment-mustard-yellow-normalized.png';
+import aceHubEntertainmentOceanBlueImage from '../../assets/products/ace-hub/preview/ace-hub-entertainment-ocean-blue-normalized.png';
+import aceHubEntertainmentCharcoalGreyImage from '../../assets/products/ace-hub/preview/ace-hub-entertainment-charcoal-grey-normalized.png';
+import aceHubEntertainmentGreenMossImage from '../../assets/products/ace-hub/preview/ace-hub-entertainment-green-moss-normalized.png';
+import aceHubEntertainmentOrangeSquashImage from '../../assets/products/ace-hub/preview/ace-hub-entertainment-orange-squash-normalized.png';
+import orangeSquashTexture from '../../assets/finish-swatches/orange-squash.webp';
+import mustardYellowTexture from '../../assets/finish-swatches/mustard-yellow.webp';
+import greenMossTexture from '../../assets/finish-swatches/green-moss.webp';
+import oceanBlueTexture from '../../assets/finish-swatches/ocean-blue.webp';
+import greyAshTexture from '../../assets/finish-swatches/grey-ash.webp';
+import charcoalGreyTexture from '../../assets/finish-swatches/charcoal-grey.webp';
+import shimoAshTexture from '../../assets/finish-swatches/shimo-ash.webp';
+import skyBlueTexture from '../../assets/finish-swatches/sky-blue.webp';
+import moonlightGreyTexture from '../../assets/finish-swatches/moonlight-grey.webp';
+import tangerineTexture from '../../assets/finish-swatches/tangerine.webp';
+import lightPlumTexture from '../../assets/finish-swatches/light-plum.webp';
+import vividRedTexture from '../../assets/finish-swatches/vivid-red.webp';
+import creamyWhiteTexture from '../../assets/finish-swatches/creamy-white.webp';
+import sesameBlackTexture from '../../assets/finish-swatches/sesame-black.webp';
+import { ACE_ACOUSTIC_CLAIMS_BY_SLUG, ACE_UNO_PRICING, POD_SEO_BY_SLUG } from './podSeoCatalog';
+import { productPortfolioMedia } from './portfolioMedia';
+import { ACE_HUB_WEIGHT_KG, STANDARD_KLANG_VALLEY_DELIVERY } from './commercialTerms.js';
 
 const deliveryDefaults = {
-  default: 350,
+  default: STANDARD_KLANG_VALLEY_DELIVERY,
+  chargeBasis: 'trip',
   outstationNote:
     'Other areas outside of Klang Valley will be subject to different delivery and installation charges. If items need to be carried via staircase, additional handling charges will apply.'
 };
 
 const highBarStoolAddon = { id: 'high-bar-stool', label: 'High bar stool (white/black)', amount: 290, image: barStoolBlack };
 const aceUnoBarStoolAddon = { ...highBarStoolAddon, amount: 250 };
+const aceFlexDuoBarStoolAddon = { ...highBarStoolAddon, label: 'High bar stool' };
+const aceFlexDuoTwoBarStoolsAddon = {
+  id: 'two-high-bar-stools',
+  label: '2 high bar stools',
+  amount: highBarStoolAddon.amount * 2,
+  image: barStoolBlack
+};
 const officeChairAddon = {
   id: 'office-chair',
   label: 'Office chair',
@@ -175,61 +184,19 @@ const meetingXLLShapeSofaAddon = {
   id: 'meeting-xl-l-shape-sofa',
   label: 'L-shape sofa (Ace Hub only)',
   amount: 2650,
-  image: aceHubLShapeSofaImage,
-  previewImage: aceHubLShapeSofaImage
+  image: hubLShapeSofaNormalizedImage,
+  previewImage: hubLShapeSofaNormalizedImage,
+  // Main preview shows the Hub with the L-shape sofa inside, in the selected exterior colour.
+  previewImageByExterior: {
+    'finish-orange-squash': aceHubLShapeOrangeSquashImage,
+    'finish-mustard-yellow': aceHubLShapeMustardYellowImage,
+    'finish-green-moss': aceHubLShapeGreenMossImage,
+    'finish-ocean-blue': aceHubLShapeOceanBlueImage,
+    'finish-grey-ash': aceHubLShapeGreyAshImage,
+    'finish-charcoal-grey': aceHubLShapeCharcoalGreyImage
+  },
+  previewAlt: 'Ace Hub with the L-shape sofa inside'
 };
-const acePlusPortfolioPhotos = [
-  portfolioTaylorPods,
-  portfolioTaylorFeature,
-  portfolioTaylorInstallation,
-  portfolioTaylorAddons,
-  portfolioOthers01,
-  portfolioOthers02,
-  portfolioOthers03,
-  portfolioOthers04,
-  portfolioOthers05,
-  portfolioOthers06,
-  portfolioOthers07,
-  portfolioOthers08,
-  portfolioOthers09,
-  portfolioOthers10,
-  portfolioOthers11,
-  portfolioOthers12,
-  portfolioOthers13,
-  portfolioEverllenceInUse,
-  portfolioEverllenceBrandedFront,
-  portfolioEverllenceOpenDoor,
-  portfolioEverllenceInterior,
-  portfolioEverllenceOfficeWide01,
-  portfolioEverllenceOfficeWide03,
-  barStoolBlack,
-  barStoolWhite
-];
-const aceFlexAlphabetPhotos = [
-  portfolioAlphabet02,
-  portfolioAlphabet03,
-  portfolioAlphabet04,
-  portfolioAlphabet05,
-  portfolioAlphabet06,
-  portfolioAlphabet07,
-  portfolioAlphabet08,
-  barStoolBlack,
-  barStoolWhite
-];
-const aceFlexDuoGalleryPhotos = [aceFlexDuoGallery01, aceFlexDuoGallery02, aceFlexDuoGallery03, aceFlexDuoGallery04];
-const aceMeetPortfolioPhotos = [
-  portfolioAceHub01,
-  portfolioAceHub02,
-  portfolioAceHub03,
-  portfolioAceHub04,
-  barStoolBlack,
-  barStoolWhite
-];
-const aceHubPortfolioPhotos = [
-  portfolioAceHub06,
-  barStoolBlack,
-  barStoolWhite
-];
 const plusAndAboveFeatureItems = [
   {
     id: 'plus-feature-acoustic-excellence',
@@ -341,6 +308,66 @@ const plusAndAboveFeatureRows = [
   plusAndAboveFeatureItems.slice(12, 16),
   plusAndAboveFeatureItems.slice(16, 18)
 ];
+const aceUnoFeatureRows = [
+  [
+    {
+      id: 'uno-feature-integrated-controls-power',
+      image: aceUnoPowerControlsFeature,
+      title: 'Power & Lighting',
+      desc: 'Dedicated rocker switches for fan and light control, plus a built-in universal socket with USB-A and USB-C charging.'
+    },
+    {
+      id: 'uno-feature-acoustic-excellence',
+      image: plusFeature16,
+      title: 'Acoustic Excellence',
+      desc: 'Layered acoustic panels and enclosed construction help create a quieter, more private space for calls and focus.'
+    },
+    {
+      id: 'uno-feature-superb-ventilation-system',
+      image: plusFeature21,
+      title: 'Superb Ventilation System',
+      desc: 'Dual quiet fans circulate air through the pod to support comfortable use.'
+    },
+    {
+      id: 'uno-feature-pet-enhanced-acoustics',
+      image: plusFeature11,
+      title: 'PET for Enhanced Acoustics',
+      desc: 'The 9 mm polyester-fibre lining helps absorb sound and reduce echo inside the pod.'
+    }
+  ],
+  [
+    {
+      id: 'uno-feature-ventilation-outlet-system',
+      image: plusFeature12,
+      title: 'Ventilation Outlet System',
+      desc: 'Ventilation outlets support balanced airflow and help keep the pod comfortable during use.'
+    },
+    {
+      id: 'uno-feature-mobile-pod-capabilities',
+      image: plusFeature17,
+      title: 'Mobile Pod Capabilities',
+      desc: 'Designed to be repositioned with the right handling when your office layout changes.'
+    },
+    {
+      id: 'uno-feature-aluminium-pivot-door-frame',
+      image: plusFeature25,
+      title: 'Aluminium Pivot Door Frame',
+      desc: 'Pivot door hardware supports smooth opening and controlled access.'
+    },
+    {
+      id: 'uno-feature-solid-ergonomic-door-handle',
+      image: plusFeature14,
+      title: 'Solid Ergonomic Door Handle',
+      desc: 'A solid, easy-grip handle supports straightforward day-to-day access.'
+    },
+    {
+      id: 'uno-feature-soft-door-closure',
+      image: plusFeature23,
+      title: 'Soft Door Closure',
+      desc: 'Soft-close door hardware helps reduce slamming and improves everyday comfort.'
+    }
+  ]
+];
 const sharedFeatureStripItems = [
   { title: 'Motion sensor for energy saving', desc: 'Systems activate on entry and turn off after inactivity.' },
   { title: 'Efficient air flow system', desc: 'Fresh air is circulated to preserve acoustic comfort.' },
@@ -361,15 +388,24 @@ const sharedFeatureStripItems = [
   { title: 'Furnishing sofa', desc: 'High-density sofa cushioning supports longer sessions.' }
 ];
 
+const standardExteriorColors = [
+  { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30', textureImage: orangeSquashTexture },
+  { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f', textureImage: mustardYellowTexture },
+  { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32', textureImage: greenMossTexture },
+  { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f', textureImage: oceanBlueTexture },
+  { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d', textureImage: greyAshTexture },
+  { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439', textureImage: charcoalGreyTexture }
+];
+
 const standardInteriorColors = [
-  { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
-  { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
-  { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
-  { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
-  { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
-  { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
-  { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
-  { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
+  { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8', textureImage: shimoAshTexture },
+  { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb', textureImage: skyBlueTexture },
+  { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972', textureImage: moonlightGreyTexture },
+  { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d', textureImage: tangerineTexture },
+  { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5', textureImage: lightPlumTexture },
+  { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f', textureImage: vividRedTexture },
+  { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb', textureImage: creamyWhiteTexture },
+  { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428', textureImage: sesameBlackTexture }
 ];
 
 const standardInteriorIds = standardInteriorColors.map((color) => color.id);
@@ -400,16 +436,27 @@ const meetingExteriorImageMap = {
   'finish-charcoal-grey': aceMeetingCharcoalGreyImage
 };
 
+// Only Grey Ash has an approved empty-pod render; the other five finishes keep their furnished renders (owner decision 2026-11-08).
 const meetingXLExteriorImageMap = {
   'finish-orange-squash': aceMeetingXLOrangeSquashImage,
   'finish-mustard-yellow': aceMeetingXLMustardYellowImage,
   'finish-green-moss': aceMeetingXLGreenMossImage,
   'finish-ocean-blue': aceMeetingXLOceanBlueImage,
-  'finish-grey-ash': aceMeetingXLGreyAshImage,
+  'finish-grey-ash': aceHubGreyAshEmptyImage,
   'finish-charcoal-grey': aceMeetingXLCharcoalGreyImage
 };
 
+const meetingXLEntertainmentImageMap = {
+  'finish-orange-squash': aceHubEntertainmentOrangeSquashImage,
+  'finish-mustard-yellow': aceHubEntertainmentMustardYellowImage,
+  'finish-green-moss': aceHubEntertainmentGreenMossImage,
+  'finish-ocean-blue': aceHubEntertainmentOceanBlueImage,
+  'finish-grey-ash': aceHubEntertainmentGreyAshImage,
+  'finish-charcoal-grey': aceHubEntertainmentCharcoalGreyImage
+};
+
 const formatFromPrice = (amount) => `From RM${amount.toLocaleString('en-MY')}`;
+const formatFinalPrice = (amount) => `RM${amount.toLocaleString('en-MY')}`;
 
 export const products = [
   {
@@ -419,10 +466,10 @@ export const products = [
     shortDesc: POD_SEO_BY_SLUG['ace-uno'].shortDesc,
     metaTitle: 'Ace Uno Call Pod — Price & Specs | Ace Office Pods',
     metaDescription:
-      'Ace Uno: A freestanding call pod for one person. From RM8,850 pod only. Plug-and-play, no renovation. View specs, colours, delivery, and installation.',
-    heroImage: aceUnoCatalogImage,
-    thumbImage: aceUnoCatalogImage,
-    catalogImage: aceUnoCatalogImage,
+      'Ace Uno: A freestanding call pod for one person. From RM9,150 pod only. Plug-and-play, no renovation. View specs, colours, delivery, and installation.',
+    heroImage: aceUnoHomepageFrontImage,
+    thumbImage: aceUnoHomepageFrontImage,
+    catalogImage: aceUnoHomepageFrontImage,
     catalogImageClassName: 'mix-blend-multiply',
     extraPreviewImages: [],
     thumbnailStripLabel: 'Ace Uno views and colours',
@@ -430,7 +477,7 @@ export const products = [
     disableProductImageBlend: true,
     customerPhotos: [],
     drawing2dImage: aceUnoDimensionsImage,
-    cardSupport: 'Step-in call pod for open-plan offices',
+    cardSupport: 'Step-in call pod for open offices',
     pricing: {
       amount: formatFromPrice(POD_SEO_BY_SLUG['ace-uno'].startingPrice),
       note: 'Pod only. Delivery and installation are itemised separately.'
@@ -443,20 +490,24 @@ export const products = [
       addOnOptions: [aceUnoBarStoolAddon]
     },
     colorImageMap: {
-      default: aceUnoWarmSandFrontImage,
+      default: aceUnoHomepageFrontImage,
       byExterior: {
-        'finish-warm-sand': aceUnoWarmSandFrontImage,
+        'finish-warm-sand': aceUnoHomepageFrontImage,
         'finish-pine-green': aceUnoPineGreenFrontImage,
         'finish-shadow-grey': aceUnoShadowGreyFrontImage,
         'finish-dusty-turquoise': aceUnoDustyTurquoiseFrontImage
       }
     },
     presentationGallery: [
-      { image: aceUnoWarmSandFrontImage, label: 'Warm Sand front view', exteriorId: 'finish-warm-sand' },
-      { image: aceUnoPineGreenFrontImage, label: 'Pine Green front view', exteriorId: 'finish-pine-green' },
-      { image: aceUnoShadowGreyFrontImage, label: 'Shadow Grey front view', exteriorId: 'finish-shadow-grey' },
-      { image: aceUnoDustyTurquoiseFrontImage, label: 'Dusty Turquoise front view', exteriorId: 'finish-dusty-turquoise' },
-      { image: aceUnoInteriorImage, label: 'Interior worktop, power and lighting' }
+      { image: aceUnoHomepageFrontImage, label: 'Warm Sand front view', exteriorId: 'finish-warm-sand', view: 'front' },
+      { image: aceUnoDustyTurquoiseFrontImage, label: 'Dusty Turquoise front view', exteriorId: 'finish-dusty-turquoise', view: 'front' },
+      { image: aceUnoPineGreenFrontImage, label: 'Pine Green front view', exteriorId: 'finish-pine-green', view: 'front' },
+      { image: aceUnoShadowGreyFrontImage, label: 'Shadow Grey front view', exteriorId: 'finish-shadow-grey', view: 'front' },
+      { image: aceUnoCatalogImage, label: 'Warm Sand three-quarter view', exteriorId: 'finish-warm-sand', view: 'three-quarter' },
+      { image: aceUnoPineGreenCatalogImage, label: 'Pine Green three-quarter view', exteriorId: 'finish-pine-green', view: 'three-quarter' },
+      { image: aceUnoShadowGreyCatalogImage, label: 'Shadow Grey three-quarter view', exteriorId: 'finish-shadow-grey', view: 'three-quarter' },
+      { image: aceUnoDustyTurquoiseCatalogImage, label: 'Dusty Turquoise three-quarter view', exteriorId: 'finish-dusty-turquoise', view: 'three-quarter' },
+      { image: aceUnoInteriorImage, label: 'Interior worktop, power and lighting', view: 'interior' }
     ],
     hideThumbnailsOnColorMode: true,
     exteriorLabel: 'Fabric Exterior Colour Options',
@@ -464,6 +515,7 @@ export const products = [
       capacity: '1 person',
       externalDimensions: '1418W × 1018D × 2185H mm',
       externalHeight: '2185 mm',
+      publishedAcousticClaim: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-uno'].qualifiedDisplay,
       boothFacilities: ['Integrated worktop', 'Universal power socket', 'USB Type-A and USB Type-C charging'],
       extraRows: [
         { label: 'Category', value: 'Single-person acoustic call and focus pod' },
@@ -482,7 +534,7 @@ export const products = [
         { label: 'Installation', value: 'Freestanding plug-and-play design' }
       ]
     },
-    featureRows: [],
+    featureRows: aceUnoFeatureRows,
     specs: [
       { label: 'Capacity', value: '1 person' },
       { label: 'Best for', value: 'Calls, video meetings, and focused work' },
@@ -505,7 +557,7 @@ export const products = [
     defaultInterior: 'int-soft-sand',
     faq: [
       { q: 'What is included with Ace Uno?', a: 'The standard pod includes its worktop, LED light, dual ventilation fans, universal power socket, USB Type-A and USB Type-C charging.' },
-      { q: 'Does RM8,850 include delivery and installation?', a: 'No. RM8,850 is the pod-only starting price. Standard Klang Valley installation is RM350 and delivery is RM350.' }
+      { q: 'Does RM9,150 include delivery and installation?', a: 'No. RM9,150 is the pod-only starting price. Standard Klang Valley installation is RM350 and delivery is RM400 per trip.' }
     ]
   },
   {
@@ -517,7 +569,8 @@ export const products = [
     thumbImage: acePlusCatalogImage,
     catalogImage: acePlusCatalogImage,
     extraPreviewImages: [acePlusCatalogImage, acePlusFrontTransparentImage],
-    customerPhotos: acePlusPortfolioPhotos,
+    customerPhotos: [],
+    projectGallery: productPortfolioMedia['ace-plus'],
     drawing2dImage: aceSoloPlus2d,
     hoverImg: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For one-person focused work',
@@ -604,7 +657,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      publishedAcousticClaim: ACE_PLUS_ACOUSTIC_CLAIM.qualifiedDisplay,
+      publishedAcousticClaim: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-plus'].qualifiedDisplay,
       weight: '335 kg without crate / 455 kg with crate',
       boothFacilities: ['Standing table'],
       extraRows: [
@@ -628,10 +681,9 @@ export const products = [
         { label: 'Touch buttons', value: 'Light dimmer on/off and brightness knob; exhaust fan on/off knob' },
         { label: 'Power cable', value: 'Power connector with fuse via floor 13A UK plug, 3 m, 110–240V' },
         { label: 'Socket type', value: 'Type A' },
-        { label: 'Socket detail', value: 'Netbox M 2-gang, 2 universal power sockets' },
+        { label: 'Socket detail', value: '1 universal power socket' },
         { label: 'Power consumption', value: 'LED lights 22.4W; quiet fan 4.8W; exhaust fan 3.12W' },
-        { label: 'Airflow', value: '155 CFM, complete air exchange at 100% fan power' },
-        { label: 'Published acoustic claim', value: ACE_PLUS_ACOUSTIC_CLAIM.qualifiedDisplay }
+        { label: 'Airflow', value: '155 CFM, complete air exchange at 100% fan power' }
       ]
     },
     featureRows: plusAndAboveFeatureRows,
@@ -640,31 +692,15 @@ export const products = [
       { label: 'Capacity', value: '1 pax' },
       { label: 'Best for', value: '1-pax phone / focus pod' },
       { label: 'Ventilation', value: '1 ventilation fan + 1 exhaust fan, 1500 rpm, 155 CFM' },
-      { label: 'Power', value: 'Type A socket, Netbox M 2-gang, 2 universal sockets' }
+      { label: 'Power', value: 'Type A socket, 1 universal power socket' }
     ],
     useCases: [
       'Private calls and video meetings in open-plan offices (Malaysia)',
       'Focused single-person work without distractions in busy workplaces',
       'Quick entry workflow with automatic lights, fan, and power activation when the door opens'
     ],
-    exteriorColors: [
-      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
-      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
-      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
-      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
-      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
-      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
-    ],
-    interiorColors: [
-      { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
-      { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
-      { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
-      { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
-      { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
-      { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
-      { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
-      { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
-    ],
+    exteriorColors: standardExteriorColors,
+    interiorColors: standardInteriorColors,
     defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
     faq: [
@@ -684,7 +720,8 @@ export const products = [
     thumbImage: aceFlexCatalogImage,
     catalogImage: aceFlexCatalogImage,
     extraPreviewImages: [aceFlexCatalogImage, aceFlexFrontTransparentImage],
-    customerPhotos: aceFlexAlphabetPhotos,
+    customerPhotos: [],
+    projectGallery: productPortfolioMedia['ace-flex'],
     drawing2dImage: aceDuo2d,
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'Extra room for longer sessions',
@@ -700,7 +737,7 @@ export const products = [
       ],
       installationPerUnit: 550,
       delivery: deliveryDefaults,
-      addOnOptions: [officeChairAddon, flexSofaAddon]
+      addOnOptions: [officeChairAddon, highBarStoolAddon, flexSofaAddon]
     },
     colorImageMap: {
       default: aceSoloProGreyAshImage,
@@ -774,6 +811,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
+      publishedAcousticClaim: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-flex'].qualifiedDisplay,
       weight: '523 kg without crate / 663 kg with crate',
       boothFacilities: ['Fixed table / height-adjustable table (HAT)'],
       extraRows: [
@@ -815,24 +853,8 @@ export const products = [
       'Private one-to-one calls and interviews in open-plan offices',
       'Corporate offices and SMEs needing instant privacy for one person'
     ],
-    exteriorColors: [
-      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
-      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
-      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
-      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
-      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
-      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
-    ],
-    interiorColors: [
-      { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
-      { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
-      { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
-      { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
-      { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
-      { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
-      { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
-      { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
-    ],
+    exteriorColors: standardExteriorColors,
+    interiorColors: standardInteriorColors,
     defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
     faq: [
@@ -849,7 +871,7 @@ export const products = [
     thumbImage: aceFlexDuoCatalogImage,
     catalogImage: aceFlexDuoCatalogImage,
     extraPreviewImages: [aceFlexDuoCatalogImage, aceFlexDuoFrontTransparentImage],
-    customerPhotos: aceFlexDuoGalleryPhotos,
+    customerPhotos: [],
     drawing2dImage: aceDuo2d,
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 2 people and hybrid calls',
@@ -865,7 +887,7 @@ export const products = [
       ],
       installationPerUnit: 550,
       delivery: deliveryDefaults,
-      addOnOptions: [highBarStoolAddon]
+      addOnOptions: [aceFlexDuoBarStoolAddon, aceFlexDuoTwoBarStoolsAddon]
     },
     colorImageMap: {
       default: aceFlexDuoGreyAshImage,
@@ -939,6 +961,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
+      publishedAcousticClaim: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-flex-duo'].qualifiedDisplay,
       weight: '523 kg without crate / 663 kg with crate',
       boothFacilities: ['Fixed table / height-adjustable table (HAT)'],
       extraRows: [
@@ -980,24 +1003,8 @@ export const products = [
       'Private one-to-one calls and interviews in open-plan offices',
       'Corporate offices and SMEs needing instant privacy for two people'
     ],
-    exteriorColors: [
-      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
-      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
-      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
-      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
-      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
-      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
-    ],
-    interiorColors: [
-      { id: 'int-shimo-ash', label: 'Shimo Ash', hex: '#d6c2a8' },
-      { id: 'int-sky-blue', label: 'Sky Blue', hex: '#2f78bb' },
-      { id: 'int-moonlight-grey', label: 'Moonlight Grey', hex: '#5f6972' },
-      { id: 'int-tangerine', label: 'Tangerine', hex: '#f36b2d' },
-      { id: 'int-light-plum', label: 'Light Plum', hex: '#b16da5' },
-      { id: 'int-vivid-red', label: 'Vivid Red', hex: '#cc323f' },
-      { id: 'int-creamy-white', label: 'Creamy White', hex: '#d7d3cb' },
-      { id: 'int-sesame-black', label: 'Sesame Black', hex: '#1f2428' }
-    ],
+    exteriorColors: standardExteriorColors,
+    interiorColors: standardInteriorColors,
     defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
     faq: [
@@ -1014,7 +1021,8 @@ export const products = [
     thumbImage: aceMeetCatalogImage,
     catalogImage: aceMeetCatalogImage,
     extraPreviewImages: [aceMeetCatalogImage, aceMeetFrontTransparentImage],
-    customerPhotos: aceMeetPortfolioPhotos,
+    customerPhotos: [],
+    projectGallery: productPortfolioMedia['ace-meet'],
     drawing2dImage: aceMeeting2d,
     hoverImg: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 4 people and hybrid calls',
@@ -1038,7 +1046,7 @@ export const products = [
       ],
       installationPerUnit: 750,
       delivery: deliveryDefaults,
-      addOnOptions: [meetingOfficeChairAddon, meetingSofaAddon]
+      addOnOptions: [meetingOfficeChairAddon, highBarStoolAddon, meetingSofaAddon]
     },
     colorImageMap: {
       default: aceMeetingGreyAshImage,
@@ -1056,6 +1064,7 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
+      publishedAcousticClaim: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-meet'].qualifiedDisplay,
       weight: '636 kg without crate / 826 kg with crate',
       boothFacilities: ['Empty / sofa / chair optional'],
       extraRows: [
@@ -1097,14 +1106,7 @@ export const products = [
       'Small team meetings and hybrid calls in open-plan offices',
       'Improving office productivity with quiet, dedicated collaboration spaces'
     ],
-    exteriorColors: [
-      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
-      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
-      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
-      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
-      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
-      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
-    ],
+    exteriorColors: standardExteriorColors,
     interiorColors: standardInteriorColors,
     defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
@@ -1122,7 +1124,8 @@ export const products = [
     thumbImage: aceHubCatalogImage,
     catalogImage: aceHubCatalogImage,
     extraPreviewImages: [aceHubCatalogImage, aceHubFrontTransparentImage],
-    customerPhotos: aceHubPortfolioPhotos,
+    customerPhotos: [],
+    projectGallery: productPortfolioMedia['ace-hub'],
     drawing2dImage: aceMeetingXL2d,
     hoverImg: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=800&auto=format&fit=crop',
     cardSupport: 'For 6 people and hybrid calls',
@@ -1146,12 +1149,31 @@ export const products = [
           label: 'Whiteboard panel + centre table + 2 sofa sets',
           amount: 8200,
           previewImage: hubTableSofaWhiteboardNormalizedImage
+        },
+        {
+          id: 'meeting-xl-entertainment',
+          label: 'Entertainment setup',
+          amount: null,
+          amountLabel: 'Contact for price',
+          quoteRequired: true,
+          previewImage: aceHubEntertainmentGreyAshImage,
+          previewImageByExterior: meetingXLEntertainmentImageMap,
+          previewAlt: 'Ace Hub configured with an entertainment setup: wall-mounted TV and L-shape sofa',
+          hideThumbnail: true,
+          mediaApproval: {
+            source: 'Owner Drive: Versalink pods > Ace HUB > Wtih L-shape sofa + tv',
+            role: 'add-on-preview',
+            status: 'approved',
+            approvedOn: '2026-11-08'
+          }
         }
       ],
       installationPerUnit: 800,
       delivery: deliveryDefaults,
-      addOnOptions: [officeChairAddon, meetingXLSofaAddon, meetingXLLShapeSofaAddon]
+      addOnOptions: [officeChairAddon, highBarStoolAddon, meetingXLSofaAddon, meetingXLLShapeSofaAddon]
     },
+    // With no option selected the main image follows the selected exterior, so Grey Ash opens on the empty pod.
+    mainImageFollowsExterior: true,
     colorImageMap: {
       default: meetingXLExteriorImageMap['finish-grey-ash'],
       byExterior: meetingXLExteriorImageMap,
@@ -1168,7 +1190,8 @@ export const products = [
       internalHeight: '2070mm (81.50")',
       externalHeight: '2350mm (92.52")',
       roomHeightRequirement: '2500mm (98.43")',
-      weight: '469 kg without crate / 679 kg with crate',
+      publishedAcousticClaim: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-hub'].qualifiedDisplay,
+      weight: `${ACE_HUB_WEIGHT_KG} kg`,
       boothFacilities: ['Empty / sofa / chair optional'],
       extraRows: [
         { label: 'Category', value: 'Up-to-6-pax hub / lounge pod' },
@@ -1210,14 +1233,7 @@ export const products = [
       'Improving office productivity with quiet, dedicated collaboration spaces',
       'Corporate offices, SMEs, and teams needing instant privacy solutions'
     ],
-    exteriorColors: [
-      { id: 'finish-orange-squash', label: 'Orange Squash', hex: '#be5d30' },
-      { id: 'finish-mustard-yellow', label: 'Mustard Yellow', hex: '#c9972f' },
-      { id: 'finish-green-moss', label: 'Green Moss', hex: '#5f6f32' },
-      { id: 'finish-ocean-blue', label: 'Ocean Blue', hex: '#2e5d7f' },
-      { id: 'finish-grey-ash', label: 'Grey Ash', hex: '#8b8b8d' },
-      { id: 'finish-charcoal-grey', label: 'Charcoal Grey', hex: '#2f3439' }
-    ],
+    exteriorColors: standardExteriorColors,
     interiorColors: standardInteriorColors,
     defaultExterior: 'finish-grey-ash',
     defaultInterior: 'int-shimo-ash',
@@ -1225,7 +1241,159 @@ export const products = [
       { q: 'How is Ace Hub different from Ace Meet?', a: 'Ace Hub provides more internal space for larger group sessions.' },
       { q: 'Is Ace Hub suitable for daily hybrid meetings?', a: 'Yes. It is designed for regular team use and longer hybrid calls.' }
     ]
+  },
+  {
+    slug: 'ace-pod-one',
+    name: 'Ace Pod One',
+    breadcrumbLabel: 'Ace Pods',
+    shortDesc: POD_SEO_BY_SLUG['ace-pod-one'].shortDesc,
+    metaTitle: 'Ace Pod One Office Pod — Price & Specs | Ace Office Pods',
+    metaDescription:
+      'Ace Pod One is a compact one-person privacy pod for calls and focused work. Published specifications include dimensions, materials, ventilation, lighting, power, and warranty; the final standard Klang Valley price is RM15,550 including delivery and installation.',
+    mediaStatus: 'approved',
+    publicationStatus: 'prelaunch',
+    heroImage: acePodOneAngleImage,
+    thumbImage: acePodOneCatalogImage,
+    catalogImage: acePodOneCatalogImage,
+    catalogImageClassName: 'mix-blend-multiply',
+    extraPreviewImages: [],
+    customerPhotos: [],
+    drawing2dImage: acePodOneDimensionsImage,
+    cardSupport: 'One-person call and focus pod',
+    cardNote: 'Final Klang Valley price; dimensions published',
+    pricing: {
+      amount: formatFinalPrice(POD_SEO_BY_SLUG['ace-pod-one'].startingPrice),
+      note: 'Final standard Klang Valley total: RM14,650 pod + RM400 delivery per trip + RM500 installation = RM15,550. Outstation and restricted-access scopes may vary.'
+    },
+    pdpPricing: {
+      baseConfigurations: [{ id: 'ace-pod-one-unit', label: 'Pod price before delivery + installation', price: 14650 }],
+      configurationOptions: [],
+      finalPrice: POD_SEO_BY_SLUG['ace-pod-one'].startingPrice,
+      basePriceLabel: 'Pod price',
+      pricingIncludesDeliveryAndInstallation: false,
+      installationPerUnit: 500,
+      delivery: deliveryDefaults,
+      addOnOptions: [],
+    },
+    colorImageMap: { default: acePodOneAngleImage, byExterior: {} },
+    presentationGallery: [
+      { image: acePodOneFrontImage, label: 'Front view', view: 'front' },
+      { image: acePodOneAngleImage, label: 'Three-quarter view with chair', view: 'three-quarter' }
+    ],
+    technicalSpecifications: {
+      capacity: '1 person',
+      externalDimensions: '1000W × 1000D × 2170H mm',
+      internalDimensions: '800W × 910D × 2000H mm',
+      weight: 'Net 320 kg; packed 400 kg',
+      extraRows: [
+        { label: 'Built-in table', value: '744W × 300D × 25H mm' },
+        { label: 'Materials', value: '1.2 mm electro-galvanised steel, epoxy powder coating, polyester-fibre acoustic board, black polyester-fibre carpet, aluminium-framed tempered-glass door, 10 mm tempered-glass rear panel' },
+        { label: 'Power and controls', value: 'Universal 110V–250V socket with ventilation-fan speed control and dimmable-light control' },
+        { label: 'Ventilation and lighting', value: '2 dual-speed bearing ventilation fans (12VDC); 1 × 11W 4000K LED' },
+        { label: 'Motion sensor', value: '12VDC' },
+        { label: 'Maximum power consumption', value: '40W' },
+        { label: 'Packing', value: '2280W × 1140D × 670H mm; approximately 1.9 m³' },
+        { label: 'Standard exterior colour', value: 'White' },
+        { label: 'Warranty', value: '1 year for manufacturing defects and electronic components' }
+      ]
+    },
+    featureRows: [],
+    specs: [
+      { label: 'Capacity', value: '1 person' },
+      { label: 'Best for', value: 'Phone calls, virtual meetings, and focused work' },
+      { label: 'External dimensions', value: '1000W × 1000D × 2170H mm' },
+      { label: 'Internal dimensions', value: '800W × 910D × 2000H mm' }
+    ],
+    useCases: [
+      'Private phone calls and virtual meetings',
+      'Focused individual work in open-plan offices',
+      'A compact enclosed workspace without permanent renovation'
+    ],
+    exteriorColors: [],
+    interiorColors: [],
+    faq: [
+      { q: 'How many people can use Ace Pod One?', a: 'Ace Pod One is listed as a single-person office pod.' },
+      { q: 'How is the final price broken down?', a: 'RM14,650 pod + RM400 delivery per trip + RM500 installation = RM15,550 final standard Klang Valley total. Outstation, restricted-access, and non-standard scopes may vary.' }
+    ]
+  },
+  {
+    slug: 'ace-pod-four',
+    name: 'Ace Pod Four',
+    breadcrumbLabel: 'Ace Pods',
+    shortDesc: POD_SEO_BY_SLUG['ace-pod-four'].shortDesc,
+    metaTitle: 'Ace Pod Four Office Pod — Price & Specs | Ace Office Pods',
+    metaDescription:
+      'Ace Pod Four is a four-person meeting pod for private collaboration. Published specifications include dimensions, materials, ventilation, lighting, power, weight, and warranty; the final standard Klang Valley price is RM31,550 including delivery and installation.',
+    mediaStatus: 'approved',
+    publicationStatus: 'prelaunch',
+    heroImage: acePodFourAngleImage,
+    thumbImage: acePodFourCatalogImage,
+    catalogImage: acePodFourCatalogImage,
+    catalogImageClassName: 'mix-blend-multiply',
+    extraPreviewImages: [],
+    customerPhotos: [],
+    drawing2dImage: acePodFourDimensionsImage,
+    cardSupport: 'Up-to-four-person pod',
+    cardNote: 'Final Klang Valley price; dimensions published',
+    pricing: {
+      amount: formatFinalPrice(POD_SEO_BY_SLUG['ace-pod-four'].startingPrice),
+      note: 'Final standard Klang Valley total: RM30,400 pod + RM400 delivery per trip + RM750 installation = RM31,550. Outstation and restricted-access scopes may vary.'
+    },
+    pdpPricing: {
+      baseConfigurations: [{ id: 'ace-pod-four-unit', label: 'Pod price before delivery + installation', price: 30400 }],
+      configurationOptions: [],
+      finalPrice: POD_SEO_BY_SLUG['ace-pod-four'].startingPrice,
+      basePriceLabel: 'Pod price',
+      pricingIncludesDeliveryAndInstallation: false,
+      installationPerUnit: 750,
+      delivery: deliveryDefaults,
+      addOnOptions: [],
+    },
+    colorImageMap: { default: acePodFourAngleImage, byExterior: {} },
+    presentationGallery: [
+      { image: acePodFourFrontImage, label: 'Front view with table and seating', view: 'front' },
+      { image: acePodFourAngleImage, label: 'Three-quarter view', view: 'three-quarter' },
+      { image: acePodFourLifestyleImage, label: 'Office setting view', view: 'lifestyle' }
+    ],
+    technicalSpecifications: {
+      capacity: 'Up to 4 people',
+      externalDimensions: '2200W × 1200D × 2170H mm',
+      internalDimensions: '2000W × 1120D × 2000H mm',
+      weight: 'Net 650 kg; packed 800 kg',
+      extraRows: [
+        { label: 'Built-in table', value: '700W × 550D × 25H mm' },
+        { label: 'Materials', value: '1.2 mm electro-galvanised steel, epoxy powder coating, polyester-fibre acoustic board, black polyester-fibre carpet, aluminium-framed tempered-glass door, 10 mm tempered-glass rear panel' },
+        { label: 'Power and controls', value: 'Universal 110V–250V socket with ventilation-fan speed control and dimmable-light control' },
+        { label: 'Ventilation and lighting', value: '4 dual-speed bearing ventilation fans (12VDC); 2 × 11W 4000K LED' },
+        { label: 'Motion sensor', value: '12VDC' },
+        { label: 'Maximum power consumption', value: '62W' },
+        { label: 'Packing', value: '2280W × 1000D × 1420H mm + 1100W × 560D × 730H mm (sofa); approximately 3.24 m³ + 0.45 m³ (sofa)' },
+        { label: 'Standard exterior colour', value: 'White' },
+        { label: 'Warranty', value: '1 year for manufacturing defects and electronic components' }
+      ]
+    },
+    featureRows: [],
+    specs: [
+      { label: 'Capacity', value: 'Up to 4 people' },
+      { label: 'Best for', value: 'Meetings, brainstorming, and private collaboration' },
+      { label: 'External dimensions', value: '2200W × 1200D × 2170H mm' },
+      { label: 'Internal dimensions', value: '2000W × 1120D × 2000H mm' }
+    ],
+    useCases: [
+      'Private team meetings and brainstorming sessions for up to four people',
+      'One-to-one discussions and focused collaboration in open-plan offices',
+      'A ventilated enclosed workspace without permanent renovation'
+    ],
+    exteriorColors: [],
+    interiorColors: [],
+    faq: [
+      { q: 'How many people can use Ace Pod Four?', a: 'Ace Pod Four is a four-person meeting pod.' },
+      { q: 'What are the listed dimensions for Ace Pod Four?', a: 'The source listing gives external dimensions of 2200W × 1200D × 2170H mm and internal dimensions of 2000W × 1120D × 2000H mm.' },
+      { q: 'How is the final price broken down?', a: 'RM30,400 pod + RM400 delivery per trip + RM750 installation = RM31,550 final standard Klang Valley total. Outstation, restricted-access, and non-standard scopes may vary.' }
+    ]
   }
 ];
 
 export const getProductBySlug = (slug) => products.find((product) => product.slug === slug);
+
+export const publishedProducts = products.filter((product) => product.publicationStatus !== 'prelaunch');

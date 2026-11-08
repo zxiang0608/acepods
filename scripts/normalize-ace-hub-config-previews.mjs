@@ -13,6 +13,21 @@ const jobs = [
   ['hub-table-sofa-whiteboard.png', 'hub-table-sofa-whiteboard-normalized.png']
 ];
 
+// Owner-approved 2026-11-08 from the shared Drive (Versalink pods > Ace HUB):
+// empty pod (Grey Ash only), Hub with L-shape sofa, and Hub with L-shape sofa + TV.
+const hubFinishes = ['grey-ash', 'mustard-yellow', 'ocean-blue', 'charcoal-grey', 'green-moss', 'orange-squash'];
+const hubSource = (name) => `products/ace-hub/source/${name}.png`;
+const hubPreview = (name) => `products/ace-hub/preview/${name}-normalized.png`;
+jobs.push(
+  [hubSource('ace-hub-grey-ash-empty'), hubPreview('ace-hub-grey-ash-empty')],
+  ...hubFinishes.map((finish) => [hubSource(`ace-hub-l-shape-sofa-${finish}`), hubPreview(`ace-hub-l-shape-sofa-${finish}`)]),
+  ...hubFinishes.map((finish) => [hubSource(`ace-hub-entertainment-${finish}`), hubPreview(`ace-hub-entertainment-${finish}`)])
+);
+
+// Optional filter: `node scripts/normalize-ace-hub-config-previews.mjs <substring>` regenerates matching outputs only.
+const outputFilter = process.argv[2] || '';
+const selectedJobs = jobs.filter(([, outputName]) => outputName.includes(outputFilter));
+
 const trimOpaqueBounds = (data, width, height, channels, alphaThreshold = 8) => {
   let minX = width;
   let minY = height;
@@ -98,7 +113,7 @@ const removeEdgeBackground = async (inputPath) => {
   return sharp(data, { raw: { width, height, channels } }).png({ compressionLevel: 9 }).toBuffer();
 };
 
-for (const [inputRelativePath, outputName] of jobs) {
+for (const [inputRelativePath, outputName] of selectedJobs) {
   const inputPath = path.join(assetsDir, inputRelativePath);
   const outputPath = path.join(assetsDir, outputName);
   const bgRemovedBuffer = await removeEdgeBackground(inputPath);

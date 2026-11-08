@@ -28,15 +28,24 @@ For a product with approved colour renders, use this order:
 
 For Ace Uno the locked order is:
 
-1. Warm Sand three-quarter render.
-2. Pine Green three-quarter render.
-3. Shadow Grey three-quarter render.
-4. Dusty Turquoise three-quarter render.
-5. Interior worktop, power, and lighting image.
+1. Warm Sand front render.
+2. Dusty Turquoise front render.
+3. Pine Green front render.
+4. Warm Sand three-quarter render.
+5. Pine Green three-quarter render.
+6. Shadow Grey three-quarter render.
+7. Dusty Turquoise three-quarter render.
+8. Interior worktop, power, and lighting image.
 
-Do not publish the Ace Uno colour/material-code chart or the duplicate front renders. Technical drawings stay in the Dimensions section. Add-on previews stay with the configurator and do not become product-gallery images.
+The first three product-page images and the homepage image face front; subsequent exterior images use the three-quarter side profile. The three front renders were explicitly approved for the first positions on 2026-09-04. All exterior views use approved normalized transparent catalogue assets; do not substitute flattened white-background exports. Do not publish the Ace Uno colour/material-code chart or any additional front renders beyond these three. Technical drawings stay in the Dimensions section. Add-on previews stay with the configurator and do not become product-gallery images.
 
 Product views and add-on previews must be separate labelled groups. Selecting an add-on may preview that add-on, but it must not insert the image into the product-gallery sequence.
+
+For the prelaunch Ace Pod One and Ace Pod Four pages, the owner explicitly approved dimension crops from page 5 of the supplied Mono/Tetra brochure. They are technical-drawing assets only: `assets/products/ace-pod-one/technical-drawing/ace-pod-one-dimensions.png` and `assets/products/ace-pod-four/technical-drawing/ace-pod-four-dimensions.png`. Do not move these crops into either product gallery or use the brochure’s acoustic statement as image-based evidence for a published acoustic claim.
+
+### Product-page project grouping
+
+Past-project media is model-specific. A product with one approved project keeps all approved photos under that project. A product with multiple approved projects stores them as separate project groups, each with its own project name, location, description, and images; the product page renders each group separately and never mixes photos between projects. Do not assign a portfolio photo to a product model or project without an approved media record.
 
 ## 4. Image preparation
 

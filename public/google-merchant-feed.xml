@@ -11,10 +11,12 @@
       <g:link>https://aceofficepods.com/pods/ace-uno</g:link>
       <g:image_link>https://aceofficepods.com/products/ace-uno.png</g:image_link>
       <g:availability>in_stock</g:availability>
-      <g:price>8850.00 MYR</g:price>
+      <g:price>9150.00 MYR</g:price>
       <g:brand>Ace Office Pods</g:brand>
       <g:condition>new</g:condition>
       <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+      <g:google_product_category>Furniture &gt; Office Furniture</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
       <g:id>ace-plus</g:id>
@@ -27,6 +29,8 @@
       <g:brand>Ace Office Pods</g:brand>
       <g:condition>new</g:condition>
       <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+      <g:google_product_category>Furniture &gt; Office Furniture</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
       <g:id>ace-flex</g:id>
@@ -39,6 +43,8 @@
       <g:brand>Ace Office Pods</g:brand>
       <g:condition>new</g:condition>
       <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+      <g:google_product_category>Furniture &gt; Office Furniture</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
       <g:id>ace-flex-duo</g:id>
@@ -51,6 +57,8 @@
       <g:brand>Ace Office Pods</g:brand>
       <g:condition>new</g:condition>
       <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+      <g:google_product_category>Furniture &gt; Office Furniture</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
       <g:id>ace-meet</g:id>
@@ -63,6 +71,8 @@
       <g:brand>Ace Office Pods</g:brand>
       <g:condition>new</g:condition>
       <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+      <g:google_product_category>Furniture &gt; Office Furniture</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
       <g:id>ace-hub</g:id>
@@ -75,6 +85,8 @@
       <g:brand>Ace Office Pods</g:brand>
       <g:condition>new</g:condition>
       <g:product_type>Office Pods &gt; Acoustic Office Booths</g:product_type>
+      <g:google_product_category>Furniture &gt; Office Furniture</g:google_product_category>
+      <g:identifier_exists>no</g:identifier_exists>
     </item>
   </channel>
 </rss>

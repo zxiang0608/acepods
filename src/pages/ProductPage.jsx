@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, Check, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Check, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import SeoMeta from '../components/SeoMeta';
 import SiteFooter from '../components/SiteFooter';
 import SubpageHeader from '../components/SubpageHeader';
@@ -13,8 +13,9 @@ import { buildAbsoluteUrl, buildCanonical, createBreadcrumbSchema, createFaqSche
 import { getProductMeta, getProductPublicImage } from '../seo/pageMeta';
 import QuoteForm from '../components/QuoteForm';
 import { getProductMaterialMarks } from '../data/productMaterialMarks';
-import barStoolBlack from '../../assets/bar-stool-black.png';
-import barStoolWhite from '../../assets/bar-stool-white.png';
+import ProductMediaPending from '../components/ProductMediaPending';
+import barStoolBlack from '../../assets/bar-stool-black-normalized.png';
+import barStoolWhite from '../../assets/bar-stool-white-normalized.png';
 
 const EMPTY_PRESENTATION_GALLERY = [];
 
@@ -31,7 +32,7 @@ const PDP_QUICK_ANSWER_COPY = {
       {
         q: 'How much does Ace Uno cost in Malaysia?',
         a: ({ startingPriceText }) =>
-          `Ace Uno starts from ${startingPriceText} for the pod only. Standard Klang Valley installation is RM350 and delivery is RM350, making RM9,550 before the optional stool or RM9,800 with the optional RM250 high bar stool.`
+          `Ace Uno starts from ${startingPriceText} for the pod only. Standard Klang Valley installation is RM350 and delivery is RM400 per trip, making RM9,900 before the optional stool or RM10,150 with the optional RM250 high bar stool.`
       },
       {
         q: 'What is Ace Uno best for?',
@@ -39,7 +40,7 @@ const PDP_QUICK_ANSWER_COPY = {
       },
       {
         q: 'How is Ace Uno different from Ace Plus?',
-        a: 'Ace Uno is the lower-priced enclosed call and focus pod with a wider footprint. Ace Plus has a smaller footprint and a separate unverified first-party approximately 27 dB(A) claim. Compare dimensions, intended session length, ventilation, and verified documentation before choosing.'
+        a: 'Ace Uno is the lower-priced enclosed call and focus pod with a wider footprint and an approximately 25 dB(A) acoustic claim. Ace Plus has a smaller footprint and a verified acoustic claim. Compare dimensions, intended session length, ventilation, and project requirements before choosing.'
       }
     ]
   },
@@ -146,7 +147,7 @@ const PDP_QUICK_ANSWER_COPY = {
       {
         q: 'How much does Ace Hub cost in Malaysia?',
         a: ({ startingPriceText }) =>
-          `Ace Hub starts from ${startingPriceText}. The calculator estimates the total with selected table, whiteboard, sofa, delivery, and installation options.`
+          `Ace Hub starts from ${startingPriceText}. The calculator estimates priced table, whiteboard, sofa, delivery, and installation options; the Entertainment setup is quoted separately.`
       },
       {
         q: 'How is Ace Hub different from Ace Meet?',
@@ -161,7 +162,7 @@ const PDP_QUICK_ANSWER_COPY = {
 };
 
 const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false }) => (
-  <div>
+  options?.length ? <div>
     {!hideHeading && <h3 className="mb-3 text-[16px] font-semibold text-[#172126]">{label}</h3>}
     <div className="flex flex-wrap gap-2">
       {options.map((color) => {
@@ -172,7 +173,16 @@ const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false
             type="button"
             onClick={() => onSelect(color.id)}
             className={`relative h-10 w-10 border transition-all ${selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#c9c9c9]'}`}
-            style={{ backgroundColor: color.hex }}
+            style={{
+              backgroundColor: color.hex,
+              ...(color.textureImage
+                ? {
+                    backgroundImage: `url(${color.textureImage})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover'
+                  }
+                : {})
+            }}
             aria-label={`${label}: ${color.label}`}
           >
             {selected && <Check size={14} className="absolute right-1 top-1 text-white drop-shadow-[0_0_2px_rgba(0,0,0,0.75)]" />}
@@ -181,7 +191,7 @@ const SwatchGroup = ({ label, options, selectedId, onSelect, hideHeading = false
       })}
     </div>
     <p className="mt-2 text-[12px] font-medium text-[#68726f]">{options.find((option) => option.id === selectedId)?.label}</p>
-  </div>
+  </div> : null
 );
 
 export default function ProductPage() {
@@ -344,35 +354,77 @@ export default function ProductPage() {
   const baseUnit = baseConfigurations[0];
   const hasBaseUnitPrice = typeof baseUnit?.price === 'number';
   const baseUnitPrice = hasBaseUnitPrice ? baseUnit.price : 0;
-  const configurationOptions = [...(pdpPricing.configurationOptions || [])].sort((a, b) => a.amount - b.amount);
+  const configurationOptions = [...(pdpPricing.configurationOptions || [])].sort((a, b) => {
+    const amountA = typeof a.amount === 'number' ? a.amount : Number.POSITIVE_INFINITY;
+    const amountB = typeof b.amount === 'number' ? b.amount : Number.POSITIVE_INFINITY;
+    return amountA - amountB;
+  });
   const selectedConfigurationAmount = configurationOptions
     .filter((configuration) => selectedConfigurationOptionIds.includes(configuration.id))
-    .reduce((sum, configuration) => sum + configuration.amount, 0);
+    .reduce((sum, configuration) => sum + (typeof configuration.amount === 'number' ? configuration.amount : 0), 0);
+  const hasQuoteRequiredConfiguration = configurationOptions.some(
+    (configuration) => selectedConfigurationOptionIds.includes(configuration.id) && configuration.quoteRequired
+  );
   const availableAddons = pdpPricing.addOnOptions || [];
-  const currentChairAddon =
-    availableAddons.find((addon) => addon.id === 'office-chair') ||
-    availableAddons.find((addon) => addon.id === 'high-bar-stool') ||
-    null;
+  const stoolAddon = availableAddons.find((addon) => addon.id === 'high-bar-stool') || null;
   const selectedAddonsAmount = availableAddons
     .filter((addon) => selectedAddons.includes(addon.id))
     .reduce((sum, addon) => sum + addon.amount, 0);
-  const installationAmount = pdpPricing.installationPerUnit || 0;
-  const deliveryAmount = pdpPricing.delivery?.default || 0;
-  const computedTotal = baseUnitPrice + selectedConfigurationAmount + installationAmount + deliveryAmount + selectedAddonsAmount;
+  const pricingTermsPending = Boolean(pdpPricing.commercialTermsPending);
+  const pricingIncludesDeliveryAndInstallation = Boolean(pdpPricing.pricingIncludesDeliveryAndInstallation);
+  const finalPrice = typeof pdpPricing.finalPrice === 'number' ? pdpPricing.finalPrice : null;
+  const hasFinalPrice = finalPrice !== null;
+  const installationAmount = pricingTermsPending ? 0 : pdpPricing.installationPerUnit || 0;
+  const deliveryAmount = pricingTermsPending ? 0 : pdpPricing.delivery?.default || 0;
+  const computedTotal =
+    baseUnitPrice +
+    selectedConfigurationAmount +
+    (pricingIncludesDeliveryAndInstallation ? 0 : installationAmount + deliveryAmount) +
+    selectedAddonsAmount;
 
   const isAceFlexDuo = product.slug === 'ace-flex-duo';
   const isAceUno = product.slug === 'ace-uno';
   const pricingRows = useMemo(
     () => [
       {
-        label: isAceUno ? 'Pod only' : isAceFlexDuo ? 'Base unit' : 'Base unit\n(empty pod)',
+        label: pricingIncludesDeliveryAndInstallation
+          ? 'Final price\n(includes Klang Valley delivery + installation)'
+          : pdpPricing.basePriceLabel
+            ? pdpPricing.basePriceLabel
+          : isAceUno
+            ? 'Pod only'
+            : isAceFlexDuo
+              ? 'Base unit'
+              : 'Base unit\n(empty pod)',
         amount: baseUnitPrice,
         amountLabel: hasBaseUnitPrice ? null : product.pricing?.amount || 'Contact for price'
       },
-      { label: 'Add-on', amount: selectedConfigurationAmount },
-      { label: 'Installation\n(Klang Valley)', amount: installationAmount },
-      { label: 'Delivery (Klang Valley)', amount: deliveryAmount },
-      { label: 'Add-ons subtotal', amount: selectedAddonsAmount }
+      ...(pricingTermsPending
+        ? []
+        : pricingIncludesDeliveryAndInstallation
+          ? [
+              {
+                label: 'Delivery + installation\n(Klang Valley)',
+                amount: 0,
+                amountLabel: 'Included'
+              },
+              {
+                label: 'Add-on',
+                amount: selectedConfigurationAmount,
+                amountLabel: hasQuoteRequiredConfiguration ? 'Quoted separately' : null
+              },
+              { label: 'Add-ons subtotal', amount: selectedAddonsAmount }
+            ]
+          : [
+              {
+                label: 'Add-on',
+                amount: selectedConfigurationAmount,
+                amountLabel: hasQuoteRequiredConfiguration ? 'Quoted separately' : null
+              },
+              { label: 'Installation\n(Klang Valley)', amount: installationAmount },
+              { label: 'Delivery per trip\n(Klang Valley)', amount: deliveryAmount },
+              { label: 'Add-ons subtotal', amount: selectedAddonsAmount }
+            ])
     ],
     [
       baseUnitPrice,
@@ -381,6 +433,10 @@ export default function ProductPage() {
       installationAmount,
       isAceFlexDuo,
       isAceUno,
+      hasQuoteRequiredConfiguration,
+      pdpPricing.basePriceLabel,
+      pricingIncludesDeliveryAndInstallation,
+      pricingTermsPending,
       product.pricing?.amount,
       selectedAddonsAmount,
       selectedConfigurationAmount
@@ -392,16 +448,27 @@ export default function ProductPage() {
   const outstationNoteLines = outstationNote.match(/[^.?!]+[.?!]/g)?.map((line) => line.trim()) || [outstationNote];
 
   const formatRM = (amount) => `RM${amount.toLocaleString('en-MY')}`;
-  const startingPriceText = hasBaseUnitPrice ? formatRM(baseUnitPrice) : product.pricing?.amount || 'Contact for price';
-  const computedTotalText = hasBaseUnitPrice ? formatRM(computedTotal) : 'Contact for price';
+  const startingPriceText = hasFinalPrice
+    ? formatRM(finalPrice)
+    : hasBaseUnitPrice
+      ? formatRM(baseUnitPrice)
+      : product.pricing?.amount || 'Contact for price';
+  const computedTotalText = hasBaseUnitPrice
+    ? pricingTermsPending
+      ? `${formatRM(baseUnitPrice)} + delivery and installation quoted separately`
+      : hasQuoteRequiredConfiguration
+      ? `${formatRM(computedTotal)} + quoted option`
+      : formatRM(computedTotal)
+    : 'Contact for price';
+  const priceHeadingLabel = hasFinalPrice || pricingIncludesDeliveryAndInstallation ? 'Final price' : 'Starting from';
   const mutuallyExclusiveTableOptionIds = new Set(['duo-fixed-table', 'duo-adjustable-table']);
-  const mutuallyExclusiveSeatingAddonIds = new Set(['high-bar-stool', 'office-chair', 'flex-sofa']);
+  const mutuallyExclusiveSeatingAddonIds = new Set(['high-bar-stool', 'two-high-bar-stools', 'office-chair', 'flex-sofa']);
   const getPreviewImageForOption = (option) => {
     if (!option) return '';
     if (option.id === 'high-bar-stool') {
       return selectedStoolVariant === 'white' ? barStoolWhite : barStoolBlack;
     }
-    return option.previewImage || '';
+    return option.previewImageByExterior?.[selectedExterior] || option.previewImage || '';
   };
   const applySelectionPreviewImage = (option) => {
     const previewImage = getPreviewImageForOption(option);
@@ -466,6 +533,36 @@ export default function ProductPage() {
   const colorImageMap = product.colorImageMap || null;
   const colorGalleryMap = product.colorGalleryMap || null;
   const presentationGallery = product.presentationGallery || EMPTY_PRESENTATION_GALLERY;
+  const projectGallery = product.projectGallery || null;
+  const projectGalleryProjects = useMemo(() => {
+    if (!projectGallery) return [];
+    if (Array.isArray(projectGallery.projects)) {
+      return projectGallery.projects.filter((project) => project?.images?.length);
+    }
+    return projectGallery.images?.length ? [projectGallery] : [];
+  }, [projectGallery]);
+  const projectGalleryDisplayItems = useMemo(() => {
+    if (!Array.isArray(projectGallery?.displayImageOrder) || projectGallery.displayImageOrder.length === 0) return [];
+    return projectGallery.displayImageOrder
+      .map((displayEntry) => {
+        const projectIndex = Number.isInteger(displayEntry?.projectIndex)
+          ? displayEntry.projectIndex
+          : projectGalleryProjects.findIndex((project) => project.projectName === displayEntry?.projectName);
+        const project = projectGalleryProjects[projectIndex];
+        const imageIndex = Number.isInteger(displayEntry?.imageIndex) ? displayEntry.imageIndex : -1;
+        const entry = project?.images?.[imageIndex];
+        if (!project || !entry) return null;
+        const galleryImage = typeof entry === 'string' ? { src: entry } : entry;
+        return {
+          ...galleryImage,
+          projectIndex,
+          projectName: project.projectName || `${product.name} project ${projectIndex + 1}`,
+          projectLocation: project.location || '',
+          projectDescription: project.description || ''
+        };
+      })
+      .filter(Boolean);
+  }, [product.name, projectGallery, projectGalleryProjects]);
   const pairKey = `${selectedExterior}|${selectedInterior}`;
   const mappedImage =
     colorImageMap?.byPair?.[pairKey] ||
@@ -489,9 +586,9 @@ export default function ProductPage() {
               ? `${specifications.externalHeight} (room height required: ${specifications.roomHeightRequirement})`
               : specifications.externalHeight
         },
-        { label: 'Published acoustic claim', value: specifications.publishedAcousticClaim },
         { label: 'Weight', value: specifications.weight },
-        ...(specifications.extraRows || [])
+        ...(specifications.extraRows || []),
+        { label: 'Published acoustic claim', value: specifications.publishedAcousticClaim }
       ].filter((row) => row?.label && row?.value);
     },
     [product.technicalSpecifications]
@@ -505,10 +602,15 @@ export default function ProductPage() {
   const quickAnswerAcousticText = technicalSpecifications.publishedAcousticClaim
     ? `Published acoustic claim: ${technicalSpecifications.publishedAcousticClaim}.`
     : null;
-  const quickAnswerDeliveryParts = [
-    installationAmount > 0 ? `Installation (Klang Valley): ${formatRM(installationAmount)}` : null,
-    `Delivery (Klang Valley): ${formatRM(deliveryAmount)}`
-  ].filter(Boolean);
+  const quickAnswerDeliveryParts = pricingTermsPending
+    ? []
+    : pricingIncludesDeliveryAndInstallation
+      ? [`Klang Valley delivery (${formatRM(deliveryAmount)}) and installation (${formatRM(installationAmount)}) are included in the final price`]
+      : [
+          hasFinalPrice ? `Final standard Klang Valley total: ${formatRM(finalPrice)}` : null,
+          installationAmount > 0 ? `Installation (Klang Valley): ${formatRM(installationAmount)}` : null,
+          `Delivery per trip (Klang Valley): ${formatRM(deliveryAmount)}`
+        ].filter(Boolean);
   const quickAnswerDeliveryText =
     quickAnswerDeliveryParts.length > 0
       ? `${quickAnswerDeliveryParts.join('. ')}. ${outstationNoteLines[0] || ''}`.trim()
@@ -521,8 +623,12 @@ export default function ProductPage() {
         .join('. ') + '.'
     : null;
   const quickAnswerAddOnLabels = [...configurationOptions.map((item) => item.label), ...availableAddons.map((item) => item.label)];
+  const quickAnswerVisibleAddOnLabels = [
+    ...quickAnswerAddOnLabels.slice(0, 4),
+    ...configurationOptions.filter((item) => item.quoteRequired).map((item) => item.label)
+  ].filter((label, index, labels) => labels.indexOf(label) === index);
   const quickAnswerAddOnsText =
-    quickAnswerAddOnLabels.length > 0 ? `Available add-ons include ${quickAnswerAddOnLabels.slice(0, 4).join(', ')}.` : null;
+    quickAnswerVisibleAddOnLabels.length > 0 ? `Available add-ons include ${quickAnswerVisibleAddOnLabels.join(', ')}.` : null;
   const quickAnswerHelpText = 'Need help choosing the right pod size and setup? Contact our team for a model recommendation.';
   const exteriorWallsRowIndex = mergedTechnicalSpecRows.findIndex((row) => row.label === 'Exterior walls');
   const canToggleSpecs = exteriorWallsRowIndex >= 0 && exteriorWallsRowIndex < mergedTechnicalSpecRows.length - 1;
@@ -550,7 +656,8 @@ export default function ProductPage() {
         addProductImage(galleryItem.image, {
           label: galleryItem.label || `${product.name} product view ${index + 1}`,
           exteriorId: galleryItem.exteriorId,
-          interiorId: galleryItem.interiorId
+          interiorId: galleryItem.interiorId,
+          view: galleryItem.view
         });
       });
     }
@@ -615,20 +722,73 @@ export default function ProductPage() {
   const customerGalleryItems = useMemo(() => {
     const items = [];
     const seenImages = new Set();
-    (product.customerPhotos || []).forEach((image, index) => {
+
+    const addGalleryItem = (image, metadata = {}) => {
       if (!image || seenImages.has(image)) return;
       seenImages.add(image);
       items.push({
         type: 'photo',
         image,
-        label: `Installation photo ${index + 1}`
+        ...metadata
       });
-    });
+    };
+
+    if (projectGalleryDisplayItems.length > 0) {
+      projectGalleryDisplayItems.forEach((galleryImage, index) => {
+        addGalleryItem(galleryImage.src || galleryImage.image, {
+          alt: galleryImage.alt || `${product.name} office pod installation photo`,
+          label: galleryImage.label || `${galleryImage.projectName || product.name} project photo ${index + 1}`,
+          role: galleryImage.role,
+          objectPosition: galleryImage.objectPosition || 'center',
+          projectIndex: galleryImage.projectIndex,
+          projectName: galleryImage.projectName,
+          projectLocation: galleryImage.projectLocation || '',
+          projectDescription: galleryImage.projectDescription || ''
+        });
+      });
+    } else if (projectGalleryProjects.length > 0) {
+      projectGalleryProjects.forEach((project, projectIndex) => {
+        project.images.forEach((entry, index) => {
+          const galleryImage = typeof entry === 'string' ? { src: entry } : entry;
+          addGalleryItem(galleryImage.src || galleryImage.image, {
+            alt: galleryImage.alt || `${product.name} office pod installation photo`,
+            label: galleryImage.label || `${project.projectName || product.name} project photo ${index + 1}`,
+            role: galleryImage.role,
+            objectPosition: galleryImage.objectPosition || 'center',
+            projectIndex,
+            projectName: project.projectName || `${product.name} project ${projectIndex + 1}`,
+            projectLocation: project.location || '',
+            projectDescription: project.description || ''
+          });
+        });
+      });
+    } else {
+      (product.customerPhotos || []).forEach((image, index) => {
+        addGalleryItem(image, {
+          alt: `${product.name} office pod installation photo`,
+          label: `Installation photo ${index + 1}`,
+          objectPosition: 'center'
+        });
+      });
+    }
 
     return items;
-  }, [product.customerPhotos]);
+  }, [product.customerPhotos, product.name, projectGalleryDisplayItems, projectGalleryProjects]);
+  const projectGalleryGroups = useMemo(
+    () =>
+      projectGalleryProjects
+        .map((project, projectIndex) => ({
+          ...project,
+          projectIndex,
+          images: customerGalleryItems.filter((item) => item.projectIndex === projectIndex)
+        }))
+        .filter((project) => project.images.length > 0),
+    [customerGalleryItems, projectGalleryProjects]
+  );
   const defaultFrontPreviewImage = (product.extraPreviewImages || [])[0] || '';
-  const mainImage = selectedImage || defaultFrontPreviewImage || productDisplayItems[0]?.image || primaryGalleryImage || podPrimaryImage;
+  const exteriorFollowingImage = product.mainImageFollowsExterior ? primaryGalleryImage : '';
+  const mainImage =
+    selectedImage || exteriorFollowingImage || defaultFrontPreviewImage || productDisplayItems[0]?.image || primaryGalleryImage || podPrimaryImage;
   const activeGalleryIndex = Math.max(productDisplayItems.findIndex((item) => item.image === mainImage), 0);
   const exteriorLabel = product.exteriorLabel || 'Exterior Color';
   const interiorMaterialSections = product.interiorMaterialSections || null;
@@ -658,6 +818,7 @@ export default function ProductPage() {
   const seoTitle = productMeta.title;
   const seoDescription = productMeta.description;
   const productSeoImage = getProductPublicImage(product.slug);
+  const productRobots = product.publicationStatus === 'prelaunch' ? 'noindex, follow' : 'index, follow';
   const seoKeywords = `${SEO_KEYWORDS_COMMON}, ${product.displayTitle || product.name}, ${product.slug.replace(/-/g, ' ')}`;
   const seoSchemas = [
     organizationSchema,
@@ -689,18 +850,26 @@ export default function ProductPage() {
     }
   ];
   const shouldShowThumbnails = customerGalleryItems.length > 0;
-  const isBarStoolSelected = currentChairAddon ? selectedAddons.includes(currentChairAddon.id) : false;
+  const hasCuratedProjectGallery = shouldShowThumbnails && projectGalleryGroups.length > 0;
+  const isMixedProjectGallery = projectGallery?.displayMode === 'mixed';
+  const hasMultipleProjectGalleries = !isMixedProjectGallery && projectGalleryGroups.length > 1;
+  const isAnyBarStoolSelected = selectedAddons.some((addonId) => ['high-bar-stool', 'two-high-bar-stools'].includes(addonId));
   const addonPreviewImages = [
     ...availableAddons.map((addon) => getPreviewImageForOption(addon)).filter(Boolean),
-    ...(currentChairAddon ? [barStoolBlack, barStoolWhite] : [])
+    ...(stoolAddon ? [barStoolBlack, barStoolWhite] : [])
   ];
   const isAddonPreviewImage = addonPreviewImages.includes(mainImage);
   const shouldUseMultiplyBlend =
     isAddonPreviewImage ||
     (!product.disableProductImageBlend &&
       (product.slug === 'ace-uno' || (product.slug !== 'ace-plus' && mainImage !== product.catalogImage)));
-  const hasMultipleExteriorColors = (product.exteriorColors || []).length > 1;
-  const exteriorThumbnailItems = (product.exteriorColors || []).map((color) => {
+  const exteriorColorOptions = product.exteriorColors || [];
+  const interiorColorOptions = product.interiorColors || [];
+  const hasExteriorColorOptions = exteriorColorOptions.length > 0;
+  const hasInteriorColorOptions = interiorColorOptions.length > 0;
+  const hasColourOptions = hasExteriorColorOptions || hasInteriorColorOptions;
+  const hasMultipleExteriorColors = exteriorColorOptions.length > 1;
+  const exteriorThumbnailItems = exteriorColorOptions.map((color) => {
     const exteriorPairKey = `${color.id}|${selectedInterior}`;
     const thumbnailImage =
       colorImageMap?.byPair?.[exteriorPairKey] || colorImageMap?.byExterior?.[color.id] || colorImageMap?.default || podPrimaryImage;
@@ -733,6 +902,7 @@ export default function ProductPage() {
   const optionThumbnailItems = [
     ...configurationOptions
       .map((option) => {
+        if (option.hideThumbnail) return null;
         const image = getPreviewImageForOption(option);
         if (!image) return null;
         return {
@@ -762,16 +932,18 @@ export default function ProductPage() {
       })
       .filter(Boolean)
   ];
-  const chairThumbnailItems = currentChairAddon && !['ace-meet', 'ace-hub'].includes(product.slug)
+  const stoolThumbnailItems = stoolAddon
     ? [
-        { id: 'chair-black', label: 'Chair (black)', image: barStoolBlack },
-        { id: 'chair-white', label: 'Chair (white)', image: barStoolWhite }
+        { id: 'stool-black', label: 'High bar stool (black)', image: barStoolBlack },
+        { id: 'stool-white', label: 'High bar stool (white)', image: barStoolWhite }
       ]
     : [];
   const hubLShapeSofaPreviewImage = getPreviewImageForOption(availableAddons.find((addon) => addon.id === 'meeting-xl-l-shape-sofa'));
   const isHubLShapeSofaMainPreview = product.slug === 'ace-hub' && mainImage === hubLShapeSofaPreviewImage;
   const aceFlexSofaPreviewImage = getPreviewImageForOption(availableAddons.find((addon) => addon.id === 'flex-sofa'));
   const isAceFlexSofaMainPreview = product.slug === 'ace-flex' && mainImage === aceFlexSofaPreviewImage;
+  const aceFlexOfficeChairPreviewImage = getPreviewImageForOption(availableAddons.find((addon) => addon.id === 'office-chair'));
+  const isAceFlexOfficeChairMainPreview = product.slug === 'ace-flex' && mainImage === aceFlexOfficeChairPreviewImage;
   const aceMeetOptionPreviewImages =
     product.slug === 'ace-meet' ? [...configurationOptions, ...availableAddons].map((option) => getPreviewImageForOption(option)).filter(Boolean) : [];
   const isAceMeetOptionPreviewImage = product.slug === 'ace-meet' && aceMeetOptionPreviewImages.includes(mainImage);
@@ -779,8 +951,13 @@ export default function ProductPage() {
     product.slug === 'ace-hub' ? configurationOptions.map((option) => getPreviewImageForOption(option)).filter(Boolean) : [];
   const isAceHubConfigurationPreviewImage = product.slug === 'ace-hub' && aceHubConfigurationPreviewImages.includes(mainImage);
   const activeProductImage = productDisplayItems.find((item) => item.image === mainImage);
+  const activeOptionPreview = [...configurationOptions, ...availableAddons].find(
+    (option) => getPreviewImageForOption(option) === mainImage && selectedOptionLabels.includes(option.label)
+  );
   const mainProductAlt = activeProductImage?.label
     ? `${product.name}: ${activeProductImage.label}`
+    : activeOptionPreview?.previewAlt || activeOptionPreview?.label
+      ? activeOptionPreview.previewAlt || `${product.name}: ${activeOptionPreview.label}`
     : `${product.name} acoustic office pod`;
   const getFeatureAlt = (featureItem) =>
     featureItem?.title ? `${product.name} feature detail: ${featureItem.title}` : `${product.name} feature detail`;
@@ -798,7 +975,7 @@ export default function ProductPage() {
     'mx-auto mt-1 max-w-[18ch] text-[16px] font-semibold leading-[1.25] tracking-tight text-[#172126] md:mt-1.5 md:text-[18px]';
   const sharedFeatureDescClass = 'mx-auto mt-1.5 max-w-[28ch] text-left text-[14px] leading-[1.45] text-[#59635f] md:mt-2 md:text-[15px]';
   const getGalleryThumbAlt = (galleryItem) =>
-    galleryItem?.type === 'photo' ? `${product.name} office pod installation photo` : `${product.name} office pod product image`;
+    galleryItem?.alt || (galleryItem?.type === 'photo' ? `${product.name} office pod installation photo` : `${product.name} office pod product image`);
   const scrollFeatureTrack = (direction) => {
     const scroller = featureScrollRef.current;
     if (!scroller) return;
@@ -813,10 +990,31 @@ export default function ProductPage() {
     scroller.scrollBy({ left: direction * step, behavior: 'smooth' });
   };
 
+  const getGalleryView = (item) => {
+    if (item?.view) return item.view;
+    const label = item?.label?.toLowerCase() || '';
+    if (label.includes('three-quarter') || label.includes('3/4') || label.includes('side view')) return 'three-quarter';
+    if (label.includes('front')) return 'front';
+    return null;
+  };
+
   const handleExteriorSelect = (id) => {
     const exteriorPairKey = `${id}|${selectedInterior}`;
+    const activeGalleryItem = productDisplayItems.find((item) => item.image === mainImage);
+    const activeView = getGalleryView(activeGalleryItem);
+    const matchingViewImage = activeView
+      ? productDisplayItems.find((item) => item.exteriorId === id && getGalleryView(item) === activeView)?.image
+      : null;
+    // Keep showing a selected option's per-colour preview (e.g. Ace Hub L-shape sofa / entertainment) in the new colour.
+    const activeColourPreviewOption = activeOptionPreview?.previewImageByExterior ? activeOptionPreview : null;
     const nextImage =
-      colorImageMap?.byPair?.[exteriorPairKey] || colorImageMap?.byExterior?.[id] || colorImageMap?.default || podPrimaryImage || '';
+      activeColourPreviewOption?.previewImageByExterior?.[id] ||
+      matchingViewImage ||
+      colorImageMap?.byPair?.[exteriorPairKey] ||
+      colorImageMap?.byExterior?.[id] ||
+      colorImageMap?.default ||
+      podPrimaryImage ||
+      '';
     setSelectedExterior(id);
     setSelectedImage(nextImage);
     if (product.syncExteriorInteriorSelection) {
@@ -882,36 +1080,37 @@ export default function ProductPage() {
   useEffect(() => {
     const validPreviewImages = new Set(productDisplayItems.map((item) => item.image));
     configurationOptions.forEach((option) => {
-      if (option?.previewImage) validPreviewImages.add(option.previewImage);
+      const previewImage = getPreviewImageForOption(option);
+      if (previewImage) validPreviewImages.add(previewImage);
     });
     availableAddons.forEach((addon) => {
       const previewImage = getPreviewImageForOption(addon);
       if (previewImage) validPreviewImages.add(previewImage);
     });
-    if (currentChairAddon) {
+    if (stoolAddon) {
       validPreviewImages.add(barStoolBlack);
       validPreviewImages.add(barStoolWhite);
     }
     if (selectedImage && !validPreviewImages.has(selectedImage)) {
       setSelectedImage('');
     }
-  }, [product.slug, productDisplayItems, selectedImage, configurationOptions, availableAddons, selectedStoolVariant, currentChairAddon]);
+  }, [product.slug, productDisplayItems, selectedImage, configurationOptions, availableAddons, selectedStoolVariant, selectedExterior, stoolAddon]);
 
   useEffect(() => {
     const isStoolImage = selectedImage === barStoolBlack || selectedImage === barStoolWhite;
-    if (!isBarStoolSelected && isStoolImage) {
+    if (!isAnyBarStoolSelected && isStoolImage) {
       setSelectedImage('');
     }
-  }, [isBarStoolSelected, selectedImage]);
+  }, [isAnyBarStoolSelected, selectedImage]);
 
   useEffect(() => {
     const wasSelected = wasBarStoolSelectedRef.current;
-    const isFirstSelect = !wasSelected && isBarStoolSelected;
-    if (isFirstSelect && currentChairAddon?.id === 'high-bar-stool') {
+    const isFirstSelect = !wasSelected && isAnyBarStoolSelected;
+    if (isFirstSelect && stoolAddon) {
       setSelectedImage(selectedStoolVariant === 'white' ? barStoolWhite : barStoolBlack);
     }
-    wasBarStoolSelectedRef.current = isBarStoolSelected;
-  }, [isBarStoolSelected, selectedStoolVariant, currentChairAddon]);
+    wasBarStoolSelectedRef.current = isAnyBarStoolSelected;
+  }, [isAnyBarStoolSelected, selectedStoolVariant, stoolAddon]);
 
   const openGalleryModalAtIndex = (index) => {
     if (index < 0 || index >= customerGalleryItems.length) return;
@@ -972,6 +1171,7 @@ export default function ProductPage() {
         description={seoDescription}
         canonical={buildCanonical(canonicalPath)}
         ogImage={buildAbsoluteUrl(productSeoImage)}
+        robots={productRobots}
         keywords={seoKeywords}
         schemas={seoSchemas}
       />
@@ -993,7 +1193,7 @@ export default function ProductPage() {
                   {product.displayTitle || product.name}
                 </div>
                 <p className="mt-3 text-[16px] font-semibold leading-tight text-[#007653] md:text-[20px]">
-                  Starting from {startingPriceText}
+                  {priceHeadingLabel} {startingPriceText}
                 </p>
                 {isAceUno && <p className="mt-1 text-[13px] text-[#68726f]">Pod only; delivery and installation are separate.</p>}
                 <p className="mt-4 max-w-[42ch] text-[17px] leading-[1.5] text-[#172126]">{product.shortDesc}</p>
@@ -1010,7 +1210,10 @@ export default function ProductPage() {
                   </button>
                 )}
 
-	                <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+                <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+                  {product.mediaStatus === 'pending' ? (
+                    <ProductMediaPending productName={product.name} />
+                  ) : mainImage ? (
                     <img
                       src={mainImage}
                       alt={mainProductAlt}
@@ -1019,20 +1222,23 @@ export default function ProductPage() {
                       fetchPriority="high"
                       className={`relative z-[1] object-contain object-center ${
                         isHubLShapeSofaMainPreview
-                          ? 'h-[70%] w-[70%]'
+                          ? 'h-full w-full'
                           : isAceFlexSofaMainPreview
+                            ? 'h-full w-full'
+                          : isAceFlexOfficeChairMainPreview
                             ? 'h-full w-full'
                           : isAceMeetOptionPreviewImage
                             ? 'h-full w-full'
                             : isAceHubConfigurationPreviewImage
                               ? 'h-full w-full'
-                            : isAddonPreviewImage
-                              ? 'h-1/2 w-1/2'
-                              : 'h-full w-full'
+                              : isAddonPreviewImage
+                                ? 'h-1/2 w-1/2'
+                                : 'h-full w-full'
                       } ${
                         shouldUseMultiplyBlend ? 'mix-blend-multiply' : ''
                       }`}
                     />
+                  ) : null}
 	                </div>
 
                 {productDisplayItems.length > 1 && (
@@ -1180,32 +1386,33 @@ export default function ProductPage() {
                           </button>
                         );
                       })}
-                      {chairThumbnailItems.map((chair) => {
-                        const variant = chair.id === 'chair-white' ? 'white' : 'black';
-                        const selected = mainImage === chair.image;
+                      {stoolThumbnailItems.map((stool) => {
+                        const variant = stool.id === 'stool-white' ? 'white' : 'black';
+                        const selected = mainImage === stool.image;
                         return (
                           <button
-                            key={chair.id}
+                            key={stool.id}
                             type="button"
                             onClick={() => {
-                              if (!currentChairAddon) return;
+                              if (!stoolAddon) return;
                               setSelectedStoolVariant(variant);
-                              setSelectedImage(chair.image);
+                              setSelectedImage(stool.image);
                               setSelectedAddons((current) => {
                                 const withoutMutuallyExclusiveSeating = current.filter(
-                                  (addonId) => addonId !== 'flex-sofa' && addonId !== 'high-bar-stool' && addonId !== 'office-chair'
+                                  (addonId) =>
+                                    !['flex-sofa', 'high-bar-stool', 'two-high-bar-stools', 'office-chair'].includes(addonId)
                                 );
-                                return withoutMutuallyExclusiveSeating.includes(currentChairAddon.id)
+                                return withoutMutuallyExclusiveSeating.includes(stoolAddon.id)
                                   ? withoutMutuallyExclusiveSeating
-                                  : [...withoutMutuallyExclusiveSeating, currentChairAddon.id];
+                                  : [...withoutMutuallyExclusiveSeating, stoolAddon.id];
                               });
                             }}
                             className={`relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[8px] border transition-all ${
                               selected ? 'border-[#1e2227] ring-1 ring-[#1e2227]' : 'border-[#d3d7dc]'
                             }`}
-                            aria-label={`Available pod colours accessory: ${chair.label}`}
+                            aria-label={`Available high bar stool variant: ${stool.label}`}
                           >
-                            <img src={chair.image} alt={chair.label} width="36" height="36" className="h-9 w-9 object-contain object-center mix-blend-multiply" />
+                            <img src={stool.image} alt={stool.label} width="36" height="36" className="h-9 w-9 object-contain object-center mix-blend-multiply" />
                             {selected && (
                               <span className="absolute inset-0 border border-[#1e2227]">
                                 <Check size={12} className="absolute right-0.5 top-0.5 text-[#172126]" />
@@ -1221,16 +1428,18 @@ export default function ProductPage() {
               )}
               {productMaterialMarks && (
                 <aside
-                  className="mt-5 border-y border-[#d7d9d7] py-3"
+                  className="mt-[14px] py-3"
                   aria-label="Ace product material and certification marks"
                 >
-                  <img
-                    src={productMaterialMarks.image}
-                    alt={productMaterialMarks.alt}
-                    width="2200"
-                    height="675"
-                    className="mx-auto h-auto w-full max-w-[560px] object-contain"
-                  />
+                  <div className="relative mx-auto aspect-[7.32] w-full max-w-[448px] overflow-hidden">
+                    <img
+                      src={productMaterialMarks.image}
+                      alt={productMaterialMarks.alt}
+                      width="2200"
+                      height="675"
+                      className="absolute left-0 top-0 h-auto w-full max-w-none -translate-y-[28.5%] object-contain"
+                    />
+                  </div>
                 </aside>
               )}
             </div>
@@ -1242,51 +1451,65 @@ export default function ProductPage() {
                 </p>
                 <h1 className="text-[56px] font-semibold leading-[1.03] tracking-tight">{product.displayTitle || product.name}</h1>
                 <p id={`${product.slug}-answer`} className="mt-2 text-[22px] leading-tight text-[#172126]">{product.shortDesc}</p>
-                <p className="mt-2 text-[24px] font-semibold leading-tight text-[#007653]">Starting from {startingPriceText}</p>
+                <p className="mt-2 text-[24px] font-semibold leading-tight text-[#007653]">{priceHeadingLabel} {startingPriceText}</p>
                 {isAceUno && <p className="mt-1 text-[13px] text-[#68726f]">Pod only; delivery and installation are itemised below.</p>}
               </div>
 
               <div className="mt-6 py-6 md:py-7 lg:flex-1">
-                <div className="grid gap-6 md:grid-cols-2 md:items-stretch md:gap-8">
-                  <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
-                    <SwatchGroup
-                      label={exteriorLabel}
-                      options={product.exteriorColors}
-                      selectedId={selectedExterior}
-                      onSelect={handleExteriorSelect}
-                    />
-                    <div className="mt-6 border-t border-[#d8d8d8] pt-6">
-                      {hasSplitInteriorSections ? (
-                        <div className="space-y-6">
-                          <div>
-                            <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#172126]">
-                              Interior Wall Colour Options (Melamine Faced Chipboard / MDF)
-                            </h3>
-                            <SwatchGroup
-                              hideHeading
-                              label="Interior Wall Colour Options (Melamine Faced Chipboard / MDF)"
-                              options={mdfInteriorOptions}
-                              selectedId={selectedInterior}
-                              onSelect={handleInteriorSelect}
-                            />
-                          </div>
+                <div className={`grid gap-6 md:items-stretch md:gap-8 ${hasColourOptions ? 'md:grid-cols-2' : 'md:grid-cols-1'}`}>
+                  {hasColourOptions && (
+                    <div className="h-full rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
+                      {hasExteriorColorOptions && (
+                        <SwatchGroup
+                          label={exteriorLabel}
+                          options={exteriorColorOptions}
+                          selectedId={selectedExterior}
+                          onSelect={handleExteriorSelect}
+                        />
+                      )}
+                      {hasInteriorColorOptions && (
+                        <div className={`${hasExteriorColorOptions ? 'mt-6 border-t border-[#d8d8d8] pt-6' : ''}`}>
+                          {hasSplitInteriorSections ? (
+                            <div className="space-y-5">
+                              <div>
+                                <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#172126]">
+                                  Interior Wall Colour Options (Melamine Faced Chipboard / MDF)
+                                </h3>
+                                <SwatchGroup
+                                  hideHeading
+                                  label="Interior Wall Colour Options (Melamine Faced Chipboard / MDF)"
+                                  options={mdfInteriorOptions}
+                                  selectedId={selectedInterior}
+                                  onSelect={handleInteriorSelect}
+                                />
+                              </div>
 
-                          <div className="border-t border-[#e4e7eb] pt-4">
-                            <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#172126]">PET Fabric Interior Wall Colour</h3>
-                            <SwatchGroup
-                              hideHeading
-                              label="PET Fabric Interior Wall Colour"
-                              options={petInteriorOptions}
-                              selectedId={selectedInterior}
-                              onSelect={handleInteriorSelect}
-                            />
-                          </div>
+                              <div
+                                className="py-0.5 text-left text-[14px] font-semibold leading-[1.4] text-[#172126]"
+                                role="separator"
+                                aria-label="Or choose PET fabric interior colour"
+                              >
+                                OR
+                              </div>
+
+                              <div>
+                                <h3 className="mb-3 text-[14px] font-semibold leading-[1.4] text-[#172126]">PET Fabric Interior Wall Colour</h3>
+                                <SwatchGroup
+                                  hideHeading
+                                  label="PET Fabric Interior Wall Colour"
+                                  options={petInteriorOptions}
+                                  selectedId={selectedInterior}
+                                  onSelect={handleInteriorSelect}
+                                />
+                              </div>
+                            </div>
+                          ) : (
+                            <SwatchGroup label="Interior Color" options={interiorColorOptions} selectedId={selectedInterior} onSelect={handleInteriorSelect} />
+                          )}
                         </div>
-                      ) : (
-                        <SwatchGroup label="Interior Color" options={product.interiorColors} selectedId={selectedInterior} onSelect={handleInteriorSelect} />
                       )}
                     </div>
-                  </div>
+                  )}
 
                   <div className="flex h-full flex-col gap-4">
                     <div className="rounded-[6px] border border-[#d0d3d7] bg-white p-5 md:p-6">
@@ -1343,7 +1566,9 @@ export default function ProductPage() {
                                                 />
                                                 {configuration.label}
                                               </span>
-                                              <span className="text-[12px] font-semibold tabular-nums text-[#59635f]">{formatRM(configuration.amount)}</span>
+                                              <span className="text-[12px] font-semibold tabular-nums text-[#59635f]">
+                                                {configuration.amountLabel || formatRM(configuration.amount)}
+                                              </span>
                                             </label>
                                           );
                                         })
@@ -1670,36 +1895,205 @@ export default function ProductPage() {
           </div>
 
           {shouldShowThumbnails && (
-            <div className="w-full pt-10">
-              <h3 className="mb-12 text-center text-[36px] font-semibold tracking-tight text-[#172126] md:text-[40px]">Our Past Projects</h3>
-              <div className="w-full overflow-x-auto pb-2">
-                <div className="flex w-max min-w-full justify-center gap-4 md:gap-5">
-                  {customerGalleryItems.map((item, index) => {
-                    const isActive = isGalleryModalOpen ? galleryModalIndex === index : index === 0;
+            hasMultipleProjectGalleries ? (
+              <section className="w-full border-t border-[#d0d0d0] pt-12 md:pt-16" aria-labelledby={`${product.slug}-projects-heading`}>
+                <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                  <div className="max-w-[690px]">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#00855a]">Real projects</p>
+                    <h2 id={`${product.slug}-projects-heading`} className="mt-3 text-[30px] font-semibold leading-[1.08] tracking-tight text-[#172126] md:text-[42px]">
+                      See {product.name} in real workplaces.
+                    </h2>
+                    {projectGallery.description && <p className="mt-4 max-w-[58ch] text-[15px] leading-[1.55] text-[#59635f]">{projectGallery.description}</p>}
+                  </div>
+                  <Link
+                    to="/portfolio"
+                    className="inline-flex shrink-0 items-center gap-1 font-semibold text-[#00855a] transition-colors hover:text-[#172126] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2"
+                  >
+                    View all customer stories
+                    <ArrowUpRight size={15} aria-hidden="true" />
+                  </Link>
+                </div>
+
+                <div className="mt-10 space-y-14">
+                  {projectGalleryGroups.map((projectGroup, projectIndex) => (
+                    <article
+                      key={`${product.slug}-project-group-${projectGroup.projectName || projectIndex}`}
+                      className={projectIndex > 0 ? 'border-t border-[#d0d0d0] pt-12' : ''}
+                      aria-labelledby={`${product.slug}-project-${projectIndex}-heading`}
+                    >
+                      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                        <div className="max-w-[690px]">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#68726f]">Project {projectIndex + 1}</p>
+                          <h3 id={`${product.slug}-project-${projectIndex}-heading`} className="mt-2 text-[24px] font-semibold leading-tight tracking-tight text-[#172126] md:text-[30px]">
+                            {projectGroup.projectName || `${product.name} project ${projectIndex + 1}`}
+                          </h3>
+                          {projectGroup.location && <p className="mt-2 text-[13px] font-medium text-[#59635f]">{projectGroup.location}</p>}
+                          {projectGroup.description && <p className="mt-3 max-w-[58ch] text-[15px] leading-[1.55] text-[#59635f]">{projectGroup.description}</p>}
+                        </div>
+                        <span className="shrink-0 text-[13px] text-[#59635f]">{projectGroup.images.length} approved project photos</span>
+                      </div>
+
+                      <div
+                        className={`mt-6 grid gap-3 sm:grid-cols-2 lg:min-h-[420px] lg:grid-cols-4 ${
+                          projectGroup.images.length >= 5 ? 'lg:grid-rows-2' : ''
+                        }`}
+                      >
+                        {projectGroup.images.slice(0, 5).map((item, projectImageIndex) => {
+                          const galleryIndex = customerGalleryItems.indexOf(item);
+                          const isFeatured = projectImageIndex === 0;
+                          return (
+                            <button
+                              key={`${product.slug}-${projectIndex}-project-photo-${projectImageIndex}`}
+                              type="button"
+                              onClick={() => openGalleryModalAtIndex(galleryIndex)}
+                              className={`group relative min-h-[210px] overflow-hidden rounded-[5px] bg-[#d8d6d1] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2 ${
+                                isFeatured
+                                  ? `sm:col-span-2 sm:min-h-[320px] lg:col-span-2 ${
+                                      projectGroup.images.length >= 5 ? 'lg:row-span-2 lg:min-h-0' : 'lg:min-h-[320px]'
+                                    }`
+                                  : `sm:min-h-[170px] ${projectGroup.images.length >= 5 ? 'lg:min-h-0' : 'lg:min-h-[320px]'}`
+                              }`}
+                              aria-label={`Open ${item.alt || `${projectGroup.projectName || product.name} project photo ${projectImageIndex + 1}`}`}
+                            >
+                              <picture className="absolute inset-0 block">
+                                {getGalleryAvifSource(item.image) ? <source srcSet={getGalleryAvifSource(item.image)} type="image/avif" /> : null}
+                                <img
+                                  src={item.image}
+                                  alt={getGalleryThumbAlt(item)}
+                                  className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03] group-focus-visible:scale-[1.03]"
+                                  style={{ objectPosition: item.objectPosition || 'center' }}
+                                  loading={projectIndex === 0 && isFeatured ? 'eager' : 'lazy'}
+                                />
+                              </picture>
+                              <span className="absolute inset-0 bg-gradient-to-t from-[#172126]/70 via-[#172126]/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true" />
+                              <span className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 text-[12px] font-semibold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                                <span>{isFeatured ? 'Featured installation' : 'View project photo'}</span>
+                                <ArrowUpRight size={16} aria-hidden="true" />
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-[13px] text-[#59635f]">
+                        <span>{projectGroup.projectName || `Project ${projectIndex + 1}`} gallery</span>
+                        <button
+                          type="button"
+                          onClick={() => openGalleryModalAtIndex(customerGalleryItems.indexOf(projectGroup.images[0]))}
+                          className="inline-flex items-center gap-1 font-semibold text-[#172126] underline decoration-[#9ca5a1] underline-offset-4 transition-colors hover:text-[#00855a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2"
+                        >
+                          Open gallery
+                          <ArrowUpRight size={14} aria-hidden="true" />
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : hasCuratedProjectGallery ? (
+              <section className="w-full border-t border-[#d0d0d0] pt-12 md:pt-16" aria-labelledby={`${product.slug}-projects-heading`}>
+                <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                  <div className="max-w-[690px]">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#00855a]">{isMixedProjectGallery ? 'Real projects' : 'Real project'}</p>
+                    <h2 id={`${product.slug}-projects-heading`} className="mt-3 text-[30px] font-semibold leading-[1.08] tracking-tight text-[#172126] md:text-[42px]">
+                      See {product.name} in real workplaces.
+                    </h2>
+                    {projectGallery.description && <p className="mt-4 max-w-[58ch] text-[15px] leading-[1.55] text-[#59635f]">{projectGallery.description}</p>}
+                  </div>
+                  <div className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-2 text-[13px]">
+                    <span className="font-medium text-[#59635f]">
+                      {isMixedProjectGallery
+                        ? projectGalleryGroups.map((project) => project.projectName).filter(Boolean).join(' · ')
+                        : projectGallery.projectName}
+                      {!isMixedProjectGallery && projectGallery.location ? ` · ${projectGallery.location}` : ''}
+                    </span>
+                    <Link
+                      to="/portfolio"
+                      className="inline-flex items-center gap-1 font-semibold text-[#00855a] transition-colors hover:text-[#172126] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2"
+                    >
+                      View all customer stories
+                      <ArrowUpRight size={15} aria-hidden="true" />
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:min-h-[540px] lg:grid-cols-4 lg:grid-rows-2">
+                  {customerGalleryItems.slice(0, 5).map((item, index) => {
+                    const isFeatured = index === 0;
                     return (
                       <button
-                        key={`${product.slug}-${item.type}-thumb-unified-${index}`}
+                        key={`${product.slug}-${item.type}-project-${index}`}
                         type="button"
-                        onClick={() => handleThumbnailSelect(item, index)}
-                        className={`flex h-[112px] w-[112px] shrink-0 items-center justify-center overflow-hidden rounded-[10px] border bg-white transition sm:h-[124px] sm:w-[124px] md:h-[132px] md:w-[132px] ${
-                          isActive ? 'border-[#00855a] ring-1 ring-[#007653]/40' : 'border-[#d0d3d7] hover:border-[#98a2ac]'
+                        onClick={() => openGalleryModalAtIndex(index)}
+                        className={`group relative min-h-[220px] overflow-hidden rounded-[5px] bg-[#d8d6d1] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2 ${
+                          isFeatured ? 'sm:col-span-2 sm:min-h-[360px] lg:col-span-2 lg:row-span-2 lg:min-h-0' : 'sm:min-h-[180px] lg:min-h-0'
                         }`}
-                        aria-label={`Open gallery image ${index + 1} for ${product.name}`}
+                        aria-label={`Open ${item.alt || `${product.name} project photo ${index + 1}`}`}
                       >
-                        <picture className="block h-full w-full">
+                        <picture className="absolute inset-0 block">
                           {getGalleryAvifSource(item.image) ? <source srcSet={getGalleryAvifSource(item.image)} type="image/avif" /> : null}
                           <img
                             src={item.image}
                             alt={getGalleryThumbAlt(item)}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03] group-focus-visible:scale-[1.03]"
+                            style={{ objectPosition: item.objectPosition || 'center' }}
+                            loading={isFeatured ? 'eager' : 'lazy'}
                           />
                         </picture>
+                        <span className="absolute inset-0 bg-gradient-to-t from-[#172126]/70 via-[#172126]/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true" />
+                        <span className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 text-[12px] font-semibold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                          <span>{isFeatured ? 'Featured installation' : 'View project photo'}</span>
+                          <ArrowUpRight size={16} aria-hidden="true" />
+                        </span>
                       </button>
                     );
                   })}
                 </div>
+
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-[13px] text-[#59635f]">
+                  <span>{customerGalleryItems.length} approved project photos</span>
+                  <button
+                    type="button"
+                    onClick={() => openGalleryModalAtIndex(0)}
+                    className="inline-flex items-center gap-1 font-semibold text-[#172126] underline decoration-[#9ca5a1] underline-offset-4 transition-colors hover:text-[#00855a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00855a] focus-visible:ring-offset-2"
+                  >
+                    Open gallery
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </button>
+                </div>
+              </section>
+            ) : (
+              <div className="w-full pt-10">
+                <h3 className="mb-12 text-center text-[36px] font-semibold tracking-tight text-[#172126] md:text-[40px]">Our Past Projects</h3>
+                <div className="w-full overflow-x-auto pb-2">
+                  <div className="flex w-max min-w-full justify-center gap-4 md:gap-5">
+                    {customerGalleryItems.map((item, index) => {
+                      const isActive = isGalleryModalOpen ? galleryModalIndex === index : index === 0;
+                      return (
+                        <button
+                          key={`${product.slug}-${item.type}-thumb-unified-${index}`}
+                          type="button"
+                          onClick={() => handleThumbnailSelect(item, index)}
+                          className={`flex h-[112px] w-[112px] shrink-0 items-center justify-center overflow-hidden rounded-[10px] border bg-white transition sm:h-[124px] sm:w-[124px] md:h-[132px] md:w-[132px] ${
+                            isActive ? 'border-[#00855a] ring-1 ring-[#007653]/40' : 'border-[#d0d3d7] hover:border-[#98a2ac]'
+                          }`}
+                          aria-label={`Open gallery image ${index + 1} for ${product.name}`}
+                        >
+                          <picture className="block h-full w-full">
+                            {getGalleryAvifSource(item.image) ? <source srcSet={getGalleryAvifSource(item.image)} type="image/avif" /> : null}
+                            <img
+                              src={item.image}
+                              alt={getGalleryThumbAlt(item)}
+                              className="h-full w-full object-cover"
+                            />
+                          </picture>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
-            </div>
+            )
           )}
 
           <section className="mx-auto w-full max-w-[980px] border-t border-[#d0d0d0] pt-8">

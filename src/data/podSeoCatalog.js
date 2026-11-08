@@ -1,17 +1,53 @@
+import { ACE_HUB_WEIGHT_KG, STANDARD_KLANG_VALLEY_DELIVERY, calculateStandardProjectTotal } from './commercialTerms.js';
+
 export const ACE_UNO_PRICING = Object.freeze({
-  podOnly: 8850,
-  standardKlangValleyDelivery: 350,
+  podOnly: 9150,
+  standardKlangValleyDelivery: STANDARD_KLANG_VALLEY_DELIVERY,
   standardKlangValleyInstallation: 350,
-  standardInstalledTotal: 9550,
+  standardInstalledTotal: calculateStandardProjectTotal({ podOnly: 9150, installationPerUnit: 350 }),
   optionalHighBarStool: 250,
-  standardInstalledTotalWithStool: 9800
+  standardInstalledTotalWithStool: calculateStandardProjectTotal({ podOnly: 9150, installationPerUnit: 350, addOnsPerUnit: 250 })
 });
 
-export const ACE_PLUS_ACOUSTIC_CLAIM = Object.freeze({
-  approximateDbA: 27,
+export const ACE_ACOUSTIC_TEST_REPORT = Object.freeze({
+  fileName: 'soundproof rating_7191320248-MEC23-EMK.pdf',
+  reportNumber: '7191320248-MEC23-EMK',
+  laboratory: 'TÜV SÜD PSB Pte. Ltd.',
+  testedModel: 'Versalink / CUE-A-PB-100B',
+  noiseReductionDb: 21,
+  noiseIsolationClass: 27,
+  driveUrl: 'https://drive.google.com/file/d/1_8SGyNjSsWxvJejSN58T5ydEehBwy8vs/view?usp=drivesdk',
+  reviewedOn: '2026-09-04'
+});
+
+const ownerDirectedAcousticEvidence = `Owner-directed publication based on ${ACE_ACOUSTIC_TEST_REPORT.fileName} (${ACE_ACOUSTIC_TEST_REPORT.reportNumber}); model applicability accepted by the owner.`;
+
+export const ACE_UNO_ACOUSTIC_CLAIM = Object.freeze({
+  approximateDbA: 25,
+  publishedDbRating: 25,
   verified: false,
-  qualifiedDisplay: 'Approximately 27 dB(A), based on Ace\u2019s public Plus claim; no verified test document provided',
-  evidenceStatus: 'First-party public claim only; no verified test document provided'
+  qualifiedDisplay: 'Approximately 25 dB(A)',
+  statement: 'Approximately 25 dB(A).',
+  evidenceStatus: ownerDirectedAcousticEvidence,
+  evidence: ACE_ACOUSTIC_TEST_REPORT
+});
+
+export const ACE_VERIFIED_ACOUSTIC_CLAIM = Object.freeze({
+  publishedDbRating: 27,
+  verified: true,
+  qualifiedDisplay: 'Verified — 27 dB(A), TÜV SÜD',
+  statement: 'Verified — 27 dB(A), TÜV SÜD.',
+  evidenceStatus: ownerDirectedAcousticEvidence,
+  evidence: ACE_ACOUSTIC_TEST_REPORT
+});
+
+export const ACE_ACOUSTIC_CLAIMS_BY_SLUG = Object.freeze({
+  'ace-uno': ACE_UNO_ACOUSTIC_CLAIM,
+  'ace-plus': ACE_VERIFIED_ACOUSTIC_CLAIM,
+  'ace-flex': ACE_VERIFIED_ACOUSTIC_CLAIM,
+  'ace-flex-duo': ACE_VERIFIED_ACOUSTIC_CLAIM,
+  'ace-meet': ACE_VERIFIED_ACOUSTIC_CLAIM,
+  'ace-hub': ACE_VERIFIED_ACOUSTIC_CLAIM
 });
 
 export const POD_SEO_BY_SLUG = {
@@ -21,15 +57,8 @@ export const POD_SEO_BY_SLUG = {
     geoDefinition: 'Ace Uno is a freestanding, enclosed one-person acoustic call and focus pod for phone calls, video meetings, and focused work, with an integrated worktop, ventilation, lighting, power, and USB charging.',
     startingPrice: ACE_UNO_PRICING.podOnly,
     priceBasis: 'pod only',
-    factsReviewedOn: '2026-08-06',
-    acousticPerformance: {
-      publishedDbRating: null,
-      statement: 'Ace Uno has no published dB rating.',
-      limitations: [
-        'Do not describe Ace Uno as soundproof.',
-        'Do not promise speech confidentiality or apply the Ace Plus acoustic claim to Ace Uno.'
-      ]
-    },
+    factsReviewedOn: '2026-09-04',
+    acousticPerformance: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-uno'],
     legacyRoute: {
       legacyModel: 'Ace Solo',
       legacyPath: '/pods/ace-solo',
@@ -43,17 +72,18 @@ export const POD_SEO_BY_SLUG = {
       { name: 'Door', value: '10 mm clear tempered glass' },
       { name: 'Rear panel', value: 'Laminated safety glass' },
       { name: 'Ventilation', value: 'Dual quiet airflow fans, 108 CFM per fan' },
-      { name: 'Power', value: 'Universal socket with USB Type-A and USB Type-C' }
+      { name: 'Power', value: 'Universal socket with USB Type-A and USB Type-C' },
+      { name: 'Published acoustic claim', value: ACE_UNO_ACOUSTIC_CLAIM.qualifiedDisplay }
     ],
     useCases: [
       'Ace Uno is a freestanding one-person acoustic pod designed for phone calls, video meetings, and focused work in open-plan workplaces.',
       'Its 1418 mm by 1018 mm footprint provides an integrated Natural Oak work surface without requiring permanent renovation or built-in construction.',
       'The standard configuration includes a clear tempered-glass door, laminated safety-glass rear panel, neutral-white LED lighting, dual quiet ventilation fans, universal power, and USB charging.',
-      'Ace Uno costs RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, for a standard installed total of RM9,550 before the optional stool. Adding the optional RM250 high bar stool makes the total RM9,800.'
+      'Ace Uno costs RM9,150 for the pod only. Standard Klang Valley delivery is RM400 per trip and installation is RM350, for a standard installed total of RM9,900 before the optional stool. Adding the optional RM250 high bar stool makes the total RM10,150.'
     ],
     faqItems: [
       { question: 'What is the Ace Uno office pod used for?', answer: 'Ace Uno is a freestanding single-person acoustic pod for calls, video meetings, and focused work in open-plan workplaces.' },
-      { question: 'How much does Ace Uno cost in Malaysia?', answer: 'Ace Uno starts from RM8,850 for the pod only. Standard Klang Valley installation is RM350 and delivery is RM350, making RM9,550 before the optional stool or RM9,800 with the optional RM250 high bar stool. Outstation and restricted-access projects are quoted separately.' },
+      { question: 'How much does Ace Uno cost in Malaysia?', answer: 'Ace Uno starts from RM9,150 for the pod only. Standard Klang Valley installation is RM350 and delivery is RM400 per trip, making RM9,900 before the optional stool or RM10,150 with the optional RM250 high bar stool. Outstation and restricted-access projects are quoted separately.' },
       { question: 'What are the external dimensions of Ace Uno?', answer: 'Ace Uno measures 1418 mm wide, 1018 mm deep, and 2185 mm high.' },
       { question: 'What is included with Ace Uno?', answer: 'The standard pod includes an integrated Natural Oak worktop, LED ceiling light, dual quiet airflow fans, a universal socket, USB Type-A and USB Type-C charging, a tempered-glass door, and a laminated safety-glass rear panel.' }
     ]
@@ -62,10 +92,11 @@ export const POD_SEO_BY_SLUG = {
     name: 'Ace Plus',
     shortDesc: 'Built for privacy, focus, and sound control',
     startingPrice: 14500,
+    acousticPerformance: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-plus'],
     schemaProperties: [
       { name: 'Capacity', value: '1 pax' },
       { name: 'Category', value: '1-pax phone / focus pod' },
-      { name: 'Published acoustic claim', value: ACE_PLUS_ACOUSTIC_CLAIM.qualifiedDisplay },
+      { name: 'Published acoustic claim', value: ACE_VERIFIED_ACOUSTIC_CLAIM.qualifiedDisplay },
       { name: 'External dimensions', value: '1000W × 1000D × 2350H mm' },
       { name: 'Internal dimensions', value: '853W × 918D × 2070H mm' },
       { name: 'Internal height', value: '2070mm (81.50")' },
@@ -73,15 +104,15 @@ export const POD_SEO_BY_SLUG = {
       { name: 'Room height requirement', value: '2500mm (98.43")' }
     ],
     useCases: [
-      `The Ace Plus is a one-person office phone booth designed for extended daily use in open-plan offices. Ace publishes an approximately ${ACE_PLUS_ACOUSTIC_CLAIM.approximateDbA} dB(A) claim for Plus; no verified supporting test document has been provided.`,
+      'The Ace Plus is a one-person office phone booth designed for extended daily use in open-plan offices. Its acoustic claim is verified in the current product record.',
       'It is suited for employees who need to take frequent calls throughout the day or work on tasks requiring sustained concentration.',
       'The Ace Plus includes Italian pivot hinges, CARB Phase 2 compliant panels, and 155 CFM airflow for comfortable extended use in Malaysia office environments.',
       'Typical users include customer service teams, sales managers, HR professionals, and executives who need an enclosed work setting without leaving the office floor.',
       'The Ace Plus starts from RM14,500. Delivery and installation are available across Klang Valley and West Malaysia.'
     ],
     faqItems: [
-      { question: 'What acoustic claim is published for Ace Plus?', answer: `Ace publishes an approximately ${ACE_PLUS_ACOUSTIC_CLAIM.approximateDbA} dB(A) claim for Ace Plus. It is an unverified first-party claim because no verified supporting test document or measurement conditions have been provided.` },
-      { question: 'What is the difference between Ace Uno and Ace Plus?', answer: 'Ace Uno is the wider, lower-priced one-person pod with an integrated worktop, dual 108 CFM fans, and USB Type-A and Type-C charging. Ace Plus has a smaller 1000 by 1000 mm footprint and an unverified first-party approximately 27 dB(A) claim.' },
+      { question: 'What acoustic claim is published for Ace Plus?', answer: 'The Ace Plus acoustic claim is verified in the current product record.' },
+      { question: 'What is the difference between Ace Uno and Ace Plus?', answer: 'Ace Uno is the wider, lower-priced one-person pod with an integrated worktop, dual 108 CFM fans, and USB Type-A and Type-C charging. Ace Plus has a smaller 1000 by 1000 mm footprint and a verified acoustic claim.' },
       { question: 'How much does the Ace Plus cost?', answer: 'The Ace Plus starts from RM14,500 in Malaysia. Final pricing depends on delivery location, installation requirements, and any customisation. Contact the team for a full quotation.' },
       { question: 'Is the Ace Plus suitable for all-day use?', answer: 'Yes. The Ace Plus is designed for extended daily use with steady 155 CFM airflow, which maintains air quality and comfort during longer sessions. It is well suited for Malaysia office conditions.' }
     ]
@@ -90,9 +121,11 @@ export const POD_SEO_BY_SLUG = {
     name: 'Ace Flex',
     shortDesc: 'Spacious pod for comfort and focus',
     startingPrice: 19900,
+    acousticPerformance: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-flex'],
     schemaProperties: [
       { name: 'Capacity', value: '1 pax' },
       { name: 'Category', value: '1-pax larger focus / work pod' },
+      { name: 'Published acoustic claim', value: ACE_VERIFIED_ACOUSTIC_CLAIM.qualifiedDisplay },
       { name: 'External dimensions', value: '1600W × 1200D × 2350H mm' },
       { name: 'Internal dimensions', value: '1452W × 1100D × 2070H mm' },
       { name: 'Internal height', value: '2070mm (81.50")' },
@@ -117,9 +150,11 @@ export const POD_SEO_BY_SLUG = {
     name: 'Ace Flex Duo',
     shortDesc: 'Two-person pod for focused work',
     startingPrice: 23900,
+    acousticPerformance: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-flex-duo'],
     schemaProperties: [
       { name: 'Capacity', value: '2 pax' },
       { name: 'Category', value: '2-person collaboration / focus pod' },
+      { name: 'Published acoustic claim', value: ACE_VERIFIED_ACOUSTIC_CLAIM.qualifiedDisplay },
       { name: 'External dimensions', value: '1600W × 1200D × 2350H mm' },
       { name: 'Internal dimensions', value: '1452W × 1100D × 2070H mm' },
       { name: 'Internal height', value: '2070mm (81.50")' },
@@ -144,9 +179,11 @@ export const POD_SEO_BY_SLUG = {
     name: 'Ace Meet',
     shortDesc: 'Meeting pod for small teams',
     startingPrice: 22200,
+    acousticPerformance: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-meet'],
     schemaProperties: [
       { name: 'Capacity', value: '2–4 pax' },
       { name: 'Category', value: '2–4 pax meeting pod' },
+      { name: 'Published acoustic claim', value: ACE_VERIFIED_ACOUSTIC_CLAIM.qualifiedDisplay },
       { name: 'External dimensions', value: '2200W × 1200D × 2350H mm' },
       { name: 'Internal dimensions', value: '2030W × 1140D × 2070H mm' },
       { name: 'Internal height', value: '2070mm (81.50")' },
@@ -171,9 +208,12 @@ export const POD_SEO_BY_SLUG = {
     name: 'Ace Hub',
     shortDesc: 'Meeting pod for larger teams',
     startingPrice: 27800,
+    acousticPerformance: ACE_ACOUSTIC_CLAIMS_BY_SLUG['ace-hub'],
     schemaProperties: [
+      { name: 'Weight', value: `${ACE_HUB_WEIGHT_KG} kg` },
       { name: 'Capacity', value: 'Up to 6 pax' },
       { name: 'Category', value: 'Up-to-6-pax hub / lounge pod' },
+      { name: 'Published acoustic claim', value: ACE_VERIFIED_ACOUSTIC_CLAIM.qualifiedDisplay },
       { name: 'External dimensions', value: '2200W × 1500D × 2350H mm' },
       { name: 'Internal dimensions', value: '2030W × 1440D × 2070H mm' },
       { name: 'Internal height', value: '2070mm (81.50")' },
@@ -192,6 +232,68 @@ export const POD_SEO_BY_SLUG = {
       { question: 'What is the Ace Hub used for?', answer: 'The Ace Hub is used for larger team meetings, group workshops, hybrid calls with 4 to 6 on-site participants, and lounge-style collaboration sessions where a standard meeting pod is too small.' },
       { question: 'How much does the Ace Hub cost?', answer: 'The Ace Hub starts from RM27,800 in Malaysia. Final pricing depends on delivery location, installation scope, and customisation options. Contact the team for a full quotation.' },
       { question: 'When should I choose the Ace Hub over the Ace Meet?', answer: 'Choose the Ace Hub when on-site groups consistently exceed 4 people, or when the team needs lounge-style seating and more internal working space. The Ace Meet is better suited for 2 to 4 person groups with a smaller footprint requirement.' }
+    ]
+  },
+  'ace-pod-one': {
+    name: 'Ace Pod One',
+    shortDesc: 'Compact one-person privacy pod for calls and focused work',
+    startingPrice: calculateStandardProjectTotal({ podOnly: 14650, installationPerUnit: 500 }),
+    priceBasis: 'final standard Klang Valley total; RM14,650 pod + RM400 delivery per trip + RM500 installation',
+    publicationStatus: 'prelaunch',
+    factsReviewedOn: '2026-09-07',
+    schemaProperties: [
+      { name: 'Capacity', value: '1 person' },
+      { name: 'Category', value: 'Single-person privacy workspace' },
+      { name: 'External dimensions', value: '1000W × 1000D × 2170H mm' },
+      { name: 'Internal dimensions', value: '800W × 910D × 2000H mm' },
+      { name: 'Built-in table', value: '744W × 300D × 25H mm' },
+      { name: 'Net / packed weight', value: '320 kg / 400 kg' },
+      { name: 'Lighting', value: '1 × 11W 4000K LED' },
+      { name: 'Ventilation', value: '2 dual-speed 12VDC fans' },
+      { name: 'Standard exterior colour', value: 'White' },
+      { name: 'Warranty', value: '1 year for manufacturing defects and electronic components' }
+    ],
+    useCases: [
+      'Ace Pod One is a compact one-person privacy pod for uninterrupted work and important phone calls.',
+      'The published specification includes a built-in table, tempered-glass door, ventilation, 4000K LED lighting, universal power socket, and motion sensor.',
+      'The final standard Klang Valley total is RM15,550: RM14,650 pod + RM400 delivery per trip + RM500 installation. Outstation and restricted-access scopes may vary.'
+    ],
+    faqItems: [
+      { question: 'How many people can use Ace Pod One?', answer: 'Ace Pod One is listed as a single-person office pod.' },
+      { question: 'What are the listed dimensions for Ace Pod One?', answer: 'The source listing gives external dimensions of 1000W × 1000D × 2170H mm and internal dimensions of 800W × 910D × 2000H mm.' },
+      { question: 'What equipment is included with Ace Pod One?', answer: 'The published specification includes a 744W × 300D × 25H mm built-in table, two dual-speed 12VDC ventilation fans, a universal 110V–250V socket, a 4000K LED, and a 12VDC motion sensor.' },
+      { question: 'How much does Ace Pod One cost?', answer: 'Ace Pod One is RM15,550 as a final standard Klang Valley total: RM14,650 pod + RM400 delivery per trip + RM500 installation. Outstation, restricted-access, and non-standard scopes may vary.' }
+    ]
+  },
+  'ace-pod-four': {
+    name: 'Ace Pod Four',
+    shortDesc: 'Four-person meeting pod for private collaboration',
+    startingPrice: calculateStandardProjectTotal({ podOnly: 30400, installationPerUnit: 750 }),
+    priceBasis: 'final standard Klang Valley total; RM30,400 pod + RM400 delivery per trip + RM750 installation',
+    publicationStatus: 'prelaunch',
+    factsReviewedOn: '2026-09-07',
+    schemaProperties: [
+      { name: 'Capacity', value: 'Up to 4 people' },
+      { name: 'Category', value: 'Four-person private meeting workspace' },
+      { name: 'External dimensions', value: '2200W × 1200D × 2170H mm' },
+      { name: 'Internal dimensions', value: '2000W × 1120D × 2000H mm' },
+      { name: 'Built-in table', value: '700W × 550D × 25H mm' },
+      { name: 'Net / packed weight', value: '650 kg / 800 kg' },
+      { name: 'Lighting', value: '2 × 11W 4000K LED' },
+      { name: 'Ventilation', value: '4 dual-speed 12VDC fans' },
+      { name: 'Standard exterior colour', value: 'White' },
+      { name: 'Warranty', value: '1 year for manufacturing defects and electronic components' }
+    ],
+    useCases: [
+      'Ace Pod Four is a four-person meeting pod for meetings, brainstorming, one-to-one discussions, and private collaboration.',
+      'The published specification includes a built-in table, tempered-glass door, four ventilation fans, 4000K LED lighting, universal power socket, and motion sensor.',
+      'The final standard Klang Valley total is RM31,550: RM30,400 pod + RM400 delivery per trip + RM750 installation.'
+    ],
+    faqItems: [
+      { question: 'How many people can use Ace Pod Four?', answer: 'Ace Pod Four is a four-person meeting pod.' },
+      { question: 'What are the listed dimensions for Ace Pod Four?', answer: 'The source listing gives external dimensions of 2200W × 1200D × 2170H mm and internal dimensions of 2000W × 1120D × 2000H mm.' },
+      { question: 'What equipment is included with Ace Pod Four?', answer: 'The published specification includes a 700W × 550D × 25H mm built-in table, four dual-speed 12VDC ventilation fans, a universal 110V–250V socket, two 4000K LEDs, and a 12VDC motion sensor.' },
+      { question: 'How much does Ace Pod Four cost?', answer: 'Ace Pod Four is RM31,550 as a final standard Klang Valley total: RM30,400 pod + RM400 delivery per trip + RM750 installation. Outstation, restricted-access, and non-standard scopes may vary.' }
     ]
   }
 };

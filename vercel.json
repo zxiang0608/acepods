@@ -2,6 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": false,
   "redirects": [
+    { "source": "/pods/ace-pod-one", "destination": "/office-pods", "permanent": false },
+    { "source": "/pods/ace-pod-four", "destination": "/office-pods", "permanent": false },
     {
       "source": "/pods/ace-solo",
       "destination": "https://aceofficepods.com/pods/ace-uno",
@@ -63,6 +65,14 @@
     },
     {
       "source": "/demo3/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/demo4",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/demo4/:path*",
       "destination": "/index.html"
     },
     {

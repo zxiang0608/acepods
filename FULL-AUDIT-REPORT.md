@@ -252,7 +252,7 @@ Instagram `@acepodsmy` ✅ | LinkedIn ✅ | Google Maps ✅ | SSM registration i
 ## 8. Local SEO
 
 ### 8.1 NAP Consistency
-Schema address: `Jalan Gopeng, Kawasan 18, 41400 Klang` ✅
+Schema address (owner-updated 2026-10-21): `Jalan Seri Wangsa 2, Taman Sri Rampai, 53300 Kuala Lumpur`. Map pin verification pending.
 Phone: `+601154352700` consistent ✅ | Email: `sales@aceofficepods.com` ✅
 
 ### 8.2 Review Gap

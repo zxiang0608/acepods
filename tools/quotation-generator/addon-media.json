@@ -1,0 +1,62 @@
+{
+  "scope": "Local quotation generator only; existing canonical add-on images, no new render or crop.",
+  "authorization": "User requested images for add-ons in this chat on 19 October 2026.",
+  "entries": [
+    {
+      "file": "assets/bar-stool-black-normalized.png",
+      "role": "quotation-add-on-preview",
+      "status": "approved",
+      "approvedOn": "2026-10-19",
+      "source": "src/data/products.js \u2014 addOnOptions.image",
+      "displayOrder": "Follows canonical per-model add-on order"
+    },
+    {
+      "file": "assets/office-chair.png",
+      "role": "quotation-add-on-preview",
+      "status": "approved",
+      "approvedOn": "2026-10-19",
+      "source": "src/data/products.js \u2014 addOnOptions.image",
+      "displayOrder": "Follows canonical per-model add-on order"
+    },
+    {
+      "file": "assets/ace-flex-sofa.png",
+      "role": "quotation-add-on-preview",
+      "status": "approved",
+      "approvedOn": "2026-10-19",
+      "source": "src/data/products.js \u2014 addOnOptions.image",
+      "displayOrder": "Follows canonical per-model add-on order"
+    },
+    {
+      "file": "assets/office-chair-normalized.png",
+      "role": "quotation-add-on-preview",
+      "status": "approved",
+      "approvedOn": "2026-10-19",
+      "source": "src/data/products.js \u2014 addOnOptions.image",
+      "displayOrder": "Follows canonical per-model add-on order"
+    },
+    {
+      "file": "assets/sofa-normalized.png",
+      "role": "quotation-add-on-preview",
+      "status": "approved",
+      "approvedOn": "2026-10-19",
+      "source": "src/data/products.js \u2014 addOnOptions.image",
+      "displayOrder": "Follows canonical per-model add-on order"
+    },
+    {
+      "file": "assets/sofa.png",
+      "role": "quotation-add-on-preview",
+      "status": "approved",
+      "approvedOn": "2026-10-19",
+      "source": "src/data/products.js \u2014 addOnOptions.image",
+      "displayOrder": "Follows canonical per-model add-on order"
+    },
+    {
+      "file": "assets/hub-l-shape-sofa-normalized.png",
+      "role": "quotation-add-on-preview",
+      "status": "approved",
+      "approvedOn": "2026-10-19",
+      "source": "src/data/products.js \u2014 addOnOptions.image",
+      "displayOrder": "Follows canonical per-model add-on order"
+    }
+  ]
+}

@@ -8,12 +8,14 @@ import {
   PRICING_FAQ_ITEMS,
   SEO_BASE_URL,
   SEO_BRAND_ALTERNATE_NAMES,
+  SEO_BRAND_ADDRESS,
   SEO_BRAND_AREA_SERVED,
   SEO_BRAND_COUNTRY,
   SEO_BRAND_EMAIL,
   SEO_BRAND_IDENTIFIER,
   SEO_BRAND_LEGAL,
   SEO_BRAND_LOGO,
+  SEO_BRAND_MAP_URL,
   SEO_BRAND_PHONE,
   SEO_BRAND_POSTAL_CODE,
   SEO_BRAND_PRIMARY,
@@ -38,12 +40,18 @@ const PRICING_LIST_ITEMS = POD_ROUTE_ORDER.map((slug) => ({
   slug,
   name: POD_SEO_BY_SLUG[slug].name,
   price: POD_SEO_BY_SLUG[slug].startingPrice,
+  priceBasis: POD_SEO_BY_SLUG[slug].priceBasis,
   path: `/pods/${slug}`,
   image: `${SEO_BASE_URL}${getProductPublicImage(slug)}`
 }));
 
+const formatPrerenderProductPrice = (item) => item.priceBasis?.startsWith('final standard')
+  ? `Final standard Klang Valley total RM${item.price.toLocaleString('en-MY')}`
+  : `From RM${item.price.toLocaleString('en-MY')}`;
+
 const PRERENDER_NAV_LINKS = [
   ['Office pods', '/office-pods'],
+  ['Open pods', '/open-pods'],
   ['Ace Uno', '/pods/ace-uno'],
   ['Ace Plus', '/pods/ace-plus'],
   ['Ace Flex', '/pods/ace-flex'],
@@ -157,7 +165,7 @@ const buildLocalBusinessSchema = () => ({
   ...buildOrganizationSchema(),
   '@type': ['Organization', 'LocalBusiness', 'FurnitureStore', 'ProfessionalService'],
   '@id': `${SEO_BASE_URL}/#organization`,
-  priceRange: 'RM8,850+',
+  priceRange: 'RM9,150+',
   image: [SEO_BRAND_LOGO, `${SEO_BASE_URL}/og-image.jpg`],
   address: {
     '@type': 'PostalAddress',
@@ -167,12 +175,7 @@ const buildLocalBusinessSchema = () => ({
     postalCode: SEO_BRAND_POSTAL_CODE,
     addressCountry: SEO_BRAND_COUNTRY
   },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 3.07523,
-    longitude: 101.44187
-  },
-  hasMap: 'https://maps.app.goo.gl/nJHHvTLD5YEov9e4A',
+  hasMap: SEO_BRAND_MAP_URL,
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -286,7 +289,7 @@ const buildLocationPrerenderEntries = () =>
             '## Delivery and installation planning',
             `Projects in ${location.city} are planned around building access, loading arrangements, lift or staircase clearance, floor protection, delivery timing, and final pod placement.`,
             '## Showroom viewing',
-            'The physical Ace Office Pods showroom is in Klang, Selangor. Viewing is available by appointment before selecting a model.',
+            'The physical Ace Office Pods showroom is in Kuala Lumpur. Viewing is available by appointment before selecting a model.',
             '## Related planning links',
             '[View office pod pricing](/pricing)',
             '[Compare office pod models](/office-pods)',
@@ -433,9 +436,9 @@ const STATIC_PRERENDER_META = {
     keywords: `${SEO_KEYWORDS_COMMON}, office pod price Malaysia, office booth price`,
     h1: 'How much does an office pod cost?',
     body: [
-      'Ace Uno is the entry model at RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Meeting pods start from RM22,200.',
-      '## Office pod starting prices in Malaysia',
-      ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - From RM${item.price.toLocaleString('en-MY')}`),
+      'Ace Uno is the entry model at RM9,150 for the pod only. Standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Meeting pods start from RM22,200.',
+      '## Office pod prices in Malaysia',
+      ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - ${formatPrerenderProductPrice(item)}`),
       '## What affects the final price?',
       'Final pricing may vary depending on pod model, quantity, delivery location, floor/access conditions, installation scope, optional furniture, finishes, power requirements, and project timeline.',
       '## Bulk and project pricing',
@@ -546,7 +549,7 @@ const STATIC_PRERENDER_META = {
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'Ace Uno is the entry model at RM8,850 for the pod only. Standard Klang Valley delivery is RM350 and installation is RM350, making the standard installed total RM9,550 before the optional stool. Meeting pods start from RM22,200.'
+              'Ace Uno is the entry model at RM9,150 for the pod only. Standard Klang Valley delivery is RM400 per trip and installation is RM350, making the standard installed total RM9,900 before the optional stool. Meeting pods start from RM22,200.'
           }
         }
       },
@@ -566,24 +569,24 @@ const STATIC_PRERENDER_META = {
     ]
   },
   '/office-pods-near-me': {
-    title: 'Office Pods Near Me | Klang Valley Showroom',
+    title: 'Office Pods Near Me | Kuala Lumpur Showroom',
     description:
-      'View office pods by appointment in Klang, with pricing, delivery, and installation support across Klang Valley and West Malaysia.',
+      'View office pods by appointment in Kuala Lumpur, with pricing, delivery, and installation support across Klang Valley and West Malaysia.',
     keywords: `${SEO_KEYWORDS_COMMON}, office pods near me, office pods near me Malaysia, office pods Klang Valley, office pods Selangor, office pods Kuala Lumpur`,
     h1: 'Office pods near me',
     body: [
-      'Ace Office Pods supplies acoustic office pods and office booths from Klang, Selangor, with showroom viewing by appointment and project support across Klang Valley and West Malaysia.',
+      'Ace Office Pods supplies acoustic office pods and office booths from Kuala Lumpur, with showroom viewing by appointment and project support across Klang Valley and West Malaysia.',
       '## Local office pod supply and installation',
       'For near me buyers, the useful question is not only location. It is whether the supplier can handle viewing, model selection, delivery access, installation planning, and support after delivery.',
       '## Contact',
-      `Showroom: ${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}. Viewing by appointment.`,
+      `Showroom: ${SEO_BRAND_ADDRESS}. Viewing by appointment.`,
       `Phone / WhatsApp: ${SEO_BRAND_PHONE}`,
       `Email: ${SEO_BRAND_EMAIL}`,
       '## Areas commonly served',
       'Klang, Shah Alam, Petaling Jaya, Subang Jaya, Kuala Lumpur, Puchong, Cyberjaya, and Putrajaya.',
       'Other West Malaysia locations can be quoted based on delivery distance, site access, floor level, lift access, and installation scope.',
       '## Starting prices',
-      ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - From RM${item.price.toLocaleString('en-MY')}`),
+      ...PRICING_LIST_ITEMS.map((item) => `- ${item.name} - ${formatPrerenderProductPrice(item)}`),
       '## Related planning links',
       '[View pricing](/pricing)',
       '[View office pod models](/office-pods)',
@@ -594,12 +597,12 @@ const STATIC_PRERENDER_META = {
       {
         question: 'Where can I find office pods near me in Malaysia?',
         answer:
-          'Ace Office Pods supplies acoustic office pods and office booths from Klang, Selangor, with delivery and installation planning across Klang Valley and West Malaysia. Showroom viewing is available by appointment.'
+          'Ace Office Pods supplies acoustic office pods and office booths from Kuala Lumpur, with delivery and installation planning across Klang Valley and West Malaysia. Showroom viewing is available by appointment.'
       },
       {
         question: 'Can I view an office pod before buying?',
         answer:
-          'Yes. Buyers can arrange a showroom viewing in Klang to compare office pod models, check size, review finishes, and understand acoustic performance before confirming a quote.'
+          'Yes. Buyers can arrange a showroom viewing in Kuala Lumpur to compare office pod models, check size, review finishes, and understand acoustic performance before confirming a quote.'
       },
       {
         question: 'Do you install office pods near Kuala Lumpur, Selangor, and Klang Valley?',
@@ -609,7 +612,7 @@ const STATIC_PRERENDER_META = {
       {
         question: 'How much do office pods near me cost?',
         answer:
-          'Ace Office Pods start from RM8,850 for the Ace Uno pod only. Delivery and installation are itemised separately, and final project pricing depends on the model, quantity, location, access, add-ons, and selected configuration.'
+          'Ace Office Pods start from RM9,150 for the Ace Uno pod only. Delivery and installation are itemised separately, and final project pricing depends on the model, quantity, location, access, add-ons, and selected configuration.'
       }
     ],
     schemas: (canonical) => [
@@ -621,7 +624,7 @@ const STATIC_PRERENDER_META = {
         name: 'Office Pods Near Me in Klang Valley and Malaysia',
         url: canonical,
         description:
-          'Find office pods near you in Malaysia. Ace Office Pods offers showroom viewing by appointment in Klang, with office pod delivery and installation planning across Klang Valley and West Malaysia.',
+          'Find office pods near you in Malaysia. Ace Office Pods offers showroom viewing by appointment in Kuala Lumpur, with office pod delivery and installation planning across Klang Valley and West Malaysia.',
         isPartOf: {
           '@id': `${SEO_BASE_URL}/#website`
         },
@@ -697,12 +700,12 @@ const STATIC_PRERENDER_META = {
       '- Two-person discussion pod for quick collaboration',
       '- Team meeting pod for small group sessions',
       '## Compare office pod models',
-      '- Ace Uno — 1 person, calls, video meetings, and focused work, pod only from RM8,850',
-      '- Ace Plus — 1 person, longer focus and repeated daily calls, unverified first-party approximately 27 dB(A) claim, from RM14,500',
-      '- Ace Flex — 1 person, spacious solo work, no published dB rating, from RM19,900',
-      '- Ace Flex Duo — 2 people, one-to-one discussions, no published dB rating, from RM23,900',
-      '- Ace Meet — 2–4 people, small team meetings, no published dB rating, from RM22,200',
-      '- Ace Hub — up to 6 people, larger group collaboration, no published dB rating, from RM27,800',
+      '- Ace Uno — 1 person, calls, video meetings, and focused work, pod only from RM9,150',
+      '- Ace Plus — 1 person, longer focus and repeated daily calls, verified acoustic claim, from RM14,500',
+      '- Ace Flex — 1 person, spacious solo work, verified acoustic claim, from RM19,900',
+      '- Ace Flex Duo — 2 people, one-to-one discussions, verified acoustic claim, from RM23,900',
+      '- Ace Meet — 2–4 people, small team meetings, verified acoustic claim, from RM22,200',
+      '- Ace Hub — up to 6 people, larger group collaboration, verified acoustic claim, from RM27,800',
       'Office pod, office booth, privacy pod, and work pod are overlapping terms for enclosed workspaces. A phone pod or phone booth usually describes a compact one-person model for private calls and focused work. Soundproof office pod claims should be reviewed against the stated acoustic result and the surrounding office conditions.',
       '## What to compare before selecting a model',
       'Compare intended daily usage, team size, available floor space, acoustic expectations, and project budget. This reduces the risk of choosing a pod that is either too small for meetings or oversized for call use.',
@@ -791,6 +794,54 @@ const STATIC_PRERENDER_META = {
             }
           }
         }))
+      }
+    ]
+  },
+  '/open-pods': {
+    title: 'Open Pods Coming Soon | Ace Office Pods',
+    description:
+      'The Ace Open Pods collection is coming soon. Explore our current office pod range or contact Ace Workplace Solutions for help with your workspace.',
+    robots: 'noindex, follow',
+    keywords: `${SEO_KEYWORDS_COMMON}, open pods Malaysia`,
+    h1: 'Open pods coming soon',
+    body: [
+      'We are preparing the Ace Open Pods collection. Check back soon, or explore our current office pod range while this page is being completed.',
+      '## Explore current options',
+      '[View office pods](/office-pods)',
+      '[Contact Ace](/contact)'
+    ],
+    schemas: (canonical) => [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Open Pods Coming Soon',
+        url: canonical,
+        description:
+          'The Ace Open Pods collection is coming soon. Explore the current office pod range or contact Ace Workplace Solutions for workspace guidance.',
+        isPartOf: {
+          '@id': `${SEO_BASE_URL}/#website`
+        },
+        publisher: {
+          '@id': `${SEO_BASE_URL}/#organization`
+        }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SEO_BASE_URL}/`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Open Pods',
+            item: canonical
+          }
+        ]
       }
     ]
   },
@@ -887,7 +938,7 @@ const STATIC_PRERENDER_META = {
       'Phone booth style pods are commonly used for client calls, internal check-ins, and focused tasks that need fewer interruptions than open workstations provide.',
       'Where teams face frequent background noise or high call volume, one-person pods can reduce disruption while keeping larger meeting spaces available for group sessions.',
       '## Phone pod privacy and acoustic performance',
-      'A phone pod or office phone booth should be compared using model-specific acoustic information, ventilation, and intended session length—not name alone. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided. Ace Uno and Ace Flex have no published dB rating on this site.',
+      'A phone pod or office phone booth should be compared using model-specific acoustic information, ventilation, and intended session length—not name alone. Ace Uno carries an approximately 25 dB(A) acoustic claim, while the six media-ready models carry verified acoustic status in their product records.',
       '## Buyer comparison notes',
       'A practical comparison includes footprint, comfort for intended session length, and clarity on delivery and installation scope. This reduces late-stage adjustments during implementation.',
       '## Related pages',
@@ -1126,8 +1177,8 @@ const STATIC_PRERENDER_META = {
       'Compare models beyond headline pricing with practical buying factors in one view.',
       'Review installation, support, and office fit before making a final decision.',
       '## Office pod model comparison',
-      '- Ace Uno — 1 pax, 1418 × 1018 mm, pod only from RM8,850 — best for calls, video meetings, and focus',
-      '- Ace Plus — 1 pax, 1000 × 1000 mm, from RM14,500 — best for extended daily use; unverified first-party approximately 27 dB(A) claim',
+      '- Ace Uno — 1 pax, 1418 × 1018 mm, pod only from RM9,150 — best for calls, video meetings, and focus',
+      '- Ace Plus — 1 pax, 1000 × 1000 mm, from RM14,500 — best for extended daily use; verified acoustic claim',
       '- Ace Flex — 1 pax, 1600 × 1200 mm, from RM19,900 — best for spacious solo work',
       '- Ace Flex Duo — 2 pax, 1600 × 1200 mm, from RM23,900 — best for one-to-one discussions',
       '- Ace Meet — 2–4 pax, 2200 × 1200 mm, from RM22,200 — best for small team meetings',
@@ -1183,6 +1234,33 @@ const STATIC_PRERENDER_META = {
       }
     ]
   },
+  '/instant-quotation': {
+    title: 'Instant Preliminary Quotation | Ace Office Pods',
+    description: 'Choose office pods and add-ons and download a preliminary quotation for Ace to confirm.',
+    robots: 'noindex, follow',
+    h1: 'Build your pod quotation.',
+    body: [
+      'Choose pods, setups and add-ons, enter your details, then download a preliminary quotation PDF.',
+      'Standard site estimates use one Klang Valley delivery trip and model-specific installation. Non-standard delivery and access require review.',
+      'Final specifications, site scope, tax treatment, availability and payment terms require confirmation by Ace.',
+      '[Request help from Ace](/get-a-quote)'
+    ],
+    schemas: () => []
+  },
+  '/get-a-quote': {
+    title: 'Get an Office Pod Quote | Ace Office Pods',
+    description: 'Choose pod models and quantities, share your project details, and prepare a quotation request for Ace Office Pods.',
+    robots: 'noindex, follow',
+    h1: 'Get a quote',
+    body: [
+      'Choose the pods and quantities you need, add your contact details, and tell us about your project.',
+      'Review your quotation request in WhatsApp and press send to deliver it to Ace. The website does not submit the request automatically.',
+      'Standard Klang Valley delivery is RM400 per trip. Installation, options, additional trips, outstation delivery and restricted access are confirmed in the quotation.',
+      '[Compare office pod pricing](/pricing)',
+      '[Contact our team](/contact)'
+    ],
+    schemas: () => []
+  },
   '/contact': {
     title: 'Contact Ace Office Pods | WhatsApp, Email, and Sales Support',
     description: 'Contact Ace Office Pods by Ace Workplace Solutions for office pod sales enquiries via WhatsApp, email, or phone in Malaysia.',
@@ -1192,7 +1270,7 @@ const STATIC_PRERENDER_META = {
       'Contact Ace Office Pods by Ace Workplace Solutions for office pod enquiries, model guidance, and quote support.',
       'Reach our team by WhatsApp, email, or phone.',
       '## Showroom',
-      `Address: ${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}`,
+      `Address: ${SEO_BRAND_ADDRESS}`,
       'Hours: Mon–Fri, 9am–6pm (showroom by appointment)',
       'Showroom viewing is available by appointment. Buyers can compare office pod size, finish, comfort, and acoustic performance before confirming a quote.',
       '## What to prepare before contacting sales',
@@ -1483,12 +1561,12 @@ const STATIC_PRERENDER_META = {
   },
   '/about': {
     title: 'About Ace Office Pods | Ace Workplace Solutions',
-    description: 'Learn about Ace Office Pods by Ace Workplace Solutions, our Klang showroom, West Malaysia service area, and approach to clear product information.',
+    description: 'Learn about Ace Office Pods by Ace Workplace Solutions, our Kuala Lumpur showroom, West Malaysia service area, and approach to clear product information.',
     h1: 'About Ace Office Pods',
     body: [
       'Ace Office Pods is operated by ACE WORKPLACE SOLUTIONS (registration no. 202403171118), a Malaysian supplier of enclosed office pods for calls, focused work, interviews, and small meetings.',
       '## Company and service details',
-      'The Ace showroom is in Klang, Selangor, with visits by appointment. Delivery and installation enquiries are supported across Klang Valley and West Malaysia, with project scope confirmed in the quotation.',
+      'The Ace showroom is in Kuala Lumpur, with visits by appointment. Delivery and installation enquiries are supported across Klang Valley and West Malaysia, with project scope confirmed in the quotation.',
       '## What we supply',
       'The Ace range covers one-person call and focus pods, two-person pods, and meeting pods for small teams. Product pages state the intended use, starting price, and available model-specific specifications.',
       '[View the office pod range](/office-pods)',
@@ -1620,8 +1698,8 @@ const STATIC_PRERENDER_META = {
       '## Johor Bahru',
       'Office pod supply and delivery available for Johor Bahru workplaces. No completed project listed yet — contact us for a JB project quote.',
       '[View office pods in Johor Bahru](/locations/johor-bahru)',
-      '## Showroom in Klang',
-      'These are delivery and installation areas, not separate Ace branches. The physical showroom remains in Klang, Selangor, with viewing available by appointment.'
+      '## Showroom in Kuala Lumpur',
+      'These are delivery and installation areas, not separate Ace branches. The physical showroom remains in Kuala Lumpur, with viewing available by appointment.'
     ],
     schemas: (canonical) => [
       buildLocalBusinessSchema(),
@@ -1664,13 +1742,13 @@ const STATIC_PRERENDER_META = {
       'Ace Office Pods supplies and delivers acoustic office pods and phone booths to Penang workplaces.',
       'Our range covers one-person focus pods and phone booths through to four and six-person meeting pods, with delivery and installation coordination available for Penang Island and Seberang Perai sites.',
       '## Models available for Penang delivery',
-      'All six Ace Office Pod models are available — Ace Uno (pod only from RM8,850), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
+      'The six media-ready Ace Office Pod models are available — Ace Uno (pod only from RM9,150), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
       '## Delivery and installation planning',
       'Penang deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
       '## Areas served in Penang',
       'Ace Office Pods delivers to offices across Penang including George Town, Bayan Lepas, Bukit Mertajam, Butterworth, Penang Hill area, and surrounding commercial areas on Penang Island and Seberang Perai.',
       '## Frequently asked questions',
-      'How much does an office pod cost in Penang? Ace office pods start from RM8,850 for the Ace Uno pod only. Delivery and installation depend on location, quantity, options, and site requirements.',
+      'How much does an office pod cost in Penang? Ace office pods start from RM9,150 for the Ace Uno pod only. Delivery and installation depend on location, quantity, options, and site requirements.',
       'How long does delivery to Penang take? Standard lead time is approximately 3 to 6 working weeks from order confirmation. Penang logistics are confirmed with the quotation.',
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
@@ -1700,7 +1778,7 @@ const STATIC_PRERENDER_META = {
           {
             '@type': 'Question',
             name: 'How much does an office pod cost in Penang?',
-            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM8,850 for the Ace Uno pod only. Delivery and installation depend on model, quantity, options, delivery distance, and site requirements.' }
+            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM9,150 for the Ace Uno pod only. Delivery and installation depend on model, quantity, options, delivery distance, and site requirements.' }
           },
           {
             '@type': 'Question',
@@ -1739,13 +1817,13 @@ const STATIC_PRERENDER_META = {
       'Ace Office Pods supplies and delivers acoustic office pods and phone booths to Johor Bahru workplaces.',
       'Our range covers one-person focus pods and phone booths through to four and six-person meeting pods, with delivery and installation coordination available for JB sites.',
       '## Models available for Johor Bahru delivery',
-      'All six Ace Office Pod models are available — Ace Uno (pod only from RM8,850), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
+      'The six media-ready Ace Office Pod models are available — Ace Uno (pod only from RM9,150), Ace Plus (from RM14,500), Ace Flex (from RM19,900), Ace Flex Duo (from RM23,900), Ace Meet (from RM22,200), and Ace Hub (from RM27,800).',
       '## Delivery and installation planning',
       'Johor Bahru deliveries are planned around site access, loading arrangements, floor level, lift or staircase clearance, and installation timing. Our team confirms these details as part of the project scope before delivery.',
       '## Areas served in Johor Bahru',
       'Ace Office Pods delivers to offices across Johor Bahru including the city centre, Iskandar Puteri, Medini, Bukit Indah, Johor Jaya, and surrounding commercial areas.',
       '## Frequently asked questions',
-      'How much does an office pod cost in Johor Bahru? Ace office pods start from RM8,850 for the Ace Uno pod only. Delivery and installation depend on location, quantity, options, and site requirements.',
+      'How much does an office pod cost in Johor Bahru? Ace office pods start from RM9,150 for the Ace Uno pod only. Delivery and installation depend on location, quantity, options, and site requirements.',
       'How long does delivery to JB take? Standard lead time is approximately 3 to 6 working weeks from order confirmation. Johor Bahru logistics are confirmed with the quotation.',
       '[View pricing](/pricing)',
       '[Compare office pods](/compare-office-pods)',
@@ -1775,7 +1853,7 @@ const STATIC_PRERENDER_META = {
           {
             '@type': 'Question',
             name: 'How much does an office pod cost in Johor Bahru?',
-            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM8,850 for the Ace Uno pod only. Delivery and installation depend on model, quantity, options, delivery distance, and site requirements.' }
+            acceptedAnswer: { '@type': 'Answer', text: 'Ace office pods start from RM9,150 for the Ace Uno pod only. Delivery and installation depend on model, quantity, options, delivery distance, and site requirements.' }
           },
           {
             '@type': 'Question',
@@ -2020,14 +2098,18 @@ const injectSeoHtml = (html, route, meta) => {
 const buildProductPrerenderMeta = (route, productMeta) => {
 const slug = route.split('/').pop();
 const sharedMeta = getProductMeta(productMeta);
+const productImage = getProductPublicImage(slug);
 return ({
   title: sharedMeta.title,
   description: sharedMeta.description,
-  ogImage: `${SEO_BASE_URL}${getProductPublicImage(slug)}`,
+  ...(productImage ? { ogImage: `${SEO_BASE_URL}${productImage}` } : {}),
+  ...(productMeta.publicationStatus === 'prelaunch' ? { robots: 'noindex, follow' } : {}),
   keywords: `${SEO_KEYWORDS_COMMON}, ${productMeta.name}, ${route.split('/').pop().replaceAll('-', ' ')}`,
   h1: productMeta.name,
   body: [
-    `Starting from ${formatRM(productMeta.startingPrice)}${productMeta.priceBasis === 'pod only' ? ' for the pod only' : ''}`,
+    productMeta.priceBasis?.startsWith('final standard')
+      ? `Final standard Klang Valley total ${formatRM(productMeta.startingPrice)} including delivery and installation`
+      : `Starting from ${formatRM(productMeta.startingPrice)}${productMeta.priceBasis === 'pod only' ? ' for the pod only' : ''}`,
     productMeta.shortDesc,
     ...(productMeta.useCases ?? []),
     ...(productMeta.schemaProperties?.map((p) => `${p.name}: ${p.value}`) ?? [])
@@ -2045,7 +2127,7 @@ return ({
         name: SEO_BRAND_PRIMARY
       },
       description: productMeta.shortDesc,
-      image: [`${SEO_BASE_URL}${getProductPublicImage(slug)}`],
+      ...(productImage ? { image: [`${SEO_BASE_URL}${productImage}`] } : {}),
       url: canonical,
       ...(productMeta.schemaProperties?.length
         ? {

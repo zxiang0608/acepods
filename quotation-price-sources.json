@@ -1,0 +1,208 @@
+{
+  "checkedOn": "2026-10-19",
+  "status": "checked-against-website",
+  "pricingPage": "https://aceofficepods.com/pricing",
+  "basis": "Starting unit price in MYR; delivery, installation, optional furniture/configurations and non-standard scope excluded",
+  "canonicalSource": "src/data/products.js + src/data/podSeoCatalog.js",
+  "products": [
+    {
+      "slug": "ace-uno",
+      "startingPrice": 9150,
+      "source": "https://aceofficepods.com/pods/ace-uno",
+      "options": {
+        "configurations": [],
+        "addons": [
+          {
+            "id": "high-bar-stool",
+            "price": 250
+          }
+        ],
+        "installation": 350,
+        "delivery": 350
+      }
+    },
+    {
+      "slug": "ace-plus",
+      "startingPrice": 14500,
+      "source": "https://aceofficepods.com/pods/ace-plus",
+      "options": {
+        "configurations": [],
+        "addons": [
+          {
+            "id": "high-bar-stool",
+            "price": 290
+          }
+        ],
+        "installation": 500,
+        "delivery": 350
+      }
+    },
+    {
+      "slug": "ace-flex",
+      "startingPrice": 19900,
+      "source": "https://aceofficepods.com/pods/ace-flex",
+      "options": {
+        "configurations": [
+          {
+            "id": "duo-fixed-table",
+            "price": 1000
+          },
+          {
+            "id": "duo-adjustable-table",
+            "price": 3000
+          }
+        ],
+        "addons": [
+          {
+            "id": "office-chair",
+            "price": 199
+          },
+          {
+            "id": "high-bar-stool",
+            "price": 290
+          },
+          {
+            "id": "flex-sofa",
+            "price": 600
+          }
+        ],
+        "installation": 550,
+        "delivery": 350
+      }
+    },
+    {
+      "slug": "ace-flex-duo",
+      "startingPrice": 23900,
+      "source": "https://aceofficepods.com/pods/ace-flex-duo",
+      "options": {
+        "configurations": [
+          {
+            "id": "duo-fixed-table",
+            "price": 1000
+          },
+          {
+            "id": "duo-adjustable-table",
+            "price": 3000
+          }
+        ],
+        "addons": [
+          {
+            "id": "high-bar-stool",
+            "price": 290
+          },
+          {
+            "id": "two-high-bar-stools",
+            "price": 580
+          }
+        ],
+        "installation": 550,
+        "delivery": 350
+      }
+    },
+    {
+      "slug": "ace-meet",
+      "startingPrice": 22200,
+      "source": "https://aceofficepods.com/pods/ace-meet",
+      "options": {
+        "configurations": [
+          {
+            "id": "meeting-fixed-table",
+            "price": 700
+          },
+          {
+            "id": "meeting-adjustable-table",
+            "price": 2550
+          },
+          {
+            "id": "meeting-whiteboard-discussion",
+            "price": 3600
+          },
+          {
+            "id": "meeting-2sofa-centre-table",
+            "price": 3800
+          },
+          {
+            "id": "meeting-whiteboard-discussion-2sofa",
+            "price": 6200
+          }
+        ],
+        "addons": [
+          {
+            "id": "office-chair",
+            "price": 199
+          },
+          {
+            "id": "high-bar-stool",
+            "price": 290
+          },
+          {
+            "id": "meeting-sofa-set",
+            "price": 1250
+          }
+        ],
+        "installation": 750,
+        "delivery": 350
+      }
+    },
+    {
+      "slug": "ace-hub",
+      "startingPrice": 27800,
+      "source": "https://aceofficepods.com/pods/ace-hub",
+      "options": {
+        "configurations": [
+          {
+            "id": "meeting-xl-centre-table",
+            "price": 1200
+          },
+          {
+            "id": "meeting-xl-whiteboard-centre-table",
+            "price": 4200
+          },
+          {
+            "id": "meeting-xl-centre-table-2sofa",
+            "price": 5200
+          },
+          {
+            "id": "meeting-xl-whiteboard-centre-table-2sofa",
+            "price": 8200
+          },
+          {
+            "id": "meeting-xl-entertainment",
+            "price": null
+          }
+        ],
+        "addons": [
+          {
+            "id": "office-chair",
+            "price": 199
+          },
+          {
+            "id": "high-bar-stool",
+            "price": 290
+          },
+          {
+            "id": "meeting-xl-sofa-set",
+            "price": 1400
+          },
+          {
+            "id": "meeting-xl-l-shape-sofa",
+            "price": 2650
+          }
+        ],
+        "installation": 800,
+        "delivery": 350
+      }
+    }
+  ],
+  "optionsSource": "https://aceofficepods.com/assets/index-CPvynggH.js",
+  "optionsStatus": "checked-against-live-configurator",
+  "commercialOverrides": {
+    "standardDelivery": {
+      "amount": 400,
+      "status": "owner-confirmed",
+      "confirmedOn": "2026-10-19",
+      "source": "PRODUCT_PAGE_SOURCE_OF_TRUTH.md \u2014 Current owner corrections; src/data/commercialTerms.js",
+      "note": "Supersedes the RM350 delivery in the earlier website observation; installation unchanged."
+    }
+  }
+}

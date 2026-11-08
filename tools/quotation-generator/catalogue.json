@@ -1,0 +1,319 @@
+{
+  "source": {
+    "checkedOn": "2026-10-19",
+    "url": "https://aceofficepods.com/pricing",
+    "status": "checked-against-website"
+  },
+  "products": [
+    {
+      "key": "ace-uno",
+      "label": "Ace Uno",
+      "price": 9150,
+      "basis": "Pod only",
+      "dimensions": "External size: 1418W x 1018D x 2185H mm",
+      "imageSource": "assets/products/catalog/ace-uno-homepage-front.png",
+      "source": "https://aceofficepods.com/pods/ace-uno",
+      "checkedOn": "2026-10-19",
+      "configurations": [],
+      "addons": [
+        {
+          "id": "high-bar-stool",
+          "label": "High bar stool (white/black)",
+          "price": 250,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/bar-stool-black-normalized.png"
+        }
+      ],
+      "installation": 350,
+      "delivery": 400,
+      "optionsStatus": "checked-against-website"
+    },
+    {
+      "key": "ace-plus",
+      "label": "Ace Plus",
+      "price": 14500,
+      "basis": "Pod only",
+      "dimensions": "External size: 1000W x 1000D x 2350H mm",
+      "imageSource": "assets/products/catalog/ace-plus.png",
+      "source": "https://aceofficepods.com/pods/ace-plus",
+      "checkedOn": "2026-10-19",
+      "configurations": [],
+      "addons": [
+        {
+          "id": "high-bar-stool",
+          "label": "High bar stool (white/black)",
+          "price": 290,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/bar-stool-black-normalized.png"
+        }
+      ],
+      "installation": 500,
+      "delivery": 400,
+      "optionsStatus": "checked-against-website"
+    },
+    {
+      "key": "ace-flex",
+      "label": "Ace Flex",
+      "price": 19900,
+      "basis": "Pod only",
+      "dimensions": "External size: 1600W x 1200D x 2350H mm",
+      "imageSource": "assets/products/catalog/ace-flex.png",
+      "source": "https://aceofficepods.com/pods/ace-flex",
+      "checkedOn": "2026-10-19",
+      "configurations": [
+        {
+          "id": "duo-fixed-table",
+          "label": "Fixed normal height table",
+          "price": 1000,
+          "quoteRequired": false,
+          "includesSofa": false
+        },
+        {
+          "id": "duo-adjustable-table",
+          "label": "Adjustable table",
+          "price": 3000,
+          "quoteRequired": false,
+          "includesSofa": false
+        }
+      ],
+      "addons": [
+        {
+          "id": "office-chair",
+          "label": "Office chair",
+          "price": 199,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/office-chair.png"
+        },
+        {
+          "id": "high-bar-stool",
+          "label": "High bar stool (white/black)",
+          "price": 290,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/bar-stool-black-normalized.png"
+        },
+        {
+          "id": "flex-sofa",
+          "label": "Sofa",
+          "price": 600,
+          "exclusiveGroup": "seating",
+          "kind": "sofa",
+          "imageSource": "assets/ace-flex-sofa.png"
+        }
+      ],
+      "installation": 550,
+      "delivery": 400,
+      "optionsStatus": "checked-against-website"
+    },
+    {
+      "key": "ace-flex-duo",
+      "label": "Ace Flex Duo",
+      "price": 23900,
+      "basis": "Pod only",
+      "dimensions": "External size: 1600W x 1200D x 2350H mm",
+      "imageSource": "assets/products/catalog/ace-flex-duo.png",
+      "source": "https://aceofficepods.com/pods/ace-flex-duo",
+      "checkedOn": "2026-10-19",
+      "configurations": [
+        {
+          "id": "duo-fixed-table",
+          "label": "Fixed normal height table",
+          "price": 1000,
+          "quoteRequired": false,
+          "includesSofa": false
+        },
+        {
+          "id": "duo-adjustable-table",
+          "label": "Adjustable table",
+          "price": 3000,
+          "quoteRequired": false,
+          "includesSofa": false
+        }
+      ],
+      "addons": [
+        {
+          "id": "high-bar-stool",
+          "label": "High bar stool",
+          "price": 290,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/bar-stool-black-normalized.png"
+        },
+        {
+          "id": "two-high-bar-stools",
+          "label": "2 high bar stools",
+          "price": 580,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/bar-stool-black-normalized.png"
+        }
+      ],
+      "installation": 550,
+      "delivery": 400,
+      "optionsStatus": "checked-against-website"
+    },
+    {
+      "key": "ace-meet",
+      "label": "Ace Meet",
+      "price": 22200,
+      "basis": "Pod only",
+      "dimensions": "External size: 2200W x 1200D x 2350H mm",
+      "imageSource": "assets/products/catalog/ace-meet.png",
+      "source": "https://aceofficepods.com/pods/ace-meet",
+      "checkedOn": "2026-10-19",
+      "configurations": [
+        {
+          "id": "meeting-fixed-table",
+          "label": "Fixed normal height table",
+          "price": 700,
+          "quoteRequired": false,
+          "includesSofa": false
+        },
+        {
+          "id": "meeting-adjustable-table",
+          "label": "Height adjustable table",
+          "price": 2550,
+          "quoteRequired": false,
+          "includesSofa": false
+        },
+        {
+          "id": "meeting-whiteboard-discussion",
+          "label": "1 whiteboard panel + 1 discussion table",
+          "price": 3600,
+          "quoteRequired": false,
+          "includesSofa": false
+        },
+        {
+          "id": "meeting-2sofa-centre-table",
+          "label": "2 sofa sets + 1 central discussion table",
+          "price": 3800,
+          "quoteRequired": false,
+          "includesSofa": true
+        },
+        {
+          "id": "meeting-whiteboard-discussion-2sofa",
+          "label": "1 whiteboard panel + 1 discussion table + 2 sofa set",
+          "price": 6200,
+          "quoteRequired": false,
+          "includesSofa": true
+        }
+      ],
+      "addons": [
+        {
+          "id": "office-chair",
+          "label": "Office chair",
+          "price": 199,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/office-chair-normalized.png"
+        },
+        {
+          "id": "high-bar-stool",
+          "label": "High bar stool (white/black)",
+          "price": 290,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/bar-stool-black-normalized.png"
+        },
+        {
+          "id": "meeting-sofa-set",
+          "label": "1 set sofa (Ace Meet only)",
+          "price": 1250,
+          "exclusiveGroup": null,
+          "kind": "sofa",
+          "imageSource": "assets/sofa-normalized.png"
+        }
+      ],
+      "installation": 750,
+      "delivery": 400,
+      "optionsStatus": "checked-against-website"
+    },
+    {
+      "key": "ace-hub",
+      "label": "Ace Hub",
+      "price": 27800,
+      "basis": "Pod only",
+      "dimensions": "External size: 2200W x 1500D x 2350H mm",
+      "imageSource": "assets/products/catalog/ace-hub.png",
+      "source": "https://aceofficepods.com/pods/ace-hub",
+      "checkedOn": "2026-10-19",
+      "configurations": [
+        {
+          "id": "meeting-xl-centre-table",
+          "label": "Centre table",
+          "price": 1200,
+          "quoteRequired": false,
+          "includesSofa": false
+        },
+        {
+          "id": "meeting-xl-whiteboard-centre-table",
+          "label": "Whiteboard panel + centre table",
+          "price": 4200,
+          "quoteRequired": false,
+          "includesSofa": false
+        },
+        {
+          "id": "meeting-xl-centre-table-2sofa",
+          "label": "Centre table + 2 sofa sets",
+          "price": 5200,
+          "quoteRequired": false,
+          "includesSofa": true
+        },
+        {
+          "id": "meeting-xl-whiteboard-centre-table-2sofa",
+          "label": "Whiteboard panel + centre table + 2 sofa sets",
+          "price": 8200,
+          "quoteRequired": false,
+          "includesSofa": true
+        },
+        {
+          "id": "meeting-xl-entertainment",
+          "label": "Entertainment setup",
+          "price": null,
+          "quoteRequired": true,
+          "includesSofa": false
+        }
+      ],
+      "addons": [
+        {
+          "id": "office-chair",
+          "label": "Office chair",
+          "price": 199,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/office-chair.png"
+        },
+        {
+          "id": "high-bar-stool",
+          "label": "High bar stool (white/black)",
+          "price": 290,
+          "exclusiveGroup": "seating",
+          "kind": "other",
+          "imageSource": "assets/bar-stool-black-normalized.png"
+        },
+        {
+          "id": "meeting-xl-sofa-set",
+          "label": "1 set sofa (Ace Hub only)",
+          "price": 1400,
+          "exclusiveGroup": null,
+          "kind": "sofa",
+          "imageSource": "assets/sofa.png"
+        },
+        {
+          "id": "meeting-xl-l-shape-sofa",
+          "label": "L-shape sofa (Ace Hub only)",
+          "price": 2650,
+          "exclusiveGroup": null,
+          "kind": "sofa",
+          "imageSource": "assets/hub-l-shape-sofa-normalized.png"
+        }
+      ],
+      "installation": 800,
+      "delivery": 400,
+      "optionsStatus": "checked-against-website"
+    }
+  ]
+}

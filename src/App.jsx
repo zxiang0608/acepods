@@ -47,13 +47,15 @@ import InstagramFeed from './components/InstagramFeed';
 import SiteFooter from './components/SiteFooter';
 import SmartPodsBanner from './components/SmartPodsBanner';
 import PodStrip from './components/PodStrip';
-import { smartPodsMenuItems } from './components/smartPodsMenuData';
-import { products } from './data/products';
+import { homepageSmartPodsMenuItems } from './components/smartPodsMenuData';
+import { products, publishedProducts } from './data/products';
 import { pushDataLayerEvent } from './lib/tracking';
 import { HOME_FAQ_ITEMS, SEO_KEYWORDS_COMMON } from './seo/constants';
 import { HOME_META } from './seo/pageMeta';
 import { buildCanonical, createFaqSchema, homepageWebPageSchema, localBusinessSchema, serviceOrganizationSchema, websiteSchema } from './seo/schema';
 import CurrencySwitcher from './components/CurrencySwitcher';
+import ProductMediaPending from './components/ProductMediaPending';
+import aceMeetHomepageImage from '../assets/products/catalog/ace-meet-menu-sofa.png';
 
 const PlaceholderImage = ({ aspect = 'aspect-video', label = 'Image Placeholder', className = '' }) => (
   <div
@@ -191,12 +193,12 @@ const seoReassuranceItems = [
   {
     icon: VolumeX,
     label: 'Model-specific acoustic claims',
-    desc: 'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided.'
+    desc: 'Ace Uno carries an approximately 25 dB(A) acoustic claim; the six media-ready models carry model-specific acoustic status.'
   },
   {
     icon: CheckCircle2,
     label: 'Six-model range',
-    desc: 'Options cover one-person calls and focus through larger team meetings.'
+    desc: 'Options cover one-person calls and focus through larger team meetings, with model-specific product information.'
   },
   {
     icon: Route,
@@ -310,7 +312,7 @@ export default function App() {
   };
 
   const goToNextPod = () => {
-    setActivePodIndex((prev) => Math.min(prev + 1, products.length - 1));
+    setActivePodIndex((prev) => Math.min(prev + 1, homepageProducts.length - 1));
   };
 
   const handlePodTouchStart = (event) => {
@@ -339,8 +341,9 @@ export default function App() {
   const activeOfficeSenseItems = officeSenseItems;
   const activeCompareItems = seoCompareItems;
   const activeReassuranceItems = seoReassuranceItems;
-  const desktopTopPodCards = products.slice(0, 3);
-  const desktopBottomPodCards = products.slice(3);
+  const homepageProducts = publishedProducts;
+  const desktopTopPodCards = homepageProducts.slice(0, 3);
+  const desktopBottomPodCards = homepageProducts.slice(3);
 
   const heroHeadline = 'Less noise. More work done.';
   const heroSupportingText = 'Give your people the quiet to think clearly, speak privately, and do their best work.';
@@ -383,7 +386,7 @@ export default function App() {
     return `h-full w-full object-contain object-bottom ${blendClass}`.trim();
   };
   const getHomepagePodCardImage = (pod) => {
-    return pod.catalogImage || pod.thumbImage;
+    return pod.slug === 'ace-meet' ? aceMeetHomepageImage : pod.catalogImage || pod.thumbImage;
   };
   const getMobileHomepagePodImageClassName = (pod) => getHomepagePodImageClassName(pod);
   const homepageCardHeadlineBySlug = {
@@ -409,15 +412,19 @@ export default function App() {
         </h3>
         <div className="mb-10 flex w-full items-center justify-center px-2">
           <div className="flex h-[210px] w-[210px] items-center justify-center md:h-[230px] md:w-[230px]">
-            <img
-              src={getHomepagePodCardImage(pod)}
-              alt={`${pod.name} acoustic office pod`}
-              width="990"
-              height="990"
-              className={getMobileHomepagePodImageClassName(pod)}
-              loading="lazy"
-              decoding="async"
-            />
+            {getHomepagePodCardImage(pod) ? (
+              <img
+                src={getHomepagePodCardImage(pod)}
+                alt={`${pod.name} acoustic office pod`}
+                width="990"
+                height="990"
+                className={getMobileHomepagePodImageClassName(pod)}
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <ProductMediaPending productName={pod.name} variant="card" />
+            )}
           </div>
         </div>
         <p className="mb-5 max-w-[18ch] whitespace-pre-line text-center text-[19px] font-semibold leading-[1.3] text-[#3c3c3c] md:text-[20px]">
@@ -560,7 +567,7 @@ export default function App() {
           </div>
         </div>
 
-        {isSmartPodsDesktopOpen && <SmartPodsBanner items={smartPodsMenuItems} onItemClick={() => setIsSmartPodsDesktopOpen(false)} />}
+        {isSmartPodsDesktopOpen && <SmartPodsBanner items={homepageSmartPodsMenuItems} onItemClick={() => setIsSmartPodsDesktopOpen(false)} />}
       </nav>
 
       <div
@@ -601,7 +608,7 @@ export default function App() {
                   </div>
                   {isSmartPodsMobileOpen && (
                     <div className="space-y-10 border-t border-[#d9d9d9] pt-6">
-                      {smartPodsMenuItems.map((item) => (
+                      {homepageSmartPodsMenuItems.map((item) => (
                         <Link
                           key={item.title}
                           to={item.to}
@@ -612,7 +619,11 @@ export default function App() {
                           className="block text-center"
                         >
                           <div className="mx-auto h-[260px] w-full max-w-[230px]">
-                            <img src={item.image} alt={item.title} className={`h-full w-full object-contain ${item.imageClassName || ''}`} />
+                            {item.menuImage || item.image ? (
+                              <img src={item.menuImage || item.image} alt={item.title} className={`h-full w-full object-contain ${item.imageClassName || ''}`} />
+                            ) : (
+                              <ProductMediaPending productName={item.title} variant="menu" />
+                            )}
                           </div>
                           <h3 className="mt-4 text-[20px] font-semibold tracking-tight text-[#007653]">{item.title}</h3>
                           <p className="mx-auto mt-2 max-w-[280px] text-[14px] leading-[1.5] text-[#68726f]">{item.description}</p>
@@ -890,12 +901,12 @@ export default function App() {
 
                 {/* Mobile: short version */}
                 <p id="home-answer" className="mt-4 text-left text-[14px] leading-[1.6] text-[#59635f] md:hidden">
-                  Six office pod models for calls, focus, and meetings, with delivery, installation, and after-sales support available in Malaysia.
+                  Six media-ready office pod models for calls, focus, and meetings, with further models kept out of this homepage range while their specification and commercial review continues.
                 </p>
 
                 {/* Desktop: full paragraph */}
                 <p className="mx-auto mt-4 hidden max-w-[760px] text-center text-[15px] leading-[1.6] text-[#59635f] md:block md:text-[17px]">
-                  Ace Office Pods offers six models for calls, focus, and meetings. Delivery, installation, and post-installation support are available in Malaysia. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided.
+                  Ace Office Pods offers six media-ready models for calls, focus, and meetings. Delivery, installation, and post-installation support are available in Malaysia. Ace Uno carries an approximately 25 dB(A) acoustic claim; the other models carry model-specific acoustic status.
                 </p>
               </div>
             </div>
@@ -906,7 +917,7 @@ export default function App() {
                   className="flex transition-transform duration-300 ease-out"
                   style={{ transform: `translateX(-${activePodIndex * 100}%)` }}
                 >
-                  {products.map((pod) => (
+                  {homepageProducts.map((pod) => (
                     <div key={`slide-${pod.slug}`} className="w-full shrink-0">
                       {renderMobilePodCard(pod)}
                     </div>
@@ -929,16 +940,16 @@ export default function App() {
                 type="button"
                 aria-label="Next pod"
                 onClick={goToNextPod}
-                disabled={activePodIndex === products.length - 1}
+                disabled={activePodIndex === homepageProducts.length - 1}
                 className={`absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#eeece7]/90 p-3 text-[#59635f] transition ${
-                  activePodIndex === products.length - 1 ? 'pointer-events-none opacity-45' : 'hover:bg-[#eeece7]'
+                  activePodIndex === homepageProducts.length - 1 ? 'pointer-events-none opacity-45' : 'hover:bg-[#eeece7]'
                 }`}
               >
                 <ChevronRight size={24} />
               </button>
 
               <div className="mt-5 flex items-center justify-center gap-2.5">
-                {products.map((pod, idx) => (
+                {homepageProducts.map((pod, idx) => (
                   <button
                     key={`dot-${pod.slug}`}
                     type="button"
@@ -951,7 +962,7 @@ export default function App() {
             </div>
 
             <div className="hidden md:grid md:grid-cols-2 md:gap-4 lg:hidden">
-              {products.map((pod) => renderPodCard(pod, 'w-full'))}
+              {homepageProducts.map((pod) => renderPodCard(pod, 'w-full'))}
             </div>
 
             <div className="hidden lg:block">

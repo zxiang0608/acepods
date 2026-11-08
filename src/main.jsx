@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import AboutPage from './pages/AboutPage';
+import App from './App';
 import CompareOfficePodsPage from './pages/CompareOfficePodsPage';
 import ContactPage from './pages/ContactPage';
 import FaqPage from './pages/FaqPage';
@@ -12,8 +13,10 @@ import OfficeChairsPage from './pages/OfficeChairsPage';
 import OfficePhoneBoothMalaysiaPage from './pages/OfficePhoneBoothMalaysiaPage';
 import OfficePodsNearMePage from './pages/OfficePodsNearMePage';
 import OfficePodsPage from './pages/OfficePodsPage';
+import OpenPodsPage from './pages/OpenPodsPage';
 import PodRelocationPage from './pages/PodRelocationPage';
 import PricingPage from './pages/PricingPage';
+import QuotePage from './pages/QuotePage';
 import MeetingPodsMalaysiaPage from './pages/MeetingPodsMalaysiaPage';
 import Demo2Page from './pages/Demo2Page';
 import EditorialPolicyPage from './pages/EditorialPolicyPage';
@@ -28,9 +31,11 @@ const ArticlesPage = lazy(() => import('./pages/ArticlesPage'));
 const LocationPage = lazy(() => import('./pages/LocationPage'));
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
 const ProductPage = lazy(() => import('./pages/ProductPage'));
+const InstantQuotationPage = lazy(() => import('./pages/InstantQuotationPage'));
 
 const isDemoPath = window.location.pathname === '/demo' || window.location.pathname.startsWith('/demo/');
-const routerBasename = isDemoPath ? '/demo' : '/';
+const isDemo4Path = window.location.pathname === '/demo4' || window.location.pathname.startsWith('/demo4/');
+const routerBasename = isDemo4Path ? '/demo4' : isDemoPath ? '/demo' : '/';
 const rootElement = document.getElementById('root');
 
 // The prerendered fallback is for crawlers and first response content.
@@ -44,17 +49,27 @@ ReactDOM.createRoot(rootElement).render(
       <ScrollToTop />
       <Suspense fallback={null}>
         <Routes>
-          <Route path="/" element={<Demo2Page mobilePodMenu />} />
+          <Route
+            path="/"
+            element={
+              isDemoPath || isDemo4Path
+                ? <Demo2Page mobilePodMenu />
+                : <App />
+            }
+          />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticleDetailPage />} />
           <Route path="/office-chairs" element={<OfficeChairsPage />} />
           <Route path="/office-pods" element={<OfficePodsPage />} />
+          <Route path="/open-pods" element={<OpenPodsPage />} />
           <Route path="/office-pods-near-me" element={<OfficePodsNearMePage />} />
           <Route path="/meeting-pods-malaysia" element={<MeetingPodsMalaysiaPage />} />
           <Route path="/office-phone-booth-malaysia" element={<OfficePhoneBoothMalaysiaPage />} />
           <Route path="/compare-office-pods" element={<CompareOfficePodsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/get-a-quote" element={<QuotePage />} />
+          <Route path="/instant-quotation" element={<InstantQuotationPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/editorial-policy" element={<EditorialPolicyPage />} />
@@ -69,6 +84,8 @@ ReactDOM.createRoot(rootElement).render(
           <Route path="/pods/ace-duo" element={<Navigate replace to="/pods/ace-flex" />} />
           <Route path="/pods/ace-meeting" element={<Navigate replace to="/pods/ace-meet" />} />
           <Route path="/pods/ace-meeting-xl" element={<Navigate replace to="/pods/ace-hub" />} />
+          <Route path="/pods/ace-pod-one" element={<Navigate to="/office-pods" replace />} />
+          <Route path="/pods/ace-pod-four" element={<Navigate to="/office-pods" replace />} />
           <Route path="/pods/:slug" element={<ProductPage />} />
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="/terms" element={<TermsPage />} />

@@ -13,7 +13,8 @@ const jobs = [
   ['grey-ash-transparent.png', 'grey-ash-normalized.png'],
   ['meet-sofa-table-whiteboard-transparent.png', 'meet-sofa-table-whiteboard-normalized.png'],
   ['office-chair.png', 'office-chair-normalized.png'],
-  ['sofa.png', 'sofa-normalized.png']
+  ['sofa.png', 'sofa-normalized.png'],
+  ['L-shape-sofa.png', 'hub-l-shape-sofa-normalized.png', 160]
 ];
 
 const trimTransparentBounds = (data, width, height, channels, alphaThreshold = 8) => {
@@ -38,13 +39,13 @@ const trimTransparentBounds = (data, width, height, channels, alphaThreshold = 8
   return { left: minX, top: minY, width: maxX - minX + 1, height: maxY - minY + 1 };
 };
 
-for (const [inputName, outputName] of jobs) {
+for (const [inputName, outputName, alphaThreshold = 8] of jobs) {
   const inputPath = path.join(assetsDir, inputName);
   const outputPath = path.join(assetsDir, outputName);
 
   const source = sharp(inputPath).ensureAlpha();
   const { data, info } = await source.raw().toBuffer({ resolveWithObject: true });
-  const bounds = trimTransparentBounds(data, info.width, info.height, info.channels);
+  const bounds = trimTransparentBounds(data, info.width, info.height, info.channels, alphaThreshold);
 
   if (!bounds) {
     throw new Error(`No visible alpha content found for ${inputName}`);

@@ -5,14 +5,12 @@ import {
   HOME_FAQ_ITEMS,
   SEO_BASE_URL,
   SEO_BRAND_EMAIL,
+  SEO_BRAND_ADDRESS,
   SEO_BRAND_IDENTIFIER,
   SEO_BRAND_LEGAL,
   SEO_BRAND_PHONE,
   SEO_BRAND_PRIMARY,
-  SEO_BRAND_POSTAL_CODE,
-  SEO_BRAND_SHOWROOM_LOCALITY,
-  SEO_BRAND_SHOWROOM_REGION,
-  SEO_BRAND_STREET_ADDRESS
+  SEO_BRAND_SHOWROOM_LOCALITY
 } from '../src/seo/constants.js';
 
 const latestArticleDate = ARTICLES.reduce(
@@ -29,11 +27,13 @@ const escapeXml = (value) =>
     .replaceAll("'", '&apos;');
 
 const articleUrl = (article) => `${SEO_BASE_URL}/articles/${article.slug}`;
-const products = Object.entries(POD_SEO_BY_SLUG).map(([slug, product]) => ({
+const products = Object.entries(POD_SEO_BY_SLUG).filter(([, product]) => product.publicationStatus !== 'prelaunch').map(([slug, product]) => ({
   slug,
   name: product.name,
   url: `${SEO_BASE_URL}/pods/${slug}`,
   description: product.shortDesc,
+  ...(product.publicationStatus ? { publicationStatus: product.publicationStatus } : {}),
+  ...(product.priceBasis ? { priceBasis: product.priceBasis } : {}),
   startingPrice: {
     currency: 'MYR',
     value: product.startingPrice
@@ -57,6 +57,7 @@ const aceUnoFacts = {
     currency: 'MYR',
     podOnly: ACE_UNO_PRICING.podOnly,
     standardKlangValleyDelivery: ACE_UNO_PRICING.standardKlangValleyDelivery,
+    deliveryChargeBasis: 'per trip',
     standardKlangValleyInstallation: ACE_UNO_PRICING.standardKlangValleyInstallation,
     standardInstalledTotalBeforeOptionalStool: ACE_UNO_PRICING.standardInstalledTotal,
     optionalHighBarStool: ACE_UNO_PRICING.optionalHighBarStool,
@@ -123,10 +124,10 @@ const summary = {
     'Malaysian supplier of acoustic office pods, phone booths, focus pods, and meeting pods for calls, focused work, interviews, and small meetings.',
   updated: latestContentDate,
   facts: {
-    acousticPerformance: 'Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus only; no verified supporting test document has been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub have no published dB rating on this site',
-    startingPrice: 'Ace Uno: RM8,850 pod only; standard Klang Valley delivery RM350; standard Klang Valley installation RM350; standard installed total RM9,550 before the optional stool',
+    acousticPerformance: 'Ace Uno carries an approximately 25 dB(A) acoustic claim; the six media-ready models carry verified acoustic status in their product records',
+    startingPrice: 'Ace Uno: RM9,150 pod only; standard Klang Valley delivery RM400 per trip; standard Klang Valley installation RM350; standard installed total RM9,900 before the optional stool',
     serviceArea: 'Klang Valley and West Malaysia',
-    showroom: `${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}, Malaysia`
+    showroom: `${SEO_BRAND_SHOWROOM_LOCALITY}, Malaysia`
   },
   products,
   resources: {
@@ -194,7 +195,7 @@ const service = {
     },
     {
       name: 'Showroom consultation',
-      description: 'Product viewing and a subjective acoustic demonstration in Klang by appointment; demonstrations do not replace model-specific test documentation.',
+      description: 'Product viewing and a subjective acoustic demonstration in Kuala Lumpur by appointment; demonstrations do not replace model-specific test documentation.',
       url: `${SEO_BASE_URL}/contact`
     }
   ],
@@ -208,7 +209,13 @@ const articleLinks = [...ARTICLES]
   .join('\n');
 
 const productLinks = products
-  .map((product) => `- [${product.name}](${product.url}) — ${product.description}. Starting price: RM${product.startingPrice.value.toLocaleString('en-MY')}.`)
+  .map((product) => {
+    const isFinalPrice = product.priceBasis?.startsWith('final standard');
+    const priceLabel = product.publicationStatus === 'prelaunch'
+      ? (isFinalPrice ? 'Prelaunch record; final standard Klang Valley price' : 'Prelaunch record; listed source price')
+      : 'Starting price';
+    return `- [${product.name}](${product.url}) — ${product.description}. ${priceLabel}: RM${product.startingPrice.value.toLocaleString('en-MY')}${product.publicationStatus === 'prelaunch' ? '; technical specifications and project terms pending confirmation.' : '.'}`;
+  })
   .join('\n');
 
 const productReference = products
@@ -217,7 +224,13 @@ const productReference = products
     const properties = source.schemaProperties
       .map(({ name, value }) => `  - ${name}: ${value}`)
       .join('\n');
-    return `### ${product.name}\n\nCanonical product page: ${product.url}\n\nPublished starting price: RM${product.startingPrice.value.toLocaleString('en-MY')}\n\nSummary: ${product.description}.\n\nPublished specifications:\n${properties}`;
+    const priceLabel = source.publicationStatus === 'prelaunch'
+      ? (source.priceBasis?.startsWith('final standard') ? 'Final standard Klang Valley price' : 'Listed source price')
+      : 'Published starting price';
+    const statusLine = source.publicationStatus === 'prelaunch'
+      ? '\n\nStatus: Prelaunch record; technical specifications and project terms pending confirmation. Official gallery media is approved for prelaunch display.'
+      : '';
+    return `### ${product.name}\n\nCanonical product page: ${product.url}\n\n${priceLabel}: RM${product.startingPrice.value.toLocaleString('en-MY')}${statusLine}\n\nSummary: ${product.description}.\n\nPublished specifications:\n${properties}`;
   })
   .join('\n\n');
 
@@ -259,7 +272,7 @@ ${articleLinks}
 ## Citation guidance
 
 - Verify prices and scope on the linked product or pricing page before quoting them.
-- Acoustic claims are model-specific. Ace Plus has an unverified first-party approximately 27 dB(A) claim; no verified supporting test document has been provided. Do not apply that claim to another model.
+- Acoustic claims are model-specific. Ace Uno carries an approximately 25 dB(A) claim; the six media-ready models carry verified acoustic status in their product records.
 - Contact ${SEO_BRAND_EMAIL} for a current project quotation or correction.
 `;
 
@@ -273,20 +286,20 @@ Last content review represented in this file: ${latestContentDate}
 - Legal operator: ${SEO_BRAND_LEGAL}
 - Registration number: ${SEO_BRAND_IDENTIFIER}
 - Website: ${SEO_BASE_URL}
-- Address: ${SEO_BRAND_STREET_ADDRESS}, ${SEO_BRAND_POSTAL_CODE} ${SEO_BRAND_SHOWROOM_LOCALITY}, ${SEO_BRAND_SHOWROOM_REGION}, Malaysia
+- Address: ${SEO_BRAND_ADDRESS}, Malaysia
 - Service area: Klang Valley and West Malaysia
 - Phone: ${SEO_BRAND_PHONE}
 - Email: ${SEO_BRAND_EMAIL}
 
-Ace Office Pods supplies freestanding enclosed office pods for calls, focused work, interviews, one-to-one discussions, and small meetings. Showroom viewing in Klang is by appointment.
+Ace Office Pods supplies freestanding enclosed office pods for calls, focused work, interviews, one-to-one discussions, and small meetings. Showroom viewing in Kuala Lumpur is by appointment.
 
 ## Pricing and evidence rules
 
-Published prices are starting prices or stated-scope prices. Final delivery, installation, access, optional-item, outstation, and project requirements are confirmed in a written quotation.
+Published prices are starting prices or stated-scope prices. Delivery, installation, access, optional-item, outstation, and other project requirements outside that stated scope are confirmed in a written quotation.
 
-Acoustic performance is model-specific. Ace publishes an unverified first-party approximately 27 dB(A) claim for Ace Plus, but no verified supporting test document or measurement conditions have been provided. Ace Uno, Ace Flex, Ace Flex Duo, Ace Meet, and Ace Hub have no published dB rating on this site and should not be described as soundproof.
+Acoustic performance is model-specific. Ace Uno carries an approximately 25 dB(A) acoustic claim; the six media-ready models carry verified acoustic status in their product records. These products should not be described as completely soundproof.
 
-For Ace Uno, the current stated scope is RM8,850 pod only, RM350 standard Klang Valley delivery, and RM350 standard Klang Valley installation, making RM9,550 before the optional RM250 stool. Restricted-access, non-standard, and outstation projects are quoted separately.
+For Ace Uno, the current stated scope is RM9,150 pod only, RM400 standard Klang Valley delivery per trip, and RM350 standard Klang Valley installation, making RM9,900 before the optional RM250 stool. Restricted-access, non-standard, and outstation projects are quoted separately.
 
 ## Product reference
 

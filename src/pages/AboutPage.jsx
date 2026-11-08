@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SeoMeta from '../components/SeoMeta';
 import {
+  SEO_BRAND_ADDRESS,
   SEO_BRAND_EMAIL,
   SEO_BRAND_IDENTIFIER,
   SEO_BRAND_LEGAL,
@@ -31,7 +32,7 @@ export default function AboutPage() {
     <PageShell>
       <SeoMeta
         title="About Ace Office Pods | Ace Workplace Solutions"
-        description="Learn about Ace Office Pods by Ace Workplace Solutions, our Klang showroom, West Malaysia service area, and approach to clear product information."
+        description="Learn about Ace Office Pods by Ace Workplace Solutions, our Kuala Lumpur showroom, West Malaysia service area, and approach to clear product information."
         canonical={buildCanonical('/about')}
         schemas={[organizationSchema, websiteSchema, aboutPageSchema, createBreadcrumbSchema(breadcrumbs)]}
       />
@@ -53,7 +54,7 @@ export default function AboutPage() {
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {[
             ['Registered business', `${SEO_BRAND_LEGAL}\nRegistration no. ${SEO_BRAND_IDENTIFIER}`],
-            ['Showroom', 'Klang, Selangor\nVisits by appointment'],
+            ['Showroom', 'Kuala Lumpur\nVisits by appointment'],
             ['Service area', 'Klang Valley and West Malaysia\nProject scope confirmed by quotation']
           ].map(([label, value]) => (
             <div key={label} className="border-t border-[#cfd5d2] pt-4">
@@ -97,7 +98,7 @@ export default function AboutPage() {
             <address className="mt-4 not-italic text-[15px] leading-[1.8] text-[#4f5c59]">
               <div><a href={`mailto:${SEO_BRAND_EMAIL}`} className="text-[#007653] underline-offset-4 hover:underline">{SEO_BRAND_EMAIL}</a></div>
               <div><a href={`tel:${SEO_BRAND_PHONE}`} className="text-[#007653] underline-offset-4 hover:underline">{SEO_BRAND_PHONE}</a></div>
-              <div>Jalan Gopeng, Kawasan 18, 41400 Klang, Selangor</div>
+              <div>{SEO_BRAND_ADDRESS}</div>
             </address>
             <Link to="/contact" className="mt-5 inline-flex min-h-[46px] items-center bg-[#007653] px-6 text-[14px] font-semibold text-white transition-colors hover:bg-[#005f43]">
               Contact Ace Office Pods

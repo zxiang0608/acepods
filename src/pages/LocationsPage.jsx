@@ -92,9 +92,9 @@ export default function LocationsPage() {
           </Link>
         </div>
         <div className="border-l-0 border-[#d8d3c8] md:border-l md:pl-8">
-          <h2 className="text-[27px] font-semibold tracking-tight text-[#172126]">Showroom in Klang</h2>
+          <h2 className="text-[27px] font-semibold tracking-tight text-[#172126]">Showroom in Kuala Lumpur</h2>
           <p className="mt-3 text-[16px] leading-[1.65] text-[#59635f]">
-            These are delivery and installation areas, not separate Ace branches. The physical showroom remains in Klang, Selangor, with viewing
+            These are delivery and installation areas, not separate Ace branches. The physical showroom remains in Kuala Lumpur, with viewing
             available by appointment.
           </p>
           <Link to="/contact" className="mt-5 inline-flex text-[14px] font-semibold text-[#007653] underline-offset-4 hover:underline">
