@@ -6,3 +6,16 @@ skills-lock.json
 whatsapp_analysis.md
 # Large unused source original (only the optimized webp is imported)
 assets/JSN09633.jpg
+
+# Private business data and internal apps — not part of the website build
+/acepods-crm
+/ace-pods-tracking
+/crm-discovery
+/tmp
+/output
+/assets/ads
+/invoice-generator.html
+/quotation-generator.html
+/COS_ACTIVITY_LOG_PENDING.md
+/Ace_Uno_*
+/*.docx
