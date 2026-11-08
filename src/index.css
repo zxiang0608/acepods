@@ -41,8 +41,7 @@ body {
   display: none;
 }
 
-/* Logos rest in greyscale and show brand colours on hover.
-   Mouse devices only; touch screens have no hover, so they always show colour. */
+/* Logos always show their brand colours. Mouse devices get a grab cursor for dragging. */
 @media (hover: hover) and (pointer: fine) {
   .logo-marquee {
     cursor: grab;
@@ -51,17 +50,6 @@ body {
   .logo-marquee.is-dragging {
     cursor: grabbing;
     user-select: none;
-  }
-
-  .logo-marquee-img {
-    filter: grayscale(1);
-    opacity: 0.72;
-    transition: filter 200ms ease, opacity 200ms ease;
-  }
-
-  .logo-marquee-card:hover .logo-marquee-img {
-    filter: none;
-    opacity: 1;
   }
 }
 
