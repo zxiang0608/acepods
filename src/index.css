@@ -43,7 +43,8 @@ body {
   display: flex;
   width: max-content;
   gap: 0.75rem;
-  animation: logoMarquee 32s linear infinite;
+  /* 12 logos: 4s per logo keeps the scroll speed the same as the original 8-logo strip. */
+  animation: logoMarquee 48s linear infinite;
 }
 
 .logo-marquee-card {

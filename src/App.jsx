@@ -42,6 +42,10 @@ import everllenceLogo from '../assets/everllence-logo.png';
 import taylorsUniversityLogo from '../assets/taylorsuniversity.svg';
 import amorePacificLogo from '../assets/amorepacific-logo.svg';
 import brenntagLogo from '../assets/brenntag-logo.webp';
+import sfExpressLogo from '../assets/customer-logos/sf-express-logo.webp';
+import ihDesignLogo from '../assets/customer-logos/ihdesign-logo.webp';
+import clickAsiaLogo from '../assets/customer-logos/clickasia-logo.webp';
+import bjakLogo from '../assets/customer-logos/bjak-logo.webp';
 import SeoMeta from './components/SeoMeta';
 import InstagramFeed from './components/InstagramFeed';
 import SiteFooter from './components/SiteFooter';
@@ -259,7 +263,12 @@ const trustedLogos = [
   { name: "Taylor's University Lakeside", image: taylorsUniversityLogo, fitClass: 'scale-[1.10]', logoStageClass: 'max-h-[52px] max-w-[172px]' },
   { name: 'Everllence', image: everllenceLogo, fitClass: 'scale-[0.98]', logoStageClass: 'max-h-[48px] max-w-[176px]' },
   { name: 'Amore Pacific', image: amorePacificLogo, fitClass: 'scale-[0.95]', logoStageClass: 'max-h-[44px] max-w-[176px]' },
-  { name: 'Brenntag', image: brenntagLogo, fitClass: 'scale-[0.98]', logoStageClass: '!h-[104px] max-w-[280px]' }
+  { name: 'Brenntag', image: brenntagLogo, fitClass: 'scale-[0.98]', logoStageClass: '!h-[104px] max-w-[280px]' },
+  // Owner-approved 2026-11-08 (Drive: Images files > Portfolio pictures). White-background files blend into the card.
+  { name: 'SF Express', image: sfExpressLogo, fitClass: 'mix-blend-multiply', logoStageClass: 'max-h-[50px] max-w-[160px]' },
+  { name: 'IH Design', image: ihDesignLogo, fitClass: '', logoStageClass: 'max-h-[44px] max-w-[110px]' },
+  { name: 'ClickAsia', image: clickAsiaLogo, fitClass: 'mix-blend-multiply', logoStageClass: 'max-h-[40px] max-w-[176px]' },
+  { name: 'BJAK', image: bjakLogo, fitClass: '', logoStageClass: 'max-h-[48px] max-w-[132px]' }
 ];
 
 export default function App() {

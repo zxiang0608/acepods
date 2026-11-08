@@ -263,6 +263,19 @@ The mobile and desktop sizes differ intentionally for responsive fit. At the sam
 - Never replace, redraw, recolour, or publish a customer logo without approval.
 - Render customer logos through a shared customer-logo-stage component. Existing homepage logo dimensions are not proof of compliance and must be audited before this rule is marked complete.
 
+#### Approved homepage client logos added 8 November 2026
+
+The owner approved publishing these four client logos on 8 November 2026 ("logos, put them live"), for the homepage trusted-client logo strip only. They have no approved project photos, so they are not portfolio-page projects.
+
+| Client | Drive source (Images files > Portfolio pictures) | Published asset | Treatment |
+| --- | --- | --- | --- |
+| SF Express | `sf express.png` | `assets/customer-logos/sf-express-logo.webp` | White margin trimmed; white background blended into the card |
+| IH Design | `ihdesign.png` | `assets/customer-logos/ihdesign-logo.webp` | Transparent original, unchanged |
+| ClickAsia | `CA_LOGO_WITH_TRADEMARK_2.webp` | `assets/customer-logos/clickasia-logo.webp` | White margin trimmed; white background blended into the card |
+| BJAK | `bjak.jpg` | `assets/customer-logos/bjak-logo.webp` | Square cropped to the blue band around the wordmark so it reads at strip size; colours unchanged |
+
+Originals are kept in `assets/customer-logos/source/` and are not imported by the site.
+
 ## 7. Product data checklist
 
 Before adding a product, verify and record:
